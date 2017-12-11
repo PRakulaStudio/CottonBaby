@@ -1,0 +1,97 @@
+.cooperation {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.cooperation-text {
+    width: 100%;
+    margin: 0 0 40px 0;
+}
+
+.cooperation-text p{
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.form {
+    width: 80%;
+    margin: auto;
+}
+
+.form form{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.form-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-top-left {
+    width: 45%;
+    margin: auto;
+}
+
+.form-top-right {
+    width: 45%;
+    margin: auto;
+}
+
+.form-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+}
+
+.form label{
+    width: 100%;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;  
+}
+
+.form input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: none; 
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;  
+}
+
+.form textarea{
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;
+    resize: none;
+}
+
+.form button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.form button:hover{
+    background: linear-gradient(to bottom right, #F6052F, #FF3D47);
+}

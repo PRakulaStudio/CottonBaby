@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "Fontfabric-MullerBlack";
+    src: url("../fonts/Fontfabric-MullerBlack.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerBlackItalic";
+    src: url("../fonts/Fontfabric-MullerBlackItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerBold";
+    src: url("../fonts/Fontfabric-MullerBold.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerBoldItalic";
+    src: url("../fonts/Fontfabric-MullerBoldItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerExtraBold";
+    src: url("../fonts/Fontfabric-MullerExtraBold.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerExtraBoldItalic";
+    src: url("../fonts/Fontfabric-MullerExtraBoldItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerHeavy";
+    src: url("../fonts/Fontfabric-MullerHeavy.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerHeavyItalic";
+    src: url("../fonts/Fontfabric-MullerHeavyItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerLight";
+    src: url("../fonts/Fontfabric-MullerLight.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerLightItalic";
+    src: url("../fonts/Fontfabric-MullerLightItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerMedium";
+    src: url("../fonts/Fontfabric-MullerMedium.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerMediumItalic";
+    src: url("../fonts/Fontfabric-MullerMediumItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerRegular";
+    src: url("../fonts/Fontfabric-MullerRegular.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerRegularItalic";
+    src: url("../fonts/Fontfabric-MullerRegularItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerThin";
+    src: url("../fonts/Fontfabric-MullerThin.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerThinItalic";
+    src: url("../fonts/Fontfabric-MullerThinItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerUltraLight";
+    src: url("../fonts/Fontfabric-MullerUltraLight.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Fontfabric-MullerUltraLightItalic";
+    src: url("../fonts/Fontfabric-MullerUltraLightItalic.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

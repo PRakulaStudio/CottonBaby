@@ -1,0 +1,59 @@
+.registration {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.form {
+    width: 60%;
+}
+
+.form form{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.form label{
+    width: 100%;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;  
+}
+
+.form input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: none; 
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;  
+}
+
+.form button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #FFFFFF;
+    transition: all 1s;
+}
+
+.form button:hover{
+    background: linear-gradient(to bottom right, #F6052F, #FF3D47);
+}
+
+.img {
+    width: 30%;
+}
