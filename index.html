@@ -248,6 +248,15 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/slick.js"></script>
 <script>
+
+	function sliderAnimation(sliderClass)
+	{
+		 if( $(window).width() < 1000 )
+		  		$('.'+sliderClass).slick('slickPlay');	
+		  else
+		  	   $('.'+sliderClass).slick('slickPause');
+	}
+
 	$(document).ready(function(){
 
 
@@ -257,24 +266,30 @@
 		   
 		  });
 
+			 
+		
+
 		  $('.slider').slick({
-			  	 onInit: function() {
-	            // let's do this after we init the banner slider
-	          
-	          	  console.log('slider was initialized');
-	        	},
+			 autoplay:false,
+ 			 autoplaySpeed:2000,
+ 	         slidesToShow:1,
+  			 slidesToScroll:1
 	      });
-
-
-
+		  sliderAnimation('slider');
 	     
 
 	      $(".slider").on("afterChange", function(event, slick, currentSlide){
 	      	    	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
-
+	      	    	 sliderAnimation('slider');
+	      	    	//slick.slickPlay();
+	      	    	//slick.slickPause();
 				});
 		  });	  
 		 
+
+		 $( window ).resize( function() {
+		   	 sliderAnimation('slider');
+		 });
 
   
 </script>
