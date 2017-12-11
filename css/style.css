@@ -424,15 +424,6 @@ html, body {
     color: #333333;
 }
 
-.content h2{
-    width: 100%;
-    margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 30px;
-    color: #333333;
-}
-
 .pagination {
     width: 100%;
 }
