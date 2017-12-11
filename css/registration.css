@@ -50,10 +50,10 @@
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
-    transition: all 1s;
 }
 
 .form button:hover{
+    margin: 2px 0 -2px 0;
     background: linear-gradient(to bottom right, #F6052F, #FF3D47);
 }
 

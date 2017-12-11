@@ -140,5 +140,6 @@
 }
 
 .form button:hover{
+    margin: 2px auto -2px auto;
     background: linear-gradient(to bottom right, #F6052F, #FF3D47);
 }
