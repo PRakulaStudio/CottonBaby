@@ -421,6 +421,10 @@ html, body {
     left: 0;
 }
 
+.slider  img{
+    width: 100%;
+}
+
 .content-text {
     float: left;
     margin: 20px;
