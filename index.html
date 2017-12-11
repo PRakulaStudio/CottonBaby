@@ -144,9 +144,12 @@
 	<main class="content">
 		<section class="main-slider">
 			<div class="slider">
-				<div class="slide"><div style="background-image: url('images/1.jpg');height: 1080px; background-repeat: no-repeat; background-position: center; background-size: cover ;  "></div> <!-- <img src="images/1.jpg"> --></div>
-				<div class="slide"><div style="background-image: url('images/2.jpg');height: 1080px; background-repeat: no-repeat; background-position: center; background-size: cover ; "></div></div>
-				<div class="slide"><div style="background-image: url('images/3.jpg');height: 1080px; background-repeat: no-repeat; background-position: center; background-size: cover ; "></div></div>
+				<div class="slide"><div style="background-image: url('images/1.jpg'); "></div> </div>
+				<div class="slide"><div style="background-image: url('images/2.jpg'); "></div></div>
+				<div class="slide"><div style="background-image: url('images/3.jpg');"></div></div>
+			</div>
+			<div class="count-slider">
+				<p><span class="current-slide">1</span> из <span class="total-slider">10</span></p>
 			</div>
 		</section>
 
@@ -175,6 +178,7 @@
 				<div class="slide"></div>
 				<div class="slide"></div>
 			</div>
+			
 		</section>
 
 		<section class="content-cooperation">
@@ -244,7 +248,35 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/slick.js"></script>
 <script>
-    $('.slider').slick();
+	$(document).ready(function(){
+
+
+		  $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
+    //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+		    $(".main-slider .count-slider .total-slider").text(slick.slideCount);
+		   
+		  });
+
+		  $('.slider').slick({
+			  	 onInit: function() {
+	            // let's do this after we init the banner slider
+	          
+	          	  console.log('slider was initialized');
+	        	},
+	      });
+
+
+
+	     
+
+	      $(".slider").on("afterChange", function(event, slick, currentSlide){
+	      	    	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
+
+				});
+		  });	  
+		 
+
+  
 </script>
 </body>
 </html>

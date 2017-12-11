@@ -307,6 +307,41 @@ html, body {
     background: #FFFFFF url(../images/fon-menu.png) no-repeat center;
 }
 
+
+.slick-arrow{
+    position: absolute;
+    top:250px;
+    background-image: url(../images/icons/arrow-right.png);
+    background-repeat: no-repeat;
+    width: 31px;
+    height: 9px;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.slick-prev{
+    z-index:999999;
+     -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    right:95px;
+}
+
+.count-slider{
+    position: absolute;
+    top:250px;
+    right:50px;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 13px;
+}
+
+.slick-next{
+    right:15px;
+}
+
 .header {
     display: flex;
     flex-direction: row;
@@ -330,7 +365,7 @@ html, body {
     width: 20px;
     height: 20px;
     margin: 5px 25px;
-    font-family: "Fontfabric-MullerRegular";
+    t-famfonily: "Fontfabric-MullerRegular";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -421,8 +456,12 @@ html, body {
     left: 0;
 }
 
-.slider  img{
-    width: 100%;
+.slider .slide div{
+    
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover ; 
+   
 }
 
 .content-text {
