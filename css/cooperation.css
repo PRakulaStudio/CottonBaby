@@ -15,6 +15,15 @@
     color: #000000;
 }
 
+.cooperation-form p{
+    width: 100%;
+    margin: 30px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 30px;
+    color: #333333;
+}
+
 .form {
     width: 80%;
     margin: auto;

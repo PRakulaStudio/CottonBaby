@@ -9,6 +9,15 @@
     background: #FFFFFF url(../images/map.png) no-repeat center;
 }
 
+.contacts-form p{
+    width: 100%;
+    margin: 30px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 30px;
+    color: #333333;
+}
+
 .map-info {
     max-width: 1080px;
     margin: 0 auto;

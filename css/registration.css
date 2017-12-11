@@ -60,7 +60,18 @@
 .img {
     width: 39%;
     height: 520px;
-    overflow: hidden;
     border-radius: 10px;
     margin: 0 0 0 1%;
+    background: #F0F0F0 url(../images/reg.png) no-repeat center;
+}
+
+.img p{
+    margin: 100px 20px;
+    padding: 10px;
+    font-family: "Fontfabric-MullerBold";
+    font-size: 30px;
+    line-height: 50px;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
