@@ -717,11 +717,18 @@ html, body {
     margin: 0 auto;
 }
 
+#map{
+    position: absolute !important;
+    height: 700px !important;
+}
+
 .contacts-map {
     width: 100%;
     height: 700px;
   /*  background: #FFFFFF url(../images/map.png) no-repeat center;*/
 }
+
+
 
 .contacts-map iframe{
     width: 100%;
