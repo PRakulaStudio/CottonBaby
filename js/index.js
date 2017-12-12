@@ -33,6 +33,7 @@
 			   
 			  });
 
+
 		
 
 			  $('.slider').slick({
@@ -48,16 +49,46 @@
 			  sliderAnimation('slider');
 		     
 
-		      $(".slider").on("afterChange", function(event, slick, currentSlide){
-		      	    	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
-		      	    	 sliderAnimation('slider');
-		      	    	//slick.slickPlay();
-		      	    	//slick.slickPause();
-					});
-			  	  
-			 
+		 
+			   
 
-			 $( window ).resize( function() {
-			   	 sliderAnimation('slider');
-			 });
+
+
+		$(".slider").on("afterChange", function(event, slick, currentSlide){
+	       	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
+		});
+
+        $( window ).resize( function() {
+		   	 sliderAnimation('slider');
+		});
+
+
+
+        $('.new-slider').slick({
+		  centerPadding: '60px',
+		  infinite: false,
+		  slideToScroll: 1,
+		  slidesToShow: 3,
+		  responsive: [
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        arrows: false,
+		        centerMode: true,
+		        centerPadding: '40px',
+		        slidesToShow: 3
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        arrows: false,
+		        centerMode: true,
+		        centerPadding: '40px',
+		        slidesToShow: 1
+		      }
+		    }
+		  ]
+		});
+
 	});
