@@ -461,7 +461,6 @@ html, body {
 
 .new-text {
     width: 400px;
-    float: left;
    
 }
 
@@ -518,6 +517,16 @@ html, body {
     color: #000000;
 }
 
+.new-slider{
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+    width: 50vw !important;
+}
+
+.new-slider .slick-list{
+    width: calc(50vw + 125px);
+}
 /* --- CONTENT --- */
 
 /* --- FOOTER --- */
@@ -624,7 +633,6 @@ html, body {
 }
 
 /* --- FOOTER --- */
-
 
 
 
