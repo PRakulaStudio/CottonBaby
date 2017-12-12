@@ -1,11 +1,11 @@
 window.onload = function() {
 
-	var myLatlng = new google.maps.LatLng( 56.831756 , 60.612618);
+	var myLatlng = new google.maps.LatLng( 56.822222 , 60.615877);
 
     var myOptions = {
         
         zoom: 16,
-        center: new google.maps.LatLng( 56.831756 , 60.612619),
+        center: myLatlng,
         
         disableDefaultUI: true
     };
@@ -20,4 +20,27 @@ window.onload = function() {
 	marker.setMap(map);
 
 
+
 }
+
+$(document).ready( function() {
+
+		$('button[data-action]').click( function() {
+			if( $(this).attr('data-action') == "hide" )
+			{
+				$(this).attr('data-action' , 'show');
+				$(this).siblings('.info').height('335px');
+
+
+			}
+			else
+			{
+				$(this).attr( 'data-action' , 'hide');
+				$(this).siblings('.info').height('0px');
+			}
+		
+		});
+
+
+
+});
