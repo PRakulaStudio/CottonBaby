@@ -26,19 +26,34 @@ window.onload = function() {
 $(document).ready( function() {
 
 		$('button[data-action]').click( function() {
-			if( $(this).attr('data-action') == "hide" )
+			if( $(this).attr('data-action') == "show" )
 			{
-				$(this).attr('data-action' , 'show');
+				$(this).attr('data-action' , 'hide');
 				$(this).siblings('.info').height('335px');
 
 
 			}
 			else
 			{
-				$(this).attr( 'data-action' , 'hide');
+				$(this).attr( 'data-action' , 'show');
 				$(this).siblings('.info').height('0px');
 			}
 		
+		});
+
+		$(window).resize( function() {
+			if( $(window).width() >= 800)
+			{
+				$('button[data-action]').siblings('.info').height('335px');
+			}
+			else
+			{
+				if(  $('button[data-action]').attr('data-action') == "show" )
+				{
+					$('button[data-action]').siblings('.info').height('0px');
+				}
+			}
+
 		});
 
 
