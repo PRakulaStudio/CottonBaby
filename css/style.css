@@ -448,11 +448,19 @@ html, body {
 }
 
 .slider .slide div{
-    
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover ; 
-   
+}
+
+.content-new {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.new-text {
+    width: 400px;
+    float: left;
 }
 
 .content-text {
