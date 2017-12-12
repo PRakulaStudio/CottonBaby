@@ -1,22 +1,13 @@
+@media(min-width: 5700px) {
+    .footer{
+        position: absolute;
+        bottom: 0px;
+    }
+}
+
 @media(min-width: 800px) {
     .slider .slide div{
        height: 1080px;
-    }
-
-  
-}
-
-@media(max-width: 1000px){
-     .slider .slide div{
-       height: 500px;
-    }
-
-    .slick-arrow{
-        display:none !important;
-    }
-
-    .count-slider{
-        display: none;
     }
 }
 
@@ -76,8 +67,17 @@
         margin: 0 0 0 20px;
     }
 
-   
+    .slider .slide div{
+       height: 500px;
+    }
 
+    .slick-arrow{
+        display:none !important;
+    }
+
+    .count-slider{
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {
