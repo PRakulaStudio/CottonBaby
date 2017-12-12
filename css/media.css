@@ -127,9 +127,18 @@
         width: 95%;
     }
 
-    .info {
+    .info-box {
         margin: 0 auto;
         float: none;
+    }
+
+    .info {
+        height: 0px;
+        transition: all 1s;
+    }
+
+    .info-box button{
+        display: block;
     }
 }
 
