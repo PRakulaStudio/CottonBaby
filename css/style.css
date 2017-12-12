@@ -721,8 +721,12 @@ html, body {
 .contacts-map {
     width: 100%;
     height: 700px;
+  /*  background: #FFFFFF url(../images/map.png) no-repeat center;*/
 }
 
+.contacts-map iframe{
+    width: 100%;
+    height: 100%;
 }
 
 .contacts-form p{
