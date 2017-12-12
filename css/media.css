@@ -126,6 +126,11 @@
     .form-top-right {
         width: 95%;
     }
+
+    .info {
+        margin: 0 auto;
+        float: none;
+    }
 }
 
 @media (max-width: 550px) {
