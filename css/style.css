@@ -307,7 +307,6 @@ html, body {
     background: #FFFFFF url(../images/fon-menu.png) no-repeat center;
 }
 
-
 .slick-arrow{
     position: absolute;
     top:250px;
@@ -636,47 +635,48 @@ html, body {
     margin: 0 auto;
 }
 
-.registration-form {
+.registration-box {
     display: flex;
     flex-direction: row;
+    margin: 0 10px 50px 10px;
 }
 
-.form {
+.registration-form {
     width: 60%;
-    margin: 0 0 2% 0;
     border-radius: 10px;
     background: #F0F0F0;
 }
 
-.form form{
+.registration-form form{
     display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 5%;
 }
 
-.form label{
+.registration-form label{
     width: 100%;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form input{
+.registration-form input{
     width: 100%;
     margin: 10px 0;
     padding: 10px 20px;
     border: 1px solid #C1C1C1;
     border-radius: 5px;
-    background: none; 
+    background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form button{
+.registration-form button{
     cursor: pointer;
     width: 200px;
     height: 50px;
+    margin: 20px 0 0 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to top left, #F6052F, #FF3D47);
@@ -685,14 +685,13 @@ html, body {
     color: #FFFFFF;
 }
 
-.form button:hover{
-    margin: 2px 0 -2px 0;
+.registration-form button:hover{
+    margin: 22px 0 -2px 0;
     background: linear-gradient(to bottom right, #F6052F, #FF3D47);
 }
 
 .img {
     width: 39%;
-    height: 520px;
     border-radius: 10px;
     margin: 0 0 0 1%;
     background: #F0F0F0 url(../images/reg.png) no-repeat center;
@@ -722,15 +721,6 @@ html, body {
     width: 100%;
     height: 700px;
     background: #FFFFFF url(../images/map.png) no-repeat center;
-}
-
-.contacts-form p{
-    width: 100%;
-    margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 30px;
-    color: #333333;
 }
 
 .map-info {
@@ -777,15 +767,31 @@ html, body {
     margin: 20px auto !important;
 }
 
-.form {
-    width: 80%;
-    margin: auto;
+.contacts-box {
+    max-width: 1080px;
+    margin: 0 0 50px 0;
 }
 
-.form form{
+.contacts-box p{
+    width: 100%;
+    margin: 30px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 30px;
+    color: #333333;
+}
+
+.contacts-form {
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    background: #F0F0F0;
+}
+
+.contacts-form form{
     display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 5%;
 }
 
 .form-top {
@@ -810,30 +816,31 @@ html, body {
     margin: auto;
 }
 
-.form label{
+.contacts-form label{
     width: 100%;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form input{
+.contacts-form input{
     width: 100%;
     margin: 10px 0;
     padding: 10px 20px;
     border: 1px solid #C1C1C1;
     border-radius: 5px;
-    background: none; 
+    background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form textarea{
+.contacts-form textarea{
     width: 100%;
     height: 100px;
     margin: 10px 0;
     padding: 10px 20px;
+    background: #FFFFFF;
     border: 1px solid #C1C1C1;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -841,11 +848,11 @@ html, body {
     resize: none;
 }
 
-.form button{
+.contacts-form button{
     cursor: pointer;
     width: 200px;
     height: 50px;
-    margin: auto;
+    margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to top left, #F6052F, #FF3D47);
@@ -854,8 +861,8 @@ html, body {
     color: #FFFFFF;
 }
 
-.form button:hover{
-    margin: 2px auto -2px auto;
+.contacts-form button:hover{
+    margin: 22px auto -2px auto;
     background: linear-gradient(to bottom right, #F6052F, #FF3D47);
 }
 
@@ -871,6 +878,7 @@ html, body {
 .cooperation-text {
     width: 100%;
     margin: 0 0 40px 0;
+    padding: 0 10px;
 }
 
 .cooperation-text p{
@@ -880,7 +888,12 @@ html, body {
     color: #000000;
 }
 
-.cooperation-form p{
+.cooperation-box {
+    max-width: 1080px;
+    margin: 0 0 50px 0;
+}
+
+.cooperation-box p{
     width: 100%;
     margin: 30px auto;
     font-family: "Fontfabric-MullerMedium";
@@ -889,15 +902,17 @@ html, body {
     color: #333333;
 }
 
-.form {
+.cooperation-form {
     width: 80%;
     margin: auto;
+    border-radius: 10px;
+    background: #F0F0F0;
 }
 
-.form form{
+.cooperation-form form{
     display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 5%;
 }
 
 .form-top {
@@ -922,30 +937,31 @@ html, body {
     margin: auto;
 }
 
-.form label{
+.cooperation-form label{
     width: 100%;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form input{
+.cooperation-form input{
     width: 100%;
     margin: 10px 0;
     padding: 10px 20px;
     border: 1px solid #C1C1C1;
     border-radius: 5px;
-    background: none; 
+    background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #000000;  
 }
 
-.form textarea{
+.cooperation-form textarea{
     width: 100%;
     height: 100px;
     margin: 10px 0;
     padding: 10px 20px;
+    background: #FFFFFF;
     border: 1px solid #C1C1C1;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -953,11 +969,11 @@ html, body {
     resize: none;
 }
 
-.form button{
+.cooperation-form button{
     cursor: pointer;
     width: 200px;
     height: 50px;
-    margin: auto;
+    margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to top left, #F6052F, #FF3D47);
@@ -966,8 +982,8 @@ html, body {
     color: #FFFFFF;
 }
 
-.form button:hover{
-    margin: 2px auto -2px auto;
+.cooperation-form button:hover{
+    margin: 22px auto -2px auto;
     background: linear-gradient(to bottom right, #F6052F, #FF3D47);
 }
 
