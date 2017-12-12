@@ -5,7 +5,7 @@ window.onload = function() {
     var myOptions = {
         
         zoom: 16,
-        center: myLatlng,
+        center: new google.maps.LatLng( 56.831756 , 60.612619),
         
         disableDefaultUI: true
     };
