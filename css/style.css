@@ -16,7 +16,7 @@ html, body {
     width: 100%;
     height: auto;
     background: #FEAB2F;
-    z-index: 100;
+    z-index: 10000000;
 }
 
 .button-box {
@@ -456,11 +456,12 @@ html, body {
 .content-new {
     width: 1080px;
     margin: 0 auto;
+    position: relative;
 }
 
 .new-text {
     width: 400px;
-    float: left;
+   
 }
 
 .content-text {
@@ -516,6 +517,16 @@ html, body {
     color: #000000;
 }
 
+.new-slider{
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+    width: 50vw !important;
+}
+
+.new-slider .slick-list{
+    width: calc(50vw + 125px);
+}
 /* --- CONTENT --- */
 
 /* --- FOOTER --- */
@@ -626,7 +637,6 @@ html, body {
 
 
 
-
 /* PAGE */
 
 /* REGISTRATION */
@@ -718,14 +728,20 @@ html, body {
     margin: 0 auto;
 }
 
-.contacts-map {
-    width: 100%;
-    height: 500px;
-}
-
 #map{
     position: absolute !important;
-    height: 500px !important;
+    height: 700px !important;
+}
+
+.contacts-map {
+    width: 100%;
+    height: 700px;
+  /*  background: #FFFFFF url(../images/map.png) no-repeat center;*/
+}
+
+.contacts-map iframe{
+    width: 100%;
+    height: 100%;
 }
 
 .map-info {
@@ -735,27 +751,19 @@ html, body {
     z-index: 10;
 }
 
-.info-box {
+.info {
     display: flex;
     flex-direction: column;
     width: 320px;
-    height: auto;
-    margin: 25px 0;
+    height: 600px;
+    margin: 50px 0;
     padding: 10px;
     float: left;
     background: #FFFFFF;
 }
 
-.info-logo {
-    height: 95px;
-    padding: 0 0 10px 0;
-    text-align: center;
-}
-
-.info {
-    overflow: hidden;
-    height: 335px;
-    transition: all 1s;
+.info div{
+    margin: 10px 0;
 }
 
 .info b > img{
@@ -777,18 +785,9 @@ html, body {
     padding: 0 30px;
 }
 
-.info-box button{
-    display: none;
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to top left, #F6052F, #FF3D47);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    color: #FFFFFF;
+.info-logo {
+    text-align: center !important;
+    margin: 20px auto !important;
 }
 
 .contacts-box {
@@ -1032,5 +1031,7 @@ html, body {
     line-height: 30px;
     color: #000000;
 }
+
+
 
 /* DELIVERY */
