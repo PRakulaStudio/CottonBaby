@@ -731,6 +731,8 @@ html, body {
 .map-info {
     max-width: 1080px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .info {
@@ -993,3 +995,25 @@ html, body {
 }
 
 /* COOPERATION */
+
+/* DELIVERY */
+
+.delivery {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.delivery-text {
+    width: 100%;
+    margin: 0 0 40px 0;
+    padding: 0 10px;
+}
+
+.delivery-text p{
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
+/* DELIVERY */
