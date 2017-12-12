@@ -89,8 +89,24 @@
         display: none;
     }
 
-    .form {
-        width: 100%;
+    .registration-box {
+        display: flex;
+        flex-direction: row;
+        margin: 0 0 50px 0;
+    }
+
+    .registration-form {
+        width: 90%;
+        margin: auto;
+    }
+
+    .contacts-form {
+        width: 90%;
+        margin: auto;
+    }
+
+    .cooperation-form {
+        width: 90%;
         margin: auto;
     }
 
