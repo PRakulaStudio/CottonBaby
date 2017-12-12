@@ -461,7 +461,6 @@ html, body {
 
 .new-text {
     width: 400px;
-   
 }
 
 .content-text {
@@ -527,6 +526,7 @@ html, body {
 .new-slider .slick-list{
     width: calc(50vw + 125px);
 }
+
 /* --- CONTENT --- */
 
 /* --- FOOTER --- */
