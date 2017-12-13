@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/media.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
 </head>
 <body>
 
@@ -145,15 +146,19 @@
 
 			<div class="production-img">
 				<div class="production-left">
-					<img src="images/300x500.png">
+					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/500x300.png"><div></div></a>
 				</div>
 
 				<div class="production-right">
-					<img src="images/300x500.png">
-					<img src="images/300x500.png">
-					<img src="images/300x500.png">
-					<img src="images/300x500.png">
+					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
 				</div>
+			</div>
+
+			<div class="production-slider">
+				<div class="slide"><img src="images/300x500.png"></div>
 			</div>
 
 			<div class="production-text">
@@ -217,11 +222,18 @@
 <!-- footer end -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 	$("a#example1").fancybox();
+});
+
+$('.production-slider').slick({
+	lazyLoad: 'ondemand',
+	slidesToShow: 1,
+	slidesToScroll: 1
 });
 </script>
 </body>
