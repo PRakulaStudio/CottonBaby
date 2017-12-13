@@ -525,7 +525,7 @@ html, body {
 }
 
 .new-slider .slick-list{
-    width: calc(50vw + 125px);
+    width: calc(50vw + 20%);
 }
 /* --- CONTENT --- */
 
