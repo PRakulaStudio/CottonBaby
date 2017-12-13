@@ -23,6 +23,31 @@ html, body {
     max-width: 1080px;
     margin: 0 auto;
     height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.search-menu {
+    width: 80%;
+    margin: auto 0 auto auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.search-menu input{
+    width: 90%;
+    margin: auto;
+    border: none;
+    background: none;
+    border-bottom: 1px solid;
+    padding: 0 0 5px 0;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+}
+
+.search-menu img{
+    margin: auto 10px;
 }
 
 .menu-box {
@@ -106,36 +131,6 @@ html, body {
 
 /* --- MENU --- */
 
-/* --- SEARCH --- */
-
-.menu-search {
-    display: none;
-    width: 100%;
-    height: auto;
-    background: #FFFFFF;
-}
-
-.search-box {
-    display: none;
-    width: 100%;
-    position: absolute;
-    z-index: 10;
-    background: #FFFFFF;
-}
-
-.menu-search input{
-    width: 100%;
-    border: none;
-    background: none;
-    border-bottom: 1px solid;
-    padding: 0 0 5px 0;
-    margin: 10px 0;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 20px;
-}
-
-/* --- SEARCH --- */
-
 /* --- HEADER INDEX --- */
 
 .header-box-index {
@@ -213,26 +208,6 @@ html, body {
     background: #FFFFFF url(../images/icons/favorites.png) no-repeat center;
 }
 
-.search-on {
-    display: none;
-    width: 50px;
-    height: 49px;
-    margin: 1px 0 0 0;
-    cursor: pointer;
-    border: none;
-    background: #FFFFFF url(../images/icons/loop.png) no-repeat center;
-}
-
-.search-off {
-    display: none;
-    width: 50px;
-    height: 49px;
-    margin: 1px 0 0 0;
-    cursor: pointer;
-    border: none;
-    background: #FFFFFF url(../images/icons/menuclose.png) no-repeat center;
-}
-
 .header-logo-index, .header-text-index {
     margin: auto;
 }
@@ -251,7 +226,7 @@ html, body {
 }
 
 .header-user a{
-    margin: 0 5px;
+    margin: 0 10px;
     height: 25px;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -284,17 +259,6 @@ html, body {
 
 .favorites {
     background: #FEAB2F;
-}
-
-.header-user input{
-    width: 100px;
-    margin: auto 10px;
-    border: none;
-    background: none;
-    border-bottom: 1px solid;
-    padding: 0 0 5px 0;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
 }
 
 /* --- HEADER INDEX --- */
@@ -699,7 +663,7 @@ html, body {
     margin: 20px 0 0 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    background: linear-gradient(to top, #F6052F, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
@@ -707,7 +671,7 @@ html, body {
 
 .registration-form button:hover{
     margin: 22px 0 -2px 0;
-    background: linear-gradient(to bottom right, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #F6052F, #FF3D47);
 }
 
 .img {
@@ -806,7 +770,7 @@ html, body {
     margin: 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    background: linear-gradient(to top, #F6052F, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
@@ -900,7 +864,7 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    background: linear-gradient(to top, #F6052F, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
@@ -908,7 +872,7 @@ html, body {
 
 .contacts-form button:hover{
     margin: 22px auto -2px auto;
-    background: linear-gradient(to bottom right, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #F6052F, #FF3D47);
 }
 
 /* CONTACTS */
@@ -1021,7 +985,7 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top left, #F6052F, #FF3D47);
+    background: linear-gradient(to top, #F6052F, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
@@ -1029,7 +993,7 @@ html, body {
 
 .cooperation-form button:hover{
     margin: 22px auto -2px auto;
-    background: linear-gradient(to bottom right, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #F6052F, #FF3D47);
 }
 
 /* COOPERATION */
@@ -1107,7 +1071,7 @@ html, body {
     width: 100px;
     margin: 10px auto;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FEC034, #FD8F29);
+    background: linear-gradient(to top, #FD8F29, #FEC034);
     text-decoration: none;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -1117,7 +1081,7 @@ html, body {
 
 .right-box a:hover{
     margin: 11px auto -1px auto;
-    background: linear-gradient(to top, #FD8F29, #FEC034);
+    background: linear-gradient(to bottom, #FD8F29, #FEC034);
 }
 
 /* DELIVERY */
