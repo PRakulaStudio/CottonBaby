@@ -734,6 +734,7 @@ html, body {
 }
 
 #map{
+    width: 100%;
     position: absolute !important;
     height: 500px !important;
 }
