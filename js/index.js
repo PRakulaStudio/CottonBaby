@@ -27,29 +27,27 @@
 
 	$(document).ready( function() {
 		
-		  $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
-	    //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-			    $(".main-slider .count-slider .total-slider").text(slick.slideCount);
+	    $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
+	            //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+		    $(".main-slider .count-slider .total-slider").text(slick.slideCount);
 			   
-			  });
+	  });
 
 
 		
 
-			  $('.slider').slick({
-				 autoplay:false,
-	 			 autoplaySpeed:2000,
-	 			 pauseOnFocus: false,
-     			 pauseOnHover: false,
-	 	         slidesToShow:1,
-	  			 slidesToScroll:1,
+	  $('.slider').slick({
+			 autoplay:false,
+	 		 autoplaySpeed:2000,
+	 		 pauseOnFocus: false,
+     		 pauseOnHover: false,
+	 	     slidesToShow:1,
+	  		 slidesToScroll:1,
 	  			 //autoplayTimeout: 500,
 
-		      });
-			  sliderAnimation('slider');
-		     
+	  });
+	  sliderAnimation('slider');
 
-		 
 			   
 
 
@@ -57,6 +55,8 @@
 		$(".slider").on("afterChange", function(event, slick, currentSlide){
 	       	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
 		});
+
+
 
         $( window ).resize( function() {
 		   	 sliderAnimation('slider');
@@ -90,5 +90,26 @@
 		    }
 		  ]
 		});
+
+        var currentNewSlide = 0;
+        $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
+        	
+        	if( currentNewSlide != currentSlide )
+        	{
+        		currentNewSlide = currentSlide;
+        		if( currentSlide % 5 == 0)
+        		{
+        			//запрос на добавление нового слайда
+        		}
+
+        	}
+        	else
+        	{
+        		console.log("Нет новых слайдов");
+        	}	
+       	
+
+       	});
+
 
 	});

@@ -30,6 +30,7 @@ $(document).ready( function() {
 			{
 				$(this).attr('data-action' , 'hide');
 				$(this).siblings('.info').height('335px');
+				$(this).text('Свернуть');
 
 
 			}
@@ -37,6 +38,7 @@ $(document).ready( function() {
 			{
 				$(this).attr( 'data-action' , 'show');
 				$(this).siblings('.info').height('0px');
+				$(this).text('Развернуть');
 			}
 		
 		});
@@ -51,6 +53,8 @@ $(document).ready( function() {
 				if(  $('button[data-action]').attr('data-action') == "show" )
 				{
 					$('button[data-action]').siblings('.info').height('0px');
+					$(this).text('Свернуть');
+
 				}
 			}
 

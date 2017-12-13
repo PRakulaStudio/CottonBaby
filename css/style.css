@@ -736,6 +736,7 @@ html, body {
 #map{
     position: absolute !important;
     height: 500px !important;
+    width: 100%;
 }
 
 .map-info {
