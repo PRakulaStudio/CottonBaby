@@ -435,6 +435,15 @@ html, body {
     color: #000000;    
 }
 
+.pagination a{
+    text-decoration: none;
+    color: #000000;    
+}
+
+.pagination a:hover{
+    text-decoration: underline;  
+}
+
 .pagination-liner {
     width: 100%;
     height: 2px;
@@ -734,6 +743,7 @@ html, body {
 }
 
 #map{
+    width: 100%;
     position: absolute !important;
     height: 500px !important;
     width: 100%;
@@ -1033,6 +1043,7 @@ html, body {
 
 .delivery-box {
     width: 100%;
+    margin: 0 0 50px 0;
     display: flex;
     flex-direction: row;
     border-radius: 5px;
@@ -1059,6 +1070,7 @@ html, body {
 
 .right-box {
     width: 30%;
+    min-width: 100px;
     display: flex;
     flex-direction: column;
 }
@@ -1088,6 +1100,24 @@ html, body {
     font-size: 16px;
     line-height: 30px;
     color: #000000;
+}
+
+.right-box a{
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FEC034, #FD8F29);
+    text-decoration: none;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.right-box a:hover{
+    margin: 11px auto -1px auto;
+    background: linear-gradient(to top, #FD8F29, #FEC034);
 }
 
 /* DELIVERY */
