@@ -122,7 +122,7 @@ html, body {
     text-decoration: none;
 }
 
-.section p {
+.section p{
     width: 100%;
     padding: 10px;
     font-family: "Fontfabric-MullerMedium";
@@ -1094,6 +1094,20 @@ html, body {
     margin: 0 auto;
 }
 
+.production-img {
+    width: 100%;
+    margin: 0 10px 50px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.right-menu > .section ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
 .production-text {
     width: 100%;
     margin: 0 0 40px 0;
@@ -1105,24 +1119,6 @@ html, body {
     font-size: 16px;
     line-height: 30px;
     color: #000000;
-}
-
-.right-box a{
-    display: block;
-    width: 100px;
-    margin: 10px auto;
-    border-radius: 25px;
-    background: linear-gradient(to top, #FD8F29, #FEC034);
-    text-decoration: none;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
-    color: #FFFFFF;
-}
-
-.right-box a:hover{
-    margin: 11px auto -1px auto;
-    background: linear-gradient(to bottom, #FD8F29, #FEC034);
 }
 
 /* PRODUCTION */
