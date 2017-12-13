@@ -1,15 +1,17 @@
-	var autoPlay = false;	
+( function($){
+	"use strict";
 
-	function sliderAnimation(sliderClass )
+	var autoPlay = false;	
+	function sliderAnimation( sliderClass )
 	{
-		console.log(  $(window).width() );
+		
 		 if( $(window).width() < 1000 )
 		 {
 		 		if(!autoPlay)
 		 		{
 		 			$('.'+sliderClass).slick('slickPlay');	
 		 			autoPlay = true;
-		  			console.log('autoplay on - '+autoPlay);
+		  		//	console.log('autoplay on - '+autoPlay);
 		 		}
 		  		
 		 }
@@ -19,15 +21,21 @@
 		  	   {
 		  	   	  $('.'+sliderClass).slick('slickPause');
 		  	   	  autoPlay = false;
-		  	   	  console.log('autoplay off - '+autoPlay);
+		  	   	 // console.log('autoplay off - '+autoPlay);
 		  	   }
 		  	  
 		  }
 	}
 
-	$(document).ready( function() {
-		
-	    $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
+	//ajax запрос
+	function onLoadSlider()
+	{
+
+	}
+
+
+
+	 $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
 	            //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
 		    $(".main-slider .count-slider .total-slider").text(slick.slideCount);
 			   
@@ -37,8 +45,8 @@
 		
 
 	  $('.slider').slick({
-			 autoplay:false,
-	 		 autoplaySpeed:2000,
+			 autoplay: false,
+	 		 autoplaySpeed: 2000,
 	 		 pauseOnFocus: false,
      		 pauseOnHover: false,
 	 	     slidesToShow:1,
@@ -92,24 +100,34 @@
 		});
 
         var currentNewSlide = 0;
+        var maxNumberOnLoadSlide = 0;
+
         $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
+        	        	
         	
-        	if( currentNewSlide != currentSlide )
+        	if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
         	{
-        		currentNewSlide = currentSlide;
-        		if( currentSlide % 5 == 0)
-        		{
-        			//запрос на добавление нового слайда
-        		}
+	        	
+	        	if( currentSlide % 2 == 0 && currentSlide > maxNumberOnLoadSlide)
+	        	{
+	        		maxNumberOnLoadSlide = currentSlide;
+
+	        		//запрос на добавление нового слайда
+	        		$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+	        		$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+	        	}
 
         	}
-        	else
-        	{
-        		console.log("Нет новых слайдов");
-        	}	
-       	
+	        else
+	        {
+	        	//console.log("Нет новых слайдов");
+	        }	
+               	
+       		currentNewSlide = currentSlide;
 
        	});
 
 
-	});
+
+})(jQuery)
+

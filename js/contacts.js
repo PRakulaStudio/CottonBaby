@@ -1,29 +1,33 @@
-window.onload = function() {
-
-	var myLatlng = new google.maps.LatLng( 56.822222 , 60.615877);
-
-    var myOptions = {
-        
-        zoom: 16,
-        center: myLatlng,
-        
-        disableDefaultUI: true
-    };
-
-    var map = new google.maps.Map(document.getElementById("map"), myOptions);
-    var marker = new google.maps.Marker({
-	    position: myLatlng,
-	    title:"Hello World!"
-	});
-
-	// To add the marker to the map, call setMap();
-	marker.setMap(map);
 
 
+( function($){
+	"use strict";
 
-}
+		function initMap()
+		{
+				var myLatlng = new google.maps.LatLng( 56.822222 , 60.615877);
 
-$(document).ready( function() {
+			    var myOptions = {
+			        
+			        zoom: 16,
+			        center: myLatlng,
+			        
+			        disableDefaultUI: true
+			    };
+
+			    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+			    var marker = new google.maps.Marker({
+				    position: myLatlng,
+				    title:"Hello World!"
+				});
+
+				// To add the marker to the map, call setMap();
+				marker.setMap(map);
+
+		}
+
+		google.maps.event.addDomListener(window, 'load', initMap);
+
 
 		$('button[data-action]').click( function() {
 			if( $(this).attr('data-action') == "show" )
@@ -42,6 +46,7 @@ $(document).ready( function() {
 			}
 		
 		});
+
 
 		$(window).resize( function() {
 			if( $(window).width() >= 800)
@@ -62,4 +67,4 @@ $(document).ready( function() {
 
 
 
-});
+})(jQuery);
