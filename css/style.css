@@ -44,6 +44,7 @@ html, body {
     padding: 0 0 5px 0;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    color: #333333;
 }
 
 .search-menu img{
@@ -220,7 +221,7 @@ html, body {
 }
 
 .header-user {
-    margin: auto;
+    margin: auto 0 auto auto;
     display: flex;
     flex-direction: row;
 }
@@ -653,7 +654,7 @@ html, body {
     background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
-    color: #000000;  
+    color: #989898;  
 }
 
 .registration-form button{
@@ -841,7 +842,7 @@ html, body {
     background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
-    color: #000000;  
+    color: #989898;  
 }
 
 .contacts-form textarea{
@@ -853,7 +854,7 @@ html, body {
     border: 1px solid #C1C1C1;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
-    color: #000000;
+    color: #989898;
     resize: none;
 }
 
@@ -962,7 +963,7 @@ html, body {
     background: #FFFFFF; 
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
-    color: #000000;  
+    color: #989898;  
 }
 
 .cooperation-form textarea{
@@ -974,7 +975,7 @@ html, body {
     border: 1px solid #C1C1C1;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
-    color: #000000;
+    color: #989898;
     resize: none;
 }
 
