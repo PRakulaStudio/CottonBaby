@@ -628,7 +628,7 @@ html, body {
 
 .registration-form {
     width: 60%;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #F0F0F0;
 }
 
@@ -677,9 +677,9 @@ html, body {
 
 .img {
     width: 39%;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0 0 0 1%;
-    background: #F0F0F0 url(../images/reg.png) no-repeat center;
+    background: #F0F0F0 url(../images/registration/reg.png) no-repeat center;
 }
 
 .img p{
@@ -690,7 +690,7 @@ html, body {
     line-height: 50px;
     color: #FFFFFF;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /* REGISTRATION */
@@ -794,7 +794,7 @@ html, body {
 .contacts-form {
     width: 80%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #F0F0F0;
 }
 
@@ -915,7 +915,7 @@ html, body {
 .cooperation-form {
     width: 80%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #F0F0F0;
 }
 
@@ -1040,6 +1040,24 @@ html, body {
     flex-direction: column;
 }
 
+.right-box a{
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+    border-radius: 25px;
+    background: linear-gradient(to top, #FD8F29, #FEC034);
+    text-decoration: none;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.right-box a:hover{
+    margin: 11px auto -1px auto;
+    background: linear-gradient(to bottom, #FD8F29, #FEC034);
+}
+
 .fon-a {
     width: 100%;
     height: 50px;
@@ -1067,6 +1085,28 @@ html, body {
     color: #000000;
 }
 
+/* DELIVERY */
+
+/* PRODUCTION */
+
+.production {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.production-text {
+    width: 100%;
+    margin: 0 0 40px 0;
+    padding: 0 10px;
+}
+
+.production-text p{
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
 .right-box a{
     display: block;
     width: 100px;
@@ -1085,4 +1125,4 @@ html, body {
     background: linear-gradient(to bottom, #FD8F29, #FEC034);
 }
 
-/* DELIVERY */
+/* PRODUCTION */

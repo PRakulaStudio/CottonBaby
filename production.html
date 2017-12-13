@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<meta charset="utf-8" />
-	<title>Cotton Baby - Наши контакты</title>
+	<title>Cotton Baby - Наше производство</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -10,6 +10,7 @@
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/fancybox.css"/>
 </head>
 <body>
 
@@ -134,84 +135,34 @@
 
 <!-- content start -->
 	<main class="content">
-		<section class="contacts">
+		<section class="production">
 			<div class="pagination">
-				<p><a href="index.html">Главная</a> → Наши контакты</p>
+				<p><a href="index.html">Главная</a> → Наше производство</p>
 				<div class="pagination-liner"></div>
 			</div>
 			
-			<h1>Наши контакты</h1>
-		</section>
+			<h1>Наше производство</h1>
 
-		<section class="contacts-map">
-			<div id="map"></div>	
-			<div class="map-info">
-				<div class="info-box">
-					<div class="info-logo">
-						<img src="images/logo.png">
-					</div>
-					
-					<div class="info">
-						<div>
-							<b><img src="images/icons/map.png">Отдел по работе с клиентами</b>
-							<p>г. Екатеринбург, ул. Розы Люксембург 77, офис 1.</p>
-						</div>
+			<div class="production-img">
+				<a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a>
 
-						<div>
-							<b><img src="images/icons/tel.png">Телефон</b>
-							<p>+ 7 (904) 38 10 240</p>
-						</div>
+				<a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a>
 
-						<div>
-							<b><img src="images/icons/tel.png">WhatsApp</b>
-							<p>+ 7 (904) 38 10 240</p>
-						</div>
+				<a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a>
 
-						<div>
-							<b><img src="images/icons/map.png">Наше представительство в Москве</b>
-							<p>ул. Малыгина, 2, стр.2.</p>
-						</div>
+				<a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a>
 
-						<div>
-							<b><img src="images/icons/contact.png">Контактное лицо</b>
-							<p>Иван Куликов,</p>
-							<p>тел. +7 (926) 611 94 09</p>
-						</div>
-					</div>
-
-					<button data-action="show" >Развернуть</button>
-				</div>
+				<a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a>
 			</div>
-		</section>
 
-		<section class="contacts">
-			<div class="contacts-box">
-				<p>Свяжитесь с нами через форму обратной связи</p>
-				<div class="contacts-form">
-					<form>
-						<div class="form-top">
-							<div class="form-top-left">
-								<label>Ваше имя</label>
-								<input type="text">
-							</div>
-							
-							<div class="form-top-right">
-								<label>Ваш номер телефона</label>
-								<input type="tel" name="phone">
-							</div>
-						</div>
-
-						<div class="form-bottom">
-							<label>Тема сообщения</label>
-							<input type="text">
-
-							<label>Текст сообщения</label>
-							<textarea></textarea>
-						</div>
-
-						<button type="submit">Отправить вопрос</button>
-					</form>
-				</div>
+			<div class="production-text">
+				<p>Наша компания на протяжении 8 лет занималась розничной торговлей детской одежды мировых марок.</p>
+				<br>
+				<p>После многолетнего опыта работы с детскими товарами и тщательного изучения рынка детской одежды в России в 2015 году стартовало наше собственное производство под торговой маркой Cotton baby.</p>
+				<br>
+				<p>В Cotton baby мы делаем ставку на высокое качество, современный дизайн и комфорт. Мы работаем с лучшими мировыми производителями тканей и фурнитуры, уделяя большое внимание экологичности производимой нами продукции и постоянно совершенствуя технологии производства.</p>
+				<br>
+				<p>Вся наша продукция прошла сертификацию качества и соответствует техническому регламенту Таможенного союза ТР ТС 007/2011 (свидетельство о госрегистрации, приложение).</p>
 			</div>
 		</section>
 	</main>
@@ -264,9 +215,13 @@
 	</div>
 <!-- footer end -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/contacts.js"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	$("a#example1").fancybox();
+});
+</script>
 </body>
 </html>
