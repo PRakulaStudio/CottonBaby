@@ -71,7 +71,7 @@
        height: 500px;
     }
 
-    .slick-arrow{
+    .main-slider .slick-arrow{
         display:none !important;
     }
 

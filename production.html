@@ -231,14 +231,11 @@
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("a#example1").fancybox();
+		
 
 		var html = "";
-		$('.production-right').find('a').each( function(){
-			
-			let slide = $(this).parent().clone();
-				html += "<div class='slide'>"+$(slide).html()+"</div>";
-
+		$('.production-right').children().each( function(){
+			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
 		});
     	 $('.production-slider').html(html);
 
@@ -247,6 +244,8 @@
 			slidesToShow: 1,
 			slidesToScroll: 1,
 		});
+
+		$("a#example1").fancybox();
 	});	
 </script>
 
