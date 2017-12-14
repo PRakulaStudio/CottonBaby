@@ -275,7 +275,6 @@ html, body {
 .slick-arrow{
     position: absolute;
     top:250px;
-    background-image: url(../images/icons/arrow-right.png);
     background-image: url(../images/icons/arrow.png);
     background-repeat: no-repeat;
     width: 31px;
@@ -1176,7 +1175,6 @@ html, body {
     transition: all 1s;
 }
 
-.production-slider {
 .production-slider-box {
     display: none !important;
 }
