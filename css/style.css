@@ -1196,7 +1196,7 @@ html, body {
 }
 
 .production-slider-box .production-slider .slick-slide a > div{
-    position: absolute;
+    position: sticky;
     width: 100%;
     height: 100%;
     top: 0;
