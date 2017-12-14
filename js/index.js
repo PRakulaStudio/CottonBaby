@@ -28,8 +28,64 @@
 	}
 
 	//ajax запрос
-	function onLoadSlider()
+	function onLoadSlider( offset , limit )
 	{
+
+		$.ajax({
+			data: {"get" : "sliders" , "offset" : offset , "limit" : limit}, 
+			dataType: 'json',
+			
+			url: '/system/plugins/index',
+			data:{
+				get : "instaImages",
+
+			},
+			success: function( data, status ){
+				if(data.status && data.sliders !== "undefined" )
+				{
+					/*
+						[
+							id,
+							src_image,
+							link,
+							sum,
+							is_favorite,							
+						]
+					*/
+				}
+				else
+					alert('Ошибка при запросе слайдеров');
+					
+			},
+		});
+
+
+	}
+
+	function onLoadImageInstagramm( offset , limit)
+	{
+
+		$.ajax({
+			data: {"get" : "instaImages" , "offset" : offset , "limit" : limit },
+			dataType: 'json',
+			type: 'POST',
+			url: '/system/plugins/index',
+			success: function( data, status )
+			{
+				if( data.status && data.instaImages != "undefined")
+				{
+					/*
+						[
+							id,
+							src_images,						
+						]
+					*/
+				}
+				else
+					alert("Ошибка при запросе инстаграмных картинок");
+				
+			},
+		});
 
 	}
 
@@ -78,29 +134,19 @@
 		  slideToScroll: 1,
 		  slidesToShow: 3,
 		  responsive: [
-		    {
-		      breakpoint: 768,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 3
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		        arrows: false,
-		        centerMode: true,
-		        centerPadding: '40px',
-		        slidesToShow: 1
-		      }
-		    }
+		 				 {
+		 				 	breakpoint: 1280,
+					  		settings: {
+					        	slidesToShow: 1,
+					      	}
+		  				 }
+		   		
 		  ]
 		});
 
-        var currentNewSlide = 0;
-        var maxNumberOnLoadSlide = 0;
+        var currentNewSlide = 0,
+        	maxNumberOnLoadSlide = 0
+        	numberRest = 2;
 
         $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
         	        	
@@ -108,7 +154,7 @@
         	if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
         	{
 	        	
-	        	if( currentSlide % 2 == 0 && currentSlide > maxNumberOnLoadSlide)
+	        	if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
 	        	{
 	        		maxNumberOnLoadSlide = currentSlide;
 
