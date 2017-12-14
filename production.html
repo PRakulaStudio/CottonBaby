@@ -154,6 +154,10 @@
 					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
 					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
 					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
 				</div>
 			</div>
 
@@ -163,6 +167,22 @@
 =======
 				<div class="slide"><a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a></div>
 >>>>>>> 25e31d06a45d51bb5c72d85d6dce64cc91050e90
+			<div class="production-slider-box">
+				<div class="production-slider">
+				</div>
+
+				<div class="production-button">
+					<button>←</button>
+					<button>→</button>
+				</div>
+			</div>
+
+			<div class="production-video">
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 			</div>
 
 			<div class="production-text">
@@ -196,6 +216,7 @@
 					<li><a href="registration.html">Регистрация</a></li>
 					<li><a href="#">Каталог</a></li>
 					<li><a href="#">О магазине</a></li>
+					<li><a href="#">О нас</a></li>
 					<li><a href="cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
@@ -229,9 +250,29 @@
 <script type="text/javascript" src="js/slick.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="js/production.js"></script>
 
 
 
+=======
+<script type="text/javascript">
+	$(document).ready(function() {
+		var html = "";
+		$('.production-right').children().each( function(){
+			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
+		});
+    	 $('.production-slider').html(html);
+
+		$('.production-slider').slick({
+			lazyLoad: 'ondemand',
+			slidesToShow: 1,
+			slidesToScroll: 1,
+		});
+
+		$("a#example1").fancybox();
+	});	
+</script>
+>>>>>>> dd99f847c4c642c606e57e8fea9bf038b400dad9
 </body>
 </html>
