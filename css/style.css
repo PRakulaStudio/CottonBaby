@@ -1175,28 +1175,61 @@ html, body {
     transition: all 1s;
 }
 
-.production-slider {
+.production-slider-box {
     display: none !important;
+}
+
+.production-slider {
     width: 100%;
-    margin: auto auto 50px auto;
+    margin: auto auto 20px auto;
 }
 
 .production-slider .slide a, .slide img{
     margin: auto;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.production-slider .slide a > div{
-    position: absolute;
+.production-slider .slick-slide {
+    height: 500px !important;
+}
+
+.production-button {
     width: 100%;
-    height: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
+    text-align: center;
+    margin: auto auto 20px auto;
+}
+
+.production-button button{
+    cursor: pointer;
+    border: none;
+    background: #D8DEE1;
+    width: 50px;
+    margin: 0 5px;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 35px;
+    color: #4E525C;
+}
+
+.production-button button:hover{
+    background: #FAB932;
+    color: #FFFFFF;
+}
+
+.production-video {
+    width: 100%;
+    margin: auto auto 30px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.production-video iframe{
+    height: 250px;
+    margin: auto auto 20px auto;
+    border-radius: 5px;
+    border: 5px solid #D8DEE1;
 }
 
 .production-text {

@@ -150,24 +150,29 @@
 				</div>
 
 				<div class="production-right">
-					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
-					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
-					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
-					<a id="example1" href="images/300x500.png"><img alt="example1" src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
 				</div>
 			</div>
 
-			<div class="production-slider">
-<<<<<<< HEAD
-				<div class="slide"><a id="example1" href="images/1920x1080.png"><img src="images/1920x1080.png"><div></div></a></div>
-				<div class="slide"><a id="example1" href="images/1920x1080.png"><img src="images/1920x1080.png"><div></div></a></div>
-=======
-<<<<<<< HEAD
-				<div class="slide"> <a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a></div>
-=======
-				<div class="slide"><a id="example1" href="images/300x500.png"><img src="images/300x500.png"></a></div>
->>>>>>> 25e31d06a45d51bb5c72d85d6dce64cc91050e90
->>>>>>> f2a3b692ac7ee3a4d8adff24d7b5ec4120c09bf1
+			<div class="production-slider-box">
+				<div class="production-slider">
+				</div>
+
+				<div class="production-button">
+					<button>←</button>
+					<button>→</button>
+				</div>
+			</div>
+
+			<div class="production-video">
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 			</div>
 
 			<div class="production-text">
@@ -200,7 +205,7 @@
 					<li><a href="index.html">Главная</a></li>
 					<li><a href="registration.html">Регистрация</a></li>
 					<li><a href="#">Каталог</a></li>
-					<li><a href="#">О магазине</a></li>
+					<li><a href="#">О нас</a></li>
 					<li><a href="cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
@@ -236,21 +241,12 @@
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("a#example1").fancybox();
-});
-		
-
 		var html = "";
 		$('.production-right').children().each( function(){
 			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
 		});
     	 $('.production-slider').html(html);
 
-$('.production-slider').slick({
-	lazyLoad: 'ondemand',
-	slidesToShow: 1,
-	slidesToScroll: 1
-});
 		$('.production-slider').slick({
 			lazyLoad: 'ondemand',
 			slidesToShow: 1,
@@ -260,8 +256,5 @@ $('.production-slider').slick({
 		$("a#example1").fancybox();
 	});	
 </script>
-
-
-
 </body>
 </html>

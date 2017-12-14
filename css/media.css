@@ -71,6 +71,7 @@
        height: 500px;
     }
 
+    .main-slider .slick-arrow{
         display:none !important;
     }
 
@@ -82,7 +83,7 @@
         display: none;
     }
 
-    .production-slider {
+    .production-slider-box {
         display: block !important;
     }
 }
