@@ -122,6 +122,10 @@
         margin: auto;
     }
 
+    .delivery-box {
+        width: 95%;
+    }
+
     .img {
         display: none;
     }
@@ -151,6 +155,10 @@
 
     .info-box button{
         display: block;
+    }
+
+    .history, .data {
+        width: 90%;
     }
 }
 
@@ -192,5 +200,13 @@
 
     .footer-bot-networks {
         display: flex;
+    }
+
+    .delivery-box .right-box span{
+        display: none;        
+    }
+
+    .delivery-box .right-box a > img{
+        display: block;
     }
 }
