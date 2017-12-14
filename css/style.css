@@ -1180,7 +1180,7 @@ html, body {
     margin: auto auto 50px auto;
 }
 
-.production-slider .slide img{
+.production-slider .slide a, .slide img{
     margin: auto;
 }
 
