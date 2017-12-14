@@ -2,9 +2,10 @@
 
 	var html = "";
 
-		$('.production-right').children().each( function(){
+		$('.production-left').children().each( function(){
 			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
 		});
+	
 		$('.production-right').children().each( function(){
 			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
 		});
