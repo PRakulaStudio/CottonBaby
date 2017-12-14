@@ -27,6 +27,34 @@
 		  }
 	}
 
+	function sendRequestFind()
+	{
+		$.ajax({
+			data: {"get" : "findReqest"},
+			dataType: 'json',
+			url: '/system/plugins/index',
+			success: function( data, status)
+			{
+				if(data.status)
+				{
+					/*
+						[
+							id,
+							link_redirect,
+						]
+						
+						window.location.replace(link_redirect);
+						window.location.href = link_redirect;
+
+					*/
+					//переход
+				}
+			}
+
+		});
+
+	}
+
 	//ajax запрос
 	function onLoadSlider( offset , limit )
 	{
@@ -36,10 +64,7 @@
 			dataType: 'json',
 			
 			url: '/system/plugins/index',
-			data:{
-				get : "instaImages",
-
-			},
+			
 			success: function( data, status ){
 				if(data.status && data.sliders !== "undefined" )
 				{

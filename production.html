@@ -229,25 +229,7 @@
 <script type="text/javascript" src="js/slick.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		
-
-		var html = "";
-		$('.production-right').children().each( function(){
-			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
-		});
-    	 $('.production-slider').html(html);
-
-		$('.production-slider').slick({
-			lazyLoad: 'ondemand',
-			slidesToShow: 1,
-			slidesToScroll: 1,
-		});
-
-		$("a#example1").fancybox();
-	});	
-</script>
+<script type="text/javascript" src="js/production.js"></script>
 
 
 
