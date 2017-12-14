@@ -42,7 +42,7 @@
 							id,
 							link_redirect,
 						]
-						
+
 						window.location.replace(link_redirect);
 						window.location.href = link_redirect;
 
@@ -170,7 +170,7 @@
 		});
 
         var currentNewSlide = 0,
-        	maxNumberOnLoadSlide = 0
+        	maxNumberOnLoadSlide = 0,
         	numberRest = 2;
 
         $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
