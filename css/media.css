@@ -104,17 +104,21 @@
     }
 
     .registration-form {
-        width: 90%;
+        width: 95%;
         margin: auto;
     }
 
+    .registration-form button{
+        margin: 20px auto;
+    }
+
     .contacts-form {
-        width: 90%;
+        width: 95%;
         margin: auto;
     }
 
     .cooperation-form {
-        width: 90%;
+        width: 95%;
         margin: auto;
     }
 

@@ -329,7 +329,7 @@ html, body {
     width: 20px;
     height: 20px;
     margin: 5px 25px;
-    t-famfonily: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerRegular";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -664,16 +664,19 @@ html, body {
     margin: 20px 0 0 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 1s;
 }
 
 .registration-form button:hover{
-    margin: 22px 0 -2px 0;
-    background: linear-gradient(to bottom, #F6052F, #FF3D47);
-}
+    margin: 22px 0 -2px 0;   
+    background-position: 0 50%;
+} 
 
 .img {
     width: 39%;
@@ -771,7 +774,7 @@ html, body {
     margin: 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
@@ -865,15 +868,18 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 1s;
 }
 
 .contacts-form button:hover{
     margin: 22px auto -2px auto;
-    background: linear-gradient(to bottom, #F6052F, #FF3D47);
+    background-position: 0 50%;
 }
 
 /* CONTACTS */
@@ -986,15 +992,18 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to top, #F6052F, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 1s;
 }
 
 .cooperation-form button:hover{
     margin: 22px auto -2px auto;
-    background: linear-gradient(to bottom, #F6052F, #FF3D47);
+    background-position: 0 50%;
 }
 
 /* COOPERATION */
@@ -1045,17 +1054,20 @@ html, body {
     width: 100px;
     margin: 10px auto;
     border-radius: 25px;
-    background: linear-gradient(to top, #FD8F29, #FEC034);
+    background: linear-gradient(to bottom, #FEC034, #FD8F29);
     text-decoration: none;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     line-height: 30px;
     color: #FFFFFF;
+    background-size: auto 200%;
+    background-position: 0 50%;
+    transition: background-position 1s;
 }
 
 .right-box a:hover{
     margin: 11px auto -1px auto;
-    background: linear-gradient(to bottom, #FD8F29, #FEC034);
+    background-position: 0 0;
 }
 
 .fon-a {
@@ -1283,6 +1295,110 @@ html, body {
 .cabinet {
     max-width: 1080px;
     margin: 0 auto;
+}
+
+.history, .data {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.history p{
+    width: 100%;
+    padding: 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.history-box {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.data p{
+    width: 100%;
+    padding: 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.data-box {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.data-box form{
+    padding: 5%;
+}
+
+.data-box p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    padding: 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 25px;
+    color: #333333;
+}
+
+.fiz-form, .jur-form {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.fiz-form div, .jur-form div{
+    width: 300px;
+    margin: 5px auto;
+}
+
+.data-box label{
+    width: 100%;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;  
+}
+
+.data-box input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: #FFFFFF; 
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #989898;  
+}
+
+.data-box button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #FFFFFF;
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.data-box button:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 50%;
 }
 
 /* CABINET */
