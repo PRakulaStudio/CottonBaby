@@ -277,8 +277,8 @@ html, body {
     top:250px;
     background-image: url(../images/icons/arrowr.png);
     background-repeat: no-repeat;
-    width: 31px;
-    height: 9px;
+    width: 60px;
+    height: 30px;
     border: 0px;
     background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
@@ -1277,3 +1277,12 @@ html, body {
 /* fancybox */
 
 /* PRODUCTION */
+
+/* CABINET */
+
+.cabinet {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* CABINET */
