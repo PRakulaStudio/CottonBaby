@@ -274,7 +274,7 @@ html, body {
 
 .slick-arrow{
     position: absolute;
-    top:250px;
+    top:241px;
     background-image: url(../images/icons/arrowr.png);
     background-repeat: no-repeat;
     width: 60px;
@@ -291,19 +291,21 @@ html, body {
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
-    right:95px;
+    right: 120px;
 }
 
 .count-slider{
     position: absolute;
     top:250px;
-    right:50px;
+    right:62px;
     font-family: "Fontfabric-MullerLight";
     font-size: 13px;
+    width: 60px;
+    text-align: center;
 }
 
 .slick-next{
-    right:15px;
+    right: 5px;
 }
 
 .header {
