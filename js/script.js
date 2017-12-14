@@ -1,9 +1,4 @@
-// Phone mask
-$( function () {
-    $('input[name=phone]').each( function () {
-        $(this).inputmask('+7 (999) 999-99-99');
-    })
-});
+
 // Phone mask end
 
 function PopUpShowMenu(page){
@@ -30,6 +25,10 @@ function PopUpHideSearch(){
 
 
 ( function($){
+
+     $('input[name=phone]').each( function () {
+        $(this).inputmask('+7 (999) 999-99-99');
+     })
 
     $('input[type="search"]').keypress(function (e) {
         if (e.which == 13) {
