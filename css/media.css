@@ -11,7 +11,7 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
     .menu {
         flex-direction: column;
     }
@@ -77,6 +77,14 @@
 
     .count-slider{
         display: none;
+    }
+
+    .production-img {
+        display: none;
+    }
+
+    .production-slider {
+        display: block !important;
     }
 }
 

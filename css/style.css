@@ -122,7 +122,7 @@ html, body {
     text-decoration: none;
 }
 
-.section p {
+.section p{
     width: 100%;
     padding: 10px;
     font-family: "Fontfabric-MullerMedium";
@@ -424,7 +424,7 @@ html, body {
 .slider .slide div{
     background-repeat: no-repeat; 
     background-position: center; 
-    background-size: cover ; 
+    background-size: cover; 
 }
 
 .content-new {
@@ -1094,6 +1094,96 @@ html, body {
     margin: 0 auto;
 }
 
+.production-img {
+    width: 100%;
+    margin: auto auto 50px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.production-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.production-left {
+    width: 50%;
+    display: flex;
+    overflow: hidden;
+}
+
+.production-left a{
+    width: 100%;
+    height: 500px;
+    padding: 5px;
+    position: relative;
+}
+
+.production-left a > div{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+.production-left a > div:hover{
+    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    transition: all 1s;
+}
+
+.production-right {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.production-right a{
+    width: 50%;
+    height: 250px;
+    padding: 5px;
+    position: relative;
+}
+
+.production-right a > div{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+.production-right a > div:hover{
+    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    transition: all 1s;
+}
+
+.production-slider {
+    display: none !important;
+    width: 100%;
+    margin: auto auto 50px auto;
+}
+
+.production-slider .slide img{
+    margin: auto;
+}
+
 .production-text {
     width: 100%;
     margin: 0 0 40px 0;
@@ -1107,22 +1197,29 @@ html, body {
     color: #000000;
 }
 
-.right-box a{
-    display: block;
-    width: 100px;
-    margin: 10px auto;
-    border-radius: 25px;
-    background: linear-gradient(to top, #FD8F29, #FEC034);
-    text-decoration: none;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
-    color: #FFFFFF;
+/* fancybox */
+
+.fancybox-lock .fancybox-overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
 }
 
-.right-box a:hover{
-    margin: 11px auto -1px auto;
-    background: linear-gradient(to bottom, #FD8F29, #FEC034);
+.fancybox-close {
+    width: 35px !important;
+    height: 35px !important;
 }
+
+.fancybox-close {
+    background-image: url(../images/production/close.png) !important;
+    background-size: 35px 35px !important;
+}
+
+
+  /*  position: absolute;
+    width: 100%;
+    height: 500px;
+    border: 5px solid #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);*/
+
+/* fancybox */
 
 /* PRODUCTION */
