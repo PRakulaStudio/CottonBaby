@@ -276,6 +276,7 @@ html, body {
     position: absolute;
     top:250px;
     background-image: url(../images/icons/arrow.png);
+    background-image: url(../images/icons/arrowr.png);
     background-repeat: no-repeat;
     width: 31px;
     height: 9px;
