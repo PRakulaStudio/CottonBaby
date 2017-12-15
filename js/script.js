@@ -27,7 +27,6 @@ function PopUpHideSearch(){
 
 ( function($){
 
-     $('input[name=phone]').each( function () {
          $('input[name=phone]').each( function () {
         $(this).inputmask('+7 (999) 999-99-99');
      })
