@@ -476,6 +476,7 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to top, #FCA404, #FFC904);
+    background: linear-gradient(to top, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 20px;
     color: #FFFFFF;
@@ -667,10 +668,12 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 200%;
+    background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
@@ -678,6 +681,7 @@ html, body {
 .registration-form button:hover{
     margin: 22px 0 -2px 0;   
     background-position: 0 50%;
+    background-position: 0 0;
 } 
 
 .img {
@@ -871,10 +875,12 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 200%;
+    background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
@@ -882,6 +888,7 @@ html, body {
 .contacts-form button:hover{
     margin: 22px auto -2px auto;
     background-position: 0 50%;
+    background-position: 0 0;
 }
 
 /* CONTACTS */
@@ -995,10 +1002,11 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
+    background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
-    background-size: auto 200%;
+    background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
@@ -1006,6 +1014,7 @@ html, body {
 .cooperation-form button:hover{
     margin: 22px auto -2px auto;
     background-position: 0 50%;
+    background-position: 0 0;
 }
 
 /* COOPERATION */
@@ -1020,10 +1029,30 @@ html, body {
 .delivery-box {
     width: 100%;
     margin: 0 0 50px 0;
+    margin: auto auto 50px auto;
     display: flex;
     flex-direction: row;
+    flex-direction: column;
     border-radius: 5px;
     border: 1px solid #E4E3DF;
+}
+
+.delivery-box div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.delivery-box > div:first-child *{
+    background: #E4E3DF;
+}
+
+.delivery-box > div:nth-child(even){
+    background: #FFFFFF;
+}
+
+.delivery-box > div:nth-child(odd){
+    background: #F6F6F5;
 }
 
 .delivery-box p{
@@ -1038,6 +1067,7 @@ html, body {
 }
 
 .left-box {
+.delivery-box .left-box {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -1045,6 +1075,7 @@ html, body {
 }
 
 .right-box {
+.delivery-box .right-box {
     width: 30%;
     min-width: 100px;
     display: flex;
@@ -1054,9 +1085,12 @@ html, body {
 .right-box a{
     display: block;
     width: 100px;
+    width: 60%;
+    height: 30px;
     margin: 10px auto;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FEC034, #FD8F29);
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     text-decoration: none;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -1084,6 +1118,10 @@ html, body {
     height: 50px;
     background: #F6F6F5;
     text-align: center;
+.right-box a > img{
+    display: none;
+    padding: 5px 0;
+    margin: auto;
 }
 
 .delivery-text {
@@ -1302,10 +1340,13 @@ html, body {
 .history, .data {
     max-width: 1080px;
     margin: 0 auto;
+    width: 100%;
+    margin: auto auto 50px auto;
 }
 
 .history p{
     width: 100%;
+    margin: 20px auto;
     padding: 0 10px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
@@ -1314,13 +1355,64 @@ html, body {
 
 .history-box {
     max-width: 100%;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #E4E3DF;
+}
+
+.history-box > div:first-child *{
+    background: #E4E3DF;
+}
+
+.history-box > div:nth-child(even){
+    background: #FFFFFF;
+}
+
+.history-box > div:nth-child(odd){
+    background: #F6F6F5;
+}
+
+.history-box p{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 50px;
+    color: #000000;
+}
+
+.history-box div{
     display: flex;
     flex-direction: row;
 }
 
+.order {
+    width: 30%;
+    border-right: 1px solid #E4E3DF
+}
+
+.date {
+    width: 10%;
+    border-right: 1px solid #E4E3DF
+}
+
+.price, .quantity, .sum {
+    width: 15%;
+    border-right: 1px solid #E4E3DF
+}
+
+.status {
+    width: 15%;
+}
+
 .data p{
     width: 100%;
+    margin: 20px auto;
     padding: 0 10px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
@@ -1329,6 +1421,7 @@ html, body {
 
 .data-box {
     max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1351,6 +1444,7 @@ html, body {
 
 .fiz-form, .jur-form {
     max-width: 1080px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -1383,6 +1477,13 @@ html, body {
 }
 
 .data-box button{
+.data-button {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.data-button button{
     cursor: pointer;
     width: 200px;
     height: 50px;
@@ -1390,17 +1491,21 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 200%;
+    background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
 
 .data-box button:hover{
+.data-button button:hover{
     margin: 22px auto -2px auto;
     background-position: 0 50%;
+    background-position: 0 0;
 }
 
 /* CABINET */

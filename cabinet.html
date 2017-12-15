@@ -147,6 +147,87 @@
 				<p>История заказов</p>
 
 				<div class="history-box">
+					<div>
+						<div class="order">
+							<p>Номер заказа</p>
+						</div>
+
+						<div class="date">
+							<p>Дата</p>
+						</div>
+
+						<div class="price">
+							<p>Цена (1шт)</p>
+						</div>
+
+						<div class="quantity">
+							<p>Количество (шт)</p>
+						</div>
+
+						<div class="sum">
+							<p>Сумма (общая)</p>
+						</div>
+
+						<div class="status">
+							<p>Статус</p>
+						</div>
+					</div>
+
+					<div>
+						<div class="order">
+							<p>#23423423</p>
+						</div>
+
+						<div class="date">
+							<p>25.29.2017</p>
+						</div>
+
+						<div class="price">
+							<p>6 000р.</p>
+						</div>
+
+						<div class="quantity">
+							<p>100</p>
+						</div>
+
+						<div class="sum">
+							<p>600 000р.</p>
+						</div>
+
+						<div class="status">
+							<p>ура</p>
+						</div>
+					</div>
+
+					<div>
+						<div class="order">
+							<p></p>
+						</div>
+
+						<div class="date">
+							<p></p>
+						</div>
+
+						<div class="price">
+							<p>6 000</p>
+						</div>
+
+						<div class="quantity">
+							<p></p>
+						</div>
+
+						<div class="sum">
+							<p></p>
+						</div>
+
+						<div class="status">
+							<p></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="history-button">
+					<button type="submit">Сохранить</button>
 				</div>
 			</div>
 
@@ -156,6 +237,7 @@
 				<div class="data-box">
 					<form>
 						<p>Для физических лиц:</p>
+						<p>Для физ. лиц:</p>
 
 						<div class="fiz-form">
 							<div>
@@ -166,16 +248,19 @@
 							<div>
 								<label>Пароль</label>
 								<input type="password">
+								<input type="password" name="password">
 							</div>
 
 							<div>
 								<label>Адрес</label>
 								<input type="text">
+								<input type="text" name="address">
 							</div>
 
 							<div>
 								<label>Email</label>
 								<input type="email" name="email">
+								<input type="email" name="mail">
 							</div>
 
 							<div>
@@ -186,56 +271,77 @@
 							<div>
 								<label>Индекс</label>
 								<input type="number">
+								<input type="number" name="index_number">
 							</div>
 						</div>
 
 						<p>Для юридических лиц:</p>
+						<p>Для юр. лиц:</p>
 
 						<div class="jur-form">
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>ИНН</label>
+								<input type="number" name="inn">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>Название организации</label>
+								<input type="text" name="name_organization">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>ОГРН</label>
+								<input type="number" name="ogrn">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>Банк</label>
+								<input type="text" name="name_bank">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>БИК</label>
+								<input type="number" name="bik">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>Расчетный счет</label>
+								<input type="number" name="checking account">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>Корреспондентский счет</label>
+								<input type="number" name="correspondent_account">
 							</div>
 
 							<div>
 								<label>Ваше имя</label>
 								<input type="text">
+								<label>Адрес доставки</label>
+								<input type="text" name="delivery_address">
 							</div>
 
 							<div></div>
 						</div>
 
 						<button type="button">Зарегистрироваться</button>
+						<div class="data-button">
+							<button type="submit">Сохранить</button>
+						</div>
 					</form>
 				</div>
 			</div>
