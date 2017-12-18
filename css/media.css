@@ -11,7 +11,6 @@
     }
 }
 
-@media (max-width: 1024px) {
 @media (max-width: 1000px) {
     .menu {
         flex-direction: column;
@@ -115,8 +114,6 @@
     }
 
     .registration-box {
-        display: flex;
-        flex-direction: row;
         margin: 0 0 50px 0;
     }
 
@@ -137,10 +134,6 @@
     .cooperation-form {
         width: 95%;
         margin: auto;
-    }
-
-    .delivery-box {
-        width: 95%;
     }
 
     .img {
@@ -180,7 +173,6 @@
     }
 
     .history, .data {
-        width: 90%;
         width: 95%;
         margin: auto auto 50px auto;
     }
