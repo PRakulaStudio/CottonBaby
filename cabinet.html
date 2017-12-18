@@ -150,26 +150,64 @@
 					<div>
 						<div class="order">
 							<p>Номер заказа</p>
+						<div>
+							<div><p>№123122</p></div>
+							<div><p>24.10.2017</p></div>
+							<button>▼</button>
 						</div>
 
 						<div class="date">
 							<p>Дата</p>
 						</div>
+						<div class="hidden">
+							<div class="order-info">
+								<div>
+									<div><a href="#">Платье из снега</a><a href="#">Коллекция "Желтый снег 2017"</a></div>
+								</div>
+
+								<div>
+									<div><p>5 шт.</p></div>
+									<div><p>Размер 60-65</p></div>
+								</div>
+
+								<div>
+									<div><p>100 шт.</p></div>
+									<div><p>Размер 30-35</p></div>
+								</div>
+							</div>
 
 						<div class="price">
 							<p>Цена (1шт)</p>
 						</div>
+							<div class="order-info">
+								<div>
+									<div><a href="#">Платье из листьев</a><a href="#">Коллекция "Оттаяло 2010"</a></div>
+								</div>
+
+								<div>
+									<div><p>5 шт.</p></div>
+									<div><p>Размер 60-65</p></div>
+								</div>
 
 						<div class="quantity">
 							<p>Количество (шт)</p>
+								<div>
+									<div><p>100 шт.</p></div>
+									<div><p>Размер 30-35</p></div>
+								</div>
+							</div>
 						</div>
 
 						<div class="sum">
 							<p>Сумма (общая)</p>
+						<div >
+							<div><p>Cумма</p></div>
+							<div class="sum"><p>224 000 руб.</p></div>
 						</div>
 
-						<div class="status">
-							<p>Статус</p>
+						<div >
+							<div><p>Cтатус</p></div>
+							<div class="status status-green"><p>выполнен</p></div>
 						</div>
 					</div>
 
@@ -180,10 +218,17 @@
 
 						<div class="date">
 							<p>25.29.2017</p>
+						<div>
+							<div><p>№123122</p></div>
+							<div><p>24.10.2017</p></div>
+							<button>▼</button>
 						</div>
 
 						<div class="price">
 							<p>6 000р.</p>
+						<div>
+							<div><p>Cумма</p></div>
+							<div class="sum"><p>224 000 руб.</p></div>
 						</div>
 
 						<div class="quantity">
@@ -196,6 +241,9 @@
 
 						<div class="status">
 							<p>ура</p>
+						<div>
+							<div><p>Cтатус</p></div>
+							<div class="status status-blue"><p>отгружен</p></div>
 						</div>
 					</div>
 
@@ -206,10 +254,17 @@
 
 						<div class="date">
 							<p></p>
+						<div>
+							<div><p>№123122</p></div>
+							<div><p>24.10.2017</p></div>
+							<button>▼</button>
 						</div>
 
 						<div class="price">
 							<p>6 000</p>
+						<div>
+							<div><p>Cумма</p></div>
+							<div class="sum"><p>224 000 руб.</p></div>
 						</div>
 
 						<div class="quantity">
@@ -222,12 +277,16 @@
 
 						<div class="status">
 							<p></p>
+						<div>
+							<div><p>Cтатус</p></div>
+							<div class="status status-blue"><p>в обработке</p></div>
 						</div>
 					</div>
 				</div>
 
 				<div class="history-button">
 					<button type="submit">Сохранить</button>
+					<button type="submit"><img src="images/icons/refresh.png">загрузить еще</button>
 				</div>
 			</div>
 
@@ -236,7 +295,12 @@
 
 				<div class="data-box">
 					<form>
+<<<<<<< HEAD
+						<p>Для физ. лиц: <button class="change"><img src="images/icons/change.png"></button></p>
+=======
+						<p>Для физических лиц:</p>
 						<p>Для физ. лиц:</p>
+>>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
 
 						<div class="fiz-form">
 							<div>
@@ -246,16 +310,19 @@
 
 							<div>
 								<label>Пароль</label>
+								<input type="password">
 								<input type="password" name="password">
 							</div>
 
 							<div>
 								<label>Адрес</label>
+								<input type="text">
 								<input type="text" name="address">
 							</div>
 
 							<div>
 								<label>Email</label>
+								<input type="email" name="email">
 								<input type="email" name="mail">
 							</div>
 
@@ -266,49 +333,71 @@
 
 							<div>
 								<label>Индекс</label>
+								<input type="number">
 								<input type="number" name="index_number">
 							</div>
 						</div>
 
+<<<<<<< HEAD
+						<p>Для юр. лиц: <button class="change"><img src="images/icons/change.png"></button></p>
+=======
+						<p>Для юридических лиц:</p>
 						<p>Для юр. лиц:</p>
+>>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
 
 						<div class="jur-form">
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>ИНН</label>
 								<input type="number" name="inn">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>Название организации</label>
 								<input type="text" name="name_organization">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>ОГРН</label>
 								<input type="number" name="ogrn">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>Банк</label>
 								<input type="text" name="name_bank">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>БИК</label>
 								<input type="number" name="bik">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>Расчетный счет</label>
 								<input type="number" name="checking account">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>Корреспондентский счет</label>
 								<input type="number" name="correspondent_account">
 							</div>
 
 							<div>
+								<label>Ваше имя</label>
+								<input type="text">
 								<label>Адрес доставки</label>
 								<input type="text" name="delivery_address">
 							</div>
@@ -316,6 +405,7 @@
 							<div></div>
 						</div>
 
+						<button type="button">Зарегистрироваться</button>
 						<div class="data-button">
 							<button type="submit">Сохранить</button>
 						</div>
@@ -373,7 +463,9 @@
 	</div>
 <!-- footer end -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+
 <script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/cabinet.js"></script>
 </body>
 </html>

@@ -475,6 +475,7 @@ html, body {
     margin: 0 0 0 40px;
     border: none;
     border-radius: 25px;
+    background: linear-gradient(to top, #FCA404, #FFC904);
     background: linear-gradient(to top, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 20px;
@@ -666,10 +667,13 @@ html, body {
     margin: 20px 0 0 0;
     border: none;
     border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
+    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
@@ -677,6 +681,7 @@ html, body {
 
 .registration-form button:hover{
     margin: 22px 0 -2px 0;   
+    background-position: 0 50%;
     background-position: 0 0;
 } 
 
@@ -779,6 +784,7 @@ html, body {
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
 }
 
@@ -870,10 +876,13 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
+    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
@@ -881,6 +890,7 @@ html, body {
 
 .contacts-form button:hover{
     margin: 22px auto -2px auto;
+    background-position: 0 50%;
     background-position: 0 0;
 }
 
@@ -994,9 +1004,11 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1005,6 +1017,7 @@ html, body {
 
 .cooperation-form button:hover{
     margin: 22px auto -2px auto;
+    background-position: 0 50%;
     background-position: 0 0;
 }
 
@@ -1018,9 +1031,15 @@ html, body {
 }
 
 .delivery-box {
+<<<<<<< HEAD
+    margin: auto 10px 50px 10px;
+=======
     width: 100%;
+    margin: 0 0 50px 0;
     margin: auto auto 50px auto;
+>>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
     display: flex;
+    flex-direction: row;
     flex-direction: column;
     border-radius: 5px;
     border: 1px solid #E4E3DF;
@@ -1047,6 +1066,7 @@ html, body {
 .delivery-box p{
     width: 100%;
     height: 50px;
+    background: #E4E3DF;
     text-align: center;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
@@ -1054,6 +1074,7 @@ html, body {
     color: #000000;
 }
 
+.left-box {
 .delivery-box .left-box {
     width: 70%;
     display: flex;
@@ -1061,6 +1082,7 @@ html, body {
     border-right: 1px solid #E4E3DF;
 }
 
+.right-box {
 .delivery-box .right-box {
     width: 30%;
     min-width: 100px;
@@ -1070,10 +1092,12 @@ html, body {
 
 .right-box a{
     display: block;
+    width: 100px;
     width: 60%;
     height: 30px;
     margin: 10px auto;
     border-radius: 25px;
+    background: linear-gradient(to bottom, #FEC034, #FD8F29);
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     text-decoration: none;
     font-family: "Fontfabric-MullerRegular";
@@ -1090,6 +1114,18 @@ html, body {
     background-position: 0 0;
 }
 
+.fon-a {
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF;
+    text-align: center;
+}
+
+.fon-b {
+    width: 100%;
+    height: 50px;
+    background: #F6F6F5;
+    text-align: center;
 .right-box a > img{
     display: none;
     padding: 5px 0;
@@ -1260,6 +1296,7 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .production-video iframe{
@@ -1310,8 +1347,14 @@ html, body {
 }
 
 .history, .data {
+<<<<<<< HEAD
+    margin: auto 10px 50px 10px;
+=======
+    max-width: 1080px;
+    margin: 0 auto;
     width: 100%;
     margin: auto auto 50px auto;
+>>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
 }
 
 .history p{
@@ -1324,12 +1367,24 @@ html, body {
 }
 
 .history-box {
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.history-box > div{
+    width: 300px;
+    height: auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 1px solid #E4E3DF;
+    overflow: hidden;
 }
 
 .history-box > div:first-child *{
@@ -1338,17 +1393,28 @@ html, body {
 
 .history-box > div:nth-child(even){
     background: #FFFFFF;
+.history-box > div > div{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
 }
 
 .history-box > div:nth-child(odd){
     background: #F6F6F5;
+.history-box div > div {
+    margin: auto;
+    width: 100%;
+    padding: 5px;
 }
 
 .history-box p{
+.history-box > div > div > div > p{
     width: 100%;
     height: 50px;
     margin: 0;
     text-align: center;
+    padding: 0;
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
     line-height: 50px;
@@ -1356,6 +1422,42 @@ html, body {
 }
 
 .history-box div{
+.history-box > div > div > .sum p{
+    font-size: 20px;
+    color: #FF0016;
+}
+
+.history-box > div > div > .status > p{
+    font-size: 20px;
+}
+
+.status-blue p{
+    color: #0035D2 !important;
+}
+
+.status-green p{
+    color: #00B90E !important;
+}
+
+.history-box > div > .hidden {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    overflow: auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-box > div > .hidden > div{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0;
+    background: #BBBBBB;
+    border-radius: 10px;
+}
+
+.history-box > div > .hidden > div > div{
     display: flex;
     flex-direction: row;
 }
@@ -1363,20 +1465,89 @@ html, body {
 .order {
     width: 30%;
     border-right: 1px solid #E4E3DF
+.history-box > div > .hidden p{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    color: #000000;
 }
 
 .date {
     width: 10%;
     border-right: 1px solid #E4E3DF
+.history-box > div > .hidden a{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 16px;
+    line-height: 20px;
+    color: #F30330;
 }
 
 .price, .quantity, .sum {
     width: 15%;
     border-right: 1px solid #E4E3DF
+.history-box > div > .hidden a:hover{
+    text-decoration: none;
 }
 
 .status {
     width: 15%;
+.history-box > div > div > button{
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 290px;
+    height: 40px;
+    font-size: 20px;
+    text-align: right;
+    margin: auto 0 auto auto;
+    z-index: 1;
+}
+
+.history-box > div > div:nth-child(even){
+    background: #FFFFFF;
+}
+
+.history-box > div > div:nth-child(odd){
+    background: #F6F6F5;
+}
+
+.history-box > div > div:first-child {
+    background: #E4E3DF;
+}
+
+.history-button {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.history-button button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    border: 2px solid #D7DFE5;
+    border-radius: 25px;
+    background: #D7DFE5;
+    font-family: "Fontfabric-MullerRegular";
+    font-size: 18px;
+    color: #000000;
+}
+
+.history-button button > img{
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+}
+
+.history-button button:hover{
+    border: 2px solid #F30330;
 }
 
 .data p{
@@ -1389,6 +1560,7 @@ html, body {
 }
 
 .data-box {
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -1411,8 +1583,10 @@ html, body {
 }
 
 .fiz-form, .jur-form {
+    max-width: 1080px;
     width: 100%;
     margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1443,6 +1617,7 @@ html, body {
     color: #989898;  
 }
 
+.data-box button{
 .data-button {
     width: 100%;
     margin: auto;
@@ -1456,18 +1631,33 @@ html, body {
     margin: 20px auto 0 auto;
     border: none;
     border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     font-family: "Fontfabric-MullerRegular";
     font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
+    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
 
+.data-box button:hover{
 .data-button button:hover{
     margin: 22px auto -2px auto;
+    background-position: 0 50%;
     background-position: 0 0;
+}
+
+.change {
+    cursor: pointer;
+    border: 1px solid #f74a45;
+    border-radius: 10px;
+    background: none;
+    width: 27px;
+    height: 27px;
+    padding: 5px;
 }
 
 /* CABINET */

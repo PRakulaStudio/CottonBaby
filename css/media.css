@@ -12,6 +12,7 @@
 }
 
 @media (max-width: 1024px) {
+@media (max-width: 1000px) {
     .menu {
         flex-direction: column;
     }
@@ -86,6 +87,22 @@
     .production-slider-box {
         display: block !important;
     }
+
+    .production-video iframe{
+        margin: auto auto 20px auto;
+    }
+
+    .history p{
+        text-align: center;
+    }
+
+    .history-box {
+        flex-direction: column;
+    }
+
+    .history-box > div > .hidden {
+        max-height: none;
+    }
 }
 
 @media (max-width: 800px) {
@@ -157,8 +174,15 @@
         display: block;
     }
 
+     .delivery-box {
+        width: 95%;
+        margin: auto auto 50px auto;
+    }
+
     .history, .data {
         width: 90%;
+        width: 95%;
+        margin: auto auto 50px auto;
     }
 }
 
