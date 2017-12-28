@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title>Cotton Baby - О нас</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+	<meta property="og:image" content="images/repost.png">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+</head>
+<body>
+
+<!-- menu popup start -->
+<div class="menu-popup" id="menu">
+	<div class="button-box">
+		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<div class="search-menu">
+			<input type="search" placeholder="поиск">
+			<img src="images/icons/search.png">
+		</div>
+	</div>
+
+	<div class="menu-box">
+		<div class="menu">
+			<div class="left-menu">
+				<div class="section">
+					<p>Компания</p>
+					<ul>
+						<li><a href="index.html">Главная</a></li>
+						<li><a href="information.html">О нас</a></li>
+						<li><a href="katalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
+						<li><a href="cooperation.html">Сотрудничество</a></li>
+						<li><a href="production.html">Наше производство</a></li>
+						<li><a href="delivery.html">Доставка и оплата</a></li>
+						<li><a href="contacts.html">Контакты</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="right-menu">
+				<div class="section">
+					<p>Каталог</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<p>Коллекции</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- menu popup end -->
+
+<!-- header start -->
+<div class="header-box">
+	<div class="header">
+		<div class="header-menu">
+			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+		</div>
+
+		<div class="header-info">
+			<div>
+				<a href="index.html"><img src="images/logo.png"></a>
+			</div>
+
+			<div>
+				<p>Производство детской одежды.</p>
+				<p>Оптовая продажа.</p>
+			</div>
+		</div>
+
+		<div class="header-user">
+			<div data-insta>
+				<a href="#"><img src="images/icons/insta.png"></a>
+				<div><p>Подпишись</p></div>
+			</div>
+			<div data-basket><a href="#"><img src="images/icons/basket.png"><span>5</span></a></div>
+			<div data-favorite><a href="#"><img src="images/icons/favorites.png"><span>3</span></a></div>
+			<div data-auth>
+
+				<button><img src="images/icons/user.png"><span>Войти</span></button>
+
+				<div class="authorization" id="authorization">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<p>Авторизация</p>
+					<form>
+						<div>
+							<input type="email" name="mail" placeholder="E-mail">
+
+							<input type="password" name="password_auth" placeholder="Пароль">
+						</div>
+
+						<div>
+							<button type="button">Войти</button>
+							<a href="/registration.html">Регистрация</a>
+						</div>
+					</form>
+				</div>
+
+				<div class="exit" id="exit">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<div>
+						<a href="#">Личный кабинет</a>
+						<button>Выйти</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- header end -->
+
+<!-- content start -->
+	<main class="content">
+		<section class="information">
+			<div class="pagination">
+				<p><a href="index.html">Главная</a> &#8594 О нас</p>
+				<div class="pagination-liner"></div>
+			</div>
+			
+			<div class="title">
+				<h1>О нас</h1>
+			</div>			
+
+			<div class="information-img">
+				<div class="information-left">
+					<a id="example1" href="images/1920x1080.png"><img alt="example1" src="images/1920x1080.png"><div></div></a>
+				</div>
+
+				<div class="information-right">
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+					<a id="example1" href="images/300x500.png"><img src="images/300x500.png"><div></div></a>
+				</div>
+			</div>
+
+			<div class="information-slider-box">
+				<div class="information-slider">
+				</div>
+
+				<div class="information-button">
+					<button data-action="prev">←</button>
+					<button data-action="next">→</button>
+				</div>
+			</div>
+
+			<div class="content-text">
+				<p>Наша компания на протяжении 8 лет занималась розничной торговлей детской одежды мировых марок.</p>
+				<p>После многолетнего опыта работы с детскими товарами и тщательного изучения рынка детской одежды в России в 2015 году стартовало наше собственное производство под торговой маркой Cotton baby.</p>
+				<p>В Cotton baby мы делаем ставку на высокое качество, современный дизайн и комфорт. Мы работаем с лучшими мировыми производителями тканей и фурнитуры, уделяя большое внимание экологичности производимой нами продукции и постоянно совершенствуя технологии производства.</p>
+				<p>Вся наша продукция прошла сертификацию качества и соответствует техническому регламенту Таможенного союза ТР ТС 007/2011 (свидетельство о госрегистрации, приложение).</p>
+			</div>
+		</section>
+	</main>
+<!-- content end -->
+
+<!-- footer start -->
+	<div class="footer">
+		<div class="footer-top">
+			<div class="footer-logo">
+				<a href="index.html"><img src="images/logo.png"></a>
+			</div>
+
+			<div class="footer-text">
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+			</div>
+
+			<div class="footer-menu">
+				<ul>
+					<li><a href="index.html">Главная</a></li>
+					<li><a href="registration.html">Регистрация</a></li>
+					<li><a href="katalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="information.html">О нас</a></li>
+					<li><a href="cooperation.html">Сотрудничество</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-contacts">
+				<div class="footer-phone">
+					<p><b>+7 (495)</b> 555 44 22</p>
+				</div>
+
+				<div class="footer-top-networks">
+					<button><img src="images/icons/insta.png"></button>
+					<button><img src="images/icons/fb.png"></button>
+					<button><img src="images/icons/vk.png"></button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bot">
+			<p>© 2017 Cotton Baby</p>
+		</div>
+	</div>
+<!-- footer end -->
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/information.js"></script>
+</body>
+</html>

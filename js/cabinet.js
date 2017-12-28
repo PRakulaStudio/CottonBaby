@@ -1,83 +1,106 @@
+"use strict";
+
 ( function($){
+	var buttonLoadHistory = $('div.history-button').find('button'); //кнопка, которая подгружает остальные товары из истории
 
-	function checkLength(str , requareLength)
-	{
-		if( str.length >= requareLength)
-			return true;
-		return false;
+	var css = {
+		'show_block' : "show-block",
 	}
 
 
-	function checkEmail(email)
-	{
-		 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
- 	     if( re.test(email) )
- 	     	return true;
- 	     return false;
-	}
+	requestCheckAuth("cabinet");
 
-
-	function checkPhone(phone)
-	{
-	 	var re = /^[\+]?7\s[(]?[0-9]{3}[)]\s?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{2}[-\s\.]?[0-9]{2}$/im;
-		if( re.test(phone) )
-			return true;
-		return false;
-	}
-
-
-	function validateData( input , data)
-	{
-		switch( $(input).attr('name'))
+	function getStatus(id) {
+		for(var key in window.statuses)
 		{
-			case "password" :
-				if( checkLength($(input).val() , 8))
-					data[  $(input).attr('name') ] =  $(input).val();
-				else
-					$(input).addClass('input-error');
-				break;
-
-			case "email" :
-
-				if( checkEmail($(input).val()))
-					data[  $(input).attr('name') ] =  $(input).val();
-				else
-					$(input).addClass('input-error');
-				break;
-
-			case "phone" :
-				if( checkPhone( $(input).val() ))
-					data[  $(input).attr('name') ] =  $(input).val();
-				else
-					$(input).addClass('input-error');
-				break;
-
-			case "index" :
-				if( checkLength($(input).val() , 6))
-					data[  $(input).attr('name') ] =  $(input).val();
-				else
-					$(input).addClass('input-error');
-				break;
-
-			default:
-
-				data[ $(input).attr('name') ]  =  $(input).val();
-				break;				
+			if(window.statuses[key].id == id)
+				return window.statuses[key];
 		}
 
 	}
 
+
 	function getHistory(offset, limit)
 	{
-		$.ajax({
-			data: {"get" : "orders"},
-			dataType: 'json',
-			url: '/system/plugins/cabinet',
-			success: function( data, status)
-			{
+		var data= {};
+			data['get'] = "ordersList";
+			data['offset'] = offset;
+			data['limit'] = limit;
 
-				if(data.status && orders != "undefined")
+		$.ajax({
+			data: data,
+			dataType: 'json',
+			url: '/akula/system/plugins/SecArgonia/cabinet',
+			success: function( result, status)
+			{
+				buttonLoadHistory.show();
+				if(result.status && result.data.orders != "undefined")
 				{
+					var orderList = result.data.orders,
+						html = "",
+						countItems = 0;
+
+					for( var key in orderList )
+					{
+						//начало блока
+                        html += "<div data-item>";
+                        //верхний блок с номером заказа и датой
+						html += "<div><div><p>#"+orderList[key].order_id+"</p></div><div><p>"+orderList[key].date+"</p></div><button data-action='show'><img class='hide-content' src='images/icons/up-arrow.svg' style='display:none' /><img class='show-content' src='images/icons/down-arrow.svg' /></button></div>";
+
+						//блок с подробной историей заказа о товарах
+						html += "<div class='hidden'>";
+
+						for(var item in orderList[key].products)
+						{
+							html += "<div class='order-info'>" +
+
+											"<div>" +
+												"<div>" +
+													"<a href='"+orderList[key].products[item].link+"'>"+orderList[key].products[item].name+"</a>" +
+													"<a href='"+orderList[key].products[item].collection['link']+"'>"+orderList[key].products[item].collection['name']+"</a>" +
+												"</div>" +
+											"</div>";
+
+
+
+
+										//блоки с размерами товара
+										for(var itemSize in  orderList[key].products[item].sizes)
+										{
+											html += "<div>" +
+														"<div><p>"+orderList[key].products[item].sizes[itemSize].count+" шт.</p></div>" +
+														"<div><p>Размер "+orderList[key].products[item].sizes[itemSize].name+"</p></div>" +
+													"</div>";
+										}
+							html += "</div>";
+
+
+
+						}
+						html+= "</div>";
+						//блок с суммой
+						html += "<div>" +
+                           			 "<div><p>Cумма</p></div>\n" +
+                            	 	 "<div class='sum'><p>"+formatMoney(orderList[key].total)+"</p></div>" +
+                           		 "</div>";
+
+						//блок со статусом
+						html += "<div>" +
+                            		"<div><p>Cтатус</p></div>" +
+                            		"<div class='status' style='border: 2px solid "+(getStatus(orderList[key].status)).color+" !important; ' >" +
+											"<p style='color: "+(getStatus(orderList[key].status)).color+" !important' >"+(getStatus(orderList[key].status)).text+"</p>" +
+									"</div>" +
+                            	"</div>";
+
+						html+="</div>";
+                        countItems++;
+					}
+
+
+					$('div.history-box').append(html);
+
+                    //меняем оффсет у кнопки
+					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
 
 					/*
 						[
@@ -91,24 +114,42 @@
 					*/
 					//переход
 				}
+				else
+				{
+					if(result.statusText)
+					{
+						buttonLoadHistory.hide();
+						alert(result.statusText);
+
+					}
+					else {
+						alert("Не получилосьполучить историю заказов");
+					}
+				}
 			},
 
 		});
 
 	}
 
+
 	function setUserData(data)
 	{
 		$.ajax({
-			data: {"set" : "userData" , "user" : "data"},
+			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
+			type: 'POST',
+			encoding: "UTF-8",
+			data:  {
+				"set": "userData",
+				"data": JSON.stringify(data)
+			},
 			dataType: 'json',
-			url: '/system/plugins/cabinet',
 			success: function( data, status)
 			{
 
 				if(data.status)
 				{
-
+					//alert("work!!!");
 					/*
 						[
 							id,
@@ -130,22 +171,106 @@
 		});
 	}
 
+	function getUserData(data)
+	{
 
 
-	$('section.cabinet input').keypress( function(){
+		$.ajax({
+
+			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
+			type: 'GET',
+			encoding: "UTF-8",
+			data:  {
+				"get": "userData"
+			},
+			dataType: 'json',
+			success: function( data, status)
+			{
+				if( data.status && data.userData != "undefined")
+				{
+
+					for(var key in data.userData)
+					{
+						//var allElements = document.getElementsByTagName('input');
+						if(key == "bonus")
+						{
+							$('div.bonus').find('p').last().find('span').text(formatMoney(data.userData[key]));
+							continue;
+						}
+
+						$('div.data-box').find('input[name="'+key+'"]').val( data.userData[key] );
+					}
+					
+
+
+				}
+				else
+				{
+
+				}
+			},
+		});
+
+	}
+
+	//добавляет инпуту статус "измененный"
+	$('section.cabinet input').keyup( function(){
 		$(this).attr('data-change' , 'true');
 	});
 
-
-	$('.data-box button').click( function(){
-
-			var data = {};
-			$(this).siblings('div.fiz-form').find('input[data-change="true"]').each( function(){
-				validateData($(this) , data);
-			});
-			console.log( JSON.stringify(data) );
-			//setUserData(  );
+	$('div.history-button button').click(function () {
+		buttonLoadHistory.hide();
+		getHistory( buttonLoadHistory.attr('data-offset') , buttonLoadHistory.attr('data-limit') );
 	});
+
+	//надо доделать
+	$('div.history-box').on( "click" , 'button[data-action]' ,  function () {
+
+		var button = $(this);
+		if( button.data('action') == "show")
+		{
+            button.data('action' , "hide");
+            button.find('img').last().hide().end().first().show();
+		}
+        else
+		{
+            button.data('action' , "show");
+			button.find('img').last().show().end().first().hide();
+
+		}
+			
+		//пееключаем отображение у блока
+		$(this).parents('div[data-item]').find('div.hidden').toggle();
+
+    });
+
+
+	//отправить измененные данные
+	$('form .data-button button').click( function() {
+        
+		var data = {};
+				
+        $(this).parents('div.data-box').find('input[data-change="true"]').each( function(){
+         	validateData($(this) , data , 'input-error');
+        });
+
+		if( Object.keys(data).length )
+			setUserData( data );
+		
+
+	});
+
+
+
+	$('button.cabinet-box').click(function(){
+		$(this).parents('p').next().toggleClass(css.show_block);
+		$(this).find('img').toggle();
+	});
+
+
+
+	getHistory( buttonLoadHistory.data('offset') , buttonLoadHistory.data('limit') );
+	getUserData();
 
 	//$('section.')
 

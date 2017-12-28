@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title>Cotton Baby - Товар</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+	<meta property="og:image" content="images/repost.png">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+</head>
+<body class="showPrice">
+
+<!-- menu popup start -->
+<div class="menu-popup" id="menu">
+	<div class="button-box">
+		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<div class="search-menu">
+			<input type="search" placeholder="поиск">
+			<img src="images/icons/search.png">
+		</div>
+	</div>
+
+	<div class="menu-box">
+		<div class="menu">
+			<div class="left-menu">
+				<div class="section">
+					<p>Компания</p>
+					<ul>
+						<li><a href="index.html">Главная</a></li>
+						<li><a href="information.html">О нас</a></li>
+						<li><a href="katalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
+						<li><a href="cooperation.html" >Сотрудничество</a></li>
+						<li><a href="production.html">Наше производство</a></li>
+						<li><a href="delivery.html">Доставка и оплата</a></li>
+						<li><a href="contacts.html">Контакты</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="right-menu">
+				<div class="section">
+					<p>Каталог</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<p>Коллекции</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- menu popup end -->
+
+<!-- header start -->
+<!-- header start -->
+<div class="header-box">
+    <div class="header">
+        <div class="header-menu">
+            <button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+        </div>
+
+        <div class="header-info">
+            <div>
+                <a href="index.html"><img src="images/logo.png"></a>
+            </div>
+
+            <div>
+                <p>Производство детской одежды.</p>
+                <p>Оптовая продажа.</p>
+            </div>
+        </div>
+
+        <div class="header-user">
+            <div data-insta>
+                <a href="#"><img src="images/icons/insta.png"></a>
+                <div><p>Подпишись</p></div>
+            </div>
+            <div data-basket><a href="#"><img src="images/icons/basket.png"><span>5</span></a></div>
+            <div data-favorite><a href="#"><img src="images/icons/favorites.png"><span>3</span></a></div>
+            <div data-auth>
+
+                <button><img src="images/icons/user.png"><span>Войти</span></button>
+
+                <div class="authorization" id="authorization">
+                    <button class="popup-close"><img src="images/icons/close.png"></button>
+                    <p>Авторизация</p>
+                    <form>
+                        <div>
+                            <input type="email" name="mail" placeholder="E-mail">
+
+                            <input type="password" name="password_auth" placeholder="Пароль">
+                        </div>
+
+                        <div>
+                            <button type="button">Войти</button>
+                            <a href="/registration.html">Регистрация</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="exit" id="exit">
+                    <button class="popup-close"><img src="images/icons/close.png"></button>
+                    <div>
+                        <a href="#">Личный кабинет</a>
+                        <button>Выйти</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->
+<!-- header end -->
+
+<!-- content start -->
+	<main class="content">
+		<section class="product">
+			<div class="pagination">
+				<p><a href="index.html">Главная</a> &#8594 <a href="index.html">Каталог</a> &#8594 Кофта + ползунки</p>
+				<div class="pagination-liner"></div>
+			</div>
+			
+			<div class="title">
+				<h1>Кофта + ползунки</h1>
+			</div>
+		</section>
+
+		<section class="product">
+			<div class="product-box">
+				<div>
+					<div>
+						<div class="product-button">
+							<button class="product-off"></button>
+							<button class="product-on"></button>
+						</div>
+						<a id="product" href="images/1920x1080.png"><img alt="example1" src="images/1920x1080.png"><div></div></a>
+					</div>
+
+					<div class="item-slider">
+						<div><img src="images/1920x1080.png"><div class="item-activ"></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/1920x1080.png"><div></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/300x500.png"><div></div></div>
+					</div>
+				</div>
+
+				<div>
+					<div class="product-category">
+						<p><img src="images/icons/category.png"><span>Коллекция "Осень - Зима 2017"</span></p>
+					</div>
+
+					<div class="product-brief">
+						<p>Кофта — предмет шерстяной вязаной одежды для верхней части тела с застежкой снизу доверху спереди.</p>
+					</div>
+
+					<div class="product-composition">
+						<b>Состав:</b>
+						<p>Хлопок - 80%, шерсть - 20%.</p>
+					</div>
+
+					<div class="product-size">
+						<b>Выберите размер и количество:</b>
+						
+						<div class="size-box">
+							<div class="size-block">
+								<div>
+									<p>60-65</p>
+								</div>
+
+								<div>
+									<button>-</button>
+									<span>0</span>
+									<button>+</button>
+								</div>
+							</div>
+
+							<div class="size-block">
+								<div>
+									<p>60-65</p>
+								</div>
+
+								<div>
+									<button>-</button>
+									<span>0</span>
+									<button>+</button>
+								</div>
+							</div>
+
+							<div class="size-block">
+								<div>
+									<p>60-65</p>
+								</div>
+
+								<div>
+									<button>-</button>
+									<span>0</span>
+									<button>+</button>
+								</div>
+							</div>
+
+							<div class="size-block">
+								<div>
+									<p>60-65</p>
+								</div>
+
+								<div>
+									<button>-</button>
+									<span>0</span>
+									<button>+</button>
+								</div>
+							</div>
+
+							<div class="size-block">
+								<div>
+									<p>60-65</p>
+								</div>
+
+								<div>
+									<button>-</button>
+									<span>0</span>
+									<button>+</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="price-basket">
+						<div>
+							<p>Цена:</p>
+							<p><span>1450</span> руб.</p>
+						</div>
+
+						<div>
+							<button><img src="images/icons/product-basket.png">В корзину</button>
+						</div>
+					</div>
+
+					<div class="no-authorization">
+						<div>
+							<p><img src="images/icons/i.png">Зарегистрируйтесь</p>
+							<p>чтобы узнать цену</p>
+						</div>
+
+						<div>
+							<a href="/registration.html">Регистрация</a>
+						</div>
+					</div>
+
+					<div class="product-delivery">
+						<p><img src="images/icons/i.png">Стоимость доставки рассчитывается индивидуально, в зависимости от объема заказа и города. Для расчета выберите транспортную кампанию из <a href="delivery.html">списка рекомендованных</a>.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-text">
+				<b>Подробное описание товара</b>
+				<p>Кофта стала основой для появления остальных предметов плечевой вязаной одежды — свитеров, пуловеров, джемперов, жакетов. Стоит отметить, что даже если у кофты высокий застёгивающийся ворот, её правильнее называть кофтой, а не свитером.</p>
+				<p>Кофта как предмет одежды известна много веков. По некоторым данным, кофты вязали и носили ещё в древнем Египте. Совершенно точно известно, что кофты в качестве утепляющего слоя в одежде носили в Европе, начиная с XIII века.</p>
+			</div>
+
+			<div class="product-slider-box">
+				<b>Товары из этой же коллекции:</b>
+				<div class="product-slider-button">
+					<button data-action="prev">←</button>
+					<button data-action="next">→</button>
+				</div>
+
+				<div class="product-slider">
+					<div class="slide">
+						<div class="product-block">
+							<div>
+								<div><img src="images/300x500.png"></div>
+								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
+								<div>
+									<button class="product-slider-off"></button>
+									<button class="product-slider-on"></button>
+								</div>
+								<div>
+									<a href="#">Комплект кофта + ползунки</a>
+									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+								</div>
+								<button>Подробно</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="slide">
+						<div class="product-block">
+							<div>
+								<div><img src="images/300x500.png"></div>
+								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
+								<div>
+									<button class="product-slider-off"></button>
+									<button class="product-slider-on"></button>
+								</div>
+								<div>
+									<a href="#">Комплект кофта + ползунки</a>
+									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+								</div>
+								<button>Подробно</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="slide">
+						<div class="product-block">
+							<div>
+								<div><img src="images/300x500.png"></div>
+								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
+								<div>
+									<button class="product-slider-off"></button>
+									<button class="product-slider-on"></button>
+								</div>
+								<div>
+									<a href="#">Комплект кофта + ползунки</a>
+									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+								</div>
+								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="slide">
+						<div class="product-block">
+							<div>
+								<div><img src="images/300x500.png"></div>
+								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
+								<div>
+									<button class="product-slider-off"></button>
+									<button class="product-slider-on"></button>
+								</div>
+								<div>
+									<a href="#">Комплект кофта + ползунки</a>
+									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+								</div>
+								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="slide">
+						<div class="product-block">
+							<div>
+								<div><img src="images/300x500.png"></div>
+								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
+								<div>
+									<button class="product-slider-off"></button>
+									<button class="product-slider-on"></button>
+								</div>
+								<div>
+									<a href="#">Комплект кофта + ползунки</a>
+									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+								</div>
+								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+<!-- content end -->
+
+<!-- footer start -->
+	<div class="footer">
+		<div class="footer-top">
+			<div class="footer-logo">
+				<a href="index.html"><img src="images/logo.png"></a>
+			</div>
+
+			<div class="footer-text">
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+			</div>
+
+			<div class="footer-menu">
+				<ul>
+					<li><a href="index.html">Главная</a></li>
+					<li><a href="registration.html">Регистрация</a></li>
+					<li><a href="katalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="information.html">О нас</a></li>
+					<li><a href="cooperation.html">Сотрудничество</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-contacts">
+				<div class="footer-phone">
+					<p><b>+7 (495)</b> 555 44 22</p>
+				</div>
+
+				<div class="footer-top-networks">
+					<button><img src="images/icons/insta.png"></button>
+					<button><img src="images/icons/fb.png"></button>
+					<button><img src="images/icons/vk.png"></button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bot">
+			<p>© 2017 Cotton Baby</p>
+		</div>
+	</div>
+<!-- footer end -->
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/product.js"></script>
+
+
+</body>
+</html>

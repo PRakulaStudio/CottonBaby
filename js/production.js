@@ -1,6 +1,8 @@
 ( function($){
 
-	var html = "";
+		requestCheckAuth("production");
+	
+		var html = "";
 
 		$('.production-left').children().each( function(){
 			html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";

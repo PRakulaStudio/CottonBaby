@@ -5,8 +5,219 @@ html, body {
     width: 100%;
     min-width: 320px;
     height: 100%;
+    min-height: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
+
+/* POPUP */
+
+.popup-fon {
+    display: none;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.popup-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.popup-score {
+    display: none;
+    position: relative;
+    max-width: 500px;
+    min-width: 320px;
+    padding: 50px 20px;
+    margin: auto;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.popup-score p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 25px;
+    color: #000000;
+}
+
+.popup-score > form label{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+}
+
+.popup-score > form input{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0 0 5px 0;
+    border: none;
+    border-bottom: 1px solid #C1C1C1;
+    background: #FFFFFF;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #989898;
+}
+
+.popup-score > form button{
+    display: block;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    margin: 20px auto auto auto;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s
+}
+
+.popup-score > form button:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.popup-card {
+    display: none;
+    position: relative;
+    max-width: 500px;
+    min-width: 320px;
+    padding: 50px 20px;
+    margin: auto;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.popup-card p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 25px;
+    color: #000000;
+}
+
+.popup-card > form label{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+}
+
+.popup-card > form input{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0 0 5px 0;
+    border: none;
+    border-bottom: 1px solid #C1C1C1;
+    background: #FFFFFF;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #989898;
+}
+
+.popup-card > form p{
+    width: 100%;
+    margin: 20px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 14px;
+    color: #797979;
+}
+
+.popup-card > form button{
+    display: block;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    margin: 20px auto auto auto;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s
+}
+
+.popup-card > form button:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.popup-thanks {
+    display: none;
+    position: relative;
+    max-width: 500px;
+    min-width: 320px;
+    padding: 50px 20px;
+    margin: auto;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.popup-thanks > div:nth-child(2) p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 25px;
+    color: #000000;
+}
+
+.popup-thanks > div:nth-child(3) p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.popup-thanks iframe{
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    border: 5px solid #D8DEE1;
+}
+
+.popup-close {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+/* POPUP */
 
 /* --- MENU --- */
 
@@ -16,7 +227,7 @@ html, body {
     width: 100%;
     height: auto;
     background: #FEAB2F;
-    z-index: 10000000;
+    z-index: 1000;
 }
 
 .button-box {
@@ -35,6 +246,10 @@ html, body {
     flex-direction: row;
 }
 
+.search-menu img{
+    margin: auto 10px;
+}
+
 .search-menu input{
     width: 90%;
     margin: auto;
@@ -42,13 +257,9 @@ html, body {
     background: none;
     border-bottom: 1px solid;
     padding: 0 0 5px 0;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
-}
-
-.search-menu img{
-    margin: auto 10px;
 }
 
 .menu-box {
@@ -65,6 +276,7 @@ html, body {
 }
 
 .left-menu {
+    width: 20%;
     display: flex;
     flex-direction: column;
 }
@@ -84,7 +296,7 @@ html, body {
     float: left;
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #333333;
 }
@@ -94,6 +306,7 @@ html, body {
 }
 
 .right-menu {
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -113,7 +326,7 @@ html, body {
     display: block;
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #333333;
 }
@@ -132,6 +345,510 @@ html, body {
 
 /* --- MENU --- */
 
+/* COMMON */
+
+/* content */
+
+.content-site {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    flex: 1 0 auto;
+}
+
+.content {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.block-empty {
+    display: none;
+    width: 99%;
+    margin: auto;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.block-empty p{
+    width: 100%;
+    padding: 5px 20px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 20px;
+    line-height: 50px;
+    color: #b6b6b6;
+}
+
+/* content */
+
+/* title */
+
+.title {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.title h1{
+    width: auto;
+    margin: 0;
+    padding: 5px 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 40px;
+    color: #333333;
+}
+
+.title h2{
+    width: auto;
+    margin: 0;
+    padding: 5px 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.title button{
+    cursor: pointer;
+    border-radius: 25px;
+    border: 2px solid #D7DFE5;
+    background: #D7DFE5;
+    width: 250px;
+    height: 40px;
+    margin: 5px 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
+}
+
+.title button:hover{
+    border: 2px solid #F30330;
+}
+
+/* title */
+
+/* pagination */
+
+.pagination {
+    width: 100%;
+}
+
+.pagination p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    padding: 20px 10px;
+    color: #000000;    
+}
+
+.pagination a{
+    text-decoration: none;
+    color: #000000;    
+}
+
+.pagination a:hover{
+    text-decoration: underline;  
+}
+
+.pagination-liner {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, #F71E02, #FAAA01)
+}
+
+/* pagination */
+
+/* filter */
+
+.filter-box {
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    background: #F5F5F5;
+}
+
+.filter {
+    max-width: 1080px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.filter button{
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    background: #FFFFFF;
+    width: 250px;
+    height: 50px;
+    margin: 5px auto;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+    text-align: left;
+    margin-left: calc(((100% / 4) - 250px) / 2);
+    margin-right: calc(((100% / 4) - 250px) / 2);
+}
+
+.filter button:before{
+    content: "\25c9";
+    margin: 0 5px;
+    color: #FC982B;
+}
+
+.filter button > span {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    background: #EDEDED;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.filter button:hover{
+    border: 2px solid #FC982B;
+}
+
+.filter button:hover > span {
+    color: #FFFFFF; 
+    background: #F10015;
+}
+
+/* filter */
+
+/* sorting */
+
+.sorting {
+    width: 99%;
+    margin: auto;
+    height: auto;
+    padding: 0 10px;
+    background: #F0F0EE;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sorting > .sorting-block{
+    width: 300px;
+    height: 50px;
+    padding: 5px 0;
+    background: #F0F0EE;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sorting p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    line-height: 40px;
+    color: #000000;
+}
+
+.sorting button{
+    cursor: pointer;
+    border-radius: 25px;
+    border: 2px solid #D4D4D2;
+    background: #D4D4D2;
+    margin: 0 5px;
+    padding: 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+}
+
+.sorting button:hover{
+    border: 2px solid #F30330;
+    background: #F0F0EE;
+}
+
+.sorting > .sorting-block > .sorting-activ {
+    border: 2px solid #F30330;
+    background: #F0F0EE;
+}
+
+/* sorting */
+
+/* katalog */
+
+.products-box {
+    width: 100%;
+    margin: 0 auto 50px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.products-box > div {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 5px;
+    margin-left: calc(((100% / 3) - 300px) / 2);
+    margin-right: calc(((100% / 3) - 300px) / 2);
+}
+
+.products-box > div > :nth-child(1){
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.products-box > div > :nth-child(1) img{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    transition: all 1s;
+}
+
+.products-box > div > :nth-child(1) img:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.products-box > div > :nth-child(2) {
+    position: absolute;
+    z-index: 5;
+    width: 130px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    padding: 0 5px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-left: calc(100% - 300px);
+    border-radius: 20px;
+}
+
+.products-box > div > :nth-child(2) p{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.showPrice .products-box > div > :nth-child(2) p > span:nth-child(2), .products-box > div > :nth-child(2) p > span:nth-child(1){
+    display: none;
+}
+
+.showPrice .products-box > div > :nth-child(2) p > span:nth-child(1), .products-box > div > :nth-child(2) p > span:nth-child(2){
+    display:inline-block;
+}
+
+.products-box > div > :nth-child(3) {
+    position: absolute;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border-radius: 20px;
+    border: 10px;
+    margin-right: calc(100% - 300px);
+}
+
+.products-off {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.products-on {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.products-box > div > :nth-child(4) {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 70px;
+    padding: 20px;
+    margin: auto;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 0 0 5px 5px;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.products-box div > :nth-child(4):hover {
+    background: rgba(255, 255, 255, 0.5);
+    height: 120px;
+}
+
+.products-box > div > :nth-child(4) a{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.products-box > div > :nth-child(4) p{
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    margin: 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 25px;
+    color: #0000;
+    transition: all 1s;
+}
+
+.products-box > div > :nth-child(4):hover > p {
+    transition: all 1s;
+    color: #000000;
+}
+
+.products-box > div > a{
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.products-box > div > a:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.products-pagination {
+    width: 320px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.products-pagination div{
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+}
+
+.products-pagination button{
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    border: none;
+    background: #E6E5E1;
+    border-radius: 5px;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.products-pagination button:hover{
+    background: #F50037;
+    color: #FFFFFF;
+}
+
+.products-pagination > div >.pagination-activ{
+    background: #F50037;
+    color: #FFFFFF;
+}
+
+.products-pagination > .pagination-arrow {
+    background: #FD9B2B;
+    color: #FFFFFF;
+}
+
+.ban-pagination {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* katalog */
+
+/* text */
+
+.content-text {
+    width: 100%;
+    margin: auto auto 40px auto;
+    padding: 0 10px;
+}
+
+.content-text b{
+    display: inline-block;
+    padding: 0 0 15px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.content-text p{
+    padding: 0 0 20px 0;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+/* text */
+
+/* COMMON */
+
 /* --- HEADER INDEX --- */
 
 .header-box-index {
@@ -142,11 +859,12 @@ html, body {
 }
 
 .header-index {
+    position: relative;
+    max-width: 1080px;
+    height: 100px;
+    margin: auto;
     display: flex;
     flex-direction: row;
-    max-width: 1080px;
-    margin: auto;
-    height: 100px;
 }
 
 .header-menu-index {
@@ -171,95 +889,313 @@ html, body {
     background: #FEAB2F url(../images/icons/menuclose.png) no-repeat center;
 }
 
-.header-menu-index span{
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    margin: 5px 25px;
-    font-family: "Fontfabric-MullerRegular";
-    text-align: center;
-    font-size: 14px;
-    line-height: 24px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #FFFFFF;
+.header-info-index {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
 }
 
-.menu-user-index {
-    display: none;
-    width: 50px;
-    height: 49px;
-    margin: 1px 0 0 0;
-    background: #FFFFFF url(../images/icons/user.png) no-repeat center;
-}
-
-.menu-basket-index {
-    display: none;
-    width: 50px;
-    height: 49px;
-    margin: 1px 0 0 0;
-    background: #FFFFFF url(../images/icons/basket.png) no-repeat center;
-}
-
-.menu-favorites-index {
-    display: none;
-    width: 50px;
-    height: 49px;
-    margin: 1px 0 0 0;
-    background: #FFFFFF url(../images/icons/favorites.png) no-repeat center;
-}
-
-.header-logo-index, .header-text-index {
+.header-info-index div{
     margin: auto;
 }
 
-.header-text-index p {
-    font-family: "Fontfabric-MullerRegular";
+.header-info-index p {
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
     color: #000000;
 }
 
-.header-user {
-    margin: auto 0 auto auto;
+.header-user-index {
+    position: absolute;
+    top: 25px;
+    right: 10px;
     display: flex;
     flex-direction: row;
 }
 
-.header-user a{
-    margin: 0 10px;
+.header-user-index > div:nth-child(1), .header-user-index > div:nth-child(2), .header-user-index > div:nth-child(3) {
+    width: 50px;
+    height: 50px;
+}
+
+.header-user-index > div:nth-child(1) {
+    position :relative;
+    animation: mymove 3s infinite;
+    -webkit-animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+    0%   {left: 0;}
+    50%  {left: 100px;}
+    100% {left: -1px;}
+}
+
+@-webkit-keyframes mymove {
+    0%   {left: 0;}
+    50%  {left: -5px;}
+    100% {left: -1px;}
+}
+
+.header-user-index > div:nth-child(3) {
+    position :relative;
+    animation: favorites 3s infinite;
+    -webkit-animation: favorites 3s infinite;
+}
+
+@keyframes favorites {
+    0%   {top: 0;}
+    25%  {top: -5px;}
+    50%  {top: 0;}
+    75%  {top: -5px;}
+    100% {top: 0;}
+}
+
+@-webkit-keyframes favorites {
+    0%   {top: 0;}
+    25%  {top: -5px;}
+    50%  {top: 5px;}
+    100% {top: 0;}
+}
+
+.header-user-index > div:nth-child(1) div{
+    opacity: 0;
+    position: absolute;
+    width: 100px;
     height: 25px;
-    font-family: "Fontfabric-MullerRegular";
+    top: -20px;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    animation: mytext 5s infinite;
+    -webkit-animation: mytext 5s infinite;
+}
+
+.header-user-index > div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    color: #000000;
+}
+
+@keyframes mytext {
+    0%   {opacity: 0;}
+    25%  {opacity: 1;}
+}
+
+@-webkit-keyframes mytext {
+    0%   {opacity: 0;}
+    25%  {opacity: 1;}
+}
+
+.header-user-index div:nth-child(4) {
+    width: auto;
+    height: 50px;
+}
+
+.header-user-index > div:nth-child(1) a, .header-user-index > div:nth-child(2) a, .header-user-index > div:nth-child(3) a{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: 12.5px;
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
     text-decoration: none;
     color: #000000;
 }
 
-.header-user a:hover{
+.header-user-index > div:nth-child(4) > button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: auto;
+    height: 50px;
+    padding: 12.5px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.header-user-index > div:nth-child(4) > .button-user{
+    background: #FFFFFF;
+}
+
+.header-user-index > div:nth-child(4) > button:hover span{
     text-decoration: underline;
 }
 
-.header-user span{
+.header-user-index > div:nth-child(4) img{
+    vertical-align: text-bottom;
+}
+
+.header-user-index > div:nth-child(2) span{
     position: absolute;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
-    margin: -10px -10px;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
     border-radius: 10px;
     text-decoration: none;
     color: #FFFFFF;
-}
-
-.basket {
     background: #FF0000;
 }
 
-.favorites {
-    background: #FEAB2F;
+.header-user-index > div:nth-child(4) span{
+    display: inline-block;
+    margin: auto auto auto 5px;
+}
+
+.header-user-index > div:nth-child(4) > .authorization {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 270px;
+    height: 200px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.header-user-index > div:nth-child(4) > .authorization p{
+    margin: auto auto 10px auto;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div {
+    width: 100%;
+    height: 100%;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > input{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0 0 5px 0;
+    border: none;
+    border-bottom: 1px solid #C1C1C1;
+    background: #FFFFFF;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #989898;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > button{
+    float: left;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    margin: auto 0;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > a{
+    float: right;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 50px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > a:hover{
+    text-decoration: underline;
+}
+
+.header-user-index > div:nth-child(4) > .exit {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 270px;
+    height: 100px;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.header-user-index > div:nth-child(4) > .exit p{
+    margin: auto auto 10px auto;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.header-user-index > div:nth-child(4) > .exit div {
+    width: 100%;
+    height: 100%;
+}
+
+.header-user-index > div:nth-child(4) > .exit div > button{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    margin: auto;
+    padding: 9px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user-index > div:nth-child(4) > .exit div > button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
+}
+
+.header-user-index > div:nth-child(4) > .exit div > a{
+    display: inline-block;
+    width: 180px;
+    height: 30px;
+    margin: auto auto 10px auto;
+    padding: 9px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user-index > div:nth-child(4) > .exit div > a:hover{
+    margin: 2px auto 8px auto;
+    background-position: 0 0;
 }
 
 /* --- HEADER INDEX --- */
@@ -269,46 +1205,11 @@ html, body {
 .header-box {
     width: 100%;
     margin: 0 auto;
-    background: #FFFFFF url(../images/fon-menu.png) no-repeat center;
-}
-
-.slick-arrow{
-    position: absolute;
-    top:241px;
-    background-image: url(../images/icons/arrowr.png);
-    background-repeat: no-repeat;
-    width: 60px;
-    height: 30px;
-    border: 0px;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-}
-
-.slick-prev{
-    z-index:999999;
-     -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-    right: 120px;
-}
-
-.count-slider{
-    position: absolute;
-    top:250px;
-    right:62px;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 13px;
-    width: 60px;
-    text-align: center;
-}
-
-.slick-next{
-    right: 5px;
+    background: #FFFFFF url(../images/fon-menu.png) center;
 }
 
 .header {
+    position: relative;
     display: flex;
     flex-direction: row;
     max-width: 1080px;
@@ -316,201 +1217,348 @@ html, body {
     height: 100px;
 }
 
-.header-menu-left {
+.header-menu {
     display: flex;
     flex-direction: column;
 }
 
-.header-menu-right {
-    display: none;
-    flex-direction: column;
+.header-info {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
 }
 
-.header-menu-right span{
+.header-info div{
+    margin: auto;
+}
+
+.header-info p {
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.header-user {
     position: absolute;
+    top: 25px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.header-user > div:nth-child(1), .header-user > div:nth-child(2), .header-user > div:nth-child(3) {
+    width: 50px;
+    height: 50px;
+}
+
+.header-user > div:nth-child(1) {
+    position :relative;
+    animation: mymove 3s infinite;
+    -webkit-animation: mymove 3s infinite;
+    -o-animation: mymove 3s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes mymove {
+    0%   {left: 0px;}
+    25%  {left: -5px;}
+    50%  {left: 5px}
+}
+
+@-webkit-keyframes mymove {
+    0%   {left: 0px;}
+    25%  {left: -5px;}
+    50%  {left: 5px}
+}
+
+.header-user > div:nth-child(3) {
+    position :relative;
+    animation: favorites 3s infinite;
+    -webkit-animation: favorites 3s infinite;
+}
+
+@keyframes favorites {
+    0%   {top: 0;}
+    25%  {top: -5px;}
+    50%  {top: 0;}
+    75%  {top: -5px;}
+    100% {top: 0;}
+}
+
+@-webkit-keyframes favorites {
+    0%   {top: 0;}
+    25%  {top: -5px;}
+    50%  {top: 5px;}
+    100% {top: 0;}
+}
+
+.header-user > div:nth-child(1) div{
+    opacity: 0;
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    top: -20px;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    animation: mytext 5s infinite;
+    -webkit-animation: mytext 5s infinite;
+}
+
+.header-user > div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    color: #000000;
+}
+
+@keyframes mytext {
+    0%   {opacity: 0;}
+    25%  {opacity: 1;}
+}
+
+@-webkit-keyframes mytext {
+    0%   {opacity: 0;}
+    25%  {opacity: 1;}
+}
+
+.header-user div:nth-child(4) {
+    width: auto;
+    height: 50px;
+}
+
+.header-user > div:nth-child(1) a, .header-user > div:nth-child(2) a, .header-user > div:nth-child(3) a{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: 12.5px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.header-user > div:nth-child(4) > button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: auto;
+    height: 50px;
+    padding: 12.5px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.header-user > div:nth-child(4) > .button-authorization{
+    background: #FFFFFF;
+}
+
+.header-user > div:nth-child(4) > button:hover span{
+    text-decoration: underline;
+}
+
+.header-user > div:nth-child(4) img{
+    vertical-align: text-bottom;
+}
+
+.header-user > div:nth-child(2) span{
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
-    margin: 5px 25px;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
     border-radius: 10px;
     text-decoration: none;
     color: #FFFFFF;
+    background: #FF0000;
 }
 
-.menu-user {
+.header-user > div:nth-child(3) span{
+    display : none !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #FEAB2F;
+}
+
+.header-user > div:nth-child(4) span{
+    display: inline-block;
+    margin: auto auto auto 5px;
+}
+
+.header-user > div:nth-child(4) > .authorization {
     display: none;
-    width: 50px;
-    height: 50px;
-    background: #FFFFFF url(../images/icons/user.png) no-repeat center;
+    position: absolute;
+    right: 0;
+    width: 270px;
+    height: 200px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
 }
 
-.menu-basket {
-    display: block;
-    width: 50px;
-    height: 50px;
-    background: #FFFFFF url(../images/icons/basket.png) no-repeat center;
-}
-
-.menu-favorites {
-    display: block;
-    width: 50px;
-    height: 50px;
-    background: #FFFFFF url(../images/icons/favorites.png) no-repeat center;
-}
-
-.header-logo, .header-text {
-    margin: auto;
-}
-
-.header-text p {
-    font-family: "Fontfabric-MullerRegular";
+.header-user > div:nth-child(4) > .authorization p{
+    margin: auto auto 10px auto;
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    line-height: 30px;
     color: #000000;
+}
+
+.header-user > div:nth-child(4) > .authorization div {
+    width: 100%;
+    height: 100%;
+}
+
+.header-user > div:nth-child(4) > .authorization div > input{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0 0 5px 0;
+    border: none;
+    border-bottom: 1px solid #C1C1C1;
+    background: #FFFFFF;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #989898;
+}
+
+.header-user > div:nth-child(4) > .authorization div > button{
+    float: left;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    margin: auto 0;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user > div:nth-child(4) > .authorization div > button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
+}
+
+.header-user > div:nth-child(4) > .authorization div > a{
+    float: right;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 50px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-user > div:nth-child(4) > .authorization div > a:hover{
+    text-decoration: underline;
+}
+
+.header-user > div:nth-child(4) > .exit {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 270px;
+    height: 100px;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.header-user > div:nth-child(4) > .exit p{
+    margin: auto auto 10px auto;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.header-user > div:nth-child(4) > .exit div {
+    width: 100%;
+    height: 100%;
+}
+
+.header-user > div:nth-child(4) > .exit div > button{
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    margin: auto;
+    padding: 9px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user > div:nth-child(4) > .exit div > button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
+}
+
+.header-user > div:nth-child(4) > .exit div > a{
+    display: inline-block;
+    width: 180px;
+    height: 30px;
+    margin: auto auto 10px auto;
+    padding: 9px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.header-user > div:nth-child(4) > .exit div > a:hover{
+    margin: 2px auto 8px auto;
+    background-position: 0 0;
 }
 
 /* --- HEADER --- */
-
-/* --- CONTENT --- */
-
-.content {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.content h1{
-    width: 100%;
-    margin: 40px auto;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 40px;
-    color: #333333;
-}
-
-.pagination {
-    width: 100%;
-}
-
-.pagination p{
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
-    padding: 20px 10px;
-    color: #000000;    
-}
-
-.pagination a{
-    text-decoration: none;
-    color: #000000;    
-}
-
-.pagination a:hover{
-    text-decoration: underline;  
-}
-
-.pagination-liner {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left, #F71E02, #FAAA01)
-}
-
-.slider {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-.slider .slide div{
-    background-repeat: no-repeat; 
-    background-position: center; 
-    background-size: cover; 
-}
-
-.content-new {
-    width: 1080px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.new-text {
-    width: 400px;
-}
-
-.content-text {
-    float: left;
-    margin: 20px;
-}
-
-.category {
-    width: 100%;
-    margin: 0 0 20px 0;
-}
-
-.category p {
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    color: #969696;
-}
-
-.content-title {
-    width: 100%;
-    margin: 0 0 20px -4px;
-}
-
-.content-title h1 {
-    float: left;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 50px;
-    color: #000000;
-}
-
-.content-title button {
-    float: left;
-    cursor: pointer;
-    width: 150px;
-    height: 50px;
-    margin: 0 0 0 40px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to top, #FCA404, #FFC904);
-    background: linear-gradient(to top, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 20px;
-    color: #FFFFFF;
-}
-
-.text {
-    width: 100%;
-}
-
-.text p {
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
-    line-height: 35px;
-    color: #000000;
-}
-
-.new-slider{
-    position: absolute !important;
-    left: 50% !important;
-    top: 0 !important;
-    width: 50vw !important;
-}
-
-.new-slider .slick-list{
-    width: calc(50vw + 20%);
-}
-
-/* --- CONTENT --- */
 
 /* --- FOOTER --- */
 
 .footer {
     width: 100%;
     background: #282828;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .footer-top {
@@ -518,7 +1566,7 @@ html, body {
     flex-direction: row;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 21px 0;
 }
 
 .footer-logo, .footer-text, .footer-menu, .footer-contacts {
@@ -526,7 +1574,7 @@ html, body {
 }
 
 .footer-text p {
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
     color: #FFFFFF;
@@ -545,7 +1593,7 @@ html, body {
     float: left;
     width: 100%;
     padding: 10px 0;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
 }
@@ -571,39 +1619,33 @@ html, body {
     color: #BB0C37;
 }
 
-.footer-top-networks {
+.footer-top-networks{
+    width: auto;
+    left: 0;
+    bottom: 15px;
     display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
-}
-
-.footer-bot-networks {
-    display: none;
     flex-direction: row;
-    width: 33%;
-    margin: auto;
+    justify-content: flex-end;
 }
 
 .footer-top-networks button, .footer-bot-networks button{
     width: 25px;
     height: 25px;
-    margin: 0 5px;
+    margin: 0 0 0 10px;
     cursor: pointer;
     border: none;
     background: none;
 }
 
 .footer-bot {
-    display: flex;
-    flex-direction: row;
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
     background: #3D3938;
 }
 
 .footer-bot p {
     text-align: center;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     color: #FFFFFF;
     margin: auto;
@@ -613,8 +1655,630 @@ html, body {
 
 
 
-
 /* PAGE */
+
+/* INDEX */
+
+.slider {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.slider .slide div{
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover; 
+}
+
+.slick-arrow{
+    position: absolute;
+    top: 400px;
+    background-image: url(../images/icons/arrowr.png);
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 30px;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.slick-prev{
+    z-index: 100;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    right: 120px;
+}
+
+.count-slider{
+    position: absolute;
+    top:410px;
+    right:62px;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 13px;
+    width: 60px;
+    text-align: center;
+}
+
+.slick-next{
+    right: 5px;
+}
+
+.slide-text {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 200px 0 0 0; 
+}
+
+.slide-text b{
+    display: inline-block;
+    padding: 0 0 20px 0;
+    font-family: "Fontfabric-MullerBlack";
+    font-weight: bold;
+    font-size: 80px;
+    color: #FFFFFF;
+}
+
+.slide-text p{
+    padding: 0 0 20px 0;
+    font-family: "Fontfabric-MullerBlack";
+    font-weight: bold;
+    font-size: 60px;
+    color: #FFFFFF;
+}
+
+.slide-text a{
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 0;
+    padding: 17px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.slide-text a:hover{
+    margin: 2px 0 -2px 0;   
+    background-position: 0 0;
+} 
+
+.content-new {
+    max-width: 1080px;
+    min-height: 560px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.new-text {
+    max-width: 450px;
+    margin: auto auto auto 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-text div:nth-child(1) {
+    width: 100%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.new-text div:nth-child(1) p{
+    width: auto;
+    margin: 0;
+    padding: 5px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 40px;
+    color: #333333;
+}
+
+.new-text div:nth-child(1) a{
+    width: 200px;
+    height: 50px;
+    margin: auto 0;
+    padding: 19px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    text-align: center;
+    text-decoration: none;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.new-text div:nth-child(1) a:hover{
+    margin: 2px 0 -2px 0;
+    background-position: 0 0;
+}
+
+.new-text div:nth-child(2) {
+    width: 100%;
+}
+
+.new-text div:nth-child(2) p {
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    line-height: 35px;
+    color: #000000;
+}
+
+.new-slider-box {
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+}
+
+.new-slider {
+    position: absolute !important;
+    width: 50vw !important;
+    margin: 25px 0 0 0;
+}
+
+.new-slider .slick-list{
+    width: calc(50vw + 20%);
+}
+
+.new-box {
+    width: 100%;
+    margin: 0 auto 25px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.new-box > div {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: 15px 20px 0 0;
+    border-radius: 5px;
+}
+
+.new-box > div > :nth-child(1){
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.new-box > div > :nth-child(1) img{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    transition: all 1s;
+}
+
+.new-box > div > :nth-child(1) img:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.new-box > div > :nth-child(2) {
+    position: absolute;
+    z-index: 5;
+    width: 130px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    padding: 0 5px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-left: calc(100% - 300px);
+    border-radius: 20px;
+}
+
+.new-box > div > :nth-child(2) p{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.showPrice .new-box > div > :nth-child(2) p > span:nth-child(2), .new-box > div > :nth-child(2) p > span:nth-child(1){
+    display: none;
+}
+
+.showPrice .new-box > div > :nth-child(2) p > span:nth-child(1), .new-box > div > :nth-child(2) p > span:nth-child(2){
+    display:inline-block;
+}
+
+.new-box > div > :nth-child(3) {
+    position: absolute;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border-radius: 20px;
+    border: 10px;
+    margin-right: calc(100% - 300px);
+}
+
+.new-off {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.new-on {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.new-box > div > :nth-child(4) {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 70px;
+    padding: 20px;
+    margin: auto;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 0 0 5px 5px;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.new-box div > :nth-child(4):hover {
+    background: rgba(255, 255, 255, 0.5);
+    height: 120px;
+}
+
+.new-box > div > :nth-child(4) a{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.new-box > div > :nth-child(4) p{
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    margin: 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 25px;
+    color: #0000;
+    transition: all 1s;
+}
+
+.new-box > div > :nth-child(4):hover > p {
+    transition: all 1s;
+    color: #000000;
+}
+
+.new-box > div > a{
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    padding: 2px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.new-box > div > a > img{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+.new-box > div > a:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.new-button {
+    width: 100%;
+    text-align: center;
+    margin: auto auto 10px auto;
+}
+
+.new-button button{
+    cursor: pointer;
+    border: none;
+    background: #D8DEE1;
+    width: 50px;
+    height: 25px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 22px;
+    color: #4E525C;
+}
+
+.new-button button:hover{
+    background: #FAB932;
+    color: #FFFFFF;
+}
+
+.content-cooperation {
+    width: 100%;
+    height: 450px;
+    margin: auto auto 50px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-video img{
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 450px;
+    margin: auto;
+    object-fit: cover;
+}
+
+.img-video video{
+    position: absolute;
+    width: 100%;
+    min-height: 450px;
+    top: -30%;
+    -moz-filter: brightness(0.5);
+    -ms-filter: brightness(0.5);
+    -webkit-filter: brightness(0.5); 
+    -o-filter: brightness(0.5);
+    filter: brightness(0.5);
+}
+
+.text-cooperation {
+    position: relative;
+    max-width: 1080px;
+    height: 450px;
+    margin: 0 auto;
+}
+
+.text-cooperation > div{
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    z-index: 10;
+    max-width: 600px;
+    height: 450px;
+    padding: 40px 0 40px 50px;
+    margin: auto 0 auto auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-cooperation div > div:nth-child(1) {
+    width: 260px;
+}
+
+.text-cooperation div:nth-child(1) > p{
+    width: 100%;
+    margin: auto;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 40px;
+    line-height: 50px;
+    color: #FFFFFF;
+}
+
+.text-cooperation div:nth-child(1) > p:before{
+    content: "▬";
+    position: absolute;
+    left: 0;
+}
+
+.text-cooperation div > div:nth-child(2) {
+    margin: 50px auto;
+}
+
+.text-cooperation div:nth-child(2) p{
+    width: 100%;
+    margin: auto;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 18px;
+    line-height: 40px;
+    color: #FFFFFF;
+}
+
+.text-cooperation a{
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: auto 0;
+    padding: 17px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.text-cooperation a img{
+    width: 25px;
+    vertical-align: text-bottom;
+}
+
+.text-cooperation a:hover{
+    margin: 2px 0 -2px 0;
+    background-position: 0 0;
+}
+
+.content-production {
+    width: 100%;
+    margin: auto;
+}
+
+.production-box {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.production-box > div:nth-child(1) {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.production-box div:nth-child(1) > div:nth-child(1) {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.production-box div:nth-child(1) > div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #000000;
+    margin: auto 0 10px auto;
+}
+
+.production-box div:nth-child(1) > div:nth-child(1) b{
+    font-family: "Fontfabric-MullerBold";
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #000000;
+}
+
+.production-box div:nth-child(1) > div:nth-child(2) {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.production-box div:nth-child(1) > div:nth-child(2) a{
+    display: block;
+    width: 200px;
+    height: 60px;
+    margin: 20px 0 0 auto;
+    padding: 18px 0;
+    border: 5px solid #D8DEE1;
+    border-radius: 50px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.production-box div:nth-child(1) > div:nth-child(2) a:hover{
+    margin: 22px 0 -2px auto;
+    background-position: 0 0;
+}
+
+.production-box > div:nth-child(2) {
+    width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.production-icon {
+    width: 150px;
+    margin: 0 auto 20px auto;
+}
+
+.production-icon img{
+    display: block;
+    margin: auto auto 20px auto;
+}
+
+.production-icon p{
+    width: 100%;
+    margin: auto;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.content-reg {
+    width: 100%;
+    margin: auto;
+}
+
+.reg-box {
+    max-width: 1080px;
+    margin: 20px auto;
+}
+
+/* INDEX */
 
 /* REGISTRATION */
 
@@ -624,9 +2288,10 @@ html, body {
 }
 
 .registration-box {
+    width: 100%;
+    margin: 0 10px 50px 10px;
     display: flex;
     flex-direction: row;
-    margin: 0 10px 50px 10px;
 }
 
 .registration-form {
@@ -643,7 +2308,7 @@ html, body {
 
 .registration-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;  
 }
@@ -655,24 +2320,32 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #989898;  
 }
 
+.input-error {
+    border: 1px solid red !important;
+}
+
+.input-error-bottom{
+    border-bottom: 1px solid red !important;
+}
+
 .registration-form button{
     cursor: pointer;
-    width: 200px;
+    width: 250px;
     height: 50px;
     margin: 20px 0 0 0;
+    padding: 19px 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
     color: #FFFFFF;
-    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
@@ -680,18 +2353,17 @@ html, body {
 
 .registration-form button:hover{
     margin: 22px 0 -2px 0;   
-    background-position: 0 50%;
     background-position: 0 0;
 } 
 
-.img {
+.registration-img {
     width: 39%;
     border-radius: 5px;
     margin: 0 0 0 1%;
-    background: #F0F0F0 url(../images/registration/reg.png) no-repeat center;
+    background: #F0F0F0 url(../images/icons/reg.png) no-repeat center;
 }
 
-.img p{
+.registration-img p{
     margin: 100px 20px;
     padding: 10px;
     font-family: "Fontfabric-MullerBold";
@@ -765,7 +2437,7 @@ html, body {
 }
 
 .info p{
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     line-height: 30px;
     color: #000000;
@@ -778,11 +2450,13 @@ html, body {
     width: 200px;
     height: 50px;
     margin: 0 auto;
+    padding: 19px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
     color: #FFFFFF;
 }
 
@@ -837,7 +2511,7 @@ html, body {
 
 .contacts-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;  
 }
@@ -849,7 +2523,7 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #989898;  
 }
@@ -861,7 +2535,7 @@ html, body {
     padding: 10px 20px;
     background: #FFFFFF;
     border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #989898;
     resize: none;
@@ -872,14 +2546,14 @@ html, body {
     width: 200px;
     height: 50px;
     margin: 20px auto 0 auto;
+    padding: 19px 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
     color: #FFFFFF;
-    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
@@ -887,7 +2561,6 @@ html, body {
 
 .contacts-form button:hover{
     margin: 22px auto -2px auto;
-    background-position: 0 50%;
     background-position: 0 0;
 }
 
@@ -900,22 +2573,9 @@ html, body {
     margin: 0 auto;
 }
 
-.cooperation-text {
-    width: 100%;
-    margin: 0 0 40px 0;
-    padding: 0 10px;
-}
-
-.cooperation-text p{
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
-    color: #000000;
-}
-
 .cooperation-box {
     max-width: 1080px;
-    margin: 0 0 50px 0;
+    margin: auto auto 50px auto;
 }
 
 .cooperation-box p{
@@ -964,7 +2624,7 @@ html, body {
 
 .cooperation-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;  
 }
@@ -976,7 +2636,7 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #989898;  
 }
@@ -988,7 +2648,7 @@ html, body {
     padding: 10px 20px;
     background: #FFFFFF;
     border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #989898;
     resize: none;
@@ -999,12 +2659,13 @@ html, body {
     width: 200px;
     height: 50px;
     margin: 20px auto 0 auto;
+    padding: 19px 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1013,8 +2674,27 @@ html, body {
 
 .cooperation-form button:hover{
     margin: 22px auto -2px auto;
-    background-position: 0 50%;
     background-position: 0 0;
+}
+
+.cooperation-doc {
+    max-width: 320px;
+    margin: auto auto 50px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.cooperation-doc a{
+    width: 150px;
+    height: 200px;
+    margin: auto;
+    border: 5px solid #D8DEE1;
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
 }
 
 /* COOPERATION */
@@ -1027,21 +2707,16 @@ html, body {
 }
 
 .delivery-box {
-<<<<<<< HEAD
-    margin: auto 10px 50px 10px;
-=======
-    width: 100%;
-    margin: 0 0 50px 0;
+    width: 99%;
     margin: auto auto 50px auto;
->>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
     flex-direction: column;
     border-radius: 5px;
     border: 1px solid #E4E3DF;
 }
 
-.delivery-box div{
+.delivery-box > div{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -1051,94 +2726,65 @@ html, body {
     background: #E4E3DF;
 }
 
-.delivery-box > div:nth-child(even){
-    background: #FFFFFF;
-}
-
 .delivery-box > div:nth-child(odd){
-    background: #F6F6F5;
+    background: #F7F7F5;
 }
 
 .delivery-box p{
     width: 100%;
     height: 50px;
-    background: #E4E3DF;
     text-align: center;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 50px;
     color: #000000;
 }
 
-.left-box {
-.delivery-box .left-box {
+.delivery-box > div > div:nth-child(1) {
     width: 70%;
     display: flex;
     flex-direction: column;
     border-right: 1px solid #E4E3DF;
 }
 
-.right-box {
-.delivery-box .right-box {
+.delivery-box > div > div:nth-child(1) img{
+    margin: auto;
+}
+
+.delivery-box > div > div:nth-child(2) {
     width: 30%;
     min-width: 100px;
     display: flex;
     flex-direction: column;
 }
 
-.right-box a{
+.delivery-box > div > div:nth-child(2) a{
     display: block;
-    width: 100px;
     width: 60%;
     height: 30px;
     margin: 10px auto;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FEC034, #FD8F29);
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     text-decoration: none;
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 33px;
     color: #FFFFFF;
     background-size: auto 200%;
     background-position: 0 50%;
     transition: background-position 1s;
 }
 
-.right-box a:hover{
+.delivery-box > div > div:nth-child(2) a:hover{
     margin: 11px auto -1px auto;
     background-position: 0 0;
 }
 
-.fon-a {
-    width: 100%;
-    height: 50px;
-    background: #FFFFFF;
-    text-align: center;
-}
-
-.fon-b {
-    width: 100%;
-    height: 50px;
-    background: #F6F6F5;
-    text-align: center;
-.right-box a > img{
+.delivery-box > div > div:nth-child(2) a > img{
     display: none;
     padding: 5px 0;
     margin: auto;
-}
-
-.delivery-text {
-    width: 100%;
-    margin: 0 0 40px 0;
-    padding: 0 10px;
-}
-
-.delivery-text p{
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
-    color: #000000;
 }
 
 /* DELIVERY */
@@ -1190,7 +2836,7 @@ html, body {
 }
 
 .production-left a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
     background-position-x: 10px;
     background-position-y: 10px;
     transition: all 1s;
@@ -1225,7 +2871,7 @@ html, body {
 }
 
 .production-right a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
     background-position-x: 10px;
     background-position-y: 10px;
     transition: all 1s;
@@ -1259,7 +2905,7 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
     background-position-x: 10px;
     background-position-y: 10px;
 }
@@ -1276,7 +2922,7 @@ html, body {
     background: #D8DEE1;
     width: 50px;
     margin: 0 5px;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 35px;
     color: #4E525C;
 }
@@ -1301,17 +2947,167 @@ html, body {
     border: 5px solid #D8DEE1;
 }
 
-.production-text {
-    width: 100%;
-    margin: 0 0 40px 0;
-    padding: 0 10px;
+/* fancybox */
+
+.fancybox-lock .fancybox-overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
 }
 
-.production-text p{
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 16px;
-    line-height: 30px;
-    color: #000000;
+.fancybox-close {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.fancybox-close {
+    background-image: url(../images/icons/close.png) !important;
+    background-size: 35px 35px !important;
+}
+
+/* fancybox */
+
+/* PRODUCTION */
+
+/* INFORMATION */
+
+.information {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.information-img {
+    width: 100%;
+    margin: auto auto 50px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.information-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.information-left {
+    width: 50%;
+    display: flex;
+    overflow: hidden;
+}
+
+.information-left a{
+    width: 100%;
+    height: 500px;
+    padding: 5px;
+    position: relative;
+}
+
+.information-left a > div{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+.information-left a > div:hover{
+    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    transition: all 1s;
+}
+
+.information-right {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.information-right a{
+    width: 50%;
+    height: 250px;
+    padding: 5px;
+    position: relative;
+}
+
+.information-right a > div{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+.information-right a > div:hover{
+    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    transition: all 1s;
+}
+
+.information-slider-box {
+    display: none !important;
+}
+
+.information-slider {
+    width: 100%;
+    margin: auto auto 20px auto;
+}
+
+.information-slider .slide a, .slide img{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.information-slider .slick-slide {
+    height: 500px !important;
+}
+
+.information-slider-box .information-slider .slick-slide a > div{
+    position: sticky;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0) url(../images/production/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+}
+
+.information-button {
+    width: 100%;
+    text-align: center;
+    margin: auto auto 20px auto;
+}
+
+.information-button button{
+    cursor: pointer;
+    border: none;
+    background: #D8DEE1;
+    width: 50px;
+    margin: 0 5px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 35px;
+    color: #4E525C;
+}
+
+.information-button button:hover{
+    background: #FAB932;
+    color: #FFFFFF;
 }
 
 /* fancybox */
@@ -1326,13 +3122,13 @@ html, body {
 }
 
 .fancybox-close {
-    background-image: url(../images/production/close.png) !important;
+    background-image: url(../images/icons/close.png) !important;
     background-size: 35px 35px !important;
 }
 
 /* fancybox */
 
-/* PRODUCTION */
+/* INFORMATION */
 
 /* CABINET */
 
@@ -1341,18 +3137,9 @@ html, body {
     margin: 0 auto;
 }
 
-.history, .data {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    margin: auto 10px 50px 10px;
-=======
-=======
->>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
-    max-width: 1080px;
-    margin: 0 auto;
-    width: 100%;
+.history, .data, .bonus {
+    width: 99%;
     margin: auto auto 50px auto;
->>>>>>> 623c0d7aa387f3994c79e110f880298cf70cb695
 }
 
 .history p{
@@ -1365,9 +3152,7 @@ html, body {
 }
 
 .history-box {
-    max-width: 100%;
     width: 100%;
-    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1377,12 +3162,14 @@ html, body {
 .history-box > div{
     width: 300px;
     height: auto;
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 1px solid #E4E3DF;
     overflow: hidden;
+    margin-left: calc(((100% / 3) - 300px) / 2);
+    margin-right: calc(((100% / 3) - 300px) / 2);
 }
 
 .history-box > div > div{
@@ -1393,8 +3180,9 @@ html, body {
 }
 
 .history-box div > div {
-    margin: auto;
+    position: relative;
     width: 100%;
+    margin: auto;
     padding: 5px;
 }
 
@@ -1402,7 +3190,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;
 }
@@ -1413,7 +3201,22 @@ html, body {
 }
 
 .history-box > div > div > .status > p{
-    font-size: 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.history-box > div > div > .status {
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.status-blue {
+    border: 2px solid #0035D2;
+}
+
+.status-green {
+    border: 2px solid #00B90E;
 }
 
 .status-blue p{
@@ -1438,7 +3241,7 @@ html, body {
     width: 100%;
     margin: 10px auto;
     padding: 0;
-    background: #BBBBBB;
+    border: 1px solid #BBBBBB;
     border-radius: 10px;
 }
 
@@ -1451,7 +3254,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;
 }
@@ -1461,14 +3264,15 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
     font-size: 16px;
     line-height: 20px;
-    color: #F30330;
+    color: #682333;;
 }
 
 .history-box > div > .hidden a:hover{
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .history-box > div > div > button{
@@ -1482,6 +3286,10 @@ html, body {
     text-align: right;
     margin: auto 0 auto auto;
     z-index: 1;
+}
+
+.history-box > div > div > button img{
+    width: 20px;
 }
 
 .history-box > div > div:nth-child(even){
@@ -1510,7 +3318,7 @@ html, body {
     border: 2px solid #D7DFE5;
     border-radius: 25px;
     background: #D7DFE5;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #000000;
 }
@@ -1534,7 +3342,6 @@ html, body {
 }
 
 .data-box {
-    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -1556,23 +3363,60 @@ html, body {
     color: #333333;
 }
 
-.fiz-form, .jur-form {
-    max-width: 1080px;
+.cabinet-box {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 199px;
+    height: 30px;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: left;
+    font-size: 25px;
+    color: #333333;
+}
+
+.cabinet-box img{
+    width: 15px;
+}
+
+.fiz-form {
     width: 100%;
+    height: 0;
     margin: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.fiz-form div, .jur-form div{
+.jur-form {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.address-form {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.fiz-form div, .jur-form div, .address-form div{
     width: 300px;
     margin: 5px auto;
 }
 
 .data-box label{
     width: 100%;
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;  
 }
@@ -1584,12 +3428,11 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerRegular";
+    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #989898;  
+    color: #000000;  
 }
 
-.data-box button{
 .data-button {
     width: 100%;
     margin: auto;
@@ -1601,34 +3444,1404 @@ html, body {
     width: 200px;
     height: 50px;
     margin: 20px auto 0 auto;
+    padding: 19px 0;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #FF3D47);
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerRegular";
-    font-size: 18px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
     color: #FFFFFF;
-    background-size: auto 200%;
     background-size: auto 150%;
     background-position: 0 100%;
     transition: background-position 1s;
 }
 
-.data-box button:hover{
 .data-button button:hover{
     margin: 22px auto -2px auto;
-    background-position: 0 50%;
     background-position: 0 0;
 }
 
-.change {
-    cursor: pointer;
-    border: 1px solid #f74a45;
-    border-radius: 10px;
-    background: none;
-    width: 27px;
-    height: 27px;
-    padding: 5px;
+.bonus > p:nth-child(1){
+    width: 100%;
+    margin: auto auto 20px auto;
+    padding: 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.bonus > p:nth-child(2), .bonus > p:nth-child(3){
+    margin: auto auto 20px auto;
+    padding: 0 12px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.bonus > p:nth-child(2) span{
+    font-size: 20px;
+    color: #F9C33C;
+}
+
+.bonus > p:nth-child(3) span{
+    font-size: 20px;
+    color: #FF0016;
 }
 
 /* CABINET */
+
+/* COLLECTIONS */
+
+.collections {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.collections-box {
+    width: 100%;
+    margin: 0 auto 50px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.collections-box > div {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 5px;
+    margin-left: calc(((100% / 3) - 300px) / 2);
+    margin-right: calc(((100% / 3) - 300px) / 2);
+}
+
+.collections-box > div > :nth-child(1){
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.collections-box > div > :nth-child(1) img{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    transition: all 1s;
+}
+
+.collections-box > div > :nth-child(1) img:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.collections-box > div > :nth-child(2) {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    margin: auto;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 5px 5px;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.collections-box > div > :nth-child(2) a{
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.collections-box > div > button{
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.collections-box > div > button:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.collections-box > div > a{
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.collections-box > div > a > img{
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+.collections-box > div > a:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+/* COLLECTIONS */
+
+
+
+/* PRODUCT */
+
+.product {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.product-box {
+    width: 99%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-box > div:nth-child(1) {
+    width: 50%;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-box > div:nth-child(1) img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-box > div:nth-child(1) > div:nth-child(1) {
+    width: calc(100% - 100px);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-box > div:nth-child(1) > div:nth-child(1) a{
+    width: 100%;
+    height: 500px;
+    padding: 5px;
+    position: relative;
+}
+
+.product-box > div:nth-child(1) > div:nth-child(1) a > div{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    left: 0;
+    border: 5px solid #FFFFFF;
+    background: none;
+    transition: all 1s;
+}
+
+.product-box > div:nth-child(1) > div:nth-child(1) a > div:hover{
+    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    transition: all 1s;
+}
+
+.product-box > div:nth-child(1) > .item-slider {
+    overflow: hidden;
+}
+
+.product-box > div:nth-child(1) > .item-slider > div{
+    width: 100px;
+    height: 125px;
+    position: relative;
+}
+
+.item-slider .slick-slide{
+    width: 100px !important;
+    height: 125px !important;
+    padding: 5px !important;
+    border: none !important;
+    position: relative;
+}
+
+.item-slider .slick-slide > div {
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    width: 90px;
+    height: 115px;
+    top: 5px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+}
+
+.item-slider .slick-slide > div:hover{
+    border: 1px solid #F50037;
+    background: rgba(0, 0, 0, 0);
+    transition: all 1s;
+}
+
+.item-slider .slick-slide .item-activ{
+    border: 1px solid #F50037;
+    background: rgba(0, 0, 0, 0) !important;
+}
+
+.product-button {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+.product-off {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.product-on {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.product-box > div:nth-child(2) {
+    width: 50%;
+    margin: 0 auto 30px auto;
+    padding: 5px;
+}
+
+.product-category {
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+
+.product-category img{
+    margin: 0 10px 0 0;
+}
+
+.product-category p{
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    color: #989898;
+}
+
+.product-brief {
+    width: 100%;
+    margin: auto;
+}
+
+.product-brief p{
+    padding: 0 0 20px 0;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.product-composition {
+    width: 100%;
+    margin: auto;
+}
+
+.product-composition b{
+    display: inline-block;
+    padding: 0 0 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.product-composition p{
+    padding: 0 0 20px 0;
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.product-size {
+    width: 100%;
+    margin: auto;
+}
+
+.product-size b{
+    display: inline-block;
+    padding: 0 0 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.size-box {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.size-block {
+    width: 250px;
+    height: 50px;
+    margin: auto auto 10px auto;
+    padding: 5px;
+    border: 2px solid #E4E3DF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.size-block div:nth-child(1) {
+    width: 100px;
+    padding: 11px 0;
+    background: #E4E3DF;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.size-block-activ div:nth-child(1){
+    background: #F50037;
+    color: #FFFFFF;
+}
+
+.size-block div:nth-child(1) p{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+}
+
+.size-block div:nth-child(2) {
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+.size-block div:nth-child(2) span{
+    display: inline-block;
+    width: 50px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+}
+
+.size-block div:nth-child(2) button{
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 15px;
+    padding: 2px 1px 0 0;
+    width: 20px;
+    height: 20px;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.price-basket {
+    width: 100%;
+    margin: auto auto 10px auto;
+    padding: 10px;
+    background: #F8F8F6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.price-basket-none {
+    display: none !important;
+}
+
+.price-basket div:nth-child(1) {
+    width: auto;
+    margin: auto auto auto 0;
+}
+
+.price-basket div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.price-basket div:nth-child(1) span{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.price-basket div:nth-child(2) {
+    margin: auto 0 auto auto;
+}
+
+.price-basket div:nth-child(2) button{
+    display: none; 
+    cursor: pointer;
+    border: none;
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    background: #D7DFE5;
+    font-family: "Fontfabric-MullerMedium";
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #000000;
+}
+
+.price-basket div:nth-child(2) button > img{
+    vertical-align: sub;
+    margin: 0 10px 0 0;
+}
+
+.price-basket div:nth-child(2) button:hover{
+    background: #F30330;
+    color: #FFFFFF;
+}
+
+.no-authorization {
+    width: 100%;
+    margin: auto auto 10px auto;
+    padding: 10px;
+    background: #F8F8F6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.no-authorization-none {
+    display: none !important;
+}
+
+.no-authorization div:nth-child(1) {
+    width: auto;
+    margin: auto auto auto 0;
+}
+
+.no-authorization div:nth-child(1) img{
+    width: 20px;
+    margin: 0 5px 0 0;
+    vertical-align: text-bottom;
+}
+
+.no-authorization div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    font-style: italic;
+    font-size: 16px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.no-authorization div:nth-child(2) {
+    margin: auto 0 auto auto;
+}
+
+.no-authorization div:nth-child(2) a{
+    display: block;
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    padding: 19px 0;
+    border-radius: 25px;
+    text-decoration: none;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.no-authorization div:nth-child(2) a:hover{
+    margin: 2px 0 -2px 0;   
+    background-position: 0 0;
+} 
+
+.product-delivery {
+    width: 100%;
+    margin: auto auto 10px auto;
+    padding: 10px;
+}
+
+.product-delivery img{
+    width: 20px;
+    margin: 0 5px 0 0;
+    vertical-align: text-bottom;
+}
+
+.product-delivery p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.product-delivery a{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 25px;
+    color: #FF0016;
+}
+
+.product-delivery a:hover{
+    text-decoration: none;
+}
+
+.product-slider-box {
+    max-width: 1080px;
+    margin: auto auto 20px auto;
+    padding: 10px;
+}
+
+.product-slider-box b{
+    display: inline-block;
+    padding: 0 0 15px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 30px;
+    color: #333333;
+}
+
+.product-block {
+    width: 100%;
+    margin: 0 auto 25px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product-block > div {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.product-block > div > :nth-child(1){
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.product-block > div > :nth-child(1) img{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    transition: all 1s;
+}
+
+.product-block > div > :nth-child(1) img:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.product-block > div > :nth-child(2) {
+    position: absolute;
+    z-index: 5;
+    width: 130px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    padding: 0 5px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-left: calc(100% - 300px);
+    border-radius: 20px;
+}
+
+.product-block > div > :nth-child(2) p{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.showPrice .product-block > div > :nth-child(2) p > span:nth-child(2), .product-block > div > :nth-child(2) p > span:nth-child(1){
+    display: none;
+}
+
+.showPrice .product-block > div > :nth-child(2) p > span:nth-child(1), .product-block > div > :nth-child(2) p > span:nth-child(2){
+    display:inline-block;
+}
+
+.product-block > div > :nth-child(3) {
+    position: absolute;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border-radius: 20px;
+    border: 10px;
+    margin-right: calc(100% - 300px);
+}
+
+.product-slider-off {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.product-slider-on {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.product-block > div > :nth-child(4) {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 70px;
+    padding: 20px;
+    margin: auto;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 0 0 5px 5px;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.product-block div > :nth-child(4):hover {
+    background: rgba(255, 255, 255, 0.5);
+    height: 120px;
+}
+
+.product-block > div > :nth-child(4) a{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.product-block > div > :nth-child(4) p{
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    margin: 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 25px;
+    color: #0000;
+    transition: all 1s;
+}
+
+.product-block > div > :nth-child(4):hover > p {
+    transition: all 1s;
+    color: #000000;
+}
+
+.product-block > div > button{
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.product-block > div > button:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.product-block > div > a{
+    position: absolute;
+    z-index: 10;
+    width: 200px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.product-block > div > a > img{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+.product-block > div > a:hover{
+    margin: 22px auto -2px auto;
+    background-position: 0 0;
+}
+
+.product-slider-button {
+    width: 100%;
+    text-align: center;
+    margin: auto auto 20px auto;
+}
+
+.product-slider-button button{
+    cursor: pointer;
+    border: none;
+    background: #D8DEE1;
+    width: 50px;
+    height: 25px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 22px;
+    color: #4E525C;
+}
+
+.product-slider-button button:hover{
+    background: #FAB932;
+    color: #FFFFFF;
+}
+
+/* PRODUCT */
+
+
+
+/* BASKET */
+
+.basket {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.basket-empty {
+    display: none;
+    width: 99%;
+    margin: auto;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.basket-empty p{
+    width: 100%;
+    padding: 5px 20px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 20px;
+    line-height: 50px;
+    color: #b6b6b6;
+}
+
+.basket-container {
+    display: none;
+}
+
+.basket-box {
+    width: 99%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.basket-box > div:nth-child(even){
+    background: #F7F7F5;
+}
+
+.basket-product {
+    width: 100%;
+    margin: auto auto 20px auto;
+    border: 1px solid #E4E3DF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.basket-product > div:nth-child(1) {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+    width: 65%;
+    padding: 10px;
+    border: 1px solid #E4E3DF;
+    display: flex; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div{
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div img{
+    width: 50px;
+    height: 50px;
+    margin: auto 10px auto 0;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div a{
+    text-decoration: none;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #682333; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div a:hover{
+    text-decoration: underline; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) {
+    width: 35%;
+    padding: 10px;
+    border: 1px solid #E4E3DF;
+    display: flex; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div{
+    margin: auto; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div p{
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div span{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 20px;
+    color: #FF0016; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
+    width: 65%;
+    padding: 10px;
+    border: 1px solid #E4E3DF;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div{
+    width: 130px;
+    margin: 5px auto;
+    text-align: center;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div p{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div span{
+    display: inline-block;
+    width: 55px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    color: #000000;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div button{
+    cursor: pointer;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 15px;
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) {
+    width: 35%;
+    padding: 10px;
+    border: 1px solid #E4E3DF;
+    display: flex; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div{
+    margin: auto; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div p{
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000; 
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div span{
+    width: 100%;
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 20px;
+    color: #FF0016; 
+}
+
+.basket-product > div:nth-child(2) {
+    width: 5%;
+    border: 1px solid #E4E3DF;
+}
+
+.basket-product > div:nth-child(2) button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+}
+
+.basket-total {
+    width: 99%;
+    margin: auto auto 50px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.basket-total div:nth-child(1) {
+    width: 300px;
+    margin: auto auto auto 0;
+}
+
+.basket-total div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.basket-total div:nth-child(1) span{
+    font-size: 20px;
+    color: #FF0016;
+}
+
+.basket-total div:nth-child(2) {
+    width: 300px;
+    margin: auto;
+}
+
+.basket-total div:nth-child(2) button{
+    display: none;
+    cursor: pointer;
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.basket-total div:nth-child(2) button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
+}
+
+.basket-total div:nth-child(3) {
+    width: 300px;
+    height: 50px;
+    background: #E4E3DF;
+    margin: auto 0 auto auto;
+    display: flex;
+}
+
+.basket-total div:nth-child(3) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+    margin: auto;
+}
+
+.basket-total div:nth-child(3) span{
+    font-size: 20px;
+    color: #FF0016;
+}
+
+.payment-box {
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-box > div{
+    display: flex;
+    flex-direction: row;
+}
+
+.payment-box > p{
+    font-family: "Fontfabric-MullerMedium";
+    margin: auto auto 20px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.payment-box > div > div:nth-child(1) {
+    width: 100px;
+    margin: 0 auto auto auto; 
+}
+
+.payment-box > div > div:nth-child(1) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    margin: auto;
+}
+
+.payment-box > div > div:nth-child(1) button{
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    margin: auto auto 10px auto;
+    padding: 19px 0;
+    border: 2px solid #C4C4C4;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.payment-box > div > div:nth-child(1) button:hover{
+    border: 2px solid #F9C33C;
+    background: #F9C33C;
+}
+
+.payment-box > div > div:nth-child(2) {
+    width: 100px;
+    margin: 0 auto auto auto; 
+}
+
+.payment-box > div > div:nth-child(2) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    margin: auto;
+}
+
+.payment-box > div > div:nth-child(2) button{
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    margin: auto auto 10px auto;
+    padding: 19px 0;
+    border: 2px solid #C4C4C4;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.payment-box > div > div:nth-child(2) button:hover{
+    border: 2px solid #F9C33C;
+    background: #F9C33C;
+}
+
+.payment-activ {
+    border: 2px solid #F9C33C !important;
+    background: #F9C33C !important;
+}
+
+.address-box {
+    width: 99%;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #E4E3DF;
+    border-radius: 5px;
+}
+
+.address-box > p{
+    font-family: "Fontfabric-MullerMedium";
+    margin: auto auto 10px auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.address-box button{
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+    margin: auto;
+    padding: 9px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.address-box button:hover{
+    margin: 1px auto -1px auto;
+    background-position: 0 0;
+}
+
+.basket-liner {
+    width: 100%;
+    margin: 20px auto;
+    height: 2px;
+    background: #DDDEE0;
+}
+
+.basket-order {
+    width: 100%;
+    margin: auto auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.basket-order div:nth-child(1) {
+    width: 300px;
+    margin: auto auto auto 0;
+}
+
+.basket-order div:nth-child(1) button{
+    cursor: pointer;
+    width: 300px;
+    height: 50px;
+    border: 2px solid #D7DFE5;
+    border-radius: 25px;
+    background: #D7DFE5;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 18px;
+    color: #000000;
+}
+
+.basket-order div:nth-child(1) button > img{
+    vertical-align: baseline;
+    margin: 0 10px 0 0;
+}
+
+.basket-order div:nth-child(1) button:hover{
+    border: 2px solid #F30330;
+}
+
+.basket-order div:nth-child(2) {
+    width: 300px;
+    margin: auto 0 auto auto;
+}
+
+.basket-order div:nth-child(2) p{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: right;
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.basket-order div:nth-child(2) a{
+    font-family: "Fontfabric-MullerMedium";
+    text-align: right;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FF0016;
+}
+
+.basket-order div:nth-child(2) a:hover{
+    text-decoration: none;
+}
+
+.basket-order div:nth-child(3) {
+    width: 300px;
+    margin: auto 0 auto 10px;
+}
+
+.basket-order div:nth-child(3) button{
+    display: none;
+    cursor: pointer;
+    border: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    background: #D7DFE5;
+    font-family: "Fontfabric-MullerMedium";
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #000000;
+}
+
+.basket-order div:nth-child(3) button:hover{
+    background: #F30330;
+    color: #FFFFFF;
+}
+
+/* BASKET */

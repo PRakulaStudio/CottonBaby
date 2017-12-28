@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<meta charset="utf-8" />
-	<title>Регистрация</title>
+	<title>Cotton Baby - Корзина</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -13,13 +13,109 @@
 </head>
 <body>
 
+<!-- popup start -->
+<div class="popup-fon" id="popup-fon">
+    <div class="popup-table">
+        <div class="popup-cell">
+            <div class="popup-score" id="score">
+				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+				<p>Оплата по счету</p>
+
+				<form>
+					<div>
+						<div>
+							<label>ИНН</label>
+							<input type="number" name="inn">
+						</div>
+
+						<div>
+							<label>Название организации</label>
+							<input type="text" name="name_organization">
+						</div>
+
+						<div>
+							<label>ОГРН</label>
+							<input type="number" name="ogrn">
+						</div>
+
+						<div>
+							<label>Банк</label>
+							<input type="text" name="name_bank">
+						</div>
+
+						<div>
+							<label>БИК</label>
+							<input type="number" name="bik">
+						</div>
+
+						<div>
+							<label>Расчетный счет</label>
+							<input type="number" name="checking_account">
+						</div>
+
+						<div>
+							<label>Корреспондентский счет</label>
+							<input type="number" name="correspondent_account">
+						</div>
+					</div>
+
+					<button data-action="save-user-data" type="button" data-type-popup="payment">сохранить</button>
+				</form>
+			</div>
+
+			<div class="popup-card" id="card">
+				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+				<p>Адрес доставки</p>
+
+				<form>
+					<div>
+						<div>
+							<label>Город</label>
+							<input type="text" name="delivery_city" >
+						</div>
+
+						<div>
+							<label>Адрес</label>
+							<input type="text" name="address" >
+						</div>
+
+						<div>
+							<label>Индекс</label>
+							<input type="number" name="index_number" >
+						</div>
+
+						<p>(дополнительную информацию ожидайте на почту)</p>
+					</div>
+
+					<button data-action="save-user-data" data-type-popup="card" type="button">сохранить</button>
+				</form>
+			</div>
+
+			<div class="popup-thanks" id="thanks">
+				<button class="popup-close"><img src="images/icons/close.png"></button>
+				
+				<div>
+					<p>Спасибо за покупку</p>
+				</div>
+
+				<div>
+					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+			</div>
+        </div>
+    </div>
+</div>
+<!-- popup end -->
+
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
 		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
-			<img src="images/icons/loop.png">
+			<img src="images/icons/search.png">
 		</div>
 	</div>
 
@@ -30,9 +126,10 @@
 					<p>Компания</p>
 					<ul>
 						<li><a href="index.html">Главная</a></li>
-						<li><a href="#">О нас</a></li>
-						<li><a href="#">Каталог</a></li>
-						<li><a href="cooperation.html">Сотрудничество</a></li>
+						<li><a href="information.html">О нас</a></li>
+						<li><a href="katalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
+						<li><a href="cooperation.html" >Сотрудничество</a></li>
 						<li><a href="production.html">Наше производство</a></li>
 						<li><a href="delivery.html">Доставка и оплата</a></li>
 						<li><a href="contacts.html">Контакты</a></li>
@@ -119,8 +216,8 @@
 
 			<div class="header-user">
 				<a href="#"><img src="images/icons/insta.png"></a>
-				<a href="#"><img src="images/icons/basket.png"><span class="basket">2</span></a>
-				<a href="#"><img src="images/icons/favorites.png"><span class="favorites">3</span></a>
+				<a href="#"><img src="images/icons/basket.png"><span class="basket-user">2</span></a>
+				<a href="#"><img src="images/icons/favorites.png"><span class="favorites-user">3</span></a>
 				<img src="images/icons/user.png">
 				<a href="#">Войти</a>
 			</div>
@@ -135,46 +232,79 @@
 
 <!-- content start -->
 	<main class="content">
-		<section class="registration">
+		<section class="basket">
 			<div class="pagination">
-				<p><a href="index.html">Главная</a> → Регистрация нового клиента</p>
+				<p><a href="index.html">Главная</a> &#8594 Корзина товаров</p>
 				<div class="pagination-liner"></div>
 			</div>
 			
-			<h1>Регистрация нового клиента</h1>
+			<div class="title">
+				<h1>Корзина</h1>
+			</div>
 
-			<div class="registration-box">
-				<div class="registration-form">
-					<form>
-						<label>Ваше имя</label>
-						<input type="text">
-						<input type="text" name="name">
+			<div class="basket-empty">
+				<p>Корзина пуста</p>
+			</div>
+			
+			<div class="basket-container">
+				<div class="basket-box">
 
-						<label>Ваш email</label>
-						<input type="email">
-						<input type="email" name="mail">
-
-						<label>Придумайте пароль</label>
-						<input type="password">
-						<input type="password" name="passowrd">
-
-						<label>Повторите пароль</label>
-						<input type="password">
-						<input type="password" name="confirm_passowrd">
-
-						<label>Ваш номер телефона</label>
-						<input type="tel" name="phone">
-
-						<label>Город</label>
-						<input type="text">
-						<input type="text"name="city">
-
-						<button type="submit">Зарегистрироваться</button>
-					</form>
 				</div>
 
-				<div class="img">
-					<p>Зарегистрируйтесь и мы всегда будем на связи!</p>
+				<div class="basket-total">
+					<div>
+						<p>Бонусные рубли: <span>0 руб.</span></p>
+						<p>(Вы можете потратить бонусные рубли на покупки)</p>
+					</div>
+
+					<div>
+						<button action="use-bonus">Использовать бонусные рубли</button>
+					</div>
+
+					<div>
+						<p>Итого: <span>0 руб.</span></p>
+					</div>
+				</div>
+
+				<div class="payment-box">
+					<p>Варианты оплаты:</p>
+					<div>
+						<div>
+							<!--javascript:PopUpShowScore() -->
+							<button data-payment-method="payment" ><img src="images/icons/score.png"></button>
+							<p>Счет</p>
+						</div>
+
+						<div>
+							<!--class="payment-activ"-->
+							<button class="" data-payment-method="card"><img src="images/icons/card.png"></button>
+							<p>Оплата на карту</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="address-box">
+					<p></p>
+					<!---->
+					<button onclick="javascript:PopUpShowCard()" >Редактировать</button>
+				</div>
+
+				<div class="basket-liner"></div>
+
+				<div class="basket-order">
+					<div>
+						<button>&#11013 Вернуться к покупкам</button>
+					</div>
+
+					<div>
+						<p>Сумма вашего заказа состовляет 0 руб.</p>
+						<p>Минимальный заказ 0 руб.</p>
+						<p><a href="#">Перейти к покупкам</a></p>
+					</div>
+
+					<div>
+						<button action="save-order">&#10003 Оформить заказ</button>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -197,8 +327,9 @@
 				<ul>
 					<li><a href="index.html">Главная</a></li>
 					<li><a href="registration.html">Регистрация</a></li>
-					<li><a href="#">Каталог</a></li>
-					<li><a href="#">О нас</a></li>
+					<li><a href="katalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="information.html">О нас</a></li>
 					<li><a href="cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
@@ -217,19 +348,12 @@
 		</div>
 
 		<div class="footer-bot">
-			<div class="footer-bot-networks">
-				<button><img src="images/icons/insta.png"></button>
-				<button><img src="images/icons/fb.png"></button>
-				<button><img src="images/icons/vk.png"></button>
-			</div>
-
 			<p>© 2017 Cotton Baby</p>
 		</div>
 	</div>
 <!-- footer end -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/basket.js"></script>
 </body>
 </html>

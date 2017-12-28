@@ -1,0 +1,4 @@
+( function ($) {
+    requestCheckAuth('delivery');
+
+})(jQuery);

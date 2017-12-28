@@ -184,8 +184,8 @@
 	        		maxNumberOnLoadSlide = currentSlide;
 
 	        		//запрос на добавление нового слайда
-	        		$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-	        		$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+	        	//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+	        	//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
 	        	}
 
         	}

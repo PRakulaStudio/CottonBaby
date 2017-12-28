@@ -13,13 +13,35 @@
 </head>
 <body>
 
+<!-- popup start -->
+<div class="popup-fon" id="popup-fon">
+    <div class="popup-table">
+        <div class="popup-cell">
+			<div class="popup-thanks" id="thanks">
+				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+				
+				<div>
+					<p>Спасибо!</p>
+				</div>
+
+				<div>
+					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
+				</div>
+
+				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+			</div>
+        </div>
+    </div>
+</div>
+<!-- popup end -->
+
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
 		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
-			<img src="images/icons/loop.png">
+			<img src="images/icons/search.png">
 		</div>
 	</div>
 
@@ -30,8 +52,9 @@
 					<p>Компания</p>
 					<ul>
 						<li><a href="index.html">Главная</a></li>
-						<li><a href="#">О нас</a></li>
-						<li><a href="#">Каталог</a></li>
+						<li><a href="information.html">О нас</a></li>
+						<li><a href="katalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
 						<li><a href="cooperation.html">Сотрудничество</a></li>
 						<li><a href="production.html">Наше производство</a></li>
 						<li><a href="delivery.html">Доставка и оплата</a></li>
@@ -100,48 +123,77 @@
 </div>
 <!-- menu popup end -->
 
-<!-- header start -->
-	<div class="header-box">
-		<div class="header">
-			<div class="header-menu-left">
-				<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
-				<a class="menu-user" href="#"></a>
-			</div>
 
-			<div class="header-logo">
+<!-- header start -->
+<div class="header-box">
+	<div class="header">
+		<div class="header-menu">
+			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+		</div>
+
+		<div class="header-info">
+			<div>
 				<a href="index.html"><img src="images/logo.png"></a>
 			</div>
 
-			<div class="header-text">
+			<div>
 				<p>Производство детской одежды.</p>
 				<p>Оптовая продажа.</p>
 			</div>
+		</div>
 
-			<div class="header-user">
+		<div class="header-user">
+			<div data-insta>
 				<a href="#"><img src="images/icons/insta.png"></a>
-				<a href="#"><img src="images/icons/basket.png"><span class="basket">2</span></a>
-				<a href="#"><img src="images/icons/favorites.png"><span class="favorites">3</span></a>
-				<img src="images/icons/user.png">
-				<a href="#">Войти</a>
+				<div><p>Подпишись</p></div>
 			</div>
+			<div data-basket><a href="#"><img src="images/icons/basket.png"><span>5</span></a></div>
+			<div data-favorite><a href="#"><img src="images/icons/favorites.png"><span>3</span></a></div>
+			<div data-auth>
 
-			<div class="header-menu-right">
-				<a class="menu-basket" href="#"><span class="basket">2</span></a>
-				<a class="menu-favorites" href="#"><span class="favorites">3</span></a>
+				<button><img src="images/icons/user.png"><span>Войти</span></button>
+
+				<div class="authorization" id="authorization">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<p>Авторизация</p>
+					<form>
+						<div>
+							<input type="email" name="mail" placeholder="E-mail">
+
+							<input type="password" name="password_auth" placeholder="Пароль">
+						</div>
+
+						<div>
+							<button type="button">Войти</button>
+							<a href="/registration.html">Регистрация</a>
+						</div>
+					</form>
+				</div>
+
+				<div class="exit" id="exit">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<div>
+						<a href="#">Личный кабинет</a>
+						<button>Выйти</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- header end -->
 
 <!-- content start -->
 	<main class="content">
 		<section class="contacts">
 			<div class="pagination">
-				<p><a href="index.html">Главная</a> → Наши контакты</p>
+				<p><a href="index.html">Главная</a> &#8594 Наши контакты</p>
 				<div class="pagination-liner"></div>
 			</div>
 			
-			<h1>Наши контакты</h1>
+			<div class="title">
+				<h1>Наши контакты</h1>
+			</div>
 		</section>
 
 		<section class="contacts-map">
@@ -193,7 +245,6 @@
 						<div class="form-top">
 							<div class="form-top-left">
 								<label>Ваше имя</label>
-								<input type="text">
 								<input type="text" name="name">
 							</div>
 							
@@ -205,15 +256,13 @@
 
 						<div class="form-bottom">
 							<label>Тема сообщения</label>
-							<input type="text">
 							<input type="text" name="title">
 
 							<label>Текст сообщения</label>
-							<textarea></textarea>
 							<textarea name="text"></textarea>
 						</div>
 
-						<button type="submit">Отправить вопрос</button>
+						<button type="button" onclick="javascript:PopUpShowThanks()">Отправить вопрос</button>
 					</form>
 				</div>
 			</div>
@@ -237,8 +286,9 @@
 				<ul>
 					<li><a href="index.html">Главная</a></li>
 					<li><a href="registration.html">Регистрация</a></li>
-					<li><a href="#">Каталог</a></li>
-					<li><a href="#">О нас</a></li>
+					<li><a href="katalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="information.html">О нас</a></li>
 					<li><a href="cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
@@ -257,12 +307,6 @@
 		</div>
 
 		<div class="footer-bot">
-			<div class="footer-bot-networks">
-				<button><img src="images/icons/insta.png"></button>
-				<button><img src="images/icons/fb.png"></button>
-				<button><img src="images/icons/vk.png"></button>
-			</div>
-
 			<p>© 2017 Cotton Baby</p>
 		</div>
 	</div>
