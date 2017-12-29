@@ -10,6 +10,7 @@
 
 	requestCheckAuth("cabinet");
 
+
 	function getStatus(id) {
 		for(var key in window.statuses)
 		{
@@ -19,7 +20,15 @@
 
 	}
 
+	function declOfNum(number, titles) {
+		let cases = [2, 0, 1, 1, 1, 2];
+		return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+	}
 
+
+
+
+	//получить историю
 	function getHistory(offset, limit)
 	{
 		var data= {};
@@ -102,6 +111,14 @@
                     //меняем оффсет у кнопки
 					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
 
+					//меняем статус кол-ва покупок и общей суммы
+					
+					$('div.bonus')
+								.find('p')
+									.first().next().html(`Вы совершили ${result.data.count} ${declOfNum( result.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(result.data.total_sum)}\<\/span\>`);
+
+					//Вы совершили 5 покупок, на общую сумму 25 000 руб.
+
 					/*
 						[
 							id,
@@ -132,7 +149,7 @@
 
 	}
 
-
+	//сохраняем данные на сервер
 	function setUserData(data)
 	{
 		$.ajax({
@@ -171,6 +188,7 @@
 		});
 	}
 
+	//получаем данные с сервера
 	function getUserData(data)
 	{
 
@@ -218,12 +236,13 @@
 		$(this).attr('data-change' , 'true');
 	});
 
+	//подгрузка остальных товаров
 	$('div.history-button button').click(function () {
 		buttonLoadHistory.hide();
 		getHistory( buttonLoadHistory.attr('data-offset') , buttonLoadHistory.attr('data-limit') );
 	});
 
-	//надо доделать
+	// переключение отображение подробности у заказа
 	$('div.history-box').on( "click" , 'button[data-action]' ,  function () {
 
 		var button = $(this);
@@ -240,7 +259,7 @@
 		}
 			
 		//пееключаем отображение у блока
-		$(this).parents('div[data-item]').find('div.hidden').toggle();
+		$(this).parents('div[data-item]').find('div.hidden .order-info').toggle();
 
     });
 
@@ -261,7 +280,7 @@
 	});
 
 
-
+	//переключение полей
 	$('button.cabinet-box').click(function(){
 		$(this).parents('p').next().toggleClass(css.show_block);
 		$(this).find('img').toggle();

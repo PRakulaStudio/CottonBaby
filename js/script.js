@@ -13,6 +13,7 @@ function checkLength(str , requareLength)
         return true;
     return false;
 }
+
 /**
  *
  * @param email
@@ -38,6 +39,7 @@ function checkPhone(phone)
         return true;
     return false;
 }
+
 
 //функция, переводящая строку в денежный формат
 function formatMoney( number )
@@ -143,6 +145,7 @@ function PopUpShowMenu(page){
     $("#menu-off").show();
     $("#menu-on").hide();
 }
+
 function PopUpHideMenu(){
     $("#menu-on").show();
     $("#menu-off").hide();
@@ -203,10 +206,12 @@ function requestCheckAuth(url)
                     $('div.header-user').find('div[data-basket] span').show().text(result.cartCount);
 
                 if(result.wishlistCount)
-                    $('div.header-user').find('div[data-favorite] span').show().text(result.wishlistCount);
+                    $('div.header-user').find('div[data-favorite]').addClass('favorites').find('span').text(result.wishlistCount);
 
                 $('div.header-user').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.name}`);
+
                 IS_AUTH = true;
+
                 $('body').removeClass('showPrice');
 
 
@@ -326,9 +331,8 @@ var IS_AUTH;
 
                    }
 
-
-                    if(result.data.error.password)
-                        $('#authorization').find('input[name="password_auth"]').addClass('input-error-bottom');
+                   if(result.data.error.password)
+                       $('#authorization').find('input[name="password_auth"]').addClass('input-error-bottom');
 
                 }
             },

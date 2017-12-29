@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
 	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
 </head>
-<body class="showPrice">
+<body>
 
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
@@ -104,68 +104,65 @@
 <!-- menu popup end -->
 
 <!-- header start -->
-<!-- header start -->
-<div class="header-box">
-    <div class="header">
-        <div class="header-menu">
-            <button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
-        </div>
+	<div class="header-box">
+		<div class="header">
+			<div class="header-menu">
+				<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			</div>
 
-        <div class="header-info">
-            <div>
-                <a href="index.html"><img src="images/logo.png"></a>
-            </div>
+			<div class="header-info">
+				<div>
+					<a href="index.html"><img src="images/logo.png"></a>
+				</div>
 
-            <div>
-                <p>Производство детской одежды.</p>
-                <p>Оптовая продажа.</p>
-            </div>
-        </div>
+				<div>
+					<p>Производство детской одежды.</p>
+					<p>Оптовая продажа.</p>
+				</div>
+			</div>
 
-        <div class="header-user">
-            <div data-insta>
-                <a href="#"><img src="images/icons/insta.png"></a>
-                <div><p>Подпишись</p></div>
-            </div>
-            <div data-basket><a href="#"><img src="images/icons/basket.png"><span>5</span></a></div>
-            <div data-favorite><a href="#"><img src="images/icons/favorites.png"><span>3</span></a></div>
-            <div data-auth>
+			<div class="header-user">
+				<div>
+					<a href="#"><img src="images/icons/insta.png"></a>
+					<div class="sub"><div><a href="#">Подпишись</a></div></div>
+				</div>
+				<div><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
+				<div class="favorites"><a href="#"><img src="images/icons/favorites.png"></a></div>
+				<div>
+					<button><img src="images/icons/user.png"><span>Войти</span></button>
 
-                <button><img src="images/icons/user.png"><span>Войти</span></button>
+					<div class="authorization" id="authorization">
+						<button class="popup-close"><img src="images/icons/close.png"></button>
+						<p>Авторизация</p>
+						<form>
+							<div>
+								<input type="email" name="mail" placeholder="E-mail">
 
-                <div class="authorization" id="authorization">
-                    <button class="popup-close"><img src="images/icons/close.png"></button>
-                    <p>Авторизация</p>
-                    <form>
-                        <div>
-                            <input type="email" name="mail" placeholder="E-mail">
+								<input type="password" name="password" placeholder="Пароль">
+							</div>
 
-                            <input type="password" name="password_auth" placeholder="Пароль">
-                        </div>
+							<div>
+								<button>Войти</button>
+								<a href="registration.html">Регистрация</a>
+							</div>
+						</form>
+					</div>
 
-                        <div>
-                            <button type="button">Войти</button>
-                            <a href="/registration.html">Регистрация</a>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="exit" id="exit">
-                    <button class="popup-close"><img src="images/icons/close.png"></button>
-                    <div>
-                        <a href="#">Личный кабинет</a>
-                        <button>Выйти</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- header end -->
+					<div class="exit" id="exit">
+						<button class="popup-close"><img src="images/icons/close.png"></button>
+						<div>
+							<a href="#">Личный кабинет</a>
+							<button>Выйти</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content">
+	<main class="content-site">
 		<section class="product">
 			<div class="pagination">
 				<p><a href="index.html">Главная</a> &#8594 <a href="index.html">Каталог</a> &#8594 Кофта + ползунки</p>
@@ -185,18 +182,16 @@
 							<button class="product-off"></button>
 							<button class="product-on"></button>
 						</div>
-						<a id="product" href="images/1920x1080.png"><img alt="example1" src="images/1920x1080.png"><div></div></a>
+						<a id="product" href="images/pictures/i1.jpg"><img alt="example1" src="images/pictures/i1.jpg"><div></div></a>
 					</div>
 
 					<div class="item-slider">
-						<div><img src="images/1920x1080.png"><div class="item-activ"></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
-						<div><img src="images/1920x1080.png"><div></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
-						<div><img src="images/300x500.png"><div></div></div>
+						<div><img src="images/pictures/i1.jpg"><div class="item-activ"></div></div>
+						<div><img src="images/pictures/i2.jpg"><div></div></div>
+						<div><img src="images/pictures/i3.jpg"><div></div></div>
+						<div><img src="images/pictures/i4.jpg"><div></div></div>
+						<div><img src="images/pictures/i5.jpg"><div></div></div>
+						<div><img src="images/pictures/i6.jpg"><div></div></div>
 					</div>
 				</div>
 
@@ -218,38 +213,38 @@
 						<b>Выберите размер и количество:</b>
 						
 						<div class="size-box">
-							<div class="size-block">
+							<div class="size-block size-block-activ">
 								<div>
 									<p>60-65</p>
 								</div>
 
 								<div>
 									<button>-</button>
-									<span>0</span>
+									<span>1000</span>
 									<button>+</button>
 								</div>
 							</div>
 
-							<div class="size-block">
+							<div class="size-block size-block-activ">
 								<div>
 									<p>60-65</p>
 								</div>
 
 								<div>
 									<button>-</button>
-									<span>0</span>
+									<span>10</span>
 									<button>+</button>
 								</div>
 							</div>
 
-							<div class="size-block">
+							<div class="size-block size-block-activ">
 								<div>
 									<p>60-65</p>
 								</div>
 
 								<div>
 									<button>-</button>
-									<span>0</span>
+									<span>100</span>
 									<button>+</button>
 								</div>
 							</div>
@@ -298,7 +293,7 @@
 						</div>
 
 						<div>
-							<a href="/registration.html">Регистрация</a>
+							<a href="registration.html">Регистрация</a>
 						</div>
 					</div>
 
@@ -325,7 +320,7 @@
 					<div class="slide">
 						<div class="product-block">
 							<div>
-								<div><img src="images/300x500.png"></div>
+								<div><a href="#"><img src="images/pictures/i1.jpg"></a></div>
 								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
 								<div>
 									<button class="product-slider-off"></button>
@@ -335,7 +330,7 @@
 									<a href="#">Комплект кофта + ползунки</a>
 									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 								</div>
-								<button>Подробно</button>
+								<a href="#">Подробно</a>
 							</div>
 						</div>
 					</div>
@@ -343,7 +338,7 @@
 					<div class="slide">
 						<div class="product-block">
 							<div>
-								<div><img src="images/300x500.png"></div>
+								<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
 								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
 								<div>
 									<button class="product-slider-off"></button>
@@ -353,7 +348,7 @@
 									<a href="#">Комплект кофта + ползунки</a>
 									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 								</div>
-								<button>Подробно</button>
+								<a href="#">Подробно</a>
 							</div>
 						</div>
 					</div>
@@ -361,7 +356,7 @@
 					<div class="slide">
 						<div class="product-block">
 							<div>
-								<div><img src="images/300x500.png"></div>
+								<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
 								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
 								<div>
 									<button class="product-slider-off"></button>
@@ -371,7 +366,7 @@
 									<a href="#">Комплект кофта + ползунки</a>
 									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 								</div>
-								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+								<a href="#">Подробно</a>
 							</div>
 						</div>
 					</div>
@@ -379,7 +374,7 @@
 					<div class="slide">
 						<div class="product-block">
 							<div>
-								<div><img src="images/300x500.png"></div>
+								<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
 								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
 								<div>
 									<button class="product-slider-off"></button>
@@ -389,7 +384,7 @@
 									<a href="#">Комплект кофта + ползунки</a>
 									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 								</div>
-								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+								<a href="#">Подробно</a>
 							</div>
 						</div>
 					</div>
@@ -397,7 +392,7 @@
 					<div class="slide">
 						<div class="product-block">
 							<div>
-								<div><img src="images/300x500.png"></div>
+								<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
 								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
 								<div>
 									<button class="product-slider-off"></button>
@@ -407,7 +402,7 @@
 									<a href="#">Комплект кофта + ползунки</a>
 									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 								</div>
-								<a href="#"><img src="images/icons/request.png">Cделать запрос</a>
+								<a href="#">Подробно</a>
 							</div>
 						</div>
 					</div>
@@ -464,7 +459,5 @@
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="js/product.js"></script>
-
-
 </body>
 </html>

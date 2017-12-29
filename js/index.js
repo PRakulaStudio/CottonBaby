@@ -157,10 +157,18 @@
 		  centerPadding: '60px',
 		  infinite: false,
 		  slideToScroll: 1,
+		  arrows : false,
 		  slidesToShow: 3,
 		  responsive: [
 		 				 {
-		 				 	breakpoint: 1280,
+		 				 	breakpoint: 1550,
+					  		settings: {
+					        	slidesToShow: 2,
+					      	}
+		  				 },
+
+		  				 {
+		 				 	breakpoint: 640,
 					  		settings: {
 					        	slidesToShow: 1,
 					      	}
@@ -168,6 +176,79 @@
 		   		
 		  ]
 		});
+
+		$('.production-index-slider').slick({
+			slideToScroll : 5,
+			arrows : false,
+			infinite : true,
+			slidesToShow : 5,
+			responsive : [
+				{
+					breakpoint : 1500,
+					settings : {
+						slidesToShow : 4,
+						slideToScroll : 4,
+					}
+
+				},
+				{
+					breakpoint : 1000,
+					settings : {
+						slidesToShow : 3,
+						slideToScroll : 3,
+					}
+				},
+				{
+					breakpoint : 650,
+					settings : {
+						slidesToShow : 2,
+						slideToScroll : 2,
+					}
+				},
+				{
+					breakpoint : 400,
+					settings : {
+						slidesToShow : 1,
+						slideToScroll : 1,
+					}
+				},
+			],
+
+		});
+
+		$('.insta-slider').slick({
+			slideToScroll : 3,
+			arrows : false,
+			infinite : true,
+			slidesToShow : 3,
+			responsive : [
+				{
+					breakpoint : 1000,
+					settings : {
+						slidesToShow : 3,
+						slideToScroll : 3,
+					}
+
+				},
+				{
+					breakpoint : 650,
+					settings : {
+						slidesToShow : 2,
+						slideToScroll : 2,
+					}
+				},
+				{
+					breakpoint : 400,
+					settings : {
+						slidesToShow : 1,
+						slideToScroll : 1,
+					}
+				},
+			],
+
+		});
+
+		//
 
         var currentNewSlide = 0,
         	maxNumberOnLoadSlide = 0,
@@ -198,7 +279,16 @@
 
        	});
 
+        $("a#example1").fancybox();
+
+		$('button[data-action]').click( function(){
+				if($(this).attr('data-action') == "next" )
+					$('.production-index-slider').slick('slickNext');
+				else
+					$('.production-index-slider').slick('slickPrev');
+
+
+		});
 
 
 })(jQuery)
-

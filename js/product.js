@@ -13,11 +13,20 @@
         arrows: false,
         dots: false,
         verticalSwiping: true,
-
     }).on('click', '.slick-slide' , function(){
-        $(this).siblings('div.slick-slide').find('div').removeClass('item-activ');
-        $(this).find('div').addClass('item-activ').end();
-        $('#product').find('img').attr('src' , $(this).find('img').attr('src'));
+        let img = $(this).find('img');
+
+        $(this)
+                .siblings('div.slick-slide')
+                                            .find('div').removeClass('item-activ')
+                                            .end()
+                .end()
+                .find('div').addClass('item-activ')
+                .end();
+
+
+        $('#product').attr('href' , img.attr('src'))
+                        .find('img').attr('src' , img.attr('src'));
     });
 
     $('div.product-slider').slick({
@@ -56,11 +65,10 @@
     {
         var html = "";
 
-
             html += "<div data-id-block='"+items[key].product_id+"'>" +
                          "<div><img src='"+items[key].img_link+"' /></div>" + //картинка
                          "<div><p>"+items[key].price+" руб.</p></div>" + //цена
-                         "<div><button action='toogle-favorite' class='favorites-off'></button><button action='toogle-favorite' class='favorites-on'></button></div>" +// избранное
+                         "<div><button action='toogle-favorite' class='product-off'></button><button action='toogle-favorite' class='product-on'></button></div>" +// избранное
                          "<div>" +
                             "<a href='"+items[key].link+"'>"+items[key].name+"</a>" +
                             "<p>"+items[key].description+"</p>" +
@@ -104,7 +112,6 @@
     });
 
     $("a#product").fancybox();
-
 
     //событие на клик изменения кол-ва размера товара
     $('div.product-size').on('click' , 'div.size-block button' , function () {
@@ -155,8 +162,6 @@
 
         }
     } , 500);
-
-
 
 
 } )(jQuery);
