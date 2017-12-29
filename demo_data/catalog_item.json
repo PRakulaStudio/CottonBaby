@@ -1,0 +1,23 @@
+{
+  "id":123,
+  "title":"Title",
+  "description":"Desc",
+  "price":123,
+  "href":"/catalog/item-123",
+  "images":[
+    {"50x50":"path/to/img.jpeg","150x150":"path/to/img.jpeg"},
+    {"50x50":"path/to/img.jpeg","150x150":"path/to/img.jpeg"},
+    {"50x50":"path/to/img.jpeg","150x150":"path/to/img.jpeg"},
+  ],
+  "category":[
+    {"id":321,"title":"Title","href":"/catalog/category-321"}
+  ],
+  "collection":[
+    {"id":456,"title":"Tits","href":"/catalog/collection-456"}
+  ],
+  "modifications":[
+    {"id":987,"title":"10-23"},
+    {"id":987,"title":"10-23"},
+    {"id":987,"title":"10-23"}
+  ]
+}
