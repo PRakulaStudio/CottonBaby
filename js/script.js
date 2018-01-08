@@ -1,4 +1,9 @@
-
+window.pms={
+    config:{
+        cabinetAPI:'/system/plugins/SecArgonia/cabinet/',
+        catalogAPI:'/system/plugins/PonomareVlad/catalog/'
+    }
+};
 // Phone mask end
 
 /**
@@ -184,7 +189,7 @@ function requestCheckAuth(url)
 
     $.ajax({
         dataType: 'JSON',
-        url: '/akula/system/plugins/SecArgonia/cabinet/user/checkAuth',
+        url: pms.config.cabinetAPI+'user/checkAuth',
         success: function( result, status){
 
     
