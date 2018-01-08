@@ -121,7 +121,7 @@
 	{
 		if( window.innerWidth <= 1000 )
 		{
-			console.log(window.innerWidth);
+
 			let slider = document.querySelector('.new-slider .slick-track'),
 				sliders = slider.children;
 

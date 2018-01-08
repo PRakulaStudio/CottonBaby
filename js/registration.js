@@ -12,7 +12,7 @@
 	function setUserData(fields)
 	{
 		$.ajax({
-			url: '/akula/system/plugins/SecArgonia/cabinet/user/reg',
+			url: window.pms.config.cabinetAPI+'user/reg',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {

@@ -301,8 +301,7 @@ var IS_AUTH;
 
         $.ajax({
             type: 'POST',
-            data : {'user' : 'logout'},
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: window.pms.config.cabinetAPI+'logout',
             success: function( result, status){
                 location.reload();
             },
@@ -318,7 +317,7 @@ var IS_AUTH;
             type : "POST",
             dataType : 'JSON',
             data : { 'login' : data['mail'] , 'password' : data['password_auth']},
-            url: '/akula/system/plugins/SecArgonia/cabinet/user/login',
+            url: window.pms.config.cabinetAPI+'user/login',
             success : function( result , status ){
                 if(result.status)
                 {

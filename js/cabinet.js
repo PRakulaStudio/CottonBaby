@@ -37,7 +37,7 @@
 			data: data,
 			method: "POST",
 			dataType: 'json',
-			url: '/akula/system/plugins/SecArgonia/cabinet/get/orderList',
+			url: window.pms.config.cabinetAPI+'get/orderList',
 			success: function( result, status)
 			{
 				buttonLoadHistory.show();
@@ -152,7 +152,7 @@
 	function setUserData(data)
 	{
 		$.ajax({
-			url: '/akula/system/plugins/SecArgonia/cabinet/set/userData',
+			url: window.pms.config.cabinetAPI+'set/userData',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
@@ -193,7 +193,7 @@
 
 		$.ajax({
 
-			url: '/akula/system/plugins/SecArgonia/cabinet/get/userData',
+			url: window.pms.config.cabinetAPI+'get/userData',
 			type: 'GET',
 			encoding: "UTF-8",
 			dataType: 'json',

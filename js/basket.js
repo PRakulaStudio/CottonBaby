@@ -39,7 +39,7 @@
         $.ajax({
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/get/userData',
+            url: window.pms.config.cabinetAPI+'get/userData',
             success: function (result , status) {
               if(result.status)
               {
@@ -74,7 +74,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/order/cart',
+            url: window.pms.config.cabinetAPI+'order/cart',
             success: function( result, status){
                 let products = result.data.cart.products;
 
@@ -198,7 +198,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/order/edit',
+            url: window.pms.config.cabinetAPI+'order/edit',
             success : function (  result, status ) {
                 if( result.status)
                 {
@@ -229,7 +229,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/order/delete',
+            url: window.pms.config.cabinetAPI+'order/delete',
             success : function (  result, status ) {
                if( result.status)
                {
@@ -258,7 +258,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/order/useBonus',
+            url: window.pms.config.cabinetAPI+'/akula/system/plugins/SecArgonia/cabinet/order/useBonus',
             success : function (  result, status ) {
                 if( result.status)
                 {
@@ -288,7 +288,7 @@
         $('#popup-fon').find('input').removeClass(css.input_error);
 
         $.ajax({
-            url: "/akula/system/plugins/SecArgonia/cabinet/order/check",
+            url: window.pms.config.cabinetAPI+"order/check",
             method: "POST",
             dataType: 'json',
             data: data,
@@ -335,7 +335,7 @@
     {
         $.ajax({
             type: 'POST',
-            url: '/akula/system/plugins/SecArgonia/cabinet/order/save',
+            url: window.pms.config.cabinetAPI+'order/save',
             success: function( result, status){
                 if( result.status)
                     PopUpShowThanks();
@@ -351,7 +351,7 @@
     function setUserData(button , fields)
     {
         $.ajax({
-            url: '/akula/system/plugins/SecArgonia/cabinet/set/userData',
+            url: window.pms.config.cabinetAPI+'set/userData',
             type: 'POST',
             encoding: "UTF-8",
             data:  {
@@ -463,7 +463,7 @@
     //закрытие popup после удачного оформления заказа
     $('#thanks button.popup-close').click(function(){
 
-        window.location.href = "http://stackoverflow.com";
+        window.location.href = "/";
     });
 
     requestGetBasket();
