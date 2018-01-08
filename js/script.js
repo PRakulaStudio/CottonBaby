@@ -45,7 +45,7 @@ function checkPhone(phone)
 function formatMoney( number )
 {
 
-    var format = number.split(""),
+    var format = number.toString().split(""),
         money = [],
         iterator = 1;
 
@@ -145,7 +145,6 @@ function PopUpShowMenu(page){
     $("#menu-off").show();
     $("#menu-on").hide();
 }
-
 function PopUpHideMenu(){
     $("#menu-on").show();
     $("#menu-off").hide();
@@ -184,12 +183,11 @@ function requestCheckAuth(url)
 {
 
     $.ajax({
-        data : {'user' : 'checkAuth'},
         dataType: 'JSON',
-        url: '/akula/system/plugins/SecArgonia/cabinet/',
+        url: '/akula/system/plugins/SecArgonia/cabinet/user/checkAuth',
         success: function( result, status){
 
-
+    
             if(result.status)
             {
 
@@ -200,15 +198,15 @@ function requestCheckAuth(url)
                         break
                 }
 
-                $('div.header-user').find('#authorization').remove();
+                $('[class*="header-user"]').find('#authorization').remove();
 
                 if( result.cartCount )
-                    $('div.header-user').find('div[data-basket] span').show().text(result.cartCount);
+                    $('[class*="header-user"]').find('div[data-basket] span').show().text(result.cartCount);
 
                 if(result.wishlistCount)
-                    $('div.header-user').find('div[data-favorite]').addClass('favorites').find('span').text(result.wishlistCount);
+                    $('[class*="header-user"]').find('div[data-favorite]').addClass('favorites').find('span').text(result.wishlistCount);
 
-                $('div.header-user').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.name}`);
+                $('[class*="header-user"]').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.name}`);
 
                 IS_AUTH = true;
 
@@ -229,7 +227,7 @@ function requestCheckAuth(url)
                         break;
                 }
 
-                $('div.header-user').find('#exit').remove();
+                $('[class*="header-user"]').find('#exit').remove();
                 IS_AUTH =  false;
             }
 
@@ -260,12 +258,12 @@ var IS_AUTH;
 
     });
 
-    $('div.header-user > div:last-of-type button').click( function () {
+    $('[class*="header-user"] > div:last-of-type button').click( function () {
         $(this).next().show();
     });
 
 
-    $('div.header-user button.popup-close').click(function () {
+    $('[class*="header-user"] button.popup-close').click(function () {
        $(this).parent('div').hide();
 
     });
@@ -309,13 +307,13 @@ var IS_AUTH;
 
     function requestAuth( data )
     {
-        console.log(data);
+
 
         $.ajax({
             type : "POST",
             dataType : 'JSON',
-            data : {'user' : 'login' , 'login' : data['mail'] , 'password' : data['password_auth']},
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            data : { 'login' : data['mail'] , 'password' : data['password_auth']},
+            url: '/akula/system/plugins/SecArgonia/cabinet/user/login',
             success : function( result , status ){
                 if(result.status)
                 {
@@ -326,10 +324,8 @@ var IS_AUTH;
                 {
 
                    if( result.data.error.email)
-                   {
-                       $('#authorization').find('input[name="mail"]').addClass('input-error-bottom');
+                      $('#authorization').find('input[name="mail"]').addClass('input-error-bottom');
 
-                   }
 
                    if(result.data.error.password)
                        $('#authorization').find('input[name="password_auth"]').addClass('input-error-bottom');

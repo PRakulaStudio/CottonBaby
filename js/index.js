@@ -1,7 +1,10 @@
 ( function($){
 	"use strict";
 
-	var autoPlay = false;	
+	requestCheckAuth('index');
+	var autoPlay = false;
+
+
 	function sliderAnimation( sliderClass )
 	{
 		
@@ -114,18 +117,46 @@
 
 	}
 
+	function handlerEmptyBlockForNewSlider()
+	{
+		if( window.innerWidth <= 1000 )
+		{
+			console.log(window.innerWidth);
+			let slider = document.querySelector('.new-slider .slick-track'),
+				sliders = slider.children;
+
+			if( document.querySelector('.new-slider [data-type="empty"]') )
+			{
+				console.log("Удалил");
+				$('.new-slider').slick('slickRemove',sliders.length - 1);
+			}
 
 
-	 $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
+		}
+		else
+		{
+
+			//если все товары были подгружены
+			if( document.querySelector('.new-slider').getAttribute('data-load-items') &&
+					!document.querySelector('.new-slider [data-type="empty"]')
+			   )
+			{
+				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+				console.log('Добавил');
+			}
+
+
+
+		}
+	}
+
+
+ 	 $('.slider').on('init' ,  function(event, slick, currentSlide, nextSlide){
 	            //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
 		    $(".main-slider .count-slider .total-slider").text(slick.slideCount);
 			   
 	  });
-
-
-		
-
-	  $('.slider').slick({
+	 $('.slider').slick({
 			 autoplay: false,
 	 		 autoplaySpeed: 2000,
 	 		 pauseOnFocus: false,
@@ -135,92 +166,153 @@
 	  			 //autoplayTimeout: 500,
 
 	  });
-	  sliderAnimation('slider');
-
-			   
-
-
-
-		$(".slider").on("afterChange", function(event, slick, currentSlide){
+	 sliderAnimation('slider');
+     $(".slider").on("afterChange", function(event, slick, currentSlide){
 	       	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
 		});
 
 
 
-        $( window ).resize( function() {
+
+    $( window ).resize( function() {
 		   	 sliderAnimation('slider');
+
+			 if( $(window).width() <= 1500)
+				 $('div.production-index-button').show();
+			 else
+				 $('div.production-index-button').hide();
+
+			handlerEmptyBlockForNewSlider()
+
+
+
 		});
 
 
 
-        $('.new-slider').slick({
+    $('.new-slider').slick({
 		  centerPadding: '60px',
 		  infinite: false,
 		  slideToScroll: 1,
-		  arrows : false,
 		  slidesToShow: 3,
+		  arrows : false,
 		  responsive: [
-		 				 {
-		 				 	breakpoint: 1550,
-					  		settings: {
-					        	slidesToShow: 2,
-					      	}
-		  				 },
+			  {
+				  breakpoint: 1550,
+				  settings: {
+					  slidesToShow: 2,
+				  }
+			  },
 
-		  				 {
-		 				 	breakpoint: 640,
-					  		settings: {
-					        	slidesToShow: 1,
-					      	}
-		  				 }
+			  {
+				  breakpoint: 640,
+				  settings: {
+					  slidesToShow: 1,
+				  }
+			  }
 		   		
 		  ]
 		});
+	$('div.new-button button').click( function(){
 
-		$('.production-index-slider').slick({
-			slideToScroll : 5,
-			arrows : false,
-			infinite : true,
-			slidesToShow : 5,
-			responsive : [
-				{
-					breakpoint : 1500,
-					settings : {
-						slidesToShow : 4,
-						slideToScroll : 4,
-					}
+		if($(this).attr('data-action') == "next" )
+			$('.new-slider').slick('slickNext');
+		else
+			$('.new-slider').slick('slickPrev');
 
-				},
-				{
-					breakpoint : 1000,
-					settings : {
-						slidesToShow : 3,
-						slideToScroll : 3,
-					}
-				},
-				{
-					breakpoint : 650,
-					settings : {
-						slidesToShow : 2,
-						slideToScroll : 2,
-					}
-				},
-				{
-					breakpoint : 400,
-					settings : {
-						slidesToShow : 1,
-						slideToScroll : 1,
-					}
-				},
-			],
 
-		});
+	});
+	let currentNewSlide = 0,
+		maxNumberOnLoadSlide = 0,
+		numberRest = 2;
+	$('.new-slider').on('afterChange' , function(event, slick, currentSlide){
 
-		$('.insta-slider').slick({
+
+		if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
+		{
+
+			if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
+			{
+				maxNumberOnLoadSlide = currentSlide;
+
+				//запрос на добавление нового слайда
+				//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+				//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+			}
+
+		}
+		else
+		{
+			//console.log("Нет новых слайдов");
+		}
+
+		currentNewSlide = currentSlide;
+
+	});
+	handlerEmptyBlockForNewSlider();
+
+
+	$('.production-index-slider').slick({
+		slideToScroll : 5,
+		arrows : false,
+		infinite : true,
+		slidesToShow : 5,
+		responsive : [
+			{
+				breakpoint : 1500,
+				settings : {
+					slidesToShow : 4,
+					slideToScroll : 4,
+				}
+
+			},
+			{
+				breakpoint : 1000,
+				settings : {
+					slidesToShow : 3,
+					slideToScroll : 3,
+				}
+			},
+			{
+				breakpoint : 650,
+				settings : {
+					slidesToShow : 2,
+					slideToScroll : 2,
+				}
+			},
+			{
+				breakpoint : 400,
+				settings : {
+					slidesToShow : 1,
+					slideToScroll : 1,
+				}
+			},
+		],
+
+	});
+	$('div.production-index-button button').click( function(){
+
+		if($(this).attr('data-action') == "next" )
+			$('.production-index-slider').slick('slickNext');
+		else
+			$('.production-index-slider').slick('slickPrev');
+
+
+	});
+	if( $(window).width() <= 1500)
+		$('div.production-index-button').show();
+	else
+		$('div.production-index-button').hide();
+
+
+	
+	$('.insta-slider').slick({
 			slideToScroll : 3,
 			arrows : false,
 			infinite : true,
 			slidesToShow : 3,
+			autoplay: true,
+			autoplaySpeed: 1000,
 			responsive : [
 				{
 					breakpoint : 1000,
@@ -247,48 +339,42 @@
 			],
 
 		});
+	$("a#example1").fancybox({
+		afterClose: function () {
+			$('.insta-slider').slick('slickPlay');
+		}
+	}).on('click' , function () {
+		$('.insta-slider').slick('slickPause');
+	});
+	
 
-		//
 
-        var currentNewSlide = 0,
-        	maxNumberOnLoadSlide = 0,
-        	numberRest = 2;
 
-        $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
-        	        	
-        	
-        	if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
-        	{
-	        	
-	        	if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
-	        	{
-	        		maxNumberOnLoadSlide = currentSlide;
 
-	        		//запрос на добавление нового слайда
-	        	//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-	        	//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-	        	}
+		//событие на нажатие кнопкки "регистрация"
+	$('div.reg-box button').click( function(){
+			var data = {};
 
-        	}
-	        else
-	        {
-	        	//console.log("Нет новых слайдов");
-	        }	
-               	
-       		currentNewSlide = currentSlide;
 
-       	});
+			$('div.reg-box').find('input').each( function(){
+				validateData($(this) , data , 'input-error-bottom');
 
-        $("a#example1").fancybox();
+			});
 
-		$('button[data-action]').click( function(){
-				if($(this).attr('data-action') == "next" )
-					$('.production-index-slider').slick('slickNext');
-				else
-					$('.production-index-slider').slick('slickPrev');
+
+			if(!$('div.reg-box').find('input').hasClass('input-error-bottom'))
+			{
+				localStorage.removeItem('reg');
+				localStorage.setItem('reg' , JSON.stringify(data));
+				window.location.replace('registration.html');
+			}
 
 
 		});
 
 
+
+
+
 })(jQuery)
+

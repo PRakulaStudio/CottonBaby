@@ -2036,20 +2036,21 @@ html, body {
     margin: auto auto 10px auto;
 }
 
+.new-button img{
+    height: 20px;
+    vertical-align: middle;
+}
+
 .new-button button{
     cursor: pointer;
     border: none;
     background: #D8DEE1;
     width: 50px;
     height: 25px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 22px;
-    color: #4E525C;
 }
 
 .new-button button:hover{
     background: #FAB932;
-    color: #FFFFFF;
 }
 
 .content-cooperation {
@@ -2435,20 +2436,21 @@ html, body {
     margin: 20px auto auto auto;
 }
 
+.production-index-button img{
+    height: 20px;
+    vertical-align: middle;
+}
+
 .production-index-button button{
     cursor: pointer;
     border: none;
     background: #D8DEE1;
     width: 50px;
     height: 25px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 22px;
-    color: #4E525C;
 }
 
 .production-index-button button:hover{
     background: #FAB932;
-    color: #FFFFFF;
 }
 
 .content-reg {
@@ -3288,20 +3290,21 @@ html, body {
     margin: auto auto 20px auto;
 }
 
+.production-button img{
+    height: 20px;
+    vertical-align: middle;
+}
+
 .production-button button{
     cursor: pointer;
     border: none;
     background: #D8DEE1;
     width: 50px;
-    margin: 0 5px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 35px;
-    color: #4E525C;
+    height: 25px;
 }
 
 .production-button button:hover{
     background: #FAB932;
-    color: #FFFFFF;
 }
 
 .production-video {
@@ -3466,20 +3469,21 @@ html, body {
     margin: auto auto 20px auto;
 }
 
+.information-button img{
+    height: 20px;
+    vertical-align: middle;
+}
+
 .information-button button{
     cursor: pointer;
     border: none;
     background: #D8DEE1;
     width: 50px;
-    margin: 0 5px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 35px;
-    color: #4E525C;
+    height: 25px;
 }
 
 .information-button button:hover{
     background: #FAB932;
-    color: #FFFFFF;
 }
 
 /* fancybox */
@@ -4608,20 +4612,21 @@ html, body {
     margin: auto auto 20px auto;
 }
 
+.product-slider-button img{
+    height: 20px;
+    vertical-align: middle;
+}
+
 .product-slider-button button{
     cursor: pointer;
     border: none;
     background: #D8DEE1;
     width: 50px;
     height: 25px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 22px;
-    color: #4E525C;
 }
 
 .product-slider-button button:hover{
     background: #FAB932;
-    color: #FFFFFF;
 }
 
 /* PRODUCT */

@@ -12,11 +12,10 @@
 	function setUserData(fields)
 	{
 		$.ajax({
-			url: '/akula/system/plugins/SecArgonia/cabinet/',
+			url: '/akula/system/plugins/SecArgonia/cabinet/user/reg',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
-				"user": "reg",
 				"data": JSON.stringify(fields)
 			},
 			dataType: 'json',
@@ -26,7 +25,9 @@
 				if( data.status && data.userData != "undefined" )
 				{
 					//переход на личный кабинет
-					//window.location.href = link_redirect;
+					localStorage.removeItem('reg');
+					//window.location.href = "";
+					location.reload();
 				}
 				else
 				{
@@ -48,7 +49,7 @@
 			// console.log(input);
 			// timerSendRequest = setTimeout( setEditedItem , 1000 );
 
-			 var data = {};
+		    var data = {};
 			
 			$('div.registration-form').find('input').each( function(){
 
@@ -61,10 +62,22 @@
 			{
 				setUserData(data);
 			}
-			
-			
-
-
 	});
+
+
+	//считывание полей с localstorage
+	let userData = "";
+	if( userData = localStorage.getItem('reg') )
+	{
+		userData = JSON.parse( userData );
+		$('div.registration-form')
+							.find('input[name="name"]').val( userData['name'] ).end()
+							.find('input[name="mail"]').val( userData['mail'] ).end();
+
+
+
+
+	}
+
 
 })(jQuery);

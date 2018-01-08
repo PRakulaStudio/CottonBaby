@@ -26,20 +26,18 @@
 	}
 
 
-
-
 	//получить историю
 	function getHistory(offset, limit)
 	{
 		var data= {};
-			data['get'] = "ordersList";
 			data['offset'] = offset;
 			data['limit'] = limit;
 
 		$.ajax({
 			data: data,
+			method: "POST",
 			dataType: 'json',
-			url: '/akula/system/plugins/SecArgonia/cabinet',
+			url: '/akula/system/plugins/SecArgonia/cabinet/get/orderList',
 			success: function( result, status)
 			{
 				buttonLoadHistory.show();
@@ -61,24 +59,25 @@
 
 						for(var item in orderList[key].products)
 						{
+							let product  = orderList[key].products[key].product;
+							let modifications = orderList[key].products[key].modifications;
 							html += "<div class='order-info'>" +
 
 											"<div>" +
 												"<div>" +
-													"<a href='"+orderList[key].products[item].link+"'>"+orderList[key].products[item].name+"</a>" +
-													"<a href='"+orderList[key].products[item].collection['link']+"'>"+orderList[key].products[item].collection['name']+"</a>" +
+													"<a href='"+product.href+"'>"+product.title+"</a>" +
+													"<a href='"+product.collection[0].href+"'>"+product.collection[0].title+"</a>" +
 												"</div>" +
 											"</div>";
 
 
 
-
 										//блоки с размерами товара
-										for(var itemSize in  orderList[key].products[item].sizes)
+										for(var itemSize in  modifications)
 										{
 											html += "<div>" +
-														"<div><p>"+orderList[key].products[item].sizes[itemSize].count+" шт.</p></div>" +
-														"<div><p>Размер "+orderList[key].products[item].sizes[itemSize].name+"</p></div>" +
+														"<div><p>"+modifications[itemSize].quantity+" шт.</p></div>" +
+														"<div><p>Размер "+modifications[itemSize].title+"</p></div>" +
 													"</div>";
 										}
 							html += "</div>";
@@ -112,7 +111,7 @@
 					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
 
 					//меняем статус кол-ва покупок и общей суммы
-					
+
 					$('div.bonus')
 								.find('p')
 									.first().next().html(`Вы совершили ${result.data.count} ${declOfNum( result.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(result.data.total_sum)}\<\/span\>`);
@@ -153,7 +152,7 @@
 	function setUserData(data)
 	{
 		$.ajax({
-			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
+			url: '/akula/system/plugins/SecArgonia/cabinet/set/userData',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
@@ -192,15 +191,11 @@
 	function getUserData(data)
 	{
 
-
 		$.ajax({
 
-			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
+			url: '/akula/system/plugins/SecArgonia/cabinet/get/userData',
 			type: 'GET',
 			encoding: "UTF-8",
-			data:  {
-				"get": "userData"
-			},
 			dataType: 'json',
 			success: function( data, status)
 			{
@@ -247,19 +242,13 @@
 
 		var button = $(this);
 		if( button.data('action') == "show")
-		{
-            button.data('action' , "hide");
-            button.find('img').last().hide().end().first().show();
-		}
+		     button.data('action' , "hide");
         else
-		{
-            button.data('action' , "show");
-			button.find('img').last().show().end().first().hide();
+		   button.data('action' , "show");
 
-		}
-			
+		button.find('img').toggle();
 		//пееключаем отображение у блока
-		$(this).parents('div[data-item]').find('div.hidden .order-info').toggle();
+		$(this).parents('div[data-item]').find('div.hidden').toggle();
 
     });
 

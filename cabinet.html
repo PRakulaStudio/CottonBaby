@@ -102,65 +102,66 @@
 <!-- menu popup end -->
 
 <!-- header start -->
-	<div class="header-box">
-		<div class="header">
-			<div class="header-menu">
-				<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+<div class="header-box">
+	<div class="header">
+		<div class="header-menu">
+			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+		</div>
+
+		<div class="header-info">
+			<div>
+				<a href="index.html"><img src="images/logo.png"></a>
 			</div>
 
-			<div class="header-info">
-				<div>
-					<a href="index.html"><img src="images/logo.png"></a>
-				</div>
-
-				<div>
-					<p>Производство детской одежды.</p>
-					<p>Оптовая продажа.</p>
-				</div>
+			<div>
+				<p>Производство детской одежды.</p>
+				<p>Оптовая продажа.</p>
 			</div>
+		</div>
 
-			<div class="header-user">
-				<div>
-					<a href="#"><img src="images/icons/insta.png"></a>
-					<div class="sub"><div><a href="#">Подпишись</a></div></div>
-				</div>
-				<div><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
-				<div class="favorites"><a href="#"><img src="images/icons/favorites.png"></a></div>
-				<div>
-					<button><img src="images/icons/user.png"><span>Войти</span></button>
+		<div class="header-user">
+			<div data-insta>
+				<a href="#"><img src="images/icons/insta.png"></a>
+				<div class="sub"><div><p>Подпишись</p></div></div>
+			</div>
+			<div data-basket><a href="#"><img src="images/icons/basket.png"><span>0</span></a></div>
+			<div data-favorite ><a href="#"><img src="images/icons/favorites.png"><span>0</span></a></div>
+			<div data-auth>
 
-					<div class="authorization" id="authorization">
-						<button class="popup-close"><img src="images/icons/close.png"></button>
-						<p>Авторизация</p>
-						<form>
-							<div>
-								<input type="email" name="mail" placeholder="E-mail">
+				<button><img src="images/icons/user.png"><span>Войти</span></button>
 
-								<input type="password" name="password" placeholder="Пароль">
-							</div>
-
-							<div>
-								<button>Войти</button>
-								<a href="registration.html">Регистрация</a>
-							</div>
-						</form>
-					</div>
-
-					<div class="exit" id="exit">
-						<button class="popup-close"><img src="images/icons/close.png"></button>
+				<div class="authorization" id="authorization">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<p>Авторизация</p>
+					<form>
 						<div>
-							<a href="#">Личный кабинет</a>
-							<button>Выйти</button>
+							<input type="email" name="mail" placeholder="E-mail">
+
+							<input type="password" name="password_auth" placeholder="Пароль">
 						</div>
+
+						<div>
+							<button type="button">Войти</button>
+							<a href="/registration.html">Регистрация</a>
+						</div>
+					</form>
+				</div>
+
+				<div class="exit" id="exit">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<div>
+						<a href="#">Личный кабинет</a>
+						<button>Выйти</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
+<main class="content-site">
 		<section class="cabinet">
 			<div class="pagination">
 				<p><a href="index.html">Главная</a> &#8594 Личный кабинет</p>
@@ -175,133 +176,11 @@
 				<p>История заказов</p>
 
 				<div class="history-box">
-					<div>
-						<div>
-							<div><p>#123122</p></div>
-							<div><p>24.10.2017</p></div>
-							<button><img src="images/icons/up-arrow.svg"></button>
-						</div>
 
-						<div class="hidden">
-							<div class="order-info">
-								<div>
-									<div><a href="#">Платье из снега</a><a href="#">Коллекция "Желтый снег 2017"</a></div>
-								</div>
-
-								<div>
-									<div><p>5 шт.</p></div>
-									<div><p>Размер 60-65</p></div>
-								</div>
-
-								<div>
-									<div><p>100 шт.</p></div>
-									<div><p>Размер 30-35</p></div>
-								</div>
-							</div>
-
-							<div class="order-info">
-								<div>
-									<div><a href="#">Платье из листьев</a><a href="#">Коллекция "Оттаяло 2010"</a></div>
-								</div>
-
-								<div>
-									<div><p>5 шт.</p></div>
-									<div><p>Размер 60-65</p></div>
-								</div>
-
-								<div>
-									<div><p>100 шт.</p></div>
-									<div><p>Размер 30-35</p></div>
-								</div>
-							</div>
-						</div>
-
-						<div >
-							<div><p>Cумма</p></div>
-							<div class="sum"><p>224 000 руб.</p></div>
-						</div>
-
-						<div >
-							<div><p>Cтатус</p></div>
-							<div class="status status-green"><p>выполнен</p></div>
-						</div>
-					</div>
-
-					<div>
-						<div>
-							<div><p>#123122</p></div>
-							<div><p>24.10.2017</p></div>
-							<button><img src="images/icons/down-arrow.svg"></button>
-						</div>
-
-						<div>
-							<div><p>Cумма</p></div>
-							<div class="sum"><p>224 000 руб.</p></div>
-						</div>
-
-						<div>
-							<div><p>Cтатус</p></div>
-							<div class="status status-blue"><p>отгружен</p></div>
-						</div>
-					</div>
-
-					<div>
-						<div>
-							<div><p>#123122</p></div>
-							<div><p>24.10.2017</p></div>
-							<button><img src="images/icons/down-arrow.svg"></button>
-						</div>
-
-						<div>
-							<div><p>Cумма</p></div>
-							<div class="sum"><p>224 000 руб.</p></div>
-						</div>
-
-						<div>
-							<div><p>Cтатус</p></div>
-							<div class="status status-blue"><p>отгружен</p></div>
-						</div>
-					</div>
-
-					<div>
-						<div>
-							<div><p>#123122</p></div>
-							<div><p>24.10.2017</p></div>
-							<button><img src="images/icons/down-arrow.svg"></button>
-						</div>
-
-						<div>
-							<div><p>Cумма</p></div>
-							<div class="sum"><p>224 000 руб.</p></div>
-						</div>
-
-						<div>
-							<div><p>Cтатус</p></div>
-							<div class="status status-blue"><p>отгружен</p></div>
-						</div>
-					</div>
-
-					<div>
-						<div>
-							<div><p>#123122</p></div>
-							<div><p>24.10.2017</p></div>
-							<button><img src="images/icons/down-arrow.svg"></button>
-						</div>
-
-						<div>
-							<div><p>Cумма</p></div>
-							<div class="sum"><p>224 000 руб.</p></div>
-						</div>
-
-						<div>
-							<div><p>Cтатус</p></div>
-							<div class="status status-blue"><p>в обработке</p></div>
-						</div>
-					</div>
 				</div>
 
 				<div class="history-button">
-					<button type="submit"><img src="images/icons/refresh.png">загрузить еще</button>
+					<button type="button" data-offset="0" data-limit="3"><img src="images/icons/refresh.png">загрузить еще</button>
 				</div>
 			</div>
 
@@ -310,81 +189,83 @@
 
 				<div class="data-box">
 					<form>
-						<p><button class="cabinet-box"><img src="images/icons/right-arrow.svg"> Для физ. лиц:</button></p>
+						<p><button type="button" class="cabinet-box"><img src="images/icons/right-arrow.svg" /><img style="display:none" src="images/icons/down-arrow.svg" />Для физ. лиц:</button> </p>
 
-						<div class="fiz-form">
+						<div class="fiz-form hide-form-block">
 							<div>
 								<label>Ваше имя</label>
-								<input type="text" name="name">
+								<input type="text" name="name" >
 							</div>
 
 							<div>
 								<label>Пароль</label>
-								<input type="password" name="password">
+								<input type="password" name="password" >
 							</div>
 
 							<div>
 								<label>Подтвердите пароль</label>
-								<input type="password" name="confirm_password">
+								<input type="password" name="confirm_password" >
 							</div>
 							
 							<div>
 								<label>Email</label>
-								<input type="email" name="mail">
+								<input type="email" name="mail" >
 							</div>
 							
 							<div>
 								<label>Телефон</label>
-								<input type="tel" name="phone">
+								<input type="tel" name="phone" >
 							</div>
 
 							<div>
 								<label>Город</label>
-								<input type="text" name="city_fiz">
+								<input type="text" name="city_fiz" >
 							</div>
+
+							<div></div>
 						</div>
 
-						<p><button class="cabinet-box"><img src="images/icons/down-arrow.svg"> Для юр. лиц:</button></p>
+						<p><button type="button" class="cabinet-box"><img src="images/icons/right-arrow.svg" /><img style="display:none" src="images/icons/down-arrow.svg" /> Для юр. лиц:</button> </p>
 
-						<div class="jur-form">
-							<div>
-								<label>Город</label>
-								<input type="text" name="city_jur">
-							</div>
-
+						<div class="jur-form hide-form-block">
 							<div>
 								<label>ИНН</label>
-								<input type="number" name="inn">
+								<input type="number" name="inn" >
 							</div>
 
 							<div>
 								<label>Название организации</label>
-								<input type="text" name="name_organization">
+								<input type="text" name="name_organization" >
 							</div>
 
 							<div>
 								<label>ОГРН</label>
-								<input type="number" name="ogrn">
+								<input type="number" name="ogrn" >
 							</div>
 
 							<div>
 								<label>Банк</label>
-								<input type="text" name="name_bank">
+								<input type="text" name="name_bank" >
 							</div>
 
 							<div>
 								<label>БИК</label>
-								<input type="number" name="bik">
+								<input type="number" name="bik" >
 							</div>
 
 							<div>
 								<label>Расчетный счет</label>
-								<input type="number" name="checking_account">
+								<input type="number" name="checking_account" >
 							</div>
 
 							<div>
 								<label>Корреспондентский счет</label>
-								<input type="number" name="correspondent_account">
+								<input type="number" name="correspondent_account" >
+							</div>
+
+							<div>
+								<label>Город</label>
+								<input type="text" name="city_jur" >
 							</div>
 
 							<div></div><div></div>
@@ -395,22 +276,22 @@
 						<div class="address-form">
 							<div>
 								<label>Город</label>
-								<input type="text" name="city">
+								<input type="text" name="delivery_city" >
 							</div>
 
 							<div>
 								<label>Адрес</label>
-								<input type="text" name="address">
+								<input type="text" name="address" >
 							</div>
 
 							<div>
 								<label>Индекс</label>
-								<input type="number" name="index_number">
+								<input type="number" name="index_number" >
 							</div>
 						</div>
 
 						<div class="data-button">
-							<button type="submit">Сохранить</button>
+							<button type="button">Сохранить</button>
 						</div>
 					</form>
 				</div>
@@ -426,7 +307,7 @@
 <!-- content end -->
 
 <!-- footer start -->
-	<div class="footer">
+<div class="footer">
 		<div class="footer-top">
 			<div class="footer-logo">
 				<a href="index.html"><img src="images/logo.png"></a>
@@ -466,8 +347,17 @@
 		</div>
 	</div>
 <!-- footer end -->
+<script type="text/javascript">
+	window.statuses = [
+		{'id': 1, 'text':'Выполнен', 'en':'done', 'color': '#00B90E'},
+		{'id': 2, 'text': "Отгружен", 'en': 'shipment', 'color': 'blue'}
+	];
+</script>
+
+
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/cabinet.js"></script>
 </body>
 </html>

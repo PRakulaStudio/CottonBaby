@@ -2,37 +2,44 @@
 
 (function($){
 
+    requestCheckAuth('basket');
 
     var timeOuts = [];
     var isPayment = false;
+    var min_price_order = "";
+    var total_price = "";
     var css = {
-        'input_error' : "input-form-error",
+        'input_error' : "input-error-bottom",
         'is_check' : 'payment-activ',
-    }
+    };
 
-    function validateData( input , data )
+
+    function checkButtonOrder(  )
     {
+        //Итого
 
-        switch( $(input).attr('name'))
+        if($('.payment-box').find('button').hasClass('payment-activ') )
         {
-            default:
-                if(  $(input).val() != "" )
-                    data[ $(input).attr('name') ]  =  $(input).val();
-                else
-                    $(input).addClass(css.inputError);
-                break;
+         
+            if(  parseInt(total_price) >= parseInt(min_price_order) )
+                $('.basket-order').find('button[action="save-order"]').removeAttr('show').show();
+            else
+                $('.basket-order').find('button[action="save-order"]').attr('show', 'false').hide();
         }
 
+
     }
+
+
 
     function requestGetUserData()
     {
         var data = {};
-        data['get'] = "userData";
+
         $.ajax({
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/?get=userData',
+            url: '/akula/system/plugins/SecArgonia/cabinet/get/userData',
             success: function (result , status) {
               if(result.status)
               {
@@ -56,62 +63,38 @@
 
     }
 
-    //функция, переводящая строку в денежный формат
-    function formatMoney( number )
-    {
 
-        var format = number.split(""),
-            money = [],
-            iterator = 1;
-
-        for( var key = format.length - 1; key >= 0; key--)
-        {
-
-
-            if( iterator > 0 &&  iterator % 3 == 0 )
-            {
-                 money[key] = " " + format[key];
-                iterator++;
-                continue;
-            }
-
-            money[key] = format[key];
-            iterator++;
-        }
-
-        return money.join('')+" руб.";
-    }
 
     //получение корзины
     function requestGetBasket()
     {
         var data = {};
-        data['order'] = "cart";
+
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/?order=cart',
+            url: '/akula/system/plugins/SecArgonia/cabinet/order/cart',
             success: function( result, status){
                 let products = result.data.cart.products;
 
                 if(products)
                 {
                     var html = "";
-                    for( var key in products )
+                    for( let key in products )
                     {
-
-
-                        html += "<div class='basket-product' data-id-item='"+products[key].product_id+"'>" +
+                        let product = products[key].product,
+                            modifications = products[key].modifications;
+                        html += "<div class='basket-product' data-id-item='"+product.id+"'>" +
                                  "<div>" +
                                      "<div>" +
                                          "<div>" +
                                                 "<div>" +
-                                                    "<img src='"+products[key].img_link+"' >"+
+                                                    "<img src='"+product.images[0]['50x50']+"' >"+
                                                     "<div>"+
                                                         "<p>#"+products[key].order_id+"</p>"+
-                                                        "<p><a href='"+products[key].link+"' >"+products[key].name+"</a></p>"+
-                                                        "<p>Коллекция: <a href='"+products[key].collection.link+"' >"+products[key].collection.name+"</a></p>"+
+                                                        "<p><a href='"+product.href+"' >"+product.title+"</a></p>"+
+                                                        "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>"+
                                                     "</div>"+
                                                 "</div>" +
 
@@ -119,19 +102,19 @@
                                          "<div>" +
                                                 "<div>" +
                                                     "<p>Цена за шт.</p>"+
-                                                    "<span>"+formatMoney(products[key].price)+"</span>"+
+                                                    "<span>"+formatMoney(product.price)+"</span>"+
                                                 "</div>" +
                                          "</div>" +
                                      "</div>" +
                                      "<div>" +
                                             "<div>";
-                                      for( var size_id in products[key].sizes )
+                                      for( let size_id in modifications )
                                       {
-                                            html += "<div data-id-size='"+products[key].sizes[size_id].mod_id+"'>" +
-                                                          "<p>Размер "+products[key].sizes[size_id].name+"</p>" +
+                                            html += "<div data-id-size='"+modifications[size_id].id+"'>" +
+                                                          "<p>Размер "+modifications[size_id].title+"</p>" +
                                                           "<div>" +
                                                               "<button data-action-size='reduce'>-</button>" +
-                                                              "<span data-id-mod='"+products[key].sizes[size_id].mod_id+"'>"+products[key].sizes[size_id].count+"</span>" +
+                                                              "<span data-id-mod='"+modifications[size_id].id+"'>"+modifications[size_id].quantity+"</span>" +
                                                               "<button data-action-size='increase'>+</button>" +
                                                           "</div>" +
                                                     "</div>";
@@ -141,7 +124,7 @@
                                             "<div>" +
                                                 "<div>" +
                                                      "<p>Сумма</p>" +
-                                                     "<span>"+formatMoney(products[key].price_total)+"</span>" +
+                                                     "<span>"+formatMoney(products[key].total_price)+"</span>" +
                                                 "</div>" +
                                             "</div>"+
                                     "</div>" +
@@ -156,6 +139,7 @@
                                   "</div>";
 
                     }
+
                     $('div.basket-box').html(html);
                     //бонусы
                     let list_div = $('div.basket-total').find('div');
@@ -170,14 +154,19 @@
 
                     //кнопка оформление заказа
                     if(result.data.cart.minPriceOrder < result.data.cart.total_price)
-                      $('div.basket-order').find('div').eq(2).children().show();
+                       $('div.basket-order').find('div').eq(2).children().show();
 
 
+                    if( result.data.cart.total_price >= result.data.cart.min_price_order   )
+                        document.querySelectorAll('.basket-order div')[2].children[0].setAttribute('show' , ' false');
 
-                    $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(result.data.cart.total_price)).end()
-                                                                     .eq(1).text("Минимальный заказ "+formatMoney(result.data.cart.min_price_order));
+                    min_price_order = result.data.cart.min_price_order;
+                    total_price = result.data.cart.total_price;
 
-                    $('div.basket-container').show()
+                    $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
+                                                                     .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
+
+                    $('div.basket-container').show();
                 }
 
 
@@ -195,22 +184,21 @@
     {
        // console.log(id_item);
         var data = {};
-            data['order'] = "edit";
             data['product_id'] = id_item;
-            data['sizes'] = {};
+            data['modifications'] = {};
 
         $('div.basket-box').find('div[data-id-item="'+id_item+'"]').find('button[data-action-size="reduce"]').each( function () {
-
-            data['sizes'][$(this).next().attr('data-id-mod')] = $(this).next().text();
-
+            data['modifications'][$(this).next().attr('data-id-mod')] = $(this).next().text();
         });
-        data['sizes'] = JSON.stringify(data['sizes']);
+
+        data['modifications'] = JSON.stringify(data['modifications']);
+
 
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: '/akula/system/plugins/SecArgonia/cabinet/order/edit',
             success : function (  result, status ) {
                 if( result.status)
                 {
@@ -223,6 +211,8 @@
 
                     //Итого
                    $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
+                   total_price = result.data.total_price;
+                   checkButtonOrder( );
 
                 }
             },
@@ -230,23 +220,25 @@
 
     }
 
-    function requestDeleteItem(productId)
+    function requestDeleteItem(product_id)
     {
         var data = {};
-            data['order'] = "delete";
-            data['productId'] = productId;
+            data['product_id'] = product_id;
+
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: '/akula/system/plugins/SecArgonia/cabinet/order/delete',
             success : function (  result, status ) {
                if( result.status)
                {
                    $('div.basket-box').find('div[data-id-item="'+productId+'"]').remove();
-                   //Итого
-                   $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
 
+
+                   $('div.basket-total').find('div').last().find('span').text(formatMoney( result.data.total_price ));
+                   total_price = result.data.total_price;
+                   checkButtonOrder();
                    if(!$('div.basket-box').children().length)
                    {
                        $('div.basket-container').hide();
@@ -261,13 +253,12 @@
     function requestUseBonus()
     {
         var data = {};
-        data['order'] = "useBonus";
 
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: '/akula/system/plugins/SecArgonia/cabinet/order/useBonus',
             success : function (  result, status ) {
                 if( result.status)
                 {
@@ -291,27 +282,25 @@
             $('div.payment-box').find('button').removeClass( css.is_check );
             $('div.basket-order').find('div').last().find('button').hide();
 
-        data['order'] = 'check';
         data['payment_method'] = button.data('payment-method');
         data['payment_address'] = payment_address;
 
         $('#popup-fon').find('input').removeClass(css.input_error);
 
         $.ajax({
-            url: "/akula/system/plugins/SecArgonia/cabinet/",
+            url: "/akula/system/plugins/SecArgonia/cabinet/order/check",
+            method: "POST",
             dataType: 'json',
             data: data,
             success: function( result, status){
                 if( result.status)
                 {
                     if(button.data('payment-method') == "payment" && !payment_address)
-
                         requestCheck(button , true);
                     else
                     {
-                        console.log(button);
                         button.addClass(css.is_check);
-                        $('div.basket-order').find('div').last().find('button').show();
+                        checkButtonOrder();
                     }
 
                 }
@@ -321,19 +310,14 @@
                     {
                         PopUpShowCard();
                         for( var key in  result.data.errors.address)
-                        {
-                            $('#card').find('input[name="'+result.data.errors.address[key]+'"]').addClass(css.input_error);
-                        }
-
-
+                           $('#card').find('input[name="'+result.data.errors.address[key]+'"]').addClass(css.input_error);
                     }
                     else
                     {
                         PopUpShowScore();
                         for( var key in  result.data.errors.payment)
-                        {
-                            $('#score').find('input[name="'+result.data.errors.payment[key]+'"]').addClass(css.input_error);
-                        }
+                           $('#score').find('input[name="'+result.data.errors.payment[key]+'"]').addClass(css.input_error);
+
                     }
 
                 }
@@ -341,16 +325,7 @@
             },
 
         });
-        // $.ajax({
-        //     url: "",
-        //     dataType: 'json',
-        //     url: '/system/plugins/cabinet',
-        //     success: function( data, status){
-        //
-        //
-        //     },
-        //
-        // });
+
 
 
     }
@@ -358,12 +333,9 @@
     //отправка заказа на оформление
     function requestSendOrder()
     {
-
-        PopUpShowThanks();
         $.ajax({
             type: 'POST',
-            data : {'order' : 'save'},
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: '/akula/system/plugins/SecArgonia/cabinet/order/save',
             success: function( result, status){
                 if( result.status)
                     PopUpShowThanks();
@@ -379,11 +351,11 @@
     function setUserData(button , fields)
     {
         $.ajax({
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: '/akula/system/plugins/SecArgonia/cabinet/set/userData',
             type: 'POST',
             encoding: "UTF-8",
             data:  {
-                "set": "userData",
+
                 "data": JSON.stringify(fields)
             },
             dataType: 'json',
@@ -446,7 +418,7 @@
         $(this).siblings('div').find('input').each( function(){
 
             $(this).removeClass('input-error');
-            validateData($(this) , data);
+            validateData($(this) , data , css.input_error);
         });
 
 
