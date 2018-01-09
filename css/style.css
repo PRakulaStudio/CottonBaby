@@ -245,7 +245,12 @@ html, body {
     flex-direction: row;
 }
 
-.search-menu img{
+.search-menu button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 25px;
+    height: 25px;
     margin: auto 10px;
 }
 
@@ -1123,6 +1128,7 @@ html, body {
 .header-user-index > div:nth-child(4) > .authorization {
     display: none;
     position: absolute;
+    z-index: 10;
     right: 0;
     width: 270px;
     height: 200px;
@@ -1196,6 +1202,7 @@ html, body {
 .header-user-index > div:nth-child(4) > .exit {
     display: none;
     position: absolute;
+    z-index: 10;
     right: 0;
     width: 270px;
     height: 100px;
@@ -1410,6 +1417,7 @@ html, body {
 .header-user > div:nth-child(4) > .authorization {
     display: none;
     position: absolute;
+    z-index: 10;
     right: 0;
     width: 270px;
     height: 200px;
@@ -1483,6 +1491,7 @@ html, body {
 .header-user > div:nth-child(4) > .exit {
     display: none;
     position: absolute;
+    z-index: 10;
     right: 0;
     width: 270px;
     height: 100px;

@@ -30,8 +30,6 @@
 
     }
 
-
-
     function requestGetUserData()
     {
         var data = {};
@@ -62,7 +60,6 @@
         });
 
     }
-
 
 
     //получение корзины
@@ -179,7 +176,6 @@
 
     }
 
-    
     function requestEdit(id_item )
     {
        // console.log(id_item);
@@ -258,7 +254,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'/akula/system/plugins/SecArgonia/cabinet/order/useBonus',
+            url: window.pms.config.cabinetAPI+'useBonus',
             success : function (  result, status ) {
                 if( result.status)
                 {

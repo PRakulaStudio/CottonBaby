@@ -1,4 +1,4 @@
-@media(min-width: 800px) {
+@media(min-width: 1000px) {
     .slider .slide div{
        height: 1080px;
     }
@@ -158,12 +158,12 @@
         margin: 0 0 0 20px;
     }
 
-    .slider .slide div{
-       height: 500px;
-    }
-
     .main-slider .slick-arrow{
         display:none !important;
+    }
+
+    .slider .slide div{
+       height: 100vh;
     }
 
     .count-slider{
@@ -578,7 +578,7 @@
     }
 
     .slide-text {
-        padding: 100px 0 0 60px; 
+        padding: 165px 0 0 60px; 
     }
 
     .slide-text b{

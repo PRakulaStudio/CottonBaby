@@ -194,10 +194,12 @@
 					{
 
 						$('div.data-box').find('input[name="'+key+'"]').addClass('input-error');
+						alert(result.data.errors[key]);
+						break;
 
 					}
 
-					alert("Не получилось сохранить данные");
+
 				}
 			}
 

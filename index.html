@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
 	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
 </head>
-<body>
+<body class="showPrice">
 
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
@@ -21,7 +21,7 @@
 		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
-			<img src="images/icons/search.png">
+			<button type="submit"><img src="images/icons/search.png"></button>
 		</div>
 	</div>
 
@@ -130,7 +130,6 @@
 				<div data-favorite><a href="#"><img src="images/icons/favorites.png"></a></div>
 				<div data-auth>
 					<button><img src="images/icons/user.png"><span>Войти</span></button>
-
 					<div class="authorization" id="authorization">
 						<button class="popup-close"><img src="images/icons/close.png"></button>
 						<p>Авторизация</p>

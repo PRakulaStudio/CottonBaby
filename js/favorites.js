@@ -256,10 +256,10 @@
     {
 
         $.ajax({
-            data : {  'wishlist' : 'add' , 'id' : product_id},
+            data : { 'id' : product_id},
             dataType : 'JSON',
             type : "POST",
-            url : '/akula/system/plugins/SecArgonia/cabinet/',
+            url : window.pms.config.cabinetAPI+'wishlist/add',
             success : function ( result , status ) {
                 if(result.status)
                 {
@@ -277,10 +277,10 @@
     {
 
             $.ajax({
-               data : {  'wishlist' : 'delete' , 'id' : product_id},
+               data : {  'id' : product_id},
                dataType : 'JSON',
                type : "POST",
-               url : '/akula/system/plugins/SecArgonia/cabinet/',
+               url : window.pms.config.cabinetAPI+'wishlist/delete',
                success : function ( result , status ) {
                     if(result.status)
                     {
@@ -296,12 +296,12 @@
 
         for( var key in items)
         {
-            html += "<div data-id-block='"+items[key].product_id+"'>" +
-                        "<div><a href='#'><img src='"+items[key].img_link+"' /></a></div>" + //картинка
+            html += "<div data-id-block='"+items[key].id+"'>" +
+                        "<div><a href='#'><img src='"+items[key].images[0]['300x500']+"' /></a></div>" + //картинка
                         "<div><p>"+items[key].price+" руб.</p></div>" + //цена
                         "<div><button action='toogle-favorite' class='products-off'></button><button action='toogle-favorite' class='products-on'></button></div>" +// избранное
                         "<div>" +
-                            "<a href='"+items[key].link+"'>"+items[key].name+"</a>" +
+                            "<a href='"+items[key].link+"'>"+items[key].title+"</a>" +
                             "<p>"+items[key].description+"</p>" +
                         "</div>" +
 
@@ -321,10 +321,10 @@
     {
 
         $.ajax({
-            data : { 'wishlist' : 'get' , 'offset' : offset , 'limit' : limit , 'orderBy' : orderBy },
+            data : {  'offset' : offset , 'limit' : limit , 'orderBy' : orderBy },
             dataType: 'JSON',
             type: 'POST',
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
+            url: window.pms.config.cabinetAPI+'wishlist/get',
             success: function( result, status){
                 if(result.status)
                 {
