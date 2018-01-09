@@ -176,13 +176,13 @@
     }
 
     .new-slider-box {
-        position: sticky !important;
+        position: static !important;
         width: 100%;
         margin: 0 auto;
     }
 
     .new-slider {
-        position: sticky !important;
+        position: static !important;
         width: 100% !important;
     }
 
@@ -288,6 +288,18 @@
     }
 
     .production-index-slider a > div{
+        background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
+        background-position-x: 10px;
+        background-position-y: 10px;
+    }
+
+    .information-slider-box .information-slider .slick-slide a > div{
+        background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
+        background-position-x: 10px;
+        background-position-y: 10px;
+    }
+
+    .production-slider-box .production-slider .slick-slide a > div{
         background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
         background-position-x: 10px;
         background-position-y: 10px;

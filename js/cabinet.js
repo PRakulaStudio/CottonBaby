@@ -59,8 +59,10 @@
 
 						for(var item in orderList[key].products)
 						{
-							let product  = orderList[key].products[key].product;
-							let modifications = orderList[key].products[key].modifications;
+							let product  = orderList[key].products[item].product;
+							let modifications = orderList[key].products[item].modifications;
+							console.log( )
+							console.log( modifications) ;
 							html += "<div class='order-info'>" +
 
 											"<div>" +
@@ -107,8 +109,14 @@
 
 					$('div.history-box').append(html);
 
-                    //меняем оффсет у кнопки
+
+
+
 					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
+
+					if( result.data.count <=   parseInt(buttonLoadHistory.attr('data-offset')) + countItems )
+						buttonLoadHistory.remove();
+
 
 					//меняем статус кол-ва покупок и общей суммы
 
@@ -151,20 +159,22 @@
 	//сохраняем данные на сервер
 	function setUserData(data)
 	{
+
+
 		$.ajax({
 			url: window.pms.config.cabinetAPI+'set/userData',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
-				"set": "userData",
 				"data": JSON.stringify(data)
 			},
 			dataType: 'json',
-			success: function( data, status)
+			success: function( result, status)
 			{
 
-				if(data.status)
+				if(result.status)
 				{
+					alert("Данные сохранились");
 					//alert("work!!!");
 					/*
 						[
@@ -180,6 +190,13 @@
 				}
 				else
 				{
+					for( let key in result.data.errors )
+					{
+
+						$('div.data-box').find('input[name="'+key+'"]').addClass('input-error');
+
+					}
+
 					alert("Не получилось сохранить данные");
 				}
 			}
