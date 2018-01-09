@@ -189,30 +189,45 @@
 		});
 
 
+	$('.new-slider').slick({
+		centerPadding: '10px',
+		infinite: false,
+		slideToScroll: 1,
+		arrows : false,
+		slidesToShow: 4,
+		responsive: [
+			{
+				breakpoint: 2550,
+				settings: {
+					slidesToShow: 4,
+					variableWidth: true
+				}
+			},
 
-    $('.new-slider').slick({
-		  centerPadding: '60px',
-		  infinite: false,
-		  slideToScroll: 1,
-		  slidesToShow: 3,
-		  arrows : false,
-		  responsive: [
-			  {
-				  breakpoint: 1550,
-				  settings: {
-					  slidesToShow: 2,
-				  }
-			  },
+			{
+				breakpoint: 1000,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
 
-			  {
-				  breakpoint: 640,
-				  settings: {
-					  slidesToShow: 1,
-				  }
-			  }
-		   		
-		  ]
-		});
+			{
+				breakpoint: 910,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+
+			{
+				breakpoint: 610,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+
+		]
+	});
+
 	$('div.new-button button').click( function(){
 
 		if($(this).attr('data-action') == "next" )
