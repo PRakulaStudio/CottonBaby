@@ -1,6 +1,6 @@
 @media(min-width: 1000px) {
     .slider .slide div{
-       height: 1080px;
+       height:100vh;
     }
 }
 

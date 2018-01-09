@@ -54,7 +54,7 @@
                 if( (clickButton.text()   <= 2) || (countPages - 1) <= clickButton.text() )
                 {
 
-                    if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() < ( countPages - 1 )  )
+                    if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() <= ( countPages - 1 )  )
                     {
 
                         clickButton = clickButton.prev();
@@ -305,7 +305,7 @@
                             "<p>"+items[key].description+"</p>" +
                         "</div>" +
 
-                        "<a href='"+items[key].link+"'>" +
+                        "<a href='"+items[key].href+"'>" +
                             "Подробно" +
                          "</a>" +
                       "</div>";
