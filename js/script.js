@@ -1,17 +1,24 @@
-window.pms={
-    config:{
-        cabinetAPI:'/system/plugins/SecArgonia/cabinet/',
-        catalogAPI:'/system/plugins/PonomareVlad/catalog/'
-    }
-};
-// Phone mask end
 
-/**
- *
+let config = {
+  cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
+  catalogApi: '/system/plugins/PonomareVlad/catalog/',
+};
+
+config = Object.freeze(config);
+
+window.pms={
+    config: config,
+};
+
+
+delete config;
+console.log( typeof(config) );
+ /*
  * @param str
  * @param requareLength
  * @returns {boolean}
  */
+
 function checkLength(str , requareLength)
 {
     if( str.length >= requareLength )

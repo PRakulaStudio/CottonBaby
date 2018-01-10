@@ -388,7 +388,7 @@ html, body {
 
 .title {
     width: 100%;
-    margin: 20px auto;
+    margin: 10px auto auto auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -398,9 +398,9 @@ html, body {
 .title h1{
     width: auto;
     margin: 0;
-    padding: 5px 10px;
+    padding: 10px;
     font-family: "Fontfabric-MullerMedium";
-    font-size: 40px;
+    font-size: 30px;
     color: #333333;
 }
 
@@ -457,8 +457,9 @@ html, body {
 }
 
 .pagination-liner {
-    width: 100%;
+    width: 99%;
     height: 2px;
+    margin: 0 auto;
     background: linear-gradient(to left, #F71E02, #FAAA01)
 }
 
@@ -468,14 +469,14 @@ html, body {
 
 .filter-box {
     width: 100%;
-    margin: 20px auto;
+    margin: 10px auto;
     overflow: hidden;
     background: #F5F5F5;
 }
 
 .filter {
     max-width: 1080px;
-    margin: 20px auto;
+    margin: 5px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -490,6 +491,10 @@ html, body {
     width: 250px;
     height: 50px;
     margin: 5px auto;
+    padding: 0 45px 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;
@@ -586,25 +591,28 @@ html, body {
 /* katalog */
 
 .products-box {
-    width: 100%;
+    width: 99%;
     margin: 0 auto 50px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.products-box div:nth-child(2), .products-box div:nth-child(5), .products-box div:nth-child(8) {
+    margin: 20px 2%;
 }
 
 .products-box > div {
     position: relative;
-    width: 300px;
+    width: 32%;
     height: 500px;
-    margin: 20px auto;
-    margin-left: calc(((100% / 3) - 300px) / 2);
-    margin-right: calc(((100% / 3) - 300px) / 2);
+    margin: 20px 0;
 }
 
 .products-box > div > :nth-child(1){
     position: absolute;
-    width: 300px;
+    width: 100%;
     height: 500px;
     margin: auto;
     overflow: hidden;
@@ -612,9 +620,10 @@ html, body {
 
 .products-box > div > :nth-child(1) img{
     position: absolute;
-    width: 300px;
+    width: 100%;
     height: 500px;
     transition: all 1s;
+    object-fit: cover;
 }
 
 .products-box > div > :nth-child(1) img:hover{
@@ -631,9 +640,9 @@ html, body {
     height: 40px;
     top: 10px;
     left: 10px;
+    margin: 0;
     padding: 0 5px;
     background: rgba(255, 255, 255, 0.8);
-    margin-left: calc(100% - 300px);
     border-radius: 20px;
 }
 
@@ -663,7 +672,6 @@ html, body {
     background: none;
     border-radius: 20px;
     border: 10px;
-    margin-right: calc(100% - 300px);
 }
 
 .products-off {
@@ -3618,6 +3626,8 @@ html, body {
     max-height: 250px;
     overflow: auto;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .history-box > div > .hidden > .order-info{
@@ -3663,8 +3673,11 @@ html, body {
     cursor: pointer;
     border: none;
     background: none;
-    width: 290px;
-    height: 40px;
+    width: 100%;
+    height: 50px;
+    padding: 0 10px 0 0;
+    top: 0;
+    left: 0;
     font-size: 20px;
     text-align: right;
     margin: auto 0 auto auto;
@@ -3887,25 +3900,28 @@ html, body {
 }
 
 .collections-box {
-    width: 100%;
+    width: 99%;
     margin: 0 auto 50px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.collections-box div:nth-child(2), .collections-box div:nth-child(5), .collections-box div:nth-child(8) {
+    margin: 20px 2%;
 }
 
 .collections-box > div {
     position: relative;
-    width: 300px;
+    width: 32%;
     height: 500px;
-    margin: 20px auto;
-    margin-left: calc(((100% / 3) - 300px) / 2);
-    margin-right: calc(((100% / 3) - 300px) / 2);
+    margin: 20px 0;
 }
 
 .collections-box > div > :nth-child(1){
     position: absolute;
-    width: 300px;
+    width: 100%;
     height: 500px;
     margin: auto;
     overflow: hidden;
@@ -3913,9 +3929,10 @@ html, body {
 
 .collections-box > div > :nth-child(1) img{
     position: absolute;
-    width: 300px;
+    width: 100%;
     height: 500px;
     transition: all 1s;
+    object-fit: cover;
 }
 
 .collections-box > div > :nth-child(1) img:hover{
@@ -3931,7 +3948,7 @@ html, body {
     width: 100%;
     height: 100px;
     padding: 20px;
-    margin: auto;
+    margin: 0 auto!important;
     bottom: 0;
     background: rgba(255, 255, 255, 0.8);
     transition: all 1s;

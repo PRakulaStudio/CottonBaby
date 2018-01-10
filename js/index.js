@@ -355,13 +355,15 @@
 			],
 
 		});
-	$("a#example1").fancybox({
-		afterClose: function () {
-			$('.insta-slider').slick('slickPlay');
-		}
-	}).on('click' , function () {
-		$('.insta-slider').slick('slickPause');
-	});
+
+
+	// $("a#example1").fancybox({
+	// 	afterClose: function () {
+	// 		$('.insta-slider').slick('slickPlay');
+	// 	}
+	// }).on('click' , function () {
+	// 	$('.insta-slider').slick('slickPause');
+	// });
 	
 
 
@@ -370,7 +372,6 @@
 		//событие на нажатие кнопкки "регистрация"
 	$('div.reg-box button').click( function(){
 			var data = {};
-
 
 			$('div.reg-box').find('input').each( function(){
 				validateData($(this) , data , 'input-error-bottom');

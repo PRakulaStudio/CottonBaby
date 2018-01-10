@@ -228,14 +228,28 @@
         margin-right: calc(((100% / 2) - 300px) / 2);
     }
 
+    .products-box {
+        justify-content: space-between;
+    }
+
+    .products-box div:nth-child(2), .products-box div:nth-child(5), .products-box div:nth-child(8) {
+        margin: 20px 0;
+    }
+
     .products-box > div{
-        margin-left: calc(((100% / 2) - 300px) / 2);
-        margin-right: calc(((100% / 2) - 300px) / 2);
+        width: 49%;
+    }
+
+    .collections-box {
+        justify-content: space-between;
+    }
+
+    .collections-box div:nth-child(2), .collections-box div:nth-child(5), .collections-box div:nth-child(8) {
+        margin: 20px 0;
     }
 
     .collections-box > div{
-        margin-left: calc(((100% / 2) - 300px) / 2);
-        margin-right: calc(((100% / 2) - 300px) / 2);
+        width: 49%;
     }
 
     .filter button{
@@ -284,7 +298,7 @@
     }
 
     .reg-box > div:nth-child(2) {
-        padding: 50px 65px 75px 30px;
+        padding: 60px 65px 75px 40px;
     }
 
     .production-index-slider a > div{
@@ -377,13 +391,34 @@
         display: block;
     }
 
+    .title button{
+        border: none;
+        background: none;
+        height: auto;
+        margin: 0 11px;
+        text-align: left;
+    }
+
+    .title button:hover{
+        border: none;
+    }
+
     .filter-box {
         display: none;
     }
 
-    .filter button{
+    .sorting {
+        display: none;
+    }
+
+    .filter button {
+        height: auto;
         margin-left: calc(((100% / 2) - 250px) / 2);
         margin-right: calc(((100% / 2) - 250px) / 2);
+    }
+
+    .filter button > span {
+        display: none;
     }
 
     .basket-box {
@@ -425,7 +460,7 @@
     }
 
     .reg-box > div:nth-child(2) {
-        padding: 50px 65px 75px 40px;
+        padding: 50px 65px 75px 30px;
     }
 }
 
@@ -436,6 +471,11 @@
 
     .header-info {
         width: 69%;
+    }
+
+    .header-info img{
+        width: 80px;
+        margin: 0 5px;
     }
 
     .header-info p {
@@ -450,16 +490,6 @@
     .header-info-index img{
         width: 100px;
         margin: 0 5px;
-    }
-
-    .header-logo img{
-        width: 80px;
-        margin: 0 5px;
-    }
-
-    .header-text p {
-        font-size: 14px;
-        line-height: 20px;
     }
 
     .footer-top {
@@ -500,6 +530,7 @@
     }
 
     .products-box > div{
+        width: 100%;
         margin: 20px auto;
     }
 
@@ -508,6 +539,7 @@
     }
 
     .collections-box > div{
+        width: 100%;
         margin: 20px auto;
     }
 
