@@ -394,6 +394,7 @@
     .title button{
         border: none;
         background: none;
+        width: auto;
         height: auto;
         margin: 0 11px;
         text-align: left;
@@ -549,6 +550,7 @@
 
     .filter button{
         margin: 5px auto;
+        padding: 0;
     }
 
     .sorting {
