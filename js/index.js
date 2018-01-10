@@ -236,7 +236,8 @@
 			$('.new-slider').slick('slickPrev');
 
 
-	});
+	})
+	
 	let currentNewSlide = 0,
 		maxNumberOnLoadSlide = 0,
 		numberRest = 2;

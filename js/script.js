@@ -301,9 +301,14 @@ var IS_AUTH;
 
         $.ajax({
             type: 'POST',
-            url: window.pms.config.cabinetAPI+'logout',
+            dataType : 'JSON',
+            url: window.pms.config.cabinetAPI+'user/logout',
             success: function( result, status){
-                location.reload();
+              
+                if(result.status)
+                    location.reload();
+                else
+                   console.log("Не получилось разлогиниться!");
             },
         })
     }
