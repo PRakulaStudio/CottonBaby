@@ -7,43 +7,6 @@
        return requestGetItems(offset , limit, orderBy , pageName);
     }
 
-    function requestCheckFavoritesItems(listId)
-    {
-        var data = new FormData();
-        data.append('items' , JSON.stringify(listId));
-        return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
-            .then( function(response){
-                let responseData = false;
-                try{
-                    responseData = response.json();
-                }
-                catch(e) {
-                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                    response.text().then(console.debug);
-                }
-
-                return responseData;
-            })
-            .then( function (response) {
-               if(response.data.wishlist)
-               {
-                   let $products = $('div.products-box'),
-                       wishList = response.data.wishlist,
-                       buttonHtml = "";
-
-                   for(let key in wishList)
-                   {
-                       if( wishList[key].value)
-                          buttonHtml =  "<button class='new-off'></button>";
-                       else
-                          buttonHtml =  " <button class='new-on'></button>";
-
-                       $products.find('div[data-id-block="'+wishList[key].id+'"]').find('div.block-button-favorites').html(buttonHtml);
-                   }
-               }
-            });
-
-    }
     
     function reuestGetCategories(page)
     {

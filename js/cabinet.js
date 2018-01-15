@@ -61,8 +61,7 @@
 						{
 							let product  = orderList[key].products[item].product;
 							let modifications = orderList[key].products[item].modifications;
-							console.log( )
-							console.log( modifications) ;
+
 							html += "<div class='order-info'>" +
 
 											"<div>" +
@@ -114,7 +113,7 @@
 
 					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
 
-					if( result.data.count <=   parseInt(buttonLoadHistory.attr('data-offset')) + countItems )
+					if( result.data.count <=   parseInt(buttonLoadHistory.attr('data-offset')) )
 						buttonLoadHistory.remove();
 
 					$('div.history').show();
@@ -126,19 +125,7 @@
 									.first().next().html(`Вы совершили ${result.data.count} ${declOfNum( result.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(result.data.total_sum)}\<\/span\>`);
 
 
-					//Вы совершили 5 покупок, на общую сумму 25 000 руб.
 
-					/*
-						[
-							id,
-							link_redirect,
-						]
-
-						window.location.replace(link_redirect);
-						window.location.href = link_redirect;
-
-					*/
-					//переход
 				}
 				else
 				{

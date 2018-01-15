@@ -1989,7 +1989,8 @@ html, body {
     margin: 0 auto;
     border: none;
     border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
+
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
@@ -2006,7 +2007,7 @@ html, body {
     margin: 0 auto;
     border: none;
     border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
@@ -3665,7 +3666,7 @@ html, body {
     max-height: 250px;
     overflow: auto;
     padding: 5px;
-    display: flex;
+
     flex-direction: column;
 }
 
@@ -4322,7 +4323,7 @@ html, body {
     padding: 10px;
     background: #F8F8F6;
     border-radius: 5px;
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
 }

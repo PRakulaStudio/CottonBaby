@@ -178,6 +178,97 @@ function PopUpHidePopup() {
 //флаг авторизированности пользователя
 //var IS_AUTH;
 
+function addFavoriteButtons( blockProducts , value)
+{
+
+    let buttonHtml = "";
+
+    if(value)
+        buttonHtml =  "<button class='new-off'></button>";
+    else
+        buttonHtml =  " <button class='new-on'></button>";
+
+    blockProducts.find('div.block-button-favorites').html(buttonHtml);
+}
+
+
+$('section.content').on('click' , 'div.block-button-favorites' , function(){
+
+    if( $(this).find('button').hasClass('new-off') )
+        requestRemoveFavorites( $(this).parents('div[data-id-block]').attr('data-id-block') ,  $(this).find('button'));
+    else
+        requestAddFavorites( $(this).parents('div[data-id-block]').attr('data-id-block') ,  $(this).find('button') );
+
+});
+
+function requestAddFavorites(product_id  , button)
+{
+
+    $.ajax({
+        data : { 'id' : product_id},
+        dataType : 'JSON',
+        type : "POST",
+        url : window.pms.config.cabinetAPI+'wishlist/add',
+        success : function ( result , status ) {
+            if(result.status)
+            {
+                button.removeClass('new-on').addClass('new-off');
+            }
+        },
+    });
+
+}
+
+function requestRemoveFavorites(product_id , button)
+{
+
+    $.ajax({
+        data : {  'id' : product_id},
+        dataType : 'JSON',
+        type : "POST",
+        url : window.pms.config.cabinetAPI+'wishlist/delete',
+        success : function ( result , status ) {
+            if(result.status)
+            {
+                button.removeClass('new-off').addClass('new-on');
+            }
+        },
+    });
+}
+
+function requestCheckFavoritesItems(listId)
+{
+    var data = new FormData();
+    data.append('items' , JSON.stringify(listId));
+    return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( function(response){
+            let responseData = false;
+            try{
+                responseData = response.json();
+            }
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( function (response) {
+            if(response.data.wishlist)
+            {
+                let $products = $('div.products-box'),
+                    wishList = response.data.wishlist,
+                    buttonHtml = "";
+
+                for(let key in wishList)
+                   addFavoriteButtons( $products.find('div[data-id-block="'+wishList[key].id+'"]') , wishList[key].value)
+
+            }
+        });
+
+}
+
+
 function setAuthUserData(result, url) {
 
     let is_auth = false;

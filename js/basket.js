@@ -263,7 +263,7 @@
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'useBonus',
+            url: window.pms.config.cabinetAPI+'order/useBonus',
             success : function (  result, status ) {
                 if( result.status)
                 {

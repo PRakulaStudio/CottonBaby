@@ -215,6 +215,8 @@ function changePagination(direction , activeButton , clickButton )
 
 }
 
+
+
 function requestGetItems(offset , limit , orderBy , pageName)
 {
 
@@ -257,7 +259,8 @@ function requestGetItems(offset , limit , orderBy , pageName)
 
             return createItems(response.data);
 
-        });
+        })
+       
 }
 
 function createItems(items)
