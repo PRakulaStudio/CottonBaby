@@ -11,6 +11,7 @@
     var css = {
         'input_error' : "input-error-bottom",
         'is_check' : 'payment-activ',
+        'disabled_order' : 'basket-order-off',
     };
 
 
@@ -20,11 +21,12 @@
 
         if($('.payment-box').find('button').hasClass('payment-activ') )
         {
-         
+
+
             if(  parseInt(total_price) >= parseInt(min_price_order) )
-                $('.basket-order').find('button[action="save-order"]').removeAttr('show').show();
+                $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order);
             else
-                $('.basket-order').find('button[action="save-order"]').attr('show', 'false').hide();
+                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
         }
 
 
@@ -160,10 +162,14 @@
                     min_price_order = result.data.cart.min_price_order;
                     total_price = result.data.cart.total_price;
 
+
                     $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
                                                                      .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
 
+
                     $('div.basket-container').show();
+
+
                 }
 
 
@@ -188,6 +194,8 @@
         });
 
         data['modifications'] = JSON.stringify(data['modifications']);
+
+
 
 
         $.ajax({
@@ -235,6 +243,7 @@
                    $('div.basket-total').find('div').last().find('span').text(formatMoney( result.data.total_price ));
                    total_price = result.data.total_price;
                    checkButtonOrder();
+
                    if(!$('div.basket-box').children().length)
                    {
                        $('div.basket-container').hide();
@@ -276,7 +285,7 @@
     {
         var data = {};
             $('div.payment-box').find('button').removeClass( css.is_check );
-            $('div.basket-order').find('div').last().find('button').hide();
+
 
         data['payment_method'] = button.data('payment-method');
         data['payment_address'] = payment_address;
@@ -331,16 +340,25 @@
     {
         $.ajax({
             type: 'POST',
+            dataType : "JSON",
             url: window.pms.config.cabinetAPI+'order/save',
             success: function( result, status){
+                console.log(result.status);
+                $('#popup-fon').show();
                 if( result.status)
+                {
+                    $('div.basket-order').find('button[action="save-order"]').remove();
                     PopUpShowThanks();
+                }
 
             },
 
         });
 
     }
+
+
+   
 
 
 
@@ -391,6 +409,9 @@
     $('div.basket-box').on('click' , 'button[data-action-size]' , function () {
 
             var id_ietm = $(this).parents('div.basket-product').data('id-item');
+            //на время запроса блочим кнопку отправки заказа
+            $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
+
             clearTimeout(timeOuts[id_ietm]);
 
             if( $(this).data("action-size") == "increase" )
@@ -440,12 +461,12 @@
 
     //сохранение заказа
     $('button[action="save-order"]').click(function () {
-        requestSendOrder();
+        if( !$(this).parent('div').hasClass(css.disabled_order))
+          requestSendOrder();
     });
 
     //удаляем из корзины
     $('div.basket-box').on('click' , 'button[data-action="remove"]' , function () {
-
             requestDeleteItem($(this).parents('div[data-id-item]').data('id-item'));
     });
 
@@ -459,7 +480,7 @@
     //закрытие popup после удачного оформления заказа
     $('#thanks button.popup-close').click(function(){
 
-        window.location.href = "/";
+        window.location.href = "/cabinet.html";
     });
 
     requestGetBasket();

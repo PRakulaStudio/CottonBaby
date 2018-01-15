@@ -117,12 +117,14 @@
 					if( result.data.count <=   parseInt(buttonLoadHistory.attr('data-offset')) + countItems )
 						buttonLoadHistory.remove();
 
+					$('div.history').show();
 
 					//меняем статус кол-ва покупок и общей суммы
 
 					$('div.bonus')
 								.find('p')
 									.first().next().html(`Вы совершили ${result.data.count} ${declOfNum( result.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(result.data.total_sum)}\<\/span\>`);
+
 
 					//Вы совершили 5 покупок, на общую сумму 25 000 руб.
 
@@ -143,11 +145,11 @@
 					if(result.statusText)
 					{
 						buttonLoadHistory.hide();
-						alert(result.statusText);
-
+						console.log(result.statusText);
 					}
 					else {
-						alert("Не получилосьполучить историю заказов");
+						console.log("Не получилосьполучить историю заказов");
+						//alert("Не получилосьполучить историю заказов");
 					}
 				}
 			},

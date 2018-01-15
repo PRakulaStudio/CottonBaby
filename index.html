@@ -126,8 +126,8 @@
 					<a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>
 					<div class="sub"><div><a href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
 				</div>
-				<div data-basket><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
-				<div data-favorite><a href="#"><img src="images/icons/favorites.png"></a></div>
+				<div data-basket><a href="basket.html"><img src="images/icons/basket.png"><span>0</span></a></div>
+				<div data-favorite><a href="favorites.html"><img src="images/icons/favorites.png"></a><span>0</span></div>
 				<div data-auth>
 					<button><img src="images/icons/user.png"><span>Войти</span></button>
 					<div class="authorization" id="authorization">
@@ -138,7 +138,7 @@
 								<input type="email" name="mail" placeholder="E-mail">
 								<input type="password" name="password_auth" placeholder="Пароль">
 							</div>
-
+							<div><span data-action="remind-pass">Забыли пароль?</span></div>
 							<div>
 								<button type="button">Войти</button>
 								<a href="registration.html">Регистрация</a>
@@ -149,7 +149,7 @@
 					<div class="exit" id="exit">
 						<button class="popup-close"><img src="images/icons/close.png"></button>
 						<div>
-							<a href="#">Личный кабинет</a>
+							<a href="cabinet.html">Личный кабинет</a>
 							<button type="button">Выйти</button>
 						</div>
 					</div>
@@ -164,32 +164,53 @@
 		<section class="main-slider">
 			<div class="slider">
 				<div class="slide">
-					<div style="background-image: url('images/pictures/index1.jpg');">
+					<div>
+						<img
+								src="images/pictures/index1.jpg"
+								srcset="images/pictures/index1.jpg 450w, images/pictures/index1.jpg 800w, images/pictures/index1.jpg 1050w, images/pictures/index1.jpg 1920w"
+								sizes="(min-width: 1920px) 100vw"
+						>
 						<div class="slide-text">
-							<b>ПРОИЗВОДСТВО</b> 
-							<p>ДЕТСКОЙ ОДЕЖДЫ</p> 
-							<p>ОТ 0 ДО 3 ЛЕТ</p>
-							<a href="#">Подробнее →</a>
+							<div>
+								<b>ПРОИЗВОДСТВО</b>
+								<p>ДЕТСКОЙ ОДЕЖДЫ</p>
+								<p>ОТ 0 ДО 3 ЛЕТ</p>
+								<a href="#">Подробнее →</a>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="slide">
-					<div style="background-image: url('images/pictures/index2.jpg');">
+					<div>
+						<img
+								src="images/pictures/index2.jpg"
+								srcset="images/pictures/index2.jpg 450w, images/pictures/index2.jpg 800w, images/pictures/index2.jpg 1050w, images/pictures/index2.jpg 1920w"
+								sizes="(min-width: 1920px) 100vw"
+						>
 						<div class="slide-text">
-							<b>ПРОИЗВОДСТВО</b> 
-							<p>ДЕТСКОЙ ОДЕЖДЫ</p> 
-							<p>ОТ 0 ДО 3 ЛЕТ</p>
-							<a href="#">Подробнее →</a>
+							<div>
+								<b>ПРОИЗВОДСТВО</b>
+								<p>ДЕТСКОЙ ОДЕЖДЫ</p>
+								<p>ОТ 0 ДО 3 ЛЕТ</p>
+								<a href="#">Подробнее →</a>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="slide">
-					<div style="background-image: url('images/pictures/index3.jpg');">
+					<div>
+						<img
+								src="images/pictures/index3.jpg"
+								srcset="images/pictures/index3.jpg 450w, images/pictures/index3.jpg 800w, images/pictures/index3.jpg 1050w, images/pictures/index3.jpg 1920w"
+								sizes="(min-width: 1920px) 100vw"
+						>
 						<div class="slide-text">
-							<b>ПРОИЗВОДСТВО</b> 
-							<p>ДЕТСКОЙ ОДЕЖДЫ</p> 
-							<p>ОТ 0 ДО 3 ЛЕТ</p>
-							<a href="#">Подробнее →</a>
+							<div>
+								<b>ПРОИЗВОДСТВО</b>
+								<p>ДЕТСКОЙ ОДЕЖДЫ</p>
+								<p>ОТ 0 ДО 3 ЛЕТ</p>
+								<a href="#">Подробнее →</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -293,7 +314,14 @@
 					<div class="slide" data-type="empty">
 
 					</div>
+					<div class="slide" data-type="empty">
+
+					</div>
+
+
+
 				</div>
+
 			</div>
 		</section>
 
@@ -369,6 +397,7 @@
 				<div class="slide"><a data-fancybox="images-productions"  href="images/pictures/p3.jpg"><img src="images/pictures/p3.jpg"><div></div></a></div>
 				<div class="slide"><a data-fancybox="images-productions"  href="images/pictures/p4.jpg"><img src="images/pictures/p4.jpg"><div></div></a></div>
 				<div class="slide"><a data-fancybox="images-productions"  href="images/pictures/p5.jpg"><img src="images/pictures/p5.jpg"><div></div></a></div>
+
 			</div>
 			
 			<div class="production-index-button">

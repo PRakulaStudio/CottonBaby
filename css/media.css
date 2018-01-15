@@ -1,7 +1,12 @@
 @media(min-width: 1000px) {
     .slider .slide div{
        height: 100vh;
+       position: relative;
     }
+}
+
+@media (max-width: 1260px) {
+    
 }
 
 @media (max-width: 1000px) {
@@ -164,6 +169,7 @@
 
     .slider .slide div{
        height: 100vh;
+       position: relative;
     }
 
     .count-slider{
@@ -252,7 +258,7 @@
         width: 49%;
     }
 
-    .filter button{
+    .filter a{
         margin-left: calc(((100% / 3) - 250px) / 2);
         margin-right: calc(((100% / 3) - 250px) / 2);
     }
@@ -293,7 +299,7 @@
         margin: 0 auto auto auto;
     }
 
-    .slide-text {
+    .slide-text div{
         padding: 150px 0 0 60px; 
     }
 
@@ -396,7 +402,7 @@
         background: none;
         width: auto;
         height: auto;
-        margin: 0 11px;
+        margin: 10px 11px;
         text-align: left;
     }
 
@@ -408,17 +414,13 @@
         display: none;
     }
 
-    .sorting {
-        display: none;
-    }
-
-    .filter button {
+    .filter a {
         height: auto;
         margin-left: calc(((100% / 2) - 250px) / 2);
         margin-right: calc(((100% / 2) - 250px) / 2);
     }
 
-    .filter button > span {
+    .filter a > span {
         display: none;
     }
 
@@ -450,12 +452,12 @@
         width: 95%;
     }
 
-    .slide-text b{
+    .slide-text div > b{
         font-size: 60px;
         padding: 0 0 15px 0;
     }
 
-    .slide-text p{
+    .slide-text div > p{
         font-size: 40px;
         padding: 0 0 15px 0;
     }
@@ -548,13 +550,9 @@
         flex-direction: column;
     }
 
-    .filter button{
+    .filter a{
         margin: 5px auto;
-        padding: 0;
-    }
-
-    .sorting {
-        flex-direction: column;
+        padding: 5px 0;
     }
 
     .text-cooperation div:nth-child(1) > p{
@@ -611,15 +609,15 @@
         margin: auto;
     }
 
-    .slide-text {
+    .slide-text div > {
         padding: 165px 0 0 60px; 
     }
 
-    .slide-text b{
+    .slide-text div > b{
         font-size: 35px;
     }
 
-    .slide-text p{
+    .slide-text div > p{
         font-size: 25px;
     }
 
@@ -642,12 +640,12 @@
         font-size: 35px;
     }
 
-    .slide-text b{
+    .slide-text div > b{
         font-size: 25px;
         padding: 0 0 10px 0;
     }
 
-    .slide-text p{
+    .slide-text div > p{
         font-size: 20px;
         padding: 0 0 10px 0;
     }

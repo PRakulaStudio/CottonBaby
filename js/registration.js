@@ -52,7 +52,6 @@
 		    var data = {};
 			
 			$('div.registration-form').find('input').each( function(){
-
 				$(this).removeClass('input-error');
 				validateData($(this) , data , 'input-error');
 			});
@@ -67,6 +66,7 @@
 
 	//считывание полей с localstorage
 	let userData = "";
+	
 	if( userData = localStorage.getItem('reg') )
 	{
 		userData = JSON.parse( userData );

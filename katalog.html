@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/media.css"/>
 </head>
-<body>
+<body class="showPrice">
 
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
@@ -102,61 +102,62 @@
 <!-- menu popup end -->
 
 <!-- header start -->
-	<div class="header-box">
-		<div class="header">
-			<div class="header-menu">
-				<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+<div class="header-box">
+	<div class="header">
+		<div class="header-menu">
+			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+		</div>
+
+		<div class="header-info">
+			<div>
+				<a href="index.html"><img src="images/logo.png"></a>
 			</div>
 
-			<div class="header-info">
-				<div>
-					<a href="index.html"><img src="images/logo.png"></a>
-				</div>
-
-				<div>
-					<p>Производство детской одежды.</p>
-					<p>Оптовая продажа.</p>
-				</div>
+			<div>
+				<p>Производство детской одежды.</p>
+				<p>Оптовая продажа.</p>
 			</div>
+		</div>
 
-			<div class="header-user">
-				<div>
-					<a href="#"><img src="images/icons/insta.png"></a>
-					<div class="sub"><div><a href="#">Подпишись</a></div></div>
-				</div>
-				<div><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
-				<div class="favorites"><a href="#"><img src="images/icons/favorites.png"></a></div>
-				<div>
-					<button><img src="images/icons/user.png"><span>Войти</span></button>
+		<div class="header-user">
+			<div data-insta>
+				<a href="#"><img src="images/icons/insta.png"></a>
+				<div class="sub"><div><a href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
+			</div>
+			<div data-basket><a href="#"><img src="images/icons/basket.png"><span>0</span></a></div>
+			<div data-favorite ><a href="#"><img src="images/icons/favorites.png"><span>0</span></a></div>
+			<div data-auth>
 
-					<div class="authorization" id="authorization">
-						<button class="popup-close"><img src="images/icons/close.png"></button>
-						<p>Авторизация</p>
-						<form>
-							<div>
-								<input type="email" name="mail" placeholder="E-mail">
+				<button><img src="images/icons/user.png"><span>Войти</span></button>
 
-								<input type="password" name="password" placeholder="Пароль">
-							</div>
-
-							<div>
-								<button>Войти</button>
-								<a href="registration.html">Регистрация</a>
-							</div>
-						</form>
-					</div>
-
-					<div class="exit" id="exit">
-						<button class="popup-close"><img src="images/icons/close.png"></button>
+				<div class="authorization" id="authorization">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<p>Авторизация</p>
+					<form>
 						<div>
-							<a href="#">Личный кабинет</a>
-							<button>Выйти</button>
+							<input type="email" name="mail" placeholder="E-mail">
+
+							<input type="password" name="password_auth" placeholder="Пароль">
 						</div>
+
+						<div>
+							<button type="button">Войти</button>
+							<a href="/registration.html">Регистрация</a>
+						</div>
+					</form>
+				</div>
+
+				<div class="exit" id="exit">
+					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<div>
+						<a href="#">Личный кабинет</a>
+						<button>Выйти</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- header end -->
 
 <!-- content start -->
@@ -175,14 +176,14 @@
 
 		<section class="filter-box">
 			<div class="filter">
-				<button>Комбинезоны <span>5</span></button>
-				<button>Кофты <span>5</span></button>
-				<button>Штанишки <span>5</span></button>
-				<button>Ползунки <span>5</span></button>
-				<button>Нагрудники <span>5</span></button>
-				<button>Шапочки <span>5</span></button>
-				<button>Крестильные наборы <span>5</span></button>
-				<button>Крестильные наборы <span>5</span></button>
+				<a href="#">Комбинезоны <span>5</span></a>
+				<a href="#">Кофты <span>5</span></a>
+				<a href="#">Штанишки <span>5</span></a>
+				<a href="#">Ползунки <span>5</span></a>
+				<a href="#">Нагрудники <span>5</span></a>
+				<a href="#">Шапочки <span>5</span></a>
+				<a href="#">Крестильные наборы <span>5</span></a>
+				<a href="#">Крестильные наборы <span>5</span></a>
 			</div>
 		</section>
 
@@ -296,5 +297,8 @@
 <!-- footer end -->
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
+<script type="text/javascript" src="js/katalog.js"></script>
+
 </body>
 </html>

@@ -417,19 +417,24 @@ html, body {
     cursor: pointer;
     border-radius: 25px;
     border: 2px solid #D7DFE5;
-    background: #D7DFE5;
-    width: 250px;
+    background: #FFFFFF;
+    width: 200px;
     height: 40px;
     margin: 5px 10px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #000000;
     text-align: center;
 }
 
 .title button:hover{
     border: 2px solid #F30330;
+}
+
+.title button > img{
+    width: 15px;
+    margin: 0 0 0 10px;
+    vertical-align: middle;
 }
 
 /* title */
@@ -482,19 +487,20 @@ html, body {
     flex-wrap: wrap;
 }
 
-.filter button{
+.filter a{
     position: relative;
-    cursor: pointer;
+    display: block;
     border-radius: 10px;
     border: 2px solid #FFFFFF;
     background: #FFFFFF;
     width: 250px;
-    height: 50px;
+    height: 40px;
     margin: 5px auto;
-    padding: 0 45px 0 0;
+    padding: 11px 45px 10px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #000000;
@@ -503,18 +509,18 @@ html, body {
     margin-right: calc(((100% / 4) - 250px) / 2);
 }
 
-.filter button:before{
+.filter a:before{
     content: "\25c9";
     margin: 0 5px;
     color: #FC982B;
 }
 
-.filter button > span {
+.filter a > span {
     position: absolute;
     right: 10px;
-    top: 8px;
+    top: 4px;
     width: 30px;
-    height: 30px;
+    height: 28px;
     font-size: 15px;
     line-height: 30px;
     background: #EDEDED;
@@ -522,11 +528,11 @@ html, body {
     text-align: center;
 }
 
-.filter button:hover{
+.filter a:hover{
     border: 2px solid #FC982B;
 }
 
-.filter button:hover > span {
+.filter a:hover > span {
     color: #FFFFFF; 
     background: #F10015;
 }
@@ -547,7 +553,7 @@ html, body {
 }
 
 .sorting > .sorting-block{
-    width: 300px;
+    width: 100%;
     height: 50px;
     padding: 5px 0;
     background: #F0F0EE;
@@ -565,10 +571,11 @@ html, body {
 
 .sorting button{
     cursor: pointer;
+    height: 30px;
     border-radius: 25px;
     border: 2px solid #D4D4D2;
     background: #D4D4D2;
-    margin: 0 5px;
+    margin: 5px 0 5px 10px;
     padding: 0 10px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
@@ -610,6 +617,22 @@ html, body {
     margin: 20px 0;
 }
 
+.products-box > div:hover img{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.products-box > div:hover :nth-child(4){
+    height: 120px;
+}
+
+.products-box > div:hover :nth-child(4) p{
+    transition: all 1s;
+    color: #000000;
+}
+
 .products-box > div > :nth-child(1){
     position: absolute;
     width: 100%;
@@ -624,13 +647,6 @@ html, body {
     height: 500px;
     transition: all 1s;
     object-fit: cover;
-}
-
-.products-box > div > :nth-child(1) img:hover{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
 }
 
 .products-box > div > :nth-child(2) {
@@ -718,14 +734,9 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
-}
-
-.products-box div > :nth-child(4):hover {
-    background: rgba(255, 255, 255, 0.8);
-    height: 120px;
 }
 
 .products-box > div > :nth-child(4) a{
@@ -745,11 +756,6 @@ html, body {
     line-height: 25px;
     color: #0000;
     transition: all 1s;
-}
-
-.products-box > div > :nth-child(4):hover > p {
-    transition: all 1s;
-    color: #000000;
 }
 
 .products-box > div > a{
@@ -1139,7 +1145,6 @@ html, body {
     z-index: 10;
     right: 0;
     width: 270px;
-    height: 200px;
     padding: 20px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -1158,6 +1163,20 @@ html, body {
     height: 100%;
 }
 
+.header-user-index > div:nth-child(4) > .authorization div > span{
+    cursor: pointer;
+    width: 100%;
+    margin: 5px 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 15px;
+    text-align: center;
+    color: #727272;
+}
+
+.header-user-index > div:nth-child(4) > .authorization div > span:hover{
+    text-decoration: underline;
+}
+
 .header-user-index > div:nth-child(4) > .authorization div > input{
     width: 100%;
     margin: 10px auto;
@@ -1174,15 +1193,14 @@ html, body {
     float: left;
     cursor: pointer;
     width: 100px;
-    height: 50px;
+    height: 40px;
     margin: auto 0;
-    padding: 19px 0;
+    padding: 12px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1198,7 +1216,7 @@ html, body {
     float: right;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    line-height: 50px;
+    line-height: 40px;
     color: #000000;
     text-decoration: none;
 }
@@ -1243,7 +1261,6 @@ html, body {
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1267,7 +1284,6 @@ html, body {
     text-decoration: none;
     text-align: center;
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1428,7 +1444,6 @@ html, body {
     z-index: 10;
     right: 0;
     width: 270px;
-    height: 200px;
     padding: 20px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -1447,6 +1462,20 @@ html, body {
     height: 100%;
 }
 
+.header-user > div:nth-child(4) > .authorization div > span{
+    cursor: pointer;
+    width: 100%;
+    margin: 5px 0 10px;
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 15px;
+    text-align: center;
+    color: #727272;
+}
+
+.header-user > div:nth-child(4) > .authorization div > span:hover{
+    text-decoration: underline;
+}
+
 .header-user > div:nth-child(4) > .authorization div > input{
     width: 100%;
     margin: 10px auto;
@@ -1463,15 +1492,14 @@ html, body {
     float: left;
     cursor: pointer;
     width: 100px;
-    height: 50px;
+    height: 40px;
     margin: auto 0;
-    padding: 19px 0;
+    padding: 12px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1487,7 +1515,7 @@ html, body {
     float: right;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    line-height: 50px;
+    line-height: 40px;
     color: #000000;
     text-decoration: none;
 }
@@ -1532,7 +1560,6 @@ html, body {
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1556,7 +1583,6 @@ html, body {
     text-decoration: none;
     text-align: center;
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -1729,12 +1755,19 @@ html, body {
 }
 
 .slide-text {
+    width: 100%;
+    position: absolute !important;
+    z-index: 5;
+    top: 0;
+}
+
+.slide-text div{
     max-width: 1080px;
     margin: 0 auto;
     padding: 200px 0 0 0; 
 }
 
-.slide-text b{
+.slide-text div > b{
     display: inline-block;
     padding: 0 0 20px 0;
     font-family: "Fontfabric-MullerBlack";
@@ -1743,7 +1776,7 @@ html, body {
     color: #FFFFFF;
 }
 
-.slide-text p{
+.slide-text div > p{
     padding: 0 0 20px 0;
     font-family: "Fontfabric-MullerBlack";
     font-weight: bold;
@@ -1751,7 +1784,7 @@ html, body {
     color: #FFFFFF;
 }
 
-.slide-text a{
+.slide-text div > a{
     display: block;
     width: 200px;
     height: 50px;
@@ -1770,7 +1803,7 @@ html, body {
     transition: background-position 1s;
 }
 
-.slide-text a:hover{
+.slide-text div > a:hover{
     margin: 2px 0 -2px 0;   
     background-position: 0 0;
 } 
@@ -1872,6 +1905,22 @@ html, body {
     margin: auto 20px 25px 0;
 }
 
+.new-box > div:hover img{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.new-box > div:hover :nth-child(4){
+    height: 120px;
+}
+
+.new-box > div:hover :nth-child(4) p{
+    transition: all 1s;
+    color: #000000;
+}
+
 .new-box > div > :nth-child(1){
     position: absolute;
     width: 300px;
@@ -1885,13 +1934,6 @@ html, body {
     width: 300px;
     height: 500px;
     transition: all 1s;
-}
-
-.new-box > div > :nth-child(1) img:hover{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
 }
 
 .new-box > div > :nth-child(2) {
@@ -1937,7 +1979,6 @@ html, body {
 }
 
 .new-off {
-    display: none;
     position: absolute;
     z-index: 10;
     cursor: pointer;
@@ -1955,7 +1996,6 @@ html, body {
 }
 
 .new-on {
-    display: block;
     position: absolute;
     z-index: 10;
     cursor: pointer;
@@ -1980,14 +2020,9 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
-}
-
-.new-box div > :nth-child(4):hover {
-    background: rgba(255, 255, 255, 0.8);
-    height: 120px;
 }
 
 .new-box > div > :nth-child(4) a{
@@ -2007,11 +2042,6 @@ html, body {
     line-height: 25px;
     color: #0000;
     transition: all 1s;
-}
-
-.new-box > div > :nth-child(4):hover > p {
-    transition: all 1s;
-    color: #000000;
 }
 
 .new-box > div > a{
@@ -3529,6 +3559,15 @@ html, body {
     margin: 0 auto;
 }
 
+.history {
+    display: none;
+}
+
+.history, .data, .bonus {
+    width: 99%;
+    margin: auto auto 50px auto;
+}
+
 .history, .data, .bonus {
     width: 99%;
     margin: auto auto 50px auto;
@@ -3919,6 +3958,13 @@ html, body {
     margin: 20px 0;
 }
 
+.collections-box > div:hover img{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
 .collections-box > div > :nth-child(1){
     position: absolute;
     width: 100%;
@@ -3935,13 +3981,6 @@ html, body {
     object-fit: cover;
 }
 
-.collections-box > div > :nth-child(1) img:hover{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
 .collections-box > div > :nth-child(2) {
     position: absolute;
     z-index: 5;
@@ -3950,7 +3989,7 @@ html, body {
     padding: 20px;
     margin: 0 auto!important;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
 }
@@ -4460,6 +4499,22 @@ html, body {
     margin: auto;
 }
 
+.product-block > div:hover img{
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.product-block > div:hover :nth-child(4){
+    height: 120px;  
+}
+
+.product-block > div:hover :nth-child(4) p{
+    transition: all 1s;
+    color: #000000;
+}
+
 .product-block > div > :nth-child(1){
     position: absolute;
     width: 300px;
@@ -4473,13 +4528,6 @@ html, body {
     width: 300px;
     height: 500px;
     transition: all 1s;
-}
-
-.product-block > div > :nth-child(1) img:hover{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
 }
 
 .product-block > div > :nth-child(2) {
@@ -4568,14 +4616,9 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
-}
-
-.product-block div > :nth-child(4):hover {
-    background: rgba(255, 255, 255, 0.8);
-    height: 120px;
 }
 
 .product-block > div > :nth-child(4) a{
@@ -4595,11 +4638,6 @@ html, body {
     line-height: 25px;
     color: #0000;
     transition: all 1s;
-}
-
-.product-block > div > :nth-child(4):hover > p {
-    transition: all 1s;
-    color: #000000;
 }
 
 .product-block > div > a{
@@ -5070,7 +5108,6 @@ html, body {
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    text-transform: uppercase;
     color: #FFFFFF;
     background-size: auto 150%;
     background-position: 0 100%;
@@ -5154,7 +5191,6 @@ html, body {
 }
 
 .basket-order div:nth-child(3) button{
-    display: none;
     cursor: pointer;
     border: none;
     width: 300px;
@@ -5167,9 +5203,14 @@ html, body {
     color: #000000;
 }
 
-.basket-order div:nth-child(3) button:hover{
+.basket-order div:nth-child(3) button:not(.basket-order-off):hover{
     background: #F30330;
     color: #FFFFFF;
+}
+
+.basket-order-off button{
+    background: #D7DFE5 !important;
+    color: #BABABA !important;
 }
 
 /* BASKET */

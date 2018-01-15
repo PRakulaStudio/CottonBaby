@@ -117,6 +117,7 @@
 
 	}
 
+
 	function handlerEmptyBlockForNewSlider()
 	{
 		if( window.innerWidth <= 1000 )
@@ -128,7 +129,7 @@
 			if( document.querySelector('.new-slider [data-type="empty"]') )
 			{
 				console.log("Удалил");
-				$('.new-slider').slick('slickRemove',sliders.length - 1);
+			//	$('.new-slider').slick('slickRemove',sliders.length - 1);
 			}
 
 
@@ -141,7 +142,7 @@
 					!document.querySelector('.new-slider [data-type="empty"]')
 			   )
 			{
-				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+				//$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
 				console.log('Добавил');
 			}
 
@@ -205,7 +206,7 @@
 			},
 
 			{
-				breakpoint: 1000,
+				breakpoint: 1260,
 				settings: {
 					slidesToShow: 3,
 				}
