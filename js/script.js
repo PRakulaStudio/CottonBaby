@@ -191,8 +191,7 @@ function addFavoriteButtons( blockProducts , value)
     blockProducts.find('div.block-button-favorites').html(buttonHtml);
 }
 
-
-$('section.content').on('click' , 'div.block-button-favorites' , function(){
+$('main.content-site').on('click' , 'div.block-button-favorites' , function(){
 
     if( $(this).find('button').hasClass('new-off') )
         requestRemoveFavorites( $(this).parents('div[data-id-block]').attr('data-id-block') ,  $(this).find('button'));
