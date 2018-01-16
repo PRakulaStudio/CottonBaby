@@ -7,18 +7,33 @@
     var css = {
         sizeActive : "size-block-activ",
         itemActive : 'item-activ',
+        orderOn : 'active-basket',
     };
+    let price = "1450"; //нужно считывать с переменной
+
+    function changePrice()
+    {
+        let totalPrice = parseInt(price);
+        $('div.size-box').find('input[type="text"]').each(function () {
+            totalPrice += parseInt($(this).val() == "" ? 0 : $(this).val()) * price;
+        });
+
+        $('div.price-basket').find('span').text(totalPrice);
+    }
 
     function requestEdit(id_item )
     {
         // console.log(id_item);
+
+
+
         var data = {};
 
         data['product_id'] = id_item;
         data['modifications'] = {};
 
         $('div.size-box').find('div[id-modification]').each( function () {
-            data['modifications'][$(this).attr('id-modification')] = $(this).find('span').text();
+            data['modifications'][$(this).attr('id-modification')] = $(this).find('input').val();
         });
 
         data['modifications'] = JSON.stringify(data['modifications']);
@@ -31,20 +46,16 @@
             success : function (  result, status ) {
                 if( result.status)
                 {
-                    if( result.data.total_price > 0 )
-                        $('div.price-basket').find('button').replaceWith('<button action="change-count"><img src="images/icons/product-basket.png">Изменить</button>').end()
-                            .find('button').show();
-                    else
-                        $('div.price-basket').find('button').replaceWith('<button><img src="images/icons/product-basket.png">В корзину</button>').end()
-                            .find('button').show();
+                    $('div.product-basket').show();
+                    $('div.price-basket').find('div').eq(1).remove().end().end().find('div.product-basket-link').show();
+                    $('div.product-size').remove();
+                    $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.count);
 
                 }
             },
         })
 
     }
-
-
 
     function requestGetItemsSlider(filter)
     {
@@ -212,16 +223,35 @@
 
     });
 
+    $('div.size-box').on('keyup' , 'input[type="text"]' , function () {
+
+        if($(this).val() > 0 )
+           $(this).parents('div.size-block').addClass(css.sizeActive);
+
+        else
+          $(this).parents('div.size-block').removeClass(css.sizeActive);
+
+        changePrice();
+
+
+    });
 
     //событие на клик изменения кол-ва размера товара
     $('div.product-size').on('click' , 'div.size-block button' , function () {
 
-        let number =  parseInt( $(this).siblings('span').text() );
+
+        let number =  parseInt( $(this).siblings('input').val() == "" ? 0 :  $(this).siblings('input').val()   ),
+            blockPrice = $('div.price-basket').find('div').first().find('input[type="text"]'),
+            blockModifications = $('size-box');
 
         //кликнули на плюс
         if( $(this).prev().length )
         {
-            $(this).prev().text( number + 1  );
+            $(this).prev().val( number + 1  );
+            blockModifications.find('div[id-modification]').each( function(){
+               $(this).find('input[type="text"]').text();
+            });
+
             $(this).parents('div.size-block').addClass(css.sizeActive);
         }
         else
@@ -229,32 +259,27 @@
 
             if( number > 0 )
             {
+                 $(this).next().val( number - 1 );
+                 if( $(this).next().val() == 0 )
+                      $(this).parents('div.size-block').removeClass(css.sizeActive);
 
-                 $(this).next().text( number - 1 );
-                 if( $(this).next().text() == 0 )
-                 {
-                     $(this).parents('div.size-block').removeClass(css.sizeActive);
-                 }
             }
         }
 
         //проверить, что выбран хотя бы один размер
         if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
-           $('div.price-basket').find('button').show();
+           $('div.price-basket').find('button').addClass(css.orderOn);
         else
-        {
-            if( !$('div.price-basket').find('button[action="change-count"]') )
-              $('div.price-basket').find('button').hide();
-        }
+            $('div.price-basket').find('button').removeClass(css.orderOn);
 
-
-
+        changePrice();
         //дальше будут запросы
 
     });
 
 
     $('div.price-basket').on('click' , 'button' , function(){
+        if($(this).hasClass(css.orderOn))
          requestEdit(  $(this).parents('div[data-id-block]').attr('data-id-block') );
     });
 

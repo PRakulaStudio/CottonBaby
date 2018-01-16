@@ -654,4 +654,12 @@
         width: 100%;
         padding: 40px;
     }
+
+    .size-box {
+        justify-content: center;
+    }
+
+    .size-block {
+        width: 100%;
+    }
 }

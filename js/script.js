@@ -268,12 +268,12 @@ function requestCheckFavoritesItems(listId)
 }
 
 
-function setAuthUserData(result, url) {
+function setAuthUserData(result, url)
+{
 
     let is_auth = false;
 
     if (result.status) {
-
         switch (url) {
             case "registration" :
                 window.location.href = "/";
@@ -295,8 +295,9 @@ function setAuthUserData(result, url) {
         $('body').removeClass('showPrice');
 
     }
-    else {
-        console.log(url);
+    else
+    {
+
         switch (url) {
             case "cabinet" :
                 window.location.href = "/";
@@ -342,31 +343,6 @@ function requestCheckAuth(url) {
 
 
 }
-//
-// function saveData(response_promise) {
-//     return true;
-// }
-// function saveData_promise(response_promise) {
-//     return new Promise( function(resolve , reject){
-//
-//     });
-// }
-//
-// function login() {
-//     login_promise().then(function (result) {
-//         if(!result)alert('не удалось');
-//     });
-// }
-// function reg() {
-//     //....
-//     if(status=true)return login().then();
-// }
-// function login_promise() {
-//     return fetch().then(saveData_promise);
-//     return new Promise( function(resolve , reject){
-//
-//     });
-// }
 
 function requestLogout() {
 

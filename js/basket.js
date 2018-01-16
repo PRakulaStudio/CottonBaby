@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 (function($){
 
     requestCheckAuth('basket');
@@ -75,102 +77,109 @@
             data : data,
             url: window.pms.config.cabinetAPI+'order/cart',
             success: function( result, status){
-                let products = result.data.cart.products;
-
-                if(products)
+                if(result.status)
                 {
-                    var html = "";
-                    for( let key in products )
+                    let products = result.data.cart.products;
+                    if(products)
                     {
-                        let product = products[key].product,
-                            modifications = products[key].modifications;
-                        html += "<div class='basket-product' data-id-item='"+product.id+"'>" +
-                                 "<div>" +
-                                     "<div>" +
-                                         "<div>" +
-                                                "<div>" +
-                                                    "<img src='"+product.images[0]['50x50']+"' >"+
-                                                    "<div>"+
-                                                        "<p>#"+products[key].order_id+"</p>"+
-                                                        "<p><a href='"+product.href+"' >"+product.title+"</a></p>"+
-                                                        "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>"+
-                                                    "</div>"+
-                                                "</div>" +
+                        var html = "";
+                        for( let key in products )
+                        {
+                            let product = products[key].product,
+                                modifications = products[key].modifications;
+                            html += "<div class='basket-product' data-id-item='"+product.id+"'>" +
+                                "<div>" +
+                                "<div>" +
+                                "<div>" +
+                                "<div>" +
+                                "<img src='"+product.images[0]['50x50']+"' >"+
+                                "<div>"+
+                                "<p>#"+products[key].order_id+"</p>"+
+                                "<p><a href='"+product.href+"' >"+product.title+"</a></p>"+
+                                "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>"+
+                                "</div>"+
+                                "</div>" +
 
-                                         "</div>" +
-                                         "<div>" +
-                                                "<div>" +
-                                                    "<p>Цена за шт.</p>"+
-                                                    "<span>"+formatMoney(product.price)+"</span>"+
-                                                "</div>" +
-                                         "</div>" +
-                                     "</div>" +
-                                     "<div>" +
-                                            "<div>";
-                                      for( let size_id in modifications )
-                                      {
-                                            html += "<div data-id-size='"+modifications[size_id].id+"'>" +
-                                                          "<p>Размер "+modifications[size_id].title+"</p>" +
-                                                          "<div>" +
-                                                              "<button data-action-size='reduce'>-</button>" +
-                                                              "<span data-id-mod='"+modifications[size_id].id+"'>"+modifications[size_id].quantity+"</span>" +
-                                                              "<button data-action-size='increase'>+</button>" +
-                                                          "</div>" +
-                                                    "</div>";
-                                      }
-
-                               html +=      "</div>" +
-                                            "<div>" +
-                                                "<div>" +
-                                                     "<p>Сумма</p>" +
-                                                     "<span>"+formatMoney(products[key].total_price)+"</span>" +
-                                                "</div>" +
-                                            "</div>"+
+                                "</div>" +
+                                "<div>" +
+                                "<div>" +
+                                "<p>Цена за шт.</p>"+
+                                "<span>"+formatMoney(product.price)+"</span>"+
+                                "</div>" +
+                                "</div>" +
+                                "</div>" +
+                                "<div>" +
+                                "<div>";
+                            for( let size_id in modifications )
+                            {
+                                html += "<div data-id-size='"+modifications[size_id].id+"'>" +
+                                    "<p>Размер "+modifications[size_id].title+"</p>" +
+                                    "<div>" +
+                                    "<button data-action-size='reduce'>-</button>" +
+                                    "<span data-id-mod='"+modifications[size_id].id+"'>"+modifications[size_id].quantity+"</span>" +
+                                    "<button data-action-size='increase'>+</button>" +
                                     "</div>" +
-                                  "</div>" +
+                                    "</div>";
+                            }
+
+                            html +=      "</div>" +
+                                "<div>" +
+                                "<div>" +
+                                "<p>Сумма</p>" +
+                                "<span>"+formatMoney(products[key].total_price)+"</span>" +
+                                "</div>" +
+                                "</div>"+
+                                "</div>" +
+                                "</div>" +
 
 
 
-                                  "<div>" +
-                                        "<button data-action='remove'>x</button>"+
-                                  "</div>" +
+                                "<div>" +
+                                "<button data-action='remove'>x</button>"+
+                                "</div>" +
 
-                                  "</div>";
+                                "</div>";
+
+                        }
+
+                        $('div.basket-box').html(html);
+                        //бонусы
+                        let list_div = $('div.basket-total').find('div');
+                        list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
+
+
+                        //кнопка с бонусами
+                        if( parseInt(result.data.cart.bonus) > 0 && result.data.cart.min_price_order < result.data.cart.total_price )
+                            list_div.eq(1).children().show();
+
+                        list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
+
+                        //кнопка оформление заказа
+                        if(result.data.cart.minPriceOrder < result.data.cart.total_price)
+                            $('div.basket-order').find('div').eq(2).children().show();
+
+
+                        if( result.data.cart.total_price >= result.data.cart.min_price_order   )
+                            document.querySelectorAll('.basket-order div')[2].children[0].setAttribute('show' , ' false');
+
+                        min_price_order = result.data.cart.min_price_order;
+                        total_price = result.data.cart.total_price;
+
+
+                        $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
+                            .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
+
+
+                        $('div.basket-container').show();
+
 
                     }
-
-                    $('div.basket-box').html(html);
-                    //бонусы
-                    let list_div = $('div.basket-total').find('div');
-                    list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
-
-
-                    //кнопка с бонусами
-                    if( parseInt(result.data.cart.bonus) > 0 && result.data.cart.min_price_order < result.data.cart.total_price )
-                        list_div.eq(1).children().show();
-
-                    list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
-
-                    //кнопка оформление заказа
-                    if(result.data.cart.minPriceOrder < result.data.cart.total_price)
-                       $('div.basket-order').find('div').eq(2).children().show();
-
-
-                    if( result.data.cart.total_price >= result.data.cart.min_price_order   )
-                        document.querySelectorAll('.basket-order div')[2].children[0].setAttribute('show' , ' false');
-
-                    min_price_order = result.data.cart.min_price_order;
-                    total_price = result.data.cart.total_price;
-
-
-                    $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
-                                                                     .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
-
-
-                    $('div.basket-container').show();
-
-
                 }
+                else
+                {
+                    $('div.basket-empty').show();
+                }
+
 
 
 
