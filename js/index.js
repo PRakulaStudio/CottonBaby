@@ -129,7 +129,8 @@
 			if( document.querySelector('.new-slider [data-type="empty"]') )
 			{
 				console.log("Удалил");
-			//	$('.new-slider').slick('slickRemove',sliders.length - 1);
+				$('.new-slider').slick('slickRemove',sliders.length - 1);
+				$('.new-slider').slick('slickRemove',sliders.length - 1);
 			}
 
 
@@ -142,7 +143,8 @@
 					!document.querySelector('.new-slider [data-type="empty"]')
 			   )
 			{
-				//$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
 				console.log('Добавил');
 			}
 
@@ -209,11 +211,18 @@
 				breakpoint: 1260,
 				settings: {
 					slidesToShow: 3,
+					variableWidth: true
 				}
 			},
 
 			{
-				breakpoint: 910,
+				breakpoint: 1000,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 900,
 				settings: {
 					slidesToShow: 2,
 				}
@@ -243,7 +252,6 @@
 		maxNumberOnLoadSlide = 0,
 		numberRest = 2;
 	$('.new-slider').on('afterChange' , function(event, slick, currentSlide){
-
 
 		if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
 		{

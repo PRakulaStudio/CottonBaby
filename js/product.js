@@ -9,13 +9,47 @@
         itemActive : 'item-activ',
     };
 
+    function requestEdit(id_item )
+    {
+        // console.log(id_item);
+        var data = {};
+
+        data['product_id'] = id_item;
+        data['modifications'] = {};
+
+        $('div.size-box').find('div[id-modification]').each( function () {
+            data['modifications'][$(this).attr('id-modification')] = $(this).find('span').text();
+        });
+
+        data['modifications'] = JSON.stringify(data['modifications']);
+
+        $.ajax({
+            type : "POST",
+            dataType: 'json',
+            data : data,
+            url: window.pms.config.cabinetAPI+'order/edit',
+            success : function (  result, status ) {
+                if( result.status)
+                {
+                    if( result.data.total_price > 0 )
+                        $('div.price-basket').find('button').replaceWith('<button action="change-count"><img src="images/icons/product-basket.png">Изменить</button>').end()
+                            .find('button').show();
+                    else
+                        $('div.price-basket').find('button').replaceWith('<button><img src="images/icons/product-basket.png">В корзину</button>').end()
+                            .find('button').show();
+
+                }
+            },
+        })
+
+    }
+
 
 
     function requestGetItemsSlider(filter)
     {
         return [];
     }
-
 
     function requestCheckInBasket()
     {
@@ -38,21 +72,30 @@
             .then(response => {
                if(response.status)
                {
-
-                 
                    addFavoriteButtons( $('div.product-box'), response.data.wishes  );
-
-                   if(response.data.modifications)
+                   
+                   if(Object.keys(response.data.modifications).length)
                    {
                        $sizeBox = $('div.size-box');
-                       for( let key in response.modifications)
+
+                       for( let key in response.data.modifications)
                        {
-                            $sizeBox.find('div[id-modificatots="'+response.modifications[key].id+'"]')
+                            console.log( $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]')
+                                .find('div')
+                                .first().addClass(  ) );
+                            $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]').addClass(css.sizeActive)
                                         .find('div')
-                                            .first().addClass('active').end()
-                                            .last().find('span').text(response.modifications[key].quantity)
+                                             .last().find('span').text(response.data.modifications[key].quantity)
                        }
+
+                       $('div.price-basket').find('button').replaceWith('<button action="change-count"><img src="images/icons/product-basket.png">Изменить</button>').end()
+                           .find('button').show();
                    }
+                   // else
+                   // {
+                   //     $('div.price-basket').find('button').replaceWith('<button><img src="images/icons/product-basket.png">В корзину</button>').end()
+                   //         .find('button').show();
+                   // }
 
 
 
@@ -196,16 +239,24 @@
         }
 
         //проверить, что выбран хотя бы один размер
-        if( $(this).parents('div.size-box').find(`div.{css.sizeActive}`).length)
+        if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
            $('div.price-basket').find('button').show();
         else
-           $('div.price-basket').find('button').hide();
+        {
+            if( !$('div.price-basket').find('button[action="change-count"]') )
+              $('div.price-basket').find('button').hide();
+        }
+
 
 
         //дальше будут запросы
 
     });
 
+
+    $('div.price-basket').on('click' , 'button' , function(){
+         requestEdit(  $(this).parents('div[data-id-block]').attr('data-id-block') );
+    });
 
 
 

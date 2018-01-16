@@ -196,8 +196,6 @@
         data['modifications'] = JSON.stringify(data['modifications']);
 
 
-
-
         $.ajax({
             type : "POST",
             dataType: 'json',
@@ -229,6 +227,7 @@
         var data = {};
             data['product_id'] = product_id;
 
+
         $.ajax({
             type : "POST",
             dataType: 'json',
@@ -237,7 +236,7 @@
             success : function (  result, status ) {
                if( result.status)
                {
-                   $('div.basket-box').find('div[data-id-item="'+productId+'"]').remove();
+                   $('div.basket-box').find('div[data-id-item="'+product_id+'"]').remove();
 
 
                    $('div.basket-total').find('div').last().find('span').text(formatMoney( result.data.total_price ));
