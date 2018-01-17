@@ -7,16 +7,21 @@
     var css = {
         sizeActive : "size-block-activ",
         itemActive : 'item-activ',
-        orderOn : 'active-basket',
+        orderOn : 'on-basket',
+        orderOff : 'off-basket'
     };
     let price = "1450"; //нужно считывать с переменной
 
     function changePrice()
     {
-        let totalPrice = parseInt(price);
-        $('div.size-box').find('input[type="text"]').each(function () {
+        let totalPrice = 0;
+        $('div.size-box').find('input[type="number"]').each(function () {
             totalPrice += parseInt($(this).val() == "" ? 0 : $(this).val()) * price;
         });
+        if( totalPrice === 0)
+        {
+            totalPrice = price;
+        }
 
         $('div.price-basket').find('span').text(totalPrice);
     }
@@ -24,16 +29,14 @@
     function requestEdit(id_item )
     {
         // console.log(id_item);
-
-
-
         var data = {};
 
         data['product_id'] = id_item;
         data['modifications'] = {};
 
         $('div.size-box').find('div[id-modification]').each( function () {
-            data['modifications'][$(this).attr('id-modification')] = $(this).find('input').val();
+            let number = $(this).find('input').val() == "" ? 0 : $(this).find('input').val();
+            data['modifications'][$(this).attr('id-modification')] =  number;
         });
 
         data['modifications'] = JSON.stringify(data['modifications']);
@@ -47,8 +50,10 @@
                 if( result.status)
                 {
                     $('div.product-basket').show();
+
                     $('div.price-basket').find('div').eq(1).remove().end().end().find('div.product-basket-link').show();
                     $('div.product-size').remove();
+
                     $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.count);
 
                 }
@@ -89,18 +94,19 @@
                    {
                        $sizeBox = $('div.size-box');
 
-                       for( let key in response.data.modifications)
-                       {
-                            console.log( $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]')
-                                .find('div')
-                                .first().addClass(  ) );
-                            $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]').addClass(css.sizeActive)
-                                        .find('div')
-                                             .last().find('span').text(response.data.modifications[key].quantity)
-                       }
+                       // for( let key in response.data.modifications)
+                       // {
+                       //      console.log( $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]')
+                       //          .find('div')
+                       //          .first().addClass(  ) );
+                       //      $sizeBox.find('div[id-modification="'+response.data.modifications[key].id+'"]').addClass(css.sizeActive)
+                       //                  .find('div')
+                       //                       .last().find('span').text(response.data.modifications[key].quantity)
+                       // }
 
-                       $('div.price-basket').find('button').replaceWith('<button action="change-count"><img src="images/icons/product-basket.png">Изменить</button>').end()
-                           .find('button').show();
+                       $('div.price-basket').find('div').eq(1).remove().end().end().find('div.product-basket-link').show()
+                       $('div.product-size').remove();
+                       $('div.price-basket').find('span').text(response.data.price_total);
                    }
                    // else
                    // {
@@ -135,9 +141,10 @@
                } ,
                errors => {})
         .then( response => {
-                    console.log( response[0] );
+                  //  console.log( response[0] );
                } ,
-               errors => {});
+               errors => {}
+        );
 
 
 
@@ -207,8 +214,6 @@
     });
 
 
-
-
     //отображение fanvybox с галереей
     let pictures = [];
     $('div.item-slider').find('img').each( function () {
@@ -223,23 +228,34 @@
 
     });
 
-    $('div.size-box').on('keyup' , 'input[type="text"]' , function () {
+    $('div.size-box').on('keyup', 'input[type="number"]' , function(event) {
 
-        if($(this).val() > 0 )
-           $(this).parents('div.size-block').addClass(css.sizeActive);
+        if( $(this).val().length > 3)
+        {
+            $(this).val($(this).val().substr(0, 3));
+        }
 
+
+         if($(this).val() > 0 )
+             $(this).parents('div.size-block').addClass(css.sizeActive);
+         else
+             $(this).parents('div.size-block').removeClass(css.sizeActive);
+
+         changePrice();
+
+        //проверить, что выбран хотя бы один размер
+        if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
+            $('div.price-basket').find('button').parent('div').addClass(css.orderOn).removeClass(css.orderOff);
         else
-          $(this).parents('div.size-block').removeClass(css.sizeActive);
+            $('div.price-basket').find('button').parent('div').removeClass(css.orderOn).addClass(css.orderOff);
+    });
 
-        changePrice();
-
-
+    $('div.size-box').on('change' , 'input[type="number"]' , function (event) {
+       $(event.target).trigger('keypress');
     });
 
     //событие на клик изменения кол-ва размера товара
     $('div.product-size').on('click' , 'div.size-block button' , function () {
-
-
         let number =  parseInt( $(this).siblings('input').val() == "" ? 0 :  $(this).siblings('input').val()   ),
             blockPrice = $('div.price-basket').find('div').first().find('input[type="text"]'),
             blockModifications = $('size-box');
@@ -265,12 +281,11 @@
 
             }
         }
-
         //проверить, что выбран хотя бы один размер
         if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
-           $('div.price-basket').find('button').addClass(css.orderOn);
+           $('div.price-basket').find('button').parent('div').addClass(css.orderOn).removeClass(css.orderOff);
         else
-            $('div.price-basket').find('button').removeClass(css.orderOn);
+            $('div.price-basket').find('button').parent('div').removeClass(css.orderOn).addClass(css.orderOff);
 
         changePrice();
         //дальше будут запросы
@@ -279,7 +294,7 @@
 
 
     $('div.price-basket').on('click' , 'button' , function(){
-        if($(this).hasClass(css.orderOn))
+        if($(this).parent('div').hasClass(css.orderOn))
          requestEdit(  $(this).parents('div[data-id-block]').attr('data-id-block') );
     });
 

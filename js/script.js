@@ -9,13 +9,40 @@ window.pms = {
     config: config,
 };
 
+function integerOnly(e) {
+    e = e || window.event;
+    var code = e.which || e.keyCode;
+    if (!e.ctrlKey) {
+        var arrIntCodes1 = new Array(96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 9, 116);   // 96 TO 105 - 0 TO 9 (Numpad)
+        if (!e.shiftKey) {                          //48 to 57 - 0 to 9 
+            arrIntCodes1.push(48);                  //These keys will be allowed only if shift key is NOT pressed
+            arrIntCodes1.push(49);                  //Because, with shift key (48 to 57) events will print chars like @,#,$,%,^, etc.
+            arrIntCodes1.push(50);
+            arrIntCodes1.push(51);
+            arrIntCodes1.push(52);
+            arrIntCodes1.push(53);
+            arrIntCodes1.push(54);
+            arrIntCodes1.push(55);
+            arrIntCodes1.push(56);
+            arrIntCodes1.push(57);
+        }
+        var arrIntCodes2 = new Array(35, 36, 37, 38, 39, 40, 46);
+        if ($.inArray(e.keyCode, arrIntCodes2) != -1) {
+            arrIntCodes1.push(e.keyCode);
+        }
+        if ($.inArray(code, arrIntCodes1) == -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 /*
  * @param str
  * @param requareLength
  * @returns {boolean}
  */
-
 function checkLength(str, requareLength) {
     if (str.length >= requareLength)
         return true;

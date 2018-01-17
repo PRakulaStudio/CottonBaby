@@ -243,23 +243,23 @@ function requestGetItems(offset , limit , orderBy , pageName)
     data.append('limit' , limit);
     data.append('orderBy' , orderBy);
 
-    return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
-        .then(function (response) {
-            let responseData = false;
-            try {
-                responseData = response.json();
-            }
-            catch (e) {
-                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                response.text().then(console.debug);
-            }
-            return responseData;
-        })
-        .then(function (response) {
-
-            return createItems(response.data);
-
-        })
+    // return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
+    //     .then(function (response) {
+    //         let responseData = false;
+    //         try {
+    //             responseData = response.json();
+    //         }
+    //         catch (e) {
+    //             responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+    //             response.text().then(console.debug);
+    //         }
+    //         return responseData;
+    //     })
+    //     .then(function (response) {
+    //
+    //        // return createItems(response.data);
+    //
+    //     })
        
 }
 

@@ -11,6 +11,13 @@ html, body {
     flex-direction: column;
 }
 
+.shest { 
+  -moz-appearance: textfield;
+}
+.shest::-webkit-inner-spin-button { 
+  display: none;
+}
+
 /* POPUP */
 
 .popup-fon {
@@ -606,7 +613,7 @@ html, body {
     align-content: space-between;
 }
 
-.products-box div:nth-child(2), .products-box div:nth-child(5), .products-box div:nth-child(8) {
+.products-box div:nth-child(3n+2) {
     margin: 20px 2%;
 }
 
@@ -625,7 +632,7 @@ html, body {
 }
 
 .products-box > div:hover :nth-child(4){
-    height: 120px;
+    height: 150px;
 }
 
 .products-box > div:hover :nth-child(4) p{
@@ -730,7 +737,7 @@ html, body {
     position: absolute;
     z-index: 5;
     width: 100%;
-    height: 70px;
+    height: 100px;
     padding: 20px;
     margin: auto;
     bottom: 0;
@@ -741,8 +748,10 @@ html, body {
 
 .products-box > div > :nth-child(4) a{
     width: 100%;
+    height: 50px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
+    line-height: 25px;
     color: #000000;
 }
 
@@ -1913,7 +1922,7 @@ html, body {
 }
 
 .new-box > div:hover :nth-child(4){
-    height: 120px;
+    height: 150px;
 }
 
 .new-box > div:hover :nth-child(4) p{
@@ -1989,7 +1998,6 @@ html, body {
     margin: 0 auto;
     border: none;
     border-radius: 20px;
-
     background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
@@ -2017,7 +2025,7 @@ html, body {
     position: absolute;
     z-index: 5;
     width: 100%;
-    height: 70px;
+    height: 100px;
     padding: 20px;
     margin: auto;
     bottom: 0;
@@ -2028,8 +2036,10 @@ html, body {
 
 .new-box > div > :nth-child(4) a{
     width: 100%;
+    height: 50px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
+    line-height: 25px;
     color: #000000;
 }
 
@@ -4265,7 +4275,7 @@ html, body {
     width: 30%;
     height: 50px;
     margin: 1%;
-    padding: 5px;
+    padding: 5px 0 5px 6px;
     border: 2px solid #E4E3DF;
     border-radius: 5px;
     display: flex;
@@ -4337,7 +4347,7 @@ html, body {
 }
 
 .price-basket {
-    display: flex;
+    display: none;
     width: 100%;
     margin: auto auto 10px auto;
     padding: 10px;
@@ -4375,16 +4385,15 @@ html, body {
 }
 
 .price-basket div:nth-child(2) button{
-    cursor: pointer;
     border: none;
-    width: 180px;
+    width: 200px;
     height: 50px;
+    padding: 15px 0;
     border-radius: 25px;
-    background: #D7DFE5;
     font-family: "Fontfabric-MullerMedium";
     text-transform: uppercase;
     font-size: 18px;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .price-basket div:nth-child(2) button > img{
@@ -4392,9 +4401,21 @@ html, body {
     margin: 0 10px 0 0;
 }
 
-.price-basket div:nth-child(2) button.active-basket:hover{
-    background: #F30330;
-    color: #FFFFFF;
+.off-basket button{
+    background: #D7DFE5;
+}
+
+.on-basket button{
+    cursor: pointer;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.on-basket button:hover{
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
 }
 
 .product-basket-link {
@@ -4404,22 +4425,26 @@ html, body {
 
 .product-basket-link a{
     display: inline-block;
-    width: 220px;
+    width: 200px;
     height: 50px;
-    padding: 18px 0;
+    margin: auto;
+    padding: 19px 0;
     border-radius: 25px;
-    background: #D7DFE5;
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-family: "Fontfabric-MullerMedium";
+    font-size: 16px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 18px;
-    color: #000000;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
 }
 
 .product-basket-link a:hover{
-    background: #F30330;
-    color: #FFFFFF;
+    margin: 2px 0 -2px 0;   
+    background-position: 0 0;
 }
 
 .no-authorization {
@@ -4551,7 +4576,7 @@ html, body {
 }
 
 .product-block > div:hover :nth-child(4){
-    height: 120px;  
+    height: 150px;  
 }
 
 .product-block > div:hover :nth-child(4) p{
@@ -4656,7 +4681,7 @@ html, body {
     position: absolute;
     z-index: 5;
     width: 100%;
-    height: 70px;
+    height: 100px;
     padding: 20px;
     margin: auto;
     bottom: 0;
@@ -4667,8 +4692,10 @@ html, body {
 
 .product-block > div > :nth-child(4) a{
     width: 100%;
+    height: 50px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
+    line-height: 25px;
     color: #000000;
 }
 
@@ -4879,32 +4906,53 @@ html, body {
     border: 1px solid #E4E3DF;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div{
-    width: 130px;
-    margin: 5px auto;
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div{
+    width: 32%;
+    height: 46px;
+    padding: 5px 0;
+    margin: 1% 0;
+    border-radius: 10px;
+    background: #f1f1f1;
     text-align: center;
 }
 
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div p{
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3n+2){
+    margin: 1% 2%;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div p{
     width: 100%;
     font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
 }
 
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div span{
-    display: inline-block;
-    width: 55px;
+.basket-size-on {
+    background: #F50037 !important;
+}
+
+.basket-size-on p{
+    color: #FFFFFF;
+}
+
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div input{
+    border: none;
+    width: 30px;
+    border-radius: 5px;
+    height: 20px;
+    padding: 2px 0 0 0;
+    margin: 0 5px;
     font-family: "Fontfabric-MullerMedium";
+    text-align: center;
     font-size: 16px;
     color: #000000;
 }
 
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) div button{
+.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div button{
     cursor: pointer;
     background: #FFFFFF;
     border: 1px solid #E6E6E6;
@@ -5235,26 +5283,29 @@ html, body {
 }
 
 .basket-order div:nth-child(3) button{
-    cursor: pointer;
     border: none;
     width: 300px;
     height: 50px;
     border-radius: 25px;
-    background: #D7DFE5;
     font-family: "Fontfabric-MullerMedium";
     text-transform: uppercase;
     font-size: 18px;
-    color: #000000;
-}
-
-.basket-order div:nth-child(3) button:not(.basket-order-off):hover{
-    background: #F30330;
-    color: #FFFFFF;
 }
 
 .basket-order-off button{
-    background: #D7DFE5 !important;
-    color: #BABABA !important;
+    background: #D7DFE5;
+    color: #BABABA
+}
+
+.basket-order-on button{
+    cursor: pointer;
+    background: #D7DFE5;
+    color: #000000;
+}
+
+.basket-order-on button:hover{
+    background: #F30330;
+    color: #FFFFFF;
 }
 
 /* BASKET */

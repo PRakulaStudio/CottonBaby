@@ -4,7 +4,15 @@
 
 (function($){
 
-    requestCheckAuth('basket');
+    requestCheckAuth('basket')
+        .then(function(response) {
+            if(response){
+                requestGetBasket();
+                //должен выполняться только, если пользователь авторизован
+                requestGetUserData();
+            }
+
+        })
 
     var timeOuts = [];
     var isPayment = false;
@@ -14,6 +22,8 @@
         'input_error' : "input-error-bottom",
         'is_check' : 'payment-activ',
         'disabled_order' : 'basket-order-off',
+        'enable_order' : 'basket-order-on',
+        'sizeActive' : 'basket-size-on',
     };
 
 
@@ -23,12 +33,10 @@
 
         if($('.payment-box').find('button').hasClass('payment-activ') )
         {
-
-
             if(  parseInt(total_price) >= parseInt(min_price_order) )
-                $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order);
+                $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
             else
-                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
+                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeChild(css.enable_order);
         }
 
 
@@ -110,13 +118,18 @@
                                 "</div>" +
                                 "<div>" +
                                 "<div>";
+                            let classSizeOn;
                             for( let size_id in modifications )
                             {
-                                html += "<div data-id-size='"+modifications[size_id].id+"'>" +
-                                    "<p>Размер "+modifications[size_id].title+"</p>" +
+                                classSizeOn = "";
+                                if( +modifications[size_id].quantity > 0  )
+                                    classSizeOn = 'basket-size-on';
+
+                                html += "<div data-id-size='"+modifications[size_id].id+"' class='"+classSizeOn+"'>" +
+                                    "<p>"+modifications[size_id].title+"</p>" +
                                     "<div>" +
                                     "<button data-action-size='reduce'>-</button>" +
-                                    "<span data-id-mod='"+modifications[size_id].id+"'>"+modifications[size_id].quantity+"</span>" +
+                                    "<input type='number' placeholder='0' class='shest' value='"+modifications[size_id].quantity+"' />"+
                                     "<button data-action-size='increase'>+</button>" +
                                     "</div>" +
                                     "</div>";
@@ -177,14 +190,10 @@
                 }
                 else
                 {
+                    
                     $('div.basket-empty').show();
+
                 }
-
-
-
-
-
-
             },
 
         });
@@ -197,13 +206,12 @@
         var data = {};
             data['product_id'] = id_item;
             data['modifications'] = {};
-
+        console.log( id_item );
         $('div.basket-box').find('div[data-id-item="'+id_item+'"]').find('button[data-action-size="reduce"]').each( function () {
-            data['modifications'][$(this).next().attr('data-id-mod')] = $(this).next().text();
+             data['modifications'][$(this).next().parents('div[data-id-size]').attr('data-id-size')] = $(this).next().val() == "" ? 0 : $(this).next().val();
         });
 
         data['modifications'] = JSON.stringify(data['modifications']);
-
 
         $.ajax({
             type : "POST",
@@ -217,11 +225,12 @@
                    for(var key in products )
                    {
                        $('div.basket-box').find('div[data-id-item="'+key+'"]').find('span').last().text(formatMoney(products[key].price_total));
-
                    }
+
 
                     //Итого
                    $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
+                   $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет "+formatMoney(result.data.total_price));
                    total_price = result.data.total_price;
                    checkButtonOrder( );
 
@@ -251,17 +260,19 @@
                    $('div.basket-total').find('div').last().find('span').text(formatMoney( result.data.total_price ));
                    total_price = result.data.total_price;
                    checkButtonOrder();
+                   $('[class*="header-user"]').find('div[data-basket] span').text(parseInt( $('[class*="header-user"]').find('div[data-basket] span').text()) - 1);
 
                    if(!$('div.basket-box').children().length)
                    {
                        $('div.basket-container').hide();
                        $('div.basket-empty').show();
+                       $('[class*="header-user"]').find('div[data-basket] span').hide();
+
                    }
                }
             },
         });
     }
-
 
     function requestUseBonus()
     {
@@ -286,19 +297,19 @@
 
 
     }
-    
 
     //запрос на проверку заполненных данных
     function requestCheck( button ,payment_address)
     {
         var data = {};
             $('div.payment-box').find('button').removeClass( css.is_check );
-
+            $('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
 
         data['payment_method'] = button.data('payment-method');
         data['payment_address'] = payment_address;
 
         $('#popup-fon').find('input').removeClass(css.input_error);
+
 
         $.ajax({
             url: window.pms.config.cabinetAPI+"order/check",
@@ -365,11 +376,6 @@
 
     }
 
-
-   
-
-
-
     function setUserData(button , fields)
     {
         $.ajax({
@@ -413,6 +419,26 @@
 
     }
 
+    $('div.basket-container').on('keyup' , 'input[type="number"]' , function () {
+        var id_ietm = $(this).parents('div.basket-product').data('id-item');
+        clearTimeout(timeOuts[id_ietm]);
+
+        if( $(this).val().length > 3)
+        {
+            $(this).val($(this).val().substr(0, 3));
+        }
+
+        if($(this).val() > 0 )
+            $(this).parents('div[data-id-size]').addClass(css.sizeActive);
+        else
+            $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
+
+        timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
+            requestEdit(id_ietm);
+        }, 1000 )
+
+    });
+
     //меняем размеры
     $('div.basket-box').on('click' , 'button[data-action-size]' , function () {
 
@@ -423,10 +449,14 @@
             clearTimeout(timeOuts[id_ietm]);
 
             if( $(this).data("action-size") == "increase" )
-                $(this).siblings('span').text( parseInt( $(this).siblings('span').text()) + 1) ;
+                $(this).siblings('input').val( parseInt( $(this).siblings('input').val()) + 1) ;
             else
-                $(this).siblings('span').text( parseInt( $(this).siblings('span').text() ) - 1 < 0  ? 0 : parseInt( $(this).siblings('span').text() ) - 1 );
+                $(this).siblings('input').val( parseInt( $(this).siblings('input').val() ) - 1 < 0  ? 0 : parseInt( $(this).siblings('input').val() ) - 1 );
 
+            if( $(this).siblings('input').val() > 0 )
+               $(this).parents('div[data-id-size]').addClass(css.sizeActive);
+            else
+                $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
 
             timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
                 requestEdit(id_ietm);
@@ -491,9 +521,6 @@
         window.location.href = "/cabinet.html";
     });
 
-    requestGetBasket();
 
-    //должен выполняться только, если пользователь авторизован
-    requestGetUserData();
 
 })(jQuery);
