@@ -796,6 +796,7 @@ html, body {
     background-position: 0 0;
 }
 
+/*pagination start */
 .products-pagination {
     max-width: 320px;
     margin: 20px auto;
@@ -844,6 +845,8 @@ html, body {
     pointer-events: none;
     opacity: 0;
 }
+/*pagination end*/
+
 
 /* katalog */
 

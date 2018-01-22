@@ -17,11 +17,11 @@
     {
         let totalPrice = 0;
         $('div.size-box').find('input[type="number"]').each(function () {
-            totalPrice += parseInt($(this).val() == "" ? 0 : $(this).val()) * price;
+            totalPrice += parseInt($(this).val() == "" ? 0 : $(this).val()) * window.pms.plugins.catalog.currentItem.price;
         });
         if( totalPrice === 0)
         {
-            totalPrice = price;
+            totalPrice = window.pms.plugins.catalog.currentItem.price;
         }
 
         $('div.price-basket').find('span').text(totalPrice);
@@ -50,6 +50,7 @@
             success : function (  result, status ) {
                 if( result.status)
                 {
+
                     $('div.product-basket').show();
 
                     $('div.price-basket').find('div').eq(1).remove().end().end().find('div.product-basket-link').show();
@@ -71,7 +72,7 @@
     function requestCheckInBasket()
     {
         var data = new FormData();
-            data.append('id' , 1);
+            data.append('id' , window.pms.plugins.catalog.currentItem.id);
 
         return fetch(window.pms.config.cabinetAPI + 'order/getItem' , { method: 'POST', credentials: 'same-origin', body: data })
             .then( response => {
@@ -122,9 +123,10 @@
             });
     }
 
-    Promise.all([ requestCheckAuth("product") ,
-                  requestGetItemsSlider("example"),
-                requestGetMenuCategories(),
+    Promise.all([
+                  requestCheckAuth("product") ,
+                  requestGetMenuCategories(),
+
             ])
 
         .then( response => {
@@ -133,9 +135,15 @@
                    {
                         $('div.price-basket').css({'display' : 'flex'}).siblings('div.no-authorization').remove();
 
+                        let list_id = [];
+
+                        $('.product-slider').find('div[data-id-catalog-item]').each( function () {
+                           list_id.push($(this).attr('data-id-catalog-item'));
+                        });
+                        console.log(list_id);
                         return Promise.all([
                             requestCheckInBasket(),
-                            requestCheckFavoritesItems(response[1]),
+                            requestCheckFavoritesItems(list_id , 'product-slider'),
                         ])
 
                    }
@@ -153,6 +161,7 @@
 
 
     //инициализация бокового слайдер плюс навешивание обработчика события при клике
+    $('div.item-slider').find('div').first().find('div').addClass(css.itemActive);
     $('div.item-slider').slick({
         infinite: false,
         vertical: true,
@@ -174,8 +183,6 @@
 
         $('#product').attr('id-pictures' , img.parents('div.slick-slide').index() ).find('img').attr('src' , img.attr('src'));
     });
-
-
 
     //инициализация слайдера c товарами из той же коллекции
     $('div.product-slider').slick({
@@ -212,7 +219,7 @@
     });
     //подгрузка слайдов(пока не работает)
     $("div.product-slider").on("afterChange", function(event, slick, currentSlide){
-
+        console.log("aaaa");
         //тут надо вызывать создание элемента, плюс необходимо его добавить
         //$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
     });
@@ -226,7 +233,6 @@
     //fancybox3
 
     $('#product').click( function(){
-
         $.fancybox.open( pictures , {
             loop : true,
             index: $(this).attr('id-pictures'),
@@ -235,7 +241,6 @@
     });
 
     $('div.size-box').on('keyup', 'input[type="number"]' , function(event) {
-
         if( $(this).val().length > 3)
            $(this).val($(this).val().substr(0, 3));
                 

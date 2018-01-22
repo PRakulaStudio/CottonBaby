@@ -264,14 +264,14 @@ function requestGetMenuCategories()
 {
     getMenuCategories();
     getMenuCollection();
-
 }
+
 
 function addFavoriteButtons( blockProducts , value)
 {
 
     let buttonHtml = "";
-
+    console.log( blockProducts );
     if(value)
         buttonHtml =  "<button class='new-off'></button>";
     else
@@ -280,13 +280,16 @@ function addFavoriteButtons( blockProducts , value)
     blockProducts.find('div.block-button-favorites').html(buttonHtml);
 }
 
+
 $('main.content-site').on('click' , 'div.block-button-favorites' , function(){
 
-    if( $(this).find('button').hasClass('new-off') )
-        requestRemoveFavorites( $(this).parents('div[data-catalog-item-id]').attr('data-catalog-item-id') ,  $(this).find('button'));
-    else
-        requestAddFavorites( $(this).parents('div[data-catalog-item-id]').attr('data-catalog-item-id') ,  $(this).find('button') );
+    let productBlock =  $(this).parents('div[data-catalog-item-id],div[data-id-block]');
+    let idProduct = productBlock.attr('data-id-block') ?  productBlock.attr('data-id-block') : productBlock.attr('[data-catalog-item-id');
 
+    if( $(this).find('button').hasClass('new-off') )
+        requestRemoveFavorites( idProduct ,  $(this).find('button'));
+    else
+        requestAddFavorites( idProduct ,  $(this).find('button') );
 });
 
 function requestAddFavorites(product_id  , button)
@@ -324,7 +327,7 @@ function requestRemoveFavorites(product_id , button)
     });
 }
 
-function requestCheckFavoritesItems(listId)
+function requestCheckFavoritesItems(listId , classBlock )
 {
     var data = new FormData();
     data.append('items' , JSON.stringify(listId));
@@ -344,18 +347,21 @@ function requestCheckFavoritesItems(listId)
         .then( function (response) {
             if(response.data.wishlist)
             {
-                let $products = $('div.products-box'),
+                let $products = $('div.'+classBlock),
                     wishList = response.data.wishlist,
                     buttonHtml = "";
 
                 for(let key in wishList)
-                   addFavoriteButtons( $products.find('div[data-catalog-item-id="'+wishList[key].id+'"]') , wishList[key].value)
+                {
+
+                    addFavoriteButtons( $products.find('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
+                }
+
 
             }
         });
 
 }
-
 
 function setAuthUserData(result, url)
 {
@@ -407,7 +413,6 @@ function setAuthUserData(result, url)
 function showError(responseData) {
     console.log(responseData);
 }
-
 
 function requestCheckAuth(url) {
   
@@ -486,7 +491,6 @@ function requestAuth(data) {
                 alert('Не получилось разлогиниться');
         });
 }
-
 
 
 (function ($) {
