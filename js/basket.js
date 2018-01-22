@@ -12,12 +12,14 @@
                 requestGetUserData();
             }
 
-        })
+        });
+    requestGetMenuCategories();
 
     var timeOuts = [];
     var isPayment = false;
     var min_price_order = "";
     var total_price = "";
+    var useBonus = 0;
     var css = {
         'input_error' : "input-error-bottom",
         'is_check' : 'payment-activ',
@@ -27,16 +29,15 @@
     };
 
 
-    function checkButtonOrder(  )
+    function checkButtonOrder()
     {
         //Итого
-
         if($('.payment-box').find('button').hasClass('payment-activ') )
         {
             if(  parseInt(total_price) >= parseInt(min_price_order) )
                 $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
             else
-                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeChild(css.enable_order);
+                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
         }
 
 
@@ -72,8 +73,6 @@
         });
 
     }
-
-
     //получение корзины
     function requestGetBasket()
     {
@@ -156,32 +155,36 @@
                         }
 
                         $('div.basket-box').html(html);
+
                         //бонусы
                         let list_div = $('div.basket-total').find('div');
                         list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
 
+                        if( result.data.cart.used_bonus )
+                            useBonus = parseInt(result.data.cart.used_bonus);
+
+                        if(result.data.cart.payment_method)
+                            $('div.payment-box').find('button[data-payment-method="'+result.data.cart.payment_method+'"]').addClass(css.is_check);
 
                         //кнопка с бонусами
-                        if( parseInt(result.data.cart.bonus) > 0 && result.data.cart.min_price_order < result.data.cart.total_price )
-                            list_div.eq(1).children().show();
+                        if( parseInt(result.data.cart.bonus) > 0 && parseInt(result.data.cart.min_price_order) <= parseInt(result.data.cart.total_price ) )
+                            list_div.eq(1).show();
 
                         list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
 
+
                         //кнопка оформление заказа
-                        if(result.data.cart.minPriceOrder < result.data.cart.total_price)
+                        if( parseInt(result.data.cart.minPriceOrder) < parseInt(result.data.cart.total_price) )
                             $('div.basket-order').find('div').eq(2).children().show();
 
-
-                        if( result.data.cart.total_price >= result.data.cart.min_price_order   )
-                            document.querySelectorAll('.basket-order div')[2].children[0].setAttribute('show' , ' false');
+                        if( parseInt(result.data.cart.total_price) >= parseInt(result.data.cart.min_price_order)   )
+                            document.querySelectorAll('.basket-order div')[2].setAttribute('class' , css.enable_order);
 
                         min_price_order = result.data.cart.min_price_order;
                         total_price = result.data.cart.total_price;
 
-
                         $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
                             .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
-
 
                         $('div.basket-container').show();
 
@@ -200,7 +203,7 @@
 
     }
 
-    function requestEdit(id_item )
+    function requestEdit( id_item )
     {
        // console.log(id_item);
         var data = {};
@@ -227,20 +230,18 @@
                        $('div.basket-box').find('div[data-id-item="'+key+'"]').find('span').last().text(formatMoney(products[key].price_total));
                    }
 
-
-                    //Итого
+                   //Итого
                    $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
                    $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет "+formatMoney(result.data.total_price));
                    total_price = result.data.total_price;
-                   checkButtonOrder( );
-
+                   checkButtonOrder();
                 }
             },
         })
 
     }
 
-    function requestDeleteItem(product_id)
+    function requestDeleteItem( product_id )
     {
         var data = {};
             data['product_id'] = product_id;
@@ -289,6 +290,7 @@
                     $('div.basket-total').find('div').eq(0).find('span').text(formatMoney(result.data.bonus));
                     $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(result.data.total_price));
                     $('div.basket-total').find('div').eq(1).find('button').remove();
+                    useBonus = parseInt(result.data.used_bonus);
 
                 }
             },
@@ -299,7 +301,7 @@
     }
 
     //запрос на проверку заполненных данных
-    function requestCheck( button ,payment_address)
+    function requestCheck( button , payment_address )
     {
         var data = {};
             $('div.payment-box').find('button').removeClass( css.is_check );
@@ -419,6 +421,37 @@
 
     }
 
+
+    function changeNewTotalPrice(input)
+    {
+
+
+        let price = parseInt(input.parents('div.basket-product').find('span').first().text().replace('руб.', "").replace(/\s*/g,''));
+        let totalPrice = price * parseInt(input.val());
+
+        input.parents('div[data-id-size]').siblings('div[data-id-size]').find('input[type="number"]').each( function(){
+            totalPrice += parseInt( price * parseInt($(this).val()) );
+        });
+
+        if( totalPrice === 0)
+            totalPrice = price;
+
+        input.parents('div.basket-product').find('span').last().text(formatMoney(totalPrice));
+
+        totalPrice = 0;
+        $('div.basket-product').each( function () {
+            totalPrice += parseInt( $(this).find('span').last().text().replace('руб.', "").replace(/\s*/g,'') );
+        });
+
+        total_price = totalPrice - useBonus;
+
+        $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(total_price));
+        $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price))
+
+        checkButtonOrder();
+
+    }
+
     $('div.basket-container').on('keyup' , 'input[type="number"]' , function () {
         var id_ietm = $(this).parents('div.basket-product').data('id-item');
         clearTimeout(timeOuts[id_ietm]);
@@ -432,6 +465,8 @@
             $(this).parents('div[data-id-size]').addClass(css.sizeActive);
         else
             $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
+
+        changeNewTotalPrice($(this));
 
         timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
             requestEdit(id_ietm);
@@ -457,6 +492,8 @@
                $(this).parents('div[data-id-size]').addClass(css.sizeActive);
             else
                 $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
+
+            changeNewTotalPrice( $(this).siblings('input'))
 
             timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
                 requestEdit(id_ietm);

@@ -9,6 +9,7 @@
 
 
 	requestCheckAuth("cabinet");
+	requestGetMenuCategories();
 
 
 	function getStatus(id) {

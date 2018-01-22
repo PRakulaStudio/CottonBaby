@@ -4,5 +4,6 @@
 ( function($){
 
     requestCheckAuth("cooperation");
+    requestGetMenuCategories();
 
 })(jQuery);

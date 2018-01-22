@@ -9,12 +9,20 @@ var limitItems = 9,
     pageId = false;
 
 
-function createPagination()
+function createPagination( total ,  pageName)
 {
 
-    countPages =  Math.ceil( totalItems / limitItems );
+    countPages =  Math.ceil( total / limitItems );
+
+   if(pageId === false)
+        pageId = pageName;
 
     let hideLocalButton = "";
+
+    if(countPages === 1)
+    {
+        return true;
+    }
 
     if( countPages <= 4 )
     {
@@ -23,6 +31,7 @@ function createPagination()
     var activeLocal = activePaginationButton;
     var html = "<button class='pagination-arrow prev "+hideButton+"'>◄</button>" +
         "<div data-block-pages >";
+
 
     for( let i = 0; i < countPages; i++ )
     {
@@ -38,6 +47,7 @@ function createPagination()
 
     $('div.products-pagination').html(html);
 
+    return true;
 
 }
 
@@ -210,7 +220,12 @@ function changePagination(direction , activeButton , clickButton )
         sort = "DESC"; //нужно проверить
         offset =( ( parseInt( clickButton.text() ) - 1) * limitItems );
 
-        requestGetItems( offset , limitItems,  sort , pageId );
+       requestGetItems( offset , limitItems,  sort , pageId )
+            .then( result => {
+                if(IS_AUTH)
+                     requestCheckFavoritesItems(result);
+            });
+        //
     }
 
 }
@@ -232,34 +247,34 @@ function requestGetItems(offset , limit , orderBy , pageName)
             url = window.pms.config.cabinetAPI +"wishlist/get";
             break;
         case "katalog" :
-            url = window.pms.config.catalogAPI +"items";
+            url = window.pms.config.catalogAPI +"category";
             data.append('img_size[]' , '300x500');
             break;
-
-
     }
+
 
     data.append('offset' , offset);
     data.append('limit' , limit);
     data.append('orderBy' , orderBy);
+    
 
-    // return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
-    //     .then(function (response) {
-    //         let responseData = false;
-    //         try {
-    //             responseData = response.json();
-    //         }
-    //         catch (e) {
-    //             responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-    //             response.text().then(console.debug);
-    //         }
-    //         return responseData;
-    //     })
-    //     .then(function (response) {
-    //
-    //        // return createItems(response.data);
-    //
-    //     })
+    return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
+        .then(function (response) {
+            let responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+            return responseData;
+        })
+        .then(function (response) {
+
+            return createItems(response.data.items);
+
+        })
        
 }
 
@@ -270,9 +285,19 @@ function createItems(items)
 
     for( var key in items)
     {
+
         listIdItems.push(items[key].id);
-        html += "<div data-id-block='"+items[key].id+"'>" +
-                     "<div><a href='#'><img src='"+items[key].images[0]['300x500']+"' /></a></div>" + //картинка
+        let images_path = "";
+        try{
+            images_path = items[key].images[0]['300x500'];
+        }
+        catch (e)
+        {
+
+        }
+
+        html += "<div data-catalog-item-id='"+items[key].id+"'>" +
+                     "<div><a href='#'><img src='"+images_path+"' /></a></div>" + //картинка
                       "<div><p><span>*****</span><span>"+items[key].price+"</span> руб.</p></div>" + //цена
                          "<div class='block-button-favorites'></div>" +// избранное
                        "<div>" +

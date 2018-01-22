@@ -7,6 +7,7 @@
 		};
 
 	requestCheckAuth('registration');
+	requestGetMenuCategories();
 
 
 	function setUserData(fields)

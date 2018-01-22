@@ -5,9 +5,10 @@ let config = {
 
 config = Object.freeze(config);
 
-window.pms = {
-    config: config,
-};
+if (!window.pms) window.pms = {};
+ window.pms['config'] = config;
+
+
 
 function integerOnly(e) {
     e = e || window.event;
@@ -76,7 +77,6 @@ function checkPhone(phone) {
 
 //функция, переводящая строку в денежный формат
 function formatMoney(number) {
-
     var format = number.toString().split(""),
         money = [],
         iterator = 1;
@@ -94,7 +94,6 @@ function formatMoney(number) {
 
     return money.join('') + " руб.";
 }
-
 
 /**
  *
@@ -174,25 +173,21 @@ function PopUpHideMenu() {
     $("#menu-off").hide();
     $("#menu").hide();
 }
-
 function PopUpShowScore() {
     $("#popup-fon").show();
     $("#popup").show();
     $("#score").show();
 }
-
 function PopUpShowCard() {
     $("#popup-fon").show();
     $("#popup").show();
     $("#card").show();
 }
-
 function PopUpShowThanks() {
     $("#popup-fon").show();
     $("#popup").show();
     $("#thanks").show();
 }
-
 function PopUpHidePopup() {
     $("#popup-fon").hide();
     $("#popup").hide();
@@ -203,7 +198,74 @@ function PopUpHidePopup() {
 
 
 //флаг авторизированности пользователя
-//var IS_AUTH;
+var IS_AUTH = false;
+
+function getMenuCategories()
+{
+    return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin'  })
+        .then(function (response) {
+
+            let responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+            return responseData;
+        })
+        .then(function (response) {
+            if(response.status)
+            {
+                let html = "";
+                for(var key in response.data)
+                    html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+"</a></li>";
+
+                $('div.menu div.right-menu').find('div.section').first().find('ul').html(html);
+            }
+
+        });
+}
+
+
+function getMenuCollection()
+{
+    var data = new FormData();
+    data.append('show_href' , true);
+    return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , body: data  })
+        .then(function (response) {
+
+            let responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+            return responseData;
+        })
+        .then(function (response) {
+            if(response.status)
+            {
+                let html = "";
+                for(var key in response.data.items)
+                    html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+"</a></li>";
+
+                $('div.menu div.right-menu').find('div.section').last().find('ul').html(html);
+            }
+
+        });
+}
+
+
+function requestGetMenuCategories()
+{
+    getMenuCategories();
+    getMenuCollection();
+
+}
 
 function addFavoriteButtons( blockProducts , value)
 {
@@ -221,9 +283,9 @@ function addFavoriteButtons( blockProducts , value)
 $('main.content-site').on('click' , 'div.block-button-favorites' , function(){
 
     if( $(this).find('button').hasClass('new-off') )
-        requestRemoveFavorites( $(this).parents('div[data-id-block]').attr('data-id-block') ,  $(this).find('button'));
+        requestRemoveFavorites( $(this).parents('div[data-catalog-item-id]').attr('data-catalog-item-id') ,  $(this).find('button'));
     else
-        requestAddFavorites( $(this).parents('div[data-id-block]').attr('data-id-block') ,  $(this).find('button') );
+        requestAddFavorites( $(this).parents('div[data-catalog-item-id]').attr('data-catalog-item-id') ,  $(this).find('button') );
 
 });
 
@@ -287,7 +349,7 @@ function requestCheckFavoritesItems(listId)
                     buttonHtml = "";
 
                 for(let key in wishList)
-                   addFavoriteButtons( $products.find('div[data-id-block="'+wishList[key].id+'"]') , wishList[key].value)
+                   addFavoriteButtons( $products.find('div[data-catalog-item-id="'+wishList[key].id+'"]') , wishList[key].value)
 
             }
         });
@@ -389,7 +451,7 @@ function requestLogout() {
             return responseData;
         })
         .then( function(response){
-            console.log(response);
+          //  console.log(response);
            if(response.status)
                location.reload();
             else

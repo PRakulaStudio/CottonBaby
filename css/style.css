@@ -797,23 +797,25 @@ html, body {
 }
 
 .products-pagination {
-    width: 320px;
+    max-width: 320px;
     margin: 20px auto;
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .products-pagination div{
-    width: 200px;
+    max-width: 200px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .products-pagination button{
     cursor: pointer;
     width: 45px;
     height: 45px;
-    margin: auto;
+    margin: auto 2.5px;
     border: none;
     background: #E6E5E1;
     border-radius: 5px;
@@ -2525,8 +2527,17 @@ html, body {
 .reg-box > div:nth-child(1) {
     width: 50%;
     height: 450px;
+    overflow: hidden;
     margin: auto auto auto 0;
-    background: #F0F0F0 url(../images/icons/reg.png) no-repeat center;
+}
+
+.reg-box > div:nth-child(1) video{
+    height: 450px;
+    -moz-filter: brightness(0.5);
+    -ms-filter: brightness(0.5);
+    -webkit-filter: brightness(0.5);
+    -o-filter: brightness(0.5);
+    filter: brightness(0.5);
 }
 
 .reg-box > div:nth-child(2) {
@@ -2787,10 +2798,17 @@ html, body {
 } 
 
 .registration-img {
+    position: relative;
+    overflow: hidden;
     width: 39%;
     border-radius: 5px;
     margin: 0 0 0 1%;
-    background: #F0F0F0 url(../images/icons/reg.png) no-repeat center;
+}
+
+.registration-img video{
+    position: absolute;
+    height: 100%;
+    z-index: -1;
 }
 
 .registration-img p{
@@ -4225,6 +4243,17 @@ html, body {
     color: #000000;
 }
 
+.product-category a{
+    font-family: "Fontfabric-MullerLight";
+    font-size: 20px;
+    color: #989898;
+    text-decoration: none;
+}
+
+.product-category a:hover{
+    text-decoration: underline;
+}
+
 .product-composition {
     width: 100%;
     margin: auto;
@@ -5034,12 +5063,12 @@ html, body {
 }
 
 .basket-total div:nth-child(2) {
+    display: none;
     width: 300px;
     margin: auto;
 }
 
 .basket-total div:nth-child(2) button{
-    display: none;
     cursor: pointer;
     width: 300px;
     height: 50px;
@@ -5084,7 +5113,7 @@ html, body {
 }
 
 .payment-box {
-    width: 300px;
+    width: 320px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -5099,8 +5128,8 @@ html, body {
     font-family: "Fontfabric-MullerMedium";
     margin: auto auto 20px auto;
     text-align: center;
-    font-size: 18px;
-    color: #000000;
+    font-size: 24px;
+    color: #F30330;
 }
 
 .payment-box > div > div:nth-child(1) {
@@ -5294,18 +5323,21 @@ html, body {
 
 .basket-order-off button{
     background: #D7DFE5;
-    color: #BABABA
+    color: #BABABA;
 }
 
 .basket-order-on button{
     cursor: pointer;
-    background: #D7DFE5;
-    color: #000000;
+    color: #FFFFFF;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
 }
 
 .basket-order-on button:hover{
-    background: #F30330;
-    color: #FFFFFF;
+    margin: 2px auto -2px auto;
+    background-position: 0 0;
 }
 
 /* BASKET */

@@ -10,6 +10,7 @@
         orderOn : 'on-basket',
         orderOff : 'off-basket'
     };
+
     let price = "1450"; //нужно считывать с переменной
 
     function changePrice()
@@ -122,7 +123,10 @@
     }
 
     Promise.all([ requestCheckAuth("product") ,
-                  requestGetItemsSlider("example")])
+                  requestGetItemsSlider("example"),
+                requestGetMenuCategories(),
+            ])
+
         .then( response => {
                     //сли авторизированы
                    if(response[0])
@@ -220,7 +224,9 @@
        pictures.push({ src : $(this).attr('src') })
     });
     //fancybox3
+
     $('#product').click( function(){
+
         $.fancybox.open( pictures , {
             loop : true,
             index: $(this).attr('id-pictures'),
@@ -231,17 +237,14 @@
     $('div.size-box').on('keyup', 'input[type="number"]' , function(event) {
 
         if( $(this).val().length > 3)
-        {
-            $(this).val($(this).val().substr(0, 3));
-        }
-
-
+           $(this).val($(this).val().substr(0, 3));
+                
          if($(this).val() > 0 )
              $(this).parents('div.size-block').addClass(css.sizeActive);
          else
              $(this).parents('div.size-block').removeClass(css.sizeActive);
 
-         changePrice();
+        changePrice();
 
         //проверить, что выбран хотя бы один размер
         if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
@@ -249,11 +252,12 @@
         else
             $('div.price-basket').find('button').parent('div').removeClass(css.orderOn).addClass(css.orderOff);
     });
-
+    
     $('div.size-box').on('change' , 'input[type="number"]' , function (event) {
        $(event.target).trigger('keypress');
     });
 
+    
     //событие на клик изменения кол-ва размера товара
     $('div.product-size').on('click' , 'div.size-block button' , function () {
         let number =  parseInt( $(this).siblings('input').val() == "" ? 0 :  $(this).siblings('input').val()   ),

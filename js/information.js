@@ -1,6 +1,7 @@
 ( function($){
 
     requestCheckAuth("information");
+    requestGetMenuCategories();
     var html = "";
     var pictures = [];
 

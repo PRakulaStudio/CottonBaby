@@ -2,6 +2,8 @@
 	"use strict";
 
 	requestCheckAuth('index');
+	requestGetMenuCategories();
+	
 	var autoPlay = false;
 
 

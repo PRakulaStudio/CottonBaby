@@ -12,7 +12,7 @@
     {
         
         let data = new FormData();
-        
+       
         //data.append()
         return fetch(window.pms.config.catalogApi + 'categories', {method: 'POST', credentials: 'same-origin', body:  formData })
             .then(function (response) {
@@ -37,12 +37,79 @@
         
     }
 
+    $(window).resize( function(){
+       let button =  $('section.content > div.title').find('button');
+       if( button.attr('data-category-action') )
+       {
+           displayCategories(button.attr('data-category-action'));
+       }
 
-    function requestGetOtherCategories()
+    });
+
+    function displayCategories(status_display)
+    {
+
+
+        //если мобилка
+        if( $(window).width() <= 880)
+        {
+           if(status_display == "show" )
+             $('section.filter-box').show().find('a').show();
+
+           else
+             $('section.filter-box').hide();
+
+
+
+        }
+        else
+        {
+            $('section.filter-box').show();
+            if(status_display == "show")
+                $('div.filter').find('a').slice(8).show();
+            else
+                $('div.filter').find('a').slice(8).hide();
+        }
+
+
+    }
+
+    function changeCategoryButton()
+    {
+       let button =  $('section.content > div.title').find('button');
+
+       if( button.attr('data-category-action') )
+       {
+            if(button.attr('data-category-action') == "show")
+            {
+                button.attr('data-category-action' , 'hide').html('все категории<img src="images/icons/down-arrow.svg">');
+
+            }
+
+           else
+            {
+                button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+            }
+
+           displayCategories(button.attr('data-category-action') );
+       }
+       else
+       {
+           button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+       }
+    }
+
+
+    function requestGetOtherCategories(pageName , offset)
     {
         var data = new FormData();
-        data.append('offset' , 8);
-        return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin' , body : data})
+            data.append('offset' , 8);
+            data.append('show_count' , true );
+
+        var paramsString = "offset=8&show_count=true";
+        var searchParams = new URLSearchParams(paramsString);
+
+        return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin' , 'body' : data })
             .then(function (response) {
 
                 let responseData = false;
@@ -59,26 +126,41 @@
                 if(response.status)
                 {
                     let html = "";
-                    for(var key in responce.data.categories)
+                    for(var key in response.data)
                     {
-                        html += `<button>{response.data.categories[key]}<span>{responce.data.counts}</span></button>`
+                        html += '<a href="'+response.data[key].href+'">'+response.data[key].title+'<span>'+response.data[key].count+'</span></a>';
                     }
+                    $('div.filter').append(html);
+
+
+                    changeCategoryButton();
+                    displayCategories( "show" );
                 }
 
             });
     }
 
+      
 
     Promise.all([
         requestCheckAuth('katalog'),
-        requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
+        createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
+        requestGetMenuCategories(),
+        //requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
         // requestGetCategories('katalog'),
     ]).then( results => {
-
-        if(results[0] && results[1])
+        IS_AUTH = results[0];
+        if(results[0])
         {
-            requestCheckFavoritesItems(results[1]);
-        }
+            let list_id = [];
+            document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
+                   list_id.push( currentValue.getAttribute('data-catalog-item-id') );
+                });
+
+            requestCheckFavoritesItems(list_id);
+
+        //
+         }
     });
 
     // requestCheckAuth('katalog')
@@ -86,7 +168,10 @@
 
 
     $('div.title').on('click' , 'button' , function(){
-        requestGetOtherCategories('katalog');
+        if(!$(this).attr('data-category-action'))
+            requestGetOtherCategories('katalog' , 8);
+        else
+            changeCategoryButton();
 
     });
 
