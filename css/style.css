@@ -2201,7 +2201,7 @@ html, body {
 .img-video video{
     position: absolute;
     width: 100%;
-    min-height: 450px;
+    /*min-height: 450px;*/
     top: -30%;
     -moz-filter: brightness(0.5);
     -ms-filter: brightness(0.5);
