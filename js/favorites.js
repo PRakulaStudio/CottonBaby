@@ -20,7 +20,7 @@
                                   if( result )
                                   {
                                       totalItems = $('div.header-user').find('div[data-favorite] span').text();
-                                      console.log(totalItems);
+
                                       let promise = requestGetFavorites(0, limitItemsFavorites, 'DESC' , 'favorites');
                                         
                                       createPagination(totalItems , 'favorites');
@@ -31,9 +31,11 @@
                        } ,
                        error => {} )
              .then( response => {
-
+            
                 for(let key = 0; key < response.length; key++)
-                   addFavoriteButtons( $('div.products-box').find('div[data-id-block="'+response[key]+'"]') , true);
+                  addFavoriteButtons( $('div.products-box').find('div[data-catalog-item-id="'+response[key]+'"]') , true);
+
+
              });
     requestGetMenuCategories();
 

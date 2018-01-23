@@ -26,7 +26,6 @@
 	});
 
 
-
 	$('button[data-action]').click( function(){
 		if($(this).attr('data-action') == "next" )
 			$('.production-slider').slick('slickNext');

@@ -2,11 +2,10 @@
 
     var limitItemsKatalog = 9;
     
-    function requestGetKatalogItems(offset, limit, orderBy, pageName)
+    function requestGetKatalogItems(offset, limit, sort, pageName)
     {
-       return requestGetItems(offset , limit, orderBy , pageName);
+       return requestGetItems(offset , limit, sort , pageName);
     }
-
     
     function reuestGetCategories(page)
     {
@@ -46,10 +45,38 @@
 
     });
 
+    $('div.sorting-block').on('click' , 'button' , function(){
+       if(!$(this).hasClass('sorting-activ'))
+       {
+           $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
+           let sort = 'price';
+           if($(this).text() == "по дате")
+               sort = "create_date";
+            
+           Promise.all([
+               createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
+               requestGetKatalogItems(0 , limitItemsKatalog, sort , 'katalog'),
+
+           ]).then( results => {
+               IS_AUTH = results[0];
+               if(results[0])
+               {
+                   let list_id = [];
+                   document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
+                       list_id.push( currentValue.getAttribute('data-catalog-item-id') );
+                   });
+                 
+                   requestCheckFavoritesItems(list_id , 'products-box');
+
+               }
+           });
+
+       }
+
+    });
+
     function displayCategories(status_display)
     {
-
-
         //если мобилка
         if( $(window).width() <= 880)
         {
@@ -58,9 +85,6 @@
 
            else
              $('section.filter-box').hide();
-
-
-
         }
         else
         {
@@ -70,7 +94,6 @@
             else
                 $('div.filter').find('a').slice(8).hide();
         }
-
 
     }
 
@@ -85,7 +108,6 @@
                 button.attr('data-category-action' , 'hide').html('все категории<img src="images/icons/down-arrow.svg">');
 
             }
-
            else
             {
                 button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
@@ -139,7 +161,6 @@
 
             });
     }
-
       
 
     Promise.all([
@@ -156,8 +177,8 @@
             document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
                    list_id.push( currentValue.getAttribute('data-catalog-item-id') );
                 });
-
-            requestCheckFavoritesItems(list_id);
+         
+            requestCheckFavoritesItems(list_id , 'products-box');
 
         //
          }

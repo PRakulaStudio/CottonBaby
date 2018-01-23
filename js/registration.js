@@ -32,7 +32,13 @@
 				}
 				else
 				{
-					alert("Не получилось зарегистрироваться");
+					
+					for(var key in data.data.errors)
+					{
+						alert(data.data.errors[key]);
+						break;
+					}
+
 				}
 
 			},

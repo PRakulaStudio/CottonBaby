@@ -4,30 +4,35 @@
 var limitItems = 9,
     totalItems = 0,
     activePaginationButton = "pagination-activ",
-    arrayItems = [],
+    arrayItems = {},
     hideButton = "ban-pagination",
-    pageId = false;
+    pageId = false,
+    sort = "create_date"
 
 
 function createPagination( total ,  pageName)
 {
 
     countPages =  Math.ceil( total / limitItems );
+    arrayItems = {};
 
    if(pageId === false)
         pageId = pageName;
 
     let hideLocalButton = "";
 
-    if(countPages === 1)
+    if(countPages == 1)
     {
+        $('div.products-pagination').html("");
         return true;
     }
 
+
+
     if( countPages <= 4 )
-    {
-        hideLocalButton = hideButton;
-    }
+       hideLocalButton = hideButton;
+
+
     var activeLocal = activePaginationButton;
     var html = "<button class='pagination-arrow prev "+hideButton+"'>◄</button>" +
         "<div data-block-pages >";
@@ -48,7 +53,6 @@ function createPagination( total ,  pageName)
     $('div.products-pagination').html(html);
 
     return true;
-
 }
 
 function changePagination(direction , activeButton , clickButton )
@@ -203,43 +207,54 @@ function changePagination(direction , activeButton , clickButton )
 
     //проверяем есть ли в массиве эти данные
 
-    if( arrayItems[clickButton.text()] )
+  //  history.pushState({foo: 'bar'}, '?page='+clickButton.text(), window.location.origin+window.location.pathname+'?page='+newActiveButton.text());
+    console.log( activeButton.text() );
+    console.log(prevButtonActiveNumber);
+    
+    if( arrayItems[activeButton.text()] )
     {
 
         if( !arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = $('div.products-box').children();
+            arrayItems[prevButtonActiveNumber] = $('div.products-box,div.collections-box').children();
         //надо переделать
-        $('div.products-box').html( arrayItems[clickButton.text()] );
+        $('div.products-box,div.collections-box').html( arrayItems[activeButton.text()] );
     }
     else
     {
 
         if(!arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = $('div.products-box').children();
+            arrayItems[prevButtonActiveNumber] = $('div.products-box,div.collections-box').children();
+        sort = "create_date"; //нужно проверить
+        if( $('div.sorting').length)
+        {
+           if( $('div.sorting').find('button.sorting-activ').text() == "по цене" )
+               sort = 'price';
+        }
 
-        sort = "DESC"; //нужно проверить
         offset =( ( parseInt( clickButton.text() ) - 1) * limitItems );
 
        requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {
                 if(IS_AUTH)
-                     requestCheckFavoritesItems(result);
+                {
+
+                    requestCheckFavoritesItems(result , 'products-box');
+                }
+
             });
         //
     }
 
 }
 
-
-
-function requestGetItems(offset , limit , orderBy , pageName)
+function requestGetItems(offset , limit , sort , pageName)
 {
 
     if(pageId === false)
         pageId = pageName;
 
-    let url;
-    var data = new FormData();
+    let data = new FormData();
+    let show_favorites = true;
 
     switch(pageId)
     {
@@ -249,14 +264,31 @@ function requestGetItems(offset , limit , orderBy , pageName)
         case "katalog" :
             url = window.pms.config.catalogAPI +"category";
             data.append('img_size[]' , '300x500');
+            if(  window.pms.plugins.catalog.currentCategory.id > 0 )
+                data.append('id' , window.pms.plugins.catalog.currentCategory.id );
+            break;
+        case "collection" :
+            url = window.pms.config.catalogAPI +"collections";
+            data.append('id' , window.pms.plugins.catalog.currentCollection.id);
+            data.append('img_size[]' , '300x500');
+            data.append('show_items' , true);
+            break;
+        case "collections" :
+            url = window.pms.config.catalogAPI +"collections";
+            data.append('show_href' , true);
+            data.append('img_size[]' , '300x500');
+            data.append('show_cover' , true);
+            show_favorites = false;
+            break;
+        case "search" :
+            url = window.pms.config.catalogAPI + window.location.pathname;
+            data.append('img_size[]' , '300x500');
             break;
     }
 
-
     data.append('offset' , offset);
     data.append('limit' , limit);
-    data.append('orderBy' , orderBy);
-    
+    data.append('sort' , sort);
 
     return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
         .then(function (response) {
@@ -271,14 +303,13 @@ function requestGetItems(offset , limit , orderBy , pageName)
             return responseData;
         })
         .then(function (response) {
-
-            return createItems(response.data.items);
-
+          
+           return createItems(response.data.items , show_favorites);
         })
        
 }
 
-function createItems(items)
+function createItems(items , is_show_favorite)
 {
     var html = "",
         listIdItems = [];
@@ -286,36 +317,39 @@ function createItems(items)
     for( var key in items)
     {
 
-        listIdItems.push(items[key].id);
-        let images_path = "";
-        try{
-            images_path = items[key].images[0]['300x500'];
-        }
-        catch (e)
-        {
+        item = items[key];
 
-        }
+        listIdItems.push(item.id);
+        let   images_path = "/images/";
 
-        html += "<div data-catalog-item-id='"+items[key].id+"'>" +
-                     "<div><a href='#'><img src='"+images_path+"' /></a></div>" + //картинка
-                      "<div><p><span>*****</span><span>"+items[key].price+"</span> руб.</p></div>" + //цена
-                         "<div class='block-button-favorites'></div>" +// избранное
-                       "<div>" +
-                            "<a href='"+items[key].link+"'>"+items[key].title+"</a>" +
-                            "<p>"+items[key].description+"</p>" +
+
+            if( item.images &&  item.images[0])
+                images_path =item.images[0];
+            if( item.images &&  item.images[0] && item.images[0]['300x500']  )
+                images_path =item.images[0]['300x500'];
+
+        html += "<div data-catalog-item-id='"+item.id+"'>" +
+                     "<div><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>"; //картинка
+        if( item.price )
+             html +=  "<div><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>"; //цена
+
+        if( is_show_favorite )
+             html += "<div class='block-button-favorites'></div>"; // избранное
+        html += "<div>" +
+                            "<a href='"+item.href+"'>"+item.title+"</a>" +
+                            "<p>"+(item.description == null ? "" : item.description)+"</p>" +
                          "</div>" +
 
-                        "<a href='"+items[key].href+"'>" +
+                        "<a href='"+item.href+"'>" +
                             "Подробно" +
                         "</a>" +
                  "</div>";
     }
     //надо переделать
-    $('div.products-box').html( html );
+    $('div.products-box,div.collections-box').html( html );
     return  listIdItems;
 
 }
-
 
 $(document).ready( function(){
 

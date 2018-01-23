@@ -281,68 +281,43 @@ html, body {
 .menu {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 30px 0;
+    align-content: space-between;
 }
 
-.left-menu {
-    width: 20%;
+.section {
+    width: 32%;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.left-menu > .section ul {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.left-menu > .section ul > li {
-    width: 100%;
-}
-
-.left-menu > .section ul > li > a {
-    float: left;
-    width: 100%;
-    padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #333333;
-}
-
-.left-menu > .section ul > li:hover > a {
-    text-decoration: none;
-}
-
-.right-menu {
-    width: 80%;
+.section ul {
+    height: 360px;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-}
-
-.right-menu > .section ul {
-    display: flex;
-    flex-direction: row;
     width: 100%;
-    flex-wrap: wrap;
 }
 
-.right-menu > .section ul > li {
-    width: 33%;
+.section ul > li {
+    width: 100%;
 }
 
-.right-menu > .section ul > li > a {
+.section ul > li > a{
     display: block;
     width: 100%;
     padding: 10px;
     font-family: "Fontfabric-MullerMedium";
+    line-height: 25px;
     font-size: 18px;
     color: #333333;
 }
 
-.right-menu > .section ul > li:hover > a {
+.section ul > li:hover > a{
     text-decoration: none;
 }
 
@@ -353,6 +328,36 @@ html, body {
     font-size: 25px;
     color: #333333;
 }
+
+.marker ul > li{
+    position: relative;
+    width: 100%;
+    padding: 0 0 0 25px;
+}
+
+.marker ul > li:before{
+    position: absolute;
+    left: 0;
+    content: "\25c9";
+    margin: 14px 10px;
+    color: #FC982B;
+}
+
+/* --- SCROLL --- */
+
+.marker ul::-webkit-scrollbar         {width: 10px;}
+.marker ul::-webkit-scrollbar-track   {background-color:#EAEAEA;}
+.marker ul::-webkit-scrollbar-thumb   {background-color:#FC982B;}
+
+.marker ul::-moz-scrollbar        {width: 10px;}
+.marker ul::-moz-scrollbar-track  {background-color:#EAEAEA;}
+.marker ul::-moz-scrollbar-thumb  {background-color:#FC982B;}
+
+.marker ul:-o-scrollbar         {width: 10px;}
+.marker ul:-o-scrollbar-track   {background-color:#EAEAEA;}
+.marker ul:-o-scrollbar-thumb   {background-color:#FC982B;}
+
+/* --- SCROLL --- */
 
 /* --- MENU --- */
 
@@ -456,6 +461,7 @@ html, body {
     font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     padding: 20px 10px;
+    line-height: 30px;
     color: #000000;    
 }
 
@@ -469,7 +475,7 @@ html, body {
 }
 
 .pagination-liner {
-    width: 99%;
+    width: 100%;
     height: 2px;
     margin: 0 auto;
     background: linear-gradient(to left, #F71E02, #FAAA01)
@@ -514,6 +520,9 @@ html, body {
     text-align: left;
     margin-left: calc(((100% / 4) - 250px) / 2);
     margin-right: calc(((100% / 4) - 250px) / 2);
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 .filter a:before{
@@ -549,7 +558,7 @@ html, body {
 /* sorting */
 
 .sorting {
-    width: 99%;
+    width: 100%;
     margin: auto;
     height: auto;
     padding: 0 10px;
@@ -605,7 +614,7 @@ html, body {
 /* katalog */
 
 .products-box {
-    width: 99%;
+    width: 100%;
     margin: 0 auto 50px auto;
     display: flex;
     flex-direction: row;
@@ -646,6 +655,20 @@ html, body {
     height: 500px;
     margin: auto;
     overflow: hidden;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
+.products-box > div > :nth-child(1) a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .products-box > div > :nth-child(1) img{
@@ -741,6 +764,7 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
+    border-radius: 0 0 15px 15px;
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
@@ -796,17 +820,9 @@ html, body {
     background-position: 0 0;
 }
 
-/*pagination start */
 .products-pagination {
-    max-width: 320px;
+    width: 320px;
     margin: 20px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.products-pagination div{
-    max-width: 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -823,17 +839,11 @@ html, body {
     font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .products-pagination button:hover{
     background: #F50037;
-    color: #FFFFFF;
-}
-
-.products-pagination > div >.pagination-activ{
-    background: #F50037;
-    color: #FFFFFF;
 }
 
 .products-pagination > .pagination-arrow {
@@ -845,8 +855,51 @@ html, body {
     pointer-events: none;
     opacity: 0;
 }
-/*pagination end*/
 
+.products-pagination ul{
+    max-width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.products-pagination li{
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin: auto 2.5px;
+    background: #E6E5E1;
+    border-radius: 5px;
+}
+
+.products-pagination li > a{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    padding: 15px 0;
+    border-radius: 5px;
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.products-pagination li > a:hover{
+    background: #F50037;
+    color: #FFFFFF;
+}
+
+.products-pagination > ul > .pagination-activ a{
+    background: #F50037;
+    color: #FFFFFF;
+}
+
+.products-pagination button.pagination-activ
+{
+    background: #F50037;
+    color: #FFFFFF;
+}
 
 /* katalog */
 
@@ -1916,7 +1969,11 @@ html, body {
     position: relative;
     width: 300px;
     height: 500px;
+    border-radius: 15px;
     margin: auto 20px 25px 0;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 .new-box > div:hover img{
@@ -1941,6 +1998,16 @@ html, body {
     height: 500px;
     margin: auto;
     overflow: hidden;
+}
+
+.new-box > div > :nth-child(1) a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .new-box > div > :nth-child(1) img{
@@ -2034,6 +2101,7 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
+    border-radius: 0 0 15px 15px;
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
@@ -2732,7 +2800,7 @@ html, body {
 }
 
 .registration-box {
-    width: 100%;
+    width: 98%;
     margin: 0 10px 50px 10px;
     display: flex;
     flex-direction: row;
@@ -2812,6 +2880,7 @@ html, body {
     position: absolute;
     height: 100%;
     z-index: -1;
+    right: -50px;
 }
 
 .registration-img p{
@@ -3972,7 +4041,7 @@ html, body {
 }
 
 .collections-box {
-    width: 99%;
+    width: 100%;
     margin: 0 auto 50px auto;
     display: flex;
     flex-direction: row;
@@ -3989,6 +4058,10 @@ html, body {
     width: 32%;
     height: 500px;
     margin: 20px 0;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 .collections-box > div:hover img{
@@ -4004,6 +4077,16 @@ html, body {
     height: 500px;
     margin: auto;
     overflow: hidden;
+}
+
+.collections-box > div > :nth-child(1) a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .collections-box > div > :nth-child(1) img{
@@ -4022,6 +4105,7 @@ html, body {
     padding: 20px;
     margin: 0 auto!important;
     bottom: 0;
+    border-radius: 0 0 15px 15px;
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
@@ -4227,10 +4311,15 @@ html, body {
     margin: 0 10px 0 0;
 }
 
-.product-category p{
+.product-category a{
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     color: #989898;
+    text-decoration: none;
+}
+
+.product-category a:hover{
+    text-decoration: underline;
 }
 
 .product-brief {
@@ -4244,17 +4333,6 @@ html, body {
     font-size: 20px;
     line-height: 25px;
     color: #000000;
-}
-
-.product-category a{
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    color: #989898;
-    text-decoration: none;
-}
-
-.product-category a:hover{
-    text-decoration: underline;
 }
 
 .product-composition {
@@ -4598,6 +4676,10 @@ html, body {
     width: 300px;
     height: 500px;
     margin: auto;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 .product-block > div:hover img{
@@ -4622,6 +4704,16 @@ html, body {
     height: 500px;
     margin: auto;
     overflow: hidden;
+}
+
+.product-block > div > :nth-child(1) a{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    z-index: 1;
 }
 
 .product-block > div > :nth-child(1) img{
@@ -4717,6 +4809,7 @@ html, body {
     padding: 20px;
     margin: auto;
     bottom: 0;
+    border-radius: 0 0 15px 15px;
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;

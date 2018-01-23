@@ -2,6 +2,7 @@
 
 ( function($){
 
+    a
     var slider = $('.slider'), //условная переменная для слайдера
         ready = [],
         currentNewSlide = 0,

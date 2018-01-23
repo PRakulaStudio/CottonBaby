@@ -4,7 +4,8 @@
 	requestCheckAuth('index');
 	requestGetMenuCategories();
 	
-	var autoPlay = false;
+	var autoPlay = false
+	var offset = 20;
 
 
 	function sliderAnimation( sliderClass )
@@ -130,9 +131,9 @@
 
 			if( document.querySelector('.new-slider [data-type="empty"]') )
 			{
-				console.log("Удалил");
-				$('.new-slider').slick('slickRemove',sliders.length - 1);
-				$('.new-slider').slick('slickRemove',sliders.length - 1);
+			//	console.log("Удалил");
+				//$('.new-slider').slick('slickRemove',sliders.length - 1);
+			//	$('.new-slider').slick('slickRemove',sliders.length - 1);
 			}
 
 
@@ -145,9 +146,9 @@
 					!document.querySelector('.new-slider [data-type="empty"]')
 			   )
 			{
-				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
-				$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
-				console.log('Добавил');
+			//	$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+			//	$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+			//	console.log('Добавил');
 			}
 
 
@@ -172,6 +173,7 @@
 
 	  });
 	 sliderAnimation('slider');
+		
      $(".slider").on("afterChange", function(event, slick, currentSlide){
 	       	$(".main-slider .count-slider .current-slide").text(slick.currentSlide + 1);
 		});
@@ -188,7 +190,6 @@
 				 $('div.production-index-button').hide();
 
 			handlerEmptyBlockForNewSlider()
-
 
 
 		});
@@ -239,6 +240,77 @@
 
 		]
 	});
+	requestGetNews(0, 20);
+
+
+    function requestGetNews(offset , limit ) {
+
+		 let url = window.pms.config.catalogAPI +"category";
+		 var data = new FormData();
+		 var listIdItems = [];
+
+		 data.append('offset' , offset);
+		 data.append('limit' , limit);
+		 data.append('show_href' , true);
+		
+		 return fetch(url, {method: 'POST', credentials: 'same-origin' , body: data})
+			 .then(function (response) {
+				 let responseData = false;
+				 try {
+					 responseData = response.json();
+				 }
+				 catch (e) {
+					 responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+					 response.text().then(console.debug);
+				 }
+				 return responseData;
+			 })
+			 .then(function (response) {
+
+				 for( var key in response.data.items )
+				 {
+
+					 let item = response.data.items [key];
+					 listIdItems.push(item.id) ;
+					 //listIdItems.push(item.id);
+					 let images_path = "";
+
+					 try{
+						 images_path = item.images[0];
+					 }
+					 catch (e)
+					 {
+						 images_path = "/images/";
+					 }
+
+					 let slide = " <div class='slide'><div class='new-box' data-catalog-item-id='"+item.id+"'><div>" +
+									 "<div><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>" + //картинка
+									 "<div><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>" + //цена
+									 "<div class='block-button-favorites'></div>" +// избранное
+									 "<div>" +
+									 "<a href='"+item.href+"'>"+item.title+"</a>" +
+									 "<p>"+(item.description == null ? "" : item.description)+"</p>" +
+									 "</div>" +
+
+									 "<a href='"+item.href+"'>" +
+									 "Подробно" +
+									 "</a>" +
+									 "</div></div></div>";
+
+					 $('.new-slider').slick('slickAdd' ,slide );
+					 
+				 }
+					requestCheckFavoritesItems(listIdItems , 'new-slider');
+
+				 //	$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+				 //	$('.new-slider').slick('slickAdd', '<div class="slide" data-type="empty"></div>');
+
+
+			 })
+		
+
+	 }
+	
 
 	$('div.new-button button').click( function(){
 
@@ -252,30 +324,25 @@
 	
 	let currentNewSlide = 0,
 		maxNumberOnLoadSlide = 0,
-		numberRest = 2;
-	$('.new-slider').on('afterChange' , function(event, slick, currentSlide){
-
-		if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
-		{
-
-			if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
-			{
-				maxNumberOnLoadSlide = currentSlide;
-
-				//запрос на добавление нового слайда
-				//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-				//	$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-			}
-
-		}
-		else
-		{
-			//console.log("Нет новых слайдов");
-		}
-
-		currentNewSlide = currentSlide;
-
-	});
+		numberRest = 16;
+	// $('.new-slider').on('afterChange' , function(event, slick, currentSlide){
+	// 	if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
+	// 	{
+    //
+	// 		if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
+	// 		{
+	// 			maxNumberOnLoadSlide = currentSlide;
+	// 			offset += 20;
+	// 			requestGetNews( offset , 20);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		//console.log("Нет новых слайдов");
+	// 	}
+	// 	currentNewSlide = currentSlide;
+    //
+	// });
 	handlerEmptyBlockForNewSlider();
 
 

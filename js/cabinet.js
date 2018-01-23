@@ -222,9 +222,7 @@
 
 						$('div.data-box').find('input[name="'+key+'"]').val( data.userData[key] );
 					}
-					
-
-
+		
 				}
 				else
 				{

@@ -92,6 +92,7 @@
                         var html = "";
                         for( let key in products )
                         {
+
                             let product = products[key].product,
                                 modifications = products[key].modifications;
                             html += "<div class='basket-product' data-id-item='"+product.id+"'>" +
@@ -102,9 +103,15 @@
                                 "<img src='"+product.images[0]['50x50']+"' >"+
                                 "<div>"+
                                 "<p>#"+products[key].order_id+"</p>"+
-                                "<p><a href='"+product.href+"' >"+product.title+"</a></p>"+
-                                "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>"+
-                                "</div>"+
+                                "<p><a href='"+product.href+"' >"+product.title+"</a></p>";
+
+                                if( product.collection[0].title )
+                                {
+                                    html += "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>";
+                                }
+
+
+                                html += "</div>"+
                                 "</div>" +
 
                                 "</div>" +

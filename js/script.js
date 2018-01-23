@@ -222,17 +222,19 @@ function getMenuCategories()
                 for(var key in response.data)
                     html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+"</a></li>";
 
-                $('div.menu div.right-menu').find('div.section').first().find('ul').html(html);
+                $('div.menu').find('div.marker').first().find('ul').html(html);
             }
 
         });
 }
 
-
 function getMenuCollection()
 {
     var data = new FormData();
+
     data.append('show_href' , true);
+    data.append('show_count' , true);
+
     return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , body: data  })
         .then(function (response) {
 
@@ -249,16 +251,15 @@ function getMenuCollection()
         .then(function (response) {
             if(response.status)
             {
+
                 let html = "";
                 for(var key in response.data.items)
-                    html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+"</a></li>";
-
-                $('div.menu div.right-menu').find('div.section').last().find('ul').html(html);
+                    html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+" ("+response.data.items[key].count+")</a></li>";
+                $('div.menu').find('div.marker').last().find('ul').html(html);
             }
 
         });
 }
-
 
 function requestGetMenuCategories()
 {
@@ -266,30 +267,39 @@ function requestGetMenuCategories()
     getMenuCollection();
 }
 
-
 function addFavoriteButtons( blockProducts , value)
 {
 
     let buttonHtml = "";
-    console.log( blockProducts );
+
     if(value)
-        buttonHtml =  "<button class='new-off'></button>";
+        buttonHtml =  "<button class='new-on'></button>";
     else
-        buttonHtml =  " <button class='new-on'></button>";
+        buttonHtml =  " <button class='new-off'></button>";
 
     blockProducts.find('div.block-button-favorites').html(buttonHtml);
 }
 
-
 $('main.content-site').on('click' , 'div.block-button-favorites' , function(){
 
-    let productBlock =  $(this).parents('div[data-catalog-item-id],div[data-id-block]');
-    let idProduct = productBlock.attr('data-id-block') ?  productBlock.attr('data-id-block') : productBlock.attr('[data-catalog-item-id');
+    let productBlock =  $(this).parents('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]');
+    if( productBlock.attr('data-catalog-item-id') )
+       idProduct = productBlock.attr('data-catalog-item-id');
 
-    if( $(this).find('button').hasClass('new-off') )
-        requestRemoveFavorites( idProduct ,  $(this).find('button'));
-    else
-        requestAddFavorites( idProduct ,  $(this).find('button') );
+
+    if( productBlock.attr('data-id-block') )
+       idProduct = productBlock.attr('data-id-block');
+
+
+    if( productBlock.attr('data-id-catalog-item') )
+       idProduct = productBlock.attr('data-id-catalog-item');
+
+
+
+     if( $(this).find('button').hasClass('new-off') )
+         requestAddFavorites( idProduct ,  $(this).find('button'));
+     else
+         requestRemoveFavorites( idProduct ,  $(this).find('button') );
 });
 
 function requestAddFavorites(product_id  , button)
@@ -303,7 +313,7 @@ function requestAddFavorites(product_id  , button)
         success : function ( result , status ) {
             if(result.status)
             {
-                button.removeClass('new-on').addClass('new-off');
+                button.removeClass('new-off').addClass('new-on');
             }
         },
     });
@@ -321,7 +331,7 @@ function requestRemoveFavorites(product_id , button)
         success : function ( result , status ) {
             if(result.status)
             {
-                button.removeClass('new-off').addClass('new-on');
+                button.removeClass('new-on').addClass('new-off');
             }
         },
     });
@@ -329,6 +339,7 @@ function requestRemoveFavorites(product_id , button)
 
 function requestCheckFavoritesItems(listId , classBlock )
 {
+
     var data = new FormData();
     data.append('items' , JSON.stringify(listId));
     return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
@@ -353,7 +364,6 @@ function requestCheckFavoritesItems(listId , classBlock )
 
                 for(let key in wishList)
                 {
-
                     addFavoriteButtons( $products.find('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
                 }
 
@@ -400,10 +410,11 @@ function setAuthUserData(result, url)
             case "favorites" :
                 window.location.href = "/";
                 break;
+            case "basket" :
+                window.location.href = "/";
+                break;
         }
-
         $('[class*="header-user"]').find('#exit').remove();
-
     }
 
     return is_auth;
@@ -415,7 +426,9 @@ function showError(responseData) {
 }
 
 function requestCheckAuth(url) {
-  
+
+    console.log(url);
+
    return fetch(window.pms.config.cabinetAPI + 'user/checkAuth', {method: 'POST', credentials: 'same-origin'})
            .then(function (response) {
 
@@ -430,8 +443,16 @@ function requestCheckAuth(url) {
                return responseData;
            })
            .then(function (response) {
-             
-                return setAuthUserData(response, url);
+               if(response.status)
+               {
+                   switch(url)
+                   {
+                    //   case "registration"
+                   }
+
+               }
+
+               return setAuthUserData(response, url);
 
            });
 
@@ -487,11 +508,17 @@ function requestAuth(data) {
         .then(function (response) {
             if (response.status)
                 location.reload();
-            else
-                alert('Не получилось разлогиниться');
+            else {
+                var errors = response.data.error;
+                var errorString = "";
+                for(key in errors){
+                    errorString += errors[key] + '\n';
+                }
+                if(errorString.length != 0)
+                    alert(errorString);
+            }
         });
 }
-
 
 (function ($) {
 
@@ -499,12 +526,18 @@ function requestAuth(data) {
         $(this).inputmask('+7 (999) 999-99-99');
     })
 
-    $('input[type="search"]').keypress(function (e) {
+    $('input[type="search"]').keydown(function (e) {
+
         if (e.which == 13) {
-            window.location.href = "/search?query=" + $(this).val() + "";
+            window.location.href = "/search/" + $(this).val() + "";
         }
 
     });
+
+    $('div.search-menu').on('click' , 'button[type="submit"]' , function(){
+        window.location.href = "/search/" + $(this).siblings('input').val() + "";
+    });
+
 
     $('[class*="header-user"] > div:last-of-type button').click(function () {
         $(this).next().show();
@@ -533,6 +566,11 @@ function requestAuth(data) {
             requestAuth(data);
         }
     });
+
+    $('div.search-menu').on('keyup' , 'input[type="search"]' , function(event){
+      // event.
+
+     });
 
 
 
