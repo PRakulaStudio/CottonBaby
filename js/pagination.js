@@ -208,7 +208,7 @@ function changePagination(direction , activeButton , clickButton )
     //проверяем есть ли в массиве эти данные
 
   //  history.pushState({foo: 'bar'}, '?page='+clickButton.text(), window.location.origin+window.location.pathname+'?page='+newActiveButton.text());
-    console.log( activeButton.text() );
+    activeButton =  $('div.products-pagination').find('button.pagination-activ');
     console.log(prevButtonActiveNumber);
     
     if( arrayItems[activeButton.text()] )
