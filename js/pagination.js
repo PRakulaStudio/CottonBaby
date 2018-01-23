@@ -62,7 +62,6 @@ function changePagination(direction , activeButton , clickButton )
         sort = "",
         prevButtonActiveNumber = $(activeButton).text();
 
-
     switch (direction)
     {
         case "next" :
@@ -205,10 +204,10 @@ function changePagination(direction , activeButton , clickButton )
             break;
     }
 
-    //проверяем есть ли в массиве эти данные
+  //проверяем есть ли в массиве эти данные
 
   //  history.pushState({foo: 'bar'}, '?page='+clickButton.text(), window.location.origin+window.location.pathname+'?page='+newActiveButton.text());
-    console.log( activeButton.text() );
+    activeButton =  $('div.products-pagination').find('button.pagination-activ');
     console.log(prevButtonActiveNumber);
     
     if( arrayItems[activeButton.text()] )
@@ -224,6 +223,7 @@ function changePagination(direction , activeButton , clickButton )
 
         if(!arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = $('div.products-box,div.collections-box').children();
+
         sort = "create_date"; //нужно проверить
         if( $('div.sorting').length)
         {
@@ -240,9 +240,7 @@ function changePagination(direction , activeButton , clickButton )
 
                     requestCheckFavoritesItems(result , 'products-box');
                 }
-
             });
-        //
     }
 
 }

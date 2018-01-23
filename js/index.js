@@ -7,7 +7,6 @@
 	var autoPlay = false
 	var offset = 20;
 
-
 	function sliderAnimation( sliderClass )
 	{
 		
