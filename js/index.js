@@ -239,7 +239,7 @@
 
 		]
 	});
-	requestGetNews(0, 20);
+	//requestGetNews(0, 20);
 
 
     function requestGetNews(offset , limit ) {
