@@ -554,7 +554,6 @@ function requestRemindPassword(data) {
         if (e.which == 13) {
             window.location.href = "/search/" + $(this).val() + "";
         }
-
     });
 
     //закрытие модальных окон
@@ -569,7 +568,6 @@ function requestRemindPassword(data) {
     $('div.search-menu').on('click' , 'button[type="submit"]' , function(){
         window.location.href = "/search/" + $(this).siblings('input').val() + "";
     });
-
 
     $('[class*="header-user"] > div:last-of-type button').click(function () {
         $(this).next().show();

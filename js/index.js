@@ -434,14 +434,15 @@
 		});
 
 
-	// $("a#example1").fancybox({
-	// 	afterClose: function () {
-	// 		$('.insta-slider').slick('slickPlay');
-	// 	}
-	// }).on('click' , function () {
-	// 	$('.insta-slider').slick('slickPause');
-	// });
-	
+
+	if( $(window).width() >= 820)
+	{
+		$('video').each( function(){
+			  console.log($(this));
+			  $(this)[0].load();
+			  $(this)[0].play();
+		});
+	}
 
 
 

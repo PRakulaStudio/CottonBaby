@@ -7,7 +7,7 @@ var limitItems = 9,
     arrayItems = {},
     hideButton = "ban-pagination",
     pageId = false,
-    sort = "create_date"
+    sort = "create_date";
 
 
 function createPagination( total ,  pageName)
@@ -77,12 +77,6 @@ function createPagination( total ,  pageName)
 
         }
     }
-
-
-
-
-
-
 
     for( let i = 0;  i < countPages; i++ , pagination_page_start++ )
     {
@@ -266,7 +260,8 @@ function changePagination(direction , activeButton , clickButton )
     let url = new URL(url_string);
     let select_sort = url.searchParams.get("sort");
     let select_page = url.searchParams.get("page");
-
+    
+    
     if(select_sort == null)
         select_sort = "create_date";
 
@@ -295,7 +290,7 @@ function changePagination(direction , activeButton , clickButton )
                sort = 'price';
         }
 
-        offset =( ( parseInt( clickButton.text() ) - 1) * limitItems );
+        offset =( ( parseInt( activeButton.text() ) - 1) * limitItems );
 
        requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {

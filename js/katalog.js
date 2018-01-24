@@ -59,12 +59,18 @@
     });
 
     $('div.sorting-block').on('click' , 'button' , function(){
+
        if(!$(this).hasClass('sorting-activ'))
        {
            $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
+
            let sort = 'price';
            if($(this).text() == "по дате")
                sort = "create_date";
+
+           select_page = "1";
+
+           history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
             
            Promise.all([
                createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
