@@ -557,8 +557,13 @@ function requestRemindPassword(data) {
 
     });
 
-    $(window).click(function () {
-      
+    //закрытие модальных окон
+    $(window).mousedown(function (event) {
+        if( !$(event.target).is('#authorization') && !$(event.target).parents('#authorization').length )
+            $('#authorization').hide();
+        
+        if( !$(event.target).is('#exit') && !$(event.target).parents('#exit').length )
+            $('#exit').hide();
     });
 
     $('div.search-menu').on('click' , 'button[type="submit"]' , function(){
