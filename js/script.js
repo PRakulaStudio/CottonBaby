@@ -202,7 +202,9 @@ var IS_AUTH = false;
 
 function getMenuCategories()
 {
-    return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin'  })
+    var data = new FormData();
+    data.append('show_count' , true);
+    return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin'  , body: data   })
         .then(function (response) {
 
             let responseData = false;
@@ -220,7 +222,7 @@ function getMenuCategories()
             {
                 let html = "";
                 for(var key in response.data)
-                    html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+"</a></li>";
+                    html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
 
                 $('div.menu').find('div.marker').first().find('ul').html(html);
             }
