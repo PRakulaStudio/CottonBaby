@@ -1,12 +1,7 @@
 ( function($){
 
     
-    
     var limitItemsFavorites = 9;
-
-
-
-  
 
     function requestGetFavorites(offset, limit, orderBy , pageName)
     {

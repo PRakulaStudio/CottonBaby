@@ -4,11 +4,31 @@
 ( function($){
 
     var limitItemsCollection = 9;
+
+
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let select_sort = url.searchParams.get("sort");
+
+    if(select_sort)
+    {
+        if(select_sort == "price")
+            $('div.sorting-block').find('button.sorting-activ').removeClass('sorting-activ').siblings('sorting-activ');
+    }
+
+
+
+    if(  $(window).width() <= 880 ) {
+        if (!$('section.content > div.title').find('button').length)
+            displayCategories('show');
+    }
+
     function requestGetOtherCollections(pageName , offset)
     {
         var data = new FormData();
         data.append('offset' , 8);
         data.append('show_count' , true );
+        data.append('show_href' , true );
 
         return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , 'body' : data })
             .then(function (response) {
@@ -78,7 +98,6 @@
 
     }
 
-
     function requestGetCollectionItems(offset, limit, sort, pageName)
     {
         return requestGetItems(offset , limit, sort , pageName);
@@ -114,6 +133,7 @@
         }
     }
 
+    //смена сортировки
     $('div.sorting-block').on('click' , 'button' , function(){
         if(!$(this).hasClass('sorting-activ'))
         {
@@ -121,6 +141,18 @@
             let sort = 'price';
             if($(this).text() == "по дате")
                 sort = "create_date";
+
+            let url_string = window.location.href;
+            let url = new URL(url_string);
+            let select_sort = url.searchParams.get("sort");
+            let select_page = '1';
+
+            if(select_sort)
+                select_sort = "create_date";
+
+
+
+            history.pushState({foo: 'page'}, '?sort='+select_sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+select_sort+'&page='+select_page);
 
             Promise.all([
                 createPagination(pms.plugins.catalog.currentCollection.count , 'collection'),

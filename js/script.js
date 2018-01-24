@@ -342,6 +342,7 @@ function requestCheckFavoritesItems(listId , classBlock )
 
     var data = new FormData();
     data.append('items' , JSON.stringify(listId));
+    console.log( JSON.stringify(listId) );
     return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
         .then( function(response){
             let responseData = false;
@@ -376,8 +377,6 @@ function requestCheckFavoritesItems(listId , classBlock )
 function setAuthUserData(result, url)
 {
 
-    let is_auth = false;
-
     if (result.status) {
         switch (url) {
             case "registration" :
@@ -387,15 +386,17 @@ function setAuthUserData(result, url)
 
         $('[class*="header-user"]').find('#authorization').remove();
 
+        $('[class*="header-user"]').find('div[data-basket] a').attr('href' , '/basket.html');
         if (result.data.cartCount)
-            $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.cartCount);
+             $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.cartCount);
 
+        $('[class*="header-user"]').find('div[data-favorite] a').attr('href' , '/favorites.html');
         if (result.data.wishlistCount)
             $('[class*="header-user"]').find('div[data-favorite]').addClass('favorites').find('span').text(result.data.wishlistCount);
 
         $('[class*="header-user"]').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.data.name}`);
 
-        is_auth = true;
+        IS_AUTH = true;
 
         $('body').removeClass('showPrice');
 
@@ -417,7 +418,7 @@ function setAuthUserData(result, url)
         $('[class*="header-user"]').find('#exit').remove();
     }
 
-    return is_auth;
+    return IS_AUTH;
 
 }
 
@@ -451,6 +452,7 @@ function requestCheckAuth(url) {
                    }
 
                }
+               console.log(response);
 
                return setAuthUserData(response, url);
 
@@ -520,6 +522,27 @@ function requestAuth(data) {
         });
 }
 
+
+function requestRemindPassword(data) {
+    return fetch(window.pms.config.catalogAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( function(response){
+            let responseData = false;
+            try{
+                responseData = response.json();
+            }
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( function (response) {
+           console.log(response);
+        });
+
+}
+
 (function ($) {
 
     $('input[name="phone"]').each(function () {
@@ -532,6 +555,10 @@ function requestAuth(data) {
             window.location.href = "/search/" + $(this).val() + "";
         }
 
+    });
+
+    $(window).click(function () {
+      
     });
 
     $('div.search-menu').on('click' , 'button[type="submit"]' , function(){
@@ -554,7 +581,6 @@ function requestAuth(data) {
     });
 
     $('#authorization form button').click(function () {
-
         var data = {};
 
         $('#authorization').find('input').each(function () {
@@ -567,10 +593,16 @@ function requestAuth(data) {
         }
     });
 
-    $('div.search-menu').on('keyup' , 'input[type="search"]' , function(event){
-      // event.
+    $('span[data-action="remind-pass"]').click(function(){
+        var data = {};
+        validateData($('#authorization').find('input[name="mail"]'), data , 'input-error-bottom');
 
-     });
+        if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+            requestRemindPassword(data);
+        }
+
+    });
+
 
 
 

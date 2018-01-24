@@ -19,7 +19,7 @@ function createPagination( total ,  pageName)
    if(pageId === false)
         pageId = pageName;
 
-    let hideLocalButton = "";
+   let hideLocalButton = "";
 
     if(countPages == 1)
     {
@@ -29,26 +29,80 @@ function createPagination( total ,  pageName)
 
 
 
-    if( countPages <= 4 )
-       hideLocalButton = hideButton;
+
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let select_page = url.searchParams.get("page");
+
+    if( select_page == null)
+        select_page = 1;
+
+    // if( countPages <= 4 )
+    //     hideLocalButton = hideButton;
 
 
-    var activeLocal = activePaginationButton;
-    var html = "<button class='pagination-arrow prev "+hideButton+"'>◄</button>" +
-        "<div data-block-pages >";
+    var activeLocal = "";
+    var html = "";
+    if( countPages <= 4 || select_page == 1 )
+        hideLocalButton = hideButton;
+
+    var html = "<button class='pagination-arrow prev "+hideLocalButton+"'>◄</button>" +
+                 "<div data-block-pages >";
+    let pagination_page_start = 1;
+    hideLocalButton = "";
 
 
-    for( let i = 0; i < countPages; i++ )
+    if( select_page === 1 || select_page === 2 ||  (select_page <= 4 && countPages <= 4) ) {
+        pagination_page_start = 1;
+    }
+    else
     {
-        if( i == 4 )
+        if(select_page > 2  && countPages > 4)
+        {
+            pagination_page_start = select_page - 1;
+        }
+        else
+        {
+            if(select_page == countPages - 1)
+            {
+                pagination_page_start = select_page - 2;
+            }
+            else
+            {
+                if(select_page == countPages)
+                {
+                    pagination_page_start = select_page - 3;
+                }
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+    for( let i = 0;  i < countPages; i++ , pagination_page_start++ )
+    {
+        if( i == 4)
             break;
 
-        html += "<button class='"+activeLocal+"'>"+(i+1)+"</button>";
-        activeLocal = "";
+        if(pagination_page_start == select_page)
+            activeLocal = activePaginationButton;
 
+        html += "<button class='"+activeLocal+"'>"+pagination_page_start+"</button>";
+        activeLocal = "";
     }
+
+
+    if( countPages <= 4 || select_page == countPages )
+        hideLocalButton = hideButton;
+
     html += "</div>" +
         "<button class='pagination-arrow next "+hideLocalButton+"'>►</button>";
+    hideLocalButton = "";
 
     $('div.products-pagination').html(html);
 
@@ -69,7 +123,7 @@ function changePagination(direction , activeButton , clickButton )
             if( (clickButton.text()   <= 2) || (countPages - 1) <= clickButton.text() )
             {
 
-                if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() <= ( countPages - 1 )  )
+                if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() < ( countPages - 1 )  )
                 {
 
                     clickButton = clickButton.prev();
@@ -206,13 +260,23 @@ function changePagination(direction , activeButton , clickButton )
 
   //проверяем есть ли в массиве эти данные
 
-  //  history.pushState({foo: 'bar'}, '?page='+clickButton.text(), window.location.origin+window.location.pathname+'?page='+newActiveButton.text());
+
     activeButton =  $('div.products-pagination').find('button.pagination-activ');
-    console.log(prevButtonActiveNumber);
-    
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let select_sort = url.searchParams.get("sort");
+    let select_page = url.searchParams.get("page");
+
+    if(select_sort == null)
+        select_sort = "create_date";
+
+    select_page = activeButton.text();
+
+    history.pushState({foo: 'page'}, '?sort='+select_sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+select_sort+'&page='+select_page);
+
+
     if( arrayItems[activeButton.text()] )
     {
-
         if( !arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = $('div.products-box,div.collections-box').children();
         //надо переделать
@@ -235,14 +299,14 @@ function changePagination(direction , activeButton , clickButton )
 
        requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {
+                
                 if(IS_AUTH)
                 {
-
                     requestCheckFavoritesItems(result , 'products-box');
                 }
             });
     }
-
+ //   window.scrollTo( 0, 0 );
 }
 
 function requestGetItems(offset , limit , sort , pageName)
@@ -261,26 +325,26 @@ function requestGetItems(offset , limit , sort , pageName)
             break;
         case "katalog" :
             url = window.pms.config.catalogAPI +"category";
-            data.append('img_size[]' , '300x500');
+            data.append('img_size[]' , '450x750');
             if(  window.pms.plugins.catalog.currentCategory.id > 0 )
                 data.append('id' , window.pms.plugins.catalog.currentCategory.id );
             break;
         case "collection" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('id' , window.pms.plugins.catalog.currentCollection.id);
-            data.append('img_size[]' , '300x500');
+            data.append('img_size[]' , '450x750');
             data.append('show_items' , true);
             break;
         case "collections" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('show_href' , true);
-            data.append('img_size[]' , '300x500');
+            data.append('img_size[]' , '450x750');
             data.append('show_cover' , true);
             show_favorites = false;
             break;
         case "search" :
             url = window.pms.config.catalogAPI + window.location.pathname;
-            data.append('img_size[]' , '300x500');
+            data.append('img_size[]' , '450x750');
             break;
     }
 
@@ -320,11 +384,10 @@ function createItems(items , is_show_favorite)
         listIdItems.push(item.id);
         let   images_path = "/images/";
 
-
             if( item.images &&  item.images[0])
                 images_path =item.images[0];
-            if( item.images &&  item.images[0] && item.images[0]['300x500']  )
-                images_path =item.images[0]['300x500'];
+            if( item.images &&  item.images[0] && item.images[0]['450x750']  )
+                images_path =item.images[0]['450x750'];
 
         html += "<div data-catalog-item-id='"+item.id+"'>" +
                      "<div><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>"; //картинка
@@ -345,6 +408,7 @@ function createItems(items , is_show_favorite)
     }
     //надо переделать
     $('div.products-box,div.collections-box').html( html );
+
     return  listIdItems;
 
 }
