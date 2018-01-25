@@ -16,7 +16,7 @@
     </head>
     <body class="showPrice">
 
-    <?= getData(false, 'header') ?>
+    <?= getData(false, 'header', ['']) ?>
 
     <!-- content start -->
     <main class="content-site">
@@ -77,7 +77,7 @@
     </main>
     <!-- content end -->
 
-    <?= getData(false, 'footer') ?>
+    <?= getData(false, 'footer', ['']) ?>
 
     <script>
         if (!window.pms) window.pms = {};
