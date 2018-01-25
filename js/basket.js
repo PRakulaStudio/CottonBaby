@@ -553,6 +553,7 @@
     });
 
 
+
     //используем бонусы
     $('div.basket-total button[action="use-bonus"]').click( function(){
             requestUseBonus();
