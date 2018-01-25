@@ -320,26 +320,26 @@ function requestGetItems(offset , limit , sort , pageName)
             break;
         case "katalog" :
             url = window.pms.config.catalogAPI +"category";
-            data.append('img_size[]' , '450x750');
+            data.append('img_size[]' , '750x750');
             if(  window.pms.plugins.catalog.currentCategory.id > 0 )
                 data.append('id' , window.pms.plugins.catalog.currentCategory.id );
             break;
         case "collection" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('id' , window.pms.plugins.catalog.currentCollection.id);
-            data.append('img_size[]' , '450x750');
+            data.append('img_size[]' , '750x750');
             data.append('show_items' , true);
             break;
         case "collections" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('show_href' , true);
-            data.append('img_size[]' , '450x750');
+            data.append('img_size[]' , '750x750');
             data.append('show_cover' , true);
             show_favorites = false;
             break;
         case "search" :
             url = window.pms.config.catalogAPI + window.location.pathname;
-            data.append('img_size[]' , '450x750');
+            data.append('img_size[]' , '750x750');
             break;
     }
 
@@ -381,8 +381,8 @@ function createItems(items , is_show_favorite)
 
             if( item.images &&  item.images[0])
                 images_path =item.images[0];
-            if( item.images &&  item.images[0] && item.images[0]['450x750']  )
-                images_path =item.images[0]['450x750'];
+            if( item.images &&  item.images[0] && item.images[0]['750x750']  )
+                images_path =item.images[0]['750x750'];
 
         html += "<div data-catalog-item-id='"+item.id+"'>" +
                      "<div><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>"; //картинка
