@@ -1,4 +1,3 @@
-<!-- footer start -->
 <div class="footer">
     <div class="footer-top">
         <div class="footer-logo">
@@ -38,4 +37,3 @@
         <p>© 2017 Cotton Baby</p>
     </div>
 </div>
-<!-- footer end -->

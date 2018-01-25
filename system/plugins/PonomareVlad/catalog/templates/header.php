@@ -1,4 +1,3 @@
-<!-- menu popup start -->
 <div class="menu-popup" id="menu">
     <div class="button-box">
         <button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
@@ -195,4 +194,3 @@
         </div>
     </div>
 </div>
-<!-- header end -->
