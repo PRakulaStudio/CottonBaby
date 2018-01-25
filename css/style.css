@@ -910,6 +910,10 @@ html, body {
     padding: 0 10px;
 }
 
+.title .content-text{
+    margin:0px;
+}
+
 .content-text b{
     display: inline-block;
     padding: 0 0 15px 0;
@@ -923,6 +927,30 @@ html, body {
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     line-height: 30px;
+    color: #000000;
+}
+
+
+.title .content-text p:nth-child{
+    font-weight: bold;
+}
+
+.title .content-text p{
+    padding: 0 0 15px 0;
+    line-height: 25px;
+}
+
+.title .content-text span{
+    color:red;
+}
+
+.title .content-text a
+{
+    font-family: "Fontfabric-MullerMedium";
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    padding: 8px;
     color: #000000;
 }
 

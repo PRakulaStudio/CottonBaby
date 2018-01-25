@@ -380,11 +380,11 @@ function setAuthUserData(result, url)
 {
 
     if (result.status) {
-        switch (url) {
-            case "registration" :
-                window.location.href = "/";
-                break
-        }
+        // switch (url) {
+        //     case "registration" :
+        //         window.location.href = "/";
+        //         break
+        // }
 
         $('[class*="header-user"]').find('#authorization').remove();
 
