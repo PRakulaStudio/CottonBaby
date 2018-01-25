@@ -145,14 +145,13 @@
             let url_string = window.location.href;
             let url = new URL(url_string);
             let select_sort = url.searchParams.get("sort");
-            let select_page = '1';
 
-            if(select_sort)
-                select_sort = "create_date";
+            if(sort == "create_date")
+                path = "";
+            else
+                path = '?sort='+sort;
 
-
-
-            history.pushState({foo: 'page'}, '?sort='+select_sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+select_sort+'&page='+select_page);
+            history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
 
             Promise.all([
                 createPagination(pms.plugins.catalog.currentCollection.count , 'collection'),

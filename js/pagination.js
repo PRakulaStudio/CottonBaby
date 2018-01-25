@@ -260,14 +260,19 @@ function changePagination(direction , activeButton , clickButton )
     let url = new URL(url_string);
     let select_sort = url.searchParams.get("sort");
     let select_page = url.searchParams.get("page");
-    
-    
+    let path = "";
+
     if(select_sort == null)
-        select_sort = "create_date";
+        path += "";
+    else
+        path += '?sort='+select_sort;
 
-    select_page = activeButton.text();
+    if( activeButton.text() == 1)
+        path += "";
+    else
+        path =  select_sort == null ? '?page='+activeButton.text() : path +'&page='+ activeButton.text();
 
-    history.pushState({foo: 'page'}, '?sort='+select_sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+select_sort+'&page='+select_page);
+    history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
 
 
     if( arrayItems[activeButton.text()] )

@@ -68,9 +68,17 @@
            if($(this).text() == "по дате")
                sort = "create_date";
 
-           select_page = "1";
+           path = "";
 
-           history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
+           if(sort == "create_date")
+               path = "";
+           else
+               path = '?sort='+sort;
+
+
+           history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
+
+          // history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
             
            Promise.all([
                createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
@@ -149,7 +157,7 @@
             data.append('show_count' , true );
 
         var paramsString = "offset=8&show_count=true";
-        var searchParams = new URLSearchParams(paramsString);
+      //  var searchParams = new URLSearchParams(paramsString);
 
         return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin' , 'body' : data })
             .then(function (response) {
