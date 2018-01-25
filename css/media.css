@@ -551,12 +551,16 @@
         line-height: 40px;
     }
 
+    .text-cooperation div:nth-child(1) > p:before{
+        top: 55px;
+    }
+
     .text-cooperation div > div:nth-child(2) {
         margin: 40px auto;
     }
 
     .text-cooperation div:nth-child(2) p{
-        line-height: 20px;
+        line-height: 25px;
     }
 
     .basket-product {

@@ -910,10 +910,6 @@ html, body {
     padding: 0 10px;
 }
 
-.title .content-text{
-    margin:0px;
-}
-
 .content-text b{
     display: inline-block;
     padding: 0 0 15px 0;
@@ -930,28 +926,36 @@ html, body {
     color: #000000;
 }
 
+.reg-info {
+    width: 98%;
+    border-radius: 10px;
+    padding: 10px;
+    background: #F0F0F0;
+}
 
-.title .content-text p:nth-child{
+.reg-info p{
+    padding: 5px 0;
+}
+
+.reg-info p:nth-child(1){
     font-weight: bold;
 }
 
-.title .content-text p{
-    padding: 0 0 15px 0;
-    line-height: 25px;
+.reg-info span{
+    white-space: pre;
+    font-weight: bold;
+    color: #FF0016;
 }
 
-.title .content-text span{
-    color:red;
-}
-
-.title .content-text a
-{
+.reg-info a{
     font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    padding: 8px;
-    color: #000000;
+    font-size: 25px;
+    color: #FE9D44;
+}
+
+.reg-info a:hover{
+    text-decoration: underline;
 }
 
 /* text */
@@ -2230,6 +2234,7 @@ html, body {
 
 .img-video video{
     position: absolute;
+    width: 100%;
     min-height: 450px;
     -moz-filter: brightness(0.5);
     -ms-filter: brightness(0.5);
@@ -2272,9 +2277,13 @@ html, body {
 }
 
 .text-cooperation div:nth-child(1) > p:before{
-    content: "▬";
+    content: "";
     position: absolute;
-    left: 0;
+    top: 60px;
+    left: 10px;
+    width: 25px;
+    height: 5px;
+    background: #FFFFFF;
 }
 
 .text-cooperation div > div:nth-child(2) {
