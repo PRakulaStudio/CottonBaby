@@ -25,9 +25,9 @@
                 <p><b>+7 (922)</b> 13 36 726</p>
             </div>
 
-<!--            <div class="footer-top-networks">-->
-<!--                <button><a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>-->
-<!--                </button>-->
+            <div class="footer-top-networks">
+                <button><a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>
+                </button>
 <!--                <!-- <button><img src="images/icons/fb.png"></button> -->-->
 <!--                <!-- <button><img src="images/icons/vk.png"></button> -->-->
 <!--            </div>-->
