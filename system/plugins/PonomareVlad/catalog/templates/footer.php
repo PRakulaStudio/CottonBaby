@@ -30,7 +30,7 @@
                 </button>
 <!--                <!-- <button><img src="images/icons/fb.png"></button> -->-->
 <!--                <!-- <button><img src="images/icons/vk.png"></button> -->-->
-<!--            </div>-->
+            </div>
         </div>
     </div>
 

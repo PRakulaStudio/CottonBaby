@@ -91,8 +91,8 @@
                requestGetKatalogItems(0 , limitItemsKatalog, sort , 'katalog'),
 
            ]).then( results => {
-               IS_AUTH = results[0];
-               if(results[0])
+
+               if(IS_AUTH)
                {
                    let list_id = [];
                    document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
@@ -204,7 +204,7 @@
         //requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
         // requestGetCategories('katalog'),
     ]).then( results => {
-        IS_AUTH = results[0];
+
         if(results[0])
         {
             let list_id = [];
