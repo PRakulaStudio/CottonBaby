@@ -22,14 +22,15 @@
 
         <div class="footer-contacts">
             <div class="footer-phone">
-                <p><b>+7 (495)</b> 555 44 22</p>
+                <p><b>+7 (922)</b> 13 36 726</p>
             </div>
 
-            <div class="footer-top-networks">
-                <button><img src="images/icons/insta.png"></button>
-                <button><img src="images/icons/fb.png"></button>
-                <button><img src="images/icons/vk.png"></button>
-            </div>
+<!--            <div class="footer-top-networks">-->
+<!--                <button><a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>-->
+<!--                </button>-->
+<!--                <!-- <button><img src="images/icons/fb.png"></button> -->-->
+<!--                <!-- <button><img src="images/icons/vk.png"></button> -->-->
+<!--            </div>-->
         </div>
     </div>
 
