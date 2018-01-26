@@ -75,15 +75,12 @@
                sort = "create_date";
 
            path = "";
-
            if(sort == "create_date")
                path = "";
            else
                path = '?sort='+sort;
 
-
            history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
-
           // history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
             
            Promise.all([
