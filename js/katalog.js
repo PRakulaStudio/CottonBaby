@@ -3,10 +3,12 @@
     var limitItemsKatalog = 9;
 
 
-    if(  $(window).width() <= 880 )
+    if(  $(document).width() <= 625 )
     {
         if(  !$('section.content > div.title').find('button').length )
              displayCategories('show');
+        else
+            displayCategories('hide');
     }
 
     
@@ -53,7 +55,11 @@
            }
            else
            {
-               $('section.filter-box').show();
+               if( $(document).width() < 625)
+                   displayCategories('hide');
+               else
+                   displayCategories('show');
+
            }
 
     });
@@ -105,8 +111,8 @@
     function displayCategories(status_display)
     {
         //если мобилка
-        console.log(  $(window).width() );
-        if( $(window).width() <= 880)
+
+        if( $(document).width() <= 625)
         {
            if(status_display == "show" )
              $('section.filter-box').show().find('a').show();

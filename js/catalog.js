@@ -2,7 +2,7 @@
 
 ( function($){
 
-    a
+    
     var slider = $('.slider'), //условная переменная для слайдера
         ready = [],
         currentNewSlide = 0,
@@ -19,7 +19,6 @@
         $(header).find('span.basket').text(data.basket).end()
                  .find('span.favorites').text(data.favorites).end()
                  .find('a').text("Здравствуйте, "+data.name);
-
     }
 
     function checkChangeFavorite(identificator)
@@ -28,7 +27,6 @@
 
         if(ready['addSlider'] && ready['isAuth'])
             changeFavoriteInSlider();
-
 
     }
 

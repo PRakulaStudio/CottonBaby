@@ -13,7 +13,6 @@
 			        
 			        zoom: 16,
 			        center: myLatlng,
-			        
 			        disableDefaultUI: true
 			    };
 
@@ -35,7 +34,7 @@
 			if( $(this).attr('data-action') == "show" )
 			{
 				$(this).attr('data-action' , 'hide');
-				$(this).siblings('.info').height('335px');
+				$(this).siblings('.info').height('195px');
 				$(this).text('Свернуть');
 
 
@@ -53,7 +52,7 @@
 		$(window).resize( function() {
 			if( $(window).width() >= 800)
 			{
-				$('button[data-action]').siblings('.info').height('335px');
+				$('button[data-action]').siblings('.info').height('195px');
 			}
 			else
 			{
