@@ -7,16 +7,17 @@ let config = {
 
 config = Object.freeze(config);
 
-document.querySelector('div.sorting').style.display = 'none';
+let blockSorting = document.querySelector('div.sorting');
+if( blockSorting)
+    blockSorting.style.display = 'none';
 
 
 if (!window.pms) window.pms = {};
  window.pms['config'] = config;
 
 let menu = document.querySelectorAll('div.menu div.marker');
+console.log(menu);
 
-// new SimpleBar(menu[0].querySelector('ul'));
-// new SimpleBar(menu[1].querySelector('ul'));
 
 
 function integerOnly(e) {
@@ -235,6 +236,8 @@ function getMenuCategories()
                     html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
 
                 $('div.menu').find('div.marker').first().find('ul').html(html);
+                new SimpleBar(menu[0].querySelector('ul') , { autoHide: false });
+
             }
 
         });
@@ -268,6 +271,8 @@ function getMenuCollection()
                 for(var key in response.data.items)
                     html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+" ("+response.data.items[key].count+")</a></li>";
                 $('div.menu').find('div.marker').last().find('ul').html(html);
+                new SimpleBar(menu[1].querySelector('ul')  , { autoHide: false });
+
             }
 
         });
@@ -556,6 +561,22 @@ function requestRemindPassword(data) {
 }
 
 (function ($) {
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+    });
+
+    $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+
+
+
 
     $('input[name="phone"]').each(function () {
         $(this).inputmask('+7 (999) 999-99-99');

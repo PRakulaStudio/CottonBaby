@@ -11,11 +11,38 @@ html, body {
     flex-direction: column;
 }
 
+.simplebar-scrollbar{
+    opacity: 1 !important;
+    background-color:#FC982B !important;
+}
+
+.scrollup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    text-indent: -9999px;
+    background: url(../images/icons/up.png) no-repeat;
+    background-size: 50px;
+}
+
 .shest { 
   -moz-appearance: textfield;
 }
 .shest::-webkit-inner-spin-button { 
   display: none;
+}
+
+.slide{
+    display: none;
+}
+
+.slide:first-child {
+    display: block !important;
 }
 
 /* POPUP */
@@ -297,7 +324,7 @@ html, body {
 
 .section ul {
     height: 360px;
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -321,6 +348,20 @@ html, body {
     text-decoration: none;
 }
 
+.section ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: "Fontfabric-MullerMedium";
+    line-height: 25px;
+    font-size: 18px;
+    color: #333333;
+}
+
+.section ul  li:hover  a{
+    text-decoration: none;
+}
+
 .section p{
     width: 100%;
     padding: 10px;
@@ -335,7 +376,22 @@ html, body {
     padding: 0 0 0 25px;
 }
 
+.marker ul  li{
+    position: relative;
+    width: 100%;
+    padding: 0 0 0 25px;
+}
+
+
 .marker ul > li:before{
+    position: absolute;
+    left: 0;
+    content: "\25c9";
+    margin: 14px 10px;
+    color: #FC982B;
+}
+
+.marker ul  li:before {
     position: absolute;
     left: 0;
     content: "\25c9";
@@ -4089,7 +4145,7 @@ html, body {
     align-content: space-between;
 }
 
-.collections-box div:nth-child(2), .collections-box div:nth-child(5), .collections-box div:nth-child(8) {
+.collections-box div:nth-child(3n+2) {
     margin: 20px 2%;
 }
 

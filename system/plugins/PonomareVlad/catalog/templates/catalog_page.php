@@ -12,10 +12,11 @@
         <link rel="shortcut icon" href="images/favicon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/media.css"/>
+        <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
         <meta name="format-detection" content="telephone=no">
     </head>
     <body class="showPrice">
-
+    <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 
     <!-- content start -->
@@ -93,6 +94,7 @@
     </script>
 
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/simplebar.js" ></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/katalog.js"></script>
