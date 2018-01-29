@@ -14,7 +14,7 @@
                 <li><a href="/">Главная</a></li>
                 <li><a href="/registration.html">Регистрация</a></li>
                 <li><a href="/catalog/">Каталог</a></li>
-                <li><a href="collections.html">Коллекции</a></li>
+                <li><a href="/collections/">Коллекции</a></li>
                 <li><a href="information.html">О нас</a></li>
                 <li><a href="cooperation.html">Сотрудничество</a></li>
             </ul>
