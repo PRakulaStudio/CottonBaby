@@ -1,3 +1,5 @@
+//build - 1
+
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
