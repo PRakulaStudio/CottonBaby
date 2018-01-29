@@ -428,19 +428,31 @@ html, body {
 .title button{
     cursor: pointer;
     border-radius: 25px;
-    border: 2px solid #D7DFE5;
-    background: #FFFFFF;
+    border: 2px solid #F30330;
+    background: #F30330;
     width: 200px;
     height: 40px;
     margin: 5px 10px;
     font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
+    color: #FFFFFF;
     text-align: center;
 }
 
 .title button:hover{
-    border: 2px solid #F30330;
+    background: #FFFFFF;
+    color: #000000;
+}
+
+.title button:hover img{
+    filter: invert(0);
+}
+
+.title button > img{
+    width: 15px;
+    margin: 0 0 0 10px;
+    vertical-align: middle;
+    filter: invert(1);
 }
 
 .title button > img{

@@ -3,11 +3,20 @@ let config = {
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
 };
 
+
+
 config = Object.freeze(config);
+
+document.querySelector('div.sorting').style.display = 'none';
+
 
 if (!window.pms) window.pms = {};
  window.pms['config'] = config;
 
+let menu = document.querySelectorAll('div.menu div.marker');
+
+// new SimpleBar(menu[0].querySelector('ul'));
+// new SimpleBar(menu[1].querySelector('ul'));
 
 
 function integerOnly(e) {
@@ -37,7 +46,6 @@ function integerOnly(e) {
     }
     return true;
 }
-
 
 /*
  * @param str
@@ -73,6 +81,8 @@ function checkPhone(phone) {
         return true;
     return false;
 }
+
+
 
 
 //функция, переводящая строку в денежный формат
