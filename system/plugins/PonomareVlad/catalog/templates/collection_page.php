@@ -3,7 +3,7 @@
     <html lang="ru">
     <head>
         <meta charset="utf-8"/>
-        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог'; ?></title>
+        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Коллекции'; ?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
