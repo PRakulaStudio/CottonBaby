@@ -16,8 +16,6 @@ if (!window.pms) window.pms = {};
  window.pms['config'] = config;
 
 let menu = document.querySelectorAll('div.menu div.marker');
-console.log(menu);
-
 
 
 function integerOnly(e) {
