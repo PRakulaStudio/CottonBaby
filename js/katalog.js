@@ -1,6 +1,9 @@
 ( function($){
 
+    $('div.products-pagination').html("");
+
     var limitItemsKatalog = 9;
+    var offset = 9;
 
 
     if(  $(document).width() <= 625 )
@@ -192,7 +195,18 @@
 
             });
     }
-      
+
+    // window.onscroll = function () {
+    //     if($(window).height() + $(window).scrollTop() >= $(document).height() && !block) {
+    //         console.log('scroll');
+    //     }
+
+        // if()
+
+    //};
+
+
+
 
     Promise.all([
         requestCheckAuth('katalog'),
