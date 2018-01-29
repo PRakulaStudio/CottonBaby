@@ -1,7 +1,7 @@
 /**
  * Created by Иван on 12.01.2018.
  */
-var limitItems = 9,
+var limitItems = 24,
     totalItems = 0,
     activePaginationButton = "pagination-activ",
     arrayItems = {},
@@ -306,7 +306,8 @@ function changePagination(direction , activeButton , clickButton )
                 }
             });
     }
- //   window.scrollTo( 0, 0 );
+    console.log( document.querySelector('div.products-box, div.collections-box').offsetTop  );
+     window.scrollTo( document.querySelector('div.products-box, div.collections-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
 }
 
 function requestGetItems(offset , limit , sort , pageName)

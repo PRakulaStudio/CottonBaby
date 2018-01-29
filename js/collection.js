@@ -3,7 +3,7 @@
  */
 ( function($){
 
-    var limitItemsCollection = 9;
+    var limitItemsCollection = 24;
 
 
     let url_string = window.location.href;
