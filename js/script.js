@@ -1,4 +1,4 @@
-//build - 1
+//build - 2
 
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
