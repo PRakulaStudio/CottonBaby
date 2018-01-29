@@ -32,7 +32,7 @@
 
             <div class="title">
                 <h1><?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог товаров'; ?></h1>
-                <?= (count(catalogChildCategories(['id' => getData('id'), 'show_count' => 'true'])) > 8) ? (getData('parent_category') ? '<button>все под-категории <img src="images/icons/down-arrow.svg"></button>' : '<button>все категории <img src="images/icons/down-arrow.svg"></button>') : '' ?>
+                <?= getData('id') ? ((count(catalogChildCategories(['id' => getData('parent_category') ? getData('parent_category') : getData('id'), 'show_count' => 'true'])) > 8) ? '<button>все под-категории <img src="images/icons/down-arrow.svg"></button>' : '') : '<button>все категории <img src="images/icons/down-arrow.svg"></button>' ?>
             </div>
         </section>
 
