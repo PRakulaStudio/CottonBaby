@@ -3,7 +3,7 @@
 <head>
     <base href="/">
     <meta charset="utf-8"/>
-    <title>Cotton Baby - Товар</title>
+    <title><?= getData('title'); ?> - Cotton Baby</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -14,11 +14,12 @@
     <link rel="stylesheet" type="text/css" href="css/media.css"/>
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
     <meta name="format-detection" content="telephone=no">
 
 </head>
 <body class="showPrice">
-
+<div class="scrollup"></div>
 <?= getData(false, 'header', ['']) ?>
 
 
@@ -150,6 +151,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/simplebar.js" ></script>
 
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/slick.js"></script>

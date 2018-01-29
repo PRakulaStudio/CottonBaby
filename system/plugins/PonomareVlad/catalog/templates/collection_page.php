@@ -3,7 +3,7 @@
     <html lang="ru">
     <head>
         <meta charset="utf-8"/>
-        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог'; ?></title>
+        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Коллекции'; ?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -12,10 +12,11 @@
         <link rel="shortcut icon" href="images/favicon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/media.css"/>
+        <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
         <meta name="format-detection" content="telephone=no">
     </head>
     <body class="showPrice">
-
+    <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 
     <!-- content start -->
@@ -91,6 +92,7 @@
     </script>
 
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/simplebar.js" ></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/collection.js"></script>

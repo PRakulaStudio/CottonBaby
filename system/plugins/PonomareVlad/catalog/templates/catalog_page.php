@@ -3,7 +3,7 @@
     <html lang="ru">
     <head>
         <meta charset="utf-8"/>
-        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог'; ?></title>
+        <title>Cotton Baby - Каталог</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -12,10 +12,11 @@
         <link rel="shortcut icon" href="images/favicon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/media.css"/>
+        <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
         <meta name="format-detection" content="telephone=no">
     </head>
     <body class="showPrice">
-
+    <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 
     <!-- content start -->
@@ -32,12 +33,12 @@
 
             <div class="title">
                 <h1><?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог товаров'; ?></h1>
-                <?= getData('id') ? ((count(catalogChildCategories(['id' => getData('parent_category') ? getData('parent_category') : getData('id'), 'show_count' => 'true'])) > 8) ? '<button>все под-категории <img src="images/icons/down-arrow.svg"></button>' : '') : '<button>все категории <img src="images/icons/down-arrow.svg"></button>' ?>
+                <!--<?= getData('id') ? ((count(catalogChildCategories(['id' => getData('parent_category') ? getData('parent_category') : getData('id'), 'show_count' => 'true'])) > 8) ? '<button>все под-категории <img src="images/icons/down-arrow.svg"></button>' : '') : '<button>все категории <img src="images/icons/down-arrow.svg"></button>' ?>-->
             </div>
         </section>
 
         <section class="filter-box">
-            <?php $childCategories = getData('parent_category') ? catalogChildCategories(['id' => getData('parent_category'), 'limit' => 8, 'show_count' => 'true']) : catalogChildCategories(['id' => getData('id'), 'limit' => 8, 'show_count' => 'true']) ?>
+            <?php $childCategories = getData('parent_category') ? catalogChildCategories(['id' => getData('parent_category'), 'show_count' => 'true']) : catalogChildCategories(['id' => getData('id'), 'show_count' => 'true']) ?>
             <? if (count($childCategories) > 0): ?>
                 <div class="filter">
                     <?= getData(false, [
@@ -93,6 +94,7 @@
     </script>
 
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/simplebar.js" ></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/katalog.js"></script>
