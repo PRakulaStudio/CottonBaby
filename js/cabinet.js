@@ -282,6 +282,8 @@
 		$(this).find('img').toggle();
 	});
 
+	//подсказки
+	
 
 
 	getHistory( buttonLoadHistory.data('offset') , buttonLoadHistory.data('limit') );

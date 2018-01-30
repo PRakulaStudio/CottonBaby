@@ -226,7 +226,7 @@
         justify-content: space-between;
     }
 
-    .products-box div:nth-child(2), .products-box div:nth-child(5), .products-box div:nth-child(8) {
+    .products-box div:nth-child(3n+2) {
         margin: 20px 0;
     }
 
@@ -238,7 +238,7 @@
         justify-content: space-between;
     }
 
-    .collections-box div:nth-child(2), .collections-box div:nth-child(5), .collections-box div:nth-child(8) {
+    .collections-box div:nth-child(3n+2) {
         margin: 20px 0;
     }
 
@@ -447,12 +447,12 @@
 
 @media (max-width: 640px) {
     .title button{
-        border: none;
-        background: none;
-        width: auto;
+        /*border: none;*/
+        /*background: none;*/
+        /*width: auto;*/
         height: auto;
-        margin: 10px 11px;
-        text-align: left;
+        margin: 6px 11px;
+        /*text-align: left;*/
     }
 
     .title button:hover{

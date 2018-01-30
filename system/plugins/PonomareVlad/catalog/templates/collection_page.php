@@ -3,7 +3,7 @@
     <html lang="ru">
     <head>
         <meta charset="utf-8"/>
-        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог'; ?></title>
+        <title>Cotton Baby - <?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Коллекции'; ?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -92,7 +92,7 @@
     </script>
 
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-    <script type="text/javascript" src="/js/simplebar.js" ></script>
+    <script type="text/javascript" src="js/simplebar.js" ></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/collection.js"></script>

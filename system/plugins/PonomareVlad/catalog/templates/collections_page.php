@@ -72,7 +72,7 @@
     pms.plugins.catalog.collections =<?=getData(false, false, false, true)?>;
 </script>
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
+<script type="text/javascript" src="js/simplebar.js" ></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/pagination.js"></script>
 <script type="text/javascript" src="js/collections.js"></script>
