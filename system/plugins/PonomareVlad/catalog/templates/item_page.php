@@ -151,7 +151,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
+<script type="text/javascript" src="js/simplebar.js" ></script>
 
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/slick.js"></script>

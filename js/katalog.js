@@ -4,14 +4,13 @@
 
     var limitItemsKatalog = 9;
     var offset = 9;
+    let mobileWidth = 1000;
 
-
-    if(  $(document).width() <= 625 )
+    //если мобилка, то показываем кнопку
+    if(  $(window).width() <= mobileWidth )
     {
-        if(  !$('section.content > div.title').find('button').length )
-             displayCategories('show');
-        else
-            displayCategories('hide');
+        $('div.title').find('button').show();
+        $('section.filter-box').hide();
     }
 
     
@@ -50,20 +49,28 @@
     }
 
     $(window).resize( function(){
-       let button =  $('section.content > div.title').find('button');
+           let button =  $('section.content > div.title').find('button');
 
-           if( button.attr('data-category-action') )
+           if( $(window).width() > mobileWidth )
            {
-               displayCategories(button.attr('data-category-action'));
+               $('div.title').find('button').hide();
+               $('section.filter-box').show();
            }
            else
            {
-               if( $(document).width() < 625)
-                   displayCategories('hide');
+               $('div.title').find('button').show();
+               if( button.attr('data-category-action') )
+               {
+                   displayCategories(button.attr('data-category-action'));
+               }
                else
-                   displayCategories('show');
+               {
+                   displayCategories('hide');
+               }
 
            }
+
+
 
     });
 
@@ -112,10 +119,10 @@
     {
         //если мобилка
 
-        if( $(document).width() <= 625)
+        if( $(document).width() <= mobileWidth )
         {
            if(status_display == "show" )
-             $('section.filter-box').show().find('a').show();
+             $('section.filter-box').show().show();
 
            else
              $('section.filter-box').hide();
@@ -124,9 +131,9 @@
         {
             $('section.filter-box').show();
             if(status_display == "show")
-                $('div.filter').find('a').slice(8).show();
+                $('section.filter-box').show();
             else
-                $('div.filter').find('a').slice(8).hide();
+                $('section.filter-box').hide();
         }
 
     }
