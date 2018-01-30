@@ -13,8 +13,9 @@
     display: none;
 }
 .suggestions-wrapper {
+    width: 100%;
     display: inline-block;
-    position: relative;
+    position: absolute;
     margin: 0;
     padding: 0;
     vertical-align: top;
@@ -55,7 +56,7 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    cursor: default;
+    cursor: pointer;
     z-index: 9999;
     -webkit-text-size-adjust: 100%;
 }
@@ -77,6 +78,7 @@
     overflow: hidden;
 }
 .suggestions-suggestion:hover {
+    width: 100%;
     background: #f7f7f7;
 }
 /**

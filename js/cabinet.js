@@ -278,15 +278,21 @@
 			setUserData( data );
 	});
 
-	$("input[name='inn']").suggestions({
-		token: "fc1ca3289a8825e5a3ff6ee4dac90af47e911fbe",
-		type: "PARTY",
-		count: 5,
-		/* Вызывается, когда пользователь выбирает одну из подсказок */
-		onSelect: function(suggestion) {
-			console.log(suggestion);
-		}
-	});
+
+    //
+	// $("input[name='inn']").suggestions({
+	// 	token: "fc1ca3289a8825e5a3ff6ee4dac90af47e911fbe",
+	// 	type: "PARTY",
+	// 	count: 10,
+	// 	/* Вызывается, когда пользователь выбирает одну из подсказок */
+	// 	onSelect: function(suggestion) {
+	// 		let form = document.querySelector('div.jur-form');
+    //
+	// 		form.querySelector('input[name="inn"]').value = suggestion.data.inn;
+	// 		form.querySelector('input[name="ogrn"]').value = suggestion.data.ogrn;
+	// 		form.querySelector('input[name="name_organization"]').value = suggestion.data.name.full_with_opf;
+	// 	}
+	// });
 
 
 
