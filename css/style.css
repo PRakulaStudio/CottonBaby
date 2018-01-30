@@ -1,5 +1,22 @@
-@import "default.css";
-@import "fonts.css";
+@font-face {
+    font-family: 'Fontfabric-MullerRegular';
+    src: url('../fonts/Fontfabric-MullerRegular.otf');
+}
+
+@font-face {
+    font-family: 'Fontfabric-MullerLight';
+    src: url('../fonts/Fontfabric-MullerLight.otf');
+}
+
+@font-face {
+    font-family: 'Fontfabric-MullerMedium';
+    src: url('../fonts/Fontfabric-MullerMedium.otf');
+}
+
+@font-face {
+    font-family: 'Fontfabric-MullerBold';
+    src: url('../fonts/Fontfabric-MullerBold.otf');
+}
 
 html, body {
     width: 100%;
@@ -11,11 +28,22 @@ html, body {
     flex-direction: column;
 }
 
-.simplebar-scrollbar{
-    opacity: 1 !important;
-    background-color:#FC982B !important;
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    font-family: 'Fontfabric-MullerMedium', sans-serif;
+    color: #000000;
 }
 
+ol, ul {
+    list-style: none;
+}
+
+/* up */
 .scrollup {
     display: none;
     position: fixed;
@@ -29,7 +57,9 @@ html, body {
     background: url(../images/icons/up.png) no-repeat;
     background-size: 50px;
 }
+/* up */
 
+/* убирает стрелки у type="number" */
 .shest { 
   -moz-appearance: textfield;
 }
@@ -37,6 +67,7 @@ html, body {
   display: none;
 }
 
+/* display none */
 .slide{
     display: none;
 }
@@ -82,17 +113,13 @@ html, body {
 .popup-score p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-score > form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .popup-score > form input{
@@ -102,7 +129,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -117,7 +143,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -127,7 +152,6 @@ html, body {
 }
 
 .popup-score > form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -145,17 +169,13 @@ html, body {
 .popup-card p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-card > form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .popup-card > form input{
@@ -165,7 +185,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -173,7 +192,6 @@ html, body {
 .popup-card > form p{
     width: 100%;
     margin: 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     color: #797979;
@@ -189,7 +207,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -199,7 +216,6 @@ html, body {
 }
 
 .popup-card > form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -217,19 +233,15 @@ html, body {
 .popup-thanks > div:nth-child(2) p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-thanks > div:nth-child(3) p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 18px;
-    color: #000000;
 }
 
 .popup-thanks iframe{
@@ -250,11 +262,9 @@ html, body {
     right: 0;
     margin: 10px;
 }
-
 /* POPUP */
 
 /* --- MENU --- */
-
 .menu-popup {
     display: none;
     position: absolute;
@@ -295,7 +305,6 @@ html, body {
     background: none;
     border-bottom: 1px solid #D8DEE1;
     padding: 0 0 5px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -324,7 +333,7 @@ html, body {
 
 .section ul {
     height: 360px;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -338,7 +347,6 @@ html, body {
     display: block;
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
     line-height: 25px;
     font-size: 18px;
     color: #333333;
@@ -348,24 +356,9 @@ html, body {
     text-decoration: none;
 }
 
-.section ul li a {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
-    line-height: 25px;
-    font-size: 18px;
-    color: #333333;
-}
-
-.section ul  li:hover  a{
-    text-decoration: none;
-}
-
 .section p{
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     color: #333333;
 }
@@ -376,13 +369,6 @@ html, body {
     padding: 0 0 0 25px;
 }
 
-.marker ul  li{
-    position: relative;
-    width: 100%;
-    padding: 0 0 0 25px;
-}
-
-
 .marker ul > li:before{
     position: absolute;
     left: 0;
@@ -390,37 +376,18 @@ html, body {
     margin: 14px 10px;
     color: #FC982B;
 }
-
-.marker ul  li:before {
-    position: absolute;
-    left: 0;
-    content: "\25c9";
-    margin: 14px 10px;
-    color: #FC982B;
-}
-
-/* --- SCROLL --- */
-
-.marker ul::-webkit-scrollbar         {width: 10px;}
-.marker ul::-webkit-scrollbar-track   {background-color:#EAEAEA;}
-.marker ul::-webkit-scrollbar-thumb   {background-color:#FC982B;}
-
-.marker ul::-moz-scrollbar        {width: 10px;}
-.marker ul::-moz-scrollbar-track  {background-color:#EAEAEA;}
-.marker ul::-moz-scrollbar-thumb  {background-color:#FC982B;}
-
-.marker ul:-o-scrollbar         {width: 10px;}
-.marker ul:-o-scrollbar-track   {background-color:#EAEAEA;}
-.marker ul:-o-scrollbar-thumb   {background-color:#FC982B;}
-
-/* --- SCROLL --- */
-
 /* --- MENU --- */
+
+/* --- SCROLL --- */
+.simplebar-scrollbar {
+    opacity: 1 !important;
+    background-color: #FC982B !important;
+}
+/* --- SCROLL --- */
 
 /* COMMON */
 
 /* content */
-
 .content-site {
     width: 100%;
     margin: 0 auto;
@@ -444,16 +411,13 @@ html, body {
 .block-empty p{
     width: 100%;
     padding: 5px 20px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     line-height: 50px;
     color: #b6b6b6;
 }
-
 /* content */
 
 /* title */
-
 .title {
     width: 100%;
     margin: 10px auto auto auto;
@@ -467,7 +431,6 @@ html, body {
     width: auto;
     margin: 0;
     padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
     color: #333333;
 }
@@ -476,502 +439,39 @@ html, body {
     width: auto;
     margin: 0;
     padding: 5px 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
     color: #333333;
 }
-
-.title button{
-    cursor: pointer;
-    border-radius: 25px;
-    border: 2px solid #F30330;
-    background: #F30330;
-    width: 200px;
-    height: 40px;
-    margin: 5px 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.title button:hover{
-    background: #FFFFFF;
-    color: #000000;
-}
-
-.title button:hover img{
-    filter: invert(0);
-}
-
-.title button > img{
-    width: 15px;
-    margin: 0 0 0 10px;
-    vertical-align: middle;
-    filter: invert(1);
-}
-
-.title button > img{
-    width: 15px;
-    margin: 0 0 0 10px;
-    vertical-align: middle;
-}
-
 /* title */
 
-/* pagination */
-
-.pagination {
+/* breadcrumbs */
+.breadcrumbs {
     width: 100%;
 }
 
-.pagination p{
-    font-family: "Fontfabric-MullerMedium";
+.breadcrumbs p{
     font-size: 18px;
     padding: 20px 10px;
-    line-height: 30px;
-    color: #000000;    
+    line-height: 30px;   
 }
 
-.pagination a{
+.breadcrumbs a{
     text-decoration: none;
-    color: #000000;    
 }
 
-.pagination a:hover{
+.breadcrumbs a:hover{
     text-decoration: underline;  
 }
 
-.pagination-liner {
+.breadcrumbs-liner {
     width: 100%;
     height: 2px;
     margin: 0 auto;
     background: linear-gradient(to left, #F71E02, #FAAA01)
 }
-
-/* pagination */
-
-/* filter */
-
-.filter-box {
-    width: 100%;
-    margin: 10px auto;
-    overflow: hidden;
-    background: #F5F5F5;
-}
-
-.filter {
-    max-width: 1080px;
-    margin: 5px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.filter a{
-    position: relative;
-    display: block;
-    border-radius: 10px;
-    border: 2px solid #FFFFFF;
-    background: #FFFFFF;
-    width: 250px;
-    height: 40px;
-    margin: 5px auto;
-    padding: 11px 45px 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-    text-align: left;
-    margin-left: calc(((100% / 4) - 250px) / 2);
-    margin-right: calc(((100% / 4) - 250px) / 2);
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.filter a:before{
-    content: "\25c9";
-    margin: 0 5px;
-    color: #FC982B;
-}
-
-.filter a > span {
-    position: absolute;
-    right: 10px;
-    top: 4px;
-    width: 30px;
-    height: 28px;
-    font-size: 15px;
-    line-height: 30px;
-    background: #EDEDED;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.filter a:hover{
-    border: 2px solid #FC982B;
-}
-
-.filter a:hover > span {
-    color: #FFFFFF; 
-    background: #F10015;
-}
-
-/* filter */
-
-/* sorting */
-
-.sorting {
-    width: 100%;
-    margin: auto;
-    height: auto;
-    padding: 0 10px;
-    background: #F0F0EE;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.sorting > .sorting-block{
-    width: 100%;
-    height: 50px;
-    padding: 5px 0;
-    background: #F0F0EE;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.sorting p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 40px;
-    color: #000000;
-}
-
-.sorting button{
-    cursor: pointer;
-    height: 30px;
-    border-radius: 25px;
-    border: 2px solid #D4D4D2;
-    background: #D4D4D2;
-    margin: 5px 0 5px 10px;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-    text-align: center;
-}
-
-.sorting button:hover{
-    border: 2px solid #F30330;
-    background: #F0F0EE;
-}
-
-.sorting > .sorting-block > .sorting-activ {
-    border: 2px solid #F30330;
-    background: #F0F0EE;
-}
-
-/* sorting */
-
-/* katalog */
-
-.products-box {
-    width: 100%;
-    margin: 0 auto 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
-.products-box div:nth-child(3n+2) {
-    margin: 20px 2%;
-}
-
-.products-box > div {
-    position: relative;
-    width: 32%;
-    height: 500px;
-    margin: 20px 0;
-}
-
-.products-box > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.products-box > div:hover :nth-child(4){
-    height: 150px;
-}
-
-.products-box > div:hover :nth-child(4) p{
-    transition: all 1s;
-    color: #000000;
-}
-
-.products-box > div > :nth-child(1){
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.products-box > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.products-box > div > :nth-child(1) img{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    transition: all 1s;
-    object-fit: cover;
-}
-
-.products-box > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 130px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    margin: 0 !important;
-    padding: 0 5px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-}
-
-.products-box > div > :nth-child(2) p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-}
-
-.showPrice .products-box > div > :nth-child(2) p > span:nth-child(2), .products-box > div > :nth-child(2) p > span:nth-child(1){
-    display: none;
-}
-
-.showPrice .products-box > div > :nth-child(2) p > span:nth-child(1), .products-box > div > :nth-child(2) p > span:nth-child(2){
-    display:inline-block;
-}
-
-.products-box > div > :nth-child(3) {
-    position: absolute;
-    z-index: 5;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border-radius: 20px;
-    border: 10px;
-}
-
-.products-off {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.products-on {
-    display: block;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.products-box > div > :nth-child(4) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: auto;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.products-box > div > :nth-child(4) a{
-    width: 100%;
-    height: 50px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.products-box > div > :nth-child(4) p{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #0000;
-    transition: all 1s;
-}
-
-.products-box > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.products-box > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.products-pagination {
-    width: 320px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.products-pagination button{
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    margin: auto 2.5px;
-    border: none;
-    background: #E6E5E1;
-    border-radius: 5px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #FFFFFF;
-}
-
-.products-pagination button:hover{
-    background: #F50037;
-}
-
-.products-pagination > .pagination-arrow {
-    background: #FD9B2B;
-    color: #FFFFFF;
-}
-
-.ban-pagination {
-    pointer-events: none;
-    opacity: 0;
-}
-
-.products-pagination ul{
-    max-width: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.products-pagination li{
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    margin: auto 2.5px;
-    background: #E6E5E1;
-    border-radius: 5px;
-}
-
-.products-pagination li > a{
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    padding: 15px 0;
-    border-radius: 5px;
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.products-pagination li > a:hover{
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-.products-pagination > ul > .pagination-activ a{
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-.products-pagination button.pagination-activ {
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-/* katalog */
+/* breadcrumbs */
 
 /* text */
-
 .content-text {
     width: 100%;
     margin: auto auto 40px auto;
@@ -981,7 +481,6 @@ html, body {
 .content-text b{
     display: inline-block;
     padding: 0 0 15px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
     color: #333333;
 }
@@ -991,7 +490,6 @@ html, body {
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     line-height: 30px;
-    color: #000000;
 }
 
 .reg-info {
@@ -1016,7 +514,6 @@ html, body {
 }
 
 .reg-info a{
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     font-size: 25px;
     color: #FE9D44;
@@ -1025,7 +522,6 @@ html, body {
 .reg-info a:hover{
     text-decoration: underline;
 }
-
 /* text */
 
 /* COMMON */
@@ -1083,10 +579,8 @@ html, body {
 }
 
 .header-info-index p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user-index {
@@ -1157,12 +651,10 @@ html, body {
 }
 
 .sub div a{
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     padding: 8px;
-    color: #000000;
 }
 
 .sub div a:hover{
@@ -1250,11 +742,9 @@ html, body {
     width: 50px;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
     text-decoration: none;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > button{
@@ -1264,10 +754,8 @@ html, body {
     width: auto;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .button-user{
@@ -1289,7 +777,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1322,9 +809,7 @@ html, body {
 
 .header-user-index > div:nth-child(4) > .authorization p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .authorization div {
@@ -1336,7 +821,6 @@ html, body {
     cursor: pointer;
     width: 100%;
     margin: 5px 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     text-align: center;
     color: #727272;
@@ -1353,7 +837,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -1368,7 +851,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1377,16 +859,13 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .authorization div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
 .header-user-index > div:nth-child(4) > .authorization div > a{
     float: right;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 40px;
-    color: #000000;
     text-decoration: none;
 }
 
@@ -1409,9 +888,7 @@ html, body {
 
 .header-user-index > div:nth-child(4) > .exit p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .exit div {
@@ -1428,7 +905,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1437,7 +913,6 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .exit div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -1449,7 +924,6 @@ html, body {
     padding: 9px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -1460,14 +934,11 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .exit div > a:hover{
-    margin: 2px auto 8px auto;
     background-position: 0 0;
 }
-
 /* --- HEADER INDEX --- */
 
 /* --- HEADER --- */
-
 .header-box {
     width: 100%;
     margin: 0 auto;
@@ -1499,10 +970,8 @@ html, body {
 }
 
 .header-info p {
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user {
@@ -1536,11 +1005,9 @@ html, body {
     width: 50px;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
     text-decoration: none;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > button{
@@ -1550,10 +1017,8 @@ html, body {
     width: auto;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .button-authorization{
@@ -1575,7 +1040,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1592,7 +1056,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1621,9 +1084,7 @@ html, body {
 
 .header-user > div:nth-child(4) > .authorization p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .authorization div {
@@ -1635,7 +1096,6 @@ html, body {
     cursor: pointer;
     width: 100%;
     margin: 5px 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     text-align: center;
     color: #727272;
@@ -1652,7 +1112,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -1667,7 +1126,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1676,16 +1134,13 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .authorization div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
 .header-user > div:nth-child(4) > .authorization div > a{
     float: right;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 40px;
-    color: #000000;
     text-decoration: none;
 }
 
@@ -1708,9 +1163,7 @@ html, body {
 
 .header-user > div:nth-child(4) > .exit p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .exit div {
@@ -1727,7 +1180,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1736,7 +1188,6 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .exit div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -1748,7 +1199,6 @@ html, body {
     padding: 9px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -1759,14 +1209,11 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .exit div > a:hover{
-    margin: 2px auto 8px auto;
     background-position: 0 0;
 }
-
 /* --- HEADER --- */
 
 /* --- FOOTER --- */
-
 .footer {
     width: 100%;
     background: #282828;
@@ -1787,7 +1234,6 @@ html, body {
 }
 
 .footer-text p {
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
     color: #FFFFFF;
@@ -1806,7 +1252,6 @@ html, body {
     float: left;
     width: 100%;
     padding: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
 }
@@ -1858,18 +1303,15 @@ html, body {
 
 .footer-bot p {
     text-align: center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     color: #FFFFFF;
     margin: auto;
 }
-
 /* --- FOOTER --- */
 
 /* PAGE */
 
 /* INDEX */
-
 .slider {
     position: relative;
     top: 0;
@@ -1912,11 +1354,9 @@ html, body {
 }
 
 .count-slider p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
 }
 
 .slick-next{
@@ -1961,7 +1401,7 @@ html, body {
     padding: 19px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
+    
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -1973,7 +1413,6 @@ html, body {
 }
 
 .slide-text div > a:hover{
-    margin: 2px 0 -2px 0;   
     background-position: 0 0;
 } 
 
@@ -2004,7 +1443,7 @@ html, body {
     width: auto;
     margin: 0;
     padding: 5px 0;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 40px;
     color: #333333;
 }
@@ -2018,7 +1457,6 @@ html, body {
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     text-align: center;
     text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -2028,7 +1466,6 @@ html, body {
 }
 
 .new-text div:nth-child(1) a:hover{
-    margin: 2px 0 -2px 0;
     background-position: 0 0;
 }
 
@@ -2041,7 +1478,6 @@ html, body {
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     line-height: 35px;
-    color: #000000;
 }
 
 .new-slider-box {
@@ -2134,7 +1570,7 @@ html, body {
 
 .new-box > div > :nth-child(2) p{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 16px;
     line-height: 40px;
     text-align: center;
@@ -2173,7 +1609,7 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -2190,7 +1626,7 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -2212,10 +1648,8 @@ html, body {
 .new-box > div > :nth-child(4) a{
     width: 100%;
     height: 50px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 25px;
-    color: #000000;
 }
 
 .new-box > div > :nth-child(4) p{
@@ -2223,7 +1657,6 @@ html, body {
     height: 50px;
     overflow: hidden;
     margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 25px;
     color: #0000;
@@ -2243,7 +1676,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     line-height: 40px;
     font-size: 16px;
@@ -2256,7 +1688,6 @@ html, body {
 }
 
 .new-box > div > a:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -2338,7 +1769,7 @@ html, body {
 .text-cooperation div:nth-child(1) > p{
     width: 100%;
     margin: auto;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 40px;
     line-height: 50px;
     color: #FFFFFF;
@@ -2375,7 +1806,7 @@ html, body {
     padding: 17px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
+    
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -2392,7 +1823,6 @@ html, body {
 }
 
 .text-cooperation a:hover{
-    margin: 2px 0 -2px 0;
     background-position: 0 0;
 }
 
@@ -2424,11 +1854,9 @@ html, body {
 }
 
 .production-box div:nth-child(1) > div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: right;
     text-transform: uppercase;
     font-size: 25px;
-    color: #000000;
     margin: auto 0 10px auto;
 }
 
@@ -2437,7 +1865,6 @@ html, body {
     text-align: right;
     text-transform: uppercase;
     font-size: 40px;
-    color: #000000;
 }
 
 .production-box div:nth-child(1) > div:nth-child(2) {
@@ -2454,7 +1881,7 @@ html, body {
     border: 5px solid #D8DEE1;
     border-radius: 50px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
+    
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -2466,7 +1893,6 @@ html, body {
 }
 
 .production-box div:nth-child(1) > div:nth-child(2) a:hover{
-    margin: 22px 0 -2px auto;
     background-position: 0 0;
 }
 
@@ -2611,11 +2037,9 @@ html, body {
 .production-icon p{
     width: 100%;
     margin: auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 15px;
     line-height: 20px;
-    color: #000000;
 }
 
 .production-index-slider-box {
@@ -2727,10 +2151,8 @@ html, body {
 
 .reg-box > div:nth-child(2) p{
     padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     line-height: 40px;
-    color: #000000;
 }
 
 .reg-box > div:nth-child(2) b{
@@ -2739,9 +2161,7 @@ html, body {
 
 .reg-box > div:nth-child(2) label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .reg-box > div:nth-child(2) input{
@@ -2751,7 +2171,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -2765,7 +2184,6 @@ html, body {
     border: 5px solid #D8DEE1;
     border-radius: 50px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
     text-transform: uppercase;
@@ -2776,7 +2194,6 @@ html, body {
 }
 
 .reg-box > div:nth-child(2) button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -2829,7 +2246,6 @@ html, body {
 .insta-text p{
     font-family: "Fontfabric-MullerLight";
     font-size: 32px;
-    color: #000000;
 }
 
 .insta-text a{
@@ -2840,7 +2256,6 @@ html, body {
     padding: 13px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -2852,7 +2267,6 @@ html, body {
 }
 
 .insta-text a:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -2925,9 +2339,7 @@ html, body {
 
 .registration-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;  
 }
 
 .registration-form input{
@@ -2937,7 +2349,6 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;  
 }
@@ -2959,7 +2370,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -2969,7 +2379,6 @@ html, body {
 }
 
 .registration-form button:hover{
-    margin: 22px 0 -2px 0;   
     background-position: 0 0;
 } 
 
@@ -3055,7 +2464,6 @@ html, body {
 .info b{
     font-family: "Fontfabric-MullerBold";
     font-size: 15px;
-    color: #000000;
 }
 
 .info b > img{
@@ -3064,10 +2472,8 @@ html, body {
 }
 
 .info p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     line-height: 30px;
-    color: #000000;
     padding: 0 30px;
 }
 
@@ -3081,7 +2487,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #FF3D47);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -3095,7 +2500,6 @@ html, body {
 .contacts-box p{
     width: 100%;
     margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 30px;
     color: #333333;
@@ -3138,9 +2542,7 @@ html, body {
 
 .contacts-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;  
 }
 
 .contacts-form input{
@@ -3150,7 +2552,6 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;  
 }
@@ -3162,7 +2563,6 @@ html, body {
     padding: 10px 20px;
     background: #FFFFFF;
     border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
     resize: none;
@@ -3177,7 +2577,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -3187,7 +2586,6 @@ html, body {
 }
 
 .contacts-form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -3208,7 +2606,7 @@ html, body {
 .cooperation-box p{
     width: 100%;
     margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
+    
     text-align: center;
     font-size: 30px;
     color: #333333;
@@ -3251,9 +2649,7 @@ html, body {
 
 .cooperation-form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;  
 }
 
 .cooperation-form input{
@@ -3263,7 +2659,6 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;  
 }
@@ -3275,7 +2670,6 @@ html, body {
     padding: 10px 20px;
     background: #FFFFFF;
     border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
     resize: none;
@@ -3290,7 +2684,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -3300,7 +2693,6 @@ html, body {
 }
 
 .cooperation-form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -3316,12 +2708,10 @@ html, body {
     height: 200px;
     margin: auto;
     border: 5px solid #D8DEE1;
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     line-height: 30px;
-    color: #000000;
 }
 
 /* COOPERATION */
@@ -3361,10 +2751,8 @@ html, body {
     width: 100%;
     height: 50px;
     text-align: center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 50px;
-    color: #000000;
 }
 
 .delivery-box > div > div:nth-child(1) {
@@ -3393,7 +2781,6 @@ html, body {
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
     text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 14px;
     text-transform: uppercase;
     line-height: 33px;
@@ -3404,7 +2791,6 @@ html, body {
 }
 
 .delivery-box > div > div:nth-child(2) a:hover{
-    margin: 11px auto -1px auto;
     background-position: 0 0;
 }
 
@@ -3786,7 +3172,6 @@ html, body {
     width: 100%;
     margin: 20px auto;
     padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     color: #333333;
 }
@@ -3830,9 +3215,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .history-box > div > div > .sum p{
@@ -3874,7 +3257,6 @@ html, body {
     max-height: 250px;
     overflow: auto;
     padding: 5px;
-
     flex-direction: column;
 }
 
@@ -3895,9 +3277,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .history-box > div > .hidden a{
@@ -3905,7 +3285,6 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     font-size: 16px;
     line-height: 20px;
@@ -3962,9 +3341,7 @@ html, body {
     border: 2px solid #D7DFE5;
     border-radius: 25px;
     background: #D7DFE5;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .history-button button > img{
@@ -3980,7 +3357,6 @@ html, body {
     width: 100%;
     margin: 20px auto;
     padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     color: #333333;
 }
@@ -4002,7 +3378,6 @@ html, body {
     width: 100%;
     margin: auto auto 20px auto;
     padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     color: #333333;
 }
@@ -4013,7 +3388,6 @@ html, body {
     border: none;
     width: 100%;
     height: 30px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: left;
     font-size: 25px;
     color: #333333;
@@ -4065,9 +3439,7 @@ html, body {
 
 .data-box label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;  
 }
 
 .data-box input{
@@ -4077,7 +3449,6 @@ html, body {
     border: 1px solid #C1C1C1;
     border-radius: 5px;
     background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;  
 }
@@ -4097,7 +3468,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -4107,7 +3477,6 @@ html, body {
 }
 
 .data-button button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -4115,7 +3484,7 @@ html, body {
     width: 100%;
     margin: auto auto 20px auto;
     padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 30px;
     color: #333333;
 }
@@ -4123,10 +3492,8 @@ html, body {
 .bonus > p:nth-child(2), .bonus > p:nth-child(3){
     margin: auto auto 20px auto;
     padding: 0 12px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
 }
 
 .bonus > p:nth-child(2) span{
@@ -4138,127 +3505,8 @@ html, body {
     font-size: 20px;
     color: #FF0016;
 }
-
 /* CABINET */
 
-/* COLLECTIONS */
-
-.collections {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.collections-box {
-    width: 100%;
-    margin: 0 auto 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
-.collections-box div:nth-child(3n+2) {
-    margin: 20px 2%;
-}
-
-.collections-box > div {
-    position: relative;
-    width: 32%;
-    height: 500px;
-    margin: 20px 0;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.collections-box > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.collections-box > div > :nth-child(1){
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.collections-box > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.collections-box > div > :nth-child(1) img{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    transition: all 1s;
-    object-fit: cover;
-}
-
-.collections-box > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: 0 auto!important;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.collections-box > div > :nth-child(2) a{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.collections-box > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.collections-box > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-/* COLLECTIONS */
 
 /* PRODUCT */
 
@@ -4381,7 +3629,6 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -4399,7 +3646,6 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -4440,7 +3686,6 @@ html, body {
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     line-height: 25px;
-    color: #000000;
 }
 
 .product-composition {
@@ -4451,10 +3696,8 @@ html, body {
 .product-composition b{
     display: inline-block;
     padding: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     line-height: 25px;
-    color: #000000;
 }
 
 .product-composition p{
@@ -4462,7 +3705,6 @@ html, body {
     font-family: "Fontfabric-MullerLight";
     font-size: 20px;
     line-height: 25px;
-    color: #000000;
 }
 
 .product-size {
@@ -4473,10 +3715,8 @@ html, body {
 .product-size b{
     display: inline-block;
     padding: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     line-height: 25px;
-    color: #000000;
 }
 
 .size-box {
@@ -4505,7 +3745,6 @@ html, body {
     padding: 11px 0;
     background: #E4E3DF;
     border-radius: 5px;
-    color: #000000;
 }
 
 .size-block-activ div:nth-child(1){
@@ -4515,7 +3754,7 @@ html, body {
 
 .size-block div:nth-child(1) p{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
+    
     text-align: center;
     font-size: 16px;
 }
@@ -4529,10 +3768,8 @@ html, body {
 .size-block div:nth-child(2) input{
     border: none;
     width: 30px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
 }
 
 .size-block div:nth-child(2) button{
@@ -4543,10 +3780,8 @@ html, body {
     padding: 2px 1px 0 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
 }
 
 .product-basket {
@@ -4557,11 +3792,9 @@ html, body {
 
 .product-basket p{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
     line-height: 25px;
-    color: #000000;
 }
 
 .price-basket {
@@ -4585,17 +3818,13 @@ html, body {
 }
 
 .price-basket div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 24px;
-    color: #000000;
 }
 
 .price-basket div:nth-child(1) span{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     font-weight: bold;
-    color: #000000;
 }
 
 .price-basket div:nth-child(2) {
@@ -4608,7 +3837,6 @@ html, body {
     height: 50px;
     padding: 15px 0;
     border-radius: 25px;
-    font-family: "Fontfabric-MullerMedium";
     text-transform: uppercase;
     font-size: 18px;
     color: #FFFFFF;
@@ -4632,7 +3860,6 @@ html, body {
 }
 
 .on-basket button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -4650,7 +3877,6 @@ html, body {
     border-radius: 25px;
     text-decoration: none;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
@@ -4661,7 +3887,6 @@ html, body {
 }
 
 .product-basket-link a:hover{
-    margin: 2px 0 -2px 0;   
     background-position: 0 0;
 }
 
@@ -4692,11 +3917,9 @@ html, body {
 }
 
 .no-authorization div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
     font-style: italic;
     font-size: 16px;
     line-height: 25px;
-    color: #000000;
 }
 
 .no-authorization div:nth-child(2) {
@@ -4712,7 +3935,6 @@ html, body {
     border-radius: 25px;
     text-decoration: none;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
@@ -4723,7 +3945,6 @@ html, body {
 }
 
 .no-authorization div:nth-child(2) a:hover{
-    margin: 2px 0 -2px 0;   
     background-position: 0 0;
 } 
 
@@ -4740,14 +3961,11 @@ html, body {
 }
 
 .product-delivery p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 25px;
-    color: #000000;
 }
 
 .product-delivery a{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 25px;
     color: #FF0016;
@@ -4766,7 +3984,6 @@ html, body {
 .product-slider-box b{
     display: inline-block;
     padding: 0 0 15px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 30px;
     color: #333333;
 }
@@ -4846,7 +4063,7 @@ html, body {
 
 .product-block > div > :nth-child(2) p{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 16px;
     line-height: 40px;
     text-align: center;
@@ -4886,7 +4103,6 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -4904,7 +4120,6 @@ html, body {
     border: none;
     border-radius: 20px;
     background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -4926,10 +4141,8 @@ html, body {
 .product-block > div > :nth-child(4) a{
     width: 100%;
     height: 50px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 25px;
-    color: #000000;
 }
 
 .product-block > div > :nth-child(4) p{
@@ -4937,7 +4150,6 @@ html, body {
     height: 50px;
     overflow: hidden;
     margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 25px;
     color: #0000;
@@ -4956,7 +4168,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     line-height: 40px;
     font-size: 16px;
@@ -4969,7 +4180,6 @@ html, body {
 }
 
 .product-block > div > a:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -5016,7 +4226,7 @@ html, body {
 .basket-empty p{
     width: 100%;
     padding: 5px 20px;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 20px;
     line-height: 50px;
     color: #b6b6b6;
@@ -5082,15 +4292,13 @@ html, body {
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 20px;
-    color: #000000; 
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div a{
     text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
+    
     font-size: 16px;
     color: #682333; 
 }
@@ -5113,15 +4321,12 @@ html, body {
 .basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div p{
     width: 100%;
     margin: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000; 
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div span{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 20px;
     color: #FF0016; 
@@ -5159,7 +4364,7 @@ html, body {
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div p{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
+    
     text-align: center;
     font-size: 16px;
 }
@@ -5179,10 +4384,8 @@ html, body {
     height: 20px;
     padding: 2px 0 0 0;
     margin: 0 5px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div button{
@@ -5193,10 +4396,8 @@ html, body {
     padding: 2px;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) {
@@ -5213,15 +4414,12 @@ html, body {
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div p{
     width: 100%;
     margin: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000; 
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div span{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 20px;
     color: #FF0016; 
@@ -5255,10 +4453,8 @@ html, body {
 }
 
 .basket-total div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
 }
 
 .basket-total div:nth-child(1) span{
@@ -5281,7 +4477,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 14px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -5291,7 +4486,6 @@ html, body {
 }
 
 .basket-total div:nth-child(2) button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -5304,10 +4498,8 @@ html, body {
 }
 
 .basket-total div:nth-child(3) p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 16px;
-    color: #000000;
     margin: auto;
 }
 
@@ -5329,7 +4521,6 @@ html, body {
 }
 
 .payment-box > p{
-    font-family: "Fontfabric-MullerMedium";
     margin: auto auto 20px auto;
     text-align: center;
     font-size: 24px;
@@ -5342,12 +4533,10 @@ html, body {
 }
 
 .payment-box > div > div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     text-transform: uppercase;
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
     margin: auto;
 }
 
@@ -5373,12 +4562,10 @@ html, body {
 }
 
 .payment-box > div > div:nth-child(2) p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     text-transform: uppercase;
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
     margin: auto;
 }
 
@@ -5414,12 +4601,10 @@ html, body {
 }
 
 .address-box > p{
-    font-family: "Fontfabric-MullerMedium";
     margin: auto auto 10px auto;
     text-align: center;
     font-size: 18px;
     line-height: 25px;
-    color: #000000;
 }
 
 .address-box button{
@@ -5431,7 +4616,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -5440,7 +4624,6 @@ html, body {
 }
 
 .address-box button:hover{
-    margin: 1px auto -1px auto;
     background-position: 0 0;
 }
 
@@ -5471,9 +4654,7 @@ html, body {
     border: 2px solid #D7DFE5;
     border-radius: 25px;
     background: #D7DFE5;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .basket-order div:nth-child(1) button > img{
@@ -5491,15 +4672,13 @@ html, body {
 }
 
 .basket-order div:nth-child(2) p{
-    font-family: "Fontfabric-MullerMedium";
     text-align: right;
     font-size: 12px;
     line-height: 20px;
-    color: #000000;
 }
 
 .basket-order div:nth-child(2) a{
-    font-family: "Fontfabric-MullerMedium";
+    
     text-align: right;
     font-size: 12px;
     line-height: 20px;
@@ -5520,7 +4699,6 @@ html, body {
     width: 300px;
     height: 50px;
     border-radius: 25px;
-    font-family: "Fontfabric-MullerMedium";
     text-transform: uppercase;
     font-size: 18px;
 }
@@ -5540,8 +4718,6 @@ html, body {
 }
 
 .basket-order-on button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
-
 /* BASKET */
