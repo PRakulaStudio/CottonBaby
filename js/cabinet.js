@@ -1,6 +1,7 @@
 "use strict";
 
 ( function($){
+
 	var buttonLoadHistory = $('div.history-button').find('button'); //кнопка, которая подгружает остальные товары из истории
 
 	var css = {
@@ -21,11 +22,11 @@
 
 	}
 
+
 	function declOfNum(number, titles) {
 		let cases = [2, 0, 1, 1, 1, 2];
 		return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
 	}
-
 
 	//получить историю
 	function getHistory(offset, limit)
@@ -146,6 +147,7 @@
 
 	}
 
+
 	//сохраняем данные на сервер
 	function setUserData(data)
 	{
@@ -196,6 +198,7 @@
 		});
 	}
 
+
 	//получаем данные с сервера
 	function getUserData(data)
 	{
@@ -233,16 +236,19 @@
 
 	}
 
+
 	//добавляет инпуту статус "измененный"
 	$('section.cabinet input').keyup( function(){
 		$(this).attr('data-change' , 'true');
 	});
+
 
 	//подгрузка остальных товаров
 	$('div.history-button button').click(function () {
 		buttonLoadHistory.hide();
 		getHistory( buttonLoadHistory.attr('data-offset') , buttonLoadHistory.attr('data-limit') );
 	});
+
 
 	// переключение отображение подробности у заказа
 	$('div.history-box').on( "click" , 'button[data-action]' ,  function () {
@@ -264,16 +270,24 @@
 	$('form .data-button button').click( function() {
         
 		var data = {};
-				
-        $(this).parents('div.data-box').find('input[data-change="true"]').each( function(){
+	    $(this).parents('div.data-box').find('input[data-change="true"]').each( function(){
          	validateData($(this) , data , 'input-error');
         });
 
 		if( Object.keys(data).length )
 			setUserData( data );
-		
-
 	});
+
+	$("input[name='inn']").suggestions({
+		token: "fc1ca3289a8825e5a3ff6ee4dac90af47e911fbe",
+		type: "PARTY",
+		count: 5,
+		/* Вызывается, когда пользователь выбирает одну из подсказок */
+		onSelect: function(suggestion) {
+			console.log(suggestion);
+		}
+	});
+
 
 
 	//переключение полей
@@ -283,9 +297,6 @@
 	});
 
 	//подсказки
-	
-
-
 	getHistory( buttonLoadHistory.data('offset') , buttonLoadHistory.data('limit') );
 	getUserData();
 

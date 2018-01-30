@@ -27,8 +27,7 @@
 				{
 					//переход на личный кабинет
 					localStorage.removeItem('reg');
-					//window.location.href = "";
-					location.reload();
+					window.location.href = "/catalog/";
 				}
 				else
 				{
