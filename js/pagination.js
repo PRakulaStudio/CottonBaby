@@ -310,9 +310,9 @@ function changePagination(direction , activeButton , clickButton )
      window.scrollTo( document.querySelector('div.products-box, div.collections-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
 }
 
+
 function requestGetItems(offset , limit , sort , pageName)
 {
-
     if(pageId === false)
         pageId = pageName;
 
@@ -379,9 +379,7 @@ function createItems(items , is_show_favorite)
 
     for( var key in items)
     {
-
         item = items[key];
-
         listIdItems.push(item.id);
         let   images_path = "/images/";
 

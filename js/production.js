@@ -3,13 +3,30 @@
 	requestCheckAuth("production");
 	requestGetMenuCategories();
 
-	var html = "";
-	var pictures = [];
+	let html = "",
+		pictures = [],
+		puctureBlocks = docuemnt.querySelector('div.production-left').childNodes.concat(docuemnt.querySelector('div.production-right').childNodes);
+
+
+	puctureBlocks.forEach(function (currentValue, index, array) {
+		html +=  "<div class='slide'>"+currentValue.outerHTML+"</div>";
+		pictures.push({ src : currentValue.querySelector('img').getAttribute('src') });
+	})
+
+	document.querySelector('div.production-left').childNodes.forEach( function(currentValue, index, array){
+		html += "<div class='slide'>"+currentValue.outerHTML+"</div>";
+	});
 
 	$('.production-left').children().each( function(){
 		html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
 		pictures.push({ src : $(this).find('img').attr('src') });
 	});
+
+	docuemnt.querySelector('div.production-right').childNodes.forEach( function(currentValue, index, array){
+		html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
+		pictures.push({ src : $(this).find('img').attr('src') });
+	});
+
 
 	$('.production-right').children().each( function(){
 		html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";

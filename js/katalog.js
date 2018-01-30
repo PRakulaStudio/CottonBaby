@@ -18,7 +18,8 @@
     {
        return requestGetItems(offset , limit, sort , pageName);
     }
-    
+
+
     function reuestGetCategories(page)
     {
         
@@ -47,7 +48,7 @@
             });
         
     }
-
+        
     $(window).resize( function(){
            let button =  $('section.content > div.title').find('button');
 

@@ -1,10 +1,70 @@
 //build - 2
+//авторищация, проверка авторизации
+//добавление товаров в избранное,
+//вспомогательные функции для модалок
+//кеширование и получение меню
+
+
 
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
 };
 
+//дизайн header
+let headerBlock = "",
+    dataLocalStorage = "";
+
+
+
+function renderHeaderIsAuth(data){
+    document.querySelector('body').classList.remove('showPrice');
+    headerBlock = document.querySelector('[class*="header-user"]');
+
+    headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
+    headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '/favorites.html');
+
+
+    if(data.cartCount)
+    {
+        basketSpan  = headerBlock.querySelector('div[data-basket] span');
+        basketSpan.innerHTML = data.cartCount;
+        basketSpan.style.display = "block";
+    }
+
+    if(data.wishlistCount)
+    {
+        favoritesBlock = headerBlock.querySelector('div[data-favorite]');
+        favoritesBlock.classList.add('favorites');
+        favoritesBlock.querySelector('span').innerText = data.wishlistCount;
+    }
+
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${data.name}`;
+}
+
+function renderHeaderAuthFalse()
+{
+    headerBlock = document.querySelector('[class*="header-user"]');
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+    headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '#');
+    headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '#');
+
+    basketSpan  = headerBlock.querySelector('div[data-basket] span');
+    basketSpan.innerHTML = 0;
+    basketSpan.style.display = 'none';
+
+    favoritesBlock = headerBlock.querySelector('div[data-favorite]');
+    favoritesBlock.classList.remove('favorites');
+    favoritesBlock.querySelector('span').innerText = 0;
+
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+}
+
+
+if(localStorage.getItem('user'))
+    renderHeaderIsAuth(JSON.parse(localStorage.getItem('user')));
+else
+    renderHeaderAuthFalse();
 
 
 config = Object.freeze(config);
@@ -19,7 +79,6 @@ if (!window.pms) window.pms = {};
 
 let menu = document.querySelectorAll('div.menu div.marker');
 console.log(menu);
-
 
 
 function integerOnly(e) {
@@ -86,8 +145,6 @@ function checkPhone(phone) {
 }
 
 
-
-
 //функция, переводящая строку в денежный формат
 function formatMoney(number) {
     var format = number.toString().split(""),
@@ -107,7 +164,6 @@ function formatMoney(number) {
 
     return money.join('') + " руб.";
 }
-
 /**
  *
  * @param input
@@ -180,35 +236,31 @@ function PopUpShowMenu() {
     document.querySelector('#menu').style.display = 'block';
     document.querySelector('#menu-off').style.display = 'block';
     document.querySelector('#menu-on').style.display = 'none';
-
 }
+
 function PopUpHideMenu() {
     document.querySelector('#menu-on').style.display = 'block';
     document.querySelector('#menu-off').style.display = 'none';
     document.querySelector('#menu').style.display = 'none';
-
 }
+
 function PopUpShowScore() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#score').style.display = 'block';
-
 }
+
 function PopUpShowCard() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#card').style.display = 'block';
-
 }
+
 function PopUpShowThanks() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#thanks').style.display = 'block';
-
 }
+
 function PopUpHidePopup() {
     document.querySelector('#popup-fon').style.display = 'none';
-    document.querySelector('#popup').style.display = 'none';
     document.querySelector('#score').style.display = 'none';
     document.querySelector('#card').style.display = 'none';
     document.querySelector('#thanks').style.display = 'none';
@@ -217,6 +269,7 @@ function PopUpHidePopup() {
 
 //флаг авторизированности пользователя
 var IS_AUTH = false;
+
 
 function getMenuCategories()
 {
@@ -295,7 +348,6 @@ function addFavoriteButtons( blockProducts , value)
 {
 
     let buttonHtml = "";
-
     if(value)
         buttonHtml =  "<button class='new-on'></button>";
     else
@@ -344,9 +396,9 @@ function requestAddFavorites(product_id  , button)
 
 }
 
+
 function requestRemoveFavorites(product_id , button)
 {
-
     $.ajax({
         data : {  'id' : product_id},
         dataType : 'JSON',
@@ -398,6 +450,8 @@ function requestCheckFavoritesItems(listId , classBlock )
 
 }
 
+
+
 function setAuthUserData(result, url)
 {
     let headerBlock,basketSpan,favoritesBlock;
@@ -406,59 +460,26 @@ function setAuthUserData(result, url)
 
     if (result.status)
     {
-
         // switch (url) {
         //     case "registration" :
         //         window.location.href = "/";
         //         break
         // }
 
+        localStorage.setItem('user' , JSON.stringify(result.data));
+
+
 
         headerBlock.querySelector('#authorization').remove();
-
-        headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
-        if(result.data.cartCount)
-        {
-            basketSpan  = headerBlock.querySelector('div[data-basket] span');
-            basketSpan.innerHTML = result.data.cartCount;
-            basketSpan.style.display = "block";
-        }
-
-        headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '/favorites.html');
-        if(result.data.wishlistCount)
-        {
-            favoritesBlock = headerBlock.querySelector('div[data-favorite]');
-            favoritesBlock.classList.add = 'favorites';
-            favoritesBlock.querySelector('span').innerText = result.data.wishlistCount;
-        }
-
-        headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${result.data.name}`;
-
+        renderHeaderIsAuth(result.data);
         IS_AUTH = true;
 
-        document.querySelector('body').classList.remove('showPrice');
 
-        //
-        // $('[class*="header-user"]').find('#authorization').remove();
-        //
-        // $('[class*="header-user"]').find('div[data-basket] a').attr('href' , '/basket.html');
-        // if (result.data.cartCount)
-        //      $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.cartCount);
-        //
-        // $('[class*="header-user"]').find('div[data-favorite] a').attr('href' , '/favorites.html');
-        // if (result.data.wishlistCount)
-        //     $('[class*="header-user"]').find('div[data-favorite]').addClass('favorites').find('span').text(result.data.wishlistCount);
-        //
-        // $('[class*="header-user"]').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.data.name}`);
-        //
-        // IS_AUTH = true;
-        //
-        // $('body').removeClass('showPrice');
 
     }
     else
     {
-
+        localStorage.removeItem('user');
         switch (url) {
             case "cabinet" :
                 window.location.href = "/";
@@ -471,6 +492,7 @@ function setAuthUserData(result, url)
                 break;
         }
 
+        renderHeaderAuthFalse();
         headerBlock.querySelector('#exit').remove(); //.find('#exit').remove();
     }
 
@@ -483,8 +505,6 @@ function showError(responseData) {
 }
 
 function requestCheckAuth(url) {
-
-
 
    return fetch(window.pms.config.cabinetAPI + 'user/checkAuth', {method: 'POST', credentials: 'same-origin'})
            .then(function (response) {

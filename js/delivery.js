@@ -1,5 +1,5 @@
-( function ($) {
+( function () {
     requestCheckAuth('delivery');
     requestGetMenuCategories();
 
-})(jQuery);
+})();
