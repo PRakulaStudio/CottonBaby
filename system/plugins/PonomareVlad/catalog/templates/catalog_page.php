@@ -34,7 +34,7 @@
             <div class="title">
                 <h1><?= ($categoryTitle = getData('title')) ? $categoryTitle : 'Каталог товаров'; ?></h1>
                 <!--<?= getData('id') ? ((count(catalogChildCategories(['id' => getData('parent_category') ? getData('parent_category') : getData('id'), 'show_count' => 'true'])) > 8) ? '<button>все под-категории <img src="images/icons/down-arrow.svg"></button>' : '') : '<button>все категории <img src="images/icons/down-arrow.svg"></button>' ?>-->
-                <button style="display:none">все категории <img src="images/icons/down-arrow.svg"></button>
+                <button style="display:none !important">все категории <img src="images/icons/down-arrow.svg"></button>
             </div>
         </section>
 
