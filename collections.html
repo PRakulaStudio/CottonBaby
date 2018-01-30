@@ -6,43 +6,43 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
 	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/card.css"/>
 </head>
-<body>
+<body class="showPrice">
+
+<div class="scrollup"></div>
 
 <!-- menu popup start -->
-<div class="menu-popup" id="menu">
-	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
-		<div class="search-menu">
-			<input type="search" placeholder="поиск">
-			<button type="submit"><img src="images/icons/search.png"></button>
+	<div class="menu-popup" id="menu">
+		<div class="button-box">
+			<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+			<div class="search-menu">
+				<input type="search" placeholder="поиск">
+				<button type="submit"><img src="images/icons/search.png"></button>
+			</div>
 		</div>
-	</div>
 
-	<div class="menu-box">
-		<div class="menu">
-			<div class="left-menu">
+		<div class="menu-box">
+			<div class="menu">
 				<div class="section">
 					<p>Компания</p>
 					<ul>
-						<li><a href="/">Главная</a></li>
+						<li><a href="index.html">Главная</a></li>
 						<li><a href="information.html">О нас</a></li>
-						<li><a href="/catalog/">Каталог</a></li>
-						<li><a href="/collections/">Коллекции</a></li>
-						<li><a href="cooperation.html">Сотрудничество</a></li>
+						<li><a href="catalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
+						<li><a href="cooperation.html" >Сотрудничество</a></li>
 						<li><a href="production.html">Наше производство</a></li>
 						<li><a href="delivery.html">Доставка и оплата</a></li>
 						<li><a href="contacts.html">Контакты</a></li>
 					</ul>
 				</div>
-			</div>
 
-			<div class="right-menu">
-				<div class="section">
+				<div class="section marker">
 					<p>Каталог</p>
 					<ul>
 						<li><a href="#">Комбинезон на манжете (6)</a></li>
@@ -69,7 +69,7 @@
 					</ul>
 				</div>
 
-				<div class="section">
+				<div class="section marker">
 					<p>Коллекции</p>
 					<ul>
 						<li><a href="#">Комбинезон на манжете (6)</a></li>
@@ -98,7 +98,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 <!-- menu popup end -->
 
 <!-- header start -->
@@ -110,7 +109,7 @@
 
 			<div class="header-info">
 				<div>
-					<a href="/"><img src="images/logo.png"></a>
+					<a href="index.html"><img src="images/logo.png"></a>
 				</div>
 
 				<div>
@@ -121,7 +120,7 @@
 
 			<div class="header-user">
 				<div>
-					<a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>
+					<a href="#"><img src="images/icons/insta.png"></a>
 					<div class="sub"><div><a href="#">Подпишись</a></div></div>
 				</div>
 				<div><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
@@ -136,9 +135,11 @@
 							<div>
 								<input type="email" name="mail" placeholder="E-mail">
 
-								<input type="password" name="password" placeholder="Пароль">
+								<input type="password" name="password_auth" placeholder="Пароль">
 							</div>
 
+							<div><span>Забыли пароль?</span></div>
+							
 							<div>
 								<button>Войти</button>
 								<a href="registration.html">Регистрация</a>
@@ -149,7 +150,7 @@
 					<div class="exit" id="exit">
 						<button class="popup-close"><img src="images/icons/close.png"></button>
 						<div>
-							<a href="cabinet.html">Личный кабинет</a>
+							<a href="#">Личный кабинет</a>
 							<button>Выйти</button>
 						</div>
 					</div>
@@ -162,9 +163,9 @@
 <!-- content start -->
 	<main class="content-site">
 		<section class="content">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Коллекции</p>
-				<div class="pagination-liner"></div>
+			<div class="breadcrumbs">
+				<p><a href="index.html">Главная</a> &#8594 Коллекции</p>
+				<div class="breadcrumbs-liner"></div>
 			</div>
 			
 			<div class="title">
@@ -173,40 +174,40 @@
 		</section>
 
 		<section class="content">
-			<div class="collections-box">
-				<div>
-					<div><a href="#"><img src="images/pictures/i1.jpg"></a></div>
-					<div>
-						<a href="#">Мишки Гамми</a>
-					</div>
-					<a href="#">Подробно</a>
+			<div class="card-box">
+				<div class="card">
+					<div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
+					<div class="collections-text"><a href="#">Комплект кофта + ползунки</a></div>
+					<div class="card-link"><a href="#">Подробно</a></div>
 				</div>
 
-				<div>
-					<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
-					<div>
-						<a href="#">Инкрустрация стразами Сварофски</a>
-					</div>
-					<a href="#">Подробно</a>
+				<div class="card">
+					<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>
+					<div class="collections-text"><a href="#">Комплект кофта + ползунки</a></div>
+					<div class="card-link"><a href="#">Подробно</a></div>
 				</div>
 
-				<div>
-					<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
-					<div>
-						<a href="#">Комплект кофта + ползунки</a>
-					</div>
-					<a href="#">Подробно</a>
+				<div class="card">
+					<div class="card-img"><a href="#"><img src="images/pictures/i3.jpg"></a></div>
+					<div class="collections-text"><a href="#">Комплект кофта + ползунки</a></div>
+					<div class="card-link"><a href="#">Подробно</a></div>
+				</div>
+
+				<div class="card">
+					<div class="card-img"><a href="#"><img src="images/pictures/i4.jpg"></a></div>
+					<div class="collections-text"><a href="#">Комплект кофта + ползунки</a></div>
+					<div class="card-link"><a href="#">Подробно</a></div>
 				</div>
 			</div>
 
-			<div class="products-pagination">
+			<div class="pagination">
 				<button class="pagination-arrow">&#9664</button>
-				<div>
-					<button>1</button>
-					<button class="pagination-activ">2</button>
-					<button>3</button>
-					<button>...</button>
-				</div>
+				<ul>
+					<li><a href="#">1</a></li>
+					<li class="pagination-activ"><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">...</a></li>
+				</ul>
 				<button class="pagination-arrow">&#9654</button>
 			</div>
 
@@ -224,7 +225,7 @@
 	<div class="footer">
 		<div class="footer-top">
 			<div class="footer-logo">
-				<a href="/"><img src="images/logo.png"></a>
+				<a href="index.html"><img src="images/logo.png"></a>
 			</div>
 
 			<div class="footer-text">
@@ -234,10 +235,10 @@
 
 			<div class="footer-menu">
 				<ul>
-					<li><a href="/">Главная</a></li>
+					<li><a href="index.html">Главная</a></li>
 					<li><a href="registration.html">Регистрация</a></li>
-					<li><a href="katalog.html">Каталог</a></li>
-					<li><a href="/collections/">Коллекции</a></li>
+					<li><a href="catalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
 					<li><a href="information.html">О нас</a></li>
 					<li><a href="cooperation.html">Сотрудничество</a></li>
 				</ul>
@@ -245,13 +246,13 @@
 
 			<div class="footer-contacts">
 				<div class="footer-phone">
-					<p><b>+7 (495)</b> 555 44 22</p>
+					<p><b>+7 (904)</b> 38 10 240</p>
 				</div>
 
 				<div class="footer-top-networks">
-					<button><a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a></button>
-					<!-- <button><img src="images/icons/fb.png"></button> -->
-					<!-- <button><img src="images/icons/vk.png"></button> -->
+					<button><img src="images/icons/insta.png"></button>
+					<button><img src="images/icons/fb.png"></button>
+					<button><img src="images/icons/vk.png"></button>
 				</div>
 			</div>
 		</div>
@@ -261,7 +262,7 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
