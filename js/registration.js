@@ -72,17 +72,13 @@
 
 	//считывание полей с localstorage
 	let userData = "";
-	
+
 	if( userData = localStorage.getItem('reg') )
 	{
 		userData = JSON.parse( userData );
 		$('div.registration-form')
 							.find('input[name="name"]').val( userData['name'] ).end()
 							.find('input[name="mail"]').val( userData['mail'] ).end();
-
-
-
-
 	}
 
 

@@ -175,36 +175,41 @@ function validateData(input, data, error_class) {
 
 
 function PopUpShowMenu() {
-    $("#menu").show();
-    $("#menu-off").show();
-    $("#menu-on").hide();
+    document.querySelector('#menu').style.display = 'block';
+    document.querySelector('#menu-off').style.display = 'block';
+    document.querySelector('#menu-on').style.display = 'none';
+
 }
 function PopUpHideMenu() {
-    $("#menu-on").show();
-    $("#menu-off").hide();
-    $("#menu").hide();
+    document.querySelector('#menu-on').style.display = 'block';
+    document.querySelector('#menu-off').style.display = 'none';
+    document.querySelector('#menu').style.display = 'none';
+
 }
 function PopUpShowScore() {
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#score").show();
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#popup').style.display = 'block';
+    document.querySelector('#score').style.display = 'block';
+
 }
 function PopUpShowCard() {
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#card").show();
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#popup').style.display = 'block';
+    document.querySelector('#card').style.display = 'block';
+
 }
 function PopUpShowThanks() {
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#thanks").show();
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#popup').style.display = 'block';
+    document.querySelector('#thanks').style.display = 'block';
+
 }
 function PopUpHidePopup() {
-    $("#popup-fon").hide();
-    $("#popup").hide();
-    $("#score").hide();
-    $("#card").hide();
-    $("#thanks").hide();
+    document.querySelector('#popup-fon').style.display = 'none';
+    document.querySelector('#popup').style.display = 'none';
+    document.querySelector('#score').style.display = 'none';
+    document.querySelector('#card').style.display = 'none';
+    document.querySelector('#thanks').style.display = 'none';
 }
 
 
@@ -213,12 +218,14 @@ var IS_AUTH = false;
 
 function getMenuCategories()
 {
-    var data = new FormData();
+    let data = new FormData(),
+        html = "",
+        responseData;
     data.append('show_count' , true);
     return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin'  , body: data   })
         .then(function (response) {
 
-            let responseData = false;
+            responseData = false;
             try {
                 responseData = response.json();
             }
@@ -231,13 +238,12 @@ function getMenuCategories()
         .then(function (response) {
             if(response.status)
             {
-                let html = "";
-                for(var key in response.data)
-                    html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
 
-                $('div.menu').find('div.marker').first().find('ul').html(html);
-                new SimpleBar(menu[0].querySelector('ul') , { autoHide: false });
+              for(var key in response.data)
+                  html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
 
+               menu[0].querySelector('ul').innerHTML = html;
+               new SimpleBar(menu[0].querySelector('ul') , { autoHide: false });
             }
 
         });
@@ -245,7 +251,9 @@ function getMenuCategories()
 
 function getMenuCollection()
 {
-    var data = new FormData();
+    var data = new FormData(),
+        responseData,
+        html = "";
 
     data.append('show_href' , true);
     data.append('show_count' , true);
@@ -253,7 +261,7 @@ function getMenuCollection()
     return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , body: data  })
         .then(function (response) {
 
-            let responseData = false;
+            responseData = false;
             try {
                 responseData = response.json();
             }
@@ -266,13 +274,10 @@ function getMenuCollection()
         .then(function (response) {
             if(response.status)
             {
-
-                let html = "";
                 for(var key in response.data.items)
                     html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+" ("+response.data.items[key].count+")</a></li>";
-                $('div.menu').find('div.marker').last().find('ul').html(html);
+                menu[1].querySelector('ul').innerHTML = html;
                 new SimpleBar(menu[1].querySelector('ul')  , { autoHide: false });
-
             }
 
         });
@@ -393,29 +398,60 @@ function requestCheckFavoritesItems(listId , classBlock )
 
 function setAuthUserData(result, url)
 {
+    let headerBlock,basketSpan,favoritesBlock;
 
-    if (result.status) {
+    headerBlock = document.querySelector('[class*="header-user"]');
+
+    if (result.status)
+    {
+
         // switch (url) {
         //     case "registration" :
         //         window.location.href = "/";
         //         break
         // }
 
-        $('[class*="header-user"]').find('#authorization').remove();
 
-        $('[class*="header-user"]').find('div[data-basket] a').attr('href' , '/basket.html');
-        if (result.data.cartCount)
-             $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.cartCount);
+        headerBlock.querySelector('#authorization').remove();
 
-        $('[class*="header-user"]').find('div[data-favorite] a').attr('href' , '/favorites.html');
-        if (result.data.wishlistCount)
-            $('[class*="header-user"]').find('div[data-favorite]').addClass('favorites').find('span').text(result.data.wishlistCount);
+        headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
+        if(result.data.cartCount)
+        {
+            basketSpan  = headerBlock.querySelector('div[data-basket] span');
+            basketSpan.innerHTML = result.data.cartCount;
+            basketSpan.style.display = "block";
+        }
 
-        $('[class*="header-user"]').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.data.name}`);
+        headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '/favorites.html');
+        if(result.data.wishlistCount)
+        {
+            favoritesBlock = headerBlock.querySelector('div[data-favorite]');
+            favoritesBlock.classList.add = 'favorites';
+            favoritesBlock.querySelector('span').innerText = result.data.wishlistCount;
+        }
+
+        headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${result.data.name}`;
 
         IS_AUTH = true;
 
-        $('body').removeClass('showPrice');
+        document.querySelector('body').classList.remove('showPrice');
+
+        //
+        // $('[class*="header-user"]').find('#authorization').remove();
+        //
+        // $('[class*="header-user"]').find('div[data-basket] a').attr('href' , '/basket.html');
+        // if (result.data.cartCount)
+        //      $('[class*="header-user"]').find('div[data-basket] span').show().text(result.data.cartCount);
+        //
+        // $('[class*="header-user"]').find('div[data-favorite] a').attr('href' , '/favorites.html');
+        // if (result.data.wishlistCount)
+        //     $('[class*="header-user"]').find('div[data-favorite]').addClass('favorites').find('span').text(result.data.wishlistCount);
+        //
+        // $('[class*="header-user"]').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.data.name}`);
+        //
+        // IS_AUTH = true;
+        //
+        // $('body').removeClass('showPrice');
 
     }
     else
@@ -432,7 +468,8 @@ function setAuthUserData(result, url)
                 window.location.href = "/";
                 break;
         }
-        $('[class*="header-user"]').find('#exit').remove();
+
+        headerBlock.querySelector('#exit').remove(); //.find('#exit').remove();
     }
 
     return IS_AUTH;
@@ -445,7 +482,7 @@ function showError(responseData) {
 
 function requestCheckAuth(url) {
 
-    console.log(url);
+
 
    return fetch(window.pms.config.cabinetAPI + 'user/checkAuth', {method: 'POST', credentials: 'same-origin'})
            .then(function (response) {
@@ -469,7 +506,7 @@ function requestCheckAuth(url) {
                    }
 
                }
-               console.log(response);
+
 
                return setAuthUserData(response, url);
 

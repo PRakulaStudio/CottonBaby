@@ -12,7 +12,7 @@
         $('div.title').find('button').show();
         $('section.filter-box').hide();
     }
-
+        
     
     function requestGetKatalogItems(offset, limit, sort, pageName)
     {
