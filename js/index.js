@@ -1,8 +1,10 @@
+requestCheckAuth('index');
+requestGetMenuCategories();
+
 ( function($){
 	"use strict";
 
-	requestCheckAuth('index');
-	requestGetMenuCategories();
+
 	
 	var autoPlay = false
 	var offset = 20;

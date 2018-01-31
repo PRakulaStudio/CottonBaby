@@ -94,7 +94,7 @@
             .then(response => {
                if(response.status)
                {
-                   addFavoriteButtons( $('div.product-box'), response.data.wishes  );
+                   addFavoriteButtons(  document.querySelector('div.product-box'), response.data.wishes  );
                    
                    if(Object.keys(response.data.modifications).length)
                    {

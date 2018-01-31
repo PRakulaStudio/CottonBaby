@@ -41,7 +41,6 @@ function renderHeaderIsAuth(data){
 
     headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${data.name}`;
 }
-
 function renderHeaderAuthFalse()
 {
     headerBlock = document.querySelector('[class*="header-user"]');
@@ -66,9 +65,9 @@ if(localStorage.getItem('user'))
 else
     renderHeaderAuthFalse();
 
-
 config = Object.freeze(config);
 
+//надо будет убрать
 let blockSorting = document.querySelector('div.sorting');
 if( blockSorting)
     blockSorting.style.display = 'none';
@@ -78,36 +77,35 @@ if (!window.pms) window.pms = {};
  window.pms['config'] = config;
 
 let menu = document.querySelectorAll('div.menu div.marker');
-console.log(menu);
 
-
-function integerOnly(e) {
-    e = e || window.event;
-    var code = e.which || e.keyCode;
-    if (!e.ctrlKey) {
-        var arrIntCodes1 = new Array(96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 9, 116);   // 96 TO 105 - 0 TO 9 (Numpad)
-        if (!e.shiftKey) {                          //48 to 57 - 0 to 9 
-            arrIntCodes1.push(48);                  //These keys will be allowed only if shift key is NOT pressed
-            arrIntCodes1.push(49);                  //Because, with shift key (48 to 57) events will print chars like @,#,$,%,^, etc.
-            arrIntCodes1.push(50);
-            arrIntCodes1.push(51);
-            arrIntCodes1.push(52);
-            arrIntCodes1.push(53);
-            arrIntCodes1.push(54);
-            arrIntCodes1.push(55);
-            arrIntCodes1.push(56);
-            arrIntCodes1.push(57);
-        }
-        var arrIntCodes2 = new Array(35, 36, 37, 38, 39, 40, 46);
-        if ($.inArray(e.keyCode, arrIntCodes2) != -1) {
-            arrIntCodes1.push(e.keyCode);
-        }
-        if ($.inArray(code, arrIntCodes1) == -1) {
-            return false;
-        }
-    }
-    return true;
-}
+//
+// function integerOnly(e) {
+//     e = e || window.event;
+//     var code = e.which || e.keyCode;
+//     if (!e.ctrlKey) {
+//         var arrIntCodes1 = new Array(96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 9, 116);   // 96 TO 105 - 0 TO 9 (Numpad)
+//         if (!e.shiftKey) {                          //48 to 57 - 0 to 9
+//             arrIntCodes1.push(48);                  //These keys will be allowed only if shift key is NOT pressed
+//             arrIntCodes1.push(49);                  //Because, with shift key (48 to 57) events will print chars like @,#,$,%,^, etc.
+//             arrIntCodes1.push(50);
+//             arrIntCodes1.push(51);
+//             arrIntCodes1.push(52);
+//             arrIntCodes1.push(53);
+//             arrIntCodes1.push(54);
+//             arrIntCodes1.push(55);
+//             arrIntCodes1.push(56);
+//             arrIntCodes1.push(57);
+//         }
+//         var arrIntCodes2 = new Array(35, 36, 37, 38, 39, 40, 46);
+//         if ($.inArray(e.keyCode, arrIntCodes2) != -1) {
+//             arrIntCodes1.push(e.keyCode);
+//         }
+//         if ($.inArray(code, arrIntCodes1) == -1) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
 /*
  * @param str
@@ -115,7 +113,7 @@ function integerOnly(e) {
  * @returns {boolean}
  */
 function checkLength(str, requareLength) {
-    if (str.length >= requareLength)
+    if(str.length >= requareLength)
         return true;
     return false;
 }
@@ -144,7 +142,6 @@ function checkPhone(phone) {
     return false;
 }
 
-
 //функция, переводящая строку в денежный формат
 function formatMoney(number) {
     var format = number.toString().split(""),
@@ -164,72 +161,76 @@ function formatMoney(number) {
 
     return money.join('') + " руб.";
 }
+
 /**
  *
  * @param input
  * @param data
  */
 function validateData(input, data, error_class) {
-    $(input).removeClass(error_class).removeAttr('data-change');
 
-    switch ($(input).attr('name')) {
+    //$(input).removeClass(error_class).removeAttr('data-change');
+    input.classList.remove(error_class);
+    input.removeAttribute('data-change');
 
+    switch ( input.getAttribute('name')) {
         case "password" :
 
-            if (checkLength($(input).val(), 6) && ( $(input).val() == $('input[name="confirm_password"]').val() ))
-                data[$(input).attr('name')] = $(input).val();
+            if (checkLength(input.value, 6) && ( input.value == document.querySelector('input[name="confirm_password"]').value ))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "password_auth" :
-            if (checkLength($(input).val(), 6))
-                data[$(input).attr('name')] = $(input).val();
+            if (checkLength(input.value, 6))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "mail" :
 
-            if (checkEmail($(input).val()))
-                data[$(input).attr('name')] = $(input).val();
+            if ( checkEmail(input.value) )
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "phone" :
 
-            if (checkPhone($(input).val()))
-                data[$(input).attr('name')] = $(input).val();
+            if (checkPhone(input.value))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "index" :
 
-            if (checkLength($(input).val(), 6))
-                data[$(input).attr('name')] = $(input).val();
+            if (checkLength(input.value, 6))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "confirm_password" :
 
-            if (checkLength($(input).val(), 6) && ( $(input).val() == $('input[name="password"]').val() ))
-                data[$(input).attr('name')] = $(input).val();
+            if (checkLength(input.value, 6) && ( input.value == document.querySelector('input[name="password"]').value ))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break
 
         default:
-            if ($(input).val() != "")
-                data[$(input).attr('name')] = $(input).val();
+            if (  input.value != "")
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
     }
 
 }
+
 
 
 function PopUpShowMenu() {
@@ -269,7 +270,6 @@ function PopUpHidePopup() {
 
 //флаг авторизированности пользователя
 var IS_AUTH = false;
-
 
 function getMenuCategories()
 {
@@ -344,6 +344,7 @@ function requestGetMenuCategories()
     getMenuCollection();
 }
 
+
 function addFavoriteButtons( blockProducts , value)
 {
 
@@ -351,66 +352,218 @@ function addFavoriteButtons( blockProducts , value)
     if(value)
         buttonHtml =  "<button class='new-on'></button>";
     else
-        buttonHtml =  " <button class='new-off'></button>";
+        buttonHtml =  "<button class='new-off'></button>";
 
-    blockProducts.find('div.block-button-favorites').html(buttonHtml);
+    blockProducts.querySelector('div.block-button-favorites').innerHTML = buttonHtml;
 }
 
-$('main.content-site').on('click' , 'div.block-button-favorites' , function(){
 
-    let productBlock =  $(this).parents('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]');
-    if( productBlock.attr('data-catalog-item-id') )
-       idProduct = productBlock.attr('data-catalog-item-id');
-
-
-    if( productBlock.attr('data-id-block') )
-       idProduct = productBlock.attr('data-id-block');
+function eventChangeFavorites(button)
+{
+    let productBlock = button.closest('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]'),
+        idProduct;
 
 
-    if( productBlock.attr('data-id-catalog-item') )
-       idProduct = productBlock.attr('data-id-catalog-item');
+    if(productBlock.hasAttribute('data-catalog-item-id'))
+       idProduct = productBlock.getAttribute('data-catalog-item-id');
+
+    if(productBlock.hasAttribute('data-id-block'))
+        idProduct = productBlock.getAttribute('data-id-block');
+
+    if(productBlock.hasAttribute('data-id-catalog-item') )
+        idProduct = productBlock.attr('data-id-catalog-item');
+
+
+    if( button.classList.contains('new-off') )
+        requestAddFavorites( idProduct , button);
+    else
+        requestRemoveFavorites( idProduct , button );
+
+}
+
+function eventAuth()
+{
+    var data = {},
+        listInput =  document.querySelectorAll('#authorization input'),
+        sendRequest = true;
+
+    listInput.forEach(function(current , index, array){
+       current.classList.remove('input-error-border');
+       validateData(current, data, 'input-error-bottom' );
+
+       if( current.classList.contains('input-error-bottom'))
+           sendRequest = false;
+       });
+
+    if(sendRequest)
+        requestAuth(data);
 
 
 
-     if( $(this).find('button').hasClass('new-off') )
-         requestAddFavorites( idProduct ,  $(this).find('button'));
-     else
-         requestRemoveFavorites( idProduct ,  $(this).find('button') );
+    // $('#authorization form button').click(function () {
+    //     var data = {};
+    //
+    //     $('#authorization').find('input').each(function () {
+    //         $(this).removeClass('input-error-border');
+    //         validateData($(this), data, 'input-error-bottom');
+    //     });
+    //
+    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+    //         requestAuth(data);
+    //     }
+    // });
+}
+
+document.addEventListener('click' , function (event) {
+
+   if(event.target.tagName == "BUTTON" && ( event.target.classList.contains('new-on') || event.target.classList.contains('new-off')  ) )
+   {
+       eventChangeFavorites(event.target);
+   }
+
+    if(event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu'))
+    {
+        window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
+    }
+    //показываем окно с авторизацие или переход на личный кабинет
+    if(event.target.tagName == "SPAN" && event.target.parentNode.tagName == "BUTTON" && event.target.closest('[class*="header-user"]'))
+    {
+        event.target.parentNode.nextElementSibling.style.display = "block";
+    }
+    //закрытие модальных окошек
+    if(event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
+        && event.target.parentNode.classList.contains('popup-close')
+        && event.target.closest('[class*="header-user"]') )
+    {
+        event.target.parentNode.parentNode.style.display = "none";
+    }
+
+    if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
+    {
+        requestLogout();
+    }
+
+    if(event.target.tagName == "BUTTON" && event.target.closest('#authorization') )
+    {
+        eventAuth();
+    }
+
+
 });
+
+document.addEventListener('keydown' , function (event) {
+
+    if(event.target.tagName == 'INPUT' && event.target.getAttribute('type') == "search")
+    {
+        if (event.which == 13) {
+            window.location.href = "/search/" + event.target.value + "";
+        }
+    }
+
+});
+
+document.addEventListener('mousedown' , function (event) {
+    if( event.target.getAttribute('id') != 'authorization' && !event.target.closest('#authorization') )
+    {
+        if(  document.querySelector('#authorization'))
+            document.querySelector('#authorization').style.display = 'none';
+    }
+
+
+    if( event.target.getAttribute('id') != 'exit' && !event.target.closest('#exit')  )
+    {
+        if(  document.querySelector('#exit'))
+            document.querySelector('#exit').style.display = 'none';
+    }
+
+});
+
 
 function requestAddFavorites(product_id  , button)
 {
 
-    $.ajax({
-        data : { 'id' : product_id},
-        dataType : 'JSON',
-        type : "POST",
-        url : window.pms.config.cabinetAPI+'wishlist/add',
-        success : function ( result , status ) {
-            if(result.status)
-            {
-                button.removeClass('new-off').addClass('new-on');
-            }
-        },
-    });
+    var data = new FormData();
+    data.append('id' , product_id);
+
+    return fetch(window.pms.config.cabinetAPI+'wishlist/add' , { method: 'POST', credentials: 'same-origin', body: data })
+            .then( response => {
+                let responseData = false;
+                try{
+                    responseData = response.json();
+                }
+                catch(e) {
+                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                    response.text().then(console.debug);
+                }
+
+                return responseData;
+            })
+            .then( response => {
+               if( response.status )
+               {
+                  button.classList.remove('new-off');
+                  button.classList.add('new-on');
+
+               }
+            });
+
+    // $.ajax({
+    //     data : { 'id' : product_id},
+    //     dataType : 'JSON',
+    //     type : "POST",
+    //     url : window.pms.config.cabinetAPI+'wishlist/add',
+    //     success : function ( result , status ) {
+    //         if(result.status)
+    //         {
+    //             button.removeClass('new-off').addClass('new-on');
+    //         }
+    //     },
+    // });
 
 }
 
 
 function requestRemoveFavorites(product_id , button)
 {
-    $.ajax({
-        data : {  'id' : product_id},
-        dataType : 'JSON',
-        type : "POST",
-        url : window.pms.config.cabinetAPI+'wishlist/delete',
-        success : function ( result , status ) {
-            if(result.status)
-            {
-                button.removeClass('new-on').addClass('new-off');
+
+    var data = new FormData();
+    data.append('id' , product_id);
+
+    return fetch(window.pms.config.cabinetAPI+'wishlist/delete' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( response => {
+            let responseData = false;
+            try{
+                responseData = response.json();
             }
-        },
-    });
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( response => {
+            if( response.status )
+            {
+                button.classList.remove('new-on');
+                button.classList.add('new-off');
+
+
+            }
+        });
+
+    // $.ajax({
+    //     data : {  'id' : product_id},
+    //     dataType : 'JSON',
+    //     type : "POST",
+    //     url : window.pms.config.cabinetAPI+'wishlist/delete',
+    //     success : function ( result , status ) {
+    //         if(result.status)
+    //         {
+    //             button.removeClass('new-on').addClass('new-off');
+    //         }
+    //     },
+    // });
 }
 
 function requestCheckFavoritesItems(listId , classBlock )
@@ -418,7 +571,7 @@ function requestCheckFavoritesItems(listId , classBlock )
 
     var data = new FormData();
     data.append('items' , JSON.stringify(listId));
-    console.log( JSON.stringify(listId) );
+
     return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
         .then( function(response){
             let responseData = false;
@@ -435,13 +588,13 @@ function requestCheckFavoritesItems(listId , classBlock )
         .then( function (response) {
             if(response.data.wishlist)
             {
-                let $products = $('div.'+classBlock),
+                let products = document.querySelector('div.'+classBlock),
                     wishList = response.data.wishlist,
                     buttonHtml = "";
 
                 for(let key in wishList)
                 {
-                    addFavoriteButtons( $products.find('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
+                    addFavoriteButtons( products.querySelector('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
                 }
 
 
@@ -529,7 +682,6 @@ function requestCheckAuth(url) {
 
                }
 
-
                return setAuthUserData(response, url);
 
            });
@@ -562,6 +714,7 @@ function requestLogout() {
                alert('Не получилось разлогиниться');
         });
 }
+
 
 function requestAuth(data) {
 
@@ -614,10 +767,16 @@ function requestRemindPassword(data) {
             return responseData;
         })
         .then( function (response) {
-           console.log(response);
+
         });
 
 }
+
+window.onscroll = function(){
+
+};
+
+
 
 (function ($) {
 
@@ -629,9 +788,9 @@ function requestRemindPassword(data) {
         }
     });
 
+
     $('.scrollup').click(function(){
-        $("html, body").animate({ scrollTop: 0 }, 600);
-        return false;
+        animateScrollTo(0);
     });
 
 
@@ -641,62 +800,36 @@ function requestRemindPassword(data) {
         $(this).inputmask('+7 (999) 999-99-99');
     })
 
-    $('input[type="search"]').keydown(function (e) {
 
-        if (e.which == 13) {
-            window.location.href = "/search/" + $(this).val() + "";
-        }
-    });
 
-    //закрытие модальных окон
-    $(window).mousedown(function (event) {
-        if( !$(event.target).is('#authorization') && !$(event.target).parents('#authorization').length )
-            $('#authorization').hide();
-        
-        if( !$(event.target).is('#exit') && !$(event.target).parents('#exit').length )
-            $('#exit').hide();
-    });
+    //
+    // $('#exit div button').click(function () {
+    //     requestLogout();
+    //
+    // });
 
-    $('div.search-menu').on('click' , 'button[type="submit"]' , function(){
-        window.location.href = "/search/" + $(this).siblings('input').val() + "";
-    });
+    // $('#authorization form button').click(function () {
+    //     var data = {};
+    //
+    //     $('#authorization').find('input').each(function () {
+    //         $(this).removeClass('input-error-border');
+    //         validateData($(this), data, 'input-error-bottom');
+    //     });
+    //
+    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+    //         requestAuth(data);
+    //     }
+    // });
 
-    $('[class*="header-user"] > div:last-of-type button').click(function () {
-        $(this).next().show();
-    });
-
-    $('[class*="header-user"] button.popup-close').click(function () {
-        $(this).parent('div').hide();
-
-    });
-
-    $('#exit div button').click(function () {
-        requestLogout();
-
-    });
-
-    $('#authorization form button').click(function () {
-        var data = {};
-
-        $('#authorization').find('input').each(function () {
-            $(this).removeClass('input-error-border');
-            validateData($(this), data, 'input-error-bottom');
-        });
-
-        if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
-            requestAuth(data);
-        }
-    });
-
-    $('span[data-action="remind-pass"]').click(function(){
-        var data = {};
-        validateData($('#authorization').find('input[name="mail"]'), data , 'input-error-bottom');
-
-        if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
-            requestRemindPassword(data);
-        }
-
-    });
+    // $('span[data-action="remind-pass"]').click(function(){
+    //     var data = {};
+    //     validateData($('#authorization').find('input[name="mail"]'), data , 'input-error-bottom');
+    //
+    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+    //         requestRemindPassword(data);
+    //     }
+    //
+    // });
 
 
 
