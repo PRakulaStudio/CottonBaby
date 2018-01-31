@@ -1,85 +1,90 @@
 "use strict";
-( function($){
+requestCheckAuth('registration');
+requestGetMenuCategories();
 
-	var pass = "",
-		css = {
-			inputError : "input-error",
-		};
+let pass = "",
+	userData = "",
+	css = {
+		inputError : "input-error",
+	};
 
-	requestCheckAuth('registration');
-	requestGetMenuCategories();
+if( userData = localStorage.getItem('reg') )
+{
+	userData = JSON.parse( userData );
+	document.querySelector('div.reistration-form input[name="name"]').value =  userData['name'];
+	document.querySelector('div.reistration-form input[name="mail"]').value = userData['mail'];
 
+}
 
-	function setUserData(fields)
-	{
-		$.ajax({
-			url: window.pms.config.cabinetAPI+'user/reg',
-			type: 'POST',
-			encoding: "UTF-8",
-			data:  {
-				"data": JSON.stringify(fields)
-			},
-			dataType: 'json',
-			success: function( data, status)
+function setUserData(fields)
+{
+	var data = new FormData();
+	data.append('data' ,JSON.stringify(fields))
+
+	return fetch( window.pms.config.cabinetAPI+'user/reg' , { method: 'POST', credentials: 'same-origin', body: data })
+		.then( response => {
+			let responseData = false;
+			try{
+				responseData = response.json();
+			}
+			catch(e) {
+				responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+				response.text().then(console.debug);
+			}
+
+			return responseData;
+		})
+		.then( response => {
+			if( response.status && response.userData != "undefined" )
 			{
-
-				if( data.status && data.userData != "undefined" )
+				//переход на личный кабинет
+				localStorage.removeItem('reg');
+				window.location.href = "/catalog/";
+			}
+			else
+			{
+				for(var key in data.data.errors)
 				{
-					//переход на личный кабинет
-					localStorage.removeItem('reg');
-					window.location.href = "/catalog/";
+					alert(data.data.errors[key]);
+					break;
 				}
-				else
-				{
-					
-					for(var key in data.data.errors)
-					{
-						alert(data.data.errors[key]);
-						break;
-					}
-
-				}
-
-			},
+			}
 
 		});
-
-	}
-
-
-	$('section.registration button').click( function(){
-
-			//блок, отвечающий за отправку запроса при частом клике
-			// clearTimeout(timerSendRequest);
-			// input++;
-			// console.log(input);
-			// timerSendRequest = setTimeout( setEditedItem , 1000 );
-
-		    var data = {};
-			
-			$('div.registration-form').find('input').each( function(){
-				$(this).removeClass('input-error');
-				validateData($(this) , data , 'input-error');
-			});
+}
 
 
-			if( !$('div.registration-form').find('input').hasClass('input-error') )
-			{
-				setUserData(data);
-			}
-	});
+function eventSendUserData() {
+	let data = {},
+		listInput = document.querySelectorAll('div.registration-form input'),
+		sendRequest = true;
+
+	listInput.forEach( function(current, index, array){
+		current.classList.remove('input-error');
+		validateData(current, data, 'input-error' );
+
+		if( current.classList.contains('input-error'))
+			sendRequest = false;
+		});
+
+	if(sendRequest)
+		setUserData(data);
+
+};
 
 
-	//считывание полей с localstorage
-	let userData = "";
 
-	if( userData = localStorage.getItem('reg') )
+document.addEventListener('click' , function(event){
+	if(event.target.tagName == "BUTTON" && event.target.closest('section.registration'))
 	{
-		userData = JSON.parse( userData );
-		$('div.registration-form')
-							.find('input[name="name"]').val( userData['name'] ).end()
-							.find('input[name="mail"]').val( userData['mail'] ).end();
+		eventSendUserData();
 	}
+});
 
 
-})(jQuery);
+
+
+
+
+		//считывание полей с localstorage
+

@@ -5,7 +5,6 @@
 //кеширование и получение меню
 
 
-
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
@@ -715,7 +714,6 @@ function requestLogout() {
         });
 }
 
-
 function requestAuth(data) {
 
     var formData = new FormData();
@@ -801,25 +799,6 @@ window.onscroll = function(){
     })
 
 
-
-    //
-    // $('#exit div button').click(function () {
-    //     requestLogout();
-    //
-    // });
-
-    // $('#authorization form button').click(function () {
-    //     var data = {};
-    //
-    //     $('#authorization').find('input').each(function () {
-    //         $(this).removeClass('input-error-border');
-    //         validateData($(this), data, 'input-error-bottom');
-    //     });
-    //
-    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
-    //         requestAuth(data);
-    //     }
-    // });
 
     // $('span[data-action="remind-pass"]').click(function(){
     //     var data = {};
