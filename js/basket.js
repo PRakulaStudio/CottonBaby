@@ -1,56 +1,38 @@
 "use strict";
 
-
-
 (function($){
 
-    requestCheckAuth('basket')
-        .then(function(response) {
-            if(response){
-                requestGetBasket();
-                //должен выполняться только, если пользователь авторизован
-                requestGetUserData();
-            }
-
-        });
-    requestGetMenuCategories();
 
     var timeOuts = [];
     var isPayment = false;
-    var min_price_order = "";
-    var total_price = "";
-    var useBonus = 0;
     var css = {
-        'input_error' : "input-error-bottom",
+        'input_error' : "input-form-error",
         'is_check' : 'payment-activ',
-        'disabled_order' : 'basket-order-off',
-        'enable_order' : 'basket-order-on',
-        'sizeActive' : 'basket-size-on',
-    };
+    }
 
-
-    function checkButtonOrder()
+    function validateData( input , data )
     {
-        //Итого
-        if($('.payment-box').find('button').hasClass('payment-activ') )
-        {
-            if(  parseInt(total_price) >= parseInt(min_price_order) )
-                $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
-            else
-                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
-        }
 
+        switch( $(input).attr('name'))
+        {
+            default:
+                if(  $(input).val() != "" )
+                    data[ $(input).attr('name') ]  =  $(input).val();
+                else
+                    $(input).addClass(css.inputError);
+                break;
+        }
 
     }
 
     function requestGetUserData()
     {
         var data = {};
-
+        data['get'] = "userData";
         $.ajax({
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'get/userData',
+            url: '/akula/system/plugins/SecArgonia/cabinet/?get=userData',
             success: function (result , status) {
               if(result.status)
               {
@@ -73,161 +55,162 @@
         });
 
     }
+
+    //функция, переводящая строку в денежный формат
+    function formatMoney( number )
+    {
+
+        var format = number.split(""),
+            money = [],
+            iterator = 1;
+
+        for( var key = format.length - 1; key >= 0; key--)
+        {
+
+
+            if( iterator > 0 &&  iterator % 3 == 0 )
+            {
+                 money[key] = " " + format[key];
+                iterator++;
+                continue;
+            }
+
+            money[key] = format[key];
+            iterator++;
+        }
+
+        return money.join('')+" руб.";
+    }
+
     //получение корзины
     function requestGetBasket()
     {
         var data = {};
-
+        data['order'] = "cart";
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'order/cart',
+            url: '/akula/system/plugins/SecArgonia/cabinet/?order=cart',
             success: function( result, status){
-                if(result.status)
+                let products = result.data.cart.products;
+
+                if(products)
                 {
-                    let products = result.data.cart.products;
-                    if(products)
+                    var html = "";
+                    for( var key in products )
                     {
-                        var html = "";
-                        for( let key in products )
-                        {
-
-                            let product = products[key].product,
-                                modifications = products[key].modifications;
-                            html += "<div class='basket-product' data-id-item='"+product.id+"'>" +
-                                "<div>" +
-                                "<div>" +
-                                "<div>" +
-                                "<div>" +
-                                "<img src='"+product.images[0]['50x50']+"' >"+
-                                "<div>"+
-                                "<p>#"+products[key].order_id+"</p>"+
-                                "<p><a href='"+product.href+"' >"+product.title+"</a></p>";
-
-                                if( product.collection[0].title )
-                                {
-                                    html += "<p>Коллекция: <a href='"+product.collection[0].href+"' >"+product.collection[0].title+"</a></p>";
-                                }
 
 
-                                html += "</div>"+
-                                "</div>" +
+                        html += "<div class='basket-product' data-id-item='"+products[key].product_id+"'>" +
+                                 "<div>" +
+                                     "<div>" +
+                                         "<div>" +
+                                                "<div>" +
+                                                    "<img src='"+products[key].img_link+"' >"+
+                                                    "<div>"+
+                                                        "<p>#"+products[key].order_id+"</p>"+
+                                                        "<p><a href='"+products[key].link+"' >"+products[key].name+"</a></p>"+
+                                                        "<p>Коллекция: <a href='"+products[key].collection.link+"' >"+products[key].collection.name+"</a></p>"+
+                                                    "</div>"+
+                                                "</div>" +
 
-                                "</div>" +
-                                "<div>" +
-                                "<div>" +
-                                "<p>Цена за шт.</p>"+
-                                "<span>"+formatMoney(product.price)+"</span>"+
-                                "</div>" +
-                                "</div>" +
-                                "</div>" +
-                                "<div>" +
-                                "<div>";
-                            let classSizeOn;
-                            for( let size_id in modifications )
-                            {
-                                classSizeOn = "";
-                                if( +modifications[size_id].quantity > 0  )
-                                    classSizeOn = 'basket-size-on';
+                                         "</div>" +
+                                         "<div>" +
+                                                "<div>" +
+                                                    "<p>Цена за шт.</p>"+
+                                                    "<span>"+formatMoney(products[key].price)+"</span>"+
+                                                "</div>" +
+                                         "</div>" +
+                                     "</div>" +
+                                     "<div>" +
+                                            "<div>";
+                                      for( var size_id in products[key].sizes )
+                                      {
+                                            html += "<div data-id-size='"+products[key].sizes[size_id].mod_id+"'>" +
+                                                          "<p>Размер "+products[key].sizes[size_id].name+"</p>" +
+                                                          "<div>" +
+                                                              "<button data-action-size='reduce'>-</button>" +
+                                                              "<span data-id-mod='"+products[key].sizes[size_id].mod_id+"'>"+products[key].sizes[size_id].count+"</span>" +
+                                                              "<button data-action-size='increase'>+</button>" +
+                                                          "</div>" +
+                                                    "</div>";
+                                      }
 
-                                html += "<div data-id-size='"+modifications[size_id].id+"' class='"+classSizeOn+"'>" +
-                                    "<p>"+modifications[size_id].title+"</p>" +
-                                    "<div>" +
-                                    "<button data-action-size='reduce'>-</button>" +
-                                    "<input type='number' placeholder='0' class='shest' value='"+modifications[size_id].quantity+"' />"+
-                                    "<button data-action-size='increase'>+</button>" +
+                               html +=      "</div>" +
+                                            "<div>" +
+                                                "<div>" +
+                                                     "<p>Сумма</p>" +
+                                                     "<span>"+formatMoney(products[key].price_total)+"</span>" +
+                                                "</div>" +
+                                            "</div>"+
                                     "</div>" +
-                                    "</div>";
-                            }
-
-                            html +=      "</div>" +
-                                "<div>" +
-                                "<div>" +
-                                "<p>Сумма</p>" +
-                                "<span>"+formatMoney(products[key].total_price)+"</span>" +
-                                "</div>" +
-                                "</div>"+
-                                "</div>" +
-                                "</div>" +
+                                  "</div>" +
 
 
 
-                                "<div>" +
-                                "<button data-action='remove'>x</button>"+
-                                "</div>" +
+                                  "<div>" +
+                                        "<button data-action='remove'>x</button>"+
+                                  "</div>" +
 
-                                "</div>";
-
-                        }
-
-                        $('div.basket-box').html(html);
-
-                        //бонусы
-                        let list_div = $('div.basket-total').find('div');
-                        list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
-
-                        if( result.data.cart.used_bonus )
-                            useBonus = parseInt(result.data.cart.used_bonus);
-
-                        if(result.data.cart.payment_method)
-                            $('div.payment-box').find('button[data-payment-method="'+result.data.cart.payment_method+'"]').addClass(css.is_check);
-
-                        //кнопка с бонусами
-                        if( parseInt(result.data.cart.bonus) > 0 && parseInt(result.data.cart.min_price_order) <= parseInt(result.data.cart.total_price ) )
-                            list_div.eq(1).show();
-
-                        list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
-
-
-                        //кнопка оформление заказа
-                        if( parseInt(result.data.cart.minPriceOrder) < parseInt(result.data.cart.total_price) )
-                            $('div.basket-order').find('div').eq(2).children().show();
-
-                        if( parseInt(result.data.cart.total_price) >= parseInt(result.data.cart.min_price_order)   )
-                            document.querySelectorAll('.basket-order div')[2].setAttribute('class' , css.enable_order);
-
-                        min_price_order = result.data.cart.min_price_order;
-                        total_price = result.data.cart.total_price;
-
-                        $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price)).end()
-                            .eq(1).text("Минимальный заказ "+formatMoney(min_price_order));
-
-                        $('div.basket-container').show();
-
+                                  "</div>";
 
                     }
-                }
-                else
-                {
-                    
-                    $('div.basket-empty').show();
+                    $('div.basket-box').html(html);
+                    //бонусы
+                    let list_div = $('div.basket-total').find('div');
+                    list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
 
+
+                    //кнопка с бонусами
+                    if( parseInt(result.data.cart.bonus) > 0 && result.data.cart.min_price_order < result.data.cart.total_price )
+                        list_div.eq(1).children().show();
+
+                    list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
+
+                    //кнопка оформление заказа
+                    if(result.data.cart.minPriceOrder < result.data.cart.total_price)
+                      $('div.basket-order').find('div').eq(2).children().show();
+
+
+
+                    $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(result.data.cart.total_price)).end()
+                                                                     .eq(1).text("Минимальный заказ "+formatMoney(result.data.cart.min_price_order));
+
+                    $('div.basket-container').show()
                 }
+
+
+
+
+
             },
 
         });
 
     }
 
-    function requestEdit( id_item )
+    
+    function requestEdit(id_item )
     {
        // console.log(id_item);
         var data = {};
+            data['order'] = "edit";
             data['product_id'] = id_item;
-            data['modifications'] = {};
-        console.log( id_item );
-        $('div.basket-box').find('div[data-id-item="'+id_item+'"]').find('button[data-action-size="reduce"]').each( function () {
-             data['modifications'][$(this).next().parents('div[data-id-size]').attr('data-id-size')] = $(this).next().val() == "" ? 0 : $(this).next().val();
-        });
+            data['sizes'] = {};
 
-        data['modifications'] = JSON.stringify(data['modifications']);
+        $('div.basket-box').find('div[data-id-item="'+id_item+'"]').find('button[data-action-size="reduce"]').each( function () {
+
+            data['sizes'][$(this).next().attr('data-id-mod')] = $(this).next().text();
+
+        });
+        data['sizes'] = JSON.stringify(data['sizes']);
 
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'order/edit',
+            url: '/akula/system/plugins/SecArgonia/cabinet/',
             success : function (  result, status ) {
                 if( result.status)
                 {
@@ -235,69 +218,62 @@
                    for(var key in products )
                    {
                        $('div.basket-box').find('div[data-id-item="'+key+'"]').find('span').last().text(formatMoney(products[key].price_total));
+
                    }
 
-                   //Итого
+                    //Итого
                    $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
-                   $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет "+formatMoney(result.data.total_price));
-                   total_price = result.data.total_price;
-                   checkButtonOrder();
+
                 }
             },
         })
 
     }
 
-    function requestDeleteItem( product_id )
+    function requestDeleteItem(productId)
     {
         var data = {};
-            data['product_id'] = product_id;
-
-
+            data['order'] = "delete";
+            data['productId'] = productId;
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'order/delete',
+            url: '/akula/system/plugins/SecArgonia/cabinet/',
             success : function (  result, status ) {
                if( result.status)
                {
-                   $('div.basket-box').find('div[data-id-item="'+product_id+'"]').remove();
-
-
-                   $('div.basket-total').find('div').last().find('span').text(formatMoney( result.data.total_price ));
-                   total_price = result.data.total_price;
-                   checkButtonOrder();
-                   $('[class*="header-user"]').find('div[data-basket] span').text(parseInt( $('[class*="header-user"]').find('div[data-basket] span').text()) - 1);
+                   $('div.basket-box').find('div[data-id-item="'+productId+'"]').remove();
+                   //Итого
+                   $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
 
                    if(!$('div.basket-box').children().length)
                    {
                        $('div.basket-container').hide();
                        $('div.basket-empty').show();
-                       $('[class*="header-user"]').find('div[data-basket] span').hide();
-
                    }
                }
             },
         });
     }
 
+
     function requestUseBonus()
     {
         var data = {};
+        data['order'] = "useBonus";
 
         $.ajax({
             type : "POST",
             dataType: 'json',
             data : data,
-            url: window.pms.config.cabinetAPI+'order/useBonus',
+            url: '/akula/system/plugins/SecArgonia/cabinet/',
             success : function (  result, status ) {
                 if( result.status)
                 {
                     $('div.basket-total').find('div').eq(0).find('span').text(formatMoney(result.data.bonus));
                     $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(result.data.total_price));
                     $('div.basket-total').find('div').eq(1).find('button').remove();
-                    useBonus = parseInt(result.data.used_bonus);
 
                 }
             },
@@ -306,34 +282,36 @@
 
 
     }
+    
 
     //запрос на проверку заполненных данных
-    function requestCheck( button , payment_address )
+    function requestCheck( button ,payment_address)
     {
         var data = {};
             $('div.payment-box').find('button').removeClass( css.is_check );
-            $('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
+            $('div.basket-order').find('div').last().find('button').hide();
 
+        data['order'] = 'check';
         data['payment_method'] = button.data('payment-method');
         data['payment_address'] = payment_address;
 
         $('#popup-fon').find('input').removeClass(css.input_error);
 
-
         $.ajax({
-            url: window.pms.config.cabinetAPI+"order/check",
-            method: "POST",
+            url: "/akula/system/plugins/SecArgonia/cabinet/",
             dataType: 'json',
             data: data,
             success: function( result, status){
                 if( result.status)
                 {
                     if(button.data('payment-method') == "payment" && !payment_address)
+
                         requestCheck(button , true);
                     else
                     {
+                        console.log(button);
                         button.addClass(css.is_check);
-                        checkButtonOrder();
+                        $('div.basket-order').find('div').last().find('button').show();
                     }
 
                 }
@@ -343,14 +321,19 @@
                     {
                         PopUpShowCard();
                         for( var key in  result.data.errors.address)
-                           $('#card').find('input[name="'+result.data.errors.address[key]+'"]').addClass(css.input_error);
+                        {
+                            $('#card').find('input[name="'+result.data.errors.address[key]+'"]').addClass(css.input_error);
+                        }
+
+
                     }
                     else
                     {
                         PopUpShowScore();
                         for( var key in  result.data.errors.payment)
-                           $('#score').find('input[name="'+result.data.errors.payment[key]+'"]').addClass(css.input_error);
-
+                        {
+                            $('#score').find('input[name="'+result.data.errors.payment[key]+'"]').addClass(css.input_error);
+                        }
                     }
 
                 }
@@ -358,7 +341,16 @@
             },
 
         });
-
+        // $.ajax({
+        //     url: "",
+        //     dataType: 'json',
+        //     url: '/system/plugins/cabinet',
+        //     success: function( data, status){
+        //
+        //
+        //     },
+        //
+        // });
 
 
     }
@@ -366,18 +358,15 @@
     //отправка заказа на оформление
     function requestSendOrder()
     {
+
+        PopUpShowThanks();
         $.ajax({
             type: 'POST',
-            dataType : "JSON",
-            url: window.pms.config.cabinetAPI+'order/save',
+            data : {'order' : 'save'},
+            url: '/akula/system/plugins/SecArgonia/cabinet/',
             success: function( result, status){
-                console.log(result.status);
-                $('#popup-fon').show();
                 if( result.status)
-                {
-                    $('div.basket-order').find('button[action="save-order"]').remove();
                     PopUpShowThanks();
-                }
 
             },
 
@@ -385,14 +374,16 @@
 
     }
 
+
+
     function setUserData(button , fields)
     {
         $.ajax({
-            url: window.pms.config.cabinetAPI+'set/userData',
+            url: '/akula/system/plugins/SecArgonia/cabinet/',
             type: 'POST',
             encoding: "UTF-8",
             data:  {
-
+                "set": "userData",
                 "data": JSON.stringify(fields)
             },
             dataType: 'json',
@@ -428,78 +419,17 @@
 
     }
 
-    function changeNewTotalPrice(input)
-    {
-
-
-        let price = parseInt(input.parents('div.basket-product').find('span').first().text().replace('руб.', "").replace(/\s*/g,''));
-        let totalPrice = price * parseInt(input.val());
-
-        input.parents('div[data-id-size]').siblings('div[data-id-size]').find('input[type="number"]').each( function(){
-            totalPrice += parseInt( price * parseInt($(this).val()) );
-        });
-
-        if( totalPrice === 0)
-            totalPrice = price;
-
-        input.parents('div.basket-product').find('span').last().text(formatMoney(totalPrice));
-
-        totalPrice = 0;
-        $('div.basket-product').each( function () {
-            totalPrice += parseInt( $(this).find('span').last().text().replace('руб.', "").replace(/\s*/g,'') );
-        });
-
-        total_price = totalPrice - useBonus;
-
-        $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(total_price));
-        $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет "+formatMoney(total_price))
-
-        checkButtonOrder();
-
-    }
-
-    $('div.basket-container').on('keyup' , 'input[type="number"]' , function () {
-        var id_ietm = $(this).parents('div.basket-product').data('id-item');
-        clearTimeout(timeOuts[id_ietm]);
-
-        if( $(this).val().length > 3)
-        {
-            $(this).val($(this).val().substr(0, 3));
-        }
-
-        if($(this).val() > 0 )
-            $(this).parents('div[data-id-size]').addClass(css.sizeActive);
-        else
-            $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
-
-        changeNewTotalPrice($(this));
-
-        timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
-            requestEdit(id_ietm);
-        }, 1000 )
-
-    });
-
     //меняем размеры
     $('div.basket-box').on('click' , 'button[data-action-size]' , function () {
 
             var id_ietm = $(this).parents('div.basket-product').data('id-item');
-            //на время запроса блочим кнопку отправки заказа
-            $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
-
             clearTimeout(timeOuts[id_ietm]);
 
             if( $(this).data("action-size") == "increase" )
-                $(this).siblings('input').val( parseInt( $(this).siblings('input').val()) + 1) ;
+                $(this).siblings('span').text( parseInt( $(this).siblings('span').text()) + 1) ;
             else
-                $(this).siblings('input').val( parseInt( $(this).siblings('input').val() ) - 1 < 0  ? 0 : parseInt( $(this).siblings('input').val() ) - 1 );
+                $(this).siblings('span').text( parseInt( $(this).siblings('span').text() ) - 1 < 0  ? 0 : parseInt( $(this).siblings('span').text() ) - 1 );
 
-            if( $(this).siblings('input').val() > 0 )
-               $(this).parents('div[data-id-size]').addClass(css.sizeActive);
-            else
-                $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
-
-            changeNewTotalPrice( $(this).siblings('input'))
 
             timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function() {
                 requestEdit(id_ietm);
@@ -516,7 +446,7 @@
         $(this).siblings('div').find('input').each( function(){
 
             $(this).removeClass('input-error');
-            validateData($(this) , data , css.input_error);
+            validateData($(this) , data);
         });
 
 
@@ -542,15 +472,14 @@
 
     //сохранение заказа
     $('button[action="save-order"]').click(function () {
-        if( !$(this).parent('div').hasClass(css.disabled_order))
-          requestSendOrder();
+        requestSendOrder();
     });
 
     //удаляем из корзины
     $('div.basket-box').on('click' , 'button[data-action="remove"]' , function () {
+
             requestDeleteItem($(this).parents('div[data-id-item]').data('id-item'));
     });
-
 
 
     //используем бонусы
@@ -562,9 +491,12 @@
     //закрытие popup после удачного оформления заказа
     $('#thanks button.popup-close').click(function(){
 
-        window.location.href = "/cabinet.html";
+        window.location.href = "http://stackoverflow.com";
     });
 
+    requestGetBasket();
 
+    //должен выполняться только, если пользователь авторизован
+    requestGetUserData();
 
 })(jQuery);

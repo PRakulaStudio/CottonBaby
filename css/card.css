@@ -221,6 +221,7 @@
     border-radius: 15px;
     transition: all 1s;
     object-fit: cover;
+    -o-object-fit: cover;
 }
 
 .card-price {
@@ -245,14 +246,6 @@
 
 .card-price span:nth-child(2){
     display: none;
-}
-
-.showPrice .card-price span:nth-child(1){
-    display: none;
-}
-
-.showPrice .card-price span:nth-child(2){
-    display: inline-block;
 }
 
 .card-favorites {
@@ -306,6 +299,10 @@
     height: 50px;
     font-size: 18px;
     line-height: 25px;
+}
+
+.card-text a:hover{
+    text-decoration: none;
 }
 
 .card-text p{
@@ -482,4 +479,4 @@
     .filter a{width: 95%; margin: 5px auto;}
     .filter a:nth-child(3n+2) {margin: 5px auto;}
 }
-/* media end 
+/* media end */

@@ -7,16 +7,16 @@
 		};
 
 	requestCheckAuth('registration');
-	requestGetMenuCategories();
 
 
 	function setUserData(fields)
 	{
 		$.ajax({
-			url: window.pms.config.cabinetAPI+'user/reg',
+			url: '/akula/system/plugins/SecArgonia/cabinet/',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
+				"user": "reg",
 				"data": JSON.stringify(fields)
 			},
 			dataType: 'json',
@@ -26,19 +26,11 @@
 				if( data.status && data.userData != "undefined" )
 				{
 					//переход на личный кабинет
-					localStorage.removeItem('reg');
-					//window.location.href = "";
-					location.reload();
+					//window.location.href = link_redirect;
 				}
 				else
 				{
-					
-					for(var key in data.data.errors)
-					{
-						alert(data.data.errors[key]);
-						break;
-					}
-
+					alert("Не получилось зарегистрироваться");
 				}
 
 			},
@@ -56,9 +48,10 @@
 			// console.log(input);
 			// timerSendRequest = setTimeout( setEditedItem , 1000 );
 
-		    var data = {};
+			 var data = {};
 			
 			$('div.registration-form').find('input').each( function(){
+
 				$(this).removeClass('input-error');
 				validateData($(this) , data , 'input-error');
 			});
@@ -68,23 +61,10 @@
 			{
 				setUserData(data);
 			}
+			
+			
+
+
 	});
-
-
-	//считывание полей с localstorage
-	let userData = "";
-	
-	if( userData = localStorage.getItem('reg') )
-	{
-		userData = JSON.parse( userData );
-		$('div.registration-form')
-							.find('input[name="name"]').val( userData['name'] ).end()
-							.find('input[name="mail"]').val( userData['mail'] ).end();
-
-
-
-
-	}
-
 
 })(jQuery);

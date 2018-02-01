@@ -12,188 +12,188 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/media.css"/>
 </head>
-<body class="showPrice">
+<body>
 
 <div class="scrollup"></div>
 
 <!-- popup start -->
-<div class="popup-fon" id="popup-fon">
-    <div class="popup-table">
-        <div class="popup-cell">
-            <div class="popup-score" id="score">
-				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
-				<p>Оплата по счету</p>
+	<div class="popup-fon" id="popup-fon">
+	    <div class="popup-table">
+	        <div class="popup-cell">
+	            <div class="popup-score" id="score">
+					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					<p>Оплата по счету</p>
 
-				<form>
-					<div>
+					<form>
 						<div>
-							<label>ИНН</label>
-							<input type="number" name="inn">
+							<div>
+								<label>ИНН</label>
+								<input type="number" name="inn">
+							</div>
+
+							<div>
+								<label>Название организации</label>
+								<input type="text" name="name_organization">
+							</div>
+
+							<div>
+								<label>ОГРН</label>
+								<input type="number" name="ogrn">
+							</div>
+
+							<div>
+								<label>Банк</label>
+								<input type="text" name="name_bank">
+							</div>
+
+							<div>
+								<label>БИК</label>
+								<input type="number" name="bik">
+							</div>
+
+							<div>
+								<label>Расчетный счет</label>
+								<input type="number" name="checking account">
+							</div>
+
+							<div>
+								<label>Корреспондентский счет</label>
+								<input type="number" name="correspondent_account">
+							</div>
 						</div>
 
-						<div>
-							<label>Название организации</label>
-							<input type="text" name="name_organization">
-						</div>
-
-						<div>
-							<label>ОГРН</label>
-							<input type="number" name="ogrn">
-						</div>
-
-						<div>
-							<label>Банк</label>
-							<input type="text" name="name_bank">
-						</div>
-
-						<div>
-							<label>БИК</label>
-							<input type="number" name="bik">
-						</div>
-
-						<div>
-							<label>Расчетный счет</label>
-							<input type="number" name="checking account">
-						</div>
-
-						<div>
-							<label>Корреспондентский счет</label>
-							<input type="number" name="correspondent_account">
-						</div>
-					</div>
-
-					<button>сохранить</button>
-				</form>
-			</div>
-
-			<div class="popup-card" id="card">
-				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
-				<p>Адрес доставки</p>
-
-				<form>
-					<div>
-						<div>
-							<label>Город</label>
-							<input type="text" name="city">
-						</div>
-
-						<div>
-							<label>Адрес</label>
-							<input type="text" name="address">
-						</div>
-
-						<div>
-							<label>Индекс</label>
-							<input type="number" name="index_number">
-						</div>
-
-						<p>(дополнительную информацию ожидайте на почту)</p>
-					</div>
-
-					<button>сохранить</button>
-				</form>
-			</div>
-
-			<div class="popup-thanks" id="thanks">
-				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
-				
-				<div>
-					<p>Спасибо за покупку</p>
+						<button>сохранить</button>
+					</form>
 				</div>
 
-				<div>
-					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
+				<div class="popup-card" id="card">
+					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					<p>Адрес доставки</p>
+
+					<form>
+						<div>
+							<div>
+								<label>Город</label>
+								<input type="text" name="city">
+							</div>
+
+							<div>
+								<label>Адрес</label>
+								<input type="text" name="address">
+							</div>
+
+							<div>
+								<label>Индекс</label>
+								<input type="number" name="index_number">
+							</div>
+
+							<p>(дополнительную информацию ожидайте на почту)</p>
+						</div>
+
+						<button>сохранить</button>
+					</form>
 				</div>
 
-				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-			</div>
-        </div>
-    </div>
-</div>
+				<div class="popup-thanks" id="thanks">
+					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					
+					<div>
+						<p>Спасибо за покупку</p>
+					</div>
+
+					<div>
+						<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
+					</div>
+
+					<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+				</div>
+	        </div>
+	    </div>
+	</div>
 <!-- popup end -->
 
 <!-- menu popup start -->
-<div class="menu-popup" id="menu">
-	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
-		<div class="search-menu">
-			<input type="search" placeholder="поиск">
-			<button type="submit"><img src="images/icons/search.png"></button>
-		</div>
-	</div>
-
-	<div class="menu-box">
-		<div class="menu">
-			<div class="section">
-				<p>Компания</p>
-				<ul>
-					<li><a href="index.html">Главная</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="catalog.html">Каталог</a></li>
-					<li><a href="collections.html">Коллекции</a></li>
-					<li><a href="cooperation.html" >Сотрудничество</a></li>
-					<li><a href="production.html">Наше производство</a></li>
-					<li><a href="delivery.html">Доставка и оплата</a></li>
-					<li><a href="contacts.html">Контакты</a></li>
-				</ul>
-			</div>
-
-			<div class="section marker">
-				<p>Каталог</p>
-				<ul>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-				</ul>
-			</div>
-
-			<div class="section marker">
-				<p>Коллекции</p>
-				<ul>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-				</ul>
+	<div class="menu-popup" id="menu">
+		<div class="button-box">
+			<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+			<div class="search-menu">
+				<input type="search" placeholder="поиск">
+				<button type="submit"><img src="images/icons/search.png"></button>
 			</div>
 		</div>
+
+		<div class="menu-box">
+			<div class="menu">
+				<div class="section">
+					<p>Компания</p>
+					<ul>
+						<li><a href="index.html">Главная</a></li>
+						<li><a href="information.html">О нас</a></li>
+						<li><a href="catalog.html">Каталог</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
+						<li><a href="cooperation.html" >Сотрудничество</a></li>
+						<li><a href="production.html">Наше производство</a></li>
+						<li><a href="delivery.html">Доставка и оплата</a></li>
+						<li><a href="contacts.html">Контакты</a></li>
+					</ul>
+				</div>
+
+				<div class="section marker">
+					<p>Каталог</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+
+				<div class="section marker">
+					<p>Коллекции</p>
+					<ul>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+						<li><a href="#">Комбинезон на манжете (6)</a></li>
+						<li><a href="#">Шапки</a></li>
+						<li><a href="#">Штаны</a></li>
+						<li><a href="#">Кофты</a></li>
+						<li><a href="#">Ползунки</a></li>
+						<li><a href="#">Песочник</a></li>
+						<li><a href="#">Нагрудник</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
 <!-- menu popup end -->
 
 <!-- header start -->
@@ -259,9 +259,9 @@
 <!-- content start -->
 	<main class="content-site">
 		<section class="basket">
-			<div class="pagination">
+			<div class="breadcrumbs">
 				<p><a href="index.html">Главная</a> &#8594 Корзина товаров</p>
-				<div class="pagination-liner"></div>
+				<div class="breadcrumbs-liner"></div>
 			</div>
 			
 			<div class="title">

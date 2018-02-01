@@ -9,7 +9,6 @@
 
 
 	requestCheckAuth("cabinet");
-	requestGetMenuCategories();
 
 
 	function getStatus(id) {
@@ -27,18 +26,20 @@
 	}
 
 
+
+
 	//получить историю
 	function getHistory(offset, limit)
 	{
 		var data= {};
+			data['get'] = "ordersList";
 			data['offset'] = offset;
 			data['limit'] = limit;
 
 		$.ajax({
 			data: data,
-			method: "POST",
 			dataType: 'json',
-			url: window.pms.config.cabinetAPI+'get/orderList',
+			url: '/akula/system/plugins/SecArgonia/cabinet',
 			success: function( result, status)
 			{
 				buttonLoadHistory.show();
@@ -60,26 +61,24 @@
 
 						for(var item in orderList[key].products)
 						{
-							let product  = orderList[key].products[item].product;
-							let modifications = orderList[key].products[item].modifications;
-
 							html += "<div class='order-info'>" +
 
 											"<div>" +
 												"<div>" +
-													"<a href='"+product.href+"'>"+product.title+"</a>" +
-													"<a href='"+product.collection[0].href+"'>"+product.collection[0].title+"</a>" +
+													"<a href='"+orderList[key].products[item].link+"'>"+orderList[key].products[item].name+"</a>" +
+													"<a href='"+orderList[key].products[item].collection['link']+"'>"+orderList[key].products[item].collection['name']+"</a>" +
 												"</div>" +
 											"</div>";
 
 
 
+
 										//блоки с размерами товара
-										for(var itemSize in  modifications)
+										for(var itemSize in  orderList[key].products[item].sizes)
 										{
 											html += "<div>" +
-														"<div><p>"+modifications[itemSize].quantity+" шт.</p></div>" +
-														"<div><p>Размер "+modifications[itemSize].title+"</p></div>" +
+														"<div><p>"+orderList[key].products[item].sizes[itemSize].count+" шт.</p></div>" +
+														"<div><p>Размер "+orderList[key].products[item].sizes[itemSize].name+"</p></div>" +
 													"</div>";
 										}
 							html += "</div>";
@@ -109,35 +108,39 @@
 
 					$('div.history-box').append(html);
 
-
-
-
+                    //меняем оффсет у кнопки
 					buttonLoadHistory.attr('data-offset',  parseInt(buttonLoadHistory.attr('data-offset')) + countItems  );
 
-					if( result.data.count <=   parseInt(buttonLoadHistory.attr('data-offset')) )
-						buttonLoadHistory.remove();
-
-					$('div.history').show();
-
 					//меняем статус кол-ва покупок и общей суммы
-
+					
 					$('div.bonus')
 								.find('p')
 									.first().next().html(`Вы совершили ${result.data.count} ${declOfNum( result.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(result.data.total_sum)}\<\/span\>`);
 
+					//Вы совершили 5 покупок, на общую сумму 25 000 руб.
 
+					/*
+						[
+							id,
+							link_redirect,
+						]
 
+						window.location.replace(link_redirect);
+						window.location.href = link_redirect;
+
+					*/
+					//переход
 				}
 				else
 				{
 					if(result.statusText)
 					{
 						buttonLoadHistory.hide();
-						console.log(result.statusText);
+						alert(result.statusText);
+
 					}
 					else {
-						console.log("Не получилосьполучить историю заказов");
-						//alert("Не получилосьполучить историю заказов");
+						alert("Не получилосьполучить историю заказов");
 					}
 				}
 			},
@@ -149,22 +152,20 @@
 	//сохраняем данные на сервер
 	function setUserData(data)
 	{
-
-
 		$.ajax({
-			url: window.pms.config.cabinetAPI+'set/userData',
+			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
 			type: 'POST',
 			encoding: "UTF-8",
 			data:  {
+				"set": "userData",
 				"data": JSON.stringify(data)
 			},
 			dataType: 'json',
-			success: function( result, status)
+			success: function( data, status)
 			{
 
-				if(result.status)
+				if(data.status)
 				{
-					alert("Данные сохранились");
 					//alert("work!!!");
 					/*
 						[
@@ -180,16 +181,7 @@
 				}
 				else
 				{
-					for( let key in result.data.errors )
-					{
-
-						$('div.data-box').find('input[name="'+key+'"]').addClass('input-error');
-						alert(result.data.errors[key]);
-						break;
-
-					}
-
-
+					alert("Не получилось сохранить данные");
 				}
 			}
 
@@ -200,11 +192,15 @@
 	function getUserData(data)
 	{
 
+
 		$.ajax({
 
-			url: window.pms.config.cabinetAPI+'get/userData',
+			url: '/akula/system/plugins/SecArgonia/cabinet/index.php',
 			type: 'GET',
 			encoding: "UTF-8",
+			data:  {
+				"get": "userData"
+			},
 			dataType: 'json',
 			success: function( data, status)
 			{
@@ -222,7 +218,9 @@
 
 						$('div.data-box').find('input[name="'+key+'"]').val( data.userData[key] );
 					}
-		
+					
+
+
 				}
 				else
 				{
@@ -249,13 +247,19 @@
 
 		var button = $(this);
 		if( button.data('action') == "show")
-		     button.data('action' , "hide");
+		{
+            button.data('action' , "hide");
+            button.find('img').last().hide().end().first().show();
+		}
         else
-		   button.data('action' , "show");
+		{
+            button.data('action' , "show");
+			button.find('img').last().show().end().first().hide();
 
-		button.find('img').toggle();
+		}
+			
 		//пееключаем отображение у блока
-		$(this).parents('div[data-item]').find('div.hidden').toggle();
+		$(this).parents('div[data-item]').find('div.hidden .order-info').toggle();
 
     });
 

@@ -1,286 +1,345 @@
-"use strict";
-
 ( function($){
 
-    
-    var slider = $('.slider'), //условная переменная для слайдера
-        ready = [],
-        currentNewSlide = 0,
-        maxNumberOnLoadSlide = 0,
-        numberRest = 6,
-        slickCreate = false,
-        isAuth = false;
 
+    //тут надо подумать
+    var limitItems = 9,
+        totalItems = 75,
+        arrayItems = [],
+        activePaginationButton = "pagination-activ",
+        hideButton = "ban-pagination",
+        countPages = 0;
 
-    //заполняем header если пользователь залогинен(НЕОБХОДИМО ПРАВИТЬ)
-    function changeDataheader(data)
-    {
-        let header = $('.header-user');
-        $(header).find('span.basket').text(data.basket).end()
-                 .find('span.favorites').text(data.favorites).end()
-                 .find('a').text("Здравствуйте, "+data.name);
-    }
-
-    function checkChangeFavorite(identificator)
-    {
-        ready[identificator] = true;
-
-        if(ready['addSlider'] && ready['isAuth'])
-            changeFavoriteInSlider();
-
-    }
-
-    //функция, дающая  доступ на проверку фаворитность товаров у слайдера при выполнении определенных условий
-    function canAdd(indetificator)
-    {
-        if(ready[indetificator] == "undefined")
-            ready[indetificator] = true;
-
-        if(ready['isAuth'] && ready['isAdd'])
-            changeFavoriteInSlider();
-
-    }
-
-
-    function changeFavoriteInSlider()
+    function requestGetItems(offset , limit, sort)
     {
         var data = {};
-            data['get'] = "changeFavorite";
-          //  data['id_products'] =     массив id товаров из слайдера
-        $.ajax({
-            url : "/cabinet",
-            dataType : 'json',
-            data : data,
-            success : function( data, status){
+            data['get'] = "products";
+            data['offset'] = limit;
+            data['limit'] = offset;
+            data['sort'] = sort;
 
+        $.ajax({
+            url : "/catalog",
+            dataType : 'json',
+            data : JSON.stringify(data),
+            success : function( data, status){
                 if( data.status )
                 {
-                    if( data.changeFavorites )
-                    {
 
+                    if( data.products != "undefined" )
+                    {
+                        createBlockItems(products);
                     }
+
                 }
                 else
                 {
-                    alert('Не получилось получить список id аворитных товаров');
+                    alert("Не получилось получить объекты для вывода в каталоге");
+                }
+            },
+        });
+
+    }
+
+    //блок с пагинацией
+
+    function createPagination()
+    {
+        countPages =  Math.ceil( totalItems / limitItems );
+
+        let hideLocalButton = "";
+        console.log( countPages );
+        if( countPages <= 4 )
+        {
+            hideLocalButton = hideButton;
+        }
+        var activeLocal = activePaginationButton;
+        var html = "<button class='pagination-arrow prev "+hideButton+"'>◄</button>" +
+            "<div data-block-pages >";
+
+        for( let i = 0; i < countPages; i++ )
+        {
+            if( i == 4 )
+                break;
+
+            html += "<button class='"+activeLocal+"'>"+(i+1)+"</button>";
+            activeLocal = "";
+
+        }
+        html += "</div>" +
+            "<button class='pagination-arrow next "+hideLocalButton+"'>►</button>";
+
+        $('div.katalog-pagination').html(html);
+
+
+    }
+
+    function changePagination(direction , activeButton , clickButton )
+    {
+        var offset = 0,
+            limit = 0,
+            sort = "",
+            prevButtonActiveNumber = $(activeButton).text();
+
+
+        switch (direction)
+        {
+            case "next" :
+
+                if( (clickButton.text()   <= 2) || (countPages - 1) <= clickButton.text() )
+                {
+
+                    if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() != countPages  )
+                    {
+
+                        clickButton = clickButton.prev();
+                        clickButton.text(  parseInt( $(clickButton).text() ) + 1  );
+
+                        clickButton.siblings('button').each( function () {
+                            $(this).text(  parseInt($(this).text()) + 1 );
+                        });
+
+                    }
+
+
+                    activeButton.removeClass(activePaginationButton);
+                    clickButton.addClass(activePaginationButton);
+
+                    if( clickButton.text() == countPages )
+                        clickButton.parent('div').next().addClass( hideButton );
+
+
+                }
+                else
+                {
+                    var raznicha = clickButton.index() - activeButton.index()    ;
+
+                    if( raznicha != 1 )
+                    {
+                       activeButton.removeClass(activePaginationButton);
+
+                       setButton =  $('div.katalog-pagination div[data-block-pages]').find('button').eq(1).addClass(activePaginationButton);
+                       setButton.text( $(clickButton).text() );
+
+                        setButton.siblings('button').each( function () {
+                            if( $(this).index() < setButton.index())
+                                $(this).text(  parseInt($(setButton).text()) - 1  );
+                            else
+                                $(this).text(  parseInt($(setButton).text())  +  $(this).index() - setButton.index()  );
+                       });
+
+                    }
+                    else
+                    {
+
+                        clickButton.text(  parseInt( $(clickButton).text() ) + 1  );
+
+
+                        clickButton.siblings('button').each( function () {
+                            $(this).text(  parseInt($(this).text()) + 1   );
+                        });
+                    }
+
+                    //if( parseInt(clickButton.text()) - parseInt(activeButton.text()) >= 2 )
+
+
+
                 }
 
-            },
-        })
+                var newActiveButton = $('div.katalog-pagination').find('button.pagination-activ');
+                //показываем левую кнопку
+                if( countPages > 4 )
+                {
+                    //показываем левую
+                    if(newActiveButton.text() > 1  )
+                       $('div.katalog-pagination').find('button.prev').removeClass(hideButton);
 
-    }
+                    //скрываем правую
+                    if( newActiveButton.text() == countPages )
+                       $('div.katalog-pagination').find('button.next').addClass(hideButton);
+                    
+                }
+
+                break;
+
+            case "prev" :
+
+                if( ( clickButton.text()  < 2 ) || (countPages - 2) <= clickButton.text() )
+                {
+                    activeButton.removeClass(activePaginationButton);
+                    clickButton.addClass(activePaginationButton);
+
+                    if( clickButton.text() == 1)
+                    {
+                        clickButton.parent('div').prev().addClass( 'hide-button' );
+                    }
+
+                }
+                else
+                {
+                    var raznicha = activeButton.index() -  clickButton.index();
+
+                    if( raznicha != 1 )
+                    {
+                        activeButton.removeClass(activePaginationButton);
+
+                        setButton =  $('div.katalog-pagination div[data-block-pages]').find('button').eq(1).addClass(activePaginationButton);
+                        setButton.text( $(clickButton).text() );
+
+                        setButton.siblings('button').each( function () {
+                            if( $(this).index() < setButton.index())
+                                $(this).text(  parseInt($(setButton).text()) - 1  );
+                            else
+                                $(this).text(  parseInt($(setButton).text())  +  $(this).index() - setButton.index()  );
+                        });
+
+                    }
+                    else
+                    {
+                        clickButton.text(  parseInt(clickButton.text()) - 1 );
+
+                        clickButton.siblings('button').each( function () {
+                            $(this).text(  parseInt($(this).text()) - 1 );
+                        });
+                    }
+                }
 
 
-    function addItemsInSlider(sliders, list_favorites , container)
-    {
-        for( let key in sliders )
-        {
-           // $(container).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
+                if( countPages > 4 )
+                {
+                    //скрываем левую кнопку
+                    var newActiveButton = $('div.katalog-pagination').find('button.pagination-activ');
+                    if(newActiveButton.text() == 1 )
+                    {
+                        console.log("aaa");
+                        $('div.katalog-pagination').find('button.prev').addClass(hideButton);
+                    }
+                    //показываем правую
+                    if( newActiveButton.text() < countPages )
+                    {
+                        $('div.katalog-pagination').find('button.next').removeClass(hideButton);
+                    }
+                }
+
+                break;
         }
 
-    }
-
-    function toObject( list )
-    {
-        let object = {};
-        for( let key in list)
-           object[key] = list[key];
-        
-        return object;
-    }
-
-    function getSliderItems(offset , limit)
-    {
-        let data = {};
-            data['get'] = "sliderItems",
-            data['offset'] = offset,
-            data['limit'] = limit;
-        
-        $.ajax({
-            url : "/cabinet",
-            dataType : 'json',
-            data : data,
-            success : function( data, status){
-              if( data.status )
-              {
-
-                  if( data.sliderItems != "undefined" )
-                  {
-                      //добавление в слайдер и уже после идет его инициализация
-                      addItemsInSlider( data.sliderItems , favorites , slider);
-
-                      if(!slickCreate)
-                         createSlick(slider);
-
-                      //функция callback
-                      checkChangeFavorite('addSlider');
-
-                  }
-
-              }
-              else
-              {
-                   alert("Не получилось получить объекты для слайдера");
-              }
-            },
-        });
-
-    }
-
-    //функция, создающая слайдер
-    function createSlick() 
-    {
-
-        slider.slick({
-            //infinite : true,
-            slideToShow: 3,
-            slidToScroll: 3,
-            arrows : false,
-        });
-
-        //событие на подгрузку новых элементов в слайдер
-        $(slider).on("afterChange", function(event, slick, currentSlide){
-            checkOnLoadSlider(slick , currentSlide);
-        });
-        
-        
-    };
-
-
-    //проверка на добавление новых элементов в слайдер
-    function checkOnLoadSlider(slick , currentSlide)
-    {
-        
-        if(currentSlide > currentNewSlide  && currentNewSlide != currentSlide )
+        //проверяем есть ли в массиве эти данные
+        if( arrayItems[clickButton.text()] != "undefined" )
         {
 
-            if( currentSlide % numberRest == 0 && currentSlide > maxNumberOnLoadSlide)
-            {
-                maxNumberOnLoadSlide = currentSlide;
-                //тут будем добавлять элементы
-                getSliderItems(slick.slideCount  , 12 );
-            }
+            if( arrayItems[prevButtonActiveNumber] == "undefined")
+                arrayItems[prevButtonActiveNumber] = $('div.container-items').children();
+            //надо переделать
+            $('div.container-items').html( arrayItems[clickButton.text()] );
         }
         else
-          console.log("Нажал")
+        {
+            if( arrayItems[prevButtonActiveNumber] == "undefined")
+                arrayItems[prevButtonActiveNumber] = $('div.container-items').children();
+
+            sort = "DESC"; //нужно проверить
+            requestGetItems( offset * limit - limit + 1 , limit, sort);
+        }
 
     }
 
-        
-    //запрос на добавление новых элементов
-    function onLoadSlider()
+
+    $("div.katalog-pagination").on('click' , "div[data-block-pages] button" , function(){
+        if( !$(this).hasClass(activePaginationButton) )
+        {
+            let activeButton = $(this).siblings('button.'+activePaginationButton);
+
+            if( $(this).text() >  activeButton.text() )
+                changePagination("next" , activeButton , $(this));
+            else
+                changePagination("prev" , activeButton , $(this));
+
+        }
+
+    });
+
+
+    $("div.katalog-pagination").on( 'click' , 'button.prev' , function(){
+        let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
+        changePagination("prev" , clickButton , clickButton.prev());
+    });
+
+
+    $('div.katalog-pagination').on('click' , "button.next" , function(){
+        let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
+        changePagination("next" , clickButton, clickButton.next());
+    });
+
+    //конец блока с пагинацией
+
+    function createBlockItems(items)
     {
+        var html = "";
 
+        for( var key in items)
+        {
+            html += "<div>" +
+                        "<div><img src='"+items[key].srcImage+"' /></div>" + //картинка
+                        "<div><p>"+items[key].sum+"</p></div>" + //цена
+                        "<div><button></button></div>" +// избранное
+                        "<div>" +
+                            "<a href='"+items[key].link+"'>"+itemds[key].name+"</a>" +
+                            "<p>"+itemds[key].description+"</p>" +
+                        "</div>" +
+                        "<button>Подробно</button>" +
+                        "<a href='"+items[key].link+"'>" +
+                             "<img src='/images/icons/request.png' />Сделать запрос" +
+                        "</a>" +
+                    "</div>";
+        }
+
+        //надо переделать
+        $('div.container-items').html( html );
 
     }
 
-
-
-    //получение модификаторов
-    function getItemModificators()
-    {
-        $.ajax({
-            url : "/cabinet",
-            dataType : 'json',
-            data : {'get' : "itemModificators"  },
-            success : function( data , status){
-                if( data.status)
-                {
-
-                    if( data.itemModificators )
-                    {
-                        let countModificators = 0;
-
-                        for( let key in data.itemModificators )
-                           countModificators += sendModificator( key , data.itemModificators[key] );
-
-                        //меняем текст кнопки
-                        if(countModificators)
-                        {
-
-                        }
-
-                    }
-
-                }
-                else
-                {
-                    alert("Не получилось получить модификаторы товара");
-                }
-            },
-
-        });
-    }
-
-
-    function checkFavoriteItems(items_id)
+    function requestGetItems(offset , limit)
     {
         var data = {};
-            data['get'] = "checkFavorite";
-            data['items_id'] = JSON.stringify( toObject(items_id) ); //нужно затестить
+        data['get'] = "getItems";
+        data['offset'] = offset;
+        data['limit'] = limit;
+
 
         $.ajax({
-           url: "/cabinet",
-           dataType : "json",
-           data : data,
-           success : function( data, status){
-               if( data.status )
-               {
-                 //меняем иконку "Избранное"
-               }
-               else
-                 alert("Не получилось проверить: находиться ли товар в 'Избранном'");
-               
-
-           },
-
-        });
-    }
-
-    //проверка авторизации
-    function checkAuth()
-    {
-        $.ajax({
-            url: "/cabinet",
-            dataType : 'json',
-            data : {'get' : 'auth'},
-            success : function( data, status )
+            data: JSON.stringify(data),
+            dataType: 'json',
+            url: '/system/plugins/cabinet',
+            success: function( data, status)
             {
-                //проверяем, что пришел положительный отклик от сервера
-                if(data.status)
+                if( data.status && data.getItemds != "undefined" )
                 {
-                    //2.2
-                    if(data.auth)
-                    {
-                        //запрос на  проверку фаворитного товара
-                        let products = [ product_id ];
-                        checkFavoriteItems( products );
-                        //изменение заголовка
-                        changeDataHeader(data);
-                        isAuth = true;
-                        //функция callback
-                        checkChangeFavorite('isAuth');
-                    }
 
-                    getItemModificators();
+                    createBlockItemds(data.getItems);
 
+                    /*
+                        [
+                            id,
+                            link_redirect,
+                        ]
+
+                        window.location.replace(link_redirect);
+                        window.location.href = link_redirect;
+
+                    */
+                    //переход
                 }
                 else
                 {
-                    alert("Не получилось проверить авторизацию пользователя");
+                    alert("Не получилось получить товары ")
                 }
-
-
             },
+
         });
+
 
     }
 
-
-    //2.0
-    checkAuth();
-    getSliderItems(0,12);
-
-
+    createPagination();
 
 })(jQuery);
