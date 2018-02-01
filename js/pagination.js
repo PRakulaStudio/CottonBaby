@@ -307,23 +307,23 @@ function changePagination(direction , activeButton , clickButton )
         if( !arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').children;
         //надо переделать
-        document.querySelector('div.products-box,div.collections-box').innerHTML = arrayItems[activeButton.inner]
-        $('div.products-box,div.collections-box').html( arrayItems[activeButton.text()] );
+        document.querySelector('div.products-box,div.collections-box').innerHTML = arrayItems[activeButton.innerText];
+
     }
     else
     {
 
         if(!arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = $('div.products-box,div.collections-box').children();
+            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').children;
 
         sort = "create_date"; //нужно проверить
-        if( $('div.sorting').length)
+        if( document.querySelector('div.sorting'))
         {
-           if( $('div.sorting').find('button.sorting-activ').text() == "по цене" )
+           if(  document.querySelector('div.sorting button.sorting-activ').innerText == "по цене" )
                sort = 'price';
         }
 
-        offset =( ( parseInt( activeButton.text() ) - 1) * limitItems );
+        offset =( ( parseInt( activeButton.innerText ) - 1) * limitItems );
 
        requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {
@@ -334,8 +334,8 @@ function changePagination(direction , activeButton , clickButton )
                 }
             });
     }
-    console.log( document.querySelector('div.products-box, div.collections-box').offsetTop  );
-     window.scrollTo( document.querySelector('div.products-box, div.collections-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
+
+    window.scrollTo( document.querySelector('div.products-box, div.collections-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
 }
 
 
@@ -434,11 +434,24 @@ function createItems(items , is_show_favorite)
                  "</div>";
     }
     //надо переделать
-    $('div.products-box,div.collections-box').html( html );
+    document.querySelector('div.products-box,div.collections-box').innerHTML = html;
 
     return  listIdItems;
 
 }
+
+document.addEventListener('click' , function () {
+
+    if(event.target.tagName == "BUTTON" && event.target.closest('div[data-block-pages]') && event.target.closest('div.products-pagination'))
+    {
+        if( !event.target.classList.contains(activePaginationButton))
+        {
+            let activeButton = $(this).siblings('button.'+activePaginationButton);
+        }
+
+    }
+
+});
 
 $(document).ready( function(){
 
