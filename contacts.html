@@ -309,8 +309,30 @@
 		</div>
 	</div>
 <!-- footer end -->
+<script>
+	//	google.maps.event.addDomListener(window, 'load', function(){
+	function initMap() {
+
+		var myLatlng = new google.maps.LatLng( 56.822222 , 60.615877);
+
+		var myOptions = {
+			zoom: 16,
+			center: myLatlng,
+			disableDefaultUI: true
+		};
+
+		var map = new google.maps.Map(document.getElementById("map"), myOptions);
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			title:"Hello World!"
+		});
+
+		// To add the marker to the map, call setMap();
+		marker.setMap(map);
+	};
+</script>
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 <script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
 <script type="text/javascript" src="/js/simplebar.js" ></script>
 <script type="text/javascript" src="js/script.js"></script>
