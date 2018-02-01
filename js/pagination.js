@@ -23,11 +23,9 @@ function createPagination( total ,  pageName)
 
     if(countPages == 1)
     {
-        $('div.products-pagination').html("");
+        document.querySelector('div.products-pagination').innerHTML = "";
         return true;
     }
-
-
 
 
     let url_string = window.location.href;
@@ -98,55 +96,71 @@ function createPagination( total ,  pageName)
         "<button class='pagination-arrow next "+hideLocalButton+"'>►</button>";
     hideLocalButton = "";
 
-    $('div.products-pagination').html(html);
+    document.querySelector('div.products-pagination').innerHTML = html;
 
     return true;
 }
+
+function indexInParent(node) {
+    var children = node.parentNode.childNodes;
+    var num = 0;
+    for (var i=0; i<children.length; i++) {
+        if (children[i]==node) return num;
+        if (children[i].nodeType==1) num++;
+    }
+    return -1;
+}
+
 
 function changePagination(direction , activeButton , clickButton )
 {
     var offset = 0,
         limit = 0,
         sort = "",
-        prevButtonActiveNumber = $(activeButton).text();
+        prevButtonActiveNumber = activeButton.innerText;
+
 
     switch (direction)
     {
         case "next" :
 
-            if( (clickButton.text()   <= 2) || (countPages - 1) <= clickButton.text() )
+            if( (clickButton.innerText   <= 2) || (countPages - 1) <= clickButton.innerText )
             {
 
-                if(  (clickButton.index() - activeButton.index() != 1) && clickButton.text() < ( countPages - 1 )  )
+                if(  ( indexInParent(clickButton) - indexInParent(activeButton) != 1) && clickButton.innerText < ( countPages - 1 )  )
                 {
 
-                    clickButton = clickButton.prev();
-                    clickButton.text(  parseInt( $(clickButton).text() ) + 1  );
+                    clickButton = clickButton.previousElementSibling;
+                    clickButton.innerText =   parseInt( clickButton.innerText ) + 1  ;
 
-                    clickButton.siblings('button').each( function () {
-                        $(this).text(  parseInt($(this).text()) + 1 );
+                    let listButtons = Array.prototype.filter.call(clickButton.parentNode.children, function(child){
+                        return child !== clickButton;
+                    });
+
+                    listButtons.each( function (current) {
+                        current.innerText = parseInt(current.innerText) + 1;
                     });
 
                 }
 
+                activeButton.classList.remove(activePaginationButton);
+                clickButton.classList.add(activePaginationButton);
 
-                activeButton.removeClass(activePaginationButton);
-                clickButton.addClass(activePaginationButton);
-
-                if( clickButton.text() == countPages )
-                    clickButton.parent('div').next().addClass( hideButton );
+                if( clickButton.innerText == countPages )
+                    clickButton.parentNode.nextElementSibling.classList.add( hideButton );
 
 
             }
             else
             {
-                var raznicha = clickButton.index() - activeButton.index()    ;
+                var raznicha = indexInParent(clickButton) - indexInParent(activeButton);
 
                 if( raznicha != 1 )
                 {
-                    activeButton.removeClass(activePaginationButton);
+                    activeButton.classList.remove(activePaginationButton);
 
-                    setButton =  $('div.products-pagination div[data-block-pages]').find('button').eq(1).addClass(activePaginationButton);
+                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages]') $('div.products-pagination div[data-block-pages]').find('button').eq(1).addClass(activePaginationButton);
+
                     setButton.text( $(clickButton).text() );
 
                     setButton.siblings('button').each( function () {
@@ -255,7 +269,8 @@ function changePagination(direction , activeButton , clickButton )
   //проверяем есть ли в массиве эти данные
 
 
-    activeButton =  $('div.products-pagination').find('button.pagination-activ');
+    activeButton = document.querySelector('div.products-pagination button.pagination-activ');
+
     let url_string = window.location.href;
     let url = new URL(url_string);
     let select_sort = url.searchParams.get("sort");
@@ -267,10 +282,10 @@ function changePagination(direction , activeButton , clickButton )
     else
         path += '?sort='+select_sort;
 
-    if( activeButton.text() == 1)
+    if( activeButton.innerText == 1)
         path += "";
     else
-        path =  select_sort == null ? '?page='+activeButton.text() : path +'&page='+ activeButton.text();
+        path =  select_sort == null ? '?page='+activeButton.innerText : path +'&page='+ activeButton.innerText;
 
     history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
 
