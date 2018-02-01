@@ -447,7 +447,7 @@ function requestSendBugs(error) {
         }
     });
 
-    xhr.open("POST", "http://akula.cottonbaby.nichost.ru/system/extensions/errorCatcher/");
+    xhr.open("POST", location.host+"system/extensions/errorCatcher/");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
