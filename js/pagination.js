@@ -433,9 +433,8 @@ function createItems(items , is_show_favorite)
                         "</a>" +
                  "</div>";
     }
-    //надо переделать
-    document.querySelector('div.products-box,div.collections-box').innerHTML = html;
 
+    document.querySelector('div.products-box,div.collections-box').innerHTML = html;
     return  listIdItems;
 
 }
@@ -446,28 +445,48 @@ document.addEventListener('click' , function () {
     {
         if( !event.target.classList.contains(activePaginationButton))
         {
-            let activeButton = $(this).siblings('button.'+activePaginationButton);
-        }
+            let activeButton = event.target.parentNode.querySelector('button.'+activePaginationButton);
+            if( event.target.innerText > activeButton.innerText )
+                changePagination("next" , activeButton, event.target);
+            else
+                changePagination("prev" , activeButton, event.target);
 
+        }
+        return;
     }
+
+    if(event.target.tagName == "BUTTON" && event.target.classList.contains('prev') && event.target.closest('div.products-pagination'))
+    {
+        let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
+        changePagination("prev" , clickButton , clickButton.previousElementSibling);
+    }
+
+    if( event.target.tagName == "BUTTON" && event.target.classList.contains('next') && event.target.closest('div.products-pagination'))
+    {
+        let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
+        changePagination("next" , clickButton, clickButton.nextElementSibling);
+    }
+
+
+
 
 });
 
 $(document).ready( function(){
 
-    $("div.products-pagination").on('click' , "div[data-block-pages] button" , function(){
-
-        if( !$(this).hasClass(activePaginationButton) )
-        {
-            let activeButton = $(this).siblings('button.'+activePaginationButton);
-
-            if( $(this).text() >  activeButton.text() )
-                changePagination("next" , activeButton , $(this));
-            else
-                changePagination("prev" , activeButton , $(this));
-        }
-
-    });
+    // $("div.products-pagination").on('click' , "div[data-block-pages] button" , function(){
+    //
+    //     if( !$(this).hasClass(activePaginationButton) )
+    //     {
+    //         let activeButton = $(this).siblings('button.'+activePaginationButton);
+    //
+    //         if( $(this).text() >  activeButton.text() )
+    //             changePagination("next" , activeButton , $(this));
+    //         else
+    //             changePagination("prev" , activeButton , $(this));
+    //     }
+    //
+    // });
 
     $("div.products-pagination").on( 'click' , 'button.prev' , function(){
         let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
