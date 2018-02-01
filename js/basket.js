@@ -28,26 +28,27 @@ try {
             'sizeActive': 'basket-size-on',
         };
 
-
-        function checkButtonOrder() {
-            //Итого
-            try{
-                if ($('.payment-box').find('button').hasClass('payment-activ')) {
-                    if (parseInt(total_price) >= parseInt(min_price_order))
-                        $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
-                    else
-                        $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
-                }
-            }
-            catch(error)
-            {
-                requestSendBugs(error); 
-            }
-           
-
-
-
-        }
+        //
+        // function checkButtonOrder() 
+        // {
+        //     //Итого
+        //     try{
+        //         if ($('.payment-box').find('button').hasClass('payment-activ')) {
+        //             if (parseInt(total_price) >= parseInt(min_price_order))
+        //                 $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
+        //             else
+        //                 $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
+        //         }
+        //     }
+        //     catch(error)
+        //     {
+        //         requestSendBugs(error); 
+        //     }
+        //   
+        //
+        //
+        //
+        // }
 
         function requestGetUserData() {
             var data = {};
@@ -185,11 +186,12 @@ try {
                                     $('div.payment-box').find('button[data-payment-method="' + result.data.cart.payment_method + '"]').addClass(css.is_check);
 
                                 //кнопка с бонусами
-                                if (parseInt(result.data.cart.bonus) > 0 && parseInt(result.data.cart.min_price_order) <= parseInt(result.data.cart.total_price))
+                                if (parseInt(result.data.cart.bonus) > 0 )
                                     list_div.eq(1).show();
+                                else
+                                    list_div.eq(1).hide();
 
                                 list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
-
 
                                 //кнопка оформление заказа
                                 if (parseInt(result.data.cart.minPriceOrder) < parseInt(result.data.cart.total_price))
@@ -201,7 +203,7 @@ try {
                                 min_price_order = result.data.cart.min_price_order;
                                 total_price = result.data.cart.total_price;
 
-                                $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(total_price)).end()
+                                $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(result.data.cart.cost)).end()
                                     .eq(1).text("Минимальный заказ " + formatMoney(min_price_order));
 
                                 $('div.basket-container').show();
@@ -253,10 +255,12 @@ try {
 
                                 //Итого
                                 $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
-                                $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет " + formatMoney(result.data.total_price));
+                                //бонусы
+                                $('div.basket-total').find('div').eq(0).find('span').text(formatMoney(result.data.bonus));
+                                $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет " + formatMoney(result.data.cost));
                                 total_price = result.data.total_price;
 
-                                checkButtonOrder();
+                                //checkButtonOrder();
                             }
                         }
                         catch (error)
@@ -297,7 +301,7 @@ try {
 
                             $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
                             total_price = result.data.total_price;
-                            checkButtonOrder();
+                           // checkButtonOrder();
                             $('[class*="header-user"]').find('div[data-basket] span').text(parseInt($('[class*="header-user"]').find('div[data-basket] span').text()) - 1);
 
                             if (!$('div.basket-box').children().length) {
@@ -336,6 +340,10 @@ try {
                             useBonus = parseInt(result.data.used_bonus);
 
                         }
+                        else
+                        {
+                            alert(result.statusText);
+                        }
                     }
                     catch (erorr)
                     {
@@ -354,7 +362,7 @@ try {
         function requestCheck(button, payment_address) {
             var data = {};
             $('div.payment-box').find('button').removeClass(css.is_check);
-            $('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
+          //  $('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
 
             data['payment_method'] = button.data('payment-method');
             data['payment_address'] = payment_address;
@@ -374,7 +382,7 @@ try {
                                 requestCheck(button, true);
                             else {
                                 button.addClass(css.is_check);
-                                checkButtonOrder();
+                             //   checkButtonOrder();
                             }
 
                         }
@@ -416,10 +424,19 @@ try {
                 url: window.pms.config.cabinetAPI + 'order/save',
                 success: function (result, status) {
                     try{
-                        $('#popup-fon').show();
+
                         if (result.status) {
                             $('div.basket-order').find('button[action="save-order"]').remove();
+
                             PopUpShowThanks();
+                        }
+                        else {
+                            for(var key in result.data.errors)
+                            {
+                                alert(result.data.errors[key]);
+                                break
+
+                            }
                         }
                     }
                     catch(error)
@@ -438,6 +455,8 @@ try {
         }
 
         function setUserData(button, fields) {
+           
+           
             $.ajax({
                 url: window.pms.config.cabinetAPI + 'set/userData',
                 type: 'POST',
@@ -508,9 +527,9 @@ try {
             total_price = totalPrice - useBonus;
 
             $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(total_price));
-            $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(total_price))
+            //$('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(total_price))
 
-            checkButtonOrder();
+           // checkButtonOrder();
 
         }
 
@@ -549,7 +568,7 @@ try {
             {
                 var id_ietm = $(this).parents('div.basket-product').data('id-item');
                 //на время запроса блочим кнопку отправки заказа
-                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
+             //   $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
 
                 clearTimeout(timeOuts[id_ietm]);
 
@@ -587,12 +606,12 @@ try {
 
                 $(this).siblings('div').find('input').each(function () {
 
-                    $(this).removeClass('input-error');
+                    $(this).removeClass(css.input_error);
                     validateData($(this), data, css.input_error);
                 });
 
-
-                if (!$(this).siblings('div').find('input').hasClass('input-error')) {
+                    
+                if (!$(this).siblings('div').find('input').hasClass(css.input_error)) {
                     setUserData($(this), data);
                 }
             }
