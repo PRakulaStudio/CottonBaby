@@ -31,12 +31,20 @@ try {
 
         function checkButtonOrder() {
             //Итого
-            if ($('.payment-box').find('button').hasClass('payment-activ')) {
-                if (parseInt(total_price) >= parseInt(min_price_order))
-                    $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
-                else
-                    $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
+            try{
+                if ($('.payment-box').find('button').hasClass('payment-activ')) {
+                    if (parseInt(total_price) >= parseInt(min_price_order))
+                        $('.basket-order').find('button[action="save-order"]').parent('div').removeClass(css.disabled_order).addClass(css.enable_order);
+                    else
+                        $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order).removeClass(css.enable_order);
+                }
             }
+            catch(error)
+            {
+                requestSendBugs(error); 
+            }
+           
+
 
 
         }
@@ -49,22 +57,35 @@ try {
                 data: data,
                 url: window.pms.config.cabinetAPI + 'get/userData',
                 success: function (result, status) {
-                    if (result.status) {
-                        let text_full_address = 'Текущий адрес доставки: ' + result.userData.index_number + ' ' + result.userData.delivery_city + ' ' + result.userData.address;
 
-                        if (result.userData.index_number == "" && result.userData.city == "" && result.userData.address == "")
-                            text_full_address = "Не указан адрес доставки";
+                    try{
+                        if (result.status) {
+                            let text_full_address = 'Текущий адрес доставки: ' + result.userData.index_number + ' ' + result.userData.delivery_city + ' ' + result.userData.address;
 
-                        $('div.address-box').find('p').text(text_full_address);
+                            if (result.userData.index_number == "" && result.userData.city == "" && result.userData.address == "")
+                                text_full_address = "Не указан адрес доставки";
 
-                        var popup = $('#popup-fon').find('.popup-cell');
+                            $('div.address-box').find('p').text(text_full_address);
 
-                        for (var key in result.userData) {
-                            popup.find('input[name="' + key + '"]').val(result.userData[key]);
+                            var popup = $('#popup-fon').find('.popup-cell');
+
+                            for (var key in result.userData) {
+                                popup.find('input[name="' + key + '"]').val(result.userData[key]);
+                            }
+
                         }
-
                     }
+                    catch (error)
+                    {
+                        requestSendBugs(error);
+                    }
+
+
+
                 },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
+                }
             });
 
         }
@@ -79,127 +100,132 @@ try {
                 data: data,
                 url: window.pms.config.cabinetAPI + 'order/cart',
                 success: function (result, status) {
-                    if (result.status) {
-                        let products = result.data.cart.products;
-                        if (products) {
-                            var html = "";
-                            for (let key in products) {
+                    try {
+                        if (result.status) {
+                            let products = result.data.cart.products;
+                            if (products) {
+                                var html = "";
+                                for (let key in products) {
 
-                                let product = products[key].product,
-                                    modifications = products[key].modifications;
-                                html += "<div class='basket-product' data-id-item='" + product.id + "'>" +
-                                    "<div>" +
-                                    "<div>" +
-                                    "<div>" +
-                                    "<div>" +
-                                    "<img src='" + product.images[0]['50x50'] + "' >" +
-                                    "<div>" +
-                                    "<p>#" + products[key].order_id + "</p>" +
-                                    "<p><a href='" + product.href + "' >" + product.title + "</a></p>";
-
-                                if (product.collection[0].title) {
-                                    html += "<p>Коллекция: <a href='" + product.collection[0].href + "' >" + product.collection[0].title + "</a></p>";
-                                }
-
-
-                                html += "</div>" +
-                                    "</div>" +
-
-                                    "</div>" +
-                                    "<div>" +
-                                    "<div>" +
-                                    "<p>Цена за шт.</p>" +
-                                    "<span>" + formatMoney(product.price) + "</span>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "<div>" +
-                                    "<div>";
-                                let classSizeOn;
-                                for (let size_id in modifications) {
-                                    classSizeOn = "";
-                                    if (+modifications[size_id].quantity > 0)
-                                        classSizeOn = 'basket-size-on';
-
-                                    html += "<div data-id-size='" + modifications[size_id].id + "' class='" + classSizeOn + "'>" +
-                                        "<p>" + modifications[size_id].title + "</p>" +
+                                    let product = products[key].product,
+                                        modifications = products[key].modifications;
+                                    html += "<div class='basket-product' data-id-item='" + product.id + "'>" +
                                         "<div>" +
-                                        "<button data-action-size='reduce'>-</button>" +
-                                        "<input type='number' placeholder='0' class='shest' value='" + modifications[size_id].quantity + "' />" +
-                                        "<button data-action-size='increase'>+</button>" +
+                                        "<div>" +
+                                        "<div>" +
+                                        "<div>" +
+                                        "<img src='" + product.images[0]['50x50'] + "' >" +
+                                        "<div>" +
+                                        "<p>#" + products[key].order_id + "</p>" +
+                                        "<p><a href='" + product.href + "' >" + product.title + "</a></p>";
+
+                                    if (product.collection[0].title) {
+                                        html += "<p>Коллекция: <a href='" + product.collection[0].href + "' >" + product.collection[0].title + "</a></p>";
+                                    }
+
+
+                                    html += "</div>" +
                                         "</div>" +
+
+                                        "</div>" +
+                                        "<div>" +
+                                        "<div>" +
+                                        "<p>Цена за шт.</p>" +
+                                        "<span>" + formatMoney(product.price) + "</span>" +
+                                        "</div>" +
+                                        "</div>" +
+                                        "</div>" +
+                                        "<div>" +
+                                        "<div>";
+                                    let classSizeOn;
+                                    for (let size_id in modifications) {
+                                        classSizeOn = "";
+                                        if (+modifications[size_id].quantity > 0)
+                                            classSizeOn = 'basket-size-on';
+
+                                        html += "<div data-id-size='" + modifications[size_id].id + "' class='" + classSizeOn + "'>" +
+                                            "<p>" + modifications[size_id].title + "</p>" +
+                                            "<div>" +
+                                            "<button data-action-size='reduce'>-</button>" +
+                                            "<input type='number' placeholder='0' class='shest' value='" + modifications[size_id].quantity + "' />" +
+                                            "<button data-action-size='increase'>+</button>" +
+                                            "</div>" +
+                                            "</div>";
+                                    }
+
+                                    html += "</div>" +
+                                        "<div>" +
+                                        "<div>" +
+                                        "<p>Сумма</p>" +
+                                        "<span>" + formatMoney(products[key].total_price) + "</span>" +
+                                        "</div>" +
+                                        "</div>" +
+                                        "</div>" +
+                                        "</div>" +
+
+
+                                        "<div>" +
+                                        "<button data-action='remove'>x</button>" +
+                                        "</div>" +
+
                                         "</div>";
+
                                 }
 
-                                html += "</div>" +
-                                    "<div>" +
-                                    "<div>" +
-                                    "<p>Сумма</p>" +
-                                    "<span>" + formatMoney(products[key].total_price) + "</span>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>" +
+                                $('div.basket-box').html(html);
+
+                                //бонусы
+                                let list_div = $('div.basket-total').find('div');
+                                list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
+
+                                if (result.data.cart.used_bonus)
+                                    useBonus = parseInt(result.data.cart.used_bonus);
+
+                                if (result.data.cart.payment_method)
+                                    $('div.payment-box').find('button[data-payment-method="' + result.data.cart.payment_method + '"]').addClass(css.is_check);
+
+                                //кнопка с бонусами
+                                if (parseInt(result.data.cart.bonus) > 0 && parseInt(result.data.cart.min_price_order) <= parseInt(result.data.cart.total_price))
+                                    list_div.eq(1).show();
+
+                                list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
 
 
-                                    "<div>" +
-                                    "<button data-action='remove'>x</button>" +
-                                    "</div>" +
+                                //кнопка оформление заказа
+                                if (parseInt(result.data.cart.minPriceOrder) < parseInt(result.data.cart.total_price))
+                                    $('div.basket-order').find('div').eq(2).children().show();
 
-                                    "</div>";
+                                if (parseInt(result.data.cart.total_price) >= parseInt(result.data.cart.min_price_order))
+                                    document.querySelectorAll('.basket-order div')[2].setAttribute('class', css.enable_order);
+
+                                min_price_order = result.data.cart.min_price_order;
+                                total_price = result.data.cart.total_price;
+
+                                $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(total_price)).end()
+                                    .eq(1).text("Минимальный заказ " + formatMoney(min_price_order));
+
+                                $('div.basket-container').show();
+
 
                             }
-
-                            $('div.basket-box').html(html);
-
-                            //бонусы
-                            let list_div = $('div.basket-total').find('div');
-                            list_div.eq(0).find('span').text(formatMoney(result.data.cart.bonus));
-
-                            if (result.data.cart.used_bonus)
-                                useBonus = parseInt(result.data.cart.used_bonus);
-
-                            if (result.data.cart.payment_method)
-                                $('div.payment-box').find('button[data-payment-method="' + result.data.cart.payment_method + '"]').addClass(css.is_check);
-
-                            //кнопка с бонусами
-                            if (parseInt(result.data.cart.bonus) > 0 && parseInt(result.data.cart.min_price_order) <= parseInt(result.data.cart.total_price))
-                                list_div.eq(1).show();
-
-                            list_div.eq(2).find('span').text(formatMoney(result.data.cart.total_price));
-
-
-                            //кнопка оформление заказа
-                            if (parseInt(result.data.cart.minPriceOrder) < parseInt(result.data.cart.total_price))
-                                $('div.basket-order').find('div').eq(2).children().show();
-
-                            if (parseInt(result.data.cart.total_price) >= parseInt(result.data.cart.min_price_order))
-                                document.querySelectorAll('.basket-order div')[2].setAttribute('class', css.enable_order);
-
-                            min_price_order = result.data.cart.min_price_order;
-                            total_price = result.data.cart.total_price;
-
-                            $('div.basket-order').find('div').eq(1).find('p').eq(0).text("Сумма вашего заказа состовляет " + formatMoney(total_price)).end()
-                                .eq(1).text("Минимальный заказ " + formatMoney(min_price_order));
-
-                            $('div.basket-container').show();
-
-
+                        }
+                        else {
+                            $('div.basket-empty').show();
                         }
                     }
-                    else {
-
-                        $('div.basket-empty').show();
-
+                    catch(error) {
+                        requestSendBugs(error);
                     }
                 },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
+                }
 
             });
 
         }
 
         function requestEdit(id_item) {
-
             // console.log(id_item);
             try {
                 var data = {};
@@ -218,19 +244,31 @@ try {
                     data: data,
                     url: window.pms.config.cabinetAPI + 'order/edit',
                     success: function (result, status) {
-                        if (result.status) {
-                            let products = result.data.products;
-                            for (var key in products) {
-                                $('div.basket-box').find('div[data-id-item="' + key + '"]').find('span').last().text(formatMoney(products[key].price_total));
-                            }
+                        try{
+                            if (result.status) {
+                                let products = result.data.products;
+                                for (var key in products) {
+                                    $('div.basket-box').find('div[data-id-item="' + key + '"]').find('span').last().text(formatMoney(products[key].price_total));
+                                }
 
-                            //Итого
-                            $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
-                            $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет " + formatMoney(result.data.total_price));
-                            total_price = result.data.total_price;
-                            checkButtonOrder();
+                                //Итого
+                                $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
+                                $('div.basket-order').find('div').eq(1).find('p').first().text("Сумма вашего заказа составляет " + formatMoney(result.data.total_price));
+                                total_price = result.data.total_price;
+
+                                checkButtonOrder();
+                            }
                         }
+                        catch (error)
+                        {
+                            requestSendBugs(error);
+                        }
+
                     },
+                    error: function (result , status) {
+                        requestSendBugs(result.responseText);
+                    }
+
                 })
 
             }catch (error)
@@ -245,30 +283,39 @@ try {
             var data = {};
             data['product_id'] = product_id;
 
-
             $.ajax({
                 type: "POST",
                 dataType: 'json',
                 data: data,
                 url: window.pms.config.cabinetAPI + 'order/delete',
                 success: function (result, status) {
-                    if (result.status) {
-                        $('div.basket-box').find('div[data-id-item="' + product_id + '"]').remove();
+                    try {
+
+                        if (result.status) {
+                            $('div.basket-box').find('div[data-id-item="' + product_id + '"]').remove();
 
 
-                        $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
-                        total_price = result.data.total_price;
-                        checkButtonOrder();
-                        $('[class*="header-user"]').find('div[data-basket] span').text(parseInt($('[class*="header-user"]').find('div[data-basket] span').text()) - 1);
+                            $('div.basket-total').find('div').last().find('span').text(formatMoney(result.data.total_price));
+                            total_price = result.data.total_price;
+                            checkButtonOrder();
+                            $('[class*="header-user"]').find('div[data-basket] span').text(parseInt($('[class*="header-user"]').find('div[data-basket] span').text()) - 1);
 
-                        if (!$('div.basket-box').children().length) {
-                            $('div.basket-container').hide();
-                            $('div.basket-empty').show();
-                            $('[class*="header-user"]').find('div[data-basket] span').hide();
+                            if (!$('div.basket-box').children().length) {
+                                $('div.basket-container').hide();
+                                $('div.basket-empty').show();
+                                $('[class*="header-user"]').find('div[data-basket] span').hide();
 
+                            }
                         }
                     }
+                    catch (error)
+                    {
+                        requestSendBugs(error);
+                    }
                 },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
+                }
             });
         }
 
@@ -281,13 +328,22 @@ try {
                 data: data,
                 url: window.pms.config.cabinetAPI + 'order/useBonus',
                 success: function (result, status) {
-                    if (result.status) {
-                        $('div.basket-total').find('div').eq(0).find('span').text(formatMoney(result.data.bonus));
-                        $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(result.data.total_price));
-                        $('div.basket-total').find('div').eq(1).find('button').remove();
-                        useBonus = parseInt(result.data.used_bonus);
+                    try {
+                        if (result.status) {
+                            $('div.basket-total').find('div').eq(0).find('span').text(formatMoney(result.data.bonus));
+                            $('div.basket-total').find('div').eq(2).find('span').text(formatMoney(result.data.total_price));
+                            $('div.basket-total').find('div').eq(1).find('button').remove();
+                            useBonus = parseInt(result.data.used_bonus);
 
+                        }
                     }
+                    catch (erorr)
+                    {
+                        requestSendBugs(erorr);
+                    }
+                },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
                 },
             });
 
@@ -312,30 +368,39 @@ try {
                 dataType: 'json',
                 data: data,
                 success: function (result, status) {
-                    if (result.status) {
-                        if (button.data('payment-method') == "payment" && !payment_address)
-                            requestCheck(button, true);
-                        else {
-                            button.addClass(css.is_check);
-                            checkButtonOrder();
-                        }
+                    try {
+                        if (result.status) {
+                            if (button.data('payment-method') == "payment" && !payment_address)
+                                requestCheck(button, true);
+                            else {
+                                button.addClass(css.is_check);
+                                checkButtonOrder();
+                            }
 
-                    }
-                    else {
-                        if (result.data.errors.address) {
-                            PopUpShowCard();
-                            for (var key in  result.data.errors.address)
-                                $('#card').find('input[name="' + result.data.errors.address[key] + '"]').addClass(css.input_error);
                         }
                         else {
-                            PopUpShowScore();
-                            for (var key in  result.data.errors.payment)
-                                $('#score').find('input[name="' + result.data.errors.payment[key] + '"]').addClass(css.input_error);
+                            if (result.data.errors.address) {
+                                PopUpShowCard();
+                                for (var key in  result.data.errors.address)
+                                    $('#card').find('input[name="' + result.data.errors.address[key] + '"]').addClass(css.input_error);
+                            }
+                            else {
+                                PopUpShowScore();
+                                for (var key in  result.data.errors.payment)
+                                    $('#score').find('input[name="' + result.data.errors.payment[key] + '"]').addClass(css.input_error);
+
+                            }
 
                         }
-
+                    }
+                    catch (error)
+                    {
+                        requestSendBugs(error);
                     }
 
+                },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
                 },
 
             });
@@ -350,13 +415,22 @@ try {
                 dataType: "JSON",
                 url: window.pms.config.cabinetAPI + 'order/save',
                 success: function (result, status) {
-                    console.log(result.status);
-                    $('#popup-fon').show();
-                    if (result.status) {
-                        $('div.basket-order').find('button[action="save-order"]').remove();
-                        PopUpShowThanks();
+                    try{
+                        $('#popup-fon').show();
+                        if (result.status) {
+                            $('div.basket-order').find('button[action="save-order"]').remove();
+                            PopUpShowThanks();
+                        }
+                    }
+                    catch(error)
+                    {
+                        requestSendBugs(error);
                     }
 
+
+                },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
                 },
 
             });
@@ -374,27 +448,38 @@ try {
                 },
                 dataType: 'json',
                 success: function (result, status) {
-                    if (result.status) {
-                        $('div.address-box').find('p').text('Текущий адрес доставки: ' + fields['index_number'] + ' ' + fields['delivery_city'] + ' ' + fields['address']);
+                    try{
+                        if (result.status) {
+                            $('div.address-box').find('p').text('Текущий адрес доставки: ' + fields['index_number'] + ' ' + fields['delivery_city'] + ' ' + fields['address']);
 
-                        button.parents('form').siblings('button').trigger('click');
-                        button.parents('form').find('input').removeClass(css.input_error);
+                            button.parents('form').siblings('button').trigger('click');
+                            button.parents('form').find('input').removeClass(css.input_error);
 
-                        if (button.data('type-popup') == "payment") {
-                            requestCheck($('div.payment-box').find('button[data-payment-method="payment"]'), false);
+                            if (button.data('type-popup') == "payment") {
+                                requestCheck($('div.payment-box').find('button[data-payment-method="payment"]'), false);
+
+                            }
+                            else {
+                                if (isPayment)
+                                    requestCheck($('div.payment-box').find('button[data-payment-method="payment"]'), true);
+                                else
+                                    requestCheck($('div.payment-box').find('button[data-payment-method="card"]'), true);
+                            }
+
 
                         }
-                        else {
-                            if (isPayment)
-                                requestCheck($('div.payment-box').find('button[data-payment-method="payment"]'), true);
-                            else
-                                requestCheck($('div.payment-box').find('button[data-payment-method="card"]'), true);
-                        }
-
-
+                    }
+                    catch (error)
+                    {
+                        requestSendBugs(error);
                     }
 
 
+
+
+                },
+                error: function (result , status) {
+                    requestSendBugs(result.responseText);
                 },
 
             });
@@ -402,7 +487,6 @@ try {
         }
 
         function changeNewTotalPrice(input) {
-
 
             let price = parseInt(input.parents('div.basket-product').find('span').first().text().replace('руб.', "").replace(/\s*/g, ''));
             let totalPrice = price * parseInt(input.val());
@@ -431,50 +515,66 @@ try {
         }
 
         $('div.basket-container').on('keyup', 'input[type="number"]', function () {
-            var id_ietm = $(this).parents('div.basket-product').data('id-item');
-            clearTimeout(timeOuts[id_ietm]);
+            try{
+                var id_ietm = $(this).parents('div.basket-product').data('id-item');
+                clearTimeout(timeOuts[id_ietm]);
 
-            if ($(this).val().length > 3) {
-                $(this).val($(this).val().substr(0, 3));
+                if ($(this).val().length > 3) {
+                    $(this).val($(this).val().substr(0, 3));
+                }
+
+                if ($(this).val() > 0)
+                    $(this).parents('div[data-id-size]').addClass(css.sizeActive);
+                else
+                    $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
+
+                changeNewTotalPrice($(this));
+
+                timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function () {
+                    requestEdit(id_ietm);
+                }, 1000)
+            }
+            catch(error)
+            {
+                requestSendBugs(error);
             }
 
-            if ($(this).val() > 0)
-                $(this).parents('div[data-id-size]').addClass(css.sizeActive);
-            else
-                $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
-
-            changeNewTotalPrice($(this));
-
-            timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function () {
-                requestEdit(id_ietm);
-            }, 1000)
 
         });
 
         //меняем размеры
         $('div.basket-box').on('click', 'button[data-action-size]', function () {
 
-            var id_ietm = $(this).parents('div.basket-product').data('id-item');
-            //на время запроса блочим кнопку отправки заказа
-            $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
+            try
+            {
+                var id_ietm = $(this).parents('div.basket-product').data('id-item');
+                //на время запроса блочим кнопку отправки заказа
+                $('.basket-order').find('button[action="save-order"]').parent('div').addClass(css.disabled_order);
 
-            clearTimeout(timeOuts[id_ietm]);
+                clearTimeout(timeOuts[id_ietm]);
 
-            if ($(this).data("action-size") == "increase")
-                $(this).siblings('input').val(parseInt($(this).siblings('input').val()) + 1);
-            else
-                $(this).siblings('input').val(parseInt($(this).siblings('input').val()) - 1 < 0 ? 0 : parseInt($(this).siblings('input').val()) - 1);
+                if ($(this).data("action-size") == "increase")
+                    $(this).siblings('input').val(parseInt($(this).siblings('input').val()) + 1);
+                else
+                    $(this).siblings('input').val(parseInt($(this).siblings('input').val()) - 1 < 0 ? 0 : parseInt($(this).siblings('input').val()) - 1);
 
-            if ($(this).siblings('input').val() > 0)
-                $(this).parents('div[data-id-size]').addClass(css.sizeActive);
-            else
-                $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
+                if ($(this).siblings('input').val() > 0)
+                    $(this).parents('div[data-id-size]').addClass(css.sizeActive);
+                else
+                    $(this).parents('div[data-id-size]').removeClass(css.sizeActive);
 
-            changeNewTotalPrice($(this).siblings('input'))
+                changeNewTotalPrice($(this).siblings('input'))
 
-            timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function () {
-                requestEdit(id_ietm);
-            }, 1000)
+                timeOuts[$(this).parents('div.basket-product').data('id-item')] = setTimeout(function () {
+                    requestEdit(id_ietm);
+                }, 1000)
+            }
+            catch(error)
+            {
+                requestSendBugs(error);
+            }
+
+
 
 
         });
@@ -482,38 +582,59 @@ try {
         //сохранение полей у модальных окон
         $('button[data-action="save-user-data"]').click(function () {
 
-            var data = {};
+            try{
+                var data = {};
 
-            $(this).siblings('div').find('input').each(function () {
+                $(this).siblings('div').find('input').each(function () {
 
-                $(this).removeClass('input-error');
-                validateData($(this), data, css.input_error);
-            });
+                    $(this).removeClass('input-error');
+                    validateData($(this), data, css.input_error);
+                });
 
 
-            if (!$(this).siblings('div').find('input').hasClass('input-error')) {
-                setUserData($(this), data);
+                if (!$(this).siblings('div').find('input').hasClass('input-error')) {
+                    setUserData($(this), data);
+                }
             }
+            catch (error)
+            {
+                requestSendBugs(error);
+            }
+
 
 
         });
 
 
         $('div.payment-box').on('click', 'button', function () {
-            if ($(this).data('payment-method') == "payment")
-                isPayment = true;
-            else
-                isPayment = false;
+            try{
+                if ($(this).data('payment-method') == "payment")
+                    isPayment = true;
+                else
+                    isPayment = false;
 
-            requestCheck($(this), false);
+                requestCheck($(this), false);
+            }
+            catch (error)
+            {
+                requestSendBugs(error);
+            }
+
 
 
         });
 
         //сохранение заказа
         $('button[action="save-order"]').click(function () {
-            if (!$(this).parent('div').hasClass(css.disabled_order))
-                requestSendOrder();
+            try{
+                if (!$(this).parent('div').hasClass(css.disabled_order))
+                    requestSendOrder();
+            }
+            catch (error)
+            {
+                requestSendBugs(error);
+            }
+
         });
 
         //удаляем из корзины
@@ -530,7 +651,6 @@ try {
 
         //закрытие popup после удачного оформления заказа
         $('#thanks button.popup-close').click(function () {
-
             window.location.href = "/cabinet.html";
         });
 
@@ -543,8 +663,20 @@ catch(error)
 }
 
 function requestSendBugs(error) {
-    var request = new XMLHttpRequest();
-    request.open('POST', '/system/extensions/errorCatcher', true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    request.send(JSON.stringify(error));
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("POST", "http://akula.cottonbaby.nichost.ru/system/extensions/errorCatcher/");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Cache-Control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
+
+    xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error)));
 }
