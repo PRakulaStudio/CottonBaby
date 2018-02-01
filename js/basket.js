@@ -235,7 +235,7 @@
             data['modifications'][current.closest('div[data-id-size]').getAttribute('data-id-size')] = current.nextElementSibling.value == "" ? 0 : current.nextElementSibling.value;
         });
 
-        console.log( data['modifications'] );
+
 
         formData.append('product_id' , id_item );
         formData.append('modifications' , JSON.stringify(data['modifications']));
