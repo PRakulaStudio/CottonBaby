@@ -1,4 +1,7 @@
 
+try{
+
+
 
 ( function(){
 	"use strict";
@@ -6,7 +9,42 @@
 		requestCheckAuth('contacts');
 		requestGetMenuCategories();
 
+		let element = document.querySelector('div.contacts-form input[type="tel"]'),
+		 	maskOptions = {
+				mask: '+{7}(000)000-00-00'
+			};
+		new IMask(element, maskOptions);
 
+		function eventSendFeedback()
+		{
+			try{
+				return fetch( url , {method: 'POST', credentials: 'same-origin' , body: data})
+					.then(function (response) {
+						let responseData = false;
+						try {
+							responseData = response.json();
+						}
+						catch (e) {
+							responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+							response.text().then(console.debug);
+						}
+						return responseData;
+					})
+					.then(function (response) {
+						if(response.status)
+						{
+							PopUpShowThanks();
+						}
+
+					});
+			}
+			catch (error)
+			{
+
+			}
+
+
+		}
 
 		document.querySelector('button[data-action]').onclick = function (event) {
 
@@ -23,6 +61,15 @@
 				event.target.innerText = "Развернуть";
 			}
 		};
+
+		document.addEventListener('click' , function(event){
+
+			if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
+			{
+				eventSendFeedback();
+			}
+
+		});
 
 
 
@@ -47,3 +94,9 @@
 
 
 })();
+
+}
+catch (error)
+{
+	
+}

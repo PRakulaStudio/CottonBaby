@@ -776,27 +776,27 @@ window.onscroll = function(){
 
 
 
-(function ($) {
+(function () {
 
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 100) {
-            $('.scrollup').fadeIn();
-        } else {
-            $('.scrollup').fadeOut();
-        }
-    });
-
-
-    $('.scrollup').click(function(){
-        animateScrollTo(0);
-    });
-
-
-
-
-    $('input[name="phone"]').each(function () {
-        $(this).inputmask('+7 (999) 999-99-99');
-    })
+    // $(window).scroll(function(){
+    //     if ($(this).scrollTop() > 100) {
+    //         $('.scrollup').fadeIn();
+    //     } else {
+    //         $('.scrollup').fadeOut();
+    //     }
+    // });
+    //
+    //
+    // $('.scrollup').click(function(){
+    //     animateScrollTo(0);
+    // });
+    //
+    //
+    //
+    //
+    // $('input[name="phone"]').each(function () {
+    //     $(this).inputmask('+7 (999) 999-99-99');
+    // })
 
 
 
@@ -814,4 +814,4 @@ window.onscroll = function(){
 
 
 
-})(jQuery);
+})();
