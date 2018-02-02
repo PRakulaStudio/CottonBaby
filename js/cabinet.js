@@ -5,8 +5,14 @@
 			'show_block' : "show-block",
 		};
 
+	getHistory( buttonLoadHistory.getAttribute('data-offset') , buttonLoadHistory.getAttribute('data-limit') );
+	getUserData();
 	requestCheckAuth("cabinet");
 	requestGetMenuCategories();
+
+	//подсказки
+
+
 
 	function getStatus(id) {
 		for(var key in window.statuses)
@@ -25,9 +31,9 @@
 	//получить историю
 	function getHistory(offset, limit)
 	{
-		var data= {};
-		data['offset'] = offset;
-		data['limit'] = limit;
+		var data=  new FormData();
+		data.append('offset' , offset);
+		data.append('limit' ,limit);
 
 		return fetch( window.pms.config.cabinetAPI+'get/orderList' , { method: 'POST', credentials: 'same-origin', body: data })
 			.then( response => {
@@ -280,9 +286,7 @@
 
 	});
 
-	//подсказки
-	getHistory( buttonLoadHistory.getAttribute('data-offset') , buttonLoadHistory.getAttribute('data-limit') );
-	getUserData();
+
 
 
 })();

@@ -12,38 +12,35 @@
         'enable_order' : 'basket-order-on',
         'sizeActive' : 'basket-size-on',
     };
+    var delivery_city = "";
+    var index_number = "";
+    var address = "";
 
+    requestGetBasket();
     requestCheckAuth('basket')
-        .then(function(response) {
-            if(response){
-                requestGetBasket();
-                //должен выполняться только, если пользователь авторизован
-              //  requestGetUserData();
-            }
-
-        });
     requestGetMenuCategories();
+    requestGetUserData();
 
-    function checkButtonOrder()
-    {
-        //Итого
-        if( document.querySelector('div.payment-box button.'+css.is_check) )
-        {
-            if( parseInt(total_price) >= parseInt(min_price_order) )
-            {
-                document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.remove(css.disabled_order);
-                document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.add(css.enable_order);
-            }
-            else
-            {
-                document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.remove(css.enable_order);
-                document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.add(css.disabled_order);
-
-            }
-
-        }
-
-    }
+    // function checkButtonOrder()
+    // {
+    //     //Итого
+    //     if( document.querySelector('div.payment-box button.'+css.is_check) )
+    //     {
+    //         if( parseInt(total_price) >= parseInt(min_price_order) )
+    //         {
+    //             document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.remove(css.disabled_order);
+    //             document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.add(css.enable_order);
+    //         }
+    //         else
+    //         {
+    //             document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.remove(css.enable_order);
+    //             document.querySelector('.basket-order button[action="save-order"]').parentNode.classList.add(css.disabled_order);
+    //
+    //         }
+    //
+    //     }
+    //
+    // }
 
 
     function requestGetUserData()
@@ -65,20 +62,37 @@
             .then( response => {
                 if(response.status)
                 {
-                    let text_full_address = 'Текущий адрес доставки: '+response.userData.index_number+' '+response.userData.delivery_city+' '+response.userData.address,
+                    let text_full_address,
                         popup;
 
+                    popup = document.querySelector('#popup-fon .popup-cell');
+                    for(var key in response.userData)
+                    {
+                        let input =  popup.querySelector('input[name="'+key+'"]');
+
+                        if(input){
+                            input.value = response.userData[key];
+                            switch(key)
+                            {
+                                case "delivery_city" :
+                                    delivery_city = response.userData[key];
+                                    break;
+                                case "index_number" :
+                                    index_number = response.userData[key];
+                                    break;
+                                case "address" :
+                                    address  = response.userData[key];
+                                    break;
+
+                            }
+                        }
+                    }
+
+                    text_full_address = 'Текущий адрес доставки: '+index_number+' '+delivery_city+' '+address;
                     if( response.userData.index_number == "" && response.userData.city == "" && response.userData.address == "" )
                         text_full_address = "Не указан адрес доставки";
 
-                    document.querySelector('div.addres-box p').innerText = text_full_address;
-
-                    popup = document.querySelector('#popup-fon . popup-cell');
-                    for(var key in response.userData)
-
-                        popup.querySelector('input[name="'+key+'"]').value = response.userData[key];
-
-
+                    document.querySelector('div.address-box p').innerText = text_full_address;
                 }
             });
     }
@@ -181,7 +195,7 @@
 
                         //бонусы
                         list_div = document.querySelectorAll('div.basket-total div');
-                        list_div[0].querySelector('span').innerText = response.data.cart.bonus;
+                        list_div[0].querySelector('span').innerText = formatMoney(response.data.cart.bonus);
 
                         if( response.data.cart.used_bonus )
                             useBonus = parseInt(response.data.cart.used_bonus);
@@ -205,7 +219,7 @@
                         min_price_order = response.data.cart.min_price_order;
                         total_price = response.data.cart.total_price;
 
-                        checkButtonOrder();
+                       // checkButtonOrder();
 
 
                         document.querySelectorAll('div.basket-order div')[1].querySelectorAll('p')[0].innerText = "Сумма вашего заказа состовляет "+formatMoney(total_price);
@@ -265,7 +279,7 @@
                     document.querySelectorAll('div.basket-total div')[  document.querySelectorAll('div.basket-total div').length - 1].querySelector('span').innerText = formatMoney(response.data.total_price);
                     document.querySelectorAll('div.basket-order div')[1].querySelectorAll('p')[0].innerText = "Сумма вашего заказа составляет "+formatMoney(response.data.total_price);
                     total_price = response.data.total_price;
-                    checkButtonOrder();
+                  //  checkButtonOrder();
 
 
                 }
@@ -297,7 +311,7 @@
                     document.querySelectorAll('div.basket-total div')[ document.querySelectorAll('div.basket-total div').length - 1].querySelector('span').innerText = formatMoney( response.data.total_price );
                     total_price = response.data.total_price;
 
-                    checkButtonOrder();
+                   // checkButtonOrder();
 
                     //изменяем цифру в корзине
                     document.querySelector('[class*="header-user"] div[data-basket] span').innerText = parseInt( document.querySelector('[class*="header-user"] div[data-basket] span').innerText ) - 1;
@@ -337,9 +351,10 @@
                 {
                     let footerBasket =  document.querySelectorAll('div.basket-total div');
                     footerBasket[0].querySelector('span').innerText = formatMoney(response.data.bonus);
-                    footerBasket[1].querySelector('span').innerText = formatMoney(response.data.total_price);
-                    footerBasket[2].querySelector('button').remove();
+                    footerBasket[1].querySelector('button').remove();
+                    footerBasket[2].querySelector('span').innerText = formatMoney(response.data.total_price);
                     useBonus = parseInt(response.data.used_bonus);
+
                 }
                 else
                 {
@@ -348,18 +363,20 @@
             });
     }
 
-    function requestCheck( button , payment_address )
+    function requestCheck( payment_method  )
     {
         let data = new FormData();
+
+
+      //  document.querySelector('button[action="save-order"]').parentNode.classList.add(css.disabled_order);
+      //   document.querySelector('button[action="save-order"]').parentNode.classList.remove(css.enable_order);
+
+
+        data.append('payment_method' , payment_method);
+
+
         if(document.querySelector('div.payment-box button.payment-activ') )
             document.querySelector('div.payment-box button.payment-activ').classList.remove(css.is_check);
-
-        document.querySelector('button[action="save-order"]').parentNode.classList.add(css.disabled_order);
-        document.querySelector('button[action="save-order"]').parentNode.classList.remove(css.enable_order);
-
-        data.append('payment_method' , button.getAttribute('data-payment-method') );
-        data.append('payment_address' , payment_address );
-
 
         return fetch( window.pms.config.cabinetAPI+'order/check' , { method: 'POST', credentials: 'same-origin' , body : data})
             .then( response => {
@@ -378,13 +395,8 @@
 
                 if( response.status)
                 {
-                    if(button.getAttribute('data-payment-method') == "payment" && !payment_address)
-                        requestCheck(button , true);
-                    else
-                    {
-                        button.classList.add(css.is_check);
-                        checkButtonOrder();
-                    }
+                    if(response.data.payment_method)
+                        document.querySelector('div.payment-box button[data-payment-method="'+response.data.payment_method+'"]').classList.add(css.is_check);
 
                 }
                 else
@@ -425,11 +437,20 @@
                 return responseData;
             })
             .then( response => {
-                document.querySelector('#popup-fon').style.display = "block";
+
                 if( response.status)
                 {
+                    document.querySelector('#popup-fon').style.display = "block";
                     document.querySelector('div.basket-order button[action="save-order"]').remove();
                     PopUpShowThanks();
+                }
+                else
+                {
+                    for(var key in response.data.errors)
+                    {
+                        alert(response.data.errors[key]);
+                        break;
+                    }
                 }
             });
     }
@@ -438,9 +459,17 @@
     function setUserData(button , fields)
     {
         var data = new FormData();
+
+        if(fields['delivery_city'] && fields['index_number'] && fields['address']  )
+        {
+            delivery_city = fields['delivery_city'];
+            index_number = fields['index_number'];
+            address = fields['address'];
+        }
+
         data.append('data' , JSON.stringify(fields) );
 
-        return fetch( window.pms.config.cabinetAPI+'set/userData' , { method: 'POST', credentials: 'same-origin'})
+        return fetch( window.pms.config.cabinetAPI+'set/userData' , { method: 'POST', credentials: 'same-origin' , body: data})
             .then( response => {
                 let responseData = false;
                 try{
@@ -457,7 +486,7 @@
                 if( response.status)
                 {
 
-                    document.querySelector('div.address-box p').innerHTML = 'Текущий адрес доставки: '+fields['index_number']+' '+fields['delivery_city']+' '+fields['address'];
+                    document.querySelector('div.address-box p').innerHTML = 'Текущий адрес доставки: '+index_number+' '+delivery_city+' '+address;
 
                     var event = document.createEvent('HTMLEvents');
                     event.initEvent('click', true, false);
@@ -469,15 +498,10 @@
 
                     if( button.getAttribute('data-type-popup') == "payment")
                     {
-                        requestCheck( document.querySelector('div.payment-box button[data-payment-method="payment"]') , false );
+                        requestCheck( "payment" );
                     }
-                    else
-                    {
-                        if(isPayment)
-                            requestCheck( document.querySelector('div.payment-box button[data-payment-method="payment"]') , true );
-                        else
-                            requestCheck( document.querySelector('div.payment-box button[data-payment-method="card"]') , true );
-                    }
+
+
                 }
             });
     }
@@ -507,7 +531,7 @@
         document.querySelectorAll('div.basket-total div')[2].querySelector('span').innerText = formatMoney(total_price);
         document.querySelectorAll('div.basket-order div')[1].querySelectorAll('p')[0].innerText = "Сумма вашего заказа состовляет "+formatMoney(total_price);
 
-        checkButtonOrder();
+        //checkButtonOrder();
 
     }
 
@@ -573,20 +597,20 @@
         }
 
         //сохранение полей у модальных окон
-        if(event.target.tagName == "BUTTON" && event.target.hasAttribute('data-action') == "save-user-data" )
+        if(event.target.tagName == "BUTTON" && event.target.getAttribute('data-action') == "save-user-data" )
         {
             let data = {},
                 sendRequest = true;
             event.target.parentNode.querySelectorAll('input').forEach( function( current, index, array) {
-                current.classList.remove('input-error');
+                current.classList.remove(css.input_error);
                 validateData(current, data, css.input_error);
 
-                if (current.classList.contains('input-error'))
+                if (current.classList.contains(css.input_error))
                     sendRequest = false;
             });
 
             if(sendRequest)
-                setUserData(data);
+                setUserData(event.target, data);
             return;
         }
 
@@ -598,20 +622,17 @@
             else
                 button = event.target;
 
-            if( button.hasAttribute('data-payment-method') == "payment")
-                isPayment = true;
-            else
-                isPayment = false;
+            requestCheck( button.getAttribute('data-payment-method'));
 
-            requestCheck( button ,false);
+
+
             return;
         }
 
         //сохранение заказа
         if(event.target.tagName == "BUTTON" && event.target.getAttribute('action') == "save-order")
         {
-            if(event.target.parentNode.classList.contains(css.disabled_order))
-                requestSendOrder();
+            requestSendOrder();
             return;
         }
 
@@ -627,8 +648,11 @@
             requestUseBonus();
         }
 
-        if(event.target.tagName == "BUTTON" && event.target.classList.contains('popup-close') && event.target.closest('#thanks'))
+        if( event.target.tagName == "IMG"  && event.target.parentNode.classList.contains('popup-close') && event.target.closest('#thanks'))
         {
+            let storage = JSON.parse(localStorage.getItem('user'));
+            storage['cartCount'] = 0;
+            localStorage.setItem('user' , JSON.stringify(storage));
             window.location.href = "/cabinet.html";
         }
     });
