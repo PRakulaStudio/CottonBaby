@@ -4,8 +4,6 @@ requestGetMenuCategories();
 ( function($){
 	"use strict";
 
-
-	
 	var autoPlay = false
 	var offset = 20;
 
