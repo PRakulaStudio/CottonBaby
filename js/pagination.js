@@ -407,7 +407,7 @@ function requestGetItems(offset , limit , sort , pageName)
         .then(function (response) {
           
            return createItems(response.data.items , show_favorites);
-        })
+        });
        
 }
 
