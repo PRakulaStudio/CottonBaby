@@ -681,6 +681,21 @@ catch(error)
     requestSendBugs(error);
 }
 
+function isError(e){
+    return e && e.stack && e.message;
+}
+
+window.bug = function()
+{
+    try{
+        triggerBUG();
+    }
+    catch (error)
+    {
+        requestSendBugs(error);
+    }
+
+}
 function requestSendBugs(error) {
 
     var xhr = new XMLHttpRequest();
@@ -692,10 +707,12 @@ function requestSendBugs(error) {
         }
     });
 
-    xhr.open("POST", "http://akula.cottonbaby.nichost.ru/system/extensions/errorCatcher/");
+    xhr.open("POST", window.location.protocol+"//"+"cottonbaby.ru/system/extensions/errorCatcher/");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
-
-    xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    if(isError(error))
+         xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    else
+        xhr.send(JSON.stringify(error));
 }
