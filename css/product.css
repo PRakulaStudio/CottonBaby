@@ -11,7 +11,8 @@
     justify-content: space-between;
 }
 
-.slider {   
+.slider {
+    position: relative;
     width: 49%;
     height: auto;
     display: flex;
@@ -175,14 +176,50 @@
     width: 100%;
     text-align: center;
     font-size: 25px;
+    line-height: 30px;
+}
+
+.product-basket span{
+    white-space: pre;
+    font-weight: bold;
+    color: #FF0016;
+}
+
+.price-min {
+    background: #F8F8F6;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    margin: auto auto 10px auto;
+    padding: 10px;
+}
+
+.price-min:before{
+    content: "";
+    position: absolute;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background: url(../images/icons/i.png) no-repeat center;
+}
+
+.price-min p{
+    margin: 2px 0 0 25px;
+    font-size: 18px;
     line-height: 25px;
+}
+
+.price-min b{
+    white-space: pre;
+    font-weight: bold;
+    color: #FF0016;
 }
 
 .price-basket {
     display: flex;
     width: 100%;
     margin: auto auto 10px auto;
-    padding: 10px;
+    padding: 10px 5px 10px 10px;
     background: #F8F8F6;
     border-radius: 5px;
     flex-direction: row;
@@ -241,7 +278,7 @@
     width: 200px;
     height: 50px;
     margin: auto;
-    padding: 14px 0;
+    padding: 18px 0;
     border-radius: 25px;
     text-decoration: none;
     background: linear-gradient(to bottom, #FDC435, #F30330);
@@ -373,6 +410,7 @@
 .swiper-button {
     width: 100%;
     text-align: center;
+    -webkit-user-select: none;
 }
 
 .swiper-button img{
@@ -386,7 +424,7 @@
     background: #D8DEE1;
     width: 50px;
     height: 25px;
-    margin: 10px 15px;
+    margin: 10px 5px;
 }
 
 .swiper-button button:hover{
@@ -394,7 +432,7 @@
 }
 
 .swiper-button-next, .swiper-button-prev {
-    position: relative;
+    position: inherit;
 }
 
 .card {

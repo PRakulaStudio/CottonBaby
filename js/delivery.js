@@ -1,4 +1,0 @@
-( function ($) {
-    requestCheckAuth('delivery');
-
-})(jQuery);
