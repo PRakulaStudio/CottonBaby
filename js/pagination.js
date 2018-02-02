@@ -7,7 +7,8 @@ var limitItems = 24,
     arrayItems = {},
     hideButton = "ban-pagination",
     pageId = false,
-    sort = "create_date";
+    sort = "create_date",
+    canChange = true;
 
 
 function createPagination( total ,  pageName)
@@ -114,10 +115,16 @@ function indexInParent(node) {
 
 function changePagination(direction , activeButton , clickButton )
 {
-    var offset = 0,
+    if(!canChange)
+        return;
+
+    canChange = false;
+
+    let offset = 0,
         limit = 0,
         sort = "",
-        prevButtonActiveNumber = activeButton.innerText;
+        prevButtonActiveNumber = activeButton.innerText,
+        newActiveButton = "";
 
 
     switch (direction)
@@ -158,7 +165,8 @@ function changePagination(direction , activeButton , clickButton )
                 if( raznicha != 1 )
                 {
                     activeButton.classList.remove(activePaginationButton);
-                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1].classList.add(activePaginationButton);
+                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1];
+                    setButton.classList.add(activePaginationButton);
 
                     setButton.innerText = clickButton.innerText ;
 
@@ -190,13 +198,14 @@ function changePagination(direction , activeButton , clickButton )
                //if( parseInt(clickButton.text()) - parseInt(activeButton.text()) >= 2 )
             }
 
-            let newActiveButton = document.querySelector('div.products-pagination button.pagination-active');
+            newActiveButton = document.querySelector('div.products-pagination button.pagination-activ');
             //показываем левую кнопку
             if( countPages > 4 )
             {
                 //показываем левую
                 if( newActiveButton.innerText > 1  )
-                    $('div.products-pagination').find('button.prev').removeClass(hideButton);
+                    document.querySelector('div.products-pagination button.prev').classList.remove(hideButton);
+
 
                 //скрываем правую
                 if( newActiveButton.innerText == countPages )
@@ -227,7 +236,8 @@ function changePagination(direction , activeButton , clickButton )
                 {
                     activeButton.classList.remove(activePaginationButton);
 
-                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1].classList.add(activePaginationButton);
+                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1];
+                    setButton.classList.add(activePaginationButton);
                     setButton.innerText = clickButton.innerText;
 
                     let listButtons = Array.prototype.filter.call(setButton.parentNode.children, function(child){
@@ -244,7 +254,7 @@ function changePagination(direction , activeButton , clickButton )
                 }
                 else
                 {
-                    clickButton.innerText = parseInt(clickButton,innerText) - 1;
+                    clickButton.innerText = parseInt(clickButton.innerText) - 1;
 
                     let listButtons = Array.prototype.filter.call(clickButton.parentNode.children, function(child){
                         return child !== clickButton;
@@ -262,7 +272,7 @@ function changePagination(direction , activeButton , clickButton )
             if( countPages > 4 )
             {
                 //скрываем левую кнопку
-                var newActiveButton = document.querySelector('div.products-pagination button.pagination-activ');
+                newActiveButton = document.querySelector('div.products-pagination button.pagination-activ');
                 if(newActiveButton.innerText == 1 )
                 {
                     document.querySelector('div.products-pagination button.prev').classList.add(hideButton);
@@ -302,19 +312,20 @@ function changePagination(direction , activeButton , clickButton )
     history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
 
 
-    if( arrayItems[activeButton.innerText)
+    if( arrayItems[activeButton.innerText])
     {
         if( !arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').children;
+            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').innerHTML;
         //надо переделать
         document.querySelector('div.products-box,div.collections-box').innerHTML = arrayItems[activeButton.innerText];
+        canChange = true;
 
     }
     else
     {
 
         if(!arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').children;
+            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').innerHTML;
 
         sort = "create_date"; //нужно проверить
         if( document.querySelector('div.sorting'))
@@ -327,7 +338,7 @@ function changePagination(direction , activeButton , clickButton )
 
        requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {
-                
+                canChange = true;
                 if(IS_AUTH)
                 {
                     requestCheckFavoritesItems(result , 'products-box');
@@ -488,14 +499,14 @@ $(document).ready( function(){
     //
     // });
 
-    $("div.products-pagination").on( 'click' , 'button.prev' , function(){
-        let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
-        changePagination("prev" , clickButton , clickButton.prev());
-    });
-
-    $('div.products-pagination').on('click' , " button.next" , function(){
-        let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
-        changePagination("next" , clickButton, clickButton.next());
-    });
+    // $("div.products-pagination").on( 'click' , 'button.prev' , function(){
+    //     let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
+    //     changePagination("prev" , clickButton , clickButton.prev());
+    // });
+    //
+    // $('div.products-pagination').on('click' , " button.next" , function(){
+    //     let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
+    //     changePagination("next" , clickButton, clickButton.next());
+    // });
 
 });
