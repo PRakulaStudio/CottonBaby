@@ -10,7 +10,7 @@
 	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/basket.css"/>
 </head>
 <body>
 
@@ -259,7 +259,7 @@
 
 <!-- content start -->
 	<main class="content-site">
-		<section class="basket">
+		<section class="content">
 			<div class="breadcrumbs">
 				<p><a href="index.html">Главная</a> &#8594 Корзина товаров</p>
 				<div class="breadcrumbs-liner"></div>
@@ -268,8 +268,10 @@
 			<div class="title">
 				<h1>Корзина</h1>
 			</div>
+		</section>
 
-			<div class="basket-empty">
+		<section class="content">
+			<div class="block-empty">
 				<p>Корзина пуста</p>
 			</div>
 			
@@ -498,13 +500,20 @@
 						<p>(Вы можете потратить бонусные рубли на покупки)</p>
 					</div>
 
-					<div>
+					<div class="basket-total-off">
 						<button>Использовать бонусные рубли</button>
 					</div>
 
 					<div>
 						<p>Итого: <span>272 000 руб.</span></p>
 					</div>
+				</div>
+
+				<div class="content-text info">
+					<p>Обращаем ваше внимание!</p>
+	        		<p>Сайт для оптовых продаж. Минимальная сумма заказа <span>10 000р.</span></p>
+	        		<p>Использование <span>бонусных рублей</span> доступно только при сумме заказа от <span>10 000р.</span></p>
+	        		<p><span>Бонусные рубли</span> начисляются в размере <span>1%</span> от суммы заказа <span>30 000р.</span> и больше!</p>
 				</div>
 
 				<div class="payment-box">
@@ -520,6 +529,10 @@
 							<p>Оплата на карту</p>
 						</div>
 					</div>
+				</div>
+
+				<div class="content-error">
+	        		<p>Не выбран <span>адрес доставки</span></p>
 				</div>
 
 				<div class="address-box">
@@ -590,7 +603,6 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

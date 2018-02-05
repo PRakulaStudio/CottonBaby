@@ -1,15 +1,118 @@
+//build - 2
+//авторищация, проверка авторизации
+//добавление товаров в избранное,
+//вспомогательные функции для модалок
+//кеширование и получение меню
 
-// Phone mask end
 
-/**
- *
+let config = {
+    cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
+    catalogAPI: '/system/plugins/PonomareVlad/catalog/',
+};
+
+//дизайн header
+let headerBlock = "",
+    dataLocalStorage = "";
+
+
+
+function renderHeaderIsAuth(data){
+    document.querySelector('body').classList.remove('showPrice');
+    headerBlock = document.querySelector('[class*="header-user"]');
+
+    headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
+    headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '/favorites.html');
+
+
+    if(data.cartCount)
+    {
+        basketSpan  = headerBlock.querySelector('div[data-basket] span');
+        basketSpan.innerHTML = data.cartCount;
+        basketSpan.style.display = "block";
+    }
+
+    if(data.wishlistCount)
+    {
+        favoritesBlock = headerBlock.querySelector('div[data-favorite]');
+        favoritesBlock.classList.add('favorites');
+        favoritesBlock.querySelector('span').innerText = data.wishlistCount;
+    }
+
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${data.name}`;
+}
+function renderHeaderAuthFalse()
+{
+    headerBlock = document.querySelector('[class*="header-user"]');
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+    headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '#');
+    headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '#');
+
+    basketSpan  = headerBlock.querySelector('div[data-basket] span');
+    basketSpan.innerHTML = 0;
+    basketSpan.style.display = 'none';
+
+    favoritesBlock = headerBlock.querySelector('div[data-favorite]');
+    favoritesBlock.classList.remove('favorites');
+    favoritesBlock.querySelector('span').innerText = 0;
+
+    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+}
+
+
+if(localStorage.getItem('user'))
+    renderHeaderIsAuth(JSON.parse(localStorage.getItem('user')));
+else
+    renderHeaderAuthFalse();
+
+config = Object.freeze(config);
+
+//надо будет убрать
+let blockSorting = document.querySelector('div.sorting');
+if( blockSorting)
+    blockSorting.style.display = 'none';
+
+
+if (!window.pms) window.pms = {};
+ window.pms['config'] = config;
+
+let menu = document.querySelectorAll('div.menu div.marker');
+
+//
+// function integerOnly(e) {
+//     e = e || window.event;
+//     var code = e.which || e.keyCode;
+//     if (!e.ctrlKey) {
+//         var arrIntCodes1 = new Array(96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 9, 116);   // 96 TO 105 - 0 TO 9 (Numpad)
+//         if (!e.shiftKey) {                          //48 to 57 - 0 to 9
+//             arrIntCodes1.push(48);                  //These keys will be allowed only if shift key is NOT pressed
+//             arrIntCodes1.push(49);                  //Because, with shift key (48 to 57) events will print chars like @,#,$,%,^, etc.
+//             arrIntCodes1.push(50);
+//             arrIntCodes1.push(51);
+//             arrIntCodes1.push(52);
+//             arrIntCodes1.push(53);
+//             arrIntCodes1.push(54);
+//             arrIntCodes1.push(55);
+//             arrIntCodes1.push(56);
+//             arrIntCodes1.push(57);
+//         }
+//         var arrIntCodes2 = new Array(35, 36, 37, 38, 39, 40, 46);
+//         if ($.inArray(e.keyCode, arrIntCodes2) != -1) {
+//             arrIntCodes1.push(e.keyCode);
+//         }
+//         if ($.inArray(code, arrIntCodes1) == -1) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+/*
  * @param str
  * @param requareLength
  * @returns {boolean}
  */
-function checkLength(str , requareLength)
-{
-    if( str.length >= requareLength )
+function checkLength(str, requareLength) {
+    if(str.length >= requareLength)
         return true;
     return false;
 }
@@ -19,10 +122,9 @@ function checkLength(str , requareLength)
  * @param email
  * @returns {boolean}
  */
-function checkEmail(email)
-{
+function checkEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if( re.test(email) )
+    if (re.test(email))
         return true;
     return false;
 }
@@ -32,27 +134,21 @@ function checkEmail(email)
  * @param phone
  * @returns {boolean}
  */
-function checkPhone(phone)
-{
+function checkPhone(phone) {
     var re = /^[\+]?7\s[(]?[0-9]{3}[)]\s?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{2}[-\s\.]?[0-9]{2}$/im;
-    if( re.test(phone) )
+    if (re.test(phone))
         return true;
     return false;
 }
 
-
 //функция, переводящая строку в денежный формат
-function formatMoney( number )
-{
-
-    var format = number.split(""),
+function formatMoney(number) {
+    var format = number.toString().split(""),
         money = [],
         iterator = 1;
 
-    for( var key = format.length - 1; key >= 0; key--)
-    {
-        if( iterator > 0 &&  iterator % 3 == 0 )
-        {
+    for (var key = format.length - 1; key >= 0; key--) {
+        if (iterator > 0 && iterator % 3 == 0) {
             money[key] = " " + format[key];
             iterator++;
             continue;
@@ -62,74 +158,73 @@ function formatMoney( number )
         iterator++;
     }
 
-    return money.join('')+" руб.";
+    return money.join('') + " руб.";
 }
-
 
 /**
  *
  * @param input
  * @param data
  */
-function validateData( input , data , error_class )
-{
-    $(input).removeClass(error_class).removeAttr('data-change');
+function validateData(input, data, error_class) {
 
-    switch( $(input).attr('name'))
-    {
+    //$(input).removeClass(error_class).removeAttr('data-change');
+    input.classList.remove(error_class);
+    input.removeAttribute('data-change');
 
+    switch ( input.getAttribute('name')) {
         case "password" :
 
-            if( checkLength($(input).val() , 8) && ( $(input).val() == $('input[name="confirm_password"]').val() ))
-                data[  $(input).attr('name') ] =  $(input).val();
+            if (checkLength(input.value, 6) && ( input.value == document.querySelector('input[name="confirm_password"]').value ))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "password_auth" :
-            if( checkLength($(input).val() , 8) )
-                data[ $(input).attr('name') ] = $(input).val();
+            if (checkLength(input.value, 6))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "mail" :
 
-            if( checkEmail($(input).val()))
-                data[  $(input).attr('name') ] =  $(input).val();
+            if ( checkEmail(input.value) )
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "phone" :
 
-            if( checkPhone( $(input).val() ))
-                data[  $(input).attr('name') ] =  $(input).val();
+            if (checkPhone(input.value))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "index" :
 
-            if( checkLength($(input).val() , 6))
-                data[  $(input).attr('name') ] =  $(input).val();
+            if (checkLength(input.value, 6))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
 
         case "confirm_password" :
 
-            if( checkLength($(input).val() , 8) && ( $(input).val() == $('input[name="password"]').val() ) )
-                data[  $(input).attr('name') ] =  $(input).val();
+            if (checkLength(input.value, 6) && ( input.value == document.querySelector('input[name="password"]').value ))
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break
 
         default:
-            if(  $(input).val() != "" )
-                data[ $(input).attr('name') ]  =  $(input).val();
+            if (  input.value != "")
+                data[input.getAttribute('name')] = input.value;
             else
-                $(input).addClass(error_class);
+                input.classList.add(error_class);
             break;
     }
 
@@ -137,225 +232,592 @@ function validateData( input , data , error_class )
 
 
 
-
-
-
-function PopUpShowMenu(page){
-    $("#menu").show();
-    $("#menu-off").show();
-    $("#menu-on").hide();
+function PopUpShowMenu() {
+    document.querySelector('#menu').style.display = 'block';
+    document.querySelector('#menu-off').style.display = 'block';
+    document.querySelector('#menu-on').style.display = 'none';
 }
 
-function PopUpHideMenu(){
-    $("#menu-on").show();
-    $("#menu-off").hide();
-    $("#menu").hide();
+function PopUpHideMenu() {
+    document.querySelector('#menu-on').style.display = 'block';
+    document.querySelector('#menu-off').style.display = 'none';
+    document.querySelector('#menu').style.display = 'none';
 }
 
-function PopUpShowScore(page){
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#score").show();
+function PopUpShowScore() {
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#score').style.display = 'block';
 }
 
-function PopUpShowCard(page){
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#card").show();
+function PopUpShowCard() {
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#card').style.display = 'block';
 }
 
-function PopUpShowThanks(page){
-    $("#popup-fon").show();
-    $("#popup").show();
-    $("#thanks").show();
+function PopUpShowThanks() {
+    document.querySelector('#popup-fon').style.display = 'block';
+    document.querySelector('#thanks').style.display = 'block';
 }
 
-function PopUpHidePopup(){
-    $("#popup-fon").hide();
-    $("#popup").hide();
-    $("#score").hide();
-    $("#card").hide();
-    $("#thanks").hide();
+function PopUpHidePopup() {
+    document.querySelector('#popup-fon').style.display = 'none';
+    document.querySelector('#score').style.display = 'none';
+    document.querySelector('#card').style.display = 'none';
+    document.querySelector('#thanks').style.display = 'none';
 }
-
-
-
-function requestCheckAuth(url)
-{
-
-    $.ajax({
-        data : {'user' : 'checkAuth'},
-        dataType: 'JSON',
-        url: '/akula/system/plugins/SecArgonia/cabinet/',
-        success: function( result, status){
-
-
-            if(result.status)
-            {
-
-                switch (url)
-                {
-                    case "registration" :
-                        window.location.href = "/akula/";
-                        break
-                }
-
-                $('div.header-user').find('#authorization').remove();
-
-                if( result.cartCount )
-                    $('div.header-user').find('div[data-basket] span').show().text(result.cartCount);
-
-                if(result.wishlistCount)
-                    $('div.header-user').find('div[data-favorite]').addClass('favorites').find('span').text(result.wishlistCount);
-
-                $('div.header-user').find('div[data-auth]').find('span').text(`Здравствуйте, ${result.name}`);
-
-                IS_AUTH = true;
-
-                $('body').removeClass('showPrice');
-
-
-            }
-            else
-            {
-
-                switch(url)
-                {
-                    case "cabinet" :
-                        window.location.href = "/akula/";
-                        break;
-                    case "favorites" :
-                        window.location.href = "/akula/";
-                        break;
-                }
-
-                $('div.header-user').find('#exit').remove();
-                IS_AUTH =  false;
-            }
-
-
-        },
-
-    });
-
-
-}
-
 
 
 //флаг авторизированности пользователя
-var IS_AUTH;
+var IS_AUTH = false;
 
-( function($){
+function getMenuCategories()
+{
+    let data = new FormData(),
+        html = "",
+        responseData;
+    data.append('show_count' , true);
+    return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin'  , body: data   })
+        .then(function (response) {
 
-     $('input[name="phone"]').each( function () {
-        $(this).inputmask('+7 (999) 999-99-99');
-     })
-
-
-    $('input[type="search"]').keypress(function (e) {
-        if (e.which == 13) {
-           window.location.href ="/search?query="+$(this).val()+"";
-         }
-
-    });
-
-    $('div.header-user > div:last-of-type button').click( function () {
-        $(this).next().show();
-    });
-
-
-    $('div.header-user button.popup-close').click(function () {
-       $(this).parent('div').hide();
-
-    });
-
-    $('#exit div button').click(function(){
-        requestLogout();
-
-    });
-
-    $('#authorization form button').click( function () {
-        
-        var data = {};
-        
-        $('#authorization').find('input').each( function(){
-            $(this).removeClass('input-error-border');
-            validateData($(this) , data , 'input-error-bottom');
-        });
-
-       if( !$('#authorization').find('input').hasClass('input-error-bottom') )
-       {
-           requestAuth(data);
-       }
-    });
-
-
-
-
-    function requestLogout()
-    {
-
-        $.ajax({
-            type: 'POST',
-            data : {'user' : 'logout'},
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
-            success: function( result, status){
-                location.reload();
-            },
+            responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+            return responseData;
         })
+        .then(function (response) {
+            if(response.status)
+            {
+
+              for(var key in response.data)
+                  html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
+
+               menu[0].querySelector('ul').innerHTML = html;
+               new SimpleBar(menu[0].querySelector('ul') , { autoHide: false });
+            }
+
+        });
+}
+
+function getMenuCollection()
+{
+    var data = new FormData(),
+        responseData,
+        html = "";
+
+    data.append('show_href' , true);
+    data.append('show_count' , true);
+
+    return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , body: data  })
+        .then(function (response) {
+
+            responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+            return responseData;
+        })
+        .then(function (response) {
+            if(response.status)
+            {
+                for(var key in response.data.items)
+                    html += "<li><a href='"+response.data.items[key].href+"'>"+response.data.items[key].title+" ("+response.data.items[key].count+")</a></li>";
+                menu[1].querySelector('ul').innerHTML = html;
+                new SimpleBar(menu[1].querySelector('ul')  , { autoHide: false });
+            }
+
+        });
+}
+
+function requestGetMenuCategories()
+{
+    getMenuCategories();
+    getMenuCollection();
+}
+
+
+function addFavoriteButtons( blockProducts , value)
+{
+
+    let buttonHtml = "";
+    if(value)
+        buttonHtml =  "<button class='new-on'></button>";
+    else
+        buttonHtml =  "<button class='new-off'></button>";
+
+    blockProducts.querySelector('div.block-button-favorites').innerHTML = buttonHtml;
+}
+
+
+function eventChangeFavorites(button)
+{
+    let productBlock = button.closest('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]'),
+        idProduct;
+
+
+    if(productBlock.hasAttribute('data-catalog-item-id'))
+       idProduct = productBlock.getAttribute('data-catalog-item-id');
+
+    if(productBlock.hasAttribute('data-id-block'))
+        idProduct = productBlock.getAttribute('data-id-block');
+
+    if(productBlock.hasAttribute('data-id-catalog-item') )
+        idProduct = productBlock.attr('data-id-catalog-item');
+
+
+    if( button.classList.contains('new-off') )
+        requestAddFavorites( idProduct , button);
+    else
+        requestRemoveFavorites( idProduct , button );
+
+}
+
+function eventAuth()
+{
+    var data = {},
+        listInput =  document.querySelectorAll('#authorization input'),
+        sendRequest = true;
+
+    listInput.forEach(function(current , index, array){
+       current.classList.remove('input-error-border');
+       validateData(current, data, 'input-error-bottom' );
+
+       if( current.classList.contains('input-error-bottom'))
+           sendRequest = false;
+       });
+
+    if(sendRequest)
+        requestAuth(data);
+
+
+
+    // $('#authorization form button').click(function () {
+    //     var data = {};
+    //
+    //     $('#authorization').find('input').each(function () {
+    //         $(this).removeClass('input-error-border');
+    //         validateData($(this), data, 'input-error-bottom');
+    //     });
+    //
+    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+    //         requestAuth(data);
+    //     }
+    // });
+}
+
+document.addEventListener('click' , function (event) {
+
+   if(event.target.tagName == "BUTTON" && ( event.target.classList.contains('new-on') || event.target.classList.contains('new-off')  ) )
+   {
+       eventChangeFavorites(event.target);
+       return;
+   }
+
+    if(event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu'))
+    {
+        window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
+        return;
+    }
+    //показываем окно с авторизацие или переход на личный кабинет
+    if( (event.target.tagName == "SPAN" &&  event.target.closest('[data-auth]') )  || ( event.target.tagName == "BUTTON" && event.target.parentnode.hasAttribute('data-auth') ) )
+    {
+        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
+        return;
+    }
+    //закрытие модальных окошек
+    if(event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
+        && event.target.parentNode.classList.contains('popup-close')
+        && event.target.closest('[class*="header-user"]') )
+    {
+        event.target.parentNode.parentNode.style.display = "none";
+        return;
+    }
+
+    if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
+    {
+        requestLogout();
+        return;
+    }
+
+    if(event.target.tagName == "BUTTON" && event.target.closest('#authorization') )
+    {
+        eventAuth();
+        return;
     }
 
 
-    function requestAuth( data )
+});
+
+document.addEventListener('keydown' , function (event) {
+
+    if(event.target.tagName == 'INPUT' && event.target.getAttribute('type') == "search")
     {
-        console.log(data);
+        if (event.which == 13) {
+            window.location.href = "/search/" + event.target.value + "";
+        }
+    }
 
-        $.ajax({
-            type : "POST",
-            dataType : 'JSON',
-            data : {'user' : 'login' , 'login' : data['mail'] , 'password' : data['password_auth']},
-            url: '/akula/system/plugins/SecArgonia/cabinet/',
-            success : function( result , status ){
-                if(result.status)
-                {
-                    //реддиректим
-                    location.reload();
+});
+
+document.addEventListener('mousedown' , function (event) {
+    if( event.target.getAttribute('id') != 'authorization' && !event.target.closest('#authorization') )
+    {
+        if(  document.querySelector('#authorization'))
+            document.querySelector('#authorization').style.display = 'none';
+    }
+
+
+    if( event.target.getAttribute('id') != 'exit' && !event.target.closest('#exit')  )
+    {
+        if(  document.querySelector('#exit'))
+            document.querySelector('#exit').style.display = 'none';
+    }
+
+});
+
+
+function requestAddFavorites(product_id  , button)
+{
+
+    var data = new FormData();
+    data.append('id' , product_id);
+
+    return fetch(window.pms.config.cabinetAPI+'wishlist/add' , { method: 'POST', credentials: 'same-origin', body: data })
+            .then( response => {
+                let responseData = false;
+                try{
+                    responseData = response.json();
                 }
-                else
+                catch(e) {
+                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                    response.text().then(console.debug);
+                }
+
+                return responseData;
+            })
+            .then( response => {
+               if( response.status )
+               {
+                  button.classList.remove('new-off');
+                  button.classList.add('new-on');
+
+               }
+            });
+
+    // $.ajax({
+    //     data : { 'id' : product_id},
+    //     dataType : 'JSON',
+    //     type : "POST",
+    //     url : window.pms.config.cabinetAPI+'wishlist/add',
+    //     success : function ( result , status ) {
+    //         if(result.status)
+    //         {
+    //             button.removeClass('new-off').addClass('new-on');
+    //         }
+    //     },
+    // });
+
+}
+
+
+function requestRemoveFavorites(product_id , button)
+{
+
+    var data = new FormData();
+    data.append('id' , product_id);
+
+    return fetch(window.pms.config.cabinetAPI+'wishlist/delete' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( response => {
+            let responseData = false;
+            try{
+                responseData = response.json();
+            }
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( response => {
+            if( response.status )
+            {
+                button.classList.remove('new-on');
+                button.classList.add('new-off');
+
+
+            }
+        });
+
+    // $.ajax({
+    //     data : {  'id' : product_id},
+    //     dataType : 'JSON',
+    //     type : "POST",
+    //     url : window.pms.config.cabinetAPI+'wishlist/delete',
+    //     success : function ( result , status ) {
+    //         if(result.status)
+    //         {
+    //             button.removeClass('new-on').addClass('new-off');
+    //         }
+    //     },
+    // });
+}
+
+function requestCheckFavoritesItems(listId , classBlock )
+{
+
+    var data = new FormData();
+    data.append('items' , JSON.stringify(listId));
+
+    return fetch(window.pms.config.cabinetAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( function(response){
+            let responseData = false;
+            try{
+                responseData = response.json();
+            }
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( function (response) {
+            if(response.data.wishlist)
+            {
+                let products = document.querySelector('div.'+classBlock),
+                    wishList = response.data.wishlist,
+                    buttonHtml = "";
+
+                for(let key in wishList)
                 {
+                    addFavoriteButtons( products.querySelector('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
+                }
 
-                   if( result.data.error.email)
+
+            }
+        });
+
+}
+
+
+
+function setAuthUserData(result, url)
+{
+    let headerBlock,basketSpan,favoritesBlock;
+
+    headerBlock = document.querySelector('[class*="header-user"]');
+
+    if (result.status)
+    {
+        // switch (url) {
+        //     case "registration" :
+        //         window.location.href = "/";
+        //         break
+        // }
+
+        localStorage.setItem('user' , JSON.stringify(result.data));
+
+
+
+        headerBlock.querySelector('#authorization').remove();
+        renderHeaderIsAuth(result.data);
+        IS_AUTH = true;
+
+
+
+    }
+    else
+    {
+        localStorage.removeItem('user');
+        switch (url) {
+            case "cabinet" :
+                window.location.href = "/";
+                break;
+            case "favorites" :
+                window.location.href = "/";
+                break;
+            case "basket" :
+                window.location.href = "/";
+                break;
+        }
+
+        renderHeaderAuthFalse();
+        headerBlock.querySelector('#exit').remove(); //.find('#exit').remove();
+    }
+
+    return IS_AUTH;
+
+}
+
+function showError(responseData) {
+    console.log(responseData);
+}
+
+function requestCheckAuth(url) {
+
+   return fetch(window.pms.config.cabinetAPI + 'user/checkAuth', {method: 'POST', credentials: 'same-origin'})
+           .then(function (response) {
+
+               let responseData = false;
+               try {
+                   responseData = response.json();
+               }
+               catch (e) {
+                   responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                   response.text().then(console.debug);
+               }
+               return responseData;
+           })
+           .then(function (response) {
+               if(response.status)
+               {
+                   switch(url)
                    {
-                       $('#authorization').find('input[name="mail"]').addClass('input-error-bottom');
-
+                    //   case "registration"
                    }
 
-                   if(result.data.error.password)
-                       $('#authorization').find('input[name="password_auth"]').addClass('input-error-bottom');
+               }
 
+               return setAuthUserData(response, url);
+
+           });
+
+
+}
+
+function requestLogout() {
+
+    fetch(window.pms.config.cabinetAPI + 'user/logout'  , { method: 'POST' , credentials: 'same-origin' })
+        .then( function(response){
+            let responseData = false;
+            console.log(response);
+            try {
+                responseData = response.json();
+            }
+            catch(e)
+            {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug());
+           }
+
+            return responseData;
+        })
+        .then( function(response){
+          //  console.log(response);
+           if(response.status)
+               location.reload();
+            else
+               alert('Не получилось разлогиниться');
+        });
+}
+
+function requestAuth(data) {
+
+    var formData = new FormData();
+    formData.append('login', data['mail']);
+    formData.append('password', data['password_auth']);
+
+    return fetch(window.pms.config.cabinetAPI + 'user/login', {method: 'POST', credentials: 'same-origin', body:  formData })
+        .then(function (response) {
+            let responseData = false;
+            console.log(response);
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then(function (response) {
+            if (response.status)
+                location.reload();
+            else {
+                var errors = response.data.error;
+                var errorString = "";
+                for(key in errors){
+                    errorString += errors[key] + '\n';
                 }
-            },
+                if(errorString.length != 0)
+                    alert(errorString);
+            }
+        });
+}
+
+
+function requestRemindPassword(data) {
+    return fetch(window.pms.config.catalogAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
+        .then( function(response){
+            let responseData = false;
+            try{
+                responseData = response.json();
+            }
+            catch(e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then( function (response) {
+
         });
 
-
-    }
-
-$(document).ready(function(){
- 
-$(window).scroll(function(){
-if ($(this).scrollTop() > 100) {
-$('.scrollup').fadeIn();
-} else {
-$('.scrollup').fadeOut();
 }
-});
- 
-$('.scrollup').click(function(){
-$("html, body").animate({ scrollTop: 0 }, 500);
-return false;
-});
- 
-});
 
-})(jQuery);
+window.onscroll = function(){
+
+};
+
+
+
+(function () {
+
+    // $(window).scroll(function(){
+    //     if ($(this).scrollTop() > 100) {
+    //         $('.scrollup').fadeIn();
+    //     } else {
+    //         $('.scrollup').fadeOut();
+    //     }
+    // });
+    //
+    //
+    // $('.scrollup').click(function(){
+    //     animateScrollTo(0);
+    // });
+    //
+    //
+    //
+    //
+    // $('input[name="phone"]').each(function () {
+    //     $(this).inputmask('+7 (999) 999-99-99');
+    // })
+
+
+
+    // $('span[data-action="remind-pass"]').click(function(){
+    //     var data = {};
+    //     validateData($('#authorization').find('input[name="mail"]'), data , 'input-error-bottom');
+    //
+    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
+    //         requestRemindPassword(data);
+    //     }
+    //
+    // });
+
+
+
+
+
+})();

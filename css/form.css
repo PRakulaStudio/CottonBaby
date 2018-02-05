@@ -1,0 +1,374 @@
+/* registration */
+.registration-box {
+    width: 98%;
+    margin: 10px auto 20px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.registration-form {
+    width: 49%;
+    border-radius: 5px;
+    background: #F0F0F0;
+    margin: 0 auto 0 0;
+}
+
+.registration-form form{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.registration-form label{
+    width: 100%;
+    font-size: 16px;
+}
+
+.registration-form input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: #FFFFFF; 
+    font-size: 16px;
+    color: #333333;  
+}
+
+.registration-form button{
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    margin: 20px 0 0 0;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.registration-form button:hover{
+    background-position: 0 0;
+} 
+
+.registration-img {
+    position: relative;
+    width: 49%;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 0 0 0 auto;
+    background: url(../images/icons/reg.jpg) no-repeat center;
+    background-position: 40% 20%;
+}
+
+.registration-img p{
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    font-family: "Fontfabric-MullerBold";
+    font-size: 28px;
+    line-height: 40px;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+}
+/* registration end */
+
+/* contacts */
+.contacts-map {
+    width: 100%;
+    height: 500px;
+}
+
+#map{
+    width: 100%;
+    position: absolute !important;
+    height: 500px !important;
+}
+
+.map-box {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.map-info {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: auto;
+    margin: 25px 0;
+    padding: 10px;
+    float: left;
+    background: #FFFFFF;
+}
+
+.map-info button{
+    display: none;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 14px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom,#FDC435,#FF3D47);
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.info-logo {
+    height: 95px;
+    padding: 0 0 10px 0;
+    text-align: center;
+}
+
+.info-text {
+    overflow: hidden;
+    height: 195px;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.info-text b{
+    font-family: "Fontfabric-MullerBold";
+    font-size: 15px;
+}
+
+.info-text b > img{
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+.info-text p{
+    font-size: 15px;
+    line-height: 30px;
+    padding: 0 30px;
+}
+
+.contacts-box {
+    max-width: 1080px;
+    margin: 0 0 50px 0;
+}
+
+.contacts-box p{
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 30px;
+    color: #333333;
+}
+
+.contacts-form {
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.contacts-form form{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.form-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-top-left {
+    width: 45%;
+    margin: auto;
+}
+
+.form-top-right {
+    width: 45%;
+    margin: auto;
+}
+
+.form-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+}
+
+.contacts-form label{
+    width: 100%;
+    font-size: 16px;
+}
+
+.contacts-form input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: #FFFFFF; 
+    font-size: 16px;
+    color: #333333;  
+}
+
+.contacts-form textarea{
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #C1C1C1;
+    font-size: 16px;
+    color: #333333;
+    resize: none;
+}
+
+.contacts-form button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #FDC435, #F30330);
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.contacts-form button:hover{
+    background-position: 0 0;
+}
+
+.doc {
+    max-width: 320px;
+    margin: auto auto 50px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.doc a{
+    width: 150px;
+    height: 200px;
+    margin: auto;
+    border: 5px solid #D8DEE1;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+}
+/* contacts end */
+
+/* delivery */
+.delivery-box {
+    width: 98%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #E4E3DF;
+}
+
+.delivery-box > div:first-child *{
+    background: #E4E3DF;
+}
+
+.delivery-box > div:nth-child(odd){
+    background: #F7F7F5;
+}
+
+.delivery-box .delivery-block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.delivery-block p{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 50px;
+}
+
+.delivery-box .delivery-left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #E4E3DF;
+}
+
+.delivery-box .delivery-left img{
+    margin: auto;
+}
+
+.delivery-box .delivery-right {
+    width: 30%;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-box .delivery-right a{
+    display: inline-block;
+    width: 60%;
+    height: 30px;
+    margin: 10px auto;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 33px;
+    text-transform: uppercase;
+    background-size: auto 200%;
+    background-position: 0 50%;
+    transition: background-position 1s;
+}
+
+.delivery-box .delivery-right a:hover{
+    background-position: 0 0;
+}
+
+.delivery-box .delivery-right a span{
+    color: #FFFFFF;
+}
+
+.delivery-box .delivery-right a img{
+    display: none;
+    padding: 5px 0;
+    margin: auto;
+}
+/* delivery end */
+
+/* media */
+@media (max-width: 800px) {
+    .map-info {margin: 0 auto; float: none;}
+    .info-text {height: 0px; transition: all 1s;}
+    .map-info button{display: block;}
+    .contacts-form {width: 98%; margin: auto;}
+    .form-top {display: flex; flex-direction: column;}
+    .form-top-left {width: 95%;}
+    .form-top-right {width: 95%;}
+}
+
+@media (max-width: 600px) {
+    .registration-form {width: 100%; margin: auto;}
+    .registration-form button {margin: 20px auto;}
+    .registration-img {display: none;}
+    .delivery-box .delivery-right a span{display: none;}
+    .delivery-box .delivery-right a img{display: block;}
+}
+/* menia end */

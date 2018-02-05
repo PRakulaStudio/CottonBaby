@@ -23,6 +23,7 @@
     height: 100vh;
     object-fit: cover;
     -o-object-fit: cover;
+    filter: brightness(0.8);
 }
 
 .main-slider .swiper-button-prev {

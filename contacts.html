@@ -10,7 +10,7 @@
 	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
 </head>
 <body>
 
@@ -30,8 +30,6 @@
 					<div>
 						<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
 					</div>
-
-					<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 				</div>
 	        </div>
 	    </div>
@@ -185,7 +183,7 @@
 
 <!-- content start -->
 	<main class="content-site">
-		<section class="contacts">
+		<section class="content">
 			<div class="breadcrumbs">
 				<p><a href="index.html">Главная</a> &#8594 Наши контакты</p>
 				<div class="breadcrumbs-liner"></div>
@@ -198,13 +196,13 @@
 
 		<section class="contacts-map">
 			<div id="map"></div>	
-			<div class="map-info">
-				<div class="info-box">
+			<div class="map-box">
+				<div class="map-info">
 					<div class="info-logo">
 						<img src="images/logo.png">
 					</div>
 					
-					<div class="info">
+					<div class="info-text">
 						<div>
 							<b><img src="images/icons/map.png">Отдел по работе с клиентами</b>
 							<p>г. Екатеринбург, ул. Розы Люксембург 77, офис 1.</p>
@@ -221,12 +219,12 @@
 						</div>
 					</div>
 
-					<button data-action="show" >Развернуть</button>
+					<button data-action="show">Развернуть</button>
 				</div>
 			</div>
 		</section>
 
-		<section class="contacts">
+		<section class="content">
 			<div class="contacts-box">
 				<p>Свяжитесь с нами через форму обратной связи</p>
 				<div class="contacts-form">
@@ -300,9 +298,29 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
+<script>
+  //  google.maps.event.addDomListener(window, 'load', function(){
+  function initMap() {
+
+    var myLatlng = new google.maps.LatLng( 56.822222 , 60.615877);
+
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng,
+      disableDefaultUI: true
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title:"Hello World!"
+    });
+
+    // To add the marker to the map, call setMap();
+    marker.setMap(map);
+  };
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/contacts.js"></script>
 </body>
