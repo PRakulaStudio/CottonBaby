@@ -77,35 +77,6 @@ if (!window.pms) window.pms = {};
 
 let menu = document.querySelectorAll('div.menu div.marker');
 
-//
-// function integerOnly(e) {
-//     e = e || window.event;
-//     var code = e.which || e.keyCode;
-//     if (!e.ctrlKey) {
-//         var arrIntCodes1 = new Array(96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 8, 9, 116);   // 96 TO 105 - 0 TO 9 (Numpad)
-//         if (!e.shiftKey) {                          //48 to 57 - 0 to 9
-//             arrIntCodes1.push(48);                  //These keys will be allowed only if shift key is NOT pressed
-//             arrIntCodes1.push(49);                  //Because, with shift key (48 to 57) events will print chars like @,#,$,%,^, etc.
-//             arrIntCodes1.push(50);
-//             arrIntCodes1.push(51);
-//             arrIntCodes1.push(52);
-//             arrIntCodes1.push(53);
-//             arrIntCodes1.push(54);
-//             arrIntCodes1.push(55);
-//             arrIntCodes1.push(56);
-//             arrIntCodes1.push(57);
-//         }
-//         var arrIntCodes2 = new Array(35, 36, 37, 38, 39, 40, 46);
-//         if ($.inArray(e.keyCode, arrIntCodes2) != -1) {
-//             arrIntCodes1.push(e.keyCode);
-//         }
-//         if ($.inArray(code, arrIntCodes1) == -1) {
-//             return false;
-//         }
-//     }
-//     return true;
-// }
-
 /*
  * @param str
  * @param requareLength
@@ -116,7 +87,6 @@ function checkLength(str, requareLength) {
         return true;
     return false;
 }
-
 /**
  *
  * @param email
@@ -128,7 +98,6 @@ function checkEmail(email) {
         return true;
     return false;
 }
-
 /**
  *
  * @param phone
@@ -232,6 +201,7 @@ function validateData(input, data, error_class) {
 
 
 
+
 function PopUpShowMenu() {
     document.querySelector('#menu').style.display = 'block';
     document.querySelector('#menu-off').style.display = 'block';
@@ -265,7 +235,6 @@ function PopUpHidePopup() {
     document.querySelector('#card').style.display = 'none';
     document.querySelector('#thanks').style.display = 'none';
 }
-
 
 //флаг авторизированности пользователя
 var IS_AUTH = false;
@@ -356,7 +325,6 @@ function addFavoriteButtons( blockProducts , value)
     blockProducts.querySelector('div.block-button-favorites').innerHTML = buttonHtml;
 }
 
-
 function eventChangeFavorites(button)
 {
     let productBlock = button.closest('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]'),
@@ -413,38 +381,56 @@ function eventAuth()
     // });
 }
 
+
 document.addEventListener('click' , function (event) {
 
    if(event.target.tagName == "BUTTON" && ( event.target.classList.contains('new-on') || event.target.classList.contains('new-off')  ) )
    {
        eventChangeFavorites(event.target);
+       return;
    }
 
     if(event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu'))
     {
         window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
+        return;
     }
     //показываем окно с авторизацие или переход на личный кабинет
-    if(event.target.tagName == "SPAN" && event.target.parentNode.tagName == "BUTTON" && event.target.closest('[class*="header-user"]'))
+    if( (event.target.tagName == "SPAN" &&  event.target.closest('[data-auth]') )  || ( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-auth') ) )
     {
-        event.target.parentNode.nextElementSibling.style.display = "block";
+        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
+        return;
     }
     //закрытие модальных окошек
-    if(event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
+    if( (event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
         && event.target.parentNode.classList.contains('popup-close')
-        && event.target.closest('[class*="header-user"]') )
+        && event.target.closest('[class*="header-user"]')) || ( event.target.tagName == "BUTTON" && event.target.classList.contains('popup-close') &&  event.target.closest('[class*="header-user"]') ) )
     {
-        event.target.parentNode.parentNode.style.display = "none";
+        if( event.target.tagName == "IMG" )
+            event.target.parentNode.parentNode.style.display = "none";
+        else
+           event.target.parentNode.style.display = "none";
+        return;
     }
 
     if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
     {
         requestLogout();
+        return;
     }
 
     if(event.target.tagName == "BUTTON" && event.target.closest('#authorization') )
     {
         eventAuth();
+        return;
+    }
+
+    //скрытие блока меню, если кликнули не на этот блок
+    if(!event.target.closest('div.menu-popup') && !( event.target.tagName == "BUTTON" && event.target.classList.contains('menu-on')) )
+    {
+        document.querySelector('div.menu-popup').style.display = "none";
+        document.querySelector('div.header button.menu-on').style.display = "block";
+        return;
     }
 
 
@@ -476,6 +462,7 @@ document.addEventListener('mousedown' , function (event) {
     }
 
 });
+
 
 
 function requestAddFavorites(product_id  , button)
@@ -520,7 +507,6 @@ function requestAddFavorites(product_id  , button)
     // });
 
 }
-
 
 function requestRemoveFavorites(product_id , button)
 {
@@ -601,8 +587,6 @@ function requestCheckFavoritesItems(listId , classBlock )
         });
 
 }
-
-
 
 function setAuthUserData(result, url)
 {
@@ -749,7 +733,6 @@ function requestAuth(data) {
         });
 }
 
-
 function requestRemindPassword(data) {
     return fetch(window.pms.config.catalogAPI + 'wishlist/check' , { method: 'POST', credentials: 'same-origin', body: data })
         .then( function(response){
@@ -770,48 +753,9 @@ function requestRemindPassword(data) {
 
 }
 
+
 window.onscroll = function(){
 
 };
 
 
-
-(function () {
-
-    // $(window).scroll(function(){
-    //     if ($(this).scrollTop() > 100) {
-    //         $('.scrollup').fadeIn();
-    //     } else {
-    //         $('.scrollup').fadeOut();
-    //     }
-    // });
-    //
-    //
-    // $('.scrollup').click(function(){
-    //     animateScrollTo(0);
-    // });
-    //
-    //
-    //
-    //
-    // $('input[name="phone"]').each(function () {
-    //     $(this).inputmask('+7 (999) 999-99-99');
-    // })
-
-
-
-    // $('span[data-action="remind-pass"]').click(function(){
-    //     var data = {};
-    //     validateData($('#authorization').find('input[name="mail"]'), data , 'input-error-bottom');
-    //
-    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
-    //         requestRemindPassword(data);
-    //     }
-    //
-    // });
-
-
-
-
-
-})();

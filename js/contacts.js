@@ -4,6 +4,7 @@ try{
 
 
 ( function(){
+
 	"use strict";
 		let mobileWidth = 800;
 		requestCheckAuth('contacts');
@@ -72,21 +73,18 @@ try{
 		});
 
 
-
-
 		window.onresize = function (event) {
+			let buttonAction = document.querySelector('button[data-action]');
 			if( window.innerWidth >= mobileWidth )
-				document.querySelector('button[data-action]').parentNode.querySelector('.info').style.height = "195px";
+				buttonAction.parentNode.querySelector('.info').style.height = "195px";
 			else
 			{
-				if( document.querySelector('button[data-action]').getAttribute('data-action') == "show" )
+				if( buttonAction.getAttribute('data-action') == "show" )
 				{
-					document.querySelector('button[data-action]').parentNode.querySelector('.info').style.height = "0px";
-					document.querySelector('button[data-action]').innerText = "Развернуть";
+					buttonAction.parentNode.querySelector('.info').style.height = "0px";
+					buttonAction.innerText = "Развернуть";
 				}
 			}
-
-
 
 		};
 
