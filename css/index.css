@@ -819,11 +819,10 @@
     width: 50%;
     height: 450px;
     margin: auto 0 auto auto;
-    padding: 75px 55px 75px 25px;
+    padding: 35px 50px 35px 20px;
 }
 
 .reg-box .reg-form p{
-    padding: 0 0 20px 0;
     font-size: 25px;
     line-height: 40px;
 }
@@ -853,7 +852,7 @@
     cursor: pointer;
     width: 240px;
     height: 60px;
-    margin: 20px auto;
+    margin: 5px auto;
     border: 5px solid #D8DEE1;
     border-radius: 50px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
@@ -877,6 +876,36 @@
     left: 25px;
     right: 25px;
     border: 5px solid #FEC134;
+}
+
+.reg-box .price-min {
+    background: #F8F8F6;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    margin: auto auto 10px auto;
+    padding: 10px;
+}
+
+.reg-box .price-min:before{
+    content: "";
+    position: absolute;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background: url(../images/icons/i.png) no-repeat center;
+}
+
+.reg-box .price-min p{
+    margin: 2px 0 0 25px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.reg-box .price-min b{
+    white-space: pre;
+    font-weight: bold;
+    color: #FF0016;
 }
 /* registration end */
 
@@ -977,7 +1006,7 @@
     .main-slider .text p{font-size: 20px;}
     .coop-box .coop-title p{font-size: 30px;}
     .reg-box .reg-img {display: none;}
-    .reg-box .reg-form {width: 100%; padding: 60px 40px;}
+    .reg-box .reg-form {width: 100%; padding: 30px 40px;}
 }
 
 @media (max-width: 550px) {

@@ -103,6 +103,15 @@
     color: #FFFFFF; 
     background: #F10015;
 }
+
+.filter .filter-activ {
+    border: 2px solid #FC982B;
+}
+
+.filter .filter-activ span{
+    color: #FFFFFF; 
+    background: #F10015;
+}
 /* filter end */
 
 /* sorting */
@@ -149,7 +158,7 @@
     background: #F0F0EE;
 }
 
-.sorting > .sorting-block > .sorting-activ {
+.sorting .sorting-activ {
     border: 2px solid #F30330;
     background: #F0F0EE;
 }
