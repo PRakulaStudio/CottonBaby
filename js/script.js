@@ -203,9 +203,12 @@ function PopUpShowThanks() {
 }
 function PopUpHidePopup() {
     document.querySelector('#popup-fon').style.display = 'none';
-    document.querySelector('#score').style.display = 'none';
-    document.querySelector('#card').style.display = 'none';
-    document.querySelector('#thanks').style.display = 'none';
+    if(document.querySelector('#score') )
+       document.querySelector('#score').style.display = 'none';
+    if(document.querySelector('#card'))
+       document.querySelector('#card').style.display = 'none';
+    if(document.querySelector('#thanks') )
+       document.querySelector('#thanks').style.display = 'none';
 }
 
 
