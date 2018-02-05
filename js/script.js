@@ -8,6 +8,7 @@
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
+    feedbackAPI: '/system/plugins/SecArgonia/feedback/',
 };
 
 //дизайн header
@@ -231,9 +232,12 @@ function PopUpShowThanks() {
 
 function PopUpHidePopup() {
     document.querySelector('#popup-fon').style.display = 'none';
-    document.querySelector('#score').style.display = 'none';
-    document.querySelector('#card').style.display = 'none';
-    document.querySelector('#thanks').style.display = 'none';
+    if( document.querySelector('#score') )
+        document.querySelector('#score').style.display = 'none';
+    if(document.querySelector('#card'))
+       document.querySelector('#card').style.display = 'none';
+    if(document.querySelector('#thanks'))
+       document.querySelector('#thanks').style.display = 'none';
 }
 
 //флаг авторизированности пользователя
@@ -433,7 +437,6 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
-
 });
 
 document.addEventListener('keydown' , function (event) {
@@ -493,19 +496,6 @@ function requestAddFavorites(product_id  , button)
                }
             });
 
-    // $.ajax({
-    //     data : { 'id' : product_id},
-    //     dataType : 'JSON',
-    //     type : "POST",
-    //     url : window.pms.config.cabinetAPI+'wishlist/add',
-    //     success : function ( result , status ) {
-    //         if(result.status)
-    //         {
-    //             button.removeClass('new-off').addClass('new-on');
-    //         }
-    //     },
-    // });
-
 }
 
 function requestRemoveFavorites(product_id , button)
@@ -536,19 +526,6 @@ function requestRemoveFavorites(product_id , button)
 
             }
         });
-
-    // $.ajax({
-    //     data : {  'id' : product_id},
-    //     dataType : 'JSON',
-    //     type : "POST",
-    //     url : window.pms.config.cabinetAPI+'wishlist/delete',
-    //     success : function ( result , status ) {
-    //         if(result.status)
-    //         {
-    //             button.removeClass('new-on').addClass('new-off');
-    //         }
-    //     },
-    // });
 }
 
 function requestCheckFavoritesItems(listId , classBlock )
@@ -602,15 +579,11 @@ function setAuthUserData(result, url)
         //         break
         // }
 
-        localStorage.setItem('user' , JSON.stringify(result.data));
-
-
+       localStorage.setItem('user' , JSON.stringify(result.data));
 
         headerBlock.querySelector('#authorization').remove();
         renderHeaderIsAuth(result.data);
         IS_AUTH = true;
-
-
 
     }
     else

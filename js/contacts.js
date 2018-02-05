@@ -1,25 +1,29 @@
-
+"use strict";
 try{
 
 
 
 ( function(){
 
-	"use strict";
 		let mobileWidth = 800;
 		requestCheckAuth('contacts');
 		requestGetMenuCategories();
 
 		let element = document.querySelector('div.contacts-form input[type="tel"]'),
 		 	maskOptions = {
-				mask: '+{7}(000)000-00-00'
+				mask: '+{7} (000) 000-00-00'
 			};
 		new IMask(element, maskOptions);
 
-		function eventSendFeedback()
+		function requestSendFeedback(fields)
 		{
+			let data = new FormData();
+			for(let key in fields)
+				data.append(key , fields[key]);
+
+
 			try{
-				return fetch( url , {method: 'POST', credentials: 'same-origin' , body: data})
+				return fetch( window.pms.config.feedbackAPI+'order/create' , {method: 'POST', credentials: 'same-origin' , body: data})
 					.then(function (response) {
 						let responseData = false;
 						try {
@@ -36,6 +40,12 @@ try{
 						{
 							PopUpShowThanks();
 						}
+						else
+						{
+							let form = document.querySelector('div.contacts-form');
+							for( var key in response.data.errors )
+								form.querySelector('[name="'+key+'"]').classList.add('input-error');
+						}
 
 					});
 			}
@@ -48,43 +58,92 @@ try{
 		}
 
 		document.querySelector('button[data-action]').onclick = function (event) {
+			try{
+				if( event.target.getAttribute('data-action') == "show")
+				{
+					event.target.setAttribute('data-action' , 'hide');
+					event.target.parentNode.querySelector('.info').style.height = '195px';
+					event.target.innerText = "Свернуть";
+				}
+				else
+				{
+					event.target.setAttribute('data-action' , 'show');
+					event.target.parentNode.querySelector('.info').style.height = '0px';
+					event.target.innerText = "Развернуть";
+				}
+			}
+			catch (error)
+			{
+				requestSendBugs(error);
+			}
 
-			if( event.target.getAttribute('data-action') == "show")
-			{
-				event.target.setAttribute('data-action' , 'hide');
-				event.target.parentNode.querySelector('.info').style.height = '195px';
-				event.target.innerText = "Свернуть";
-			}
-			else
-			{
-				event.target.setAttribute('data-action' , 'show');
-				event.target.parentNode.querySelector('.info').style.height = '0px';
-				event.target.innerText = "Развернуть";
-			}
 		};
 
 		document.addEventListener('click' , function(event){
+			try{
+				if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
+				{
 
-			if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
-			{
-				eventSendFeedback();
+					let fieldsData = {},
+						sendRequest = true,
+						blockForm = document.querySelector('div.contacts-form');
+
+					blockForm.querySelectorAll('input.input-error , textarea.input-error').forEach(function(current){
+						current.classList.remove('input-error');
+					});
+
+					blockForm.querySelectorAll('input, textarea').forEach( function (field) {
+						if( field.getAttribute('name') == "phone" && !checkPhone(field.value) ){
+							field.classList.add('input-error');
+							sendRequest = false;
+							return;
+						}
+
+						if( field.getAttribute('name') == "message" && field.value == ""){
+							field.classList.add('input-error');
+							sendRequest = false;
+							return;
+						}
+
+						fieldsData[ field.getAttribute('name')] = field.value;
+					});
+
+
+					if( sendRequest )
+						requestSendFeedback( fieldsData );
+
+					return;
+					//requestSendFeedback();
+				}
 			}
+			catch(error)
+			{
+				requestSendBugs(error);
+			}
+
 
 		});
 
 
 		window.onresize = function (event) {
-			let buttonAction = document.querySelector('button[data-action]');
-			if( window.innerWidth >= mobileWidth )
-				buttonAction.parentNode.querySelector('.info').style.height = "195px";
-			else
-			{
-				if( buttonAction.getAttribute('data-action') == "show" )
+			try{
+				let buttonAction = document.querySelector('button[data-action]');
+				if( window.innerWidth >= mobileWidth )
+					buttonAction.parentNode.querySelector('.info').style.height = "195px";
+				else
 				{
-					buttonAction.parentNode.querySelector('.info').style.height = "0px";
-					buttonAction.innerText = "Развернуть";
+					if( buttonAction.getAttribute('data-action') == "show" )
+					{
+						buttonAction.parentNode.querySelector('.info').style.height = "0px";
+						buttonAction.innerText = "Развернуть";
+					}
 				}
 			}
+			catch(error)
+			{
+				requestSendBugs(error);
+			}
+
 
 		};
 
@@ -104,7 +163,7 @@ function isError(e){
 }
 
 function requestSendBugs(error) {
-
+	console.log(error);
 	var xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
 

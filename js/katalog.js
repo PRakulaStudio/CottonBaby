@@ -7,10 +7,10 @@
     let mobileWidth = 1000;
 
     //если мобилка, то показываем кнопку
-    if(  $(window).width() <= mobileWidth )
+    if(  window.innerWidth <= mobileWidth )
     {
-        $('div.title').find('button').show();
-        $('section.filter-box').hide();
+        document.querySelector('div.title button').style.display = "block";
+        document.querySelector('section.filter-box').style.display = "none";
     }
         
     
@@ -48,32 +48,52 @@
             });
         
     }
-        
-    $(window).resize( function(){
-           let button =  $('section.content > div.title').find('button');
-
-           if( $(window).width() > mobileWidth )
-           {
-               $('div.title').find('button').hide();
-               $('section.filter-box').show();
-           }
-           else
-           {
-               $('div.title').find('button').show();
-               if( button.attr('data-category-action') )
-               {
-                   displayCategories(button.attr('data-category-action'));
-               }
-               else
-               {
-                   displayCategories('hide');
-               }
-
-           }
 
 
+    window.onresize = function (event) {
+        let button = document.querySelector('section.content > div.title button');
 
-    });
+        if( window.innerWidth > mobileWidth)
+        {
+            document.querySelector('div.title button').style.display = 'none';
+            document.querySelector('section.filter-box').style.display = 'block';
+        }
+        else
+        {
+            document.querySelector('div.title button').style.display = "block";
+            if( button.hasAttribute('data-category-action') )
+                displayCategories( button.getAttribute('data-category-action') );
+            else
+                displayCategories('hide');
+        }
+
+    }
+
+    // $(window).resize( function(){
+    //        let button =  $('section.content > div.title').find('button');
+    //
+    //        if( $(window).width() > mobileWidth )
+    //        {
+    //            $('div.title').find('button').hide();
+    //            $('section.filter-box').show();
+    //        }
+    //        else
+    //        {
+    //            $('div.title').find('button').show();
+    //            if( button.attr('data-category-action') )
+    //            {
+    //                displayCategories(button.attr('data-category-action'));
+    //            }
+    //            else
+    //            {
+    //                displayCategories('hide');
+    //            }
+    //
+    //        }
+    //
+    //
+    //
+    // });
 
     $('div.sorting-block').on('click' , 'button' , function(){
 
@@ -119,48 +139,85 @@
     function displayCategories(status_display)
     {
         //если мобилка
-
-        if( $(document).width() <= mobileWidth )
+        if( window.innerWidth <= mobileWidth )
         {
-           if(status_display == "show" )
-             $('section.filter-box').show().show();
-
-           else
-             $('section.filter-box').hide();
+            if(status_display == "show")
+                document.querySelector('section.filter-box').style.display = "block";
+            else
+                document.querySelector('section.filter-box').style.display = "none";
         }
         else
         {
-            $('section.filter-box').show();
-            if(status_display == "show")
-                $('section.filter-box').show();
+            document.querySelector('section.filter-box').style.display = "block";
+            if( status_display == "show")
+                document.querySelector('section.filter-box').style.display = "block";
             else
-                $('section.filter-box').hide();
+                document.querySelector('section.filter-box').style.display = "none";
         }
+
+        // if( $(document).width() <= mobileWidth )
+        // {
+        //    if(status_display == "show" )
+        //      $('section.filter-box').show().show();
+        //
+        //    else
+        //      $('section.filter-box').hide();
+        // }
+        // else
+        // {
+        //     $('section.filter-box').show();
+        //     if(status_display == "show")
+        //         $('section.filter-box').show();
+        //     else
+        //         $('section.filter-box').hide();
+        // }
 
     }
 
     function changeCategoryButton()
     {
-       let button =  $('section.content > div.title').find('button');
+        let button = document.querySelector('section.content > div.title button');
 
-       if( button.attr('data-category-action') )
-       {
-            if(button.attr('data-category-action') == "show")
+        if( button.hasAttribute('data-category-action'))
+        {
+            if( button.getAttribute('data-category-action') == "show" )
             {
-                button.attr('data-category-action' , 'hide').html('все категории<img src="images/icons/down-arrow.svg">');
-
+                button.setAttribute('data-category-action' , 'hide');
+                button.innerHTML = 'все категории<img src="images/icons/down-arrow.svg">';
             }
-           else
+            else
             {
-                button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+                button.setAttribute('data-category-action' , 'show');
+                button.innerHTML = 'скрыть<img src="images/icons/up-arrow.svg">';
             }
 
-           displayCategories(button.attr('data-category-action') );
-       }
-       else
-       {
-           button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
-       }
+            displayCategories(button.getAttribute('data-category-action'));
+
+        }
+        else
+        {
+
+        }
+       // let button =  $('section.content > div.title').find('button');
+       //
+       // if( button.attr('data-category-action') )
+       // {
+       //      if(button.attr('data-category-action') == "show")
+       //      {
+       //          button.attr('data-category-action' , 'hide').html('все категории<img src="images/icons/down-arrow.svg">');
+       //
+       //      }
+       //     else
+       //      {
+       //          button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+       //      }
+       //
+       //     displayCategories(button.attr('data-category-action') );
+       // }
+       // else
+       // {
+       //     button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+       // }
     }
 
 
