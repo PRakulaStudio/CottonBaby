@@ -1,0 +1,327 @@
+.history, .data, .bonus {
+    width: 99%;
+    margin: auto auto 20px auto;
+}
+
+.history-box {
+    width: 99%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.history-box > div{
+    width: 49%;
+    height: auto;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #E4E3DF;
+    overflow: hidden;
+}
+
+.history-box > div > div{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.history-box div > div {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 5px;
+}
+
+.history-box > div > div > div > p{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.history-box > div > div > .sum p{
+    font-size: 20px;
+    color: #FF0016;
+}
+
+.history-box > div > div > .status > p{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.history-box > div > div > .status {
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.status-blue {
+    border: 2px solid #0035D2;
+}
+
+.status-green {
+    border: 2px solid #00B90E;
+}
+
+.status-blue p{
+    color: #0035D2 !important;
+}
+
+.status-green p{
+    color: #00B90E !important;
+}
+
+.history-box > div > .hidden {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    overflow: auto;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.history-box > div > .hidden > .order-info{
+    width: 100%;
+    margin: 10px auto;
+    padding: 0;
+    border: 1px solid #BBBBBB;
+    border-radius: 10px;
+}
+
+.history-box > div > .hidden > .order-info > div{
+    display: flex;
+    flex-direction: row;
+}
+
+.history-box > div > .hidden p{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.history-box > div > .hidden a{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    color: #682333;;
+}
+
+.history-box > div > .hidden a:hover{
+    text-decoration: underline;
+}
+
+.history-box > div > div > button{
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    height: 50px;
+    padding: 0 10px 0 0;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    text-align: right;
+    margin: auto 0 auto auto;
+    z-index: 1;
+}
+
+.history-box > div > div > button img{
+    width: 20px;
+}
+
+.history-box > div > div:nth-child(even){
+    background: #FFFFFF;
+}
+
+.history-box > div > div:nth-child(odd){
+    background: #F6F6F5;
+}
+
+.history-box > div > div:first-child {
+    background: #E4E3DF;
+}
+
+.history-button {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.history-button button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    border: 2px solid #D7DFE5;
+    border-radius: 25px;
+    background: #D7DFE5;
+    font-size: 18px;
+}
+
+.history-button button > img{
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+}
+
+.history-button button:hover{
+    border: 2px solid #F30330;
+}
+
+.data-box {
+    width: 99%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.data-box form{
+    padding: 5%;
+}
+
+.data-box p{
+    width: 100%;
+    margin: auto auto 20px auto;
+    font-size: 25px;
+    color: #333333;
+}
+
+.cabinet-box {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    font-size: 25px;
+    color: #333333;
+}
+
+.cabinet-box img{
+    width: 15px;
+    margin: 0 5px 0 0;
+}
+
+.fiz-form, .jur-form {
+    width: 100%;
+    height: 0;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.address-form {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.show-block {
+    height: auto;
+}
+
+.fiz-form div, .jur-form div, .address-form div{
+    width: 49%;
+    margin: 5px 0;
+}
+
+.data-box label{
+    width: 100%;
+    font-size: 16px;
+}
+
+.data-box input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    background: #FFFFFF; 
+    font-size: 16px;
+    color: #333333;  
+}
+
+.data-button {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.data-button button{
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    padding: 19px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
+
+.data-button button:hover{
+    background-position: 0 0;
+}
+
+.bonus {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.bonus p{
+    margin: auto auto 10px auto;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.bonus-info span{
+    font-size: 20px;
+    color: #FF7F07;
+    white-space: pre;
+}
+
+.bonus-user span{
+    font-size: 20px;
+    color: #FF0016;
+    white-space: pre;
+}
+
+/* media */
+@media (max-width: 1000px) {
+    .history-box > div > .hidden {max-height: none;}
+}
+@media (max-width: 650px) {
+    .history-box {flex-direction: column;}
+    .history-box > div {width: 100%;}
+    .fiz-form, .jur-form, .address-form {flex-direction: column;}
+    .fiz-form div, .jur-form div, .address-form div{width: 100%;}
+}
+/* media end*/

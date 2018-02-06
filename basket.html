@@ -21,7 +21,7 @@
 	    <div class="popup-table">
 	        <div class="popup-cell">
 	            <div class="popup-score" id="score">
-					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					<button class="popup-close" onclick="PopUpHidePopup()"><img src="images/icons/close.png"></button>
 					<p>Оплата по счету</p>
 
 					<form>
@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="popup-card" id="card">
-					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					<button class="popup-close" onclick="PopUpHidePopup()"><img src="images/icons/close.png"></button>
 					<p>Адрес доставки</p>
 
 					<form>
@@ -95,7 +95,7 @@
 				</div>
 
 				<div class="popup-thanks" id="thanks">
-					<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
+					<button class="popup-close" onclick="PopUpHidePopup()"><img src="images/icons/close.png"></button>
 					
 					<div>
 						<p>Спасибо за покупку</p>
@@ -104,8 +104,6 @@
 					<div>
 						<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
 					</div>
-
-					<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 				</div>
 	        </div>
 	    </div>
@@ -115,7 +113,7 @@
 <!-- menu popup start -->
 	<div class="menu-popup" id="menu">
 		<div class="button-box">
-			<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+			<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 			<div class="search-menu">
 				<input type="search" placeholder="поиск">
 				<button type="submit"><img src="images/icons/search.png"></button>
@@ -200,7 +198,7 @@
 	<div class="header-box">
 		<div class="header">
 			<div class="header-menu">
-				<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+				<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 			</div>
 
 			<div class="header-info">
@@ -282,7 +280,7 @@
 							<div>
 								<div>
 									<div>
-										<img src="images/basket.png">
+										<img src="images/pictures/basket.png">
 										<div>
 											<p>#123312</p>
 											<p><a href="#">Костюм утепленный</a></p>
@@ -357,7 +355,7 @@
 							<div>
 								<div>
 									<div>
-										<img src="images/basket.png">
+										<img src="images/pictures/basket.png">
 										<div>
 											<p>#123312</p>
 											<p><a href="#">Костюм утепленный</a></p>
@@ -441,7 +439,7 @@
 							<div>
 								<div>
 									<div>
-										<img src="images/basket.png">
+										<img src="images/pictures/basket.png">
 										<div>
 											<p>#123312</p>
 											<p><a href="#">Костюм утепленный</a></p>
@@ -496,7 +494,7 @@
 
 				<div class="basket-total">
 					<div>
-						<p>Бонусные рубли: <span>200 руб.</span></p>
+						<p>Бонусные рубли: <span>0 руб.</span></p>
 						<p>(Вы можете потратить бонусные рубли на покупки)</p>
 					</div>
 
@@ -520,7 +518,7 @@
 					<p>Выберите вариант оплаты:</p>
 					<div>
 						<div>
-							<button onclick="javascript:PopUpShowScore()"><img src="images/icons/score.png"></button>
+							<button onclick="PopUpShowScore()"><img src="images/icons/score.png"></button>
 							<p>Счет</p>
 						</div>
 
@@ -531,13 +529,13 @@
 					</div>
 				</div>
 
-				<div class="content-error">
+				<div class="content-error d-none">
 	        		<p>Не выбран <span>адрес доставки</span></p>
 				</div>
 
 				<div class="address-box">
 					<p>Текущий адрес доставки: 650000 г. Екатеринбург ул. Малышева, д. 54, кв-43</p>
-					<button onclick="javascript:PopUpShowCard()">Редактировать</button>
+					<button onclick="PopUpShowCard()">Редактировать</button>
 				</div>
 
 				<div class="basket-liner"></div>
@@ -554,7 +552,7 @@
 					</div>
 
 					<div class="basket-order-off">
-						<button onclick="javascript:PopUpShowThanks()">&#10003 Оформить заказ</button>
+						<button onclick="PopUpShowThanks()">&#10003 Оформить заказ</button>
 					</div>
 				</div>
 			</div>
@@ -604,5 +602,6 @@
 	</div>
 <!-- footer end -->
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/simplebar.js"></script>
 </body>
 </html>
