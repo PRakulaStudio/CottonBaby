@@ -948,6 +948,7 @@
     width: 25px;
     height: 25px;
     background: url(../images/icons/insta.png) no-repeat center;
+    background-size: 100%;
 }
 
 .insta-text a{

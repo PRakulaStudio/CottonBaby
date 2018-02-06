@@ -92,14 +92,14 @@ ol, ul {
     overflow-y: scroll;
     min-width: 100%;
     -webkit-box-sizing: content-box;
-            box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 .simplebar-content {
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     min-height: 100%;
 }
 
@@ -108,15 +108,14 @@ ol, ul {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 11px;
+    width: 10px;
+    background: rgba(252, 151, 44, 0.2);
 }
 
 .simplebar-scrollbar {
     position: absolute;
-    right: 2px;
-    border-radius: 7px;
     min-height: 10px;
-    width: 7px;
+    width: 10px;
     opacity: 0;
     -webkit-transition: opacity 0.2s linear;
     transition: opacity 0.2s linear;
@@ -136,9 +135,10 @@ ol, ul {
 }
 
 .simplebar-track.horizontal {
+    display: none !important;
     left: 0;
     width: auto;
-    height: 11px;
+    height: 10px;
 }
 
 .simplebar-track.vertical {
@@ -147,7 +147,7 @@ ol, ul {
 
 .horizontal.simplebar-track .simplebar-scrollbar {
     right: auto;
-    top: 2px;
+    top: 0;
     height: 7px;
     min-height: 0;
     min-width: 10px;
@@ -543,6 +543,11 @@ ol, ul {
     margin: auto 10px;
 }
 
+.search-menu button img{
+    width: 25px;
+    height: 25px;
+}
+
 .search-menu input{
     width: 90%;
     margin: auto;
@@ -578,17 +583,16 @@ ol, ul {
 
 .section ul {
     height: 360px;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.section ul > li {
+.section ul li {
     width: 100%;
 }
 
-.section ul > li > a{
+.section ul li a{
     display: block;
     width: 100%;
     padding: 10px;
@@ -597,7 +601,7 @@ ol, ul {
     color: #333333;
 }
 
-.section ul > li:hover > a{
+.section ul li:hover a{
     text-decoration: none;
 }
 
@@ -608,17 +612,17 @@ ol, ul {
     color: #333333;
 }
 
-.marker ul > li{
+.marker ul li{
     position: relative;
     width: 100%;
     padding: 0 0 0 25px;
 }
 
-.marker ul > li:before{
+.marker ul li:before{
     position: absolute;
     left: 0;
     content: "\25c9";
-    margin: 14px 10px;
+    margin: 10px;
     color: #FC982B;
 }
 /* --- MENU --- */
@@ -846,6 +850,11 @@ ol, ul {
     text-decoration: none;
 }
 
+.header-user-index > div:nth-child(1) > a img, .header-user-index > div:nth-child(2) > a img, .header-user-index > div:nth-child(3) > a img{
+    width: 25px;
+    height: 25px;
+}
+
 .header-user-index > div:nth-child(4) > button{
     cursor: pointer;
     border: none;
@@ -866,6 +875,8 @@ ol, ul {
 }
 
 .header-user-index > div:nth-child(4) img{
+    width: 25px;
+    height: 25px;
     vertical-align: text-bottom;
 }
 
@@ -1111,6 +1122,11 @@ ol, ul {
     text-decoration: none;
 }
 
+.header-user > div:nth-child(1) > a img, .header-user > div:nth-child(2) > a img, .header-user > div:nth-child(3) > a img{
+    width: 25px;
+    height: 25px;
+}
+
 .header-user > div:nth-child(4) > button{
     cursor: pointer;
     border: none;
@@ -1131,6 +1147,8 @@ ol, ul {
 }
 
 .header-user > div:nth-child(4) img{
+    width: 25px;
+    height: 25px;
     vertical-align: text-bottom;
 }
 
@@ -1387,13 +1405,18 @@ ol, ul {
     justify-content: flex-end;
 }
 
-.footer-top-networks button, .footer-bot-networks button{
+.footer-top-networks button{
     width: 25px;
     height: 25px;
     margin: 0 0 0 10px;
     cursor: pointer;
     border: none;
     background: none;
+}
+
+.footer-top-networks button img{
+    width: 25px;
+    height: 25px;
 }
 
 .footer-bot {

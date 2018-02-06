@@ -172,8 +172,11 @@
 }
 
 .history-button button > img{
-    vertical-align: middle;
+    width: 25px;
+    height: 25px;
     margin: 0 10px 0 0;
+    padding: 1px;
+    vertical-align: middle;
 }
 
 .history-button button:hover{

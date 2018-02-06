@@ -138,7 +138,7 @@
 
 				<div class="section marker">
 					<p>Каталог</p>
-					<ul>
+					<ul data-global-container="categories_menu" data-simplebar="init">
 						<li><a href="#">Комбинезон на манжете (6)</a></li>
 						<li><a href="#">Шапки</a></li>
 						<li><a href="#">Штаны</a></li>
@@ -165,7 +165,7 @@
 
 				<div class="section marker">
 					<p>Коллекции</p>
-					<ul>
+					<ul data-global-container="categories_menu" data-simplebar="init">
 						<li><a href="#">Комбинезон на манжете (6)</a></li>
 						<li><a href="#">Шапки</a></li>
 						<li><a href="#">Штаны</a></li>
@@ -203,24 +203,24 @@
 
 			<div class="header-info">
 				<div>
-					<a href="index.html"><img src="images/logo.png"></a>
+					<a href="/"><img src="images/logo.png"></a>
 				</div>
 
 				<div>
 					<p>Производство детской одежды</p>
 					<p>Оптовая продажа</p>
-					<p>г. Екатеринбург</p> 
+					<p>г. Екатеринбург</p>
 				</div>
 			</div>
 
 			<div class="header-user">
-				<div>
-					<a href="#"><img src="images/icons/insta.png"></a>
-					<div class="sub"><div><a href="#">Подпишись</a></div></div>
+				<div data-insta>
+					<a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>
+					<div class="sub"><div><a href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
 				</div>
-				<div><a href="#"><img src="images/icons/basket.png"><span>2</span></a></div>
-				<div class="favorites"><a href="#"><img src="images/icons/favorites.png"></a></div>
-				<div>
+				<div data-basket><a href="#"><img src="images/icons/basket.png"><span>0</span></a></div> 			
+				<div data-favorite><a href="#"><img src="images/icons/favorites.png"><span>0</span></a></div>
+				<div data-auth>
 					<button><img src="images/icons/user.png"><span>Войти</span></button>
 
 					<div class="authorization" id="authorization">
@@ -233,11 +233,9 @@
 								<input type="password" name="password_auth" placeholder="Пароль">
 							</div>
 
-							<div><span>Забыли пароль?</span></div>
-							
 							<div>
-								<button>Войти</button>
-								<a href="registration.html">Регистрация</a>
+								<button type="button">Войти</button>
+								<a href="/registration.html">Регистрация</a>
 							</div>
 						</form>
 					</div>
@@ -245,7 +243,7 @@
 					<div class="exit" id="exit">
 						<button class="popup-close"><img src="images/icons/close.png"></button>
 						<div>
-							<a href="#">Личный кабинет</a>
+							<a href="cabinet.html">Личный кабинет</a>
 							<button>Выйти</button>
 						</div>
 					</div>
