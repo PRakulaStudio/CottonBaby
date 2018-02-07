@@ -203,11 +203,12 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center;
+    align-items: start;
 }
 
 .new-slider .swiper-button {
     width: 100%;
+    margin: 0 0 10px 0;
     -webkit-user-select: none;
 }
 
@@ -416,7 +417,7 @@
     position: relative;
     overflow: hidden;
     background: url(../video/fon.png) no-repeat center;
-    background-size: 100%;
+    background-size: cover;
 }
 
 .content-cooperation video{

@@ -1,7 +1,7 @@
-var galleryTop = new Swiper('.gallery-top', {
+var galleryTop = new Swiper('.slider-top', {
       spaceBetween: 10,
     });
-var galleryThumbs = new Swiper('.gallery-thumbs', {
+var galleryThumbs = new Swiper('.slider-thumbs', {
   spaceBetween: 10,
   centeredSlides: true,
   slidesPerView: 'auto',
@@ -11,6 +11,14 @@ var galleryThumbs = new Swiper('.gallery-thumbs', {
 galleryTop.controller.control = galleryThumbs;
 galleryThumbs.controller.control = galleryTop;
 
+var galleryTop = new Swiper('.fullscreen', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.slider-next',
+        prevEl: '.slider-prev',
+      },
+    });
+galleryThumbs.controller.control = galleryTop;
 
 var swiper = new Swiper('.swiper', {
   slidesPerView: 3,
