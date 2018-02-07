@@ -656,7 +656,7 @@ ol, ul {
     height: 50px;
     cursor: pointer;
     border: none;
-    background: #FFFFFF url(images/icons/menu.png) no-repeat center;
+    background: #FFFFFF url(/images/icons/menu.png) no-repeat center;
 }
 
 .menu-off {
@@ -665,7 +665,7 @@ ol, ul {
     height: 50px;
     cursor: pointer;
     border: none;
-    background: #F5F5F5 url(images/icons/menuclose.png) no-repeat center;
+    background: #F5F5F5 url(/images/icons/menuclose.png) no-repeat center;
 }
 
 .header-info-index {
