@@ -228,10 +228,14 @@
                         document.querySelector('div.basket-container').style.display = "block";
 
                     }
+                    else
+                    {
+                        document.querySelector('div.block-empty').classList.toggle('d-none');
+                    }
                 }
                 else
                 {
-                    document.querySelector('div.basket-empty').style.display = "block";
+                    document.querySelector('div.block-empty').classList.toggle('d-none');
                 }
             });
 
