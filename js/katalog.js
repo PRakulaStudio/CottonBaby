@@ -1,6 +1,6 @@
-( function($){
 
-    $('div.products-pagination').html("");
+
+   // $('div.products-pagination').html("");
 
     var limitItemsKatalog = 9;
     var offset = 9;
@@ -95,46 +95,46 @@
     //
     // });
 
-    $('div.sorting-block').on('click' , 'button' , function(){
-
-       if(!$(this).hasClass('sorting-activ'))
-       {
-           $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
-
-           let sort = 'price';
-           if($(this).text() == "по дате")
-               sort = "create_date";
-
-           path = "";
-           if(sort == "create_date")
-               path = "";
-           else
-               path = '?sort='+sort;
-
-           history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
-          // history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
-            
-           Promise.all([
-               createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
-               requestGetKatalogItems(0 , limitItemsKatalog, sort , 'katalog'),
-
-           ]).then( results => {
-
-               if(IS_AUTH)
-               {
-                   let list_id = [];
-                   document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
-                       list_id.push( currentValue.getAttribute('data-catalog-item-id') );
-                   });
-                 
-                   requestCheckFavoritesItems(list_id , 'products-box');
-
-               }
-           });
-
-       }
-
-    });
+    // $('div.sorting-block').on('click' , 'button' , function(){
+    //
+    //    if(!$(this).hasClass('sorting-activ'))
+    //    {
+    //        $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
+    //
+    //        let sort = 'price';
+    //        if($(this).text() == "по дате")
+    //            sort = "create_date";
+    //
+    //        path = "";
+    //        if(sort == "create_date")
+    //            path = "";
+    //        else
+    //            path = '?sort='+sort;
+    //
+    //        history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
+    //       // history.pushState({foo: 'page'}, '?sort='+sort+'&page='+select_page, window.location.origin+window.location.pathname+'?sort='+sort+'&page='+select_page);
+    //
+    //        Promise.all([
+    //            createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
+    //            requestGetKatalogItems(0 , limitItemsKatalog, sort , 'katalog'),
+    //
+    //        ]).then( results => {
+    //
+    //            if(IS_AUTH)
+    //            {
+    //                let list_id = [];
+    //                document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
+    //                    list_id.push( currentValue.getAttribute('data-catalog-item-id') );
+    //                });
+    //
+    //                requestCheckFavoritesItems(list_id , 'products-box');
+    //
+    //            }
+    //        });
+    //
+    //    }
+    //
+    // });
 
     function displayCategories(status_display)
     {
@@ -281,7 +281,7 @@
         // requestGetCategories('katalog'),
     ]).then( results => {
 
-        if(results[0])
+        if(results[0])s
         {
             let list_id = [];
             document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
@@ -298,13 +298,12 @@
     //     .then( result => {})
 
 
-    $('div.title').on('click' , 'button' , function(){
-        if(!$(this).attr('data-category-action'))
-            requestGetOtherCategories('katalog' , 8);
-        else
-            changeCategoryButton();
+    // $('div.title').on('click' , 'button' , function(){
+    //     if(!$(this).attr('data-category-action'))
+    //         requestGetOtherCategories('katalog' , 8);
+    //     else
+    //         changeCategoryButton();
+    //
+    // });
 
-    });
 
-
-})(jQuery);
