@@ -276,9 +276,8 @@
     Promise.all([
         requestCheckAuth('katalog'),
         createPagination(pms.plugins.catalog.currentCategory.count , 'katalog'),
-        requestGetMenuCategories(),
         //requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
-        // requestGetCategories('katalog'),
+       // requestGetCategories('katalog'),
     ]).then( results => {
 
         if(results[0])
