@@ -281,14 +281,14 @@
         // requestGetCategories('katalog'),
     ]).then( results => {
 
-        if(results[0])s
+        if(results[0])
         {
             let list_id = [];
             document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
                    list_id.push( currentValue.getAttribute('data-catalog-item-id') );
                 });
          
-            requestCheckFavoritesItems(list_id , 'products-box');
+            requestCheckFavoritesItems(list_id , 'card-box');
 
         //
          }

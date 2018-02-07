@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/product.css"/>
 </head>
-<body class="showPrice">
+<body class="">
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
@@ -192,7 +192,7 @@
 	<section class="content">
 		<div class="product-box">
 			<div class="slider">
-				<div class="swiper-container gallery-top">
+				<div class="swiper-container gallery-top slider-top">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>
 						<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>
@@ -203,7 +203,7 @@
 					</div>
 				</div>
 
-				<div class="swiper-container gallery-thumbs">
+				<div class="swiper-container gallery-thumbs slider-thumbs">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>
 						<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>
@@ -239,9 +239,9 @@
 							<div class="size"><p>1 размер</p></div>
 
 							<div class="size-btn">
-								<button>-</button>
+								<button><img src="images/icons/minus.svg"></button>
 								<input type="number" placeholder="0" class="shest" />
-								<button>+</button>
+								<button><img src="images/icons/plus.svg"></button>
 							</div>
 						</div>
 
@@ -249,9 +249,9 @@
 							<div class="size"><p>360-625</p></div>
 
 							<div class="size-btn">
-								<button>-</button>
+								<button><img src="images/icons/minus.svg"></button>
 								<input type="number" placeholder="0" class="shest" />
-								<button>+</button>
+								<button><img src="images/icons/plus.svg"></button>
 							</div>
 						</div>
 
@@ -259,9 +259,9 @@
 							<div class="size"><p>1уп 6шт</p></div>
 
 							<div class="size-btn">
-								<button>-</button>
+								<button><img src="images/icons/minus.svg"></button>
 								<input type="number" placeholder="0" class="shest" />
-								<button>+</button>
+								<button><img src="images/icons/plus.svg"></button>
 							</div>
 						</div>
 
@@ -269,9 +269,9 @@
 							<div class="size"><p>100*100</p></div>
 
 							<div class="size-btn">
-								<button>-</button>
+								<button><img src="images/icons/minus.svg"></button>
 								<input type="number" placeholder="0" class="shest" />
-								<button>+</button>
+								<button><img src="images/icons/plus.svg"></button>
 							</div>
 						</div>
 
@@ -279,28 +279,28 @@
 							<div class="size"><p>60-65</p></div>
 
 							<div class="size-btn">
-								<button>-</button>
+								<button><img src="images/icons/minus.svg"></button>
 								<input type="number" placeholder="0" class="shest" />
-								<button>+</button>
+								<button><img src="images/icons/plus.svg"></button>
 							</div>
 						</div>
 
 					</div>
 				</div>
 
-				<div class="product-basket">
+				<div class="product-basket d-none">
 					<p>Товар помещен в корзину!</p>
 					<p>До минимальной суммы заказа осталось <span>10 000р.</span></p>
 				</div>
 
-				<div class="price-min">
+				<div class="price-min d-none">
 					<p>Минимальная сумма заказа <b>10 000р.</b></p>
 				</div>
 
-				<div class="price-basket">
+				<div class="price-basket d-none">
 					<div class="price">
 						<p>Цена:</p>
-						<p><span>1450</span> руб.</p>
+						<p><span></span> руб.</p>
 					</div>
 
 					<div class="btn">
@@ -450,8 +450,6 @@
 <script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
 <script type="text/javascript" src="/js/script.js" defer></script>
 <script type="text/javascript" src="/js/swiper.min.js" defer></script>
-<script type="text/javascript" src="/js/photoswipe.min.js" defer></script>
-<script type="text/javascript" src="/js/photoswipe-ui-default.min.js" defer></script>
 <script type="text/javascript" src="/js/product.js" defer></script>
 
 <!-- Yandex.Metrika counter -->
