@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'Fontfabric-MullerRegular';
-    src: url('../fonts/Fontfabric-MullerRegular.otf');
+    src: url('/fonts/Fontfabric-MullerRegular.otf');
 }
 @font-face {
     font-family: 'Fontfabric-MullerBlack';
-    src: url('../fonts/Fontfabric-MullerBlack.otf');
+    src: url('/fonts/Fontfabric-MullerBlack.otf');
 }
 @font-face {
     font-family: 'Fontfabric-MullerBold';
-    src: url('../fonts/Fontfabric-MullerBold.otf');
+    src: url('/fonts/Fontfabric-MullerBold.otf');
 }
 
 html, body {
@@ -56,7 +56,7 @@ ol, ul {
     height: 50px;
     cursor: auto;
     text-indent: -9999px;
-    background: url(../images/icons/up.png) no-repeat;
+    background: url(/images/icons/up.png) no-repeat;
     background-size: 50px;
     opacity: 0;
     transition: all 1s;
@@ -656,7 +656,7 @@ ol, ul {
     height: 50px;
     cursor: pointer;
     border: none;
-    background: #FFFFFF url(../images/icons/menu.png) no-repeat center;
+    background: #FFFFFF url(images/icons/menu.png) no-repeat center;
 }
 
 .menu-off {
@@ -665,7 +665,7 @@ ol, ul {
     height: 50px;
     cursor: pointer;
     border: none;
-    background: #F5F5F5 url(../images/icons/menuclose.png) no-repeat center;
+    background: #F5F5F5 url(images/icons/menuclose.png) no-repeat center;
 }
 
 .header-info-index {
@@ -1051,7 +1051,7 @@ ol, ul {
 .header-box {
     width: 100%;
     margin: 0 auto;
-    background: #FFFFFF url(../images/fon-menu.png) center;
+    background: #FFFFFF url(/images/fon-menu.png) center;
 }
 
 .header {
