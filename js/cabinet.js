@@ -12,8 +12,6 @@
 
 	//подсказки
 
-
-
 	function getStatus(id) {
 		for(var key in window.statuses)
 		{
@@ -123,7 +121,7 @@
 
 					document.querySelector('div.history').style.display = "block";
 
-					document.querySelectorAll('div.bonus p')[0].nextElementSibling.innerHTML = `Вы совершили ${response.data.count} ${declOfNum( response.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(response.data.total_sum)}\<\/span\>`
+					document.querySelectorAll('div.bonus div.bonus-user p')[0].innerHTML = `Вы совершили ${response.data.count} ${declOfNum( response.data.count, ['покупку', 'покупки', 'покупок']  )}, на общую сумму  \<span\>${formatMoney(response.data.total_sum)}\<\/span\>`
 					//меняем статус кол-ва покупок и общей суммы
 
 
@@ -201,7 +199,8 @@
 								.querySelector('span').innerHTML =formatMoney(response.userData[key])
 							continue;
 						}
-						document.querySelector('div.data-box input[name="'+key+'"]').value = response.userData[key]
+						if( document.querySelector('div.data-box input[name="'+key+'"]') )
+							document.querySelector('div.data-box input[name="'+key+'"]').value = response.userData[key]
 					}
 				}
 			});
@@ -210,7 +209,7 @@
 
 	document.addEventListener('keyup' , function (event) {
 		//добавляет инпуту статус "измененный"
-		if( event.target.tagName == "INPUT" && event.target.closest('section.cabinet'))
+		if( event.target.tagName == "INPUT" && event.target.closest('div.data-box'))
 		{
 			event.target.setAttribute('data-change' , 'true');
 			return;
@@ -272,14 +271,16 @@
 		}
 
 		//переключение полей
-		if( event.target.closest('button.cabinet-box') || (event.target.tagName == "BUTTON" && event.target.classList.contains('cabinet-box')))
+		if( (event.target.tagName == "IMG" && event.target.parentNode.classList.contains('cabinet-box')) || (event.target.tagName == "BUTTON" && event.target.classList.contains('cabinet-box')))
 		{
 			event.target.closest('p').nextElementSibling.classList.toggle(css.show_block);
-			event.target.querySelectorAll('img').forEach(function (current , index, array) {
-				if( current.style.display == "block" || !current.style.display)
-					current.style.display = "none";
-				else
-					current.style.display = "";
+			let button = "";
+			if( event.target.tagName == "IMG"  )
+				button = event.target.parentNode;
+			else
+				button = event.target;
+			button.querySelectorAll('img').forEach(function (current , index, array) {
+				current.classList.toggle('d-none');
 			});
 
 		}

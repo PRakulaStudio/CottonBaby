@@ -6,20 +6,18 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta property="og:image" content="images/repost.png">
 	<meta name="format-detection" content="telephone=no">
+	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/suggestion.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/cabinet.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -104,7 +102,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -113,8 +111,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -161,149 +160,160 @@
 
 <!-- content start -->
 <main class="content-site">
-		<section class="cabinet">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Личный кабинет</p>
-				<div class="pagination-liner"></div>
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Личный кабинет</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
+
+		<div class="title">
+			<h1>Личный кабинет</h1>
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="title">
+			<h2>История заказов:</h2>
+		</div>
+
+		<div class="history">
+			<div class="history-box">
+
 			</div>
-			
-			<div class="title">
-				<h1>Личный кабинет</h1>
+
+			<div class="history-button">
+				<button type="submit" data-offset="0" data-limit="4"><img src="images/icons/refresh.png">загрузить еще</button>
 			</div>
-			
-			<div class="history">
-				<p>История заказов</p>
+		</div>
 
-				<div class="history-box">
+		<div class="title">
+			<h2>Личные данные:</h2>
+		</div>
 
-				</div>
+		<div class="data">
+			<div class="data-box">
+				<form>
+					<p><button class="cabinet-box" type="button"><img src="images/icons/right-arrow.svg"><img class="d-none" src="images/icons/down-arrow.svg"> Для физ. лиц:</button></p>
 
-				<div class="history-button">
-					<button type="button" data-offset="0" data-limit="3"><img src="images/icons/refresh.png">загрузить еще</button>
-				</div>
-			</div>
-
-			<div class="data">
-				<p>Личные данные</p>
-
-				<div class="data-box">
-					<form>
-						<p><button type="button" class="cabinet-box"><img src="images/icons/right-arrow.svg" /><img style="display:none" src="images/icons/down-arrow.svg" />Для физ. лиц:</button> </p>
-
-						<div class="fiz-form hide-form-block">
-							<div>
-								<label>Ваше имя</label>
-								<input type="text" name="name" >
-							</div>
-
-							<div>
-								<label>Пароль</label>
-								<input type="password" name="password" >
-							</div>
-
-							<div>
-								<label>Подтвердите пароль</label>
-								<input type="password" name="confirm_password" >
-							</div>
-							
-							<div>
-								<label>Email</label>
-								<input type="email" name="mail" >
-							</div>
-							
-							<div>
-								<label>Телефон</label>
-								<input type="tel" name="phone" >
-							</div>
-
-							<div>
-								<label>Город</label>
-								<input type="text" name="city_fiz" >
-							</div>
-
-							<div></div>
+					<div class="fiz-form">
+						<div>
+							<label>Ваше имя</label>
+							<input type="text" name="name">
 						</div>
 
-						<p><button type="button" class="cabinet-box"><img src="images/icons/right-arrow.svg" /><img style="display:none" src="images/icons/down-arrow.svg" />Для юр. лиц:</button> </p>
-
-						<div class="jur-form hide-form-block">
-							<div>
-								<label>ИНН</label>
-								<input type="number" name="inn" >
-							</div>
-
-							<div>
-								<label>Название организации</label>
-								<input type="text" name="name_organization" >
-							</div>
-
-							<div>
-								<label>ОГРН</label>
-								<input type="number" name="ogrn" >
-							</div>
-
-							<div>
-								<label>Банк</label>
-								<input type="text" name="name_bank" >
-							</div>
-
-							<div>
-								<label>БИК</label>
-								<input type="number" name="bik" >
-							</div>
-
-							<div>
-								<label>Расчетный счет</label>
-								<input type="number" name="checking_account" >
-							</div>
-
-							<div>
-								<label>Корреспондентский счет</label>
-								<input type="number" name="correspondent_account" >
-							</div>
-
-							<div>
-								<label>Город</label>
-								<input type="text" name="city_jur" >
-							</div>
-
-							<div></div><div></div>
+						<div>
+							<label>Email</label>
+							<input type="email" name="mail">
 						</div>
 
-						<p>Адрес доставки:</p>
-
-						<div class="address-form">
-							<div>
-								<label>Город</label>
-								<input type="text" name="delivery_city" >
-							</div>
-
-							<div>
-								<label>Адрес</label>
-								<input type="text" name="address" >
-							</div>
-
-							<div>
-								<label>Индекс</label>
-								<input type="number" name="index_number" >
-							</div>
+						<div>
+							<label>Город</label>
+							<input type="text" name="city_fiz">
 						</div>
 
-						<div class="data-button">
-							<button type="button">Сохранить</button>
+						<div>
+							<label>Телефон</label>
+							<input type="tel" name="phone">
 						</div>
-					</form>
 
-				</div>
+						<div>
+							<label>Пароль</label>
+							<input type="password" name="password">
+						</div>
+
+						<div>
+							<label>Подтвердите пароль</label>
+							<input type="password" name="confirm_password">
+						</div>
+					</div>
+
+					<p><button class="cabinet-box" type="button" ><img src="images/icons/right-arrow.svg"><img class="d-none" src="images/icons/down-arrow.svg"> Для юр. лиц:</button></p>
+
+					<div class="jur-form">
+						<div>
+							<label>Город</label>
+							<input type="text" name="city_jur">
+						</div>
+
+						<div>
+							<label>ИНН</label>
+							<input type="number" name="inn">
+						</div>
+
+						<div>
+							<label>Название организации</label>
+							<input type="text" name="name_organization">
+						</div>
+
+						<div>
+							<label>ОГРН</label>
+							<input type="number" name="ogrn">
+						</div>
+
+						<div>
+							<label>Банк</label>
+							<input type="text" name="name_bank">
+						</div>
+
+						<div>
+							<label>БИК</label>
+							<input type="number" name="bik">
+						</div>
+
+						<div>
+							<label>Расчетный счет</label>
+							<input type="number" name="checking_account">
+						</div>
+
+						<div>
+							<label>Корреспондентский счет</label>
+							<input type="number" name="correspondent_account">
+						</div>
+
+						<div></div><div></div>
+					</div>
+
+					<p>Адрес доставки:</p>
+
+					<div class="address-form">
+						<div>
+							<label>Город</label>
+							<input type="text" name="delivery_city">
+						</div>
+
+						<div>
+							<label>Адрес</label>
+							<input type="text" name="address">
+						</div>
+
+						<div>
+							<label>Индекс</label>
+							<input type="number" name="index_number">
+						</div>
+					</div>
+
+					<div class="data-button">
+						<button type="button">Сохранить</button>
+					</div>
+				</form>
 			</div>
+		</div>
 
-			<div class="bonus">
-				<p>Ваш бонусный счет</p>
-				<p>Вы совершили 0 покупок, на общую сумму <span>0 руб.</span></p>
-				<p>На вашем бонусном счету: <span>0 руб.</span> (Вы можете потратить бонусные рубли на покупки).</p>
+		<div class="title">
+			<h2>Ваш бонусный счет:</h2>
+		</div>
+
+		<div class="bonus">
+			<div class="bonus-info">
+				<p><span>Бонусные рубли</span> начисляются в размере <span>1%</span> от суммы заказа <span>30 000 руб.</span> и больше!</p>
 			</div>
-		</section>
-	</main>
+			<div class="bonus-user">
+				<p>Вы совершили покупок, на общую сумму <span></span></p>
+				<p>На вашем бонусном счету: <span></span> (Вы можете потратить бонусные рубли на покупки).</p>
+			</div>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -357,18 +367,11 @@
 	];
 </script>
 
-<script type="text/javascript" src="js/animated-scroll-to.js"></script>
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 
-<!--[if lt IE 10]>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
-<![endif]-->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/suggestions-jquery@17.10.1/dist/js/jquery.suggestions.min.js"></script>
-
-<script type="text/javascript" src="/js/simplebar.js" ></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/cabinet.js"></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/cabinet.js" desc></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
 	(function (d, w, c) {
