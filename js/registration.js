@@ -16,8 +16,8 @@ try{
 
 		if( userData = localStorage.getItem('reg') ){
 			userData = JSON.parse( userData );
-			document.querySelector('div.reistration-form input[name="name"]').value =  userData['name'];
-			document.querySelector('div.reistration-form input[name="mail"]').value = userData['mail'];
+			document.querySelector('div.registration-form input[name="name"]').value =  userData['name'];
+			document.querySelector('div.registration-form input[name="mail"]').value = userData['mail'];
 
 		}
 

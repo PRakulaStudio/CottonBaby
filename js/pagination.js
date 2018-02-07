@@ -97,7 +97,7 @@ function createPagination( total ,  pageName)
         "<button class='pagination-arrow next "+hideLocalButton+"'>►</button>";
     hideLocalButton = "";
 
-    document.querySelector('div.products-pagination').innerHTML = html;
+    document.querySelector('div.pagination').innerHTML = html;
 
     return true;
 }
@@ -346,7 +346,7 @@ function changePagination(direction , activeButton , clickButton )
             });
     }
 
-    window.scrollTo( document.querySelector('div.products-box, div.collections-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
+    window.scrollTo( document.querySelector('div.card-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
 }
 
 
@@ -427,25 +427,26 @@ function createItems(items , is_show_favorite)
             if( item.images &&  item.images[0] && item.images[0]['750x750']  )
                 images_path =item.images[0]['750x750'];
 
-        html += "<div data-catalog-item-id='"+item.id+"'>" +
-                     "<div><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>"; //картинка
+        html += "<div class='card' data-catalog-item-id='"+item.id+"'>" +
+                     "<div class='card-img'><a href='"+item.href+"'><img src='"+images_path+"' /></a></div>"; //картинка
         if( item.price )
-             html +=  "<div><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>"; //цена
+             html +=  "<div class='card-price'><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>"; //цена
 
         if( is_show_favorite )
-             html += "<div class='block-button-favorites'></div>"; // избранное
-        html += "<div>" +
-                            "<a href='"+item.href+"'>"+item.title+"</a>" +
-                            "<p>"+(item.description == null ? "" : item.description)+"</p>" +
-                         "</div>" +
-
-                        "<a href='"+item.href+"'>" +
+             html += "<div class='card-favorites'></div>"; // избранное
+        html += "<div class='card-text'>" +
+                     "<a href='"+item.href+"'>"+item.title+"</a>" +
+                         "<p>"+(item.description == null ? "" : item.description)+"</p>" +
+                 "</div>" +
+                 "<div class='card-link'>" +
+                    "<a href='"+item.href+"'>" +
                             "Подробно" +
-                        "</a>" +
-                 "</div>";
+                    "</a>" +
+                 "</div>" +
+            "</div>";
     }
 
-    document.querySelector('div.products-box,div.collections-box').innerHTML = html;
+    document.querySelector('div.card-box').innerHTML = html;
     return  listIdItems;
 
 }
