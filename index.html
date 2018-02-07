@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Cotton Baby</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta property="og:image" content="images/repost.png">
-
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/media.css"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
-    <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
 <body class="showPrice">
 <div class="scrollup"></div>
@@ -117,8 +114,9 @@
             </div>
 
             <div>
-                <p>Производство детской одежды.</p>
-                <p>Оптовая продажа.</p>
+                <p>Производство детской одежды</p>
+                <p>Оптовая продажа</p>
+                <p>г. Екатеринбург</p>
             </div>
         </div>
 
@@ -165,174 +163,194 @@
 <!-- content start -->
 <main class="content-site">
     <section class="main-slider">
-        <div class="slider">
-            <div class="slide">
-                <div>
-                    <img    src="images/pictures/index1.jpg"
+        <div class="swiper-container swiper-main">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img
+                            src="images/pictures/index1.jpg"
                             srcset="images/pictures/index1.jpg 450w, images/pictures/index1.jpg 800w, images/pictures/index1.jpg 1050w, images/pictures/index1.jpg 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
-                        <div>
-                            <b>ПРОИЗВОДСТВО</b>
-                            <p>ДЕТСКОЙ ОДЕЖДЫ</p>
+                        <div class="text">
+                            <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
-                            <a href="/catalog/">Подробнее →</a>
+                            <p>ЧАСТНАЯ ФАБРИКА</p>
+                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="slide">
-                <div>
+
+                <div class="swiper-slide">
                     <img
                             src="images/pictures/index2.jpg"
                             srcset="images/pictures/index2.jpg 450w, images/pictures/index2.jpg 800w, images/pictures/index2.jpg 1050w, images/pictures/index2.jpg 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
-                        <div>
-                            <b>ПРОИЗВОДСТВО</b>
-                            <p>ДЕТСКОЙ ОДЕЖДЫ</p>
+                        <div class="text">
+                            <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
-                            <a href="/catalog/">Подробнее →</a>
+                            <p>ЧАСТНАЯ ФАБРИКА</p>
+                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="slide">
-                <div>
+
+                <div class="swiper-slide">
                     <img
                             src="images/pictures/index3.jpg"
                             srcset="images/pictures/index3.jpg 450w, images/pictures/index3.jpg 800w, images/pictures/index3.jpg 1050w, images/pictures/index3.jpg 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
-                        <div>
-                            <b>ПРОИЗВОДСТВО</b>
-                            <p>ДЕТСКОЙ ОДЕЖДЫ</p>
+                        <div class="text">
+                            <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
-                            <a href="/catalog/">Подробнее →</a>
+                            <p>ЧАСТНАЯ ФАБРИКА</p>
+                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="count-slider">
-            <p><span class="current-slide">1</span> из <span class="total-slider">10</span></p>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="main-prev swiper-button-prev"></div>
+            <div class="main-next swiper-button-next"></div>
         </div>
     </section>
 
     <section class="content-new">
-        <div class="new-text">
-            <div>
+        <div class="new">
+            <div class="title">
                 <p>Новинки</p>
-                <a href="/catalog/">в каталог &#8594</a>
+                <a href="catalog.html">в каталог<img src="images/icons/arrow-link.svg"></a>
             </div>
 
-            <div>
-                <p>Новый продукт, поступивший на рынок и отличающийся от существующих товаров сходного назначения
-                    каким-либо изменением потребительских свойств.</p>
-                <p>Качественно новым товаром считается изделие, которое имеет уровень новизны не менее 70%.</p>
+            <div class="text">
+                <p>В Cotton baby мы делаем ставку на высокое качество, современный дизайн и комфорт. Мы работаем с лучшими мировыми производителями тканей и фурнитуры, уделяя большое внимание экологичности производимой нами продукции и постоянно совершенствуя технологии производства.</p>
+                <p>Вся наша продукция прошла сертификацию качества и соответствует техническому регламенту Таможенного союза ТР ТС 007/2011 (свидетельство о госрегистрации, приложение).</p>
             </div>
         </div>
 
-        <div class="new-slider-box">
-            <div class="new-button">
-                <button data-action="prev"><img src="images/icons/back.svg"></button>
-                <button data-action="next"><img src="images/icons/next.svg"></button>
+        <div class="new-slider">
+            <div class="swiper-button">
+                <button class="new-prev swiper-button-prev"><img src="images/icons/back.svg"></button>
+                <button class="new-next swiper-button-next"><img src="images/icons/next.svg"></button>
             </div>
+            <div class="swiper-container swiper-new">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
+                            <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+                            <div class="card-favorites"><button></button></div>
+                            <div class="card-text">
+                                <a href="#">Комплект кофта + ползунки</a>
+                                <p>100% хлопок. Ваш ребенок останеться доволен.</p>
+                            </div>
+                            <div class="card-link"><a href="#">Подробно</a></div>
+                        </div>
+                    </div>
 
-            <div class="new-slider" data-load-items="true">
-                <!--<div class="slide">-->
-                    <!--<div class="new-box" data-id-catalog-item="">-->
-                        <!--<div>-->
-                            <!--<div><a href="#"><img src="images/pictures/i1.jpg"></a></div>-->
-                            <!--<div><p><span>*****</span><span>3 000</span> руб.</p></div>-->
-                            <!--<div>-->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>
+                            <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+                            <div class="card-favorites"><button></button></div>
+                            <div class="card-text">
+                                <a href="#">Комплект кофта + ползунки</a>
+                                <p>100% хлопок. Ваш ребенок останеться доволен.</p>
+                            </div>
+                            <div class="card-link"><a href="#">Подробно</a></div>
+                        </div>
+                    </div>
 
-                            <!--</div>-->
-                            <!--<div>-->
-                                <!--<a href="#">Комплект кофта + ползунки</a>-->
-                                <!--<p>100% хлопок. Ваш ребенок останеться доволен.</p>-->
-                            <!--</div>-->
-                            <!--<a href="#">Подробно</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card-img"><a href="#"><img src="images/pictures/i3.jpg"></a></div>
+                            <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+                            <div class="card-favorites"><button></button></div>
+                            <div class="card-text">
+                                <a href="#">Комплект кофта + ползунки</a>
+                                <p>100% хлопок. Ваш ребенок останеться доволен.</p>
+                            </div>
+                            <div class="card-link"><a href="#">Подробно</a></div>
+                        </div>
+                    </div>
 
-                <!--<div class="slide" data-type="empty">-->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card-img"><a href="#"><img src="images/pictures/i4.jpg"></a></div>
+                            <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+                            <div class="card-favorites"><button></button></div>
+                            <div class="card-text">
+                                <a href="#">Комплект кофта + ползунки</a>
+                                <p>100% хлопок. Ваш ребенок останеться доволен.</p>
+                            </div>
+                            <div class="card-link"><a href="#">Подробно</a></div>
+                        </div>
+                    </div>
 
-                <!--</div>-->
-                <!--<div class="slide" data-type="empty">-->
-
-                <!--</div>-->
-
-
+                    <div class="swiper-slide slide-off"></div>
+                    <div class="swiper-slide slide-off"></div>
+                    <div class="swiper-slide slide-off"></div>
+                </div>
             </div>
-
         </div>
     </section>
 
     <section class="content-cooperation">
-        <div class="img-video">
-            <img src="video/fon.png">
-            <video preload="none"  loop="loop" poster="video/fon.png" muted>
-                <source src="video/main_index.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-            </video>
-        </div>
+        <video loop="loop" poster="video/fon.png" muted>
+            <source src="video/cot7.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        </video>
 
+        <div class="coop-box">
+            <div class="coop-block">
+                <div class="coop-title"><p>Сотрудничество с нами</p></div>
 
-        <div class="text-cooperation">
-            <div>
-                <div>
-                    <p>Сотрудничество с нами</p>
+                <div class="coop-text">
+                    <p>Если Вас заинтересовала наша продукция — в первую очередь, спасибо! — ну а через эту форму Вы можете отправить запрос на прайс-лист, и мы свяжемся с Вами в самый короткий срок!</p>
                 </div>
-
-                <div>
-                    <p>Если Вас заинтересовала наша продукция — в первую очередь, спасибо! — ну а через эту форму Вы
-                        можете отправить запрос на прайс-лист, и мы свяжемся с Вами в самый короткий срок!</p>
-                </div>
-
-                <a href="cooperation.html"><img src="images/icons/send.png"> Написать нам</a>
+                <a href="cooperation.html"><img src="images/icons/send.png">Написать нам</a>
             </div>
         </div>
     </section>
 
     <section class="content-production">
-        <div class="production-box">
-            <div>
+        <div class="prod-box">
+            <div class="prod-title">
                 <div>
                     <p>наше</p>
                     <b>производство</b>
                 </div>
 
-                <div>
-                    <a href="production.html">подробнее &#8594</a>
-                </div>
+                <a href="production.html">подробнее<img src="images/icons/arrow-link.svg"></a>
             </div>
 
-            <div>
-                <div class="production-icon icon-a">
+            <div class="prod-icons">
+                <div class="prod-icon icon-a">
                     <img src="images/production/a.png">
                     <p>8 лет розничной торговли</p>
                 </div>
 
-                <div class="production-icon icon-b">
+                <div class="prod-icon icon-b">
                     <img src="images/production/b.png">
                     <p>Начало производства в 2015г.</p>
                 </div>
 
-                <div class="production-icon icon-c">
+                <div class="prod-icon icon-c">
                     <img src="images/production/c.png">
                     <p>Зарегистрированная торговая марка Cotton Baby</p>
                 </div>
 
-                <div class="production-icon icon-d">
+                <div class="prod-icon icon-d">
                     <img src="images/production/d.png">
                     <p>Сертификат таможенного союза №5644325</p>
                 </div>
 
-                <div class="production-icon icon-e">
+                <div class="prod-icon icon-e">
                     <img src="images/production/e.png">
                     <p>Лучшие мировые производители тканей и фурнитуры</p>
                 </div>
@@ -340,57 +358,39 @@
         </div>
     </section>
 
-    <section class="production-index-slider-box">
-        <div class="production-index-slider">
-            <div class="slide"><a data-fancybox="images-productions" href="images/pictures/p1.jpg"><img
-                    src="images/pictures/p1.jpg">
-                <div></div>
-            </a></div>
-            <div class="slide"><a data-fancybox="images-productions" href="images/pictures/p2.jpg"><img
-                    src="images/pictures/p2.jpg">
-                <div></div>
-            </a></div>
-            <div class="slide"><a data-fancybox="images-productions" href="images/pictures/p3.jpg"><img
-                    src="images/pictures/p3.jpg">
-                <div></div>
-            </a></div>
-            <div class="slide"><a data-fancybox="images-productions" href="images/pictures/p4.jpg"><img
-                    src="images/pictures/p4.jpg">
-                <div></div>
-            </a></div>
-            <div class="slide"><a data-fancybox="images-productions" href="images/pictures/p5.jpg"><img
-                    src="images/pictures/p5.jpg">
-                <div></div>
-            </a></div>
-
+    <section class="img-slider">
+        <div class="swiper-container swiper-prod">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/pictures/p1.jpg"></div>
+                <div class="swiper-slide"><img src="images/pictures/p2.jpg"></div>
+                <div class="swiper-slide"><img src="images/pictures/p3.jpg"></div>
+                <div class="swiper-slide"><img src="images/pictures/p4.jpg"></div>
+                <div class="swiper-slide"><img src="images/pictures/p5.jpg"></div>
+            </div>
         </div>
 
-        <div class="production-index-button">
-            <button data-action="prev"><img src="images/icons/back.svg"></button>
-            <button data-action="next"><img src="images/icons/next.svg"></button>
+        <div class="swiper-button">
+            <button class="prod-prev"><img src="images/icons/back.svg"></button>
+            <button class="prod-next"><img src="images/icons/next.svg"></button>
         </div>
     </section>
 
-    <section class="content-reg">
+    <section class="content-registration">
         <div class="reg-box">
-            <div>
-                <video preload="none" loop="loop" poster="video/fon.png" muted>
-                    <source src="video/cot8.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                </video>
-            </div>
+            <div class="reg-img"></div>
 
-            <div>
+            <div class="reg-form">
                 <p><b>Зарегистрируйтесь</b>, и совершайте оптовые закупки!</p>
 
-                <div>
-                    <label>Ваше имя</label>
-                    <input type="text" name="name">
+                <div class="price-min">
+                    <p>Минимальная сумма заказа <b>10 000р.</b></p>
                 </div>
 
-                <div>
-                    <label>Email</label>
-                    <input type="email" name="mail">
-                </div>
+                <label>Ваше имя</label>
+                <input type="text" name="name">
+
+                <label>Email</label>
+                <input type="email" name="mail">
 
                 <button>✓ Зарегистрироваться</button>
             </div>
@@ -399,37 +399,24 @@
         </div>
     </section>
 
-    <section class="insta-slider-box">
+    <section class="insta-box">
         <div class="insta-liner"></div>
         <div class="insta-block">
             <div class="insta-text">
-                <div>
-                    <p><img src="images/icons/insta.png"> Подпишись на наш инстаграм</p>
-                </div>
-                <div>
-                    <a href="https://www.instagram.com/cot.ton_baby/">подпишись</a>
-                </div>
+                <p>Подпишись на наш инстаграм</p>
+                <a href="#">подпишись<img src="images/icons/arrow-link.svg"></a>
             </div>
         </div>
 
-        <div class="insta-slider">
-            <div class="slide"><img src="images/pictures/i1.jpg">
-                <div></div>
-            </div>
-            <div class="slide"><img src="images/pictures/i2.jpg">
-                <div></div>
-            </div>
-            <div class="slide"><img src="images/pictures/i3.jpg">
-                <div></div>
-            </div>
-            <div class="slide"><img src="images/pictures/i4.jpg">
-                <div></div>
-            </div>
-            <div class="slide"><img src="images/pictures/i5.jpg">
-                <div></div>
-            </div>
-            <div class="slide"><img src="images/pictures/i6.jpg">
-                <div></div>
+        <div class="img-slider">
+            <div class="swiper-container swiper-insta">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>
+                    <div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>
+                    <div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>
+                    <div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>
+                    <div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -479,18 +466,40 @@
 </div>
 
 <!-- footer end -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-<script src="js/animated-scroll-to.js"></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/swiper.min.js" desc></script>
+<script type="text/javascript" src="js/index.js" desc></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter47500810 = new Ya.Metrika2({
+                    id:47500810,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
 
-<script type="text/javascript" src="js/script.js"></script>
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
 
-<script type="text/javascript" src="js/slick.js"></script>
-<!--<script type="text/javascript" src="js/jquery.fancybox.js"></script>-->
-<!--<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>-->
-<script type="text/javascript" src="js/index.js"></script>
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

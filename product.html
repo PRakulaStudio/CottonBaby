@@ -9,18 +9,17 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-
+	<link rel="stylesheet" type="text/css" href="css/photoswipe.css"/>
+	<link rel="stylesheet" type="text/css" href="css/product.css"/>
 </head>
 <body class="showPrice">
-
+<div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -109,7 +108,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -165,238 +164,236 @@
 
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="product">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 <a href="/">Каталог</a> &#8594 Кофта + ползунки</p>
-				<div class="pagination-liner"></div>
-			</div>
-			
-			<div class="title">
-				<h1>Кофта + ползунки</h1>
-			</div>
-		</section>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 <a href="index.html">Каталог</a> &#8594 Кофта + ползунки</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-		<section class="product">
-			<div class="product-box" data-id-block="1">
-				<div>
-					<div>
-						<div class="product-button block-button-favorites">
+		<div class="title">
+			<h1>Кофта + ползунки</h1>
+		</div>
+	</section>
 
-						</div>
-						<a id="product" href="#" id-pictures="0" ><img alt="example1" src="images/pictures/i1.jpg"><div></div></a>
-					</div>
-
-					<div class="item-slider">
-						<div><img src="images/pictures/i1.jpg"><div class="item-activ"></div></div>
-						<div><img src="images/pictures/i2.jpg"><div></div></div>
-						<div><img src="images/pictures/i3.jpg"><div></div></div>
-						<div><img src="images/pictures/i4.jpg"><div></div></div>
-						<div><img src="images/pictures/i5.jpg"><div></div></div>
-						<div><img src="images/pictures/i6.jpg"><div></div></div>
+	<section class="content">
+		<div class="product-box">
+			<div class="slider">
+				<div class="swiper-container gallery-top">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>
 					</div>
 				</div>
 
-				<div>
-					<div class="product-category">
-						<p><img src="images/icons/category.png"><span>Коллекция "Осень - Зима 2017"</span></p>
-					</div>
-
-					<div class="product-brief">
-						<p>Кофта — предмет шерстяной вязаной одежды для верхней части тела с застежкой снизу доверху спереди.</p>
-					</div>
-
-					<div class="product-composition">
-						<b>Состав:</b>
-						<p>Хлопок - 80%, шерсть - 20%.</p>
-					</div>
-
-					<div class="product-size">
-						<b>Выберите размер и количество:</b>
-						
-						<div class="size-box">
-							<div id-modification="1-10" class="size-block">
-								<div>
-									<p>60-65</p>
-								</div>
-
-								<div>
-									<button>-</button>
-									<input type="number" placeholder="0" class="shest"    />
-									<button>+</button>
-								</div>
-							</div>
-
-							<div id-modification="1-11" class="size-block">
-								<div>
-									<p>60-65</p>
-								</div>
-
-								<div>
-									<button>-</button>
-									<input type="number" placeholder="0" class="shest" />
-									<button>+</button>
-								</div>
-							</div>
-
-							<div id-modification="1-12" class="size-block">
-								<div>
-									<p>60-65</p>
-								</div>
-
-								<div>
-									<button>-</button>
-									<input type="number" placeholder="0" class="shest" />
-									<button>+</button>
-								</div>
-							</div>
-
-
-						</div>
-					</div>
-
-					<div class="product-basket">
-						<p>Товар помещен в корзину!</p>
-					</div>
-
-
-					<div class="price-basket">
-						<div>
-							<p>Цена:</p>
-							<p><span>1450</span> руб.</p>
-						</div>
-
-						<div class="off-basket">
-							<button><img src="images/icons/product-basket.png">В корзину</button>
-						</div>
-						<div class="product-basket-link">
-							<a href="basket.html">Оформить заказ &#10003</a>
-						</div>
-					</div>
-
-					<div class="no-authorization">
-						<div>
-							<p><img src="images/icons/i.png">Зарегистрируйтесь</p>
-							<p>чтобы узнать цену</p>
-						</div>
-
-						<div>
-							<a href="registration.html">Регистрация</a>
-						</div>
-					</div>
-
-					<div class="product-delivery">
-						<p><img src="images/icons/i.png">Стоимость доставки рассчитывается индивидуально, в зависимости от объема заказа и города. Для расчета выберите транспортную кампанию из <a href="delivery.html">списка рекомендованных</a>.</p>
+				<div class="swiper-container gallery-thumbs">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>
+						<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>
 					</div>
 				</div>
+
+				<div class="card-favorites"><button></button></div>
 			</div>
 
-			<div class="content-text">
-				<b>Подробное описание товара</b>
-				<p>Кофта стала основой для появления остальных предметов плечевой вязаной одежды — свитеров, пуловеров, джемперов, жакетов. Стоит отметить, что даже если у кофты высокий застёгивающийся ворот, её правильнее называть кофтой, а не свитером.</p>
-				<p>Кофта как предмет одежды известна много веков. По некоторым данным, кофты вязали и носили ещё в древнем Египте. Совершенно точно известно, что кофты в качестве утепляющего слоя в одежде носили в Европе, начиная с XIII века.</p>
-			</div>
-
-			<div class="product-slider-box">
-				<b>Товары из этой же коллекции:</b>
-				<div class="product-slider-button">
-					<button data-action="prev"><img src="images/icons/back.svg"></button>
-					<button data-action="next"><img src="images/icons/next.svg"></button>
+			<div class="information">
+				<div class="product-category">
+					<a href="#"><span>Коллекция "Осень - Зима 2017"</span></a>
 				</div>
 
-				<div class="product-slider">
-					<div class="slide">
-						<div class="product-block">
-							<div>
-								<div><a href="#"><img src="images/pictures/i1.jpg"></a></div>
-								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-								<div>
+				<div class="product-brief">
+					<p>Кофта — предмет шерстяной вязаной одежды для верхней части тела с застежкой снизу доверху спереди.</p>
+				</div>
 
-								</div>
-								<div>
-									<a href="#">Комплект кофта + ползунки</a>
-									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-								</div>
-								<a href="#">Подробно</a>
+				<div class="product-composition">
+					<b>Состав:</b>
+					<p>Хлопок - 80%, шерсть - 20%.</p>
+				</div>
+
+				<div class="product-size">
+					<b>Выберите размер и количество:</b>
+
+					<div class="size-box">
+						<div class="size-block active">
+							<div class="size"><p>1 размер</p></div>
+
+							<div class="size-btn">
+								<button>-</button>
+								<input type="number" placeholder="0" class="shest" />
+								<button>+</button>
 							</div>
+						</div>
+
+						<div class="size-block">
+							<div class="size"><p>360-625</p></div>
+
+							<div class="size-btn">
+								<button>-</button>
+								<input type="number" placeholder="0" class="shest" />
+								<button>+</button>
+							</div>
+						</div>
+
+						<div class="size-block">
+							<div class="size"><p>1уп 6шт</p></div>
+
+							<div class="size-btn">
+								<button>-</button>
+								<input type="number" placeholder="0" class="shest" />
+								<button>+</button>
+							</div>
+						</div>
+
+						<div class="size-block">
+							<div class="size"><p>100*100</p></div>
+
+							<div class="size-btn">
+								<button>-</button>
+								<input type="number" placeholder="0" class="shest" />
+								<button>+</button>
+							</div>
+						</div>
+
+						<div class="size-block">
+							<div class="size"><p>60-65</p></div>
+
+							<div class="size-btn">
+								<button>-</button>
+								<input type="number" placeholder="0" class="shest" />
+								<button>+</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="product-basket">
+					<p>Товар помещен в корзину!</p>
+					<p>До минимальной суммы заказа осталось <span>10 000р.</span></p>
+				</div>
+
+				<div class="price-min">
+					<p>Минимальная сумма заказа <b>10 000р.</b></p>
+				</div>
+
+				<div class="price-basket">
+					<div class="price">
+						<p>Цена:</p>
+						<p><span>1450</span> руб.</p>
+					</div>
+
+					<div class="btn">
+						<button><img src="images/icons/product-basket.png">В корзину</button>
+					</div>
+
+					<div class="link">
+						<a href="#">перейти в корзину</a>
+					</div>
+				</div>
+
+				<div class="no-authorization">
+					<div class="text">
+						<p>Зарегистрируйтесь</p>
+						<p>чтобы узнать цену</p>
+					</div>
+
+					<div class="link"><a href="registration.html">Регистрация</a></div>
+				</div>
+
+				<div class="product-delivery">
+					<p>Стоимость доставки рассчитывается индивидуально, в зависимости от объема заказа и города. Для расчета выберите транспортную кампанию из <a href="delivery.html">списка рекомендованных</a>.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="title">
+			<h2>Подробное описание товара</h2>
+		</div>
+
+		<div class="content-text">
+			<p>Кофта стала основой для появления остальных предметов плечевой вязаной одежды — свитеров, пуловеров, джемперов, жакетов. Стоит отметить, что даже если у кофты высокий застёгивающийся ворот, её правильнее называть кофтой, а не свитером.</p>
+			<p>Кофта как предмет одежды известна много веков. По некоторым данным, кофты вязали и носили ещё в древнем Египте. Совершенно точно известно, что кофты в качестве утепляющего слоя в одежде носили в Европе, начиная с XIII века.</p>
+		</div>
+
+		<div class="title">
+			<h2>Товары из этой же коллекции:</h2>
+		</div>
+
+		<div class="slider-bottom">
+			<div class="swiper-button">
+				<button class="swiper-button-prev"><img src="images/icons/back.svg"></button>
+				<button class="swiper-button-next"><img src="images/icons/next.svg"></button>
+			</div>
+			<div class="swiper-container swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="card">
+							<div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
+							<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+							<div class="card-favorites"><button></button></div>
+							<div class="card-text">
+								<a href="#">Комплект кофта + ползунки</a>
+								<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+							</div>
+							<div class="card-link"><a href="#">Подробно</a></div>
 						</div>
 					</div>
 
-					<div class="slide">
-						<div class="product-block">
-							<div>
-								<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
-								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-								<div>
-
-								</div>
-								<div>
-									<a href="#">Комплект кофта + ползунки</a>
-									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-								</div>
-								<a href="#">Подробно</a>
+					<div class="swiper-slide">
+						<div class="card">
+							<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>
+							<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+							<div class="card-favorites"><button></button></div>
+							<div class="card-text">
+								<a href="#">Комплект кофта + ползунки</a>
+								<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 							</div>
+							<div class="card-link"><a href="#">Подробно</a></div>
 						</div>
 					</div>
 
-					<div class="slide">
-						<div class="product-block">
-							<div>
-								<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
-								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-								<div>
-
-								</div>
-								<div>
-									<a href="#">Комплект кофта + ползунки</a>
-									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-								</div>
-								<a href="#">Подробно</a>
+					<div class="swiper-slide">
+						<div class="card">
+							<div class="card-img"><a href="#"><img src="images/pictures/i3.jpg"></a></div>
+							<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+							<div class="card-favorites"><button></button></div>
+							<div class="card-text">
+								<a href="#">Комплект кофта + ползунки</a>
+								<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 							</div>
+							<div class="card-link"><a href="#">Подробно</a></div>
 						</div>
 					</div>
 
-					<div class="slide">
-						<div class="product-block">
-							<div>
-								<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
-								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-								<div>
-
-								</div>
-								<div>
-									<a href="#">Комплект кофта + ползунки</a>
-									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-								</div>
-								<a href="#">Подробно</a>
+					<div class="swiper-slide">
+						<div class="card">
+							<div class="card-img"><a href="#"><img src="images/pictures/i4.jpg"></a></div>
+							<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+							<div class="card-favorites"><button></button></div>
+							<div class="card-text">
+								<a href="#">Комплект кофта + ползунки</a>
+								<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 							</div>
-						</div>
-					</div>
-
-					<div class="slide">
-						<div class="product-block">
-							<div>
-								<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
-								<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-								<div>
-
-								</div>
-								<div>
-									<a href="#">Комплект кофта + ползунки</a>
-									<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-								</div>
-								<a href="#">Подробно</a>
-							</div>
+							<div class="card-link"><a href="#">Подробно</a></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
-	<div class="footer">
+<div class="footer">
 		<div class="footer-top">
 			<div class="footer-logo">
 				<a href="/"><img src="images/logo.png"></a>
@@ -410,11 +407,11 @@
 			<div class="footer-menu">
 				<ul>
 					<li><a href="/">Главная</a></li>
-					<li><a href="registration.html">Регистрация</a></li>
-					<li><a href="katalog.html">Каталог</a></li>
-					<li><a href="collections.html">Коллекции</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="/registration.html">Регистрация</a></li>
+					<li><a href="/catalog/">Каталог</a></li>
+					<li><a href="/collections/">Коллекции</a></li>
+					<li><a href="/information.html">О нас</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
 
@@ -436,13 +433,42 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript"  src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/swiper.min.js" desc></script>
+<script type="text/javascript" src="js/photoswipe.min.js" desc></script>
+<script type="text/javascript" src="js/photoswipe-ui-default.min.js" desc></script>
+<script type="text/javascript" src="js/product.js" desc></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function (d, w, c) {
+		(w[c] = w[c] || []).push(function() {
+			try {
+				w.yaCounter47500810 = new Ya.Metrika2({
+					id:47500810,
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true,
+					webvisor:true
+				});
+			} catch(e) { }
+		});
 
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/slick.js"></script>
+		var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+		s.type = "text/javascript";
+		s.async = true;
+		s.src = "https://mc.yandex.ru/metrika/tag.js";
 
-<script type="text/javascript" src="js/product.js"></script>
+		if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+		} else { f(); }
+	})(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

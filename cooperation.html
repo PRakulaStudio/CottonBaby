@@ -10,8 +10,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
@@ -20,8 +19,8 @@
     <div class="popup-table">
         <div class="popup-cell">
 			<div class="popup-thanks" id="thanks">
-				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
-				
+				<button class="popup-close" onclick="PopUpHidePopup()"><img src="images/icons/close.png"></button>
+
 				<div>
 					<p>Спасибо!</p>
 				</div>
@@ -29,8 +28,6 @@
 				<div>
 					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
 				</div>
-
-				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 			</div>
         </div>
     </div>
@@ -40,7 +37,7 @@
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -125,7 +122,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -134,8 +131,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -182,59 +180,68 @@
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="cooperation">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Сотрудничество с нами</p>
-				<div class="pagination-liner"></div>
-			</div>
-			
-			<div class="title">
-				<h1>Сотрудничество с нами</h1>
-			</div>
-			
-			<div class="content-text">
-				<p>Наша компания на протяжении 8 лет занималась розничной торговлей детской одежды мировых марок.</p>
-				<p>После многолетнего опыта работы с детскими товарами и тщательного изучения рынка детской одежды в России в 2015 году стартовало наше собственное производство под торговой маркой Cotton baby.</p>
-				<p>В Cotton baby мы делаем ставку на высокое качество, современный дизайн и комфорт. Мы работаем с лучшими мировыми производителями тканей и фурнитуры, уделяя большое внимание экологичности производимой нами продукции и постоянно совершенствуя технологии производства.</p>
-				<p>Вся наша продукция прошла сертификацию качества и соответствует техническому регламенту Таможенного союза ТР ТС 007/2011 (свидетельство о госрегистрации, приложение).</p>
-			</div>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Сотрудничество с нами</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-			<div class="cooperation-box">
-				<p>Свяжитесь с нами через форму обратной связи</p>
-				<div class="cooperation-form">
-					<form>
-						<div class="form-top">
-							<div class="form-top-left">
-								<label>Ваше имя</label>
-								<input type="text" name="name">
-							</div>
-							
-							<div class="form-top-right">
-								<label>Ваш номер телефона</label>
-								<input type="tel" name="phone">
-							</div>
+		<div class="title">
+			<h1>Сотрудничество с нами</h1>
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="content-text info">
+			<p>Обращаем ваше внимание!</p>
+			<p>Сайт для оптовых продаж. Минимальная сумма заказа <span>10 000р.</span></p>
+			<p>Если вы хотите купить в розницу, подпишитесь на наш <a href="https://www.instagram.com/cot.ton_baby/">инстаграм</a> и напишите в директ о понравившейся вещи.</p>
+		</div>
+		<div class="content-text">
+			<p>Наша компания на протяжении 8 лет занималась розничной торговлей детской одежды мировых марок.</p>
+			<p>После многолетнего опыта работы с детскими товарами и тщательного изучения рынка детской одежды в России в 2015 году стартовало наше собственное производство под торговой маркой Cotton baby.</p>
+			<p>В Cotton baby мы делаем ставку на высокое качество, современный дизайн и комфорт. Мы работаем с лучшими мировыми производителями тканей и фурнитуры, уделяя большое внимание экологичности производимой нами продукции и постоянно совершенствуя технологии производства.</p>
+			<p>Вся наша продукция прошла сертификацию качества и соответствует техническому регламенту Таможенного союза ТР ТС 007/2011 (свидетельство о госрегистрации, приложение).</p>
+			<p>Если Вас заинтересовала наша продукция — в первую очередь, спасибо! — ну а через эту форму Вы можете отправить запрос на прайс-лист, и мы свяжемся с Вами в самый короткий срок!</p>
+		</div>
+
+
+		<div class="contacts-box">
+			<p>Свяжитесь с нами через форму обратной связи</p>
+			<div class="contacts-form">
+				<form>
+					<div class="form-top">
+						<div class="form-top-left">
+							<label>Ваше имя</label>
+							<input type="text" name="name">
 						</div>
 
-						<div class="form-bottom">
-							<label>Тема сообщения</label>
-							<input type="text" name="title">
-
-							<label>Текст сообщения</label>
-							<textarea name="text"></textarea>
+						<div class="form-top-right">
+							<label>Ваш номер телефона</label>
+							<input type="tel" name="phone">
 						</div>
+					</div>
 
-						<button type="button" onclick="javascript:PopUpShowThanks()">Отправить вопрос</button>
-					</form>
-				</div>
-			</div>
+					<div class="form-bottom">
+						<label>Тема сообщения</label>
+						<input type="text" name="subject">
 
-			<div class="cooperation-doc">
-				<a href="doc/Cotton-baby.pdf" target="_blank"><img src="images/icons/doc.png">СГР Cotton-baby</a>
-				<a href="doc/Cotton-baby-application.pdf" target="_blank"><img src="images/icons/doc.png">Приложение</a>
+						<label>Текст сообщения</label>
+						<textarea name="message"></textarea>
+					</div>
+
+					<button type="button">Отправить вопрос</button>
+				</form>
 			</div>
-		</section>
-	</main>
+		</div>
+
+		<div class="doc">
+			<a href="doc/Cotton-baby.pdf" target="_blank"><img src="images/icons/doc.png">СГР Cotton-baby</a>
+			<a href="doc/Cotton-baby-application.pdf" target="_blank"><img src="images/icons/doc.png">Приложение</a>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -255,8 +262,8 @@
 					<li><a href="/registration.html">Регистрация</a></li>
 					<li><a href="/catalog/">Каталог</a></li>
 					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="/information.html">О нас</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
 
@@ -278,10 +285,42 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/cooperation.js"></script>
+
+
+<script type="text/javascript" src="js/init.js" desc></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/imask.js" desc></script>
+<script type="text/javascript" src="js/cooperation.js" desc></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function (d, w, c) {
+		(w[c] = w[c] || []).push(function() {
+			try {
+				w.yaCounter47500810 = new Ya.Metrika2({
+					id:47500810,
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true,
+					webvisor:true
+				});
+			} catch(e) { }
+		});
+
+		var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+		s.type = "text/javascript";
+		s.async = true;
+		s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+		if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+		} else { f(); }
+	})(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

@@ -13,7 +13,17 @@ let config = {
 
 //дизайн header
 let headerBlock = "",
-    dataLocalStorage = "";
+    dataLocalStorage = "",
+    scroll = document.querySelector('div.scrollup');
+
+
+window.onscroll = function(){
+
+    if( window.pageYOffset > 100)
+        scroll.classList.add('scrollup-o');
+    else
+        scroll.classList.remove('scrollup-o');
+};
 
 
 
@@ -39,12 +49,11 @@ function renderHeaderIsAuth(data){
         favoritesBlock.querySelector('span').innerText = data.wishlistCount;
     }
 
-    headerBlock.querySelector('div[data-auth] span').innerHTML = `Здравствуйте, ${data.name}`;
+    headerBlock.querySelector('div[data-auth] span').innerHTML = "Здравствуйте, "+data.name;
 }
-function renderHeaderAuthFalse()
-{
+function renderHeaderAuthFalse() {
     headerBlock = document.querySelector('[class*="header-user"]');
-    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+    headerBlock.querySelector('div[data-auth] span').innerHTML = "Войти";
     headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '#');
     headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '#');
 
@@ -56,7 +65,7 @@ function renderHeaderAuthFalse()
     favoritesBlock.classList.remove('favorites');
     favoritesBlock.querySelector('span').innerText = 0;
 
-    headerBlock.querySelector('div[data-auth] span').innerHTML = `Войти`;
+    headerBlock.querySelector('div[data-auth] span').innerHTML = "Войти";
 }
 
 
@@ -315,6 +324,8 @@ function requestGetMenuCategories()
     getMenuCategories();
     getMenuCollection();
 }
+requestGetMenuCategories();
+
 
 
 function addFavoriteButtons( blockProducts , value)
@@ -333,7 +344,6 @@ function eventChangeFavorites(button)
 {
     let productBlock = button.closest('div[data-catalog-item-id],div[data-id-block],div[data-id-catalog-item]'),
         idProduct;
-
 
     if(productBlock.hasAttribute('data-catalog-item-id'))
        idProduct = productBlock.getAttribute('data-catalog-item-id');
@@ -358,7 +368,7 @@ function eventAuth()
         listInput =  document.querySelectorAll('#authorization input'),
         sendRequest = true;
 
-    listInput.forEach(function(current , index, array){
+    Array.prototype.forEach.call(listInput, function(current , index, array){
        current.classList.remove('input-error-border');
        validateData(current, data, 'input-error-bottom' );
 
@@ -368,21 +378,6 @@ function eventAuth()
 
     if(sendRequest)
         requestAuth(data);
-
-
-
-    // $('#authorization form button').click(function () {
-    //     var data = {};
-    //
-    //     $('#authorization').find('input').each(function () {
-    //         $(this).removeClass('input-error-border');
-    //         validateData($(this), data, 'input-error-bottom');
-    //     });
-    //
-    //     if (!$('#authorization').find('input').hasClass('input-error-bottom')) {
-    //         requestAuth(data);
-    //     }
-    // });
 }
 
 
@@ -429,13 +424,22 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
+    //скролл документа на самый верх
+    if(event.target.tagName == "DIV" && event.target.classList.contains('scrollup'))
+    {
+        animateScrollTo(0);
+        return;
+    }
+
     //скрытие блока меню, если кликнули не на этот блок
     if(!event.target.closest('div.menu-popup') && !( event.target.tagName == "BUTTON" && event.target.classList.contains('menu-on')) )
     {
         document.querySelector('div.menu-popup').style.display = "none";
-        document.querySelector('div.header button.menu-on').style.display = "block";
+        document.querySelector('[class*="header-box"] button.menu-on').style.display = "block";
         return;
     }
+
+
 
 });
 
@@ -475,7 +479,7 @@ function requestAddFavorites(product_id  , button)
     data.append('id' , product_id);
 
     return fetch(window.pms.config.cabinetAPI+'wishlist/add' , { method: 'POST', credentials: 'same-origin', body: data })
-            .then( response => {
+            .then( function(response) {
                 let responseData = false;
                 try{
                     responseData = response.json();
@@ -487,7 +491,7 @@ function requestAddFavorites(product_id  , button)
 
                 return responseData;
             })
-            .then( response => {
+            .then( function(response){
                if( response.status )
                {
                   button.classList.remove('new-off');
@@ -505,7 +509,7 @@ function requestRemoveFavorites(product_id , button)
     data.append('id' , product_id);
 
     return fetch(window.pms.config.cabinetAPI+'wishlist/delete' , { method: 'POST', credentials: 'same-origin', body: data })
-        .then( response => {
+        .then( function(response) {
             let responseData = false;
             try{
                 responseData = response.json();
@@ -517,7 +521,7 @@ function requestRemoveFavorites(product_id , button)
 
             return responseData;
         })
-        .then( response => {
+        .then( function(response){
             if( response.status )
             {
                 button.classList.remove('new-on');
@@ -727,8 +731,5 @@ function requestRemindPassword(data) {
 }
 
 
-window.onscroll = function(){
-
-};
 
 

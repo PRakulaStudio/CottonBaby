@@ -478,35 +478,5 @@ document.addEventListener('click' , function () {
         changePagination("next" , clickButton, clickButton.nextElementSibling);
     }
 
-
-
-
 });
 
-$(document).ready( function(){
-
-    // $("div.products-pagination").on('click' , "div[data-block-pages] button" , function(){
-    //
-    //     if( !$(this).hasClass(activePaginationButton) )
-    //     {
-    //         let activeButton = $(this).siblings('button.'+activePaginationButton);
-    //
-    //         if( $(this).text() >  activeButton.text() )
-    //             changePagination("next" , activeButton , $(this));
-    //         else
-    //             changePagination("prev" , activeButton , $(this));
-    //     }
-    //
-    // });
-
-    // $("div.products-pagination").on( 'click' , 'button.prev' , function(){
-    //     let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
-    //     changePagination("prev" , clickButton , clickButton.prev());
-    // });
-    //
-    // $('div.products-pagination').on('click' , " button.next" , function(){
-    //     let clickButton = $(this).siblings('div[data-block-pages]').find('button.'+activePaginationButton);
-    //     changePagination("next" , clickButton, clickButton.next());
-    // });
-
-});

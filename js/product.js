@@ -1,7 +1,7 @@
 /**
  * Created by Иван on 27.12.2017.
  */
-( function ($) {
+( function () {
 
 
     var css = {
@@ -11,9 +11,9 @@
         orderOff : 'off-basket'
     };
 
-    var currentItem = window.pms.plugins.catalog.currentItem;
-    var countProductSlider = 9;
-    var loadItems = true;
+    // var currentItem = window.pms.plugins.catalog.currentItem;
+    // var countProductSlider = 9;
+    // var loadItems = true;
 
 
     Promise.all([
@@ -52,6 +52,39 @@
             errors => {}
         );
 
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 10,
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true,
+    });
+    galleryTop.controller.control = galleryThumbs;
+    galleryThumbs.controller.control = galleryTop;
+
+
+    var swiper = new Swiper('.swiper', {
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        breakpoints: {
+            // when window width is <= 320px
+            900: {
+                slidesPerView: 2,
+            },
+            600: {
+                slidesPerView: 1,
+            },
+        }
+    });
 
     function changePrice()
     {
@@ -149,152 +182,6 @@
             });
     }
 
-
-
-    //инициализация бокового слайдер плюс навешивание обработчика события при клике
-    $('div.item-slider').find('div').first().find('div').addClass(css.itemActive);
-    $('div.item-slider').slick({
-        infinite: false,
-        vertical: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        arrows: false,
-        dots: false,
-        verticalSwiping: true,
-    }).on('click', '.slick-slide' , function(){
-        let img = $(this).find('img');
-
-        $(this)
-                .siblings('div.slick-slide')
-                                            .find('div').removeClass(css.itemActive)
-                                            .end()
-                .end()
-                .find('div').addClass(css.itemActive)
-                .end();
-
-        $('#product').attr('id-pictures' , img.parents('div.slick-slide').index() ).find('img').attr('src' , img.attr('data-preview-src'));
-    });
-
-
-    //инициализация слайдера c товарами из той же коллекции
-    $('div.product-slider').slick({
-        infinite: false,
-        arrows: false,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        dots: false,
-        responsive: [
-            {
-                breakpoint : 950,
-                settings : {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                }
-            },
-            {
-                breakpoint : 640,
-                settings : {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            }
-        ],
-    })
-
-
-    //прокрутка слайдера
-    $('div.product-slider-box button[data-action]').click( function(){
-        if($(this).attr('data-action') == "next" )
-            $('div.product-slider').slick('slickNext');
-        else
-            $('div.product-slider').slick('slickPrev');
-
-
-    });
-    //подгрузка слайдов(пока не работает)
-    $("div.product-slider").on("afterChange", function(event, slick, currentSlide){
-
-        if(!loadItems)
-            return true;
-        var data = new FormData();
-
-        data.append('id', currentItem.collection );
-        data.append('show_items' , true);
-        data.append('offset' , 9);
-       // data.append('limit' , 9);
-
-        return fetch(window.pms.config.catalogAPI + 'collections/' , { method: 'POST', credentials: 'same-origin', body: data })
-            .then( response => {
-                let responseData = false;
-                try{
-                    responseData = response.json();
-                }
-                catch(e) {
-                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                    response.text().then(console.debug);
-                }
-
-                return responseData;
-            }).then(response => {
-                if(response.status)
-                {
-                    let path_image = "";
-                    if( Object.keys(response.data.items).length )
-                    {
-                        let items = response.data.items;
-                        let slide ="";
-                        for(let key in response.data.items)
-                        {
-                            if(items[key].images)
-                                path_image = items[key].images
-                            else
-                                path_image = "/images/";
-
-                            slide = "<div class='slide'><div class='product-block' data-catalog-item-id='"+items[key].id+"'>" +
-                                        "<div>" +
-                                           "<div><a href='#'><img src='"+path_image+"' /></a></div>" + //картинка
-                                           "<div><p><span>*****</span><span>"+items[key].price+"</span> руб.</p></div>" + //цена
-                                           "<div class='block-button-favorites'></div>" +// избранное
-                                                 "<div>" +
-                                                     "<a href='"+items[key].link+"'>"+items[key].title+"</a>" +
-                                                     "<p>"+(items[key].description == null ? "" : items[key].description)+"</p>" +
-                                                "</div>" +
-
-                                                "<a href='"+items[key].href+"'>" +
-                                                      "Подробно" +
-                                                "</a>" +
-                                           "</div>" +
-                                        "</div>" +
-                                    "</div>";
-
-                            $('.product-slider').slick('slickAdd' ,slide );
-                        }
-
-                    }
-                    loadItems = false;
-                }
-
-            });
-
-
-      //  if( slick.slideCount )
-        //тут надо вызывать создание элемента, плюс необходимо его добавить
-        //$(this).slick('slickAdd','<div class="slide"><img src="images/300x500.png"></div>');
-    });
-
-
-    //отображение fanvybox с галереей
-    let pictures = [];
-    try{
-        for( let i = 0; i < currentItem.images.length; i++)
-            pictures.push({ src : currentItem.images[i].original })
-    }
-    catch(e)
-    {
-
-    }
-
-
     document.addEventListener('keyup' , function (event) {
 
         if(event.target.tagName == "INPUT" && event.target.getAttribute('type') == "number" && event.target.closest('div.size-box'))
@@ -391,49 +278,5 @@
 
     });
 
-    // $('div.product-size').on('click' , 'div.size-block button' , function () {
-    //     let number =  parseInt(  $(this).siblings('input').val() == "" ? 0 :  $(this).siblings('input').val()   ),
-    //         blockPrice = $('div.price-basket').find('div').first().find('input[type="text"]'),
-    //         blockModifications = $('size-box');
-    //
-    //     //кликнули на плюс
-    //     if( $(this).prev().length )
-    //     {
-    //         $(this).prev().val( number + 1  );
-    //         blockModifications.find('div[id-modification]').each( function(){
-    //            $(this).find('input[type="text"]').text();
-    //         });
-    //
-    //         $(this).parents('div.size-block').addClass(css.sizeActive);
-    //     }
-    //     else
-    //     {
-    //
-    //         if( number > 0 )
-    //         {
-    //              $(this).next().val( number - 1 );
-    //              if( $(this).next().val() == 0 )
-    //                   $(this).parents('div.size-block').removeClass(css.sizeActive);
-    //
-    //         }
-    //     }
-    //     //проверить, что выбран хотя бы один размер
-    //     if( $(this).parents('div.size-box').find('div.'+css.sizeActive).length)
-    //        $('div.price-basket').find('button').parent('div').addClass(css.orderOn).removeClass(css.orderOff);
-    //     else
-    //         $('div.price-basket').find('button').parent('div').removeClass(css.orderOn).addClass(css.orderOff);
-    //
-    //     changePrice();
-    //     //дальше будут запросы
-    //
-    // });
 
-
-    // $('div.price-basket').on('click' , 'button' , function(){
-    //     if($(this).parent('div').hasClass(css.orderOn))
-    //      requestEdit(  $(this).parents('div[data-id-block]').attr('data-id-block') );
-    // });
-
-
-
-} )(jQuery);
+} )();

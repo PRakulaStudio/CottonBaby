@@ -1,64 +1,51 @@
-( function($){
+try{
+	( function(){
+		requestCheckAuth("production");
 
-	requestCheckAuth("production");
-	requestGetMenuCategories();
-
-	let html = "",
-		pictures = [],
-		puctureBlocks = document.querySelectorAll('div.production-img a');
-
-
-	puctureBlocks.forEach(function (currentValue, index, array) {
-		html +=  "<div class='slide'>"+currentValue.outerHTML+"</div>";
-		pictures.push({ src : currentValue.querySelector('img').getAttribute('src') });
-	})
-
-	// document.querySelector('div.production-left').childNodes.forEach( function(currentValue, index, array){
-	// 	html += "<div class='slide'>"+currentValue.outerHTML+"</div>";
-	// });
-    //
-	// $('.production-left').children().each( function(){
-	// 	html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
-	// 	pictures.push({ src : $(this).find('img').attr('src') });
-	// });
-    //
-	// docuemnt.querySelector('div.production-right').childNodes.forEach( function(currentValue, index, array){
-	// 	html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
-	// 	pictures.push({ src : $(this).find('img').attr('src') });
-	// });
-
-
-	// $('.production-right').children().each( function(){
-	// 	html += "<div class='slide'>"+$(this).prop('outerHTML')+"</div>";
-	// 	pictures.push({ src : $(this).find('img').attr('src') });
-	// });
-	$('.production-slider').html(html);
-
-	$('.production-slider').slick({
-		lazyLoad: 'ondemand',
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows:false,
-
-	});
-
-
-	$('button[data-action]').click( function(){
-		if($(this).attr('data-action') == "next" )
-			$('.production-slider').slick('slickNext');
-		else
-			$('.production-slider').slick('slickPrev');
-
-
-	});
-
-	$('section.production').on('click' , 'a[id-picture]' , function(){
-
-
-		$.fancybox.open( pictures , {
-			loop : true,
-			index: $(this).attr('id-picture'),
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 1,
+			spaceBetween: 30,
+			// loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				dynamicBullets: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
 		});
+
+	})();
+}
+catch(error)
+{
+	requestSendBugs(error);
+}
+
+
+
+function isError(e){
+	return e && e.stack && e.message;
+}
+
+function requestSendBugs(error) {
+	console.log(error);
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+		if (this.readyState === 4) {
+			console.log(this.responseText);
+		}
 	});
 
-})(jQuery);
+	xhr.open("POST", window.location.protocol+"//"+"akula.cottonbaby.ru/system/extensions/errorCatcher/");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("Cache-Control", "no-cache");
+	xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
+	if(isError(error))
+		xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+	else
+		xhr.send(JSON.stringify(error));
+}

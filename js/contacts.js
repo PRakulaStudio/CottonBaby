@@ -62,13 +62,13 @@ try{
 				if( event.target.getAttribute('data-action') == "show")
 				{
 					event.target.setAttribute('data-action' , 'hide');
-					event.target.parentNode.querySelector('.info').style.height = '195px';
+					event.target.parentNode.querySelector('.info-text').style.height = '195px';
 					event.target.innerText = "Свернуть";
 				}
 				else
 				{
 					event.target.setAttribute('data-action' , 'show');
-					event.target.parentNode.querySelector('.info').style.height = '0px';
+					event.target.parentNode.querySelector('.info-text').style.height = '0px';
 					event.target.innerText = "Развернуть";
 				}
 			}
@@ -129,12 +129,12 @@ try{
 			try{
 				let buttonAction = document.querySelector('button[data-action]');
 				if( window.innerWidth >= mobileWidth )
-					buttonAction.parentNode.querySelector('.info').style.height = "195px";
+					buttonAction.parentNode.querySelector('.info-text').style.height = "195px";
 				else
 				{
 					if( buttonAction.getAttribute('data-action') == "show" )
 					{
-						buttonAction.parentNode.querySelector('.info').style.height = "0px";
+						buttonAction.parentNode.querySelector('.info-text').style.height = "0px";
 						buttonAction.innerText = "Развернуть";
 					}
 				}
