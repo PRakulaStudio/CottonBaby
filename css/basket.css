@@ -112,7 +112,7 @@
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div{
     width: 32%;
-    height: 46px;
+    height: 50px;
     padding: 5px 0;
     margin: 1% 0;
     border-radius: 10px;
@@ -126,9 +126,13 @@
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div p{
     width: 100%;
-    
     text-align: center;
     font-size: 16px;
+}
+
+.basket-product-size {
+    display: flex;
+    flex-direction: row;
 }
 
 .basket-size-on {
@@ -143,9 +147,8 @@
     border: none;
     width: 30px;
     border-radius: 5px;
-    height: 20px;
-    padding: 2px 0 0 0;
-    margin: 0 5px;
+    height: 21px;
+    margin: auto;
     text-align: center;
     font-size: 16px;
 }
@@ -154,12 +157,11 @@
     cursor: pointer;
     background: #FFFFFF;
     border: 1px solid #E6E6E6;
-    border-radius: 15px;
-    padding: 2px;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-size: 16px;
+    border-radius: 50%;
+    margin: auto;
+    padding: 5px;
+    width: 25px;
+    height: 25px;
 }
 
 .basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) {

@@ -11,7 +11,6 @@
 
     requestCheckAuth("favorites")
                 .then( result => {
-
                                   if( result )
                                   {
                                       let totalItems = document.querySelector('div.header-user div[data-favorite]').innerText,
@@ -26,10 +25,10 @@
              .then( response => {
             
                 for(let key = 0; key < response.length; key++)
-                  addFavoriteButtons( document.querySelector('div.products-box div[data-catalog-item-id="'+response[key]+'"]') , true);
+                  addFavoriteButtons( document.querySelector('div.card-box div[data-catalog-item-id="'+response[key]+'"]') , true);
 
              });
-    requestGetMenuCategories();
+
 
 
 })();

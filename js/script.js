@@ -28,7 +28,7 @@ window.onscroll = function(){
 
 
 function renderHeaderIsAuth(data){
-    document.querySelector('body').classList.remove('showPrice');
+    document.querySelector('body').classList.add('showprice');
     headerBlock = document.querySelector('[class*="header-user"]');
 
     headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
@@ -52,6 +52,8 @@ function renderHeaderIsAuth(data){
     headerBlock.querySelector('div[data-auth] span').innerHTML = "Здравствуйте, "+data.name;
 }
 function renderHeaderAuthFalse() {
+
+
     headerBlock = document.querySelector('[class*="header-user"]');
     headerBlock.querySelector('div[data-auth] span').innerHTML = "Войти";
     headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '#');
@@ -337,7 +339,7 @@ function addFavoriteButtons( blockProducts , value)
     else
         buttonHtml =  "<button class='new-off'></button>";
 
-    blockProducts.querySelector('div.block-button-favorites').innerHTML = buttonHtml;
+    blockProducts.querySelector('div.card-favorites').innerHTML = buttonHtml;
 }
 
 function eventChangeFavorites(button)

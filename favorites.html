@@ -6,22 +6,22 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta property="og:image" content="images/repost.png">
 	<meta name="format-detection" content="telephone=no">
+	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/card.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
+
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
-			<img src="images/icons/search.png">
+			<button type="submit"><img src="images/icons/search.png"></button>
 		</div>
 	</div>
 
@@ -30,11 +30,11 @@
 			<div class="section">
 				<p>Компания</p>
 				<ul>
-					<li><a href="/">Главная</a></li>
+					<li><a href="index.html">Главная</a></li>
 					<li><a href="information.html">О нас</a></li>
-					<li><a href="/catalog/">Каталог</a></li>
-					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="catalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="cooperation.html" >Сотрудничество</a></li>
 					<li><a href="production.html">Наше производство</a></li>
 					<li><a href="delivery.html">Доставка и оплата</a></li>
 					<li><a href="contacts.html">Контакты</a></li>
@@ -103,7 +103,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -112,8 +112,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -158,32 +159,39 @@
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="content">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Избранное</p>
-				<div class="pagination-liner"></div>
-			</div>
-			
-			<div class="title">
-				<h1>Избранное</h1>
-			</div>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Избранное</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-			<div class="block-empty">
-				<p>Нет товаров в избранном</p>
-			</div>
-		</section>
+		<div class="title">
+			<h1>Избранное</h1>
+		</div>
+	</section>
 
-		<section class="content">
-			<div class="products-box">
+	<section class="content">
+		<div class="block-empty d-none">
+			<p>Нет товаров в избранном</p>
+		</div>
 
-			</div>
+		<div class="card-box">
 
-			<div class="products-pagination">
+		</div>
 
-			</div>
-		</section>
-	</main>
+		<div class="pagination">
+			<button class="pagination-arrow">&#9664</button>
+			<ul>
+				<li><a href="#">1</a></li>
+				<li class="pagination-activ"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">...</a></li>
+			</ul>
+			<button class="pagination-arrow">&#9654</button>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -227,10 +235,39 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/pagination.js"> </script>
-<script type="text/javascript" src="js/favorites.js"></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/pagination.js" desc></script>
+<script type="text/javascript" src="js/favorites.js" desc></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function (d, w, c) {
+		(w[c] = w[c] || []).push(function() {
+			try {
+				w.yaCounter47500810 = new Ya.Metrika2({
+					id:47500810,
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true,
+					webvisor:true
+				});
+			} catch(e) { }
+		});
+
+		var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+		s.type = "text/javascript";
+		s.async = true;
+		s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+		if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+		} else { f(); }
+	})(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

@@ -18,8 +18,11 @@
 
     requestGetBasket();
     requestCheckAuth('basket')
-    requestGetMenuCategories();
     requestGetUserData();
+
+    //if(document.querySelector('div[data-basket] a span') && document.querySelector('div[data-basket] a span').innerText == 0 )
+      //   document.querySelector('div.block-empty').classList.toggle('d-none');
+
 
     // function checkButtonOrder()
     // {
@@ -163,10 +166,10 @@
 
                                 html += "<div data-id-size='"+modifications[size_id].id+"' class='"+classSizeOn+"'>" +
                                     "<p>"+modifications[size_id].title+"</p>" +
-                                    "<div>" +
-                                    "<button data-action-size='reduce'>-</button>" +
+                                    "<div class='basket-product-size'>" +
+                                    "<button data-action-size='reduce'><img src='/images/icons/minus.svg' /></button>" +
                                     "<input type='number' placeholder='0' class='shest' value='"+modifications[size_id].quantity+"' />"+
-                                    "<button data-action-size='increase'>+</button>" +
+                                    "<button data-action-size='increase'><img src='/images/icons/plus.svg' /></button>" +
                                     "</div>" +
                                     "</div>";
                             }
