@@ -1,5 +1,15 @@
-@import "default.css";
-@import "fonts.css";
+@font-face {
+    font-family: 'Fontfabric-MullerRegular';
+    src: url('../fonts/Fontfabric-MullerRegular.otf');
+}
+@font-face {
+    font-family: 'Fontfabric-MullerBlack';
+    src: url('../fonts/Fontfabric-MullerBlack.otf');
+}
+@font-face {
+    font-family: 'Fontfabric-MullerBold';
+    src: url('../fonts/Fontfabric-MullerBold.otf');
+}
 
 html, body {
     width: 100%;
@@ -11,32 +21,150 @@ html, body {
     flex-direction: column;
 }
 
-.simplebar-scrollbar{
-    opacity: 1 !important;
-    background-color:#FC982B !important;
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    font-family: 'Fontfabric-MullerRegular', sans-serif;
+    color: #000000;
 }
 
+ol, ul {
+    list-style: none;
+}
+
+:focus {
+    outline: 0
+}
+
+/* dispay none*/
+.d-none {
+    display: none !important;
+}
+/* end */
+
+/* up */
 .scrollup {
-    display: none;
     position: fixed;
     z-index: 1000;
     bottom: 10px;
     right: 10px;
     width: 50px;
     height: 50px;
-    cursor: pointer;
+    cursor: auto;
     text-indent: -9999px;
     background: url(../images/icons/up.png) no-repeat;
     background-size: 50px;
+    opacity: 0;
+    transition: all 1s;
 }
 
+.scrollup-o {
+    cursor: pointer;
+    opacity: 1;
+}
+/* up end */
+
+/* scroll-menu */
+.simplebar-scrollbar {
+    opacity: 1 !important;
+    background-color: #FC982B !important;
+}
+
+[data-simplebar] {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch; /* Trigger native scrolling for mobile, if not supported, plugin is used. */
+}
+
+[data-simplebar="init"] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.simplebar-scroll-content {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    min-width: 100%;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.simplebar-content {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+.simplebar-track {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    background: rgba(252, 151, 44, 0.2);
+}
+
+.simplebar-scrollbar {
+    position: absolute;
+    min-height: 10px;
+    width: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear;
+    background: black;
+    background-clip: padding-box;
+}
+
+.simplebar-track:hover .simplebar-scrollbar {
+    /* When hovered, remove all transitions from drag handle */
+    opacity: 0.5;
+    -webkit-transition: opacity 0 linear;
+    transition: opacity 0 linear;
+}
+
+.simplebar-track .simplebar-scrollbar.visible {
+    opacity: 0.5;
+}
+
+.simplebar-track.horizontal {
+    display: none !important;
+    left: 0;
+    width: auto;
+    height: 10px;
+}
+
+.simplebar-track.vertical {
+    top: 0;
+}
+
+.horizontal.simplebar-track .simplebar-scrollbar {
+    right: auto;
+    top: 0;
+    height: 7px;
+    min-height: 0;
+    min-width: 10px;
+    width: auto;
+}
+/* scroll-menu end */
+
+/* type="number" */
 .shest { 
   -moz-appearance: textfield;
 }
 .shest::-webkit-inner-spin-button { 
   display: none;
 }
+/* end */
 
+/* display slide */
 .slide{
     display: none;
 }
@@ -44,9 +172,158 @@ html, body {
 .slide:first-child {
     display: block !important;
 }
+/* end */
+
+/* content */
+.content-site {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    flex: 1 0 auto;
+}
+
+.content {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.block-empty {
+    display: none;
+    width: 99%;
+    margin: auto;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.block-empty p{
+    width: 100%;
+    padding: 5px 20px;
+    font-size: 20px;
+    line-height: 50px;
+    color: #b6b6b6;
+}
+/* content */
+
+/* breadcrumbs */
+.breadcrumbs {
+    width: 100%;
+}
+
+.breadcrumbs p{
+    font-size: 18px;
+    padding: 20px 10px;
+    line-height: 30px;   
+}
+
+.breadcrumbs a{
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover{
+    text-decoration: underline;  
+}
+
+.breadcrumbs-liner {
+    width: 100%;
+    height: 2px;
+    margin: 0 auto;
+    background: linear-gradient(to left, #F71E02, #FAAA01)
+}
+/* breadcrumbs end */
+
+/* title */
+.title {
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.title h1{
+    width: auto;
+    margin: 0;
+    padding: 10px;
+    font-size: 30px;
+    color: #333333;
+}
+
+.title h2{
+    width: auto;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 25px;
+    color: #333333;
+}
+/* title */
+
+/* text */
+.content-text {
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.content-text p{
+    padding: 10px 0;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.info {
+    width: 98%;
+    border-radius: 10px;
+    padding: 10px;
+    background: #F0F0F0;
+}
+
+.info p{
+    padding: 5px 0;
+}
+
+.info p:nth-child(1){
+    font-weight: bold;
+}
+
+.info span{
+    white-space: pre;
+    font-weight: bold;
+    color: #FF0016;
+}
+
+.info a{
+    text-decoration: none;
+    font-size: 25px;
+    color: #FE9D44;
+}
+
+.info a:hover{
+    text-decoration: underline;
+}
+/* text */
+
+/* error */
+.input-error {
+    border: 1px solid #FF0000 !important;
+}
+
+.input-error-bottom {
+    border-bottom: 1px solid #FF0000 !important;
+}
+/* error end*/
+
+/* showprice */
+.showprice .card-price span:nth-child(1){
+    display: none;
+}
+
+.showprice .card-price span:nth-child(2){
+    display: inline-block;
+}
+/* showPrice end */
 
 /* POPUP */
-
 .popup-fon {
     display: none;
     position: fixed;
@@ -82,17 +359,13 @@ html, body {
 .popup-score p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-score > form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .popup-score > form input{
@@ -102,7 +375,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -117,7 +389,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -127,7 +398,6 @@ html, body {
 }
 
 .popup-score > form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -145,17 +415,13 @@ html, body {
 .popup-card p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-card > form label{
     width: 100%;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
-    color: #000000;
 }
 
 .popup-card > form input{
@@ -165,7 +431,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -173,7 +438,6 @@ html, body {
 .popup-card > form p{
     width: 100%;
     margin: 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     color: #797979;
@@ -189,7 +453,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -199,7 +462,6 @@ html, body {
 }
 
 .popup-card > form button:hover{
-    margin: 22px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -217,19 +479,14 @@ html, body {
 .popup-thanks > div:nth-child(2) p{
     width: 100%;
     margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 25px;
-    color: #000000;
 }
 
 .popup-thanks > div:nth-child(3) p{
     width: 100%;
-    margin: auto auto 20px auto;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 18px;
-    color: #000000;
 }
 
 .popup-thanks iframe{
@@ -250,11 +507,9 @@ html, body {
     right: 0;
     margin: 10px;
 }
-
 /* POPUP */
 
 /* --- MENU --- */
-
 .menu-popup {
     display: none;
     position: absolute;
@@ -288,6 +543,11 @@ html, body {
     margin: auto 10px;
 }
 
+.search-menu button img{
+    width: 25px;
+    height: 25px;
+}
+
 .search-menu input{
     width: 90%;
     margin: auto;
@@ -295,7 +555,6 @@ html, body {
     background: none;
     border-bottom: 1px solid #D8DEE1;
     padding: 0 0 5px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -324,720 +583,58 @@ html, body {
 
 .section ul {
     height: 360px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.section ul > li {
+.section ul li {
     width: 100%;
 }
 
-.section ul > li > a{
+.section ul li a{
     display: block;
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
     line-height: 25px;
     font-size: 18px;
     color: #333333;
 }
 
-.section ul > li:hover > a{
-    text-decoration: none;
-}
-
-.section ul li a {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
-    line-height: 25px;
-    font-size: 18px;
-    color: #333333;
-}
-
-.section ul  li:hover  a{
+.section ul li:hover a{
     text-decoration: none;
 }
 
 .section p{
     width: 100%;
     padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 25px;
     color: #333333;
 }
 
-.marker ul > li{
+.marker ul li{
     position: relative;
     width: 100%;
     padding: 0 0 0 25px;
 }
 
-.marker ul  li{
-    position: relative;
-    width: 100%;
-    padding: 0 0 0 25px;
-}
-
-
-.marker ul > li:before{
+.marker ul li:before{
     position: absolute;
     left: 0;
     content: "\25c9";
-    margin: 14px 10px;
+    margin: 10px;
     color: #FC982B;
 }
-
-.marker ul  li:before {
-    position: absolute;
-    left: 0;
-    content: "\25c9";
-    margin: 14px 10px;
-    color: #FC982B;
-}
-
-/* --- SCROLL --- */
-
-.marker ul::-webkit-scrollbar         {width: 10px;}
-.marker ul::-webkit-scrollbar-track   {background-color:#EAEAEA;}
-.marker ul::-webkit-scrollbar-thumb   {background-color:#FC982B;}
-
-.marker ul::-moz-scrollbar        {width: 10px;}
-.marker ul::-moz-scrollbar-track  {background-color:#EAEAEA;}
-.marker ul::-moz-scrollbar-thumb  {background-color:#FC982B;}
-
-.marker ul:-o-scrollbar         {width: 10px;}
-.marker ul:-o-scrollbar-track   {background-color:#EAEAEA;}
-.marker ul:-o-scrollbar-thumb   {background-color:#FC982B;}
-
-/* --- SCROLL --- */
-
 /* --- MENU --- */
 
-/* COMMON */
-
-/* content */
-
-.content-site {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    flex: 1 0 auto;
-}
-
-.content {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.block-empty {
-    display: none;
-    width: 99%;
-    margin: auto;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.block-empty p{
-    width: 100%;
-    padding: 5px 20px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 20px;
-    line-height: 50px;
-    color: #b6b6b6;
-}
-
-/* content */
-
-/* title */
-
-.title {
-    width: 100%;
-    margin: 10px auto auto auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.title h1{
-    width: auto;
-    margin: 0;
-    padding: 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 30px;
-    color: #333333;
-}
-
-.title h2{
-    width: auto;
-    margin: 0;
-    padding: 5px 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 30px;
-    color: #333333;
-}
-
-.title button{
-    cursor: pointer;
-    border-radius: 25px;
-    border: 2px solid #F30330;
-    background: #F30330;
-    width: 200px;
-    height: 40px;
-    margin: 5px 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.title button:hover{
-    background: #FFFFFF;
-    color: #000000;
-}
-
-.title button:hover img{
-    filter: invert(0);
-}
-
-.title button > img{
-    width: 15px;
-    margin: 0 0 0 10px;
-    vertical-align: middle;
-    filter: invert(1);
-}
-
-.title button > img{
-    width: 15px;
-    margin: 0 0 0 10px;
-    vertical-align: middle;
-}
-
-/* title */
-
-/* pagination */
-
-.pagination {
-    width: 100%;
-}
-
-.pagination p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    padding: 20px 10px;
-    line-height: 30px;
-    color: #000000;    
-}
-
-.pagination a{
-    text-decoration: none;
-    color: #000000;    
-}
-
-.pagination a:hover{
-    text-decoration: underline;  
-}
-
-.pagination-liner {
-    width: 100%;
-    height: 2px;
-    margin: 0 auto;
-    background: linear-gradient(to left, #F71E02, #FAAA01)
-}
-
-/* pagination */
-
-/* filter */
-
-.filter-box {
-    width: 100%;
-    margin: 10px auto;
-    overflow: hidden;
-    background: #F5F5F5;
-}
-
-.filter {
-    max-width: 1080px;
-    margin: 5px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.filter a{
-    position: relative;
-    display: block;
-    border-radius: 10px;
-    border: 2px solid #FFFFFF;
-    background: #FFFFFF;
-    width: 250px;
-    height: 40px;
-    margin: 5px auto;
-    padding: 11px 45px 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-    text-align: left;
-    margin-left: calc(((100% / 4) - 250px) / 2);
-    margin-right: calc(((100% / 4) - 250px) / 2);
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.filter a:before{
-    content: "\25c9";
-    margin: 0 5px;
-    color: #FC982B;
-}
-
-.filter a > span {
-    position: absolute;
-    right: 10px;
-    top: 4px;
-    width: 30px;
-    height: 28px;
-    font-size: 15px;
-    line-height: 30px;
-    background: #EDEDED;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.filter a:hover{
-    border: 2px solid #FC982B;
-}
-
-.filter a:hover > span {
-    color: #FFFFFF; 
-    background: #F10015;
-}
-
-/* filter */
-
-/* sorting */
-
-.sorting {
-    width: 100%;
-    margin: auto;
-    height: auto;
-    padding: 0 10px;
-    background: #F0F0EE;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.sorting > .sorting-block{
-    width: 100%;
-    height: 50px;
-    padding: 5px 0;
-    background: #F0F0EE;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.sorting p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 40px;
-    color: #000000;
-}
-
-.sorting button{
-    cursor: pointer;
-    height: 30px;
-    border-radius: 25px;
-    border: 2px solid #D4D4D2;
-    background: #D4D4D2;
-    margin: 5px 0 5px 10px;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-    text-align: center;
-}
-
-.sorting button:hover{
-    border: 2px solid #F30330;
-    background: #F0F0EE;
-}
-
-.sorting > .sorting-block > .sorting-activ {
-    border: 2px solid #F30330;
-    background: #F0F0EE;
-}
-
-/* sorting */
-
-/* katalog */
-
-.products-box {
-    width: 100%;
-    margin: 0 auto 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
-.products-box div:nth-child(3n+2) {
-    margin: 20px 2%;
-}
-
-.products-box > div {
-    position: relative;
-    width: 32%;
-    height: 500px;
-    margin: 20px 0;
-}
-
-.products-box > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.products-box > div:hover :nth-child(4){
-    height: 150px;
-}
-
-.products-box > div:hover :nth-child(4) p{
-    transition: all 1s;
-    color: #000000;
-}
-
-.products-box > div > :nth-child(1){
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.products-box > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.products-box > div > :nth-child(1) img{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    transition: all 1s;
-    object-fit: cover;
-}
-
-.products-box > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 130px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    margin: 0 !important;
-    padding: 0 5px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-}
-
-.products-box > div > :nth-child(2) p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-}
-
-.showPrice .products-box > div > :nth-child(2) p > span:nth-child(2), .products-box > div > :nth-child(2) p > span:nth-child(1){
-    display: none;
-}
-
-.showPrice .products-box > div > :nth-child(2) p > span:nth-child(1), .products-box > div > :nth-child(2) p > span:nth-child(2){
-    display:inline-block;
-}
-
-.products-box > div > :nth-child(3) {
-    position: absolute;
-    z-index: 5;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border-radius: 20px;
-    border: 10px;
-}
-
-.products-off {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.products-on {
-    display: block;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.products-box > div > :nth-child(4) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: auto;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.products-box > div > :nth-child(4) a{
-    width: 100%;
-    height: 50px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.products-box > div > :nth-child(4) p{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #0000;
-    transition: all 1s;
-}
-
-.products-box > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.products-box > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.products-pagination {
-    width: 320px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.products-pagination button{
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    margin: auto 2.5px;
-    border: none;
-    background: #E6E5E1;
-    border-radius: 5px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #FFFFFF;
-}
-
-.products-pagination button:hover{
-    background: #F50037;
-}
-
-.products-pagination > .pagination-arrow {
-    background: #FD9B2B;
-    color: #FFFFFF;
-}
-
-.ban-pagination {
-    pointer-events: none;
-    opacity: 0;
-}
-
-.products-pagination ul{
-    max-width: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.products-pagination li{
-    cursor: pointer;
-    width: 45px;
-    height: 45px;
-    margin: auto 2.5px;
-    background: #E6E5E1;
-    border-radius: 5px;
-}
-
-.products-pagination li > a{
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    padding: 15px 0;
-    border-radius: 5px;
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.products-pagination li > a:hover{
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-.products-pagination > ul > .pagination-activ a{
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-.products-pagination button.pagination-activ {
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-/* katalog */
-
-/* text */
-
-.content-text {
-    width: 100%;
-    margin: auto auto 40px auto;
-    padding: 0 10px;
-}
-
-.content-text b{
-    display: inline-block;
-    padding: 0 0 15px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 30px;
-    color: #333333;
-}
-
-.content-text p{
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    line-height: 30px;
-    color: #000000;
-}
-
-.reg-info {
-    width: 98%;
-    border-radius: 10px;
-    padding: 10px;
-    background: #F0F0F0;
-}
-
-.reg-info p{
-    padding: 5px 0;
-}
-
-.reg-info p:nth-child(1){
-    font-weight: bold;
-}
-
-.reg-info span{
-    white-space: pre;
-    font-weight: bold;
-    color: #FF0016;
-}
-
-.reg-info a{
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    font-size: 25px;
-    color: #FE9D44;
-}
-
-.reg-info a:hover{
-    text-decoration: underline;
-}
-
-/* text */
-
-/* COMMON */
-
 /* --- HEADER INDEX --- */
-
 .header-box-index {
     width: 100%;
     margin: 0 auto;
     position: absolute;
     z-index: 10;
     pointer-events: none;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .header-index {
@@ -1073,20 +670,20 @@ html, body {
 }
 
 .header-info-index {
-    width: 45%;
+    width: 60%;
     display: flex;
     flex-direction: row;
 }
 
 .header-info-index div{
-    margin: auto;
+    margin: auto 5px;
 }
 
 .header-info-index p{
-    font-family: "Fontfabric-MullerMedium";
+    float: left;
+    margin: 0 5px 0 0;
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user-index {
@@ -1145,7 +742,7 @@ html, body {
     position: absolute;
     width: 120px;
     height: 30px;
-    padding: 5px;
+    padding: 7px 5px;
     top: 10px;
     left: 0;
     background: #FFFFFF;
@@ -1157,12 +754,10 @@ html, body {
 }
 
 .sub div a{
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     padding: 8px;
-    color: #000000;
 }
 
 .sub div a:hover{
@@ -1250,11 +845,14 @@ html, body {
     width: 50px;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
     text-decoration: none;
-    color: #000000;
+}
+
+.header-user-index > div:nth-child(1) > a img, .header-user-index > div:nth-child(2) > a img, .header-user-index > div:nth-child(3) > a img{
+    width: 25px;
+    height: 25px;
 }
 
 .header-user-index > div:nth-child(4) > button{
@@ -1264,10 +862,8 @@ html, body {
     width: auto;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .button-user{
@@ -1279,6 +875,8 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) img{
+    width: 25px;
+    height: 25px;
     vertical-align: text-bottom;
 }
 
@@ -1289,7 +887,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1322,9 +919,7 @@ html, body {
 
 .header-user-index > div:nth-child(4) > .authorization p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .authorization div {
@@ -1336,7 +931,6 @@ html, body {
     cursor: pointer;
     width: 100%;
     margin: 5px 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     text-align: center;
     color: #727272;
@@ -1353,7 +947,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -1368,7 +961,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1377,16 +969,13 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .authorization div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
 .header-user-index > div:nth-child(4) > .authorization div > a{
     float: right;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 40px;
-    color: #000000;
     text-decoration: none;
 }
 
@@ -1409,9 +998,7 @@ html, body {
 
 .header-user-index > div:nth-child(4) > .exit p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user-index > div:nth-child(4) > .exit div {
@@ -1428,7 +1015,6 @@ html, body {
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1437,7 +1023,6 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .exit div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -1449,7 +1034,6 @@ html, body {
     padding: 9px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -1460,14 +1044,11 @@ html, body {
 }
 
 .header-user-index > div:nth-child(4) > .exit div > a:hover{
-    margin: 2px auto 8px auto;
     background-position: 0 0;
 }
-
 /* --- HEADER INDEX --- */
 
 /* --- HEADER --- */
-
 .header-box {
     width: 100%;
     margin: 0 auto;
@@ -1489,20 +1070,20 @@ html, body {
 }
 
 .header-info {
-    width: 45%;
+    width: 60%;
     display: flex;
     flex-direction: row;
 }
 
 .header-info div{
-    margin: auto;
+    margin: auto 5px;
 }
 
 .header-info p {
-    font-family: "Fontfabric-MullerMedium";
+    float: left;
+    margin: 0 5px 0 0;
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user {
@@ -1536,11 +1117,14 @@ html, body {
     width: 50px;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
     text-decoration: none;
-    color: #000000;
+}
+
+.header-user > div:nth-child(1) > a img, .header-user > div:nth-child(2) > a img, .header-user > div:nth-child(3) > a img{
+    width: 25px;
+    height: 25px;
 }
 
 .header-user > div:nth-child(4) > button{
@@ -1550,10 +1134,8 @@ html, body {
     width: auto;
     height: 50px;
     padding: 12.5px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 30px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .button-authorization{
@@ -1565,6 +1147,8 @@ html, body {
 }
 
 .header-user > div:nth-child(4) img{
+    width: 25px;
+    height: 25px;
     vertical-align: text-bottom;
 }
 
@@ -1575,7 +1159,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1592,7 +1175,6 @@ html, body {
     right: 0;
     width: 20px;
     height: 20px;
-    font-family: "Fontfabric-MullerMedium";
     text-align: center;
     font-size: 14px;
     line-height: 24px;
@@ -1621,9 +1203,7 @@ html, body {
 
 .header-user > div:nth-child(4) > .authorization p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .authorization div {
@@ -1635,7 +1215,6 @@ html, body {
     cursor: pointer;
     width: 100%;
     margin: 5px 0 10px;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 15px;
     text-align: center;
     color: #727272;
@@ -1652,7 +1231,6 @@ html, body {
     border: none;
     border-bottom: 1px solid #C1C1C1;
     background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #333333;
 }
@@ -1663,11 +1241,10 @@ html, body {
     width: 100px;
     height: 40px;
     margin: auto 0;
-    padding: 12px 0;
+    padding: 13px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1676,16 +1253,13 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .authorization div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
 .header-user > div:nth-child(4) > .authorization div > a{
     float: right;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     line-height: 40px;
-    color: #000000;
     text-decoration: none;
 }
 
@@ -1708,9 +1282,7 @@ html, body {
 
 .header-user > div:nth-child(4) > .exit p{
     margin: auto auto 10px auto;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
-    color: #000000;
 }
 
 .header-user > div:nth-child(4) > .exit div {
@@ -1723,11 +1295,10 @@ html, body {
     width: 100px;
     height: 30px;
     margin: auto;
-    padding: 9px 0;
+    padding: 8px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
     background-size: auto 150%;
@@ -1736,7 +1307,6 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .exit div > button:hover{
-    margin: 2px auto -2px auto;
     background-position: 0 0;
 }
 
@@ -1745,10 +1315,9 @@ html, body {
     width: 180px;
     height: 30px;
     margin: auto auto 10px auto;
-    padding: 9px 0;
+    padding: 8px 0;
     border-radius: 25px;
     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
     text-decoration: none;
     text-align: center;
     font-size: 16px;
@@ -1759,14 +1328,11 @@ html, body {
 }
 
 .header-user > div:nth-child(4) > .exit div > a:hover{
-    margin: 2px auto 8px auto;
     background-position: 0 0;
 }
-
 /* --- HEADER --- */
 
 /* --- FOOTER --- */
-
 .footer {
     width: 100%;
     background: #282828;
@@ -1787,7 +1353,6 @@ html, body {
 }
 
 .footer-text p {
-    font-family: "Fontfabric-MullerMedium";
     font-size: 18px;
     line-height: 30px;
     color: #FFFFFF;
@@ -1806,7 +1371,6 @@ html, body {
     float: left;
     width: 100%;
     padding: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 16px;
     color: #FFFFFF;
 }
@@ -1841,13 +1405,18 @@ html, body {
     justify-content: flex-end;
 }
 
-.footer-top-networks button, .footer-bot-networks button{
+.footer-top-networks button{
     width: 25px;
     height: 25px;
     margin: 0 0 0 10px;
     cursor: pointer;
     border: none;
     background: none;
+}
+
+.footer-top-networks button img{
+    width: 25px;
+    height: 25px;
 }
 
 .footer-bot {
@@ -1858,3691 +1427,60 @@ html, body {
 
 .footer-bot p {
     text-align: center;
-    font-family: "Fontfabric-MullerMedium";
     font-size: 20px;
     color: #FFFFFF;
     margin: auto;
 }
-
 /* --- FOOTER --- */
 
-/* PAGE */
-
-/* INDEX */
-
-.slider {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-.slider .slide div{
-    background-repeat: no-repeat; 
-    background-position: center; 
-    background-size: cover; 
-}
-
-.slick-arrow {
-    position: absolute;
-    top: 500px;
-    background-image: url(../images/icons/arrowr.png);
-    background-repeat: no-repeat;
-    width: 60px;
-    height: 30px;
-    border: 0px;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-}
-
-.slick-prev {
-    z-index: 10;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-    right: 200px;
-}
-
-.count-slider {
-    position: absolute;
-    width: 100px;
-    top: 500px;
-    right: 100px;
-}
-
-.count-slider p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 18px;
-    line-height: 30px;
-    color: #000000;
-}
-
-.slick-next{
-    right: 40px;
-}
-
-.slide-text {
-    width: 100%;
-    position: absolute !important;
-    z-index: 5;
-    top: 0;
-}
-
-.slide-text div{
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 200px 0 0 0; 
-}
-
-.slide-text div > b{
-    display: inline-block;
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerBlack";
-    font-weight: bold;
-    font-size: 80px;
-    color: #FFFFFF;
-}
-
-.slide-text div > p{
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerBlack";
-    font-weight: bold;
-    font-size: 60px;
-    color: #FFFFFF;
-}
-
-.slide-text div > a{
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 0;
-    padding: 19px 0;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.slide-text div > a:hover{
-    margin: 2px 0 -2px 0;   
-    background-position: 0 0;
-} 
-
-.content-new {
-    max-width: 1080px;
-    min-height: 560px;
-    margin: 50px auto;
-    position: relative;
-}
-
-.new-text {
-    width: 45%;
-    margin: auto auto auto 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.new-text div:nth-child(1) {
-    width: 100%;
-    margin: 0 auto 20px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.new-text div:nth-child(1) p{
-    width: auto;
-    margin: 0;
-    padding: 5px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 40px;
-    color: #333333;
-}
-
-.new-text div:nth-child(1) a{
-    width: 200px;
-    height: 50px;
-    margin: auto 0;
-    padding: 19px 0;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    text-align: center;
-    text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.new-text div:nth-child(1) a:hover{
-    margin: 2px 0 -2px 0;
-    background-position: 0 0;
-}
-
-.new-text div:nth-child(2) {
-    width: 100%;
-}
-
-.new-text div:nth-child(2) p {
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    line-height: 35px;
-    color: #000000;
-}
-
-.new-slider-box {
-    position: absolute;
-    left: 50%;
-    top: 0;
-}
-
-.new-slider {
-    position: absolute !important;
-    width: 50vw !important;
-    margin: 0 auto;
-}
-
-.new-slider .slick-list{
-    width: calc(50vw + 20%);
-}
-
-.new-box {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.new-box > div {
-    position: relative;
-    width: 300px;
-    height: 500px;
-    border-radius: 15px;
-    margin: auto 20px 25px 0;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.new-box > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.new-box > div:hover :nth-child(4){
-    height: 150px;
-}
-
-.new-box > div:hover :nth-child(4) p{
-    transition: all 1s;
-    color: #000000;
-}
-
-.new-box > div > :nth-child(1){
-    position: absolute;
-    width: 300px;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.new-box > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.new-box > div > :nth-child(1) img{
-    position: absolute;
-    width: 300px;
-    height: 500px;
-    transition: all 1s;
-}
-
-.new-box > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 130px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    padding: 0 5px;
-    background: rgba(255, 255, 255, 0.8);
-    margin-left: calc(100% - 300px);
-    border-radius: 20px;
-}
-
-.new-box > div > :nth-child(2) p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-}
-
-.showPrice .new-box > div > :nth-child(2) p > span:nth-child(2), .new-box > div > :nth-child(2) p > span:nth-child(1){
-    display: none;
-}
-
-.showPrice .new-box > div > :nth-child(2) p > span:nth-child(1), .new-box > div > :nth-child(2) p > span:nth-child(2){
-    display:inline-block;
-}
-
-.new-box > div > :nth-child(3) {
-    position: absolute;
-    z-index: 5;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border-radius: 20px;
-    border: 10px;
-    margin-right: calc(100% - 300px);
-}
-
-.new-off {
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.new-on {
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.new-box > div > :nth-child(4) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: auto;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.new-box > div > :nth-child(4) a{
-    width: 100%;
-    height: 50px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.new-box > div > :nth-child(4) p{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #0000;
-    transition: all 1s;
-}
-
-.new-box > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    padding: 2px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.new-box > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.new-button {
-    width: 100%;
-    text-align: center;
-    margin: auto auto 10px auto;
-}
-
-.new-button img{
-    height: 20px;
-    vertical-align: middle;
-}
-
-.new-button button{
-    cursor: pointer;
-    border: none;
-    background: #D8DEE1;
-    width: 50px;
-    height: 25px;
-}
-
-.new-button button:hover{
-    background: #FAB932;
-}
-
-.content-cooperation {
-    width: 100%;
-    height: 450px;
-    margin: auto auto 50px auto;
-    position: relative;
-    overflow: hidden;
-}
-
-.img-video img{
-    position: absolute;
-    display: none;
-    width: 100%;
-    height: 450px;
-    margin: auto;
-    object-fit: cover;
-}
-
-.img-video video{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    -moz-filter: brightness(0.5);
-    -ms-filter: brightness(0.5);
-    -webkit-filter: brightness(0.5); 
-    -o-filter: brightness(0.5);
-    filter: brightness(0.5);
-}
-
-.text-cooperation {
-    position: relative;
-    max-width: 1080px;
-    height: 450px;
-    margin: 0 auto;
-}
-
-.text-cooperation > div{
-    position: absolute;
-    right: 10px;
-    left: 10px;
-    z-index: 10;
-    max-width: 600px;
-    height: 450px;
-    padding: 40px 0 40px 50px;
-    margin: auto 0 auto auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.text-cooperation div > div:nth-child(1) {
-    width: 260px;
-}
-
-.text-cooperation div:nth-child(1) > p{
-    width: 100%;
-    margin: auto;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 40px;
-    line-height: 50px;
-    color: #FFFFFF;
-}
-
-.text-cooperation div:nth-child(1) > p:before{
-    content: "";
-    position: absolute;
-    top: 60px;
-    left: 10px;
-    width: 25px;
-    height: 5px;
-    background: #FFFFFF;
-}
-
-.text-cooperation div > div:nth-child(2) {
-    margin: 50px auto;
-}
-
-.text-cooperation div:nth-child(2) p{
-    width: 100%;
-    margin: auto;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 18px;
-    line-height: 40px;
-    color: #FFFFFF;
-}
-
-.text-cooperation a{
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 0;
-    padding: 17px 0;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.text-cooperation a img{
-    width: 25px;
-    vertical-align: text-bottom;
-}
-
-.text-cooperation a:hover{
-    margin: 2px 0 -2px 0;
-    background-position: 0 0;
-}
-
-.content-production {
-    width: 100%;
-    margin: auto;
-}
-
-.production-box {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.production-box > div:nth-child(1) {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.production-box div:nth-child(1) > div:nth-child(1) {
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.production-box div:nth-child(1) > div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: right;
-    text-transform: uppercase;
-    font-size: 25px;
-    color: #000000;
-    margin: auto 0 10px auto;
-}
-
-.production-box div:nth-child(1) > div:nth-child(1) b{
-    font-family: "Fontfabric-MullerBold";
-    text-align: right;
-    text-transform: uppercase;
-    font-size: 40px;
-    color: #000000;
-}
-
-.production-box div:nth-child(1) > div:nth-child(2) {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.production-box div:nth-child(1) > div:nth-child(2) a{
-    display: block;
-    width: 200px;
-    height: 60px;
-    margin: 20px 0 0 auto;
-    padding: 18px 0;
-    border: 5px solid #D8DEE1;
-    border-radius: 50px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.production-box div:nth-child(1) > div:nth-child(2) a:hover{
-    margin: 22px 0 -2px auto;
-    background-position: 0 0;
-}
-
-.production-box > div:nth-child(2) {
-    width: 100%;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.production-icon {
-    width: 150px;
-    margin: 0 auto 20px auto;
-}
-
-.production-icon img{
-    display: block;
-    margin: auto auto 20px auto;
-}
-
-.icon-a img{
-    animation: icon-a 3s ease-in-out 0s infinite;
-    -webkit-animation: icon-a 3s ease-in-out 0s infinite;
-    -moz-animation: icon-a 3s ease-in-out 0s infinite;
-}
-
-@keyframes icon-a {
-    0%, 10%, 20%, 100% {transform: translateY(0);}
-    5% {transform: translateY(-8px);}
-    15% {transform: translateY(-3px);}
-}
-
-@-webkit-keyframes icon-a {
-    0%, 10%, 20%, 100% {transform: translateY(0);}
-    5% {transform: translateY(-8px);}
-    15% {transform: translateY(-3px);}
-}
-
-@-o-keyframes icon-a {
-    0%, 10%, 20%, 100% {transform: translateY(0);}
-    5% {transform: translateY(-8px);}
-    15% {transform: translateY(-3px);}
-}
-
-.icon-b img{
-    animation: icon-b 3s ease-in-out 0s infinite;
-    -webkit-animation: icon-b 3s ease-in-out 0s infinite;c
-    -moz-animation: icon-b 3s ease-in-out 0s infinite;
-}
-
-@keyframes icon-b {
-    20%, 30%, 40%, 100% {transform: translateY(0);}
-    25% {transform: translateY(-8px);}
-    35% {transform: translateY(-3px);}
-}
-
-@-webkit-keyframes icon-b {
-    20%, 30%, 40%, 100% {transform: translateY(0);}
-    25% {transform: translateY(-8px);}
-    35% {transform: translateY(-3px);}
-}
-
-@-o-keyframes icon-b {
-    20%, 30%, 40%, 100% {transform: translateY(0);}
-    25% {transform: translateY(-8px);}
-    35% {transform: translateY(-3px);}
-}
-
-.icon-c img{
-    animation: icon-c 3s ease-in-out 0s infinite;
-    -webkit-animation: icon-c 3s ease-in-out 0s infinite;
-    -moz-animation: icon-c 3s ease-in-out 0s infinite;
-}
-
-@keyframes icon-c {
-    40%, 50%, 60%, 100% {transform: translateY(0);}
-    45% {transform: translateY(-8px);}
-    55% {transform: translateY(-3px);}
-}
-
-@-webkit-keyframes icon-c {
-    40%, 50%, 60%, 100% {transform: translateY(0);}
-    45% {transform: translateY(-8px);}
-    55% {transform: translateY(-3px);}
-}
-
-@-o-keyframes icon-c {
-    40%, 50%, 60%, 100% {transform: translateY(0);}
-    45% {transform: translateY(-8px);}
-    55% {transform: translateY(-3px);}
-}
-
-.icon-d img{
-    animation: icon-d 3s ease-in-out 0s infinite;
-    -webkit-animation: icon-d 3s ease-in-out 0s infinite;
-    -moz-animation: icon-d 3s ease-in-out 0s infinite;
-}
-
-@keyframes icon-d {
-    60%, 70%, 80%, 100% {transform: translateY(0);}
-    65% {transform: translateY(-8px);}
-    75% {transform: translateY(-3px);}
-}
-
-@-webkit-keyframes icon-d {
-    60%, 70%, 80%, 100% {transform: translateY(0);}
-    65% {transform: translateY(-8px);}
-    75% {transform: translateY(-3px);}
-}
-
-@-o-keyframes icon-d {
-    60%, 70%, 80%, 100% {transform: translateY(0);}
-    65% {transform: translateY(-8px);}
-    75% {transform: translateY(-3px);}
-}
-
-.icon-e img{
-    animation: icon-e 3s ease-in-out 0s infinite;
-    -webkit-animation: icon-e 3s ease-in-out 0s infinite;
-    -moz-animation: icon-e 3s ease-in-out 0s infinite;
-}
-
-@keyframes icon-e {
-    80%, 90%, 100% {transform: translateY(0);}
-    85% {transform: translateY(-8px);}
-    95% {transform: translateY(-3px);}
-}
-
-@-webkit-keyframes icon-e {
-    80%, 90%, 100% {transform: translateY(0);}
-    85% {transform: translateY(-8px);}
-    95% {transform: translateY(-3px);}
-}
-
-@-o-keyframes icon-e {
-    80%, 90%, 100% {transform: translateY(0);}
-    85% {transform: translateY(-8px);}
-    95% {transform: translateY(-3px);}
-}
-
-.production-icon p{
-    width: 100%;
-    margin: auto;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 15px;
-    line-height: 20px;
-    color: #000000;
-}
-
-.production-index-slider-box {
-    width: 100%;
-    margin: 20px auto;
-}
-
-.production-index-slider {
-    height: 300px;
-}
-
-.production-index-slider .slide {
-    border: 0.5px solid #FFFFFF;
-}
-
-.production-index-slider .slick-list img{
-    width: 100%;
-    height: 300px;
-}
-
-.production-index-slider a {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
-.production-index-slider a > div{
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.production-index-slider a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.production-index-button {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin: 20px auto auto auto;
-}
-
-.production-index-button img{
-    height: 20px;
-    vertical-align: middle;
-}
-
-.production-index-button button{
-    cursor: pointer;
-    border: none;
-    background: #D8DEE1;
-    width: 50px;
-    height: 25px;
-}
-
-.production-index-button button:hover{
-    background: #FAB932;
-}
-
-.content-reg {
-    width: 100%;
-    margin: 50px auto;
-}
-
-.reg-box {
-    position: relative;
-    max-width: 1080px;
-    height: 450px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.reg-box > div:nth-child(1) {
-    width: 50%;
-    height: 450px;
-    overflow: hidden;
-    margin: auto auto auto 0;
-}
-
-.reg-box > div:nth-child(1) video{
-    height: 450px;
-    -moz-filter: brightness(0.5);
-    -ms-filter: brightness(0.5);
-    -webkit-filter: brightness(0.5);
-    -o-filter: brightness(0.5);
-    filter: brightness(0.5);
-}
-
-.reg-box > div:nth-child(2) {
-    position: relative;
-    z-index: 1;
-    width: 50%;
-    height: 450px;
-    margin: auto 0 auto auto;
-    padding: 75px 80px 75px 55px;
-}
-
-.reg-box > div:nth-child(2) p{
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 25px;
-    line-height: 40px;
-    color: #000000;
-}
-
-.reg-box > div:nth-child(2) b{
-    color: #FF0016;
-}
-
-.reg-box > div:nth-child(2) label{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-}
-
-.reg-box > div:nth-child(2) input{
-    width: 100%;
-    margin: 10px auto;
-    padding: 0 0 5px 0;
-    border: none;
-    border-bottom: 1px solid #C1C1C1;
-    background: #FFFFFF;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;
-}
-
-.reg-box > div:nth-child(2) button{
-    display: block;
-    cursor: pointer;
-    width: 240px;
-    height: 60px;
-    margin: 20px auto;
-    border: 5px solid #D8DEE1;
-    border-radius: 50px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.reg-box > div:nth-child(2) button:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.reg-border {
-    position: absolute;
-    top: 25px;
-    bottom: 25px;
-    left: 25px;
-    right: 25px;
-    border: 5px solid #FEC134;
-}
-
-.insta-slider-box {
-    width: 100%;
-    margin: 20px auto;
-}
-
-.insta-liner {
-    width: 40%;
-    border: 5px solid #D8DEE1;
-    margin: auto auto 10px 0;
-}
-
-.insta-block {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.insta-text {
-    max-width: 765px;
-    margin: auto 0 20px auto;
-    padding: 0 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.insta-text div:nth-child(1) {
-    margin: 10px 0;
-}
-
-.insta-text div:nth-child(2) {
-    margin: auto;
-}
-
-.insta-text img{
-    vertical-align: text-top;
-}
-
-.insta-text p{
-    font-family: "Fontfabric-MullerLight";
-    font-size: 32px;
-    color: #000000;
-}
-
-.insta-text a{
-    display: inline-block;
-    width: 150px;
-    height: 40px;
-    margin: 0 auto;
-    padding: 13px 0;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.insta-text a:hover{
-    margin: 2px auto -2px auto;
-    background-position: 0 0;
-}
-
-.insta-slider {
-    height: 300px;
-}
-
-.insta-slider .slide {
-    border: 0.5px solid #FFFFFF;
-}
-
-.insta-slider .slick-list img{
-    width: 100%;
-    height: 300px;
-}
-
-.insta-slider a {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
-.insta-slider a > div{
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.insta-slider a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-/* INDEX */
-
-/* REGISTRATION */
-
-.registration {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.registration-box {
-    width: 98%;
-    margin: 0 10px 50px 10px;
-    display: flex;
-    flex-direction: row;
-}
-
-.registration-form {
-    width: 60%;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.registration-form form{
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-}
-
-.registration-form label{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;  
-}
-
-.registration-form input{
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: 1px solid #C1C1C1;
-    border-radius: 5px;
-    background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;  
-}
-
-.input-error {
-    border: 1px solid red !important;
-}
-
-.input-error-bottom {
-    border-bottom: 1px solid red !important;
-}
-
-.registration-form button{
-    cursor: pointer;
-    width: 250px;
-    height: 50px;
-    margin: 20px 0 0 0;
-    padding: 19px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.registration-form button:hover{
-    margin: 22px 0 -2px 0;   
-    background-position: 0 0;
-} 
-
-.registration-img {
-    position: relative;
-    overflow: hidden;
-    width: 39%;
-    border-radius: 5px;
-    margin: 0 0 0 1%;
-}
-
-.registration-img video{
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-    right: -50px;
-}
-
-.registration-img p{
-    margin: 350px auto 0 auto;
-    padding: 10px;
-    font-family: "Fontfabric-MullerBold";
-    font-size: 27px;
-    line-height: 40px;
-    color: #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-/* REGISTRATION */
-
-/* CONTACTS */
-
-.contacts {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.contacts-map {
-    width: 100%;
-    height: 500px;
-}
-
-#map{
-    width: 100%;
-    position: absolute !important;
-    height: 500px !important;
-    width: 100%;
-}
-
-.map-info {
-    max-width: 1080px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-}
-
-.info-box {
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    height: auto;
-    margin: 25px 0;
-    padding: 10px;
-    float: left;
-    background: #FFFFFF;
-}
-
-.info-logo {
-    height: 95px;
-    padding: 0 0 10px 0;
-    text-align: center;
-}
-
-.info {
-    overflow: hidden;
-    height: 195px;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
-}
-
-.info b{
-    font-family: "Fontfabric-MullerBold";
-    font-size: 15px;
-    color: #000000;
-}
-
-.info b > img{
-    vertical-align: middle;
-    margin: 0 5px 0 0;
-}
-
-.info p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 15px;
-    line-height: 30px;
-    color: #000000;
-    padding: 0 30px;
-}
-
-.info-box button{
-    display: none;
-    cursor: pointer;
-    width: 200px;
-    height: 40px;
-    margin: 0 auto;
-    padding: 14px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #FF3D47);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-}
-
-.contacts-box {
-    max-width: 1080px;
-    margin: 0 0 50px 0;
-}
-
-.contacts-box p{
-    width: 100%;
-    margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 30px;
-    color: #333333;
-}
-
-.contacts-form {
-    width: 80%;
-    margin: auto;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.contacts-form form{
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-}
-
-.form-top {
-    display: flex;
-    flex-direction: row;
-}
-
-.form-top-left {
-    width: 45%;
-    margin: auto;
-}
-
-.form-top-right {
-    width: 45%;
-    margin: auto;
-}
-
-.form-bottom {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin: auto;
-}
-
-.contacts-form label{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;  
-}
-
-.contacts-form input{
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: 1px solid #C1C1C1;
-    border-radius: 5px;
-    background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;  
-}
-
-.contacts-form textarea{
-    width: 100%;
-    height: 100px;
-    margin: 10px 0;
-    padding: 10px 20px;
-    background: #FFFFFF;
-    border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;
-    resize: none;
-}
-
-.contacts-form button{
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto 0 auto;
-    padding: 19px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.contacts-form button:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-/* CONTACTS */
-
-/* COOPERATION */
-
-.cooperation {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.cooperation-box {
-    max-width: 1080px;
-    margin: auto auto 50px auto;
-}
-
-.cooperation-box p{
-    width: 100%;
-    margin: 30px auto;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 30px;
-    color: #333333;
-}
-
-.cooperation-form {
-    width: 80%;
-    margin: auto;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.cooperation-form form{
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-}
-
-.form-top {
-    display: flex;
-    flex-direction: row;
-}
-
-.form-top-left {
-    width: 45%;
-    margin: auto;
-}
-
-.form-top-right {
-    width: 45%;
-    margin: auto;
-}
-
-.form-bottom {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin: auto;
-}
-
-.cooperation-form label{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;  
-}
-
-.cooperation-form input{
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: 1px solid #C1C1C1;
-    border-radius: 5px;
-    background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;  
-}
-
-.cooperation-form textarea{
-    width: 100%;
-    height: 100px;
-    margin: 10px 0;
-    padding: 10px 20px;
-    background: #FFFFFF;
-    border: 1px solid #C1C1C1;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;
-    resize: none;
-}
-
-.cooperation-form button{
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto 0 auto;
-    padding: 19px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.cooperation-form button:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.cooperation-doc {
-    max-width: 320px;
-    margin: auto auto 50px auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.cooperation-doc a{
-    width: 150px;
-    height: 200px;
-    margin: auto;
-    border: 5px solid #D8DEE1;
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    line-height: 30px;
-    color: #000000;
-}
-
-/* COOPERATION */
-
-/* DELIVERY */
-
-.delivery {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.delivery-box {
-    width: 99%;
-    margin: auto auto 50px auto;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    border: 1px solid #E4E3DF;
-}
-
-.delivery-box > div{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-.delivery-box > div:first-child *{
-    background: #E4E3DF;
-}
-
-.delivery-box > div:nth-child(odd){
-    background: #F7F7F5;
-}
-
-.delivery-box p{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 50px;
-    color: #000000;
-}
-
-.delivery-box > div > div:nth-child(1) {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #E4E3DF;
-}
-
-.delivery-box > div > div:nth-child(1) img{
-    margin: auto;
-}
-
-.delivery-box > div > div:nth-child(2) {
-    width: 30%;
-    min-width: 100px;
-    display: flex;
-    flex-direction: column;
-}
-
-.delivery-box > div > div:nth-child(2) a{
-    display: block;
-    width: 60%;
-    height: 30px;
-    margin: 10px auto;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 14px;
-    text-transform: uppercase;
-    line-height: 33px;
-    color: #FFFFFF;
-    background-size: auto 200%;
-    background-position: 0 50%;
-    transition: background-position 1s;
-}
-
-.delivery-box > div > div:nth-child(2) a:hover{
-    margin: 11px auto -1px auto;
-    background-position: 0 0;
-}
-
-.delivery-box > div > div:nth-child(2) a > img{
-    display: none;
-    padding: 5px 0;
-    margin: auto;
-}
-
-/* DELIVERY */
-
-/* PRODUCTION */
-
-.production {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.production-img {
-    width: 100%;
-    margin: auto auto 50px auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.production-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.production-left {
-    width: 50%;
-    display: flex;
-    overflow: hidden;
-}
-
-.production-left a{
-    width: 100%;
-    height: 500px;
-    padding: 5px;
-    position: relative;
-}
-
-.production-left a > div{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 5px solid #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.production-left a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.production-right {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: hidden;
-}
-
-.production-right a{
-    width: 50%;
-    height: 250px;
-    padding: 5px;
-    position: relative;
-}
-
-.production-right a > div{
-    position: absolute;
-    width: 100%;
-    height: 250px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 5px solid #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.production-right a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.production-slider-box {
-    display: none !important;
-}
-
-.production-slider {
-    width: 100%;
-    margin: auto auto 20px auto;
-}
-
-.production-slider .slide a, .slide img{
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.production-slider .slick-slide {
-    position: relative;
-    height: 500px;
-}
-
-.production-slider-box .production-slider .slick-slide a > div{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-}
-
-.production-button {
-    width: 100%;
-    text-align: center;
-    margin: auto auto 20px auto;
-}
-
-.production-button img{
-    height: 20px;
-    vertical-align: middle;
-}
-
-.production-button button{
-    cursor: pointer;
-    border: none;
-    background: #D8DEE1;
-    width: 50px;
-    height: 25px;
-}
-
-.production-button button:hover{
-    background: #FAB932;
-}
-
-.production-video {
-    width: 100%;
-    margin: auto auto 30px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.production-video iframe{
-    height: 250px;
-    border-radius: 5px;
-    border: 5px solid #D8DEE1;
-}
-
-/* fancybox */
-
-.fancybox-lock .fancybox-overlay {
-    background: rgba(0, 0, 0, 0.5) !important;
-}
-
-.fancybox-close {
-    width: 35px !important;
-    height: 35px !important;
-}
-
-.fancybox-close {
-    background-image: url(../images/icons/close.png) !important;
-    background-size: 35px 35px !important;
-}
-
-/* fancybox */
-
-/* PRODUCTION */
-
-/* INFORMATION */
-
-.information {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.information-img {
-    width: 100%;
-    margin: auto auto 50px auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.information-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.information-left {
-    width: 50%;
-    display: flex;
-    overflow: hidden;
-}
-
-.information-left a{
-    width: 100%;
-    height: 500px;
-    padding: 5px;
-    position: relative;
-}
-
-.information-left a > div{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 5px solid #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.information-left a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.information-right {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: hidden;
-}
-
-.information-right a{
-    width: 50%;
-    height: 250px;
-    padding: 5px;
-    position: relative;
-}
-
-.information-right a > div{
-    position: absolute;
-    width: 100%;
-    height: 250px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 5px solid #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.information-right a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.information-slider-box {
-    display: none !important;
-}
-
-.information-slider {
-    width: 100%;
-    margin: auto auto 20px auto;
-}
-
-.information-slider .slide a, .slide img{
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.information-slider .slick-slide {
-    position: relative;
-    height: 500px;
-}
-
-.information-slider-box .information-slider .slick-slide a > div{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-}
-
-.information-button {
-    width: 100%;
-    text-align: center;
-    margin: auto auto 20px auto;
-}
-
-.information-button img{
-    height: 20px;
-    vertical-align: middle;
-}
-
-.information-button button{
-    cursor: pointer;
-    border: none;
-    background: #D8DEE1;
-    width: 50px;
-    height: 25px;
-}
-
-.information-button button:hover{
-    background: #FAB932;
-}
-
-/* fancybox */
-
-.fancybox-lock .fancybox-overlay {
-    background: rgba(0, 0, 0, 0.5) !important;
-}
-
-.fancybox-close {
-    width: 35px !important;
-    height: 35px !important;
-}
-
-.fancybox-close {
-    background-image: url(../images/icons/close.png) !important;
-    background-size: 35px 35px !important;
-}
-
-/* fancybox */
-
-/* INFORMATION */
-
-/* CABINET */
-
-.cabinet {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.history {
-    display: none;
-}
-
-.history, .data, .bonus {
-    width: 99%;
-    margin: auto auto 50px auto;
-}
-
-.history, .data, .bonus {
-    width: 99%;
-    margin: auto auto 50px auto;
-}
-
-.history p{
-    width: 100%;
-    margin: 20px auto;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 25px;
-    color: #333333;
-}
-
-.history-box {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.history-box > div{
-    width: 300px;
-    height: auto;
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    border: 1px solid #E4E3DF;
-    overflow: hidden;
-    margin-left: calc(((100% / 3) - 300px) / 2);
-    margin-right: calc(((100% / 3) - 300px) / 2);
-}
-
-.history-box > div > div{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-}
-
-.history-box div > div {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    padding: 5px;
-}
-
-.history-box > div > div > div > p{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-}
-
-.history-box > div > div > .sum p{
-    font-size: 20px;
-    color: #FF0016;
-}
-
-.history-box > div > div > .status > p{
-    font-size: 16px;
-    text-transform: uppercase;
-}
-
-.history-box > div > div > .status {
-    border-radius: 20px;
-    text-align: center;
-    padding: 10px;
-}
-
-.status-blue {
-    border: 2px solid #0035D2;
-}
-
-.status-green {
-    border: 2px solid #00B90E;
-}
-
-.status-blue p{
-    color: #0035D2 !important;
-}
-
-.status-green p{
-    color: #00B90E !important;
-}
-
-.history-box > div > .hidden {
-    display: none;
-    width: 100%;
-    height: auto;
-    max-height: 250px;
-    overflow: auto;
-    padding: 5px;
-
-    flex-direction: column;
-}
-
-.history-box > div > .hidden > .order-info{
-    width: 100%;
-    margin: 10px auto;
-    padding: 0;
-    border: 1px solid #BBBBBB;
-    border-radius: 10px;
-}
-
-.history-box > div > .hidden > .order-info > div{
-    display: flex;
-    flex-direction: row;
-}
-
-.history-box > div > .hidden p{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;
-}
-
-.history-box > div > .hidden a{
-    display: inline-block;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Fontfabric-MullerMedium";
-    text-decoration: none;
-    font-size: 16px;
-    line-height: 20px;
-    color: #682333;;
-}
-
-.history-box > div > .hidden a:hover{
-    text-decoration: underline;
-}
-
-.history-box > div > div > button{
-    position: absolute;
-    cursor: pointer;
-    border: none;
-    background: none;
-    width: 100%;
-    height: 50px;
-    padding: 0 10px 0 0;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    text-align: right;
-    margin: auto 0 auto auto;
-    z-index: 1;
-}
-
-.history-box > div > div > button img{
-    width: 20px;
-}
-
-.history-box > div > div:nth-child(even){
-    background: #FFFFFF;
-}
-
-.history-box > div > div:nth-child(odd){
-    background: #F6F6F5;
-}
-
-.history-box > div > div:first-child {
-    background: #E4E3DF;
-}
-
-.history-button {
-    width: 100%;
-    margin: auto;
-    text-align: center;
-}
-
-.history-button button{
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto 0 auto;
-    border: 2px solid #D7DFE5;
-    border-radius: 25px;
-    background: #D7DFE5;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #000000;
-}
-
-.history-button button > img{
-    vertical-align: middle;
-    margin: 0 10px 0 0;
-}
-
-.history-button button:hover{
-    border: 2px solid #F30330;
-}
-
-.data p{
-    width: 100%;
-    margin: 20px auto;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 25px;
-    color: #333333;
-}
-
-.data-box {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.data-box form{
-    padding: 5%;
-}
-
-.data-box p{
-    width: 100%;
-    margin: auto auto 20px auto;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 25px;
-    color: #333333;
-}
-
-.cabinet-box {
-    cursor: pointer;
-    background: none;
-    border: none;
-    width: 100%;
-    height: 30px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: left;
-    font-size: 25px;
-    color: #333333;
-}
-
-.cabinet-box img{
-    width: 15px;
-    margin: 0 5px 0 0;
-}
-
-.fiz-form {
-    width: 100%;
-    height: 0;
-    margin: auto;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.jur-form {
-    width: 100%;
-    height: 0;
-    margin: auto;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.address-form {
-    width: 100%;
-    height: auto;
-    margin: auto;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.show-block {
-    height: auto;
-}
-
-.fiz-form div, .jur-form div, .address-form div{
-    width: 300px;
-    margin: 5px auto;
-}
-
-.data-box label{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #000000;  
-}
-
-.data-box input{
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: 1px solid #C1C1C1;
-    border-radius: 5px;
-    background: #FFFFFF; 
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #333333;  
-}
-
-.data-button {
-    width: 100%;
-    margin: auto;
-    text-align: center;
-}
-
-.data-button button{
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto 0 auto;
-    padding: 19px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.data-button button:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.bonus > p:nth-child(1){
-    width: 100%;
-    margin: auto auto 20px auto;
-    padding: 0 10px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 30px;
-    color: #333333;
-}
-
-.bonus > p:nth-child(2), .bonus > p:nth-child(3){
-    margin: auto auto 20px auto;
-    padding: 0 12px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
-}
-
-.bonus > p:nth-child(2) span{
-    font-size: 20px;
-    color: #F9C33C;
-}
-
-.bonus > p:nth-child(3) span{
-    font-size: 20px;
-    color: #FF0016;
-}
-
-/* CABINET */
-
-/* COLLECTIONS */
-
-.collections {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.collections-box {
-    width: 100%;
-    margin: 0 auto 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
-.collections-box div:nth-child(3n+2) {
-    margin: 20px 2%;
-}
-
-.collections-box > div {
-    position: relative;
-    width: 32%;
-    height: 500px;
-    margin: 20px 0;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.collections-box > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.collections-box > div > :nth-child(1){
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.collections-box > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.collections-box > div > :nth-child(1) img{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    transition: all 1s;
-    object-fit: cover;
-}
-
-.collections-box > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: 0 auto!important;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.collections-box > div > :nth-child(2) a{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.collections-box > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.collections-box > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-/* COLLECTIONS */
-
-/* PRODUCT */
-
-.product {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.product-box {
-    width: 99%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.product-box > div:nth-child(1) {
-    width: 50%;
-    margin: 0 auto 30px auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.product-box > div:nth-child(1) img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.product-box > div:nth-child(1) > div:nth-child(1) {
-    width: calc(100% - 100px);
-    display: flex;
-    overflow: hidden;
-    position: relative;
-}
-
-.product-box > div:nth-child(1) > div:nth-child(1) a{
-    width: 100%;
-    height: 500px;
-    padding: 5px;
-    position: relative;
-}
-
-.product-box > div:nth-child(1) > div:nth-child(1) a > div{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    top: 0;
-    left: 0;
-    border: 5px solid #FFFFFF;
-    background: none;
-    transition: all 1s;
-}
-
-.product-box > div:nth-child(1) > div:nth-child(1) a > div:hover{
-    background: rgba(0, 0, 0, 0) url(../images/icons/loop.png) no-repeat;
-    background-position-x: 10px;
-    background-position-y: 10px;
-    transition: all 1s;
-}
-
-.product-box > div:nth-child(1) > .item-slider {
-    overflow: hidden;
-}
-
-.product-box > div:nth-child(1) > .item-slider > div{
-    width: 100px;
-    height: 125px;
-    position: relative;
-}
-
-.item-slider .slick-slide{
-    width: 100px !important;
-    height: 125px !important;
-    padding: 5px !important;
-    border: none !important;
-    position: relative;
-}
-
-.item-slider .slick-slide > div {
-    position: absolute;
-    cursor: pointer;
-    z-index: 100;
-    width: 90px;
-    height: 115px;
-    top: 5px;
-    left: 5px;
-    background: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-}
-
-.item-slider .slick-slide > div:hover{
-    border: 1px solid #F50037;
-    background: rgba(0, 0, 0, 0);
-    transition: all 1s;
-}
-
-.item-slider .slick-slide .item-activ{
-    border: 1px solid #F50037;
-    background: rgba(0, 0, 0, 0) !important;
-}
-
-.product-button {
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    position: absolute;
-}
-
-.product-off {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.product-on {
-    display: block;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.product-box > div:nth-child(2) {
-    width: 50%;
-    margin: 0 auto 30px auto;
-    padding: 5px;
-}
-
-.product-category {
-    width: 100%;
-    margin: 0 0 20px 0;
-}
-
-.product-category img{
-    margin: 0 10px 0 0;
-}
-
-.product-category a{
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    color: #989898;
-    text-decoration: none;
-}
-
-.product-category a:hover{
-    text-decoration: underline;
-}
-
-.product-brief {
-    width: 100%;
-    margin: auto;
-}
-
-.product-brief p{
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.product-composition {
-    width: 100%;
-    margin: auto;
-}
-
-.product-composition b{
-    display: inline-block;
-    padding: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 20px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.product-composition p{
-    padding: 0 0 20px 0;
-    font-family: "Fontfabric-MullerLight";
-    font-size: 20px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.product-size {
-    width: 100%;
-    margin: auto;
-}
-
-.product-size b{
-    display: inline-block;
-    padding: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 20px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.size-box {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.size-block {
-    min-width: 160px;
-    width: 30%;
-    height: 50px;
-    margin: 1%;
-    padding: 5px 0 5px 6px;
-    border: 2px solid #E4E3DF;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-}
-
-.size-block div:nth-child(1) {
-    min-width: 60px;
-    padding: 11px 0;
-    background: #E4E3DF;
-    border-radius: 5px;
-    color: #000000;
-}
-
-.size-block-activ div:nth-child(1){
-    background: #F50037;
-    color: #FFFFFF;
-}
-
-.size-block div:nth-child(1) p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-}
-
-.size-block div:nth-child(2) {
-    min-width: 90px;
-    margin: auto;
-    text-align: center;
-}
-
-.size-block div:nth-child(2) input{
-    border: none;
-    width: 30px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.size-block div:nth-child(2) button{
-    cursor: pointer;
-    background: #FFFFFF;
-    border: 1px solid #E6E6E6;
-    border-radius: 15px;
-    padding: 2px 1px 0 0;
-    width: 20px;
-    height: 20px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.product-basket {
-    display: none;
-    width: 100%;
-    margin: 30px auto;
-}
-
-.product-basket p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 25px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.price-basket {
-    display: none;
-    width: 100%;
-    margin: auto auto 10px auto;
-    padding: 10px;
-    background: #F8F8F6;
-    border-radius: 5px;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.price-basket-none {
-    display: none !important;
-}
-
-.price-basket div:nth-child(1) {
-    width: auto;
-    margin: auto auto auto 0;
-}
-
-.price-basket div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 24px;
-    color: #000000;
-}
-
-.price-basket div:nth-child(1) span{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 25px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.price-basket div:nth-child(2) {
-    margin: auto 0 auto auto;
-}
-
-.price-basket div:nth-child(2) button{
-    border: none;
-    width: 200px;
-    height: 50px;
-    padding: 15px 0;
-    border-radius: 25px;
-    font-family: "Fontfabric-MullerMedium";
-    text-transform: uppercase;
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.price-basket div:nth-child(2) button > img{
-    vertical-align: sub;
-    margin: 0 10px 0 0;
-}
-
-.off-basket button{
-    background: #D7DFE5;
-}
-
-.on-basket button{
-    cursor: pointer;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.on-basket button:hover{
-    margin: 2px auto -2px auto;
-    background-position: 0 0;
-}
-
-.product-basket-link {
-    display: none;
-    margin: auto 0 auto auto;
-}
-
-.product-basket-link a{
-    display: inline-block;
-    width: 200px;
-    height: 50px;
-    margin: auto;
-    padding: 19px 0;
-    border-radius: 25px;
-    text-decoration: none;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-align: center;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.product-basket-link a:hover{
-    margin: 2px 0 -2px 0;   
-    background-position: 0 0;
-}
-
-.no-authorization {
-    width: 100%;
-    margin: auto auto 10px auto;
-    padding: 10px;
-    background: #F8F8F6;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.no-authorization-none {
-    display: none !important;
-}
-
-.no-authorization div:nth-child(1) {
-    width: auto;
-    margin: auto auto auto 0;
-}
-
-.no-authorization div:nth-child(1) img{
-    width: 20px;
-    margin: 0 5px 0 0;
-    vertical-align: text-bottom;
-}
-
-.no-authorization div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
-    font-style: italic;
-    font-size: 16px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.no-authorization div:nth-child(2) {
-    margin: auto 0 auto auto;
-}
-
-.no-authorization div:nth-child(2) a{
-    display: block;
-    width: 150px;
-    height: 50px;
-    margin: auto;
-    padding: 19px 0;
-    border-radius: 25px;
-    text-decoration: none;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    text-align: center;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.no-authorization div:nth-child(2) a:hover{
-    margin: 2px 0 -2px 0;   
-    background-position: 0 0;
-} 
-
-.product-delivery {
-    width: 100%;
-    margin: auto auto 10px auto;
-    padding: 10px;
-}
-
-.product-delivery img{
-    width: 20px;
-    margin: 0 5px 0 0;
-    vertical-align: text-bottom;
-}
-
-.product-delivery p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.product-delivery a{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #FF0016;
-}
-
-.product-delivery a:hover{
-    text-decoration: none;
-}
-
-.product-slider-box {
-    max-width: 1080px;
-    margin: auto auto 20px auto;
-    padding: 10px;
-}
-
-.product-slider-box b{
-    display: inline-block;
-    padding: 0 0 15px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 30px;
-    color: #333333;
-}
-
-.product-block {
-    width: 100%;
-    margin: 0 auto 25px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.product-block > div {
-    position: relative;
-    width: 300px;
-    height: 500px;
-    margin: auto;
-    border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.product-block > div:hover img{
-    cursor: pointer;
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-}
-
-.product-block > div:hover :nth-child(4){
-    height: 150px;  
-}
-
-.product-block > div:hover :nth-child(4) p{
-    transition: all 1s;
-    color: #000000;
-}
-
-.product-block > div > :nth-child(1){
-    position: absolute;
-    width: 300px;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.product-block > div > :nth-child(1) a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.product-block > div > :nth-child(1) img{
-    position: absolute;
-    width: 300px;
-    height: 500px;
-    transition: all 1s;
-}
-
-.product-block > div > :nth-child(2) {
-    position: absolute;
-    z-index: 5;
-    width: 130px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    padding: 0 5px;
-    background: rgba(255, 255, 255, 0.8);
-    margin-left: calc(100% - 300px);
-    border-radius: 20px;
-}
-
-.product-block > div > :nth-child(2) p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-}
-
-.showPrice .product-block > div > :nth-child(2) p > span:nth-child(2), .product-block > div > :nth-child(2) p > span:nth-child(1){
-    display: none;
-}
-
-.showPrice .product-block > div > :nth-child(2) p > span:nth-child(1), .product-block > div > :nth-child(2) p > span:nth-child(2){
-    display:inline-block;
-}
-
-.product-block > div > :nth-child(3) {
-    position: absolute;
-    z-index: 5;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border-radius: 20px;
-    border: 10px;
-    margin-right: calc(100% - 300px);
-}
-
-.product-slider-off {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.product-slider-on {
-    display: block;
-    position: absolute;
-    z-index: 10;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    border: none;
-    border-radius: 20px;
-    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #FFFFFF;
-}
-
-.product-block > div > :nth-child(4) {
-    position: absolute;
-    z-index: 5;
-    width: 100%;
-    height: 100px;
-    padding: 20px;
-    margin: auto;
-    bottom: 0;
-    border-radius: 0 0 15px 15px;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 1s;
-    overflow: hidden;
-}
-
-.product-block > div > :nth-child(4) a{
-    width: 100%;
-    height: 50px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.product-block > div > :nth-child(4) p{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    margin: 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 25px;
-    color: #0000;
-    transition: all 1s;
-}
-
-.product-block > div > a{
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.product-block > div > a:hover{
-    margin: 22px auto -2px auto;
-    background-position: 0 0;
-}
-
-.product-slider-button {
-    width: 100%;
-    text-align: center;
-    margin: auto auto 20px auto;
-}
-
-.product-slider-button img{
-    height: 20px;
-    vertical-align: middle;
-}
-
-.product-slider-button button{
-    cursor: pointer;
-    border: none;
-    background: #D8DEE1;
-    width: 50px;
-    height: 25px;
-}
-
-.product-slider-button button:hover{
-    background: #FAB932;
-}
-
-/* PRODUCT */
-
-/* BASKET */
-
-.basket {
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
-.basket-empty {
-    display: none;
-    width: 99%;
-    margin: auto;
-    border-radius: 5px;
-    background: #F0F0F0;
-}
-
-.basket-empty p{
-    width: 100%;
-    padding: 5px 20px;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 20px;
-    line-height: 50px;
-    color: #b6b6b6;
-}
-
-.basket-container {
-    display: none;
-}
-
-.basket-box {
-    width: 99%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.basket-box > div:nth-child(even){
-    background: #F7F7F5;
-}
-
-.basket-product {
-    width: 100%;
-    margin: auto auto 20px auto;
-    border: 1px solid #E4E3DF;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.basket-product > div:nth-child(1) {
-    width: 95%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
-    width: 65%;
-    padding: 10px;
-    border: 1px solid #E4E3DF;
-    display: flex; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div{
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div img{
-    width: 50px;
-    height: 50px;
-    margin: auto 10px auto 0;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div a{
-    text-decoration: none;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #682333; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div a:hover{
-    text-decoration: underline; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) {
-    width: 35%;
-    padding: 10px;
-    border: 1px solid #E4E3DF;
-    display: flex; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div{
-    margin: auto; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div p{
-    width: 100%;
-    margin: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) div span{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 20px;
-    color: #FF0016; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
-    width: 65%;
-    padding: 10px;
-    border: 1px solid #E4E3DF;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div{
-    width: 32%;
-    height: 46px;
-    padding: 5px 0;
-    margin: 1% 0;
-    border-radius: 10px;
-    background: #f1f1f1;
-    text-align: center;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3n+2){
-    margin: 1% 2%;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div p{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-}
-
-.basket-size-on {
-    background: #F50037 !important;
-}
-
-.basket-size-on p{
-    color: #FFFFFF;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div input{
-    border: none;
-    width: 30px;
-    border-radius: 5px;
-    height: 20px;
-    padding: 2px 0 0 0;
-    margin: 0 5px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div button{
-    cursor: pointer;
-    background: #FFFFFF;
-    border: 1px solid #E6E6E6;
-    border-radius: 15px;
-    padding: 2px;
-    width: 20px;
-    height: 20px;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) {
-    width: 35%;
-    padding: 10px;
-    border: 1px solid #E4E3DF;
-    display: flex; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div{
-    margin: auto; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div p{
-    width: 100%;
-    margin: 0 0 10px 0;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000; 
-}
-
-.basket-product > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) div span{
-    width: 100%;
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 20px;
-    color: #FF0016; 
-}
-
-.basket-product > div:nth-child(2) {
-    width: 5%;
-    border: 1px solid #E4E3DF;
-}
-
-.basket-product > div:nth-child(2) button{
-    cursor: pointer;
-    background: none;
-    border: none;
-    width: 100%;
-    height: 100%;
-    font-size: 20px;
-}
-
-.basket-total {
-    width: 99%;
-    margin: auto auto 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.basket-total div:nth-child(1) {
-    width: 300px;
-    margin: auto auto auto 0;
-}
-
-.basket-total div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
-}
-
-.basket-total div:nth-child(1) span{
-    font-size: 20px;
-    color: #FF0016;
-}
-
-.basket-total div:nth-child(2) {
-    display: none;
-    width: 300px;
-    margin: auto;
-}
-
-.basket-total div:nth-child(2) button{
-    cursor: pointer;
-    width: 300px;
-    height: 50px;
-    margin: 0 auto;
-    padding: 19px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.basket-total div:nth-child(2) button:hover{
-    margin: 2px auto -2px auto;
-    background-position: 0 0;
-}
-
-.basket-total div:nth-child(3) {
-    width: 300px;
-    height: 50px;
-    background: #E4E3DF;
-    margin: auto 0 auto auto;
-    display: flex;
-}
-
-.basket-total div:nth-child(3) p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    font-size: 16px;
-    color: #000000;
-    margin: auto;
-}
-
-.basket-total div:nth-child(3) span{
-    font-size: 20px;
-    color: #FF0016;
-}
-
-.payment-box {
-    width: 320px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-box > div{
-    display: flex;
-    flex-direction: row;
-}
-
-.payment-box > p{
-    font-family: "Fontfabric-MullerMedium";
-    margin: auto auto 20px auto;
-    text-align: center;
-    font-size: 24px;
-    color: #F30330;
-}
-
-.payment-box > div > div:nth-child(1) {
-    width: 100px;
-    margin: 0 auto auto auto; 
-}
-
-.payment-box > div > div:nth-child(1) p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
-    margin: auto;
-}
-
-.payment-box > div > div:nth-child(1) button{
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-    margin: auto auto 10px auto;
-    padding: 19px 0;
-    border: 2px solid #C4C4C4;
-    border-radius: 5px;
-    background: #FFFFFF;
-}
-
-.payment-box > div > div:nth-child(1) button:hover{
-    border: 2px solid #F9C33C;
-    background: #F9C33C;
-}
-
-.payment-box > div > div:nth-child(2) {
-    width: 100px;
-    margin: 0 auto auto auto; 
-}
-
-.payment-box > div > div:nth-child(2) p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
-    margin: auto;
-}
-
-.payment-box > div > div:nth-child(2) button{
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-    margin: auto auto 10px auto;
-    padding: 19px 0;
-    border: 2px solid #C4C4C4;
-    border-radius: 5px;
-    background: #FFFFFF;
-}
-
-.payment-box > div > div:nth-child(2) button:hover{
-    border: 2px solid #F9C33C;
-    background: #F9C33C;
-}
-
-.payment-activ {
-    border: 2px solid #F9C33C !important;
-    background: #F9C33C !important;
-}
-
-.address-box {
-    width: 99%;
-    margin: 20px auto;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #E4E3DF;
-    border-radius: 5px;
-}
-
-.address-box > p{
-    font-family: "Fontfabric-MullerMedium";
-    margin: auto auto 10px auto;
-    text-align: center;
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
-}
-
-.address-box button{
-    cursor: pointer;
-    width: 200px;
-    height: 30px;
-    margin: auto;
-    padding: 9px 0;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 16px;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.address-box button:hover{
-    margin: 1px auto -1px auto;
-    background-position: 0 0;
-}
-
-.basket-liner {
-    width: 100%;
-    margin: 20px auto;
-    height: 2px;
-    background: #DDDEE0;
-}
-
-.basket-order {
-    width: 100%;
-    margin: auto auto 20px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.basket-order div:nth-child(1) {
-    width: 300px;
-    margin: auto auto auto 0;
-}
-
-.basket-order div:nth-child(1) button{
-    cursor: pointer;
-    width: 300px;
-    height: 50px;
-    border: 2px solid #D7DFE5;
-    border-radius: 25px;
-    background: #D7DFE5;
-    font-family: "Fontfabric-MullerMedium";
-    font-size: 18px;
-    color: #000000;
-}
-
-.basket-order div:nth-child(1) button > img{
-    vertical-align: baseline;
-    margin: 0 10px 0 0;
-}
-
-.basket-order div:nth-child(1) button:hover{
-    border: 2px solid #F30330;
-}
-
-.basket-order div:nth-child(2) {
-    width: 300px;
-    margin: auto 0 auto auto;
-}
-
-.basket-order div:nth-child(2) p{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: right;
-    font-size: 12px;
-    line-height: 20px;
-    color: #000000;
-}
-
-.basket-order div:nth-child(2) a{
-    font-family: "Fontfabric-MullerMedium";
-    text-align: right;
-    font-size: 12px;
-    line-height: 20px;
-    color: #FF0016;
-}
-
-.basket-order div:nth-child(2) a:hover{
-    text-decoration: none;
-}
-
-.basket-order div:nth-child(3) {
-    width: 300px;
-    margin: auto 0 auto 10px;
-}
-
-.basket-order div:nth-child(3) button{
-    border: none;
-    width: 300px;
-    height: 50px;
-    border-radius: 25px;
-    font-family: "Fontfabric-MullerMedium";
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-.basket-order-off button{
-    background: #D7DFE5;
-    color: #BABABA;
-}
-
-.basket-order-on button{
-    cursor: pointer;
-    color: #FFFFFF;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
-
-.basket-order-on button:hover{
-    margin: 2px auto -2px auto;
-    background-position: 0 0;
-}
-
-/* BASKET */
+/* media */
+@media (max-width: 1000px) {
+    .header-box-index {background: none;}
+    .header-info-index {width: 100%; height: 100px; background: rgba(255, 255, 255, 0.5);}
+    .section {width: 100%;}
+    .marker {width: 50%;}
+    .header-index {height: 200px;}
+    .header-user-index {width: 50px; left: 0; right: 0; top: 50px; flex-direction: column-reverse;}
+    .header-user-index > div:nth-child(2), .header-user-index > div:nth-child(3), .header-user-index > div:nth-child(4) {width: 50px; background: #FFFFFF;}
+    .header-user-index > div:nth-child(1) {display: none;}
+    .header-user-index > div:nth-child(4) img{padding: 0;}
+    .header-user-index > div:nth-child(4) span{display: none;}
+    .header-user-index > div:nth-child(4) > .authorization {top: -50px; left: 50px;}
+    .header-user-index > div:nth-child(4) > .exit {top: -50px; left: 50px;}
+    .header-logo-index, .header-text-index {margin: 20px auto; height: 60px;}
+    .header-info {width: 70%;}
+    .header-user {left: 0; right: 0; top: 50px; flex-direction: column-reverse;}
+    .header-user > div:nth-child(2) {position: absolute; top: -50px; right: 0; width: 50px; background: #FFFFFF;}
+    .header-user > div:nth-child(3) {position: absolute; top: 0; right: 0; width: 50px; background: #FFFFFF;}
+    .header-user > div:nth-child(4) {width: 50px; background: #FFFFFF;}
+    .header-user > div:nth-child(1) {display: none;}
+    .header-user > div:nth-child(4) img{padding: 0;}
+    .header-user > div:nth-child(4) span{display: none;}
+    .header-user > div:nth-child(4) > .authorization {top: -50px; left: 50px;}
+    .header-user > div:nth-child(4) > .exit {top: -50px; left: 50px;}
+    .header-logo, .header-text {margin: 20px auto; height: 60px;}
+    .content-cooperation video{top: 0;}
+    .header-menu-right {display: flex;}
+    .footer-top {flex-direction: row;}
+    .footer-text {display: none;}
+    .footer-menu {margin: 0 auto;}
+    .footer-menu ul > li {width: 130px; margin: 0 0 0 20px;}
+}
+
+@media (max-width: 820px) {
+    .img-video video{display: none;}
+    .footer-logo {display: none;}
+}
+
+@media (max-width: 640px) {
+    .header-info-index p {font-size: 16px; line-height: 20px;}
+    .header-info-index img{width: 100px; margin: 0 5px;}
+    .header-info p {font-size: 12px; line-height: 20px;}
+    .header-info img{width: 80px; margin: 0 5px;}
+    .section {width: 100%;}
+    .footer-top {flex-direction: column;}
+    .footer-phone {margin: 10px 0 0 0;}
+    .footer-top-networks{position: absolute;}
+    .footer-bot p {text-align: right; margin: auto 10px auto auto;}
+}
+/* media end*/

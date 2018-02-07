@@ -6,17 +6,18 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
 	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
+	<link rel="stylesheet" type="text/css" href="css/card.css"/>
 </head>
 <body class="showPrice">
 
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -32,7 +33,7 @@
 						<li><a href="/">Главная</a></li>
 						<li><a href="information.html">О нас</a></li>
 						<li><a href="katalog.html">Каталог</a></li>
-						<li><a href="/collections/">Коллекции</a></li>
+						<li><a href="collections.html">Коллекции</a></li>
 						<li><a href="cooperation.html" >Сотрудничество</a></li>
 						<li><a href="production.html">Наше производство</a></li>
 						<li><a href="delivery.html">Доставка и оплата</a></li>
@@ -105,7 +106,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -114,8 +115,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -160,98 +162,99 @@
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="content">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Каталог товаров</p>
-				<div class="pagination-liner"></div>
-			</div>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Каталог товаров</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-			<div class="title">
-				<h1>Каталог товаров</h1>
-				<button>все категории <img src="images/icons/up-arrow.svg"></button>
-			</div>
-		</section>
+		<div class="title title-catalog">
+			<h1>Каталог товаров</h1>
+			<button>Все категории <img src="images/icons/down-arrow.svg"></button>
+		</div>
+	</section>
 
-		<section class="filter-box">
-			<div class="filter">
-				<a href="#">Комбинезоны <span>5</span></a>
-				<a href="#">Кофты <span>5</span></a>
-				<a href="#">Штанишки <span>5</span></a>
-				<a href="#">Ползунки <span>5</span></a>
-				<a href="#">Нагрудники <span>5</span></a>
-				<a href="#">Шапочки <span>5</span></a>
-				<a href="#">Крестильные наборы <span>5</span></a>
-				<a href="#">Крестильные наборы <span>5</span></a>
-			</div>
-		</section>
+	<section class="filter-box">
+		<div class="filter">
+			<a href="#" class="filter-activ">Комбинезоны <span>5</span></a>
+			<a href="#">Кофты <span>5</span></a>
+			<a href="#">Штанишки <span>5</span></a>
+			<a href="#">Ползунки <span>5</span></a>
+			<a href="#">Нагрудники <span>5</span></a>
+			<a href="#">Шапочки <span>5</span></a>
+			<a href="#">Крестильные наборы <span>5</span></a>
+			<a href="#">Крестильные наборы <span>5</span></a>
+		</div>
+	</section>
 
-		<section class="content">
-			<div class="sorting">
-				<div class="sorting-block">
-					<p>Сортировка:</p>
-					<button>по дате</button>
-					<button class="sorting-activ">по цене</button>
+	<section class="content">
+		<div class="sorting">
+			<div class="sorting-block">
+				<p>Сортировка:</p>
+				<button class="sorting-activ">по дате</button>
+				<button>по цене</button>
+			</div>
+		</div>
+
+		<div class="card-box">
+			<div class="card">
+				<div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
+				<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+				<div class="card-favorites"><button></button></div>
+				<div class="card-text">
+					<a href="#">Комплект кофта + ползунки</a>
+					<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 				</div>
+				<div class="card-link"><a href="#">Подробно</a></div>
 			</div>
 
-			<div class="products-box">
-				<div>
-					<div><a href="#"><img src="images/pictures/i1.jpg"></a></div>
-					<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-					<div>
-						<button class="products-off"></button>
-						<button class="products-on"></button>
-					</div>
-					<div>
-						<a href="#">Комплект кофта + ползунки</a>
-						<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-					</div>
-					<a href="#">Подробно</a>
+			<div class="card">
+				<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>
+				<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+				<div class="card-favorites"><button></button></div>
+				<div class="card-text">
+					<a href="#">Комплект кофта + ползунки</a>
+					<p>100% хлопок. Ваш ребенок останеться доволен.</p>
 				</div>
-
-				<div>
-					<div><a href="#"><img src="images/pictures/i2.jpg"></a></div>
-					<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-					<div>
-						<button class="products-off"></button>
-						<button class="products-on"></button>
-					</div>
-					<div>
-						<a href="#">Комплект кофта + ползунки</a>
-						<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-					</div>
-					<a href="#">Подробно</a>
-				</div>
-
-				<div>
-					<div><a href="#"><img src="images/pictures/i3.jpg"></a></div>
-					<div><p><span>*****</span><span>3 000</span> руб.</p></div>
-					<div>
-						<button class="products-off"></button>
-						<button class="products-on"></button>
-					</div>
-					<div>
-						<a href="#">Комплект кофта + ползунки</a>
-						<p>100% хлопок. Ваш ребенок останеться доволен.</p>
-					</div>
-					<a href="#">Подробно</a>
-				</div>
+				<div class="card-link"><a href="#">Подробно</a></div>
 			</div>
 
-			<div class="products-pagination">
-				<button class="pagination-arrow">&#9664</button>
-				<ul>
-					<li>
-						<a href="#"></a>
-						<a href="#"></a>
-						<a href="#"></a>
-					</li>
-				</ul>
-				<button class="pagination-arrow">&#9654</button>
+			<div class="card">
+				<div class="card-img"><a href="#"><img src="images/pictures/i3.jpg"></a></div>
+				<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+				<div class="card-favorites"><button></button></div>
+				<div class="card-text">
+					<a href="#">Комплект кофта + ползунки</a>
+					<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+				</div>
+				<div class="card-link"><a href="#">Подробно</a></div>
 			</div>
-		</section>
-	</main>
+
+			<div class="card">
+				<div class="card-img"><a href="#"><img src="images/pictures/i4.jpg"></a></div>
+				<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
+				<div class="card-favorites"><button></button></div>
+				<div class="card-text">
+					<a href="#">Комплект кофта + ползунки</a>
+					<p>100% хлопок. Ваш ребенок останеться доволен.</p>
+				</div>
+				<div class="card-link"><a href="#">Подробно</a></div>
+			</div>
+		</div>
+
+		<div class="pagination">
+			<button class="pagination-arrow">&#9664</button>
+			<ul>
+				<li><a href="#">1</a></li>
+				<li class="pagination-activ"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">...</a></li>
+			</ul>
+			<button class="pagination-arrow">&#9654</button>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -269,11 +272,11 @@
 			<div class="footer-menu">
 				<ul>
 					<li><a href="/">Главная</a></li>
-					<li><a href="registration.html">Регистрация</a></li>
-					<li><a href="katalog.html">Каталог</a></li>
+					<li><a href="/registration.html">Регистрация</a></li>
+					<li><a href="/catalog/">Каталог</a></li>
 					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="/information.html">О нас</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
 
@@ -295,10 +298,40 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/pagination.js"></script>
-<script type="text/javascript" src="js/katalog.js"></script>
 
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/pagination.js" desc></script>
+<script type="text/javascript" src="js/katalog.js"></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function (d, w, c) {
+		(w[c] = w[c] || []).push(function() {
+			try {
+				w.yaCounter47500810 = new Ya.Metrika2({
+					id:47500810,
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true,
+					webvisor:true
+				});
+			} catch(e) { }
+		});
+
+		var n = d.getElementsByTagName("script")[0],
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+		s.type = "text/javascript";
+		s.async = true;
+		s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+		if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+		} else { f(); }
+	})(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

@@ -6,19 +6,18 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta property="og:image" content="images/repost.png">
 	<meta name="format-detection" content="telephone=no">
+	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -103,7 +102,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -112,8 +111,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -159,57 +159,56 @@
 
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="registration">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Регистрация нового клиента</p>
-				<div class="pagination-liner"></div>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Регистрация нового клиента</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
+
+		<div class="title">
+			<h1>Регистрация нового клиента</h1>
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="content-text info">
+			<p>Обращаем ваше внимание!</p>
+			<p>Сайт для оптовых продаж. Минимальная сумма заказа <span>10 000р.</span></p>
+			<p>Если вы хотите купить в розницу, подпишитесь на наш <a href="https://www.instagram.com/cot.ton_baby/">инстаграм</a> и напишите в директ о понравившейся вещи.</p>
+		</div>
+
+		<div class="registration-box">
+			<div class="registration-form">
+				<form>
+					<label>Ваше имя</label>
+					<input type="text" name="name">
+
+					<label>Ваш email</label>
+					<input type="email" name="mail">
+
+					<label>Придумайте пароль (минимум 6 символов)</label>
+					<input type="password" name="password">
+
+					<label>Повторите пароль</label>
+					<input type="password" name="confirm_password">
+
+					<label>Ваш номер телефона</label>
+					<input type="tel" name="phone">
+
+					<label>Город</label>
+					<input type="text" name="city_fiz">
+
+					<button type="button">Зарегистрироваться</button>
+				</form>
 			</div>
-			
-			<div class="title">
 
-				<h1>Регистрация нового клиента</h1>
-
+			<div class="registration-img">
+				<p>Зарегистрируйтесь и мы всегда будем на связи!</p>
 			</div>
-			<div class="content-text reg-info">
-				<p>Обращаем ваше внимание!</p>
-				<p>Сайт для оптовых продаж. Минимальная сумма покупки <span>10 000р.</span></p>
-				<p>Если вы хотите купить в розницу, подпишитесь на наш <a href="https://www.instagram.com/cot.ton_baby/">инстаграм</a> и напишите в директ о понравившейся вещи.</p>
-			</div>
-			<div class="registration-box">
-				<div class="registration-form">
-					<form>
-						<label>Ваше имя</label>
-						<input type="text" name="name">
-
-						<label>Ваш email</label>
-						<input type="email" name="mail">
-
-						<label>Придумайте пароль (минимум 6 символов)</label>
-						<input type="password" name="password">
-
-						<label>Повторите пароль</label>
-						<input type="password" name="confirm_password">
-
-						<label>Ваш номер телефона</label>
-						<input type="tel" name="phone">
-
-						<label>Город</label>
-						<input type="text"name="delivery_city">
-
-						<button type="button">Зарегистрироваться</button>
-					</form>
-				</div>
-
-				<div class="registration-img">
-					<video autoplay="autoplay" loop="loop" poster="video/fon.png" muted>
-						<source src="video/cot8.m4v" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-					</video>
-					<p>Зарегистрируйтесь и мы всегда будем на связи!</p>
-				</div>
-			</div>
-		</section>
-	</main>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -253,11 +252,11 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/registration.js"></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/imask.js" desc></script>
+<script type="text/javascript" src="js/registration.js" desc></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
 	(function (d, w, c) {

@@ -6,12 +6,11 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta property="og:image" content="images/repost.png">
 	<meta name="format-detection" content="telephone=no">
+	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
@@ -20,8 +19,7 @@
     <div class="popup-table">
         <div class="popup-cell">
 			<div class="popup-thanks" id="thanks">
-				<button class="popup-close" onclick="javascript:PopUpHidePopup()"><img src="images/icons/close.png"></button>
-				
+				<button class="popup-close" onclick="PopUpHidePopup()"><img src="images/icons/close.png"></button>
 				<div>
 					<p>Спасибо!</p>
 				</div>
@@ -29,8 +27,6 @@
 				<div>
 					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
 				</div>
-
-				<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 			</div>
         </div>
     </div>
@@ -40,7 +36,7 @@
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
 			<button type="submit"><img src="images/icons/search.png"></button>
@@ -125,7 +121,7 @@
 <div class="header-box">
 	<div class="header">
 		<div class="header-menu">
-			<button class="menu-on" onclick="javascript:PopUpShowMenu()" id="menu-on"></button>
+			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
 		</div>
 
 		<div class="header-info">
@@ -134,8 +130,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -182,90 +179,79 @@
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="contacts">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Наши контакты</p>
-				<div class="pagination-liner"></div>
-			</div>
-			
-			<div class="title">
-				<h1>Наши контакты</h1>
-			</div>
-		</section>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Наши контакты</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-		<section class="contacts-map">
-			<div id="map"></div>	
+		<div class="title">
+			<h1>Наши контакты</h1>
+		</div>
+	</section>
+
+	<section class="contacts-map">
+		<div id="map"></div>
+		<div class="map-box">
 			<div class="map-info">
-				<div class="info-box">
-					<div class="info-logo">
-						<img src="images/logo.png">
-					</div>
-					
-					<div class="info">
-						<div>
-							<b><img src="images/icons/map.png">Отдел по работе с клиентами</b>
-							<p>г. Екатеринбург, ул. Розы Люксембург 77, офис 1.</p>
-						</div>
+				<div class="info-logo">
+					<img src="images/logo.png">
+				</div>
 
-						<div>
-							<b><img src="images/icons/tel.png">Телефон</b>
-							<p>+ 7 (904) 38 10 240</p>
-						</div>
-
-						<div>
-							<b><img src="images/icons/tel.png">WhatsApp</b>
-							<p>+ 7 (904) 38 10 240</p>
-						</div>
-
-						<div>
-							<b><img src="images/icons/map.png">Наше представительство в Москве</b>
-							<p>ул. Малыгина, 2, стр.2.</p>
-						</div>
-
-						<div>
-							<b><img src="images/icons/contact.png">Контактное лицо</b>
-							<p>Иван Куликов,</p>
-							<p>тел. +7 (926) 611 94 09</p>
-						</div>
+				<div class="info-text">
+					<div>
+						<b><img src="images/icons/map.png">Отдел по работе с клиентами</b>
+						<p>г. Екатеринбург, ул. Розы Люксембург 77, офис 1.</p>
 					</div>
 
-					<button data-action="show" >Развернуть</button>
-				</div>
-			</div>
-		</section>
+					<div>
+						<b><img src="images/icons/tel.png">Телефон</b>
+						<p>+ 7 (904) 38 10 240</p>
+					</div>
 
-		<section class="contacts">
-			<div class="contacts-box">
-				<p>Свяжитесь с нами через форму обратной связи</p>
-				<div class="contacts-form">
-					<form>
-						<div class="form-top">
-							<div class="form-top-left">
-								<label>Ваше имя</label>
-								<input type="text" name="name">
-							</div>
-							
-							<div class="form-top-right">
-								<label>Ваш номер телефона</label>
-								<input type="tel" name="phone">
-							</div>
+					<div>
+						<b><img src="images/icons/tel.png">WhatsApp</b>
+						<p>+ 7 (904) 38 10 240</p>
+					</div>
+				</div>
+
+				<button data-action="show">Развернуть</button>
+			</div>
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="contacts-box">
+			<p>Свяжитесь с нами через форму обратной связи</p>
+			<div class="contacts-form">
+				<form>
+					<div class="form-top">
+						<div class="form-top-left">
+							<label>Ваше имя</label>
+							<input type="text" name="name">
 						</div>
 
-						<div class="form-bottom">
-							<label>Тема сообщения</label>
-							<input type="text" name="title">
-
-							<label>Текст сообщения</label>
-							<textarea name="text"></textarea>
+						<div class="form-top-right">
+							<label>Ваш номер телефона</label>
+							<input type="tel" name="phone">
 						</div>
+					</div>
 
-						<button type="button" onclick="javascript:PopUpShowThanks()">Отправить вопрос</button>
-					</form>
-				</div>
+					<div class="form-bottom">
+						<label>Тема сообщения</label>
+						<input type="text" name="subject">
+
+						<label>Текст сообщения</label>
+						<textarea name="message"></textarea>
+					</div>
+
+					<button type="button" >Отправить вопрос</button>
+				</form>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -286,8 +272,8 @@
 					<li><a href="/registration.html">Регистрация</a></li>
 					<li><a href="/catalog/">Каталог</a></li>
 					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="/information.html">О нас</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
 
@@ -331,12 +317,12 @@
 		marker.setMap(map);
 	};
 </script>
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-<script type="text/javascript" src="js/input.mask.bundle.min.js"></script>
-<script type="text/javascript" src="/js/simplebar.js" ></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/contacts.js"></script>
+<script type="text/javascript" src="js/simplebar.js" desc></script>
+<script type="text/javascript" src="js/animated-scroll-to.js" desc></script>
+<script type="text/javascript" src="js/script.js" desc></script>
+<script type="text/javascript" src="js/imask.js" desc></script>
+<script type="text/javascript" src="js/contacts.js" desc></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
 	(function (d, w, c) {
