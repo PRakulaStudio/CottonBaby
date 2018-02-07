@@ -188,28 +188,27 @@ function PopUpHideMenu() {
 }
 function PopUpShowScore() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#score').style.display = 'block';
 
 }
 function PopUpShowCard() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#card').style.display = 'block';
 
 }
 function PopUpShowThanks() {
     document.querySelector('#popup-fon').style.display = 'block';
-    document.querySelector('#popup').style.display = 'block';
     document.querySelector('#thanks').style.display = 'block';
 
 }
 function PopUpHidePopup() {
     document.querySelector('#popup-fon').style.display = 'none';
-    document.querySelector('#popup').style.display = 'none';
-    document.querySelector('#score').style.display = 'none';
-    document.querySelector('#card').style.display = 'none';
-    document.querySelector('#thanks').style.display = 'none';
+    if(document.querySelector('#score') )
+       document.querySelector('#score').style.display = 'none';
+    if(document.querySelector('#card'))
+       document.querySelector('#card').style.display = 'none';
+    if(document.querySelector('#thanks') )
+       document.querySelector('#thanks').style.display = 'none';
 }
 
 
