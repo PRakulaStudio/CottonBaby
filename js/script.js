@@ -338,8 +338,8 @@ function addFavoriteButtons( blockProducts , value)
         buttonHtml =  "<button class='new-on'></button>";
     else
         buttonHtml =  "<button class='new-off'></button>";
-
-    blockProducts.querySelector('div.card-favorites').innerHTML = buttonHtml;
+    if(  blockProducts.querySelector('div.card-favorites') )
+         blockProducts.querySelector('div.card-favorites').innerHTML = buttonHtml;
 }
 
 function eventChangeFavorites(button)

@@ -6,22 +6,21 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta property="og:image" content="images/repost.png">
 	<meta name="format-detection" content="telephone=no">
+	<meta property="og:image" content="images/repost.png">
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/media.css"/>
-	<link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
+	<link rel="stylesheet" type="text/css" href="css/card.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
 	<div class="button-box">
-		<button class="menu-off" onclick="javascript:PopUpHideMenu()" id="menu-off"></button>
+		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
 		<div class="search-menu">
 			<input type="search" placeholder="поиск">
-			<img src="images/icons/search.png">
+			<button type="submit"><img src="images/icons/search.png"></button>
 		</div>
 	</div>
 
@@ -30,14 +29,14 @@
 			<div class="section">
 				<p>Компания</p>
 				<ul>
-					<li><a href="/">Главная</a></li>
-					<li><a href="/information.html">О нас</a></li>
-					<li><a href="/catalog/">Каталог</a></li>
-					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="/cooperation.html">Сотрудничество</a></li>
-					<li><a href="/production.html">Наше производство</a></li>
-					<li><a href="/delivery.html">Доставка и оплата</a></li>
-					<li><a href="/contacts.html">Контакты</a></li>
+					<li><a href="index.html">Главная</a></li>
+					<li><a href="information.html">О нас</a></li>
+					<li><a href="catalog.html">Каталог</a></li>
+					<li><a href="collections.html">Коллекции</a></li>
+					<li><a href="cooperation.html" >Сотрудничество</a></li>
+					<li><a href="production.html">Наше производство</a></li>
+					<li><a href="delivery.html">Доставка и оплата</a></li>
+					<li><a href="contacts.html">Контакты</a></li>
 				</ul>
 			</div>
 
@@ -112,8 +111,9 @@
 			</div>
 
 			<div>
-				<p>Производство детской одежды.</p>
-				<p>Оптовая продажа.</p>
+				<p>Производство детской одежды</p>
+				<p>Оптовая продажа</p>
+				<p>г. Екатеринбург</p>
 			</div>
 		</div>
 
@@ -158,32 +158,32 @@
 <!-- header end -->
 
 <!-- content start -->
-	<main class="content-site">
-		<section class="content">
-			<div class="pagination">
-				<p><a href="/">Главная</a> &#8594 Избранное</p>
-				<div class="pagination-liner"></div>
-			</div>
-			
-			<div class="title">
-				<h1>Избранное</h1>
-			</div>
+<main class="content-site">
+	<section class="content">
+		<div class="breadcrumbs">
+			<p><a href="index.html">Главная</a> &#8594 Избранное</p>
+			<div class="breadcrumbs-liner"></div>
+		</div>
 
-			<div class="block-empty">
-				<p>Нет товаров в избранном</p>
-			</div>
-		</section>
+		<div class="title">
+			<h1>Избранное</h1>
+		</div>
+	</section>
 
-		<section class="content">
-			<div class="products-box">
+	<section class="content">
+		<div class="block-empty d-none">
+			<p>Нет товаров в избранном</p>
+		</div>
 
-			</div>
+		<div class="card-box">
 
-			<div class="products-pagination">
+		</div>
 
-			</div>
-		</section>
-	</main>
+		<div class="pagination">
+
+		</div>
+	</section>
+</main>
 <!-- content end -->
 
 <!-- footer start -->
@@ -204,8 +204,8 @@
 					<li><a href="/registration.html">Регистрация</a></li>
 					<li><a href="/catalog/">Каталог</a></li>
 					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="information.html">О нас</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
+					<li><a href="/information.html">О нас</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
 				</ul>
 			</div>
 
@@ -227,10 +227,12 @@
 		</div>
 	</div>
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+
+
 <script type="text/javascript" src="/js/simplebar.js" defer></script>
-<script type="text/javascript" src="js/script.js" defer></script>
-<script type="text/javascript" src="js/pagination.js" defer> </script>
+<script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
+<script type="text/javascript" src="/js/script.js" defer></script>
+<script type="text/javascript" src="/js/pagination.js" defer></script>
 <script type="text/javascript" src="js/favorites.js" defer></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
