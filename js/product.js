@@ -89,7 +89,7 @@
             },
         }
     });
-        
+
     swiper.on('slideNextTransitionEnd' , function () {
         // swiper.appendSlide([
         //     '<div class="swiper-slide"><div class="card">' +
@@ -212,7 +212,11 @@
                        document.querySelector('div.price-basket span').innerText = response.data.price_total;
 
                    }
-                           }
+                }
+                else
+               {
+                   document.querySelector('div.price-basket').classList.remove('d-none');
+               }
             });
     }
 
