@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<?php if (is_callable('getData')): ?>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <base href="/">
     <meta charset="utf-8"/>
     <title><?= getData('title'); ?> - Cotton Baby</title>
     <meta name="description" content="">
@@ -9,64 +9,84 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta property="og:image" content="images/repost.png">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/media.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
-    <meta name="format-detection" content="telephone=no">
-
+    <meta name="yandex-verification" content="f5f049cb38f1bf5c"/>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/product.css"/>
 </head>
-<body class="showPrice">
+<body class="">
 <div class="scrollup"></div>
 <?= getData(false, 'header', ['']) ?>
 
 
 <!-- content start -->
 <main class="content-site">
-    <section class="product">
-        <div class="pagination">
+    <section class="content">
+        <div class="breadcrumbs">
             <p>
                 <a href="/">Главная</a> → <a href="/catalog/">Каталог</a>
                 <?= getData('category') ? (getData(false, 'breadcrumb-item', getParentCategories(getData('category'))) . (' → ' . getData('title'))) : ''; ?>
             </p>
-            <div class="pagination-liner"></div>
+            <div class="breadcrumbs-liner"></div>
         </div>
 
         <div class="title">
             <h1><?= getData('title'); ?></h1>
         </div>
     </section>
+    <section class="content">
+        <div class="slider-fullscreen">
+            <div class="swiper-container gallery-top fullscreen">
+                <div class="swiper-wrapper">
 
-    <section class="product">
+                </div>
+
+                <span class="close-button"></span>
+                <span class="slider-next"></span>
+                <span class="slider-prev"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
         <div class="product-box" data-id-block="<?= getData('id'); ?>">
-            <div>
-                <div>
-                    <div class="product-button block-button-favorites">
-
+            <div class="slider">
+                <div class="swiper-container gallery-top slider-top">
+                    <div class="swiper-wrapper">
+                        <?= getData('images',
+                            [
+                                'id' => 'catalog_item_images_item',
+                                'source' => '<div class="swiper-slide"><img src="<?= (($image = getData(\'750x750\')) ? $image : \'/images/index.php\') ?>"></div>'
+                            ]
+                        ); ?>
                     </div>
-                    <a id="product" nohref id-pictures="0"><img alt="example1"
-                                                                src="<?= ($image = getData('images')) && $image != '' ? $image['750x750'] : '/images/index.php'; ?>">
-                        <div></div>
-                    </a>
                 </div>
 
-                <div class="item-slider">
-                    <!--<div><img src="images/pictures/i1.jpg"><div class="item-activ"></div></div>-->
-                    <?= getData('images', ['id' => 'catalog_item_images_item', 'source' => '<div><img src="<?= (($image = getData(\'200x200\')) ? $image : \'/images/index.php\') ?>" data-preview-src="<?= (($image = getData(\'750x750\')) ? $image : \'/images/index.php\') ?>"><div></div></div>']); ?>
+                <div class="swiper-container gallery-thumbs slider-thumbs">
+                    <div class="swiper-wrapper">
+                        <?= getData('images',
+                            [
+                                'id' => 'catalog_item_images_item',
+                                'source' => '<div class="swiper-slide"><img src="<?= (($image = getData(\'200x200\')) ? $image : \'/images/index.php\') ?>"></div>'
+                            ]
+                        ); ?>
+                    </div>
                 </div>
+
+                <div class="card-favorites"></div>
             </div>
 
-            <div>
+            <div class="information">
                 <div class="product-category">
                     <?= getData('collection') ?
-                        '<p><a href="' . getData('href', false,
+                        '<a href="' . getData('href', false,
                             ($collection = getCatalogCollectionsById(['id' => getData('collection'), 'show_href' => true])) &&
-                            $collection['status'] ? $collection['data'] : false) . '"><img src="images/icons/category.png"><span>Коллекция "' .
+                            $collection['status'] ? $collection['data'] : false) . '"><span>Коллекция "' .
                         getData('title', false,
                             ($collection = getCatalogCollectionsById(['id' => getData('collection')])) &&
-                            $collection['status'] ? $collection['data'] : false) . '"</span></a></p>' : '' ?>
+                            $collection['status'] ? $collection['data'] : false) . '"</span></a>' : '' ?>
                 </div>
 
                 <div class="product-brief">
@@ -83,50 +103,57 @@
 
                     <div class="size-box">
                         <?= getData('modifies', 'item_page_modify'); ?>
+
                     </div>
                 </div>
 
-                <div class="product-basket">
+                <div class="product-basket d-none">
                     <p>Товар помещен в корзину!</p>
+                    <p>До минимальной суммы заказа осталось <span>10 000р.</span></p>
                 </div>
 
+                <div class="price-min d-none">
+                    <p>Минимальная сумма заказа <b>10 000р.</b></p>
+                </div>
 
-                <div class="price-basket">
-                    <div>
+                <div class="price-basket d-none">
+                    <div class="price">
                         <p>Цена:</p>
                         <p><span><?= getData('price') ?></span> руб.</p>
                     </div>
 
-                    <div class="off-basket">
-                        <button><img src="images/icons/product-basket.png">В корзину</button>
+                    <div class="btn">
+                        <button><img src="/images/icons/product-basket.png">В корзину</button>
                     </div>
-                    <div class="product-basket-link">
-                        <a href="basket.html">Оформить заказ &#10003</a>
+
+                    <div class="link">
+                        <a href="#">перейти в корзину</a>
                     </div>
                 </div>
 
                 <div class="no-authorization">
-                    <div>
-                        <p><img src="images/icons/i.png">Зарегистрируйтесь</p>
+                    <div class="text">
+                        <p>Зарегистрируйтесь</p>
                         <p>чтобы узнать цену</p>
                     </div>
 
-                    <div>
-                        <a href="registration.html">Регистрация</a>
-                    </div>
+                    <div class="link"><a href="registration.html">Регистрация</a></div>
                 </div>
 
                 <div class="product-delivery">
-                    <p><img src="images/icons/i.png">Стоимость доставки рассчитывается индивидуально, в зависимости от
-                        объема заказа и города. Для расчета выберите транспортную кампанию из <a href="delivery.html">списка
-                            рекомендованных</a>.</p>
+                    <p>Стоимость доставки рассчитывается индивидуально, в зависимости от объема заказа и города. Для
+                        расчета выберите транспортную кампанию из <a href="delivery.html">списка рекомендованных</a>.
+                    </p>
                 </div>
             </div>
         </div>
 
         <?php if (getData('description')): ?>
+            <div class="title">
+                <h2>Подробное описание товара</h2>
+            </div>
+
             <div class="content-text">
-                <b>Подробное описание товара</b>
                 <p><?= getData('description') ?></p>
             </div>
         <?php endif; ?>
@@ -148,52 +175,9 @@
     pms.plugins.catalog.currentItem = pms.plugins.catalog.item['<?=getData('id')?>'];
 </script>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="js/simplebar.js" ></script>
-
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/slick.js"></script>
-
-<script type="text/javascript" src="js/product.js"></script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter47500810 = new Ya.Metrika2({
-                    id: 47500810,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true
-                });
-            } catch (e) {
-            }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () {
-                n.parentNode.insertBefore(s, n);
-            };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks2");
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
-<!-- /Yandex.Metrika counter -->
+<script type="text/javascript" src="/js/swiper.min.js" defer></script>
+<script type="text/javascript" src="/js/product.js" defer></script>
 
 </body>
 </html>
+<?php endif; ?>

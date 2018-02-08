@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php if (is_callable('getData')): ?>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
     <base href="/">
@@ -123,3 +124,4 @@
 
 </body>
 </html>
+<?php endif; ?>
