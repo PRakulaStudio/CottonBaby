@@ -1,12 +1,16 @@
-<div class="product-slider-box">
-    <b>Товары из этой же коллекции:</b>
-    <div class="product-slider-button">
-        <button data-action="prev"><img src="images/icons/back.svg"></button>
-        <button data-action="next"><img src="images/icons/next.svg"></button>
-    </div>
+<div class="title">
+    <h2>Товары из этой же коллекции:</h2>
+</div>
 
-    <div class="product-slider">
-        <?= getData(false, 'item_page_collection_item',
-            getCatalogItemsByParameters(['collection' => getData()], 9, false, ['img_size' => ['750x750']])); ?>
+<div class="slider-bottom">
+    <div class="swiper-button">
+        <button class="swiper-button-prev"><img src="/images/icons/back.svg"></button>
+        <button class="swiper-button-next"><img src="/images/icons/next.svg"></button>
+    </div>
+    <div class="swiper-container swiper">
+        <div class="swiper-wrapper">
+            <?= getData(false, 'item_page_collection_item',
+                getCatalogItemsByParameters(['collection' => getData()], 9, false, ['img_size' => ['750x750']])); ?>
+        </div>
     </div>
 </div>
