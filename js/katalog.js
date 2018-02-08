@@ -150,6 +150,11 @@
        //         if()
        //     }
        // }
+
+       if( event.target.tagName == "BUTTON" && event.target.parentNode.classList.contains('title-catalog'))
+       {
+           changeCategoryButton();
+       }
    });
 
 
@@ -191,8 +196,7 @@
 
     }
 
-    function changeCategoryButton()
-    {
+    function changeCategoryButton(){
         let button = document.querySelector('section.content > div.title button');
 
         if( button.hasAttribute('data-category-action'))
@@ -200,21 +204,24 @@
             if( button.getAttribute('data-category-action') == "show" )
             {
                 button.setAttribute('data-category-action' , 'hide');
-                button.innerHTML = 'все категории<img src="images/icons/down-arrow.svg">';
+                button.innerHTML = 'все категории<img src="/images/icons/down-arrow.svg">';
             }
             else
             {
                 button.setAttribute('data-category-action' , 'show');
-                button.innerHTML = 'скрыть<img src="images/icons/up-arrow.svg">';
+                button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
             }
 
-            displayCategories(button.getAttribute('data-category-action'));
+
 
         }
         else
         {
-
+            button.setAttribute('data-category-action' , 'show');
+            button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
         }
+
+        displayCategories(button.getAttribute('data-category-action'));
        // let button =  $('section.content > div.title').find('button');
        //
        // if( button.attr('data-category-action') )
@@ -237,46 +244,45 @@
        // }
     }
 
-
-    function requestGetOtherCategories(pageName , offset)
-    {
-        var data = new FormData();
-            data.append('offset' , 8);
-            data.append('show_count' , true );
-
-        var paramsString = "offset=8&show_count=true";
-      //  var searchParams = new URLSearchParams(paramsString);
-
-        return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin' , 'body' : data })
-            .then(function (response) {
-
-                let responseData = false;
-                try {
-                    responseData = response.json();
-                }
-                catch (e) {
-                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                    response.text().then(console.debug);
-                }
-                return responseData;
-            })
-            .then(function (response) {
-                if(response.status)
-                {
-                    let html = "";
-                    for(var key in response.data)
-                    {
-                        html += '<a href="'+response.data[key].href+'">'+response.data[key].title+'<span>'+response.data[key].count+'</span></a>';
-                    }
-                    $('div.filter').append(html);
-
-
-                    changeCategoryButton();
-                    displayCategories( "show" );
-                }
-
-            });
-    }
+    // function requestGetOtherCategories(pageName , offset)
+    // {
+    //     var data = new FormData();
+    //         data.append('offset' , 8);
+    //         data.append('show_count' , true );
+    //
+    //     var paramsString = "offset=8&show_count=true";
+    //   //  var searchParams = new URLSearchParams(paramsString);
+    //
+    //     return fetch(window.pms.config.catalogAPI + 'categories', {method: 'POST', credentials: 'same-origin' , 'body' : data })
+    //         .then(function (response) {
+    //
+    //             let responseData = false;
+    //             try {
+    //                 responseData = response.json();
+    //             }
+    //             catch (e) {
+    //                 responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+    //                 response.text().then(console.debug);
+    //             }
+    //             return responseData;
+    //         })
+    //         .then(function (response) {
+    //             if(response.status)
+    //             {
+    //                 let html = "";
+    //                 for(var key in response.data)
+    //                 {
+    //                     html += '<a href="'+response.data[key].href+'">'+response.data[key].title+'<span>'+response.data[key].count+'</span></a>';
+    //                 }
+    //                 $('div.filter').append(html);
+    //
+    //
+    //                 changeCategoryButton();
+    //                 displayCategories( "show" );
+    //             }
+    //
+    //         });
+    // }
 
     // window.onscroll = function () {
     //     if($(window).height() + $(window).scrollTop() >= $(document).height() && !block) {
@@ -296,7 +302,6 @@
         //requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
        // requestGetCategories('katalog'),
     ]).then( results => {
-
         if(results[0])
         {
             let list_id = [];

@@ -97,14 +97,13 @@
 				<button class="popup-close"><img src="images/icons/close.png"></button>
 				
 				<div>
-					<p>Спасибо за покупку</p>
+					<p>Спасибо!</p>
 				</div>
 
 				<div>
-					<p>Ваша заявка принята. Ожидайте звонка менеджера.</p>
+					<p>Мы с вами свяжемся.</p>
 				</div>
 
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/H_7-7cXIN6g?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			</div>
         </div>
     </div>
@@ -285,7 +284,7 @@
 				</div>
 
 				<div class="basket-total-off">
-					<button>Использовать бонусные рубли</button>
+					<button action="use-bonus">Использовать бонусные рубли</button>
 				</div>
 
 				<div>
@@ -304,12 +303,12 @@
 				<p>Выберите вариант оплаты:</p>
 				<div>
 					<div>
-						<button onclick="PopUpShowScore()"><img src="images/icons/score.png"></button>
+						<button data-payment-method="payment"><img src="images/icons/score.png"></button>
 						<p>Счет</p>
 					</div>
 
 					<div>
-						<button class="payment-activ"><img src="images/icons/card.png"></button>
+						<button data-payment-method="card"><img src="images/icons/card.png"></button>
 						<p>Оплата на карту</p>
 					</div>
 				</div>
@@ -328,7 +327,7 @@
 
 			<div class="basket-order">
 				<div>
-					<button>&#11013 Вернуться к покупкам</button>
+					<a href="/catalog/"><button>&#11013 Вернуться к покупкам</button></a>
 				</div>
 
 				<div>
@@ -338,7 +337,7 @@
 				</div>
 
 				<div class="basket-order-off">
-					<button>&#10003 Оформить заказ</button>
+					<button action="save-order">&#10003 Оформить заказ</button>
 				</div>
 			</div>
 		</div>

@@ -451,7 +451,7 @@ function createItems(items , is_show_favorite)
 
 }
 
-document.addEventListener('click' , function () {
+document.addEventListener('click' , function (event) {
 
     if(event.target.tagName == "BUTTON" && event.target.closest('div[data-block-pages]') && event.target.closest('div.pagination'))
     {

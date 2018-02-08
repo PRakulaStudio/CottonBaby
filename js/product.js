@@ -54,7 +54,11 @@
 
     var galleryTop = new Swiper('.slider-top', {
         spaceBetween: 10,
+    }).on('click' , function(swiper){
+       document.querySelector('.slider-fullscreen').classList.add('fullscreen');
+       galleryTop.slideTo(galleryThumbs.activeIndex, 0);
     });
+
     var galleryThumbs = new Swiper('.slider-thumbs', {
         spaceBetween: 10,
         centeredSlides: true,
@@ -88,8 +92,32 @@
         }
     });
     
-    swiper.on('slideChangeTransitionEnd' , function () {
-
+    swiper.on('slideNextTransitionEnd' , function () {
+        // swiper.appendSlide([
+        //     '<div class="swiper-slide"><div class="card">' +
+        //         '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
+        //         '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
+        //         '<div class="card-favorites"></div>' +
+        //         '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
+        //         '<div class="card-link"><a href="#">Подробно</a></div>' +
+        //     '</div></div>',
+        //     '<div class="swiper-slide"><div class="card">' +
+        //     '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
+        //     '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
+        //     '<div class="card-favorites"></div>' +
+        //     '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
+        //     '<div class="card-link"><a href="#">Подробно</a></div>' +
+        //     '</div></div>',
+        //     '<div class="swiper-slide"><div class="card">' +
+        //     '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
+        //     '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
+        //     '<div class="card-favorites"></div>' +
+        //     '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
+        //     '<div class="card-link"><a href="#">Подробно</a></div>' +
+        //     '</div></div>',
+        //
+        //
+        // ]);
     });
 
 
@@ -278,6 +306,12 @@
 
         }
 
+        if(event.target.tagName == "SPAN" && event.target.classList.contains('close-button'))
+        {
+            document.querySelector('.slider-fullscreen').classList.remove('fullscreen');
+            return;
+        }
+
         if(event.target.tagName == "BUTTON" && event.target.closest('div.price-basket'))
         {
             if(event.target.parentNode.classList.contains(css.orderOn))
@@ -287,7 +321,6 @@
     });
 
 
-
     document.querySelector('.fullscreen .swiper-wrapper').innerHTML = '<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>' +
         '<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>' +
         '<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>' +
@@ -295,6 +328,10 @@
         '<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>' +
         '<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>';
 
+    // let slidersFullscreen = "";
+    // window.pms.plugins.catalog.currentItem.images.forEach( function(image){
+    //     slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
+    // })
 
     var galleryTop = new Swiper('.fullscreen', {
         spaceBetween: 10,
@@ -303,7 +340,7 @@
             prevEl: '.slider-prev',
         },
     });
-    galleryTop.slideTo(2, 0);
+
 
 
 
