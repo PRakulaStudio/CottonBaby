@@ -136,6 +136,23 @@
     //
     // });
 
+
+   document.addEventListener('click' , function(event){
+       // if( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-block-pages') )
+       // {
+       //     if(!event.target.classList.contains('pagination-activ') )
+       //     {
+       //         let button = event.target;
+       //         button.parentNode.querySelector('.pagination-active').classList.remove('pagination-activ');
+       //         button.classList.add('pagination-activ');
+       //
+       //         let sort = 'price';
+       //         if()
+       //     }
+       // }
+   });
+
+
     function displayCategories(status_display)
     {
         //если мобилка

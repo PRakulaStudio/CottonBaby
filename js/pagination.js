@@ -24,7 +24,7 @@ function createPagination( total ,  pageName)
 
     if(countPages == 1)
     {
-        document.querySelector('div.products-pagination').innerHTML = "";
+        document.querySelector('div.pagination').innerHTML = "";
         return true;
     }
 
@@ -165,7 +165,7 @@ function changePagination(direction , activeButton , clickButton )
                 if( raznicha != 1 )
                 {
                     activeButton.classList.remove(activePaginationButton);
-                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1];
+                    let setButton = document.querySelectorAll('div.pagination div[data-block-pages] button')[1];
                     setButton.classList.add(activePaginationButton);
 
                     setButton.innerText = clickButton.innerText ;
@@ -198,18 +198,18 @@ function changePagination(direction , activeButton , clickButton )
                //if( parseInt(clickButton.text()) - parseInt(activeButton.text()) >= 2 )
             }
 
-            newActiveButton = document.querySelector('div.products-pagination button.pagination-activ');
+            newActiveButton = document.querySelector('div.pagination button.pagination-activ');
             //показываем левую кнопку
             if( countPages > 4 )
             {
                 //показываем левую
                 if( newActiveButton.innerText > 1  )
-                    document.querySelector('div.products-pagination button.prev').classList.remove(hideButton);
+                    document.querySelector('div.pagination button.prev').classList.remove(hideButton);
 
 
                 //скрываем правую
                 if( newActiveButton.innerText == countPages )
-                    document.querySelector('div.products-pagination button.next').classList.add( hideButton );
+                    document.querySelector('div.pagination button.next').classList.add( hideButton );
             }
 
             break;
@@ -236,7 +236,7 @@ function changePagination(direction , activeButton , clickButton )
                 {
                     activeButton.classList.remove(activePaginationButton);
 
-                    let setButton = document.querySelectorAll('div.products-pagination div[data-block-pages] button')[1];
+                    let setButton = document.querySelectorAll('div.pagination div[data-block-pages] button')[1];
                     setButton.classList.add(activePaginationButton);
                     setButton.innerText = clickButton.innerText;
 
@@ -272,16 +272,16 @@ function changePagination(direction , activeButton , clickButton )
             if( countPages > 4 )
             {
                 //скрываем левую кнопку
-                newActiveButton = document.querySelector('div.products-pagination button.pagination-activ');
+                newActiveButton = document.querySelector('div.pagination button.pagination-activ');
                 if(newActiveButton.innerText == 1 )
                 {
-                    document.querySelector('div.products-pagination button.prev').classList.add(hideButton);
+                    document.querySelector('div.pagination button.prev').classList.add(hideButton);
 
                 }
                 //показываем правую
                 if( newActiveButton.innerText < countPages )
                 {
-                    document.querySelector('div.products-pagination button.next').classList.remove(hideButton);
+                    document.querySelector('div.pagination button.next').classList.remove(hideButton);
                 }
             }
 
@@ -291,7 +291,7 @@ function changePagination(direction , activeButton , clickButton )
   //проверяем есть ли в массиве эти данные
 
 
-    activeButton = document.querySelector('div.products-pagination button.pagination-activ');
+    activeButton = document.querySelector('div.pagination button.pagination-activ');
 
     let url_string = window.location.href;
     let url = new URL(url_string);
@@ -315,9 +315,9 @@ function changePagination(direction , activeButton , clickButton )
     if( arrayItems[activeButton.innerText])
     {
         if( !arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').innerHTML;
+            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.card-box').innerHTML;
         //надо переделать
-        document.querySelector('div.products-box,div.collections-box').innerHTML = arrayItems[activeButton.innerText];
+        document.querySelector('div.products-box,div.card-box').innerHTML = arrayItems[activeButton.innerText];
         canChange = true;
 
     }
@@ -325,7 +325,7 @@ function changePagination(direction , activeButton , clickButton )
     {
 
         if(!arrayItems[prevButtonActiveNumber])
-            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.collections-box').innerHTML;
+            arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.card-box').innerHTML;
 
         sort = "create_date"; //нужно проверить
         if( document.querySelector('div.sorting'))
@@ -341,12 +341,12 @@ function changePagination(direction , activeButton , clickButton )
                 canChange = true;
                 if(IS_AUTH)
                 {
-                    requestCheckFavoritesItems(result , 'products-box');
+                    requestCheckFavoritesItems(result , 'card-box');
                 }
             });
     }
 
-    window.scrollTo( document.querySelector('div.card-box').offsetTop, document.querySelector('div.products-box, div.collections-box').offsetTop );
+    window.scrollTo( document.querySelector('div.card-box').offsetTop, document.querySelector('div.card-box').offsetTop );
 }
 
 
@@ -446,14 +446,14 @@ function createItems(items , is_show_favorite)
             "</div>";
     }
 
-    document.querySelector('div.card-box').innerHTML = html;
+    document.querySelector('div.card-box, div.products-box').innerHTML = html;
     return  listIdItems;
 
 }
 
 document.addEventListener('click' , function () {
 
-    if(event.target.tagName == "BUTTON" && event.target.closest('div[data-block-pages]') && event.target.closest('div.products-pagination'))
+    if(event.target.tagName == "BUTTON" && event.target.closest('div[data-block-pages]') && event.target.closest('div.pagination'))
     {
         if( !event.target.classList.contains(activePaginationButton))
         {
@@ -467,13 +467,13 @@ document.addEventListener('click' , function () {
         return;
     }
 
-    if(event.target.tagName == "BUTTON" && event.target.classList.contains('prev') && event.target.closest('div.products-pagination'))
+    if(event.target.tagName == "BUTTON" && event.target.classList.contains('prev') && event.target.closest('div.pagination'))
     {
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
         changePagination("prev" , clickButton , clickButton.previousElementSibling);
     }
 
-    if( event.target.tagName == "BUTTON" && event.target.classList.contains('next') && event.target.closest('div.products-pagination'))
+    if( event.target.tagName == "BUTTON" && event.target.classList.contains('next') && event.target.closest('div.pagination'))
     {
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
         changePagination("next" , clickButton, clickButton.nextElementSibling);
