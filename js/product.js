@@ -65,15 +65,9 @@
     galleryTop.controller.control = galleryThumbs;
     galleryThumbs.controller.control = galleryTop;
 
-    var galleryTop = new Swiper('.fullscreen', {
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.slider-next',
-            prevEl: '.slider-prev',
-        },
-    });
-    galleryThumbs.controller.control = galleryTop;
 
+
+    galleryThumbs.controller.control = galleryTop;
     var swiper = new Swiper('.swiper', {
         slidesPerView: 3,
         slidesPerGroup: 1,
@@ -92,6 +86,10 @@
                 slidesPerView: 1,
             },
         }
+    });
+    
+    swiper.on('slideChangeTransitionEnd' , function () {
+
     });
 
 
@@ -287,6 +285,26 @@
         }
 
     });
+
+
+
+    document.querySelector('.fullscreen .swiper-wrapper').innerHTML = '<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>' +
+        '<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>' +
+        '<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>' +
+        '<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>' +
+        '<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>' +
+        '<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>';
+
+
+    var galleryTop = new Swiper('.fullscreen', {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.slider-next',
+            prevEl: '.slider-prev',
+        },
+    });
+    galleryTop.slideTo(2, 0);
+
 
 
 } )();
