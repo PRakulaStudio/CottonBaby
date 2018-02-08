@@ -2,7 +2,7 @@
 
    // $('div.products-pagination').html("");
 
-    var limitItemsKatalog = 9;
+    var limitItemsKatalog = 24;
     var offset = 9;
     let mobileWidth = 1000;
 

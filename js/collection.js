@@ -1,29 +1,37 @@
 /**
  * Created by Иван on 22.01.2018.
  */
-( function($){
+( function(){
 
     var limitItemsCollection = 24;
+    var offset = 9;
+    let mobileWidth = 1000;
 
 
     let url_string = window.location.href;
     let url = new URL(url_string);
     let select_sort = url.searchParams.get("sort");
 
-    if(select_sort)
-    {
-        if(select_sort == "price")
-            $('div.sorting-block').find('button.sorting-activ').removeClass('sorting-activ').siblings('sorting-activ');
+    if(select_sort) {
+        if (select_sort == "price" && document.querySelector('div.sorting-block button.sorting-activ'))
+            document.querySelector('div.sorting-block button.sorting-activ').classList.remove('sorting-activ');
     }
 
-
-    if(  $(document).width() <= 625 )
-    {
-        if(  !$('section.content > div.title').find('button').length )
+    //если мобилка, то показываем кнопку
+    if(  window.innerWidth <= mobileWidth ) {
+        if (!document.querySelector('section.content > div.title button'))
             displayCategories('show');
         else
             displayCategories('hide');
     }
+
+    // if(  window.innerWidth <= 625 )
+    // {
+    //     if(  !$('section.content > div.title').find('button').length )
+    //         displayCategories('show');
+    //     else
+    //         displayCategories('hide');
+    // }
 
     function requestGetOtherCollections(pageName , offset)
     {
@@ -46,7 +54,7 @@
                 return responseData;
             })
             .then(function (response) {
-                console.log(response);
+
                 if(response.status)
                 {
 
@@ -56,7 +64,7 @@
                     {
                         html += '<a href="'+response.data.items[key].href+'">'+response.data.items[key].title+'<span>'+response.data.items[key].count+'</span></a>';
                     }
-                    $('div.filter').append(html);
+                    document.querySelector('div.filter').innerHTML =  document.querySelector('div.filter').innerHTML + html;
 
                     changeCategoryButton();
                     displayCategories( "show" );
@@ -65,44 +73,60 @@
             });
     }
 
-    $(window).resize( function(){
-        let button =  $('section.content > div.title').find('button');
+    window.onresize = function (event) {
+        let button = document.querySelector('section.content > div.title button');
 
-        if( button.attr('data-category-action') )
+        if( button.hasAttribute('data-category-action') )
         {
-            displayCategories(button.attr('data-category-action'));
+            displayCategories(button.getAttribute('data-category-action'));
         }
         else
         {
-            if( $(document).width() < 625)
+            if( window.innerWidth <= mobileWidth)
                 displayCategories('hide');
             else
                 displayCategories('show');
 
         }
+    };
 
-    });
     function displayCategories(status_display)
     {
         //если мобилка
-        if( $(document).width() <= 625)
+        if( window.innerWidth <= mobileWidth)
         {
             if(status_display == "show" )
-                $('section.filter-box').show().find('a').show();
-
+            {
+                document.querySelector('section.filter-box').style.display = "block";
+                document.querySelectorAll('section.filter-box a').forEach( function(link){
+                   link.style.display = "block";
+                });
+            }
             else
-                $('section.filter-box').hide();
-
-
-
+                document.querySelector('section.filter-box').style.display = "none";
         }
         else
         {
-            $('section.filter-box').show();
+            document.querySelector('section.filter-box').style.display = "block";
             if(status_display == "show")
-                $('div.filter').find('a').slice(8).show();
+            {
+                let start = 0, end = 8;
+                document.querySelectorAll('div.filter a').forEach( function(link){
+                    if( start >= end)
+                         link.style.display ="block";
+                    start++;
+                });
+            }
             else
-                $('div.filter').find('a').slice(8).hide();
+            {
+                let start = 0, end = 8;
+                document.querySelectorAll('div.filter a').forEach( function(link){
+                    if( start >= end)
+                        link.style.display ="none";
+                    start++;
+                });
+            }
+
         }
 
 
@@ -113,76 +137,88 @@
         return requestGetItems(offset , limit, sort , pageName);
     }
 
-    $('div.title').on('click' , 'button' , function(){
-        if(!$(this).attr('data-category-action'))
-            requestGetOtherCollections('katalog' , 8);
-        else
-            changeCategoryButton();
+    document.addEventListener('click' , function(event){
+        if( event.target.tagName == "BUTTON"  && event.target.parentNode.classList.contains('title') ||
+            ( event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTON" &&  event.target.closest('div.title')) )
+        {
+            let button = event.target;
+            if( event.target.tagName == "IMG" )
+                button = event.target.parentNode;
+
+            if( !button.hasAttribute('data-category-action') )
+                requestGetOtherCollections('katalog' , 8);
+            else
+                changeCategoryButton();
+        }
     });
+
 
     function changeCategoryButton()
     {
-        let button =  $('section.content > div.title').find('button');
+        let button = document.querySelector('section.content > div.title button');
 
-        if( button.attr('data-category-action') )
+        if( button.hasAttribute('data-category-action') )
         {
-            if(button.attr('data-category-action') == "show")
+            if(button.getAttribute('data-category-action') == "show")
             {
-                button.attr('data-category-action' , 'hide').html('все коллекции<img src="images/icons/down-arrow.svg">');
+                button.setAttribute('data-category-action' , 'hide')
+                button.innerHTML = 'все коллекции<img src="/images/icons/down-arrow.svg">';
             }
             else
             {
-                button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+                button.setAttribute('data-category-action' , 'show')
+                button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
             }
 
-            displayCategories(button.attr('data-category-action') );
+            displayCategories(button.getAttribute('data-category-action') );
         }
         else
         {
-            button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
+            button.setAttribute('data-category-action' , 'show')
+            button.innerHTML ='скрыть<img src="/images/icons/up-arrow.svg">';
         }
     }
 
     //смена сортировки
-    $('div.sorting-block').on('click' , 'button' , function(){
-        if(!$(this).hasClass('sorting-activ'))
-        {
-            $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
-            let sort = 'price';
-            if($(this).text() == "по дате")
-                sort = "create_date";
-
-            let url_string = window.location.href;
-            let url = new URL(url_string);
-            let select_sort = url.searchParams.get("sort");
-
-            if(sort == "create_date")
-                path = "";
-            else
-                path = '?sort='+sort;
-
-            history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
-
-            Promise.all([
-                createPagination(pms.plugins.catalog.currentCollection.count , 'collection'),
-                requestGetCollectionItems(0 , limitItemsCollection, sort , 'collection'),
-
-            ]).then( results => {
-                IS_AUTH = results[0];
-                if(results[0])
-                {
-                    let list_id = [];
-                    document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
-                        list_id.push( currentValue.getAttribute('data-catalog-item-id') );
-                    });
-
-                    requestCheckFavoritesItems(list_id , 'products-box');
-                }
-            });
-
-        }
-
-    });
+    // $('div.sorting-block').on('click' , 'button' , function(){
+    //     if(!$(this).hasClass('sorting-activ'))
+    //     {
+    //         $(this).addClass('sorting-activ').siblings('button').removeClass('sorting-activ');
+    //         let sort = 'price';
+    //         if($(this).text() == "по дате")
+    //             sort = "create_date";
+    //
+    //         let url_string = window.location.href;
+    //         let url = new URL(url_string);
+    //         let select_sort = url.searchParams.get("sort");
+    //
+    //         if(sort == "create_date")
+    //             path = "";
+    //         else
+    //             path = '?sort='+sort;
+    //
+    //         history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
+    //
+    //         Promise.all([
+    //             createPagination(pms.plugins.catalog.currentCollection.count , 'collection'),
+    //             requestGetCollectionItems(0 , limitItemsCollection, sort , 'collection'),
+    //
+    //         ]).then( results => {
+    //             IS_AUTH = results[0];
+    //             if(results[0])
+    //             {
+    //                 let list_id = [];
+    //                 document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
+    //                     list_id.push( currentValue.getAttribute('data-catalog-item-id') );
+    //                 });
+    //
+    //                 requestCheckFavoritesItems(list_id , 'products-box');
+    //             }
+    //         });
+    //
+    //     }
+    //
+    // });
 
     Promise.all([
         requestCheckAuth('collection'),
@@ -205,4 +241,4 @@
         }
     });
 
-})($);
+})();

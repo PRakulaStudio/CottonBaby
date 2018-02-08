@@ -69,8 +69,6 @@
     galleryTop.controller.control = galleryThumbs;
     galleryThumbs.controller.control = galleryTop;
 
-
-
     galleryThumbs.controller.control = galleryTop;
     var swiper = new Swiper('.swiper', {
         slidesPerView: 3,
@@ -91,7 +89,7 @@
             },
         }
     });
-    
+        
     swiper.on('slideNextTransitionEnd' , function () {
         // swiper.appendSlide([
         //     '<div class="swiper-slide"><div class="card">' +
@@ -320,19 +318,20 @@
 
     });
 
+    // document.querySelector('.fullscreen .swiper-wrapper').innerHTML = '<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>' +
+    //     '<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>' +
+    //     '<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>' +
+    //     '<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>' +
+    //     '<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>' +
+    //     '<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>';
 
-    document.querySelector('.fullscreen .swiper-wrapper').innerHTML = '<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>' +
-        '<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>' +
-        '<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>' +
-        '<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>' +
-        '<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>' +
-        '<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>';
 
-    // let slidersFullscreen = "";
-    // window.pms.plugins.catalog.currentItem.images.forEach( function(image){
-    //     slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
-    // })
+     let slidersFullscreen = "";
+     window.pms.plugins.catalog.currentItem.images.forEach( function(image){
+         slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
+     })
 
+    document.querySelector('.fullscreen .swiper-wrapper').innerHTML = slidersFullscreen;
     var galleryTop = new Swiper('.fullscreen', {
         spaceBetween: 10,
         navigation: {
