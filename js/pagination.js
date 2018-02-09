@@ -363,18 +363,21 @@ function requestGetItems(offset , limit , sort , pageName)
         case "favorites" :
             url = window.pms.config.cabinetAPI +"wishlist/get";
             break;
+
         case "katalog" :
             url = window.pms.config.catalogAPI +"category";
             data.append('img_size[]' , '750x750');
             if(  window.pms.plugins.catalog.currentCategory.id > 0 )
                 data.append('id' , window.pms.plugins.catalog.currentCategory.id );
             break;
+
         case "collection" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('id' , window.pms.plugins.catalog.currentCollection.id);
             data.append('img_size[]' , '750x750');
             data.append('show_items' , true);
             break;
+
         case "collections" :
             url = window.pms.config.catalogAPI +"collections";
             data.append('show_href' , true);
@@ -382,11 +385,14 @@ function requestGetItems(offset , limit , sort , pageName)
             data.append('show_cover' , true);
             show_favorites = false;
             break;
+
         case "search" :
-            url = window.pms.config.catalogAPI + window.location.pathname;
+            url = window.pms.config.catalogAPI + "search";
+            data.append('id' , decodeURI(window.location.pathname.substring(8)) );
             data.append('img_size[]' , '750x750');
             break;
     }
+
 
     data.append('offset' , offset);
     data.append('limit' , limit);

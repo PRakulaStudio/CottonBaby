@@ -4,6 +4,9 @@
 ( function () {
     document.querySelector('div.price-min').classList.remove('d-none');
 
+    let currentItem = window.pms.plugins.catalog.currentItem,
+        loadItems = true;
+
     var css = {
         sizeActive : "active",
         itemActive : 'item-activ',
@@ -30,14 +33,15 @@
 
                     let list_id = [];
 
-                    document.querySelectorAll('.product-slider div[data-id-catalog-item]').forEach(function (div) {
+                    document.querySelectorAll('.slider-bottom div[data-id-catalog-item]').forEach(function (div) {
                         list_id.push(div.getAttribute('data-id-catalog-item'));
                     });
 
+                    console.log( list_id);
 
                     return Promise.all([
                         requestCheckInBasket(),
-                        requestCheckFavoritesItems(list_id , 'product-slider'),
+                        requestCheckFavoritesItems(list_id , 'slider-bottom'),
                     ])
 
                 }
@@ -92,31 +96,66 @@
     });
 
     swiper.on('slideNextTransitionEnd' , function () {
-        // swiper.appendSlide([
-        //     '<div class="swiper-slide"><div class="card">' +
-        //         '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
-        //         '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
-        //         '<div class="card-favorites"></div>' +
-        //         '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
-        //         '<div class="card-link"><a href="#">Подробно</a></div>' +
-        //     '</div></div>',
-        //     '<div class="swiper-slide"><div class="card">' +
-        //     '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
-        //     '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
-        //     '<div class="card-favorites"></div>' +
-        //     '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
-        //     '<div class="card-link"><a href="#">Подробно</a></div>' +
-        //     '</div></div>',
-        //     '<div class="swiper-slide"><div class="card">' +
-        //     '<div class="card-img"><a href="#"><img src="images/pictures/i2.jpg"></a></div>' +
-        //     '<div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>' +
-        //     '<div class="card-favorites"></div>' +
-        //     '<div class="card-text"><a href="#">Комплект кофта + ползунки</a><p>100% хлопок. Ваш ребенок останеться доволен.</p></div>' +
-        //     '<div class="card-link"><a href="#">Подробно</a></div>' +
-        //     '</div></div>',
-        //
-        //
-        // ]);
+
+        if(!loadItems)
+            return true;
+        var data = new FormData();
+
+        data.append('id', currentItem.collection );
+        data.append('show_items' , true);
+        data.append('offset' , 9);
+
+
+        return fetch(window.pms.config.catalogAPI + 'collections/' , { method: 'POST', credentials: 'same-origin', body: data })
+            .then( response => {
+                let responseData = false;
+                try{
+                    responseData = response.json();
+                }
+                catch(e) {
+                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                    response.text().then(console.debug);
+                }
+
+                return responseData;
+            }).then(response => {
+                if(response.status)
+                {
+                    let path_image = "",
+                        list_id = [];
+                    if( response.data.items )
+                    {
+                        let items = response.data.items;
+                        let slide ="",
+                            listSliders = [];
+                        for(let key in response.data.items)
+                        {
+                            if(items[key].images)
+                                path_image = items[key].images
+                            else
+                                path_image = "/images/";
+                            list_id.push(items[key].id);
+
+                            slide = "<div class='swiper-slide'>" +
+                                        "<div class='card' data-id-catalog-item='"+items[key].id+"'>" +
+                                            "<div class='card-img'><a href='"+items[key].href+"'><img src='"+path_image+"' /></a></div>" + //картинка
+                                            "<div class='card-price'><p><span>*****</span><span>"+items[key].price+"</span> руб.</p></div>" + //цена
+                                            "<div class='card-favorites'></div>" +// избранное
+                                            "<div class='card-text'><a href='"+items[key].link+"'>"+items[key].title+"</a>" +
+                                                                   "<p>"+(items[key].description == null ? "" : items[key].description)+"</p>" +
+                                            "</div>" +
+                                            "<div class='card-link'><a href='"+items[key].href+"'>Подробно</a></div>" +
+                                        "</div>" +
+                                    "</div>";
+                            listSliders.push(slide);
+
+                        }
+                        swiper.appendSlide(listSliders);
+                        requestCheckFavoritesItems(list_id , 'slider-bottom');
+                    }
+                    loadItems = false;
+                }
+            });
     });
 
 
@@ -190,13 +229,8 @@
 
                     }
 
-                    // document.querySelector('div.price-basket div.btn')
-                    //
-                    // document.querySelectorAll('div.price-basket div')[1].style.display = "none";
-                    // document.querySelector('div.price-basket div.link').style.display = "block";
-
                     //показываем иконку у корзины с товаров
-                    document.querySelector('[class*="header-user"] div[data-basket] span').innerText = result.data.count;
+                    document.querySelector('[class*="header-user"] div[data-basket] span').innerText = response.data.count;
                     document.querySelector('[class*="header-user"] div[data-basket] span').style.display = "block";
 
                 }

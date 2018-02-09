@@ -235,7 +235,7 @@
                 list_id.push( currentValue.getAttribute('data-catalog-item-id') );
             });
             
-            requestCheckFavoritesItems(list_id , 'products-box');
+            requestCheckFavoritesItems(list_id , 'card-box');
 
             //
         }

@@ -21,7 +21,7 @@
 <main class="content-site">
     <section class="content">
         <div class="breadcrumbs">
-            <p><a href="index.html">Главная</a> &#8594 Коллекции</p>
+            <p><a href="/">Главная</a> &#8594 Коллекции</p>
             <div class="breadcrumbs-liner"></div>
         </div>
 

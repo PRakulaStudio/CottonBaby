@@ -689,7 +689,7 @@
             let storage = JSON.parse(localStorage.getItem('user'));
             storage['cartCount'] = 0;
             localStorage.setItem('user' , JSON.stringify(storage));
-            window.location.href = "/cabinet.html";
+            window.location.href = "//cabinet.html";
         }
     });
     

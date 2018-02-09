@@ -1,9 +1,9 @@
-(function($){
+(function(){
 
     Promise.all([
-        requestCheckAuth('katalog'),
+        requestCheckAuth('search'),
         createPagination(pms.plugins.catalog.search.count , 'search'),
-        requestGetMenuCategories(),
+
 
     ]).then( results => {
         IS_AUTH = results[0];
@@ -14,10 +14,10 @@
                 list_id.push( currentValue.getAttribute('data-catalog-item-id') );
             });
 
-            requestCheckFavoritesItems(list_id , 'products-box');
+            requestCheckFavoritesItems(list_id , 'card-box');
 
            
         }
     });
 
-})($);
+})();
