@@ -188,7 +188,7 @@
     position: absolute;
     width: 1400px;
     height: 100%;
-    padding: 0 0 0 5px;
+    padding: 5px 0 0 5px;
 }
 
 .new-slider .swiper-slide {

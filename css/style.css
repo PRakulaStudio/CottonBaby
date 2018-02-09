@@ -486,7 +486,8 @@ ol, ul {
 .popup-thanks > div:nth-child(3) p{
     width: 100%;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .popup-thanks iframe{
@@ -983,6 +984,17 @@ ol, ul {
     text-decoration: underline;
 }
 
+.error-authorization {
+    width: 100%;
+    margin: 5px auto;
+}
+
+.error-authorization p{
+    font-size: 15px !important;
+    text-align: center;
+    color: #FF0016;
+}
+
 .header-user-index > div:nth-child(4) > .exit {
     display: none;
     position: absolute;
@@ -1241,7 +1253,7 @@ ol, ul {
     width: 100px;
     height: 40px;
     margin: auto 0;
-    padding: 13px 0;
+    padding: 12px 0;
     border: none;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
