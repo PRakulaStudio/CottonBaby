@@ -7,7 +7,6 @@
         </div>
         <div class="card-price"><p><span>*****</span><span><?= getData('price') ?></span> руб.</p></div>
         <div class="card-favorites">
-            <button></button>
         </div>
         <div class="card-text">
             <a href="<?= getData('href') ?>"><?= getData('title') ?></a>
