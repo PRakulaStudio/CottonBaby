@@ -78,6 +78,6 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<script type="text/javascript" src="/js/simplebar.js" defer></script>
-<script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
-<script type="text/javascript" src="/js/script.js" defer></script>
+<script type="text/javascript" src="/js/simplebar.js?ver=2" defer></script>
+<script type="text/javascript" src="/js/animated-scroll-to.js?ver=2" defer></script>
+<script type="text/javascript" src="/js/script.js?ver=2" defer></script>

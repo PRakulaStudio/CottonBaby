@@ -175,8 +175,8 @@
         pms.plugins.catalog.currentItem = pms.plugins.catalog.item['<?=getData('id')?>'];
     </script>
 
-    <script type="text/javascript" src="/js/swiper.min.js" defer></script>
-    <script type="text/javascript" src="/js/product.js" defer></script>
+    <script type="text/javascript" src="/js/swiper.min.js?ver=2" defer></script>
+    <script type="text/javascript" src="/js/product.js?ver=2" defer></script>
 
     </body>
     </html>
