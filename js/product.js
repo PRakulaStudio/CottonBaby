@@ -484,9 +484,12 @@ try {
 
 
         let slidersFullscreen = "";
-        window.pms.plugins.catalog.currentItem.images.forEach( function(image){
-            slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
-        })
+        if(  window.pms.plugins.catalog.currentItem.images )
+        {
+            window.pms.plugins.catalog.currentItem.images.forEach( function(image){
+                slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
+            })
+        }
 
         document.querySelector('.fullscreen .swiper-wrapper').innerHTML = slidersFullscreen;
         var galleryTop = new Swiper('.fullscreen', {
@@ -522,7 +525,7 @@ function requestSendBugs(error) {
         }
     });
 
-    xhr.open("POST", window.location.protocol+"//"+"akula.cottonbaby.ru/system/extensions/errorCatcher/");
+    xhr.open("POST", window.location.protocol+"//"+"cottonbaby.ru/system/extensions/errorCatcher/");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
