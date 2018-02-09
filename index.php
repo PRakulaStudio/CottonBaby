@@ -246,8 +246,7 @@
             </div>
             <div class="swiper-container swiper-new">
                 <div class="swiper-wrapper">
-                    <?= execPlugin('PonomareVlad/catalog', 'category', ['limit' => 9, 'img_size' => ['750x750']], 'index_widget'); ?>
-
+                    <?= execPlugin('PonomareVlad/catalog', 'category', ['limit' => 20, 'img_size' => ['750x750']], 'index_widget'); ?>
                     <div class="swiper-slide slide-off"></div>
                     <div class="swiper-slide slide-off"></div>
                     <div class="swiper-slide slide-off"></div>
