@@ -730,6 +730,9 @@ function requestAuth(data) {
                 {
                     document.querySelectorAll('div.authorization form div')[0].innerHTML = document.querySelectorAll('div.authorization form div')[0].innerHTML + error;
                 }
+                document.querySelectorAll('div.authorization form div')[0].querySelectorAll('input').forEach( function (input) {
+                    input.classList.add('input-error-bottom');
+                });
 
                 // var errors = response.data.error;
                 // var errorString = "";
