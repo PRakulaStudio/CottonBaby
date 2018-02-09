@@ -8,7 +8,7 @@
 	getHistory( buttonLoadHistory.getAttribute('data-offset') , buttonLoadHistory.getAttribute('data-limit') );
 	getUserData();
 	requestCheckAuth("cabinet");
-	requestGetMenuCategories();
+
 
 
 
@@ -49,13 +49,14 @@
 				return responseData;
 			})
 			.then( response => {
-				buttonLoadHistory.style.display = "block";
+
 				if(response.status && response.data.order != "undefined")
 				{
+
 					let orderList = response.data.orders,
 						html = "",
 						countItems = 0;
-
+					buttonLoadHistory.style.display = "block";
 					for( var key in orderList )
 					{
 						//начало блока
@@ -128,6 +129,11 @@
 
 
 				}
+				else
+				{
+					document.querySelector('div.history div.block-empty').classList.remove('d-none');
+				}
+
 
 			});
 

@@ -4,6 +4,13 @@
 //вспомогательные функции для модалок
 //кеширование и получение меню
 
+var ua = window.navigator.userAgent;
+var msie = ua.indexOf("MSIE");
+
+if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  // If Internet Explorer, return version number
+{
+    document.querySelector('body').innerHTML = "<div style='margin:auto 20%;text-align: center;'><h1>Приносим свои извнения, но этот сайт не работает на Internet Explore!</h1><h1>Зайдите на этот сайт, пожалуйста, с другого браузера.</h1></div>";
+}
 
 let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
@@ -354,7 +361,7 @@ function eventChangeFavorites(button)
         idProduct = productBlock.getAttribute('data-id-block');
 
     if(productBlock.hasAttribute('data-id-catalog-item') )
-        idProduct = productBlock.attr('data-id-catalog-item');
+        idProduct = productBlock.getAttribute('data-id-catalog-item');
 
 
     if( button.classList.contains('new-off') )
