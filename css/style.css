@@ -480,12 +480,13 @@ ol, ul {
     margin: auto auto 20px auto;
     text-align: center;
     font-size: 25px;
+    line-height: 30px;
 }
 
 .popup-thanks > div:nth-child(3) p{
     width: 100%;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .popup-thanks iframe{

@@ -7,7 +7,7 @@ try{
 
 		let mobileWidth = 800;
 		requestCheckAuth('contacts');
-		
+
 
 		let element = document.querySelector('div.contacts-form input[type="tel"]'),
 		 	maskOptions = {
@@ -36,6 +36,10 @@ try{
 						return responseData;
 					})
 					.then(function (response) {
+						document.querySelectorAll('form input , form textarea').forEach( function (field) {
+							field.value == "";
+						});
+
 						if(response.status)
 						{
 							PopUpShowThanks();
@@ -81,6 +85,9 @@ try{
 
 		document.addEventListener('click' , function(event){
 			try{
+
+				if(event.target)
+
 				if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
 				{
 

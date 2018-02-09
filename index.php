@@ -360,7 +360,7 @@
         <div class="insta-block">
             <div class="insta-text">
                 <p>Подпишись на наш инстаграм</p>
-                <a href="https://www.instagram.com/cot.ton_baby/">подпишись<img src="images/icons/arrow-link.svg"></a>
+                <a target="_blank" href="https://www.instagram.com/cot.ton_baby/">подпишись<img src="images/icons/arrow-link.svg"></a>
             </div>
         </div>
 
