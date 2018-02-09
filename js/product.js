@@ -165,7 +165,8 @@ try {
 
                                 }
                                 swiper.appendSlide(listSliders);
-                                requestCheckFavoritesItems(list_id , 'slider-bottom');
+                                if(IS_AUTH)
+                                      requestCheckFavoritesItems(list_id , 'slider-bottom');
                             }
                             loadItems = false;
                         }

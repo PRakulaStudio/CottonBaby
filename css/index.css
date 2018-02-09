@@ -334,12 +334,17 @@
     border-radius: 20px;
     font-size: 18px;
     color: #FFFFFF;
-    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
+
 }
 
-.off button{
-    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
-}
+
+ .card-favorites button.new-on{
+     background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
+ }
+
+ .card-favorites button.new-off{
+     background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
+ }
 
 .card-text {
     position: absolute;
