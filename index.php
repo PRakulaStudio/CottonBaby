@@ -178,7 +178,7 @@
                             <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
                             <p>ЧАСТНАЯ ФАБРИКА</p>
-                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
+                            <a href="/collections/">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                             <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
                             <p>ЧАСТНАЯ ФАБРИКА</p>
-                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
+                            <a href="/collections/">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                             <b>ДЕТСКАЯ ОДЕЖДА ОПТОМ</b>
                             <p>ОТ 0 ДО 3 ЛЕТ</p>
                             <p>ЧАСТНАЯ ФАБРИКА</p>
-                            <a href="collections.html">Подробнее<img src="images/icons/arrow-link.svg"></a>
+                            <a href="/collections/">Подробнее<img src="images/icons/arrow-link.svg"></a>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
         <div class="new">
             <div class="title">
                 <p>Новинки</p>
-                <a href="catalog.html">в каталог<img src="images/icons/arrow-link.svg"></a>
+                <a href="/catalog/">в каталог<img src="images/icons/arrow-link.svg"></a>
             </div>
 
             <div class="text">

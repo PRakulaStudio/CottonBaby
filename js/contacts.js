@@ -7,7 +7,7 @@ try{
 
 		let mobileWidth = 800;
 		requestCheckAuth('contacts');
-		requestGetMenuCategories();
+		
 
 		let element = document.querySelector('div.contacts-form input[type="tel"]'),
 		 	maskOptions = {

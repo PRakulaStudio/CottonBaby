@@ -23,7 +23,7 @@ try {
 
         Promise.all([
             requestCheckAuth("product") ,
-            requestGetMenuCategories(),
+
 
         ])
             .then( response => {

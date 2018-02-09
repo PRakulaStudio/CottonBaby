@@ -403,12 +403,6 @@ document.addEventListener('click' , function (event) {
         window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
         return;
     }
-    //показываем окно с авторизацие или переход на личный кабинет
-    if( (event.target.tagName == "SPAN" &&  event.target.closest('[data-auth]') )  || ( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-auth') ) )
-    {
-        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
-        return;
-    }
     //закрытие модальных окошек
     if( (event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
         && event.target.parentNode.classList.contains('popup-close')
@@ -417,9 +411,20 @@ document.addEventListener('click' , function (event) {
         if( event.target.tagName == "IMG" )
             event.target.parentNode.parentNode.style.display = "none";
         else
-           event.target.parentNode.style.display = "none";
+            event.target.parentNode.style.display = "none";
         return;
     }
+
+    //показываем окно с авторизацие или переход на личный кабинет
+    if( (event.target.tagName == "SPAN" &&  event.target.closest('[data-auth]') )
+        || ( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-auth') )
+        || (event.target.tagName == "IMG" && event.target.closest('[data-auth]') )
+      )
+    {
+        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
+        return;
+    }
+
 
     if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
     {
@@ -654,8 +659,6 @@ function requestCheckAuth(url) {
                return setAuthUserData(response, url);
 
            });
-
-
 }
 
 function requestLogout() {
