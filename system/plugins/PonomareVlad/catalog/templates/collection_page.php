@@ -25,7 +25,7 @@
                 <p>
                     <a href="/">Главная</a>
                     → <?= getData('id') == 0 ? 'Коллекции' : '<a href="/collections/">Коллекции</a>' ?>
-                    <?= getData('id') == 0 ? '' : (getData(false, 'breadcrumb-item', getParentCategories(getData('id'))) . (' → ' . getData('title'))); ?>
+                    <?= getData('id') == 0 ? '' : (' → ' . getData('title')); ?>
                 </p>
                 <div class="breadcrumbs-liner"></div>
             </div>
@@ -38,9 +38,10 @@
 
         <section class="filter-box">
             <div class="filter">
+                <?php $GLOBALS['currentCollectionId'] = getData('id'); ?>
                 <?= getData('items', [
                     'id' => 'category_link',
-                    'source' => '<a href="<?=getData(\'href\');?>"><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
+                    'source' => '<a href="<?=getData(\'href\');?>" <?=(getData(\'id\')==$GLOBALS[\'currentCollectionId\'])?\'class="filter-activ"\':\'\'?>><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
                 ], (getCatalogCollectionsById(['limit' => 8, 'show_count' => 'true', 'show_href' => true])['data'])); ?>
             </div>
         </section>
@@ -56,18 +57,6 @@
 
             <div class="card-box">
                 <?= getData('items', 'collection_page_item'); ?>
-                <div class="card">
-                    <div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
-                    <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
-                    <div class="card-favorites">
-                        <button></button>
-                    </div>
-                    <div class="card-text">
-                        <a href="#">Комплект кофта + ползунки</a>
-                        <p>100% хлопок. Ваш ребенок останеться доволен.</p>
-                    </div>
-                    <div class="card-link"><a href="#">Подробно</a></div>
-            </div>
 
             </div>
 

@@ -38,11 +38,12 @@
 
         <section class="filter-box">
             <?php $childCategories = getData('parent_category') ? catalogChildCategories(['id' => getData('parent_category'), 'show_count' => 'true']) : catalogChildCategories(['id' => getData('id'), 'show_count' => 'true']) ?>
+            <?php $GLOBALS['currentCategoryId'] = getData('id'); ?>
             <? if (count($childCategories) > 0): ?>
                 <div class="filter">
                     <?= getData(false, [
                         'id' => 'category_link',
-                        'source' => '<a href="<?=getData(\'href\');?>"><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
+                        'source' => '<a href="<?=getData(\'href\');?>" <?=(getData(\'id\')==$GLOBALS[\'currentCategoryId\'])?\'class="filter-activ"\':\'\'?>><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
                     ], $childCategories); ?>
                 </div>
             <? endif; ?>
