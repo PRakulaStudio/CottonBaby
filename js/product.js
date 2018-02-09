@@ -2,10 +2,10 @@
  * Created by Иван on 27.12.2017.
  */
 ( function () {
-
+    document.querySelector('div.price-min').classList.remove('d-none');
 
     var css = {
-        sizeActive : "size-block-activ",
+        sizeActive : "active",
         itemActive : 'item-activ',
         orderOn : 'on-basket',
         orderOff : 'off-basket'
@@ -42,7 +42,8 @@
 
                 }
                 else{
-
+                    document.querySelector('div.product-size').style.display = "block";
+                    document.querySelector('div.no-authorization').style.display = "flex";
                 }
             } ,
             errors => {})
@@ -129,7 +130,17 @@
         if( totalPrice === 0)
         {
             totalPrice = window.pms.plugins.catalog.currentItem.price;
+            if( document.querySelector('div.price-basket div.btn') )
+                 document.querySelector('div.price-basket div.btn').classList.remove('btn-on');
         }
+        else
+        {
+            if( document.querySelector('div.price-basket div.btn') )
+                document.querySelector('div.price-basket div.btn').classList.add('btn-on');
+        }
+
+
+
         document.querySelector('div.price-basket span').innerText = totalPrice;
 
     }
@@ -164,9 +175,27 @@
             .then(function (response) {
                 if(response.status)
                 {
-                    document.querySelector('div.product-basket').style.display = "block";
-                    document.querySelectorAll('div.price-basket div')[1].remove();
-                    document.querySelector('div.price-basket div.product-basket-link').style.display = "block";
+                    document.querySelector('div.product-size').style.display = "none";
+                    //скрываем кнопку "В корзину"
+                    document.querySelector('div.price-basket div.btn').style.display = "none";
+                    //показываем ссылку "В корзину"
+                    document.querySelector('div.price-basket div.link').style.display = "block";
+
+                    //если не более 10к
+                    if( response.data.remains )
+                    {
+                        //показываем блок, что не хватает суммы до минимальной
+                        document.querySelector('div.product-basket span').innerHTML = formatMoney(response.data.remains);
+                        document.querySelector('div.product-basket').classList.remove('d-none');
+
+                    }
+
+                    // document.querySelector('div.price-basket div.btn')
+                    //
+                    // document.querySelectorAll('div.price-basket div')[1].style.display = "none";
+                    // document.querySelector('div.price-basket div.link').style.display = "block";
+
+                    //показываем иконку у корзины с товаров
                     document.querySelector('[class*="header-user"] div[data-basket] span').innerText = result.data.count;
                     document.querySelector('[class*="header-user"] div[data-basket] span').style.display = "block";
 
@@ -197,26 +226,37 @@
             .then(response => {
                if(response.status)
                {
-                   let sizeBox = "";
+                   let sizeBlock = document.querySelector('div.product-size');
                    addFavoriteButtons(  document.querySelector('div.product-box'), response.data.wishes  );
-                   
+                   document.querySelector('div.price-basket').classList.remove('d-none');
+
+
                    if(Object.keys(response.data.modifications).length)
                    {
-                       sizeBox = document.querySelector('div.size-box');
+                       document.querySelector('div.price-basket div.price span').innerText =  response.data.price_total;
+                       let size = "";
+                       for(var key in response.data.modifications)
+                       {
+                           if( size = sizeBlock.querySelector('div[id-modification="'+response.data.modifications[key].id+'"]') )
+                           {
+                               size.classList.add(css.sizeActive);
+                               size.querySelector('input[type="number"]').value = response.data.modifications[key].quantity;
+                           }
+                       }
+                       //sizeBlock.style.display = "flex";
 
-                       document.querySelectorAll('div.price-basket div')[1].remove();
-                       document.querySelector('div.price-basket div.product-basket-link').style.display = "block";
-
-                       document.querySelector('div.product-size').remove();
-
-                       document.querySelector('div.price-basket span').innerText = response.data.price_total;
+                       document.querySelector('div.price-basket div.link').style.display = "block";
+                       if(response.data.remains)
+                          document.querySelector('div.product-basket').classList.remove('d-none');
+                   }
+                   else
+                   {
+                      sizeBlock.style.display = "block";
+                      document.querySelector('div.price-basket div.btn').style.display = "block";
 
                    }
                 }
-                else
-               {
-                   document.querySelector('div.price-basket').classList.remove('d-none');
-               }
+
             });
     }
 
@@ -267,10 +307,16 @@
 
     document.addEventListener('click' , function (event) {
         //событие на клик изменения кол-ва размера товара
-        if(event.target.tagName == "BUTTON" && event.target.closest('div.size-box') && event.target.closest('div.product-size'))
+        if( (event.target.tagName == "BUTTON" && event.target.closest('div.size-box') && event.target.closest('div.product-size')) ||
+            (event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON" && event.target.closest('div.size-box'))
+          )
         {
-            let button = event.target,
-                number = parseInt(  button.parentNode.querySelector('input').value == "" ? 0 : button.parentNode.querySelector('input').value   ),
+
+            let button = event.target;
+            if( event.target.tagName == "IMG")
+                button = event.target.parentNode;
+
+            let number = parseInt(  button.parentNode.querySelector('input').value == "" ? 0 : button.parentNode.querySelector('input').value   ),
                 blockPrice = document.querySelectorAll('div.price-basket div')[0].querySelector('input[type="text"]'),
                 blockModifications = document.querySelector('div.size-box');
 
@@ -296,13 +342,13 @@
             //проверить, что выбран хотя бы один размер
             if( button.closest('div.size-box').querySelector('div.'+css.sizeActive))
             {
-                document.querySelector('div.price-basket button').parentNode.classList.add(css.orderOn);
-                document.querySelector('div.price-basket button').parentNode.classList.remove(css.orderOff);
+                button.parentNode.classList.add(css.orderOn);
+                button.parentNode.classList.remove(css.orderOff);
             }
             else
             {
-                document.querySelector('div.price-basket button').parentNode.classList.add(css.orderOff);
-                document.querySelector('div.price-basket button').parentNode.classList.remove(css.orderOn);
+                button.parentNode.classList.add(css.orderOff);
+                button.parentNode.classList.remove(css.orderOn);
             }
             changePrice();
 
@@ -314,20 +360,20 @@
             return;
         }
 
-        if(event.target.tagName == "BUTTON" && event.target.closest('div.price-basket'))
+        if(
+            (event.target.tagName == "BUTTON" && event.target.closest('div.price-basket')) ||
+            (event.target.tagName == "IMG" && event.target.closest('div.btn'))
+          )
         {
-            if(event.target.parentNode.classList.contains(css.orderOn))
-                requestEdit(  event.target.closest('div[data-id-block]').getAttribute('data-id-block') );
+            let button = event.target;
+            if( event.target.tagName == "IMG")
+                button = event.target.parentNode;
+
+            if(button.parentNode.classList.contains('btn-on'))
+                requestEdit(  button.closest('div[data-id-block]').getAttribute('data-id-block') );
         }
 
     });
-
-    // document.querySelector('.fullscreen .swiper-wrapper').innerHTML = '<div class="swiper-slide"><img src="images/pictures/i1.jpg"></div>' +
-    //     '<div class="swiper-slide"><img src="images/pictures/i2.jpg"></div>' +
-    //     '<div class="swiper-slide"><img src="images/pictures/i3.jpg"></div>' +
-    //     '<div class="swiper-slide"><img src="images/pictures/i4.jpg"></div>' +
-    //     '<div class="swiper-slide"><img src="images/pictures/i5.jpg"></div>' +
-    //     '<div class="swiper-slide"><img src="images/pictures/i6.jpg"></div>';
 
 
      let slidersFullscreen = "";
