@@ -13,20 +13,20 @@
                 <p>Компания</p>
                 <ul>
                     <li><a href="/">Главная</a></li>
-                    <li><a href="information.html">О нас</a></li>
+                    <li><a href="/information.html">О нас</a></li>
                     <li><a href="/catalog/">Каталог</a></li>
                     <li><a href="/collections/">Коллекции</a></li>
-                    <li><a href="cooperation.html">Сотрудничество</a></li>
-                    <li><a href="production.html">Наше производство</a></li>
-                    <li><a href="delivery.html">Доставка и оплата</a></li>
-                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="/cooperation.html">Сотрудничество</a></li>
+                    <li><a href="/production.html">Наше производство</a></li>
+                    <li><a href="/delivery.html">Доставка и оплата</a></li>
+                    <li><a href="/contacts.html">Контакты</a></li>
                 </ul>
             </div>
 
             <div class="section marker">
                 <p>Каталог</p>
                 <ul>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <!--<li><a href="#">Комбинезон на манжете (6)</a></li>
                     <li><a href="#">Шапки</a></li>
                     <li><a href="#">Штаны</a></li>
                     <li><a href="#">Кофты</a></li>
@@ -46,14 +46,14 @@
                     <li><a href="#">Кофты</a></li>
                     <li><a href="#">Ползунки</a></li>
                     <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Нагрудник</a></li>-->
                 </ul>
             </div>
 
             <div class="section marker">
                 <p>Коллекции</p>
                 <ul>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <!--<li><a href="#">Комбинезон на манжете (6)</a></li>
                     <li><a href="#">Шапки</a></li>
                     <li><a href="#">Штаны</a></li>
                     <li><a href="#">Кофты</a></li>
@@ -73,7 +73,7 @@
                     <li><a href="#">Кофты</a></li>
                     <li><a href="#">Ползунки</a></li>
                     <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Нагрудник</a></li>-->
                 </ul>
             </div>
         </div>
