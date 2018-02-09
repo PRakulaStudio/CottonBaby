@@ -38,9 +38,10 @@
 
         <section class="filter-box">
             <div class="filter">
+                <?php $GLOBALS['currentCollectionId'] = getData('id'); ?>
                 <?= getData('items', [
                     'id' => 'category_link',
-                    'source' => '<a href="<?=getData(\'href\');?>"><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
+                    'source' => '<a href="<?=getData(\'href\');?>" <?=(getData(\'id\')==$GLOBALS[\'currentCollectionId\'])?\'class="filter-activ"\':\'\'?>><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
                 ], (getCatalogCollectionsById(['limit' => 8, 'show_count' => 'true', 'show_href' => true])['data'])); ?>
             </div>
         </section>
@@ -67,7 +68,7 @@
                         <p>100% хлопок. Ваш ребенок останеться доволен.</p>
                     </div>
                     <div class="card-link"><a href="#">Подробно</a></div>
-            </div>
+                </div>
 
             </div>
 
