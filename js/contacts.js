@@ -42,6 +42,9 @@ try{
 
 						if(response.status)
 						{
+							document.querySelectorAll('div.contacts-form input, div.contacts-form textarea').forEach( function(field){
+								field.value = "";
+							});
 							PopUpShowThanks();
 						}
 						else
@@ -86,7 +89,10 @@ try{
 		document.addEventListener('click' , function(event){
 			try{
 
-				if(event.target)
+				if( event.target.tagName == "DIV" && event.target.closest('div.popup-fon'))
+				{
+					PopUpHidePopup();
+				}
 
 				if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
 				{
@@ -130,7 +136,6 @@ try{
 
 
 		});
-
 
 		window.onresize = function (event) {
 			try{

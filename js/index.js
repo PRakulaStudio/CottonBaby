@@ -1,13 +1,23 @@
 "use strict";
 (function(){
-try{
-	requestCheckAuth('index');
+try {
+	requestCheckAuth('index').then(function(response){
+		if(IS_AUTH)
+		{
+			let list_sliders = [];
+			document.querySelectorAll('div.new-slider div[data-id-catalog-item]').forEach(function (slide) {
+				list_sliders.push(slide.getAttribute('data-id-catalog-item'));
+			});
+
+			requestCheckFavoritesItems(list_sliders, 'new-slider');
+		}
+	});
 	let swiper_main = new Swiper('.swiper-main', {
 		loop: true,
-		autoplay: window.innerWidth<1000?{
+		autoplay: window.innerWidth < 1000 ? {
 			delay: 3000,
 			disableOnInteraction: false,
-		}:false,
+		} : false,
 		pagination: {
 			el: '.swiper-pagination',
 			type: 'fraction',
@@ -79,44 +89,45 @@ try{
 			},
 		}
 	});
-	if( window.innerWidth >= 820)
-	{
-		document.querySelectorAll('video').forEach( function(video){
+
+	if (window.innerWidth >= 820) {
+		document.querySelectorAll('video').forEach(function (video) {
 			video.load();
 			video.play();
 		})
 	}
 
-	document.addEventListener('click' , function (event) {
-		if( event.target.tagName == "BUTTON" && event.target.closest('div.reg-box'))
-		{
+	document.addEventListener('click', function (event) {
+		if (event.target.tagName == "BUTTON" && event.target.closest('div.reg-box')) {
 			let data = {},
 				listInput = document.querySelectorAll('div.reg-box input'),
 				sendRequest = true;
 
-			listInput.forEach( function(current, index, array){
+			listInput.forEach(function (current, index, array) {
 				current.classList.remove('input-error-bottom');
-				validateData(current, data, 'input-error-bottom' );
+				validateData(current, data, 'input-error-bottom');
 
-				if( current.classList.contains('input-error-bottom'))
+				if (current.classList.contains('input-error-bottom'))
 					sendRequest = false;
 			});
 
-			if(sendRequest)
-			{
+			if (sendRequest) {
 				localStorage.removeItem('reg');
-				localStorage.setItem('reg' , JSON.stringify(data));
+				localStorage.setItem('reg', JSON.stringify(data));
 				window.location.replace('registration.html');
 			}
 
 
-
 		}
 	});
+
+
+
+
 }
 catch(error)
 {
-	
+	console.log(error);
 }
 	
 

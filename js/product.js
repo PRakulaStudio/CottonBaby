@@ -24,7 +24,6 @@ try {
         Promise.all([
             requestCheckAuth("product") ,
 
-
         ])
             .then( response => {
                     //eсли авторизированы
@@ -244,14 +243,18 @@ try {
                             document.querySelector('div.price-basket div.btn').style.display = "none";
                             //показываем ссылку "В корзину"
                             document.querySelector('div.price-basket div.link').style.display = "block";
+                            document.querySelector('div.product-basket').classList.remove('d-none');
 
                             //если не более 10к
                             if( response.data.remains )
                             {
                                 //показываем блок, что не хватает суммы до минимальной
                                 document.querySelector('div.product-basket span').innerHTML = formatMoney(response.data.remains);
-                                document.querySelector('div.product-basket').classList.remove('d-none');
 
+
+                            }
+                            else {
+                                document.querySelectorAll('div.product-basket p')[1].classList.add('d-none');
                             }
 
                             //показываем иконку у корзины с товаров
@@ -309,11 +312,14 @@ try {
                                         size.querySelector('input[type="number"]').value = response.data.modifications[key].quantity;
                                     }
                                 }
-                                //sizeBlock.style.display = "flex";
 
                                 document.querySelector('div.price-basket div.link').style.display = "block";
-                                if(response.data.remains)
-                                    document.querySelector('div.product-basket').classList.remove('d-none');
+                                document.querySelector('div.product-basket').classList.remove('d-none');
+                                if(!response.data.remains)
+                                {
+                                    document.querySelectorAll('div.product-basket p')[1].classList.add('d-none');
+                                }
+
                             }
                             else
                             {

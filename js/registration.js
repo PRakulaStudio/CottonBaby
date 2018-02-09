@@ -48,9 +48,9 @@ try{
 						}
 						else
 						{
-							for(var key in data.data.errors)
+							for(var key in response.data.errors)
 							{
-								alert(data.data.errors[key]);
+								document.querySelector('div.registration-form input[name="'+key+'"]').classList.add('input-error');
 								break;
 							}
 						}

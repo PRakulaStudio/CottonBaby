@@ -6,7 +6,8 @@
     function requestGetFavorites(offset, limit, orderBy , pageName)
     {
         //console.log( requestGetItems );
-        return requestGetItems(offset , limit, orderBy , pageName) ;
+        let count = requestGetItems(offset , limit, orderBy , pageName);
+        return count;
     }
 
     requestCheckAuth("favorites")
@@ -15,7 +16,7 @@
                                   {
                                       let totalItems = document.querySelector('div.header-user div[data-favorite]').innerText,
                                           promise = requestGetFavorites(0, limitItemsFavorites, 'DESC' , 'favorites');
-                                        
+
                                       createPagination(totalItems , 'favorites');
                                       return promise;
                                   }

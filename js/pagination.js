@@ -411,8 +411,15 @@ function requestGetItems(offset , limit , sort , pageName)
             return responseData;
         })
         .then(function (response) {
-          
-           return createItems(response.data.items , show_favorites);
+            if( response.status)
+              return createItems(response.data.items , show_favorites);
+            else
+            {
+                if(document.querySelector('div.block-empty'))
+                    document.querySelector('div.block-empty').classList.remove('d-none');
+                return 0;
+            }
+
         });
        
 }

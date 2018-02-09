@@ -342,9 +342,9 @@ function addFavoriteButtons( blockProducts , value)
 
     let buttonHtml = "";
     if(value)
-        buttonHtml =  "<button class='new-on'></button>";
-    else
         buttonHtml =  "<button class='new-off'></button>";
+    else
+        buttonHtml =  "<button class='new-on'></button>";
     if(  blockProducts.querySelector('div.card-favorites') )
          blockProducts.querySelector('div.card-favorites').innerHTML = buttonHtml;
 }
@@ -364,7 +364,7 @@ function eventChangeFavorites(button)
         idProduct = productBlock.getAttribute('data-id-catalog-item');
 
 
-    if( button.classList.contains('new-off') )
+    if( button.classList.contains('new-on') )
         requestAddFavorites( idProduct , button);
     else
         requestRemoveFavorites( idProduct , button );
@@ -377,13 +377,22 @@ function eventAuth()
         listInput =  document.querySelectorAll('#authorization input'),
         sendRequest = true;
 
+    if( document.querySelector('div.authorization'))
+    {
+        if( document.querySelectorAll('div.authorization form div')[0].querySelector('div.error-authorization'))
+            document.querySelectorAll('div.authorization form div')[0].querySelector('div.error-authorization').remove();
+    }
+
+
     Array.prototype.forEach.call(listInput, function(current , index, array){
        current.classList.remove('input-error-border');
        validateData(current, data, 'input-error-bottom' );
 
+
        if( current.classList.contains('input-error-bottom'))
            sendRequest = false;
        });
+
 
     if(sendRequest)
         requestAuth(data);
@@ -508,8 +517,8 @@ function requestAddFavorites(product_id  , button)
             .then( function(response){
                if( response.status )
                {
-                  button.classList.remove('new-off');
-                  button.classList.add('new-on');
+                  button.classList.remove('new-on');
+                  button.classList.add('new-off');
 
                }
             });
@@ -538,8 +547,8 @@ function requestRemoveFavorites(product_id , button)
         .then( function(response){
             if( response.status )
             {
-                button.classList.remove('new-on');
-                button.classList.add('new-off');
+                button.classList.remove('new-off');
+                button.classList.add('new-on');
 
 
             }
@@ -666,7 +675,7 @@ function requestLogout() {
     fetch(window.pms.config.cabinetAPI + 'user/logout'  , { method: 'POST' , credentials: 'same-origin' })
         .then( function(response){
             let responseData = false;
-            console.log(response);
+
             try {
                 responseData = response.json();
             }
@@ -681,8 +690,11 @@ function requestLogout() {
         .then( function(response){
           //  console.log(response);
            if(response.status)
+           {
+               localStorage.removeItem('user');
                location.reload();
-            else
+           }
+           else
                alert('Не получилось разлогиниться');
         });
 }
@@ -711,13 +723,21 @@ function requestAuth(data) {
             if (response.status)
                 location.reload();
             else {
-                var errors = response.data.error;
-                var errorString = "";
-                for(key in errors){
-                    errorString += errors[key] + '\n';
+                let error = "<div class='error-authorization'>" +
+                                 "<p>Введены неверные данные</p>" +
+                             "</div>";
+                if(document.querySelector('div.authorization'))
+                {
+                    document.querySelectorAll('div.authorization form div')[0].innerHTML = document.querySelectorAll('div.authorization form div')[0].innerHTML + error;
                 }
-                if(errorString.length != 0)
-                    alert(errorString);
+
+                // var errors = response.data.error;
+                // var errorString = "";
+                // for(key in errors){
+                //     errorString += errors[key] + '\n';
+                // }
+                // if(errorString.length != 0)
+                //     alert(errorString);
             }
         });
 }

@@ -13,7 +13,6 @@ function requestSendFeedback(fields)
     for(let key in fields)
         data.append(key , fields[key]);
 
-
     try{
         return fetch( window.pms.config.feedbackAPI+'order/create' , {method: 'POST', credentials: 'same-origin' , body: data})
             .then(function (response) {
@@ -30,6 +29,9 @@ function requestSendFeedback(fields)
             .then(function (response) {
                 if(response.status)
                 {
+                    document.querySelectorAll('div.contacts-form input, div.contacts-form textarea').forEach( function(field){
+                       field.value = "";
+                    });
                     PopUpShowThanks();
                 }
                 else
@@ -84,6 +86,10 @@ document.addEventListener('click' , function(event){
 
             return;
             //requestSendFeedback();
+        }
+        if( event.target.tagName == "DIV" && event.target.closest('div.popup-fon'))
+        {
+            PopUpHidePopup();
         }
     }
     catch(error)

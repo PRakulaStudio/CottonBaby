@@ -336,6 +336,16 @@
             .then( response => {
                 if(response.status)
                 {
+
+                    if( localStorage.getItem('user') )
+                    {
+                        let data_local = JSON.parse(localStorage.getItem('user'));
+                        data_local['cartCount'] = response.data.count;
+                        localStorage.setItem('user' , JSON.stringify(data_local));
+                    }
+
+
+
                     document.querySelector('div.basket-box div[data-id-item="'+product_id+'"]').remove();
                     document.querySelectorAll('div.basket-total div')[ document.querySelectorAll('div.basket-total div').length - 1].querySelector('span').innerText = formatMoney( response.data.total_price );
                     total_price = response.data.total_price;
@@ -474,6 +484,12 @@
                 {
                     document.querySelector('#popup-fon').style.display = "block";
                     document.querySelector('div.basket-order button[action="save-order"]').remove();
+                    if( localStorage.getItem('user') )
+                    {
+                        let data_local = JSON.parse(localStorage.getItem('user'));
+                        data_local['cartCount'] = 0;
+                        localStorage.setItem('user' , JSON.stringify(data_local));
+                    }
                     PopUpShowThanks();
                 }
                 else
@@ -487,7 +503,6 @@
                 }
             });
     }
-
 
     function setUserData(button , fields)
     {
@@ -689,7 +704,7 @@
             let storage = JSON.parse(localStorage.getItem('user'));
             storage['cartCount'] = 0;
             localStorage.setItem('user' , JSON.stringify(storage));
-            window.location.href = "//cabinet.html";
+            window.location.href = "/cabinet.html";
         }
     });
     

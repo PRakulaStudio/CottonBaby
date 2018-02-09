@@ -162,7 +162,7 @@
 			.then( response => {
 				if(response.status)
 				{
-					alert("Данные сохранились");
+					document.querySelector('div.save-form').classList.remove('d-none');
 				}
 				else
 				{
@@ -275,6 +275,8 @@
 
 			if( Object.keys(fieldsData).length )
 				setUserData( fieldsData );
+			else
+				document.querySelector('div.save-form').classList.add('d-none');
 			return;
 		}
 
