@@ -25,7 +25,7 @@
                 <p>
                     <a href="/">Главная</a>
                     → <?= getData('id') == 0 ? 'Коллекции' : '<a href="/collections/">Коллекции</a>' ?>
-                    <?= getData('id') == 0 ? '' : (getData(false, 'breadcrumb-item', getParentCategories(getData('id'))) . (' → ' . getData('title'))); ?>
+                    <?= getData('id') == 0 ? '' : (' → ' . getData('title')); ?>
                 </p>
                 <div class="breadcrumbs-liner"></div>
             </div>
@@ -57,18 +57,6 @@
 
             <div class="card-box">
                 <?= getData('items', 'collection_page_item'); ?>
-                <div class="card">
-                    <div class="card-img"><a href="#"><img src="images/pictures/i1.jpg"></a></div>
-                    <div class="card-price"><p><span>*****</span><span>3 000</span> руб.</p></div>
-                    <div class="card-favorites">
-                        <button></button>
-                    </div>
-                    <div class="card-text">
-                        <a href="#">Комплект кофта + ползунки</a>
-                        <p>100% хлопок. Ваш ребенок останеться доволен.</p>
-                    </div>
-                    <div class="card-link"><a href="#">Подробно</a></div>
-                </div>
 
             </div>
 
