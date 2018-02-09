@@ -319,6 +319,10 @@ try {
                                 {
                                     document.querySelectorAll('div.product-basket p')[1].classList.add('d-none');
                                 }
+                                else
+                                {
+                                    document.querySelectorAll('div.product-basket p')[1].querySelector('span').innerText = formatMoney(response.data.remains);
+                                }
 
                             }
                             else
