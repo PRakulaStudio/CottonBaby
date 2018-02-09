@@ -112,8 +112,8 @@
                         <p>До минимальной суммы заказа осталось <span>10 000р.</span></p>
                     </div>
 
-                    <div class="price-min d-none">
-                        <p>Минимальная сумма заказа <b>10 000р.</b></p>
+                    <div class="price-min">
+                        <div class="text"><p>Минимальная сумма заказа <b>10 000р.</b></p></div>
                     </div>
 
                     <div class="price-basket d-none">
