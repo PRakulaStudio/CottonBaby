@@ -1,127 +1,93 @@
 <?php if (is_callable('getData')): ?>
     <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <base href="/">
-    <meta charset="utf-8"/>
-    <title>Cotton Baby - Результаты поиска</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <meta property="og:image" content="images/repost.png">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/media.css"/>
-    <link rel="stylesheet" type="text/css" href="css/simplebar.css"/>
-    <meta name="format-detection" content="telephone=no">
-</head>
-<body>
-<div class="scrollup"></div>
-<?= getData(false, 'header', ['']) ?>
+    <html lang="ru">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Cotton Baby - Результаты поиска</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta property="og:image" content="images/repost.png">
+        <meta name="yandex-verification" content="f5f049cb38f1bf5c"/>
+        <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/card.css"/>
+    </head>
+    <body>
+    <div class="scrollup"></div>
+    <?= getData(false, 'header', ['']) ?>
 
-<!-- content start -->
-<main class="content-site">
-    <section class="content">
-        <div class="pagination">
-            <p><a href="/">Главная</a> &#8594 Результаты поиска</p>
-            <div class="pagination-liner"></div>
-        </div>
-
-        <div class="title">
-            <h1>Результаты поиска</h1>
-        </div>
-
-        <div class="block-empty">
-            <p>По вашему запросу ничего не найдено</p>
-        </div>
-    </section>
-
-    <section class="content">
-        <div class="sorting">
-            <div class="sorting-block">
-                <p>Найдено <?= getData('count'); ?> товаров</p>
+    <!-- content start -->
+    <main class="content-site">
+        <section class="content">
+            <div class="breadcrumbs">
+                <p><a href="/">Главная</a> &#8594 Результаты поиска</p>
+                <div class="breadcrumbs-liner"></div>
             </div>
 
-            <div class="sorting-block">
-                <p>Сортировка:</p>
-                <button>по дате</button>
-                <button class="sorting-activ">по цене</button>
+            <div class="title">
+                <h1>Результаты поиска</h1>
             </div>
-        </div>
+        </section>
 
-        <div class="products-box">
-            <?= getData('items', 'search_page_item'); ?>
-        </div>
+        <section class="content">
 
-        <div class="products-pagination">
-            <?= getData('data', false, genPagination([
-                'totalPages' => ceil(getData('count') / getData('page_items')),
-                'currentPage' => getData('current_page'),
-                'arrowLeftTemplate' => '<button class="pagination-arrow" onclick="location.search=\'?page=<?= getData() ?>\';">&#9664</button>',
-                'linksWrapperStart' => '<div>',
-                'linkTemplate' => '<button onclick="location.search=\'?page=<?= getData()?>\';"><?= getData()?></button>',
-                'activeLinkTemplate' => '<button class="pagination-activ"><?= getData()?></button>',
-                'linksWrapperEnd' => '</div>',
-                'arrowRightTemplate' => '<button class="pagination-arrow" onclick="location.search=\'?page=<?= getData()?>\';">&#9654</button>',
-            ]), false, true) ?>
-        </div>
-    </section>
-</main>
-<!-- content end -->
+            <? if (getData('count') > 0): ?>
 
-<?= getData(false, 'footer', ['']) ?>
+                <div class="sorting">
+                    <div class="sorting-block">
+                        <p>Найдено <?= getData('count'); ?> товаров</p>
+                    </div>
 
-<script>
-    if (!window.pms) window.pms = {};
-    if (!pms.plugins) pms.plugins = {};
-    if (!pms.plugins.catalog) pms.plugins.catalog = {};
-    pms.plugins.catalog.search =<?=getData(false, false, false, true)?>;
-</script>
+                    <div class="sorting-block">
+                        <p>Сортировка:</p>
+                        <button class="sorting-activ">по дате</button>
+                        <button>по цене</button>
+                    </div>
+                </div>
 
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="js/simplebar.js" ></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/pagination.js"></script>
-<script type="text/javascript" src="js/search.js"></script>
+                <div class="card-box">
+                    <?= getData('items', 'search_page_item'); ?>
+                </div>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter47500810 = new Ya.Metrika2({
-                    id: 47500810,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true
-                });
-            } catch (e) {
-            }
-        });
+                <div class="pagination">
+                    <?= getData('data', false, genPagination([
+                        'totalPages' => ceil(getData('count') / getData('page_items')),
+                        'currentPage' => getData('current_page'),
+                        'arrowLeftTemplate' => '<button class="pagination-arrow" onclick="location.search=\'?page=<?= getData() ?>\';">&#9664</button>',
+                        'linksWrapperStart' => '<ul>',
+                        'linkTemplate' => '<li><a href="?page=<?= getData()?>"><?= getData()?></a></li>',
+                        'activeLinkTemplate' => '<li class="pagination-activ"><a href="?page=<?= getData()?>"><?= getData()?></a></li>',
+                        'linksWrapperEnd' => '</ul>',
+                        'arrowRightTemplate' => '<button class="pagination-arrow" onclick="location.search=\'?page=<?= getData()?>\';">&#9654</button>',
+                    ]), false, true) ?>
+                </div>
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () {
-                n.parentNode.insertBefore(s, n);
-            };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/tag.js";
+            <? else: ?>
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks2");
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
-<!-- /Yandex.Metrika counter -->
+                <div class="block-empty">
+                    <p>По вашему запросу ничего не найдено</p>
+                </div>
 
-</body>
-</html>
+            <? endif; ?>
+
+        </section>
+    </main>
+    <!-- content end -->
+
+    <?= getData(false, 'footer', ['']) ?>
+
+    <script>
+        if (!window.pms) window.pms = {};
+        if (!pms.plugins) pms.plugins = {};
+        if (!pms.plugins.catalog) pms.plugins.catalog = {};
+        pms.plugins.catalog.search =<?=getData(false, false, false, true)?>;
+    </script>
+
+    <script type="text/javascript" src="/js/pagination.js" defer></script>
+    <script type="text/javascript" src="/js/search.js" defer></script>
+
+    </body>
+    </html>
 <?php endif; ?>
