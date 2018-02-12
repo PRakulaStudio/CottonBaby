@@ -54,12 +54,12 @@
                 <div class="slider">
                     <div class="swiper-container gallery-top slider-top">
                         <div class="swiper-wrapper">
-                            <?= ($images = getData('images',
-                                    [
-                                        'id' => 'catalog_item_images_item',
-                                        'source' => '<div class="swiper-slide"><img src="<?= (($image = getData(\'750x750\')) ? $image : \'/images/index.php\') ?>"></div>'
-                                    ]
-                                ) == '') ? '<div class="swiper-slide"><img src="/images/index.php"></div>' : $images; ?>
+                            <?= getData('images') ? getData('images',
+                                [
+                                    'id' => 'catalog_item_images_item',
+                                    'source' => '<div class="swiper-slide"><img src="<?= (($image = getData(\'750x750\')) ? $image : \'/images/index.php\') ?>"></div>'
+                                ]
+                            ) : '<div class="swiper-slide"><img src="/images/index.php"></div>'; ?>
                         </div>
                     </div>
 
