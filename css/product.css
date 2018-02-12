@@ -29,7 +29,7 @@
     z-index: 100;
     top: 0;
     height: 100%;
-    width: 100px;
+    width: 50%;
     opacity: 0.3;
     transition: all 0.5s;
 }
@@ -42,13 +42,14 @@
 .slider-prev {
     left: 0;
     background: url(../images/icons/slider-prev.png) no-repeat center;
+    background-position: 5% 50%;
 }
 
 .slider-next {
     right: 0;
     background: url(../images/icons/slider-next.png) no-repeat center;
+    background-position: 95% 50%;
 }
-
 .close-button {
     cursor: pointer;
     position: absolute;
