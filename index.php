@@ -486,6 +486,6 @@
     <div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->s
-<script src="/system/extensions/webApp/js/app.js"></script>
+<script src="/system/extensions/webApp/js/app.js" defer></script>
 </body>
 </html>
