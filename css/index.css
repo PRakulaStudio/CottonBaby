@@ -769,6 +769,7 @@
 .img-slider .swiper-button {
     width: 100%;
     text-align: center;
+    -webkit-user-select: none;
 }
 
 .img-slider .swiper-button img{
