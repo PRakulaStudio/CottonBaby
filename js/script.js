@@ -103,7 +103,7 @@ function  lazyLoad(){
 // !function(window){
 //    
 // }(this);
-
+lazyLoad();
 
 
 window.onscroll = function(){

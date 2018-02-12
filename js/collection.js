@@ -138,8 +138,7 @@
     }
 
     document.addEventListener('click' , function(event){
-        if( event.target.tagName == "BUTTON"  && event.target.parentNode.classList.contains('title') ||
-            ( event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTON" &&  event.target.closest('div.title')) )
+        if( ( event.target.tagName == "IMG" || event.target.tagName == "BUTTON") &&  event.target.closest('div.title') )
         {
             let button = event.target;
             if( event.target.tagName == "IMG" )
