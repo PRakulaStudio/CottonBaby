@@ -33,6 +33,11 @@
 
         <section class="content">
 
+            <div class="search">
+                <input type="search" placeholder="поиск">
+                <button type="submit"><img src="/images/icons/search.png"></button>
+            </div>
+
             <? if (getData('count') > 0): ?>
 
                 <div class="sorting">

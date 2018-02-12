@@ -485,7 +485,7 @@
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
-<!-- /Yandex.Metrika counter -->
-<script src="/js/webApp/pwabuilder-sw-register.js"></script>
+<!-- /Yandex.Metrika counter -->s
+<script src="/pwabuilder-sw-register.js?ver=2"></script>
 </body>
 </html>
