@@ -340,6 +340,7 @@
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
 }
 
 .card-text a{
