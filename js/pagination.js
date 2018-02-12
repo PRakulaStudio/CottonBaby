@@ -457,15 +457,14 @@ function createItems(items , is_show_favorite)
                         '</div>';
 
         html += "<div class='card' data-catalog-item-id='"+item.id+"'>" +
-                     "<div class='card-img'><a href='"+item.href+"'>"+spinner+"</div>"; //картинка
+                     "<div class='card-img'><a href='"+item.href+"'>"+spinner+"</a></div>"; //картинка
         if( item.price )
              html +=  "<div class='card-price'><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>"; //цена
 
         if( is_show_favorite )
              html += "<div class='card-favorites'></div>"; // избранное
         html += "<div class='card-text'>" +
-                     "<a href='"+item.href+"'>"+item.title+"</a>" +
-                         "<p>"+(item.description == null ? "" : item.description)+"</p>" +
+                     "<p>"+(item.description == null ? "" : item.description)+"</p>" +
                  "</div>" +
                  "<div class='card-link'>" +
                     "<a href='"+item.href+"'>" +
