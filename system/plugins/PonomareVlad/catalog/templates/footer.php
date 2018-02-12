@@ -81,3 +81,5 @@
 <script type="text/javascript" src="/js/simplebar.js?ver=2" defer></script>
 <script type="text/javascript" src="/js/animated-scroll-to.js?ver=2" defer></script>
 <script type="text/javascript" src="/js/script.js?ver=2" defer></script>
+
+<script src="/system/extensions/webApp/js/app.js"></script>
