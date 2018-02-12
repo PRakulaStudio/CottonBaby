@@ -46,6 +46,22 @@ ol, ul {
 }
 /* end */
 
+/* dispay none*/
+.d-none {
+    display: none !important;
+}
+/* end */
+
+/* overflow none*/
+.disabled-overflow-y {
+    overflow-y: hidden;
+}
+
+.disabled-overflow-x {
+    overflow-x: hidden;
+}
+/* end */
+
 /* up */
 .scrollup {
     position: fixed;
@@ -189,7 +205,7 @@ ol, ul {
 
 .block-empty {
     display: none;
-    width: 99%;
+    width: 98%;
     margin: auto;
     border-radius: 5px;
     background: #F0F0F0;
@@ -197,9 +213,9 @@ ol, ul {
 
 .block-empty p{
     width: 100%;
-    padding: 5px 20px;
+    padding: 20px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 30px;
     color: #b6b6b6;
 }
 /* content */

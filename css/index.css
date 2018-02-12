@@ -412,7 +412,7 @@
 /* cooperation */
 .content-cooperation {
     width: 100%;
-    height: 500px;
+    height: 550px;
     margin: auto auto 50px auto;
     position: relative;
     overflow: hidden;
@@ -438,7 +438,7 @@
 .coop-box {
     position: relative;
     max-width: 1080px;
-    height: 500px;
+    height: 550px;
     margin: 0 auto;
 }
 
@@ -476,7 +476,7 @@
 
 .coop-box .coop-text {
     width: 100%;
-    margin: 20px auto;
+    margin: 15px auto;
 }
 
 .coop-box .coop-text p{
@@ -487,7 +487,12 @@
     color: #FFFFFF;
 }
 
-.coop-box a{
+.coop-box .coop-text a{
+    text-decoration: none;
+    color: #F64733;
+}
+
+.coop-link a{
     display: block;
     width: 200px;
     height: 50px;
@@ -505,13 +510,13 @@
     transition: background-position 1s;
 }
 
-.coop-box a img{
+.coop-link a img{
     width: 25px;
     margin: 0 5px 0 0;
     vertical-align: text-bottom;
 }
 
-.coop-box a:hover{
+.coop-link a:hover{
     background-position: 0 0;
 }
 /* cooperation end */

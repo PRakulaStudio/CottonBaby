@@ -12,6 +12,7 @@ galleryTop.controller.control = galleryThumbs;
 galleryThumbs.controller.control = galleryTop;
 
 var galleryTop = new Swiper('.fullscreen', {
+      loop: true,
       spaceBetween: 10,
       navigation: {
         nextEl: '.slider-next',
