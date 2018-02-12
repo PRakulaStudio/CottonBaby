@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="manifest" href="manifest.json"/>
 </head>
 <body class="showPrice">
 <div class="scrollup"></div>
@@ -317,11 +318,21 @@
     <section class="img-slider">
         <div class="swiper-container swiper-prod">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/pictures/p1.jpg"></div>
-                <div class="swiper-slide"><img src="images/pictures/p2.jpg"></div>
-                <div class="swiper-slide"><img src="images/pictures/p3.jpg"></div>
-                <div class="swiper-slide"><img src="images/pictures/p4.jpg"></div>
-                <div class="swiper-slide"><img src="images/pictures/p5.jpg"></div>
+                <div class="swiper-slide"><img
+                            src="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/p1.jpg', 500, 500]); ?>">
+                </div>
+                <div class="swiper-slide"><img
+                            src="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/p2.jpg', 500, 500]); ?>">
+                </div>
+                <div class="swiper-slide"><img
+                            src="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/p3.jpg', 500, 500]); ?>">
+                </div>
+                <div class="swiper-slide"><img
+                            src="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/p4.jpg', 500, 500]); ?>">
+                </div>
+                <div class="swiper-slide"><img
+                            src="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/p5.jpg', 500, 500]); ?>">
+                </div>
             </div>
         </div>
 
@@ -360,7 +371,8 @@
         <div class="insta-block">
             <div class="insta-text">
                 <p>Подпишись на наш инстаграм</p>
-                <a target="_blank" href="https://www.instagram.com/cot.ton_baby/">подпишись<img src="images/icons/arrow-link.svg"></a>
+                <a target="_blank" href="https://www.instagram.com/cot.ton_baby/">подпишись<img
+                            src="images/icons/arrow-link.svg"></a>
             </div>
         </div>
 
@@ -474,5 +486,6 @@
     <div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
+<script src="/js/webApp/pwabuilder-sw-register.js"></script>
 </body>
 </html>
