@@ -143,20 +143,21 @@ function changePagination(direction , activeButton , clickButton )
             if( (clickButton.getAttribute('data-page')   <= 2) || (countPages - 1) <= clickButton.getAttribute('data-page') )
             {
 
-                if( (indexInParent(clickButton) - indexInParent(activeButton) != 1) && clickButton.getAttribute('data-page') < ( countPages - 1 )  )
+                if( (indexInParent(clickButton) - indexInParent(activeButton) != 1) && countPages > 4 )
                 {
+                    if( clickButton.getAttribute('data-page') <= countPages - 1)
+                    {
+                        clickButton = clickButton.previousElementSibling;
+                        setPaginationValue(clickButton ,  parseInt( clickButton.getAttribute('data-page') ) + 1  );
 
-                    clickButton = clickButton.previousElementSibling;
-                    setPaginationValue(clickButton ,  parseInt( clickButton.getAttribute('data-page') ) + 1  );
+                        let listButtons = Array.prototype.filter.call(clickButton.parentNode.children, function(child){
+                            return child !== clickButton;
+                        });
 
-                    let listButtons = Array.prototype.filter.call(clickButton.parentNode.children, function(child){
-                        return child !== clickButton;
-                    });
-
-                    listButtons.each( function (current) {
-                        setPaginationValue(current , parseInt(current.getAttribute('data-page')) + 1 );
-                    });
-
+                        listButtons.forEach( function (current) {
+                            setPaginationValue(current , parseInt(current.getAttribute('data-page')) + 1 );
+                        });
+                    }
                 }
 
                 activeButton.classList.remove(activePaginationButton);
