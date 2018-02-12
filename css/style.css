@@ -40,6 +40,14 @@ ol, ul {
     outline: 0
 }
 
+.disabled-overflow-y {
+    overflow-y: hidden;
+}
+
+.disabled-overflow-x {
+    overflow-x: hidden;
+}
+
 /* dispay none*/
 .d-none {
     display: none !important;
@@ -188,7 +196,7 @@ ol, ul {
 }
 
 .block-empty {
-    width: 99%;
+    width: 98%;
     margin: auto;
     border-radius: 5px;
     background: #F0F0F0;
@@ -196,9 +204,9 @@ ol, ul {
 
 .block-empty p{
     width: 100%;
-    padding: 5px 20px;
+    padding: 20px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 30px;
     color: #b6b6b6;
 }
 /* content */
@@ -1493,5 +1501,57 @@ ol, ul {
     .footer-phone {margin: 10px 0 0 0;}
     .footer-top-networks{position: absolute;}
     .footer-bot p {text-align: right; margin: auto 10px auto auto;}
+}
+
+.site-error {
+    width: 100%;
+    height: 100vh;
+    background: #FFFFFF url(../images/size.jpg) no-repeat center;
+}
+
+.error-block {
+    max-width: 550px;
+    min-width: 300px;
+    margin: 10% auto auto auto;
+    padding: 10px;
+}
+
+.error-title, .error-text, .error-link {
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+
+.error-link {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-title p{
+    font-size: 50px;
+    color: #FFFFFF;
+}
+
+.error-text p{
+    font-size: 25px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+
+.error-link a{
+    display: block;
+    padding: 5px 10px;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    color: #FFFFFF;
+    transition: all 0.5s;
+}
+
+.error-link a:hover{
+    transition: all 0.5s;
+    background: #F71E02;
+    color: #FFFFFF;
 }
 /* media end*/

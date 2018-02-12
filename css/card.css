@@ -1,4 +1,6 @@
 /* title */
+@import "iSpinner.css";
+
 .title button{
     cursor: pointer;
     border-radius: 25px;
@@ -163,6 +165,42 @@
     background: #F0F0EE;
 }
 /* sorting end */
+
+/* search */
+.search {
+    width: 98%;
+    margin: 10px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    background: #F0F0F0;
+}
+
+.search button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 25px;
+    height: 25px;
+}
+
+.search button img{
+    width: 25px;
+    height: 25px;
+}
+
+.search input{
+    width: 100%;
+    margin: 0 20px 0 0;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #D8DEE1;
+    padding: 0 0 5px 0;
+    font-size: 16px;
+    color: #333333;
+}
+/* search end */
 
 /* catalog */
 .card-box {

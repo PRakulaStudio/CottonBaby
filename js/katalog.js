@@ -151,10 +151,11 @@
        //     }
        // }
 
-       if( event.target.tagName == "BUTTON" && event.target.parentNode.classList.contains('title-catalog'))
+       if( ( event.target.tagName == "BUTTON" || event.target.tagName == "IMG" ) && event.target.closest('div.title-catalog') )
        {
            changeCategoryButton();
        }
+
    });
 
 

@@ -13,7 +13,6 @@
         <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
         <link rel="stylesheet" type="text/css" href="/css/product.css"/>
     </head>
     <body class="">
