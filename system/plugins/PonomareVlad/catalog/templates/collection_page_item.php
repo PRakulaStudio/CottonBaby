@@ -19,7 +19,7 @@
                         <div class="ispinner__blade"></div>
                     </div>
                 <? else: ?>
-                    <img src="<?= ($image = getData('images')) && $image != '' ? $image : '/images/index.php' ?>">
+                    <img src="<?= ($image = getData('images')) && $image != '' ? $image['750x750'] : '/images/index.php' ?>">
                 <? endif; ?>
             </a>
         </div>
