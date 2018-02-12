@@ -401,8 +401,7 @@
             });
     }
 
-    function requestCheck( payment_method  )
-    {
+    function requestCheck( payment_method ){
         let data = new FormData();
 
 
@@ -462,8 +461,7 @@
     }
 
     //отправка заказа на оформление
-    function requestSendOrder()
-    {
+    function requestSendOrder(){
         document.querySelector('.content-error').classList.add('d-none');
         return fetch( window.pms.config.cabinetAPI+'order/save' , { method: 'POST', credentials: 'same-origin'})
             .then( response => {
@@ -504,8 +502,7 @@
             });
     }
 
-    function setUserData(button , fields)
-    {
+    function setUserData(button , fields){
         var data = new FormData();
 
         if(fields['delivery_city'] && fields['index_number'] && fields['address']  )
@@ -556,8 +553,7 @@
             });
     }
 
-    function changeNewTotalPrice(input)
-    {
+    function changeNewTotalPrice(input){
 
         let price = parseInt( input.closest('div.basket-product').querySelectorAll('span')[0].innerText.replace('руб.', "").replace(/\s*/g,''));
         let totalPrice = 0;
@@ -581,6 +577,7 @@
         checkButtons();
 
     }
+
 
     document.addEventListener('keyup' , function (event) {
         if( event.target.tagName == "INPUT" && event.target.closest('div.basket-container'))
@@ -699,7 +696,9 @@
             return;
         }
 
-        if( event.target.tagName == "IMG"  && event.target.parentNode.classList.contains('popup-close') && event.target.closest('#thanks'))
+		if( ((event.target.tagName == "IMG" && event.target.parentNode.classList.contains('popup-close') ||
+            (event.target.tagName == "BUTTON" &&  event.target.classList.contains('popup-close') ))
+            && event.target.closest('#thanks')) )
         {
             let storage = JSON.parse(localStorage.getItem('user'));
             storage['cartCount'] = 0;

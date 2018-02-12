@@ -7,12 +7,12 @@
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 	<meta name="format-detection" content="telephone=no">
-	<meta property="og:image" content="images/repost.png">
+	<meta property="og:image" content="/images/repost.png">
 	<meta name="yandex-verification" content="f5f049cb38f1bf5c" />
-	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
-	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/info.css"/>
+	<link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/info.css"/>
 </head>
 <body>
 <div class="scrollup"></div>
@@ -32,13 +32,13 @@
 				<p>Компания</p>
 				<ul>
 					<li><a href="/">Главная</a></li>
-					<li><a href="information.html">О нас</a></li>
+					<li><a href="/information.html">О нас</a></li>
 					<li><a href="/catalog/">Каталог</a></li>
 					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="cooperation.html">Сотрудничество</a></li>
-					<li><a href="production.html">Наше производство</a></li>
-					<li><a href="delivery.html">Доставка и оплата</a></li>
-					<li><a href="contacts.html">Контакты</a></li>
+					<li><a href="/cooperation.html">Сотрудничество</a></li>
+					<li><a href="/production.html">Наше производство</a></li>
+					<li><a href="/delivery.html">Доставка и оплата</a></li>
+					<li><a href="/contacts.html">Контакты</a></li>
 				</ul>
 			</div>
 
@@ -109,7 +109,7 @@
 
 		<div class="header-info">
 			<div>
-				<a href="/"><img src="images/logo.png"></a>
+				<a href="/"><img src="/images/logo.png"></a>
 			</div>
 
 			<div>
@@ -121,16 +121,17 @@
 
 		<div class="header-user">
 			<div data-insta>
-				<a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a>
-				<div class="sub"><div><a href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
+				<a target="_blank" href="https://www.instagram.com/cot.ton_baby/"><img src="/images/icons/insta.png"></a>
+				<div class="sub"><div><a target="_blank" href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
 			</div>
-			<div data-basket><a href="#"><img src="images/icons/basket.png"><span>0</span></a></div> 			<div data-favorite ><a href="#"><img src="images/icons/favorites.png"><span>0</span></a></div>
+			<div data-basket><a href="#"><img src="/images/icons/basket.png"><span>0</span></a></div>
+			<div data-favorite ><a href="#"><img src="/images/icons/favorites.png"><span>0</span></a></div>
 			<div data-auth>
 
-				<button><img src="images/icons/user.png"><span>Войти</span></button>
+				<button><img src="/images/icons/user.png"><span>Войти</span></button>
 
 				<div class="authorization" id="authorization">
-					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<button class="popup-close"><img src="/images/icons/close.png"></button>
 					<p>Авторизация</p>
 					<form>
 						<div>
@@ -147,7 +148,7 @@
 				</div>
 
 				<div class="exit" id="exit">
-					<button class="popup-close"><img src="images/icons/close.png"></button>
+					<button class="popup-close"><img src="/images/icons/close.png"></button>
 					<div>
 						<a href="/cabinet.html">Личный кабинет</a>
 						<button>Выйти</button>
@@ -176,30 +177,20 @@
 		<div class="info-img">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="images/pictures/p1.jpg"></div>
-					<div class="swiper-slide"><img src="images/pictures/p2.jpg"></div>
-					<div class="swiper-slide"><img src="images/pictures/p3.jpg"></div>
-					<div class="swiper-slide"><img src="images/pictures/p4.jpg"></div>
-					<div class="swiper-slide"><img src="images/pictures/p5.jpg"></div>
+					<div class="swiper-slide"><img class="lazy" src="/images/blank.gif" data-src="/images/pictures/p1.jpg"></div>
+					<div class="swiper-slide"><img class="lazy" src="/images/blank.gif" data-src="/images/pictures/p2.jpg"></div>
+					<div class="swiper-slide"><img class="lazy" src="/images/blank.gif" data-src="/images/pictures/p3.jpg"></div>
+					<div class="swiper-slide"><img class="lazy" src="/images/blank.gif" data-src="/images/pictures/p4.jpg"></div>
+					<div class="swiper-slide"><img class="lazy" src="/images/blank.gif" data-src="/images/pictures/p5.jpg"></div>
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
 		</div>
 
 		<div class="swiper-button">
-			<button class="swiper-button-prev"><img src="images/icons/back.svg"></button>
-			<button class="swiper-button-next"><img src="images/icons/next.svg"></button>
+			<button class="swiper-button-prev"><img src="/images/icons/back.svg"></button>
+			<button class="swiper-button-next"><img src="/images/icons/next.svg"></button>
 		</div>
-
-		<div class="title">
-			<h2>Видео с производства:</h2>
-		</div>
-
-		<!--<div class="info-video">-->
-			<!--<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>-->
-
-			<!--<iframe src="https://www.youtube.com/embed/wmnh4xAIF8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>-->
-		<!--</div>-->
 
 		<div class="content-text">
 			<p>Наша компания на протяжении 8 лет занималась розничной торговлей детской одежды мировых марок.</p>
@@ -240,7 +231,7 @@
 				</div>
 
 				<div class="footer-top-networks">
-					<button><a href="https://www.instagram.com/cot.ton_baby/"><img src="images/icons/insta.png"></a></button>
+					<button><a target="_blank" href="https://www.instagram.com/cot.ton_baby/"><img src="/images/icons/insta.png"></a></button>
 					<!-- <button><img src="images/icons/fb.png"></button> -->
 					<!-- <button><img src="images/icons/vk.png"></button> -->
 				</div>
@@ -253,11 +244,11 @@
 	</div>
 <!-- footer end -->
 
-<script type="text/javascript" src="js/simplebar.js" defer></script>
-<script type="text/javascript" src="js/animated-scroll-to.js" defer></script>
-<script type="text/javascript" src="js/script.js" defer></script>
-<script type="text/javascript" src="js/swiper.min.js" defer></script>
-<script type="text/javascript" src="js/production.js" defer></script>
+<script type="text/javascript" src="/js/simplebar.js" defer></script>
+<script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
+<script type="text/javascript" src="/js/script.js" defer></script>
+<script type="text/javascript" src="/js/swiper.min.js" defer></script>
+<script type="text/javascript" src="/js/production.js" defer></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
 	(function (d, w, c) {

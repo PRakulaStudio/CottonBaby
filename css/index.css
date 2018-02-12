@@ -417,7 +417,7 @@
 /* cooperation */
 .content-cooperation {
     width: 100%;
-    height: 500px;
+    height: 550px;
     margin: auto auto 50px auto;
     position: relative;
     overflow: hidden;
@@ -443,7 +443,7 @@
 .coop-box {
     position: relative;
     max-width: 1080px;
-    height: 500px;
+    height: 550px;
     margin: 0 auto;
 }
 
@@ -481,7 +481,7 @@
 
 .coop-box .coop-text {
     width: 100%;
-    margin: 20px auto;
+    margin: 15px auto;
 }
 
 .coop-box .coop-text p{
@@ -492,33 +492,38 @@
     color: #FFFFFF;
 }
 
-.coop-box a{
-    display: block;
-    width: 200px;
-    height: 50px;
-    margin: 0;
-    padding: 17px 0;
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-    text-decoration: none;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
+ .coop-box .coop-text a{
+     text-decoration: none;
+     color: #F64733;
+ }
 
-.coop-box a img{
-    width: 25px;
-    margin: 0 5px 0 0;
-    vertical-align: text-bottom;
-}
+ .coop-link a{
+     display: block;
+     width: 200px;
+     height: 50px;
+     margin: 0;
+     padding: 17px 0;
+     border-radius: 25px;
+     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+     text-decoration: none;
+     text-align: center;
+     font-size: 16px;
+     text-transform: uppercase;
+     color: #FFFFFF;
+     background-size: auto 150%;
+     background-position: 0 100%;
+     transition: background-position 1s;
+ }
 
-.coop-box a:hover{
-    background-position: 0 0;
-}
+ .coop-link a img{
+     width: 25px;
+     margin: 0 5px 0 0;
+     vertical-align: text-bottom;
+ }
+
+ .coop-link a:hover{
+     background-position: 0 0;
+ }
 /* cooperation end */
 
 /* production */
@@ -769,6 +774,7 @@
 .img-slider .swiper-button {
     width: 100%;
     text-align: center;
+    -webkit-user-select: none;
 }
 
 .img-slider .swiper-button img{

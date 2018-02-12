@@ -6,7 +6,9 @@ try {
     ( function () {
         document.querySelector('div.price-min').classList.remove('d-none');
 
+
         let currentItem = window.pms.plugins.catalog.currentItem,
+            body =  document.querySelector('body'),
             loadItems = true;
 
         var css = {
@@ -68,7 +70,10 @@ try {
             spaceBetween: 10,
         }).on('click' , function(swiper){
             try{
+                body.classList.add('disabled-overflow-x');
+                body.classList.add('disabled-overflow-y');
                 document.querySelector('.slider-fullscreen').classList.add('fullscreen');
+                console.log( galleryThumbs.activeIndex );
                 galleryTop.slideTo(galleryThumbs.activeIndex, 0);
             }
             catch(error)
@@ -455,9 +460,18 @@ try {
                 }
             }
 
+            //закрытие окна с fullscreen слайдером
             if(event.target.tagName == "SPAN" && event.target.classList.contains('close-button'))
             {
                 document.querySelector('.slider-fullscreen').classList.remove('fullscreen');
+                body.classList.remove('disabled-overflow-y');
+                body.classList.remove('disabled-overflow-x');
+                return;
+            }
+
+            if(event.target.classList.contains('swiper-slide') || event.target.closest('.swiper-slide'))
+            {
+                galleryTop.slideNext(300);
                 return;
             }
 
@@ -493,13 +507,18 @@ try {
         }
 
         document.querySelector('.fullscreen .swiper-wrapper').innerHTML = slidersFullscreen;
+
         var galleryTop = new Swiper('.fullscreen', {
             spaceBetween: 10,
+            slideToClickedSlide: true,
+            touchEventsTarget : 'container',
             navigation: {
                 nextEl: '.slider-next',
                 prevEl: '.slider-prev',
             },
-        });
+        })
+
+
 
 
 
@@ -516,7 +535,7 @@ function isError(e){
 }
 
 function requestSendBugs(error) {
-    console.log(error);
+
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
