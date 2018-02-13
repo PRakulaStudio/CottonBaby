@@ -246,8 +246,8 @@ try {
                         if(response.status)
                         {
                             //нужно раскомментить
-                            // if( yaCounter47500810 )
-                            //     yaCounter47500810.reachGoal('add_card');
+                            if( yaCounter47500810 )
+                                yaCounter47500810.reachGoal('add_card');
                            
                             document.querySelector('div.product-size').style.display = "none";
                             //скрываем кнопку "В корзину"

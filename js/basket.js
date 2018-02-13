@@ -481,8 +481,8 @@
                 if( response.status)
                 {
                     //нужно раскомментить
-                    //if(yaCounter47500810)
-                    //yaCounter47500810.reachGoal('buy')
+                    if(yaCounter47500810)
+                         yaCounter47500810.reachGoal('buy')
                     document.querySelector('#popup-fon').style.display = "block";
                     document.querySelector('div.basket-order button[action="save-order"]').remove();
                     if( localStorage.getItem('user') )
