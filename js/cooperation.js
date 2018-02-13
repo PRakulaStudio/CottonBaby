@@ -65,17 +65,31 @@ document.addEventListener('click' , function(event){
             });
 
             blockForm.querySelectorAll('input, textarea').forEach( function (field) {
-                if( field.getAttribute('name') == "phone" && !checkPhone(field.value) ){
+                if( field.value == "" )
+                {
                     field.classList.add('input-error');
                     sendRequest = false;
                     return;
                 }
 
-                if( field.getAttribute('name') == "message" && field.value == ""){
+                if(field.getAttribute('name') == "mail" && !checkEmail(field.value))
+                {
                     field.classList.add('input-error');
                     sendRequest = false;
                     return;
                 }
+
+                if(!field.getAttribute('name') == "phone" && checkPhone(field.value) ){
+                    field.classList.add('input-error');
+                    sendRequest = false;
+                    return;
+                }
+
+                // if( field.getAttribute('name') == "message" && field.value == ""){
+                //     field.classList.add('input-error');
+                //     sendRequest = false;
+                //     return;
+                // }
 
                 fieldsData[ field.getAttribute('name')] = field.value;
             });
