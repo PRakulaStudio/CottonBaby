@@ -481,17 +481,77 @@ function eventAuth()
 
 document.addEventListener('click' , function (event) {
 
+
+   //нажатие на кнопку "В избранное"
    if(event.target.tagName == "BUTTON" && ( event.target.classList.contains('new-on') || event.target.classList.contains('new-off')  ) )
    {
        eventChangeFavorites(event.target);
        return;
    }
-
+    //нажатие на иконку лупу и переадресация на страницу с результатом поиска
     if(event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu'))
     {
         window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
         return;
     }
+
+    //авторизация
+    if(event.target.tagName == "BUTTON" && event.target.closest('#authorization') )
+    {
+        eventAuth();
+        return;
+    }
+
+    //разлогирование
+    if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
+    {
+        requestLogout();
+        return;
+    }
+
+    //скролл документа на самый верх
+    if(event.target.tagName == "DIV" && event.target.classList.contains('scrollup'))
+    {
+        animateScrollTo(0);
+        return;
+    }
+
+    //показываем окно с авторизацие или переход на личный кабинет
+    if( (event.target.tagName == "SPAN" &&  event.target.parentNode.parentNode.hasAttribute('data-auth') )
+        || ( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-auth') )
+        || (event.target.tagName == "IMG" && event.target.parentNode.parentNode.hasAttribute('data-auth') )
+    )
+    {
+        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
+        return;
+    }
+
+
+    if( event.target.getAttribute('id') != 'authorization' && !event.target.closest('#authorization') )
+    {
+        if(  document.querySelector('#authorization'))
+            document.querySelector('#authorization').style.display = 'none';
+    }
+
+    if( event.target.getAttribute('id') != 'exit' && !event.target.closest('#exit')  )
+    {
+        if(  document.querySelector('#exit'))
+            document.querySelector('#exit').style.display = 'none';
+    }
+
+    //нажатие на крестик у окна авторизации или у кона с переходом в личный кабинет
+    if( ((event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON" && event.target.parentNode.classList.contains('popup-close') ) ||
+        (event.target.tagName == "BUTTON" && event.target.classList.contains('popup-close')) ) &&
+        (event.target.closest('#authorization') || event.target.closest('#exit') )
+       )
+    {
+        if(  document.querySelector('#authorization'))
+            document.querySelector('#authorization').style.display = 'none';
+        if(  document.querySelector('#exit'))
+            document.querySelector('#exit').style.display = 'none';
+        return;
+    }
+
     //закрытие модальных окошек
     if( (event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON"
         && event.target.parentNode.classList.contains('popup-close')
@@ -504,35 +564,7 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
-    //показываем окно с авторизацие или переход на личный кабинет
-    if( (event.target.tagName == "SPAN" &&  event.target.closest('[data-auth]') )
-        || ( event.target.tagName == "BUTTON" && event.target.parentNode.hasAttribute('data-auth') )
-        || (event.target.tagName == "IMG" && event.target.closest('[data-auth]') )
-      )
-    {
-        event.target.closest('[data-auth]').querySelectorAll('div')[0].style.display = "block";
-        return;
-    }
 
-
-    if(event.target.tagName == "BUTTON" && event.target.closest('#exit'))
-    {
-        requestLogout();
-        return;
-    }
-
-    if(event.target.tagName == "BUTTON" && event.target.closest('#authorization') )
-    {
-        eventAuth();
-        return;
-    }
-
-    //скролл документа на самый верх
-    if(event.target.tagName == "DIV" && event.target.classList.contains('scrollup'))
-    {
-        animateScrollTo(0);
-        return;
-    }
 
     //скрытие блока меню, если кликнули не на этот блок
     if(!event.target.closest('div.menu-popup') && !( event.target.tagName == "BUTTON" && event.target.classList.contains('menu-on')) )
@@ -558,18 +590,7 @@ document.addEventListener('keydown' , function (event) {
 });
 
 document.addEventListener('mousedown' , function (event) {
-    if( event.target.getAttribute('id') != 'authorization' && !event.target.closest('#authorization') )
-    {
-        if(  document.querySelector('#authorization'))
-            document.querySelector('#authorization').style.display = 'none';
-    }
 
-
-    if( event.target.getAttribute('id') != 'exit' && !event.target.closest('#exit')  )
-    {
-        if(  document.querySelector('#exit'))
-            document.querySelector('#exit').style.display = 'none';
-    }
 
 });
 

@@ -89,10 +89,21 @@ try{
 		document.addEventListener('click' , function(event){
 			try{
 
-				if( event.target.tagName == "DIV" && event.target.closest('div.popup-fon'))
-				{
-					PopUpHidePopup();
-				}
+			if( (event.target.tagName == "IMG" && event.target.closest('button.popup-close') )  ||
+				( event.target.tagName == "BUTTON" && event.target.classList.contains('popup-close') ) ||
+				(event.target.tagName == "DIV" && event.target.closest('div.popup-fon'))
+			  )
+			{
+				PopUpHidePopup();
+				//alert("Тут будет новая логика закрытия popup");
+			}
+
+			//	if( event.target.tagName == "DIV" && event.target.closest('div.popup-fon'))
+			//	{
+			//		
+			//	}
+
+
 
 				if( event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "button" && event.target.closest('div.contacts-form'))
 				{
@@ -106,13 +117,21 @@ try{
 					});
 
 					blockForm.querySelectorAll('input, textarea').forEach( function (field) {
-						if( field.getAttribute('name') == "phone" && !checkPhone(field.value) ){
+						if( field.value == "" )
+						{
 							field.classList.add('input-error');
 							sendRequest = false;
 							return;
 						}
 
-						if( field.getAttribute('name') == "message" && field.value == ""){
+						if(field.getAttribute('name') == "mail" && !checkEmail(field.value))
+						{
+							field.classList.add('input-error');
+							sendRequest = false;
+							return;
+						}
+
+						if(!field.getAttribute('name') == "phone" && checkPhone(field.value) ){
 							field.classList.add('input-error');
 							sendRequest = false;
 							return;
@@ -125,8 +144,6 @@ try{
 					if( sendRequest )
 						requestSendFeedback( fieldsData );
 
-					return;
-					//requestSendFeedback();
 				}
 			}
 			catch(error)
