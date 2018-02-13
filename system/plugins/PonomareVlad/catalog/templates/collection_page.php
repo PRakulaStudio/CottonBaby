@@ -56,7 +56,7 @@
             </div>
 
             <div class="card-box">
-                <?= getData('items', 'collection_page_item'); ?>
+                <?= getData('items', 'catalog_item'); ?>
 
             </div>
 

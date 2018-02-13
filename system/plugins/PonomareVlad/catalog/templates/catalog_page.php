@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-box">
-                <?= getData('items', 'catalog_page_item'); ?>
+                <?= getData('items', 'catalog_item'); ?>
             </div>
 
             <div class="pagination">

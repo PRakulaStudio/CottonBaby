@@ -98,7 +98,7 @@ try {
         var swiper = new Swiper('.swiper', {
             slidesPerView: 3,
             slidesPerGroup: 1,
-            spaceBetween: 30,
+            spaceBetween: 40,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',

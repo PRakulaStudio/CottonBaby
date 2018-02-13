@@ -29,7 +29,7 @@ try {
 	});
 	let swiper_new = new Swiper('.swiper-new', {
 		slidesPerView: 4,
-		spaceBetween: 30,
+        spaceBetween: 40,
 		navigation: {
 			nextEl: '.new-next',
 			prevEl: '.new-prev',

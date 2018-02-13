@@ -188,7 +188,9 @@
     position: absolute;
     width: 1400px;
     height: 100%;
-    padding: 5px 0 0 5px;
+    /*padding: 5px 0 0 5px;*/
+    padding: 5px 20px;
+    padding-bottom: 25px;
 }
 
 .new-slider .swiper-slide {
@@ -235,92 +237,173 @@
 }
 
 .card {
+    /*position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0 0 20px 0;*/
+
+    display: block;
     position: relative;
     width: 100%;
     height: 500px;
     margin: 0 0 20px 0;
-}
-
-.card:hover img{
-    cursor: pointer;
-    height: 530px;
-    /*-webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);*/
-}
-
-.card:hover .card-text {
-    height: 150px;
-}
-
-.card:hover .card-text p{
-    transition: all 1s;
-    color: #000000;
-}
-
-.card-img{
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-    -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
-}
-
-.card-img a{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
     z-index: 1;
-}
-
-.card-img img{
-    width: 100%;
-    height: 500px;
-    transition: all 1s;
-    object-fit: cover;
-    -o-object-fit: cover;
-}
-
-.card-price {
-    position: absolute;
-    z-index: 5;
-    width: 130px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    margin: 0 !important;
-    padding: 0 5px;
-    background: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
     border-radius: 20px;
-    display: none;
+    box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.12);
+    background: #ffffff;
 }
 
-.card-price p{
-    width: 100%;
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-}
+ /*.card:hover img{
+     cursor: pointer;
+     height: 530px;
+     !*-webkit-transform: scale(1.2);
+     -moz-transform: scale(1.2);
+     -o-transform: scale(1.2);*!
+ }
 
-.card-price span:nth-child(2){
-    display: none;
-}
+ .card:hover .card-text {
+     height: 150px;
+ }
 
-.card-favorites {
-    position: absolute;
-    z-index: 5;
-    width: 40px;
-    height: 40px;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border-radius: 20px;
-    border: 10px;
-}
+ .card:hover .card-text p{
+     transition: all 1s;
+     color: #000000;
+ }
+
+ .card-img{
+     width: 100%;
+     height: 500px;
+     margin: auto;
+     overflow: hidden;
+     -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+ }
+
+ .card-img a{
+     position: relative;
+     display: block;
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+     z-index: 1;
+ }
+
+ .card-img img{
+     width: 100%;
+     height: 500px;
+     transition: all 1s;
+     object-fit: cover;
+     -o-object-fit: cover;
+ }
+
+ .card-price {
+     position: absolute;
+     z-index: 5;
+     width: 130px;
+     height: 40px;
+     top: 10px;
+     left: 10px;
+     margin: 0 !important;
+     padding: 0 5px;
+     background: rgba(255, 255, 255, 0.8);
+     border-radius: 20px;
+     display: none;
+ }
+
+ .card-price p{
+     width: 100%;
+     font-size: 16px;
+     line-height: 40px;
+     text-align: center;
+ }
+
+ .card-price span:nth-child(2){
+     display: none;
+ }
+
+ .card-favorites {
+     position: absolute;
+     z-index: 5;
+     width: 40px;
+     height: 40px;
+     top: 10px;
+     right: 10px;
+     background: none;
+     border-radius: 20px;
+     border: 10px;
+ }*/
+
+ .card > img {
+     position: relative;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: all .8s;
+     /*will-change: transform;*/
+ }
+
+ .card:hover > img {
+     transform: scale(1.2);
+ }
+
+ .card > .lazy {
+     position: absolute;
+     width: 24px;
+     height: 24px;
+     margin: 0;
+     padding: 0;
+     top: calc(50% - 12px);
+     left: calc(50% - 12px);
+ }
+
+ .card-price {
+     /*z-index: 5;
+     width: 130px;
+     height: 40px;
+     top: 10px;
+     left: 10px;
+     margin: 0 !important;
+     padding: 0 5px;
+     background: rgba(255, 255, 255, 0.8);
+     border-radius: 20px;*/
+
+     position: absolute;
+     display: block;
+     background: rgba(255, 255, 255, 0.7);
+     -webkit-backdrop-filter: saturate(200%) blur(20px);
+     top: 15px;
+     left: 15px;
+     padding: 10px;
+     border-radius: 15px;
+     line-height: 19px;
+     font-size: 19px;
+
+     /*display: none;*/
+ }
+
+ .card-favorites {
+     /*position: absolute;
+     z-index: 5;
+     width: 40px;
+     height: 40px;
+     top: 10px;
+     right: 10px;
+     background: none;
+     border-radius: 20px;
+     border: 10px;*/
+
+     position: absolute;
+     display: block;
+     top: 15px;
+     right: 15px;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+ }
 
 .card-favorites button{
     position: absolute;
@@ -348,7 +431,7 @@
  }
 
 .card-text {
-    position: absolute;
+    /*position: absolute;
     z-index: 5;
     width: 100%;
     height: 100px;
@@ -358,62 +441,108 @@
     background: rgba(255, 255, 255, 0.7);
     transition: all 1s;
     overflow: hidden;
-    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-}
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;*/
 
-.card-text a{
-    width: 100%;
-    height: 50px;
-    font-size: 18px;
-    line-height: 25px;
-}
-
-.card-text a:hover{
-    text-decoration: none;
-}
-
-.card-text p{
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    margin: 10px 0;
-    font-size: 16px;
-    line-height: 25px;
-    color: #000;
-    transition: all 1s;
-}
-
-.card-link {
     position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 40px;
+    width: 100%;
+    height: auto;
+    bottom: 0;
     left: 0;
-    right: 0;
-    bottom: -20px;
-    margin: 0 auto;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #8e8e93;
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: saturate(200%) blur(20px);
 }
 
-.card-link a{
-    display: inline-block;
-    width: 200px;
-    height: 40px; 
-    border-radius: 25px;
-    background: linear-gradient(to bottom, #FDC435, #F30330);
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background-size: auto 150%;
-    background-position: 0 100%;
-    transition: background-position 1s;
-}
+ /*.card-text a{
+     width: 100%;
+     height: 50px;
+     font-size: 18px;
+     line-height: 25px;
+ }
 
-.card-link a:hover{
-    background-position: 0 0;
-}
+ .card-text a:hover{
+     text-decoration: none;
+ }
+
+ .card-text p{
+     width: 100%;
+     height: 50px;
+     overflow: hidden;
+     margin: 10px 0;
+     font-size: 16px;
+     line-height: 25px;
+     color: #000;
+     transition: all 1s;
+ }
+
+ .card-link {
+     position: absolute;
+     z-index: 10;
+     width: 200px;
+     height: 40px;
+     left: 0;
+     right: 0;
+     bottom: -20px;
+     margin: 0 auto;
+ }
+
+ .card-link a{
+     display: inline-block;
+     width: 200px;
+     height: 40px;
+     border-radius: 25px;
+     background: linear-gradient(to bottom, #FDC435, #F30330);
+     text-align: center;
+     line-height: 40px;
+     font-size: 16px;
+     text-decoration: none;
+     text-transform: uppercase;
+     color: #FFFFFF;
+     background-size: auto 150%;
+     background-position: 0 100%;
+     transition: background-position 1s;
+ }
+
+ .card-link a:hover{
+     background-position: 0 0;
+ }*/
+
+ .card-text h3, .card-text h4 {
+     font-size: 24px;
+     line-height: 28px;
+     /*font-weight: bold;*/
+     font-weight: 400;
+     color: #000000;
+     padding-bottom: 10px;
+ }
+
+ .card-text p {
+     /*width: 100%;
+     height: 50px;
+     overflow: hidden;
+     margin: 10px 0;
+     font-size: 16px;
+     line-height: 25px;
+     color: #0000;
+     transition: all 1s;*/
+
+     color: inherit;
+     display: block;
+     opacity: 0;
+     height: auto;
+     max-height: 0;
+     transition: all .5s;
+ }
+
+ .card:hover .card-text p {
+     display: block;
+     max-height: 100px;
+     opacity: 1;
+ }
+
 /* new-slider end*/
 
 /* cooperation */
@@ -1000,6 +1129,12 @@
     .main-slider .swiper-button-next { display: none;}
     .main-slider .swiper-button-prev { display: none;}
     .main-slider .text {padding: 150px 0 100px 60px;}
+
+    .card-text p {
+        display: block;
+        max-height: 100px;
+        opacity: 1;
+    }
 }
 
 @media (max-width: 820px) {
@@ -1009,9 +1144,18 @@
 
 @media (max-width: 700px) {
     .content-new {flex-direction: column;}
-    .new, .new-slider {width: 98%; margin: 0 auto;}
+
+    .new, .new-slider {
+        width: 100%;
+        margin: 0 auto;
+    }
     .new-slider .swiper-button {text-align: center; margin: 15px auto;}
-    .new-slider .swiper-container {position: unset; width: 100%; padding: 0;}
+
+    .new-slider .swiper-container {
+        position: unset;
+        width: 100%;
+        margin: 20px 0;
+    }
     .new-slider .slide-off {display: none;}
 }
 
@@ -1029,4 +1173,10 @@
     .prod-box .prod-title div {width: 100%;}
     .prod-box .prod-title a {margin: 10px 10px 10px auto;}
 }
+
+ @media (max-width: 400px) {
+     .card {
+         height: 400px;
+     }
+ }
 /* media end */

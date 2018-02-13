@@ -1,1 +1,1 @@
-<?= getData('items', 'index_widget_item'); ?>
+<?= getData('items', 'catalog_slider_item'); ?>
