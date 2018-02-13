@@ -113,7 +113,7 @@
 
         <div class="header-info-index">
             <div>
-                <a href="/"><img src="/images/logo.png"></a>
+                <a href="/"><img src="/images/logo.svg"></a>
             </div>
 
             <div>
@@ -409,7 +409,7 @@
 <div class="footer">
     <div class="footer-top">
         <div class="footer-logo">
-            <a href="/"><img src="images/logo.png"></a>
+            <a href="/"><img src="images/logo.svg"></a>
         </div>
 
         <div class="footer-text">
