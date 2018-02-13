@@ -84,6 +84,7 @@
         if (!window.pms) window.pms = {};
         if (!pms.plugins) pms.plugins = {};
         if (!pms.plugins.catalog) pms.plugins.catalog = {};
+        pms.plugins.catalog.categories = <?=json_encode($GLOBALS['categories']);?>;
         pms.plugins.catalog.category = {};
         pms.plugins.catalog.category['<?=getData('id')?>'] =<?=getData(false, false, false, true)?>;
         pms.plugins.catalog.currentCategory = pms.plugins.catalog.category['<?=getData('id')?>'];

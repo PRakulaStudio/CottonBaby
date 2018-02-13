@@ -42,7 +42,7 @@
                 <?= getData('items', [
                     'id' => 'category_link',
                     'source' => '<a href="<?=getData(\'href\');?>" <?=(getData(\'id\')==$GLOBALS[\'currentCollectionId\'])?\'class="filter-activ"\':\'\'?>><?=getData(\'title\');?> <span><?=getData(\'count\');?></span></a>'
-                ], (getCatalogCollectionsById(['limit' => 8, 'show_count' => 'true', 'show_href' => true])['data'])); ?>
+                ], array_slice($GLOBALS['collections'], false, 8)/*(getCatalogCollectionsById(['limit' => 8, 'show_count' => 'true', 'show_href' => true])['data'])*/); ?>
             </div>
         </section>
 
@@ -82,6 +82,7 @@
         if (!window.pms) window.pms = {};
         if (!pms.plugins) pms.plugins = {};
         if (!pms.plugins.catalog) pms.plugins.catalog = {};
+        pms.plugins.catalog.collections = <?=json_encode($GLOBALS['collections']);?>;
         pms.plugins.catalog.collection = {};
         pms.plugins.catalog.collection['<?=getData('id')?>'] =<?=getData(false, false, false, true)?>;
         pms.plugins.catalog.currentCollection = pms.plugins.catalog.collection['<?=getData('id')?>'];

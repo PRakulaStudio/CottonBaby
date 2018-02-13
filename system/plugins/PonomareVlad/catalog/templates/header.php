@@ -25,55 +25,23 @@
 
             <div class="section marker">
                 <p>Каталог</p>
+                <?php $GLOBALS['categories'] = catalogChildCategories(['show_count' => 'true']); ?>
                 <ul>
-                    <!--<li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>-->
+                    <?= getData(false, [
+                        'id' => 'category_link',
+                        'source' => '<li><a href="<?=getData(\'href\');?>"><?=getData(\'title\');?> (<?=getData(\'count\');?>)</a></li>'
+                    ], $GLOBALS['categories']); ?>
                 </ul>
             </div>
 
             <div class="section marker">
                 <p>Коллекции</p>
+                <?php $GLOBALS['collections'] = getCatalogCollectionsById(['show_count' => 'true', 'show_href' => true])['data']['items']; ?>
                 <ul>
-                    <!--<li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>
-                    <li><a href="#">Комбинезон на манжете (6)</a></li>
-                    <li><a href="#">Шапки</a></li>
-                    <li><a href="#">Штаны</a></li>
-                    <li><a href="#">Кофты</a></li>
-                    <li><a href="#">Ползунки</a></li>
-                    <li><a href="#">Песочник</a></li>
-                    <li><a href="#">Нагрудник</a></li>-->
+                    <?= getData(false, [
+                        'id' => 'category_link',
+                        'source' => '<li><a href="<?=getData(\'href\');?>"><?=getData(\'title\');?> (<?=getData(\'count\');?>)</a></li>'
+                    ], $GLOBALS['collections']); ?>
                 </ul>
             </div>
         </div>
