@@ -21,7 +21,8 @@ let config = {
 //дизайн header
 let headerBlock = "",
     dataLocalStorage = "",
-    scroll = document.querySelector('div.scrollup');
+    scroll = document.querySelector('div.scrollup'),
+    headerFavoriteBlock = document.querySelector('[class*="header-user"] div[data-favorite]');
 
 
 
@@ -301,8 +302,6 @@ function validateData(input, data, error_class) {
 }
 
 
-
-
 function PopUpShowMenu() {
     document.querySelector('#menu').style.display = 'block';
     document.querySelector('#menu-off').style.display = 'block';
@@ -340,6 +339,8 @@ function PopUpHidePopup() {
        document.querySelector('#thanks').style.display = 'none';
 }
 
+
+
 //флаг авторизированности пользователя
 var IS_AUTH = false;
 
@@ -375,7 +376,6 @@ function getMenuCategories()
 
         });
 }
-
 function getMenuCollection()
 {
     var data = new FormData(),
@@ -601,6 +601,8 @@ function requestAddFavorites(product_id  , button)
                {
                   button.classList.remove('new-on');
                   button.classList.add('new-off');
+                  if(headerFavoriteBlock)
+                      headerFavoriteBlock.classList.add('')
 
                }
             });

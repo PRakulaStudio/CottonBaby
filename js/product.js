@@ -9,6 +9,7 @@ try {
 
         let currentItem = window.pms.plugins.catalog.currentItem,
             body =  document.querySelector('body'),
+            countFullSliderImages = 0,
             loadItems = true;
 
         var css = {
@@ -244,6 +245,10 @@ try {
                     .then(function (response) {
                         if(response.status)
                         {
+                            //нужно раскомментить
+                            // if( yaCounter47500810 )
+                            //     yaCounter47500810.reachGoal('add_card');
+                           
                             document.querySelector('div.product-size').style.display = "none";
                             //скрываем кнопку "В корзину"
                             document.querySelector('div.price-basket div.btn').style.display = "none";
@@ -469,11 +474,11 @@ try {
                 return;
             }
 
-            if(event.target.classList.contains('swiper-slide') || event.target.closest('.swiper-slide'))
-            {
-                galleryTop.slideNext(300);
-                return;
-            }
+            // if(event.target.classList.contains('swiper-slide') || event.target.closest('.swiper-slide'))
+            // {
+            //     galleryTop.slideNext(300);
+            //     return;
+            // }
 
             if(
                 (event.target.tagName == "BUTTON" && event.target.closest('div.price-basket')) ||
@@ -501,6 +506,8 @@ try {
         let slidersFullscreen = "";
         if(  window.pms.plugins.catalog.currentItem.images )
         {
+            countFullSliderImages = window.pms.plugins.catalog.currentItem.images.length;
+
             window.pms.plugins.catalog.currentItem.images.forEach( function(image){
                 slidersFullscreen += "<div class='swiper-slide'><img src='"+image.original+"' /></div>"
             })
@@ -511,6 +518,7 @@ try {
         var galleryTop = new Swiper('.fullscreen', {
             spaceBetween: 10,
             slideToClickedSlide: true,
+            // loop : countFullSliderImages > 1 ? true : false,
             touchEventsTarget : 'container',
             navigation: {
                 nextEl: '.slider-next',

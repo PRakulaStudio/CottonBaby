@@ -464,6 +464,7 @@ function createItems(items , is_show_favorite)
         if( is_show_favorite )
              html += "<div class='card-favorites'></div>"; // избранное
         html += "<div class='card-text'>" +
+                     "<a href='"+item.href+"'>"+item.title+"</a>" +
                      "<p>"+(item.description == null ? "" : item.description)+"</p>" +
                  "</div>" +
                  "<div class='card-link'>" +
