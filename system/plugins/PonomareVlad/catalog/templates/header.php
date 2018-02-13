@@ -58,7 +58,7 @@
 
         <div class="header-info">
             <div>
-                <a href="/"><img src="/images/logo.png"></a>
+                <a href="/"><img src="/images/logo.svg"></a>
             </div>
 
             <div>
