@@ -339,8 +339,6 @@ function PopUpHidePopup() {
        document.querySelector('#thanks').style.display = 'none';
 }
 
-
-
 //флаг авторизированности пользователя
 var IS_AUTH = false;
 
@@ -415,9 +413,8 @@ function requestGetMenuCategories()
     getMenuCategories();
     getMenuCollection();
 }
+
 requestGetMenuCategories();
-
-
 
 function addFavoriteButtons( blockProducts , value)
 {
@@ -430,6 +427,7 @@ function addFavoriteButtons( blockProducts , value)
     if(  blockProducts.querySelector('div.card-favorites') )
          blockProducts.querySelector('div.card-favorites').innerHTML = buttonHtml;
 }
+
 
 function eventChangeFavorites(button)
 {
@@ -576,7 +574,6 @@ document.addEventListener('mousedown' , function (event) {
 });
 
 
-
 function requestAddFavorites(product_id  , button)
 {
 
@@ -599,10 +596,14 @@ function requestAddFavorites(product_id  , button)
             .then( function(response){
                if( response.status )
                {
+
                   button.classList.remove('new-on');
                   button.classList.add('new-off');
                   if(headerFavoriteBlock)
-                      headerFavoriteBlock.classList.add('')
+                      headerFavoriteBlock.classList.add('favorites');
+
+                  dataLocalStorage = localStorage.getItem('user');
+                  dataLocalStorage['wishlistCount'] = data.count;
 
                }
             });
@@ -633,6 +634,11 @@ function requestRemoveFavorites(product_id , button)
             {
                 button.classList.remove('new-off');
                 button.classList.add('new-on');
+                if( !data.count && headerFavoriteBlock )
+                    headerFavoriteBlock.classList.remove('favorites');
+
+                dataLocalStorage = localStorage.getItem('user');
+                dataLocalStorage['wishlistCount'] = data.count;
 
 
             }

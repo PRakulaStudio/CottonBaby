@@ -6,6 +6,13 @@
     var limitItemsCollection = 24;
     var offset = 9;
     let mobileWidth = 1000;
+    let collections = pms.plugins.catalog.collections;
+
+
+
+
+
+
 
 
     let url_string = window.location.href;
@@ -18,11 +25,29 @@
     }
 
     //если мобилка, то показываем кнопку
-    if(  window.innerWidth <= mobileWidth ) {
+    if(  window.innerWidth <= mobileWidth )
+    {
+        let link_collections = "";
+        for(let i = 0; i < collections.length; i++)
+            link_collections += "<a href='"+collections[i].href+"'>"+collections[i].title+"<span>"+collections[i].count+"</span></a>";
+
+        document.querySelector('section.filter-box div.filter').innerHTML = link_collections;
         if (!document.querySelector('section.content > div.title button'))
             displayCategories('show');
         else
             displayCategories('hide');
+    }
+    else
+    {
+        let link_collections = "";
+        for(let i = 0; i < 8; i++) {
+            link_collections += "<a href='" + collections[i].href + "'>" + collections[i].title + "<span>" + collections[i].count + "</span></a>"
+            collections.shift();
+        }
+        document.querySelector('section.filter-box div.filter').innerHTML = link_collections;
+        //удаляем, если меньше 8-ми в коллекции
+        if(collections.length <= 8 &&  document.querySelector('div.title-collection button') )
+            document.querySelector('div.title-collection button').remove();
     }
 
     // if(  window.innerWidth <= 625 )
@@ -35,42 +60,52 @@
 
     function requestGetOtherCollections(pageName , offset)
     {
-        var data = new FormData();
-        data.append('offset' , 8);
-        data.append('show_count' , true );
-        data.append('show_href' , true );
+        let html = "";
 
-        return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , 'body' : data })
-            .then(function (response) {
+        for(let key in collections)
+        {
+            html += '<a href="'+collections[key].href+'">'+collections[key].title+'<span>'+collections[key].count+'</span></a>';
+        }
+        document.querySelector('div.filter').innerHTML =  document.querySelector('div.filter').innerHTML + html;
 
-                let responseData = false;
-                try {
-                    responseData = response.json();
-                }
-                catch (e) {
-                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                    response.text().then(console.debug);
-                }
-                return responseData;
-            })
-            .then(function (response) {
-
-                if(response.status)
-                {
-
-                    let html = "";
-
-                    for(var key in response.data.items)
-                    {
-                        html += '<a href="'+response.data.items[key].href+'">'+response.data.items[key].title+'<span>'+response.data.items[key].count+'</span></a>';
-                    }
-                    document.querySelector('div.filter').innerHTML =  document.querySelector('div.filter').innerHTML + html;
-
-                    changeCategoryButton();
-                    displayCategories( "show" );
-                }
-
-            });
+        changeCategoryButton();
+        displayCategories( "show" );
+        // var data = new FormData();
+        // data.append('offset' , 8);
+        // data.append('show_count' , true );
+        // data.append('show_href' , true );
+        //
+        // return fetch(window.pms.config.catalogAPI + 'collections', {method: 'POST', credentials: 'same-origin' , 'body' : data })
+        //     .then(function (response) {
+        //
+        //         let responseData = false;
+        //         try {
+        //             responseData = response.json();
+        //         }
+        //         catch (e) {
+        //             responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+        //             response.text().then(console.debug);
+        //         }
+        //         return responseData;
+        //     })
+        //     .then(function (response) {
+        //
+        //         if(response.status)
+        //         {
+        //
+        //             let html = "";
+        //
+        //             for(var key in response.data.items)
+        //             {
+        //                 html += '<a href="'+response.data.items[key].href+'">'+response.data.items[key].title+'<span>'+response.data.items[key].count+'</span></a>';
+        //             }
+        //             document.querySelector('div.filter').innerHTML =  document.querySelector('div.filter').innerHTML + html;
+        //
+        //             changeCategoryButton();
+        //             displayCategories( "show" );
+        //         }
+        //
+        //     });
     }
 
     window.onresize = function (event) {
@@ -110,10 +145,16 @@
             document.querySelector('section.filter-box').style.display = "block";
             if(status_display == "show")
             {
-                let start = 0, end = 8;
+                let start = 0, end = 8,
+                    showAllLinks =  document.querySelector('div.title button').hasAttribute('data-category-action') ? true : false;
+
                 document.querySelectorAll('div.filter a').forEach( function(link){
-                    if( start >= end)
-                         link.style.display ="block";
+                     if( !showAllLinks && start > 7 )
+                     {
+                         link.style.display ="none";
+                         return;
+                     }
+                    link.style.display ="block";
                     start++;
                 });
             }
