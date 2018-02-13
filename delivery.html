@@ -275,8 +275,10 @@
 <script type="text/javascript" src="/js/simplebar.js" defer></script>
 <script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
 <script type="text/javascript" src="/js/script.js" defer></script>
-<script defer>
-	requestCheckAuth('delivery');
+<script type="text/javascript">
+	window.onload = function () {
+		requestCheckAuth('delivery');
+	}
 </script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
