@@ -59,7 +59,9 @@
             </div>
 
             <div class="card-box">
-                <?= getData('items', 'catalog_page_item'); ?>
+
+                <?= getData('items', 'catalog_item'); ?>
+
             </div>
 
             <div class="pagination">
@@ -92,7 +94,6 @@
 
     <script type="text/javascript" src="/js/pagination.js" defer></script>
     <script type="text/javascript" src="/js/katalog.js" defer></script>
-
     </body>
     </html>
 <?php endif; ?>

@@ -32,7 +32,7 @@
 
     <section class="content">
         <div class="card-box">
-            <?= getData('items', 'collections_page_item'); ?>
+            <?= getData('items', 'catalog_collection'); ?>
         </div>
 
         <div class="pagination">
