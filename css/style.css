@@ -295,7 +295,7 @@ ol, ul {
 }
 
 .info p{
-    padding: 5px 0;
+    padding: 0;
 }
 
 .info p:nth-child(1){
