@@ -330,12 +330,12 @@ ol, ul {
 /* error end*/
 
 /* showprice */
-.showprice .card-price span:nth-child(1){
+.showprice .card-price {
     display: none;
 }
 
-.showprice .card-price span:nth-child(2){
-    display: inline-block;
+.showprice .card-text p{
+    text-align: center;
 }
 /* showPrice end */
 

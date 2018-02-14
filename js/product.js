@@ -24,7 +24,7 @@ galleryThumbs.controller.control = galleryTop;
 var swiper = new Swiper('.swiper', {
   slidesPerView: 3,
   slidesPerGroup: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
