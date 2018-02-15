@@ -14,8 +14,9 @@
         <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/css/product.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/zik_product.css"/>
     </head>
-    <body class="">
+    <body class="showprice">
     <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 

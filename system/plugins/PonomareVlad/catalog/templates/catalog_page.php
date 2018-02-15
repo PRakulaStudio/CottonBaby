@@ -12,8 +12,9 @@
         <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/css/card.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/my_card.css"/>
     </head>
-    <body>
+    <body class="showprice">
 
     <div class="scrollup"></div>
 
@@ -59,7 +60,9 @@
             </div>
 
             <div class="card-box">
-                <?= getData('items', 'catalog_page_item'); ?>
+
+                <?= getData('items', 'catalog_item'); ?>
+
             </div>
 
             <div class="pagination">
@@ -92,7 +95,6 @@
 
     <script type="text/javascript" src="/js/pagination.js" defer></script>
     <script type="text/javascript" src="/js/katalog.js" defer></script>
-
     </body>
     </html>
 <?php endif; ?>

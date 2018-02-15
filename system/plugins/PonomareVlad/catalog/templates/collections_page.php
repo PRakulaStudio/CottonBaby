@@ -12,8 +12,9 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/css/card.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/my_card.css"/>
 </head>
-<body>
+<body class="showprice">
 <div class="scrollup"></div>
 <?= getData(false, 'header', ['']) ?>
 
@@ -32,7 +33,7 @@
 
     <section class="content">
         <div class="card-box">
-            <?= getData('items', 'collections_page_item'); ?>
+            <?= getData('items', 'catalog_collection'); ?>
         </div>
 
         <div class="pagination">

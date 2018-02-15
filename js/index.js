@@ -5,14 +5,15 @@ try {
 		if(IS_AUTH)
 		{
 			let list_sliders = [];
-			document.querySelectorAll('div.new-slider div[data-id-catalog-item]').forEach(function (slide) {
-				list_sliders.push(slide.getAttribute('data-id-catalog-item'));
+			document.querySelectorAll('div.new-slider div[data-catalog-item-id]').forEach(function (slide) {
+				list_sliders.push(slide.getAttribute('data-catalog-item-id'));
 			});
 
 			requestCheckFavoritesItems(list_sliders, 'new-slider');
 		}
 		
 	});
+
 	let swiper_main = new Swiper('.swiper-main', {
 		loop: true,
 		autoplay: window.innerWidth < 1000 ? {

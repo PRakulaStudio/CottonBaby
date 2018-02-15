@@ -30,9 +30,9 @@
     padding: 10px 20px;
     border: 1px solid #C1C1C1;
     border-radius: 5px;
-    background: #FFFFFF; 
+    background: #FFFFFF;
     font-size: 16px;
-    color: #333333;  
+    color: #333333;
 }
 
 .registration-form button{
@@ -54,7 +54,7 @@
 
 .registration-form button:hover{
     background-position: 0 0;
-} 
+}
 
 .registration-img {
     position: relative;
@@ -62,7 +62,7 @@
     overflow: hidden;
     border-radius: 5px;
     margin: 0 0 0 auto;
-    background: url(/images/icons/reg.jpg) no-repeat center;
+    background: url(../images/icons/reg.jpg) no-repeat center;
     background-position: 40% 20%;
 }
 
@@ -82,11 +82,6 @@
 .contacts-map {
     width: 100%;
     height: 500px;
-}
-
-.info-logo img{
-    width: 100%;
-    height: 100%;
 }
 
 #map{
@@ -132,6 +127,11 @@
     height: 95px;
     padding: 0 0 10px 0;
     text-align: center;
+}
+
+.info-logo img {
+    width: 100%;
+    height: 100%;
 }
 
 .info-text {
@@ -218,9 +218,9 @@
     padding: 10px 20px;
     border: 1px solid #C1C1C1;
     border-radius: 5px;
-    background: #FFFFFF; 
+    background: #FFFFFF;
     font-size: 16px;
-    color: #333333;  
+    color: #333333;
 }
 
 .contacts-form textarea{

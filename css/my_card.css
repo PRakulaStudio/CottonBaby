@@ -1,0 +1,40 @@
+.card-favorites button{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    color: #FFFFFF;
+}
+
+.card-favorites button.new-on{
+    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center !important;
+}
+
+.card-favorites button.new-off{
+    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center !important;
+}
+
+.request-spinner{
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+    margin: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+.pagination button{
+    position: relative;
+    color: #000000;
+}
+
+.pagination button:hover{
+    color: #ffffff;
+}
+
+.hide-text-button
+{
+    color: transparent !important;
+}
+
+

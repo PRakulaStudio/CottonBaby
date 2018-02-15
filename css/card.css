@@ -1,21 +1,4 @@
-@import "iSpinner.css";
 /*title */
-
-.ispinner{
-    width: 23px;
-    height: 29px;
-    margin: 225px auto;
-}
-
-.request-spinner {
-    position: absolute;
-    top: calc(50% - 12px);
-    left: calc(50% - 12px);
-    margin: 0;
-    width: 24px;
-    height: 24px;
-}
-
 .title button{
     cursor: pointer;
     border-radius: 25px;
@@ -241,7 +224,7 @@
     z-index: 1;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     background: #ffffff;
 }
 
@@ -281,15 +264,11 @@
     height: 40px;
     border-radius: 20px;
     color: #FFFFFF;
-
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
 }
 
-.card-favorites button.new-on{
-    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
-}
-
-.card-favorites button.new-off{
-    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
+.off button {
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
 }
 
 .card-info {
@@ -309,7 +288,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: saturate(150%) blur(10px) !important;
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    -moz-backdrop-filter: saturate(150%) blur(10px);
+    -o-backdrop-filter: saturate(150%) blur(10px);
     background: rgba(255, 255, 255, 0.5);
 }
 
@@ -320,13 +301,13 @@
     margin: auto 0;
 }
 
-.card-price p{
+.card-price p {
     width: 100%;
     font-size: 20px;
     text-align: center;
 }
 
-.card-price span:nth-child(2){
+.card-price span:nth-child(2) {
     display: none;
 }
 
@@ -337,7 +318,7 @@
     margin: auto 0;
 }
 
-.card-text p{
+.card-text p {
     width: 100%;
     font-size: 18px;
     color: #444444;
@@ -367,17 +348,11 @@
     border-radius: 5px;
     text-align: center;
     font-size: 16px;
-    color: #000000;
-    position:relative;
-}
-
-.hide-text-button{
-    color: transparent !important;
+    color: #FFFFFF;
 }
 
 .pagination button:hover{
     background: #F50037;
-    color: #ffffff;
 }
 
 .pagination > .pagination-arrow {
@@ -443,7 +418,9 @@
 }
 
 @media (max-width: 900px) {
-    .card {width: calc((100% / 2) - 20px);}
+    .card {
+        width: calc((100% / 2) - 20px);
+    }
 }
 
 @media (max-width: 820px) {
@@ -455,13 +432,19 @@
 
 @media (max-width: 600px) {
     .sorting {width: 98%; flex-direction: column;}
-    .card {width: 100%; margin: 10px;}
+
+    .card {
+        width: 100%;
+        margin: 10px;
+    }
 }
 
 @media (max-width: 500px) {
-    .card {height: 400px}
+    .card {
+        height: 400px
+    }
     .filter {flex-direction: column;}
     .filter a{width: 95%; margin: 5px auto;}
     .filter a:nth-child(3n+2) {margin: 5px auto;}
 }
-/* media end 
+/* media end

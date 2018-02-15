@@ -627,7 +627,7 @@ function requestAddFavorites(product_id  , button)
                   if(headerFavoriteBlock)
                       headerFavoriteBlock.classList.add('favorites');
 
-                  dataLocalStorage = localStorage.getItem('user');
+                  dataLocalStorage = JSON.parse(localStorage.getItem('user'));
                   dataLocalStorage['wishlistCount'] = data.count;
 
                }
@@ -637,6 +637,7 @@ function requestAddFavorites(product_id  , button)
 
 function requestRemoveFavorites(product_id , button)
 {
+
 
     var data = new FormData();
     data.append('id' , product_id);
@@ -662,7 +663,7 @@ function requestRemoveFavorites(product_id , button)
                 if( !data.count && headerFavoriteBlock )
                     headerFavoriteBlock.classList.remove('favorites');
 
-                dataLocalStorage = localStorage.getItem('user');
+                dataLocalStorage = JSON.parse(localStorage.getItem('user'));
                 dataLocalStorage['wishlistCount'] = data.count;
 
 

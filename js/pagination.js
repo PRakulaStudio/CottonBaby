@@ -142,8 +142,7 @@ function setPaginationValue(button , value)
 
 function changePagination(direction , activeButton , clickButton )
 {
-    if(!canChange)
-        return;
+
 
     canChange = false;
 
@@ -426,7 +425,6 @@ function requestGetItems(offset , limit , sort , pageName)
             break;
     }
 
-
     data.append('offset' , offset);
     data.append('limit' , limit);
     data.append('sort' , sort);
@@ -438,20 +436,30 @@ function requestGetItems(offset , limit , sort , pageName)
                 responseData = response.json();
             }
             catch (e) {
+
                 responseData = {status: false, statusText: "Произошла ошибка при соединении"};
                 response.text().then(console.debug);
+                window.location.replace(window.location.href);
             }
             return responseData;
         })
         .then(function (response) {
-            if( response.status)
-              return createItems(response.data.items , show_favorites);
-            else
+
+           try{
+               if( response.status)
+                   return createItems(response.data.items , show_favorites);
+               else
+               {
+                   if(document.querySelector('div.block-empty'))
+                       document.querySelector('div.block-empty').classList.remove('d-none');
+                   return;
+               }
+             }
+            catch(error)
             {
-                if(document.querySelector('div.block-empty'))
-                    document.querySelector('div.block-empty').classList.remove('d-none');
-                return 0;
+                window.location.replace(window.location.href);
             }
+
 
         });
        
@@ -523,11 +531,14 @@ document.addEventListener('click' , function (event) {
 
     if(event.target.tagName == "BUTTON" && event.target.closest('div[data-block-pages]') && event.target.closest('div.pagination'))
     {
+        if(!canChange)
+            return;
+
         if( !event.target.classList.contains(activePaginationButton))
         {
 
             let activeButton = event.target.parentNode.querySelector('button.'+activePaginationButton);
-            
+
             event.target.innerHTML = event.target.innerHTML + blockSpinner;
             event.target.classList.add('hide-text-button');
 
@@ -542,6 +553,9 @@ document.addEventListener('click' , function (event) {
 
     if(event.target.tagName == "BUTTON" && event.target.classList.contains('prev') && event.target.closest('div.pagination'))
     {
+        if(!canChange)
+            return;
+
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
 
         event.target.innerHTML = event.target.innerHTML + blockSpinner;
@@ -552,6 +566,8 @@ document.addEventListener('click' , function (event) {
 
     if( event.target.tagName == "BUTTON" && event.target.classList.contains('next') && event.target.closest('div.pagination'))
     {
+        if(!canChange)
+            return;
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
 
         event.target.innerHTML = event.target.innerHTML + blockSpinner;

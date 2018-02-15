@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/zik_index.css"/>
     <link rel="manifest" href="manifest.json"/>
 </head>
 <body class="showPrice">
@@ -267,13 +268,18 @@
                 <div class="coop-title"><p>Сотрудничество с нами</p></div>
 
                 <div class="coop-text">
-                    <p>Если Вас заинтересовала наша продукция — в первую очередь, спасибо! По вопросам сотрудничества
-                        отправьте сообщение через форму обратной связи. Для просмотра цен и оформления заказа - <a
-                                href="/registration.html">зарегистрируйтесь</a>!</p>
+                    <p>Обращаем ваше внимание!</p>
+                    <p>Сайт для ОПТОВЫХ продаж!</p>
+                    <p>Мы сотрудничаем с:</p>
+                    <p>• Юридическими лицами</p>
+                    <p>• Физическими лицами</p>
+                    <p>• Совместными покупками</p>
+                    <p>Чтобы увидеть оптовые цены - <a href="registration.html">зарегистрируйтесь</a>!</p>
+                    <p>Если возникли вопросы -</p>
                 </div>
 
                 <div class="coop-link">
-                    <a href="/cooperation.html"><img src="/images/icons/send.png">Написать нам</a>
+                    <a href="cooperation.html"><img src="images/icons/send.png">Напишите нам</a>
                 </div>
             </div>
         </div>

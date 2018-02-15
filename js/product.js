@@ -37,8 +37,8 @@ try {
 
                         let list_id = [];
 
-                        document.querySelectorAll('.slider-bottom div[data-id-catalog-item]').forEach(function (div) {
-                            list_id.push(div.getAttribute('data-id-catalog-item'));
+                        document.querySelectorAll('.slider-bottom div[data-catalog-item-id]').forEach(function (div) {
+                            list_id.push(div.getAttribute('data-catalog-item-id'));
                         });
 
 
@@ -220,7 +220,7 @@ try {
         function requestEdit(id_item )
         {
             try{
-                // console.log(id_item);
+
                 let data = new FormData(),
                     modifications = {},
                     number = "";
@@ -264,7 +264,6 @@ try {
                             {
                                 //показываем блок, что не хватает суммы до минимальной
                                 document.querySelector('div.product-basket span').innerHTML = formatMoney(response.data.remains);
-
 
                             }
                             else {
@@ -312,7 +311,6 @@ try {
                             let sizeBlock = document.querySelector('div.product-size');
                             addFavoriteButtons(  document.querySelector('div.product-box'), response.data.wishes  );
                             document.querySelector('div.price-basket').classList.remove('d-none');
-
 
                             if(Object.keys(response.data.modifications).length)
                             {
@@ -434,9 +432,7 @@ try {
                     if( button.previousElementSibling )
                     {
                         button.previousElementSibling.value = number + 1;
-                        // blockModifications.find('div[id-modification]').each( function(){
-                        //     $(this).find('input[type="text"]').text();
-                        // });
+                      
                         button.closest('div.size-block').classList.add(css.sizeActive);
                     }
                     else

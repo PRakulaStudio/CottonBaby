@@ -1,4 +1,5 @@
 /* fullscreen */
+
 .slider-fullscreen {
     position: fixed;
     z-index: 100;
@@ -307,7 +308,6 @@
 
 .price-basket .btn, .price-basket .link {
     margin: auto 0 auto auto;
-    display: none;
 }
 
 .price-basket .btn button{
@@ -524,11 +524,11 @@
     z-index: 1;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     background: #ffffff;
 }
 
-.card-img{
+.card-img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -564,15 +564,11 @@
     height: 40px;
     border-radius: 20px;
     color: #FFFFFF;
-
+    background: #F9C33C url(../images/icons/favorite-producton.png) no-repeat center;
 }
 
-.card-favorites button.new-on{
-    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
-}
-
-.card-favorites button.new-off{
-    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
+.off button {
+    background: #F30330 url(../images/icons/favorite-productoff.png) no-repeat center;
 }
 
 .card-info {
@@ -593,7 +589,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: saturate(150%) blur(10px) !important;
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    -moz-backdrop-filter: saturate(150%) blur(10px);
+    -o-backdrop-filter: saturate(150%) blur(10px);
     background: rgba(255, 255, 255, 0.5);
 }
 
@@ -605,13 +603,13 @@
     will-change: transform;
 }
 
-.card-price p{
+.card-price p {
     width: 100%;
     font-size: 20px;
     text-align: center;
 }
 
-.card-price span:nth-child(2){
+.card-price span:nth-child(2) {
     display: none;
 }
 
@@ -623,7 +621,7 @@
     will-change: transform;
 }
 
-.card-text p{
+.card-text p {
     width: 100%;
     font-size: 18px;
     color: #444444;

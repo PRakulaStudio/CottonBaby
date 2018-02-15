@@ -1,0 +1,17 @@
+.card-favorites button
+{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    will-change: transform;
+}
+
+.card-favorites button.new-on{
+    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center !important;
+}
+
+.card-favorites button.new-off{
+    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center !important;
+}
