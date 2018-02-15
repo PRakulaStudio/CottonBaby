@@ -265,34 +265,20 @@
         <div class="coop-box">
             <div class="coop-block">
                 <div class="coop-title"><p>Сотрудничество с нами</p></div>
-                <style>
-                    .coop-text ul {
-                        list-style: circle;
-                    }
 
-                    .coop-text ul li {
-                        margin-left: 1rem;
-                    }
-
-                    .coop-text * {
-                        color: #FFFFFF;
-                    }
-                </style>
                 <div class="coop-text">
                     <p>Обращаем ваше внимание!</p>
-                    <p>Сайт только для ОПТОВЫХ продаж!</p>
-                    <p>Наша компания сотрудничает с:</p>
-                    <ul>
-                        <li>Юр. Лицами</li>
-                        <li>Совместными покупками</li>
-                        <li>Физ.лицами</li>
-                    </ul>
-                    <p>Чтобы увидеть оптовые цены - <a href="/registration.html">зарегистрируйтесь</a>!</p>
-                    <p>Если возник вопрос - </p>
+                    <p>Сайт для ОПТОВЫХ продаж!</p>
+                    <p>Мы сотрудничаем с:</p>
+                    <p>• Юридическими лицами</p>
+                    <p>• Физическими лицами</p>
+                    <p>• Совместными покупками</p>
+                    <p>Чтобы увидеть оптовые цены - <a href="registration.html">зарегистрируйтесь</a>!</p>
+                    <p>Если возникли вопросы -</p>
                 </div>
 
                 <div class="coop-link">
-                    <a href="/cooperation.html"><img src="/images/icons/send.png">Напишите нам</a>
+                    <a href="cooperation.html"><img src="images/icons/send.png">Напишите нам</a>
                 </div>
             </div>
         </div>
