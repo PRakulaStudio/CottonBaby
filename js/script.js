@@ -44,13 +44,13 @@ function  lazyLoad(){
         }
         return res;
     }
-        , addEventListener = function(evt, fn){
-        window.addEventListener
-            ? this.addEventListener(evt, fn, false)
-            : (window.attachEvent)
-            ? this.attachEvent('on' + evt, fn)
-            : this['on' + evt] = fn;
-    }
+    //     , addEventListener = function(evt, fn){
+    //     window.addEventListener
+    //         ? this.addEventListener(evt, fn, false)
+    //         : (window.attachEvent)
+    //         ? this.attachEvent('on' + evt, fn)
+    //         : this['on' + evt] = fn;
+    // }
         , _has = function(obj, key) {
         return Object.prototype.hasOwnProperty.call(obj, key);
     };
@@ -117,12 +117,14 @@ window.onscroll = function(){
 
 
 
+
 function renderHeaderIsAuth(data){
-    document.querySelector('body').classList.add('showprice');
+    document.querySelector('body').classList.remove('showprice');
     headerBlock = document.querySelector('[class*="header-user"]');
 
     headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '/basket.html');
     headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '/favorites.html');
+    let basketSpan,favoritesBlock;
 
 
     if(data.cartCount)
@@ -141,14 +143,15 @@ function renderHeaderIsAuth(data){
 
     headerBlock.querySelector('div[data-auth] span').innerHTML = "Здравствуйте, "+data.name;
 }
-function renderHeaderAuthFalse() {
-
+function renderHeaderAuthFalse()
+{
 
     headerBlock = document.querySelector('[class*="header-user"]');
     headerBlock.querySelector('div[data-auth] span').innerHTML = "Войти";
     headerBlock.querySelector('div[data-basket] a').setAttribute('href' , '#');
     headerBlock.querySelector('div[data-favorite] a').setAttribute('href' , '#');
-
+    let basketSpan,favoritesBlock;
+    
     basketSpan  = headerBlock.querySelector('div[data-basket] span');
     basketSpan.innerHTML = 0;
     basketSpan.style.display = 'none';
@@ -224,11 +227,9 @@ function formatMoney(number) {
             iterator++;
             continue;
         }
-
         money[key] = format[key];
         iterator++;
     }
-
     return money.join('') + " руб.";
 }
 
@@ -364,14 +365,12 @@ function getMenuCategories()
         .then(function (response) {
             if(response.status)
             {
-
               for(var key in response.data)
                   html += "<li><a href='"+response.data[key].href+"'>"+response.data[key].title+" ("+response.data[key].count+")</a></li>";
 
                menu[0].querySelector('ul').innerHTML = html;
                new SimpleBar(menu[0].querySelector('ul') , { autoHide: false });
             }
-
         });
 }
 function getMenuCollection()
@@ -489,9 +488,14 @@ document.addEventListener('click' , function (event) {
        return;
    }
     //нажатие на иконку лупу и переадресация на страницу с результатом поиска
-    if(event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu'))
+    if( (event.target.tagName == "BUTTON" && event.target.getAttribute('type') == "submit" && event.target.closest('div.search-menu') ) ||
+        (event.target.tagName == "IMG" && event.target.closest('div.search-menu') )
+    )
     {
-        window.location.href = "/search/" + event.target.parentNode.querySelector('input').value + "";
+        let search_value = "";
+        if( event.target.closest('div.search-menu').querySelector('input') );
+            search_value = event.target.closest('div.search-menu').querySelector('input').value;
+        window.location.href = "/search/" + search_value+ "";
         return;
     }
 
@@ -686,19 +690,23 @@ function requestCheckFavoritesItems(listId , classBlock )
             return responseData;
         })
         .then( function (response) {
-            if(response.data.wishlist)
+            if(response.status)
             {
-                let products = document.querySelector('div.'+classBlock),
-                    wishList = response.data.wishlist,
-                    buttonHtml = "";
-
-                for(let key in wishList)
+                if(response.data.wishlist)
                 {
-                    addFavoriteButtons( products.querySelector('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
+                    let products = document.querySelector('div.'+classBlock),
+                        wishList = response.data.wishlist,
+                        buttonHtml = "";
+
+                    for(let key in wishList)
+                    {
+                        addFavoriteButtons( products.querySelector('div[data-catalog-item-id="'+wishList[key].id+'"],div[data-id-catalog-item="'+wishList[key].id+'"]') , wishList[key].value);
+                    }
+
+
                 }
-
-
             }
+
         });
 
 }
@@ -769,6 +777,7 @@ function requestCheckAuth(url) {
            .then(function (response) {
                if(response.status)
                {
+                   document.querySelector('body').classList.remove('showprice');
                    switch(url)
                    {
                     //   case "registration"

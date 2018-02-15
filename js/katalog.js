@@ -213,7 +213,7 @@
                 button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
             }
 
-
+            
 
         }
         else
@@ -223,26 +223,7 @@
         }
 
         displayCategories(button.getAttribute('data-category-action'));
-       // let button =  $('section.content > div.title').find('button');
-       //
-       // if( button.attr('data-category-action') )
-       // {
-       //      if(button.attr('data-category-action') == "show")
-       //      {
-       //          button.attr('data-category-action' , 'hide').html('все категории<img src="images/icons/down-arrow.svg">');
-       //
-       //      }
-       //     else
-       //      {
-       //          button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
-       //      }
-       //
-       //     displayCategories(button.attr('data-category-action') );
-       // }
-       // else
-       // {
-       //     button.attr('data-category-action' , 'show').html('скрыть<img src="images/icons/up-arrow.svg">');
-       // }
+
     }
 
     // function requestGetOtherCategories(pageName , offset)

@@ -9,11 +9,12 @@ try{
 		requestCheckAuth('contacts');
 
 
-		let element = document.querySelector('div.contacts-form input[type="tel"]'),
-		 	maskOptions = {
-				mask: '+{7} (000) 000-00-00'
-			};
-		new IMask(element, maskOptions);
+		 let element = document.querySelector('div.contacts-form input[type="tel"]');
+		//  	maskOptions = {
+		// 		mask: '+{7} (000) 000-00-00'
+		// 	};
+		// new IMask(element, maskOptions);
+
 
 		function requestSendFeedback(fields)
 		{
@@ -60,7 +61,6 @@ try{
 			{
 				requestSendBugs(error);
 			}
-
 
 		}
 

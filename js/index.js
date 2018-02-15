@@ -11,6 +11,7 @@ try {
 
 			requestCheckFavoritesItems(list_sliders, 'new-slider');
 		}
+		
 	});
 	let swiper_main = new Swiper('.swiper-main', {
 		loop: true,

@@ -1,10 +1,10 @@
 requestCheckAuth("cooperation");
 
-let element = document.querySelector('div.contacts-form input[type="tel"]'),
-    maskOptions = {
-        mask: '+{7} (000) 000-00-00'
-    };
-new IMask(element, maskOptions);
+let element = document.querySelector('div.contacts-form input[type="tel"]');
+//     maskOptions = {
+//         mask: '+{7} (000) 000-00-00'
+//     };
+// new IMask(element, maskOptions);
 
 
 function requestSendFeedback(fields)
@@ -94,11 +94,7 @@ document.addEventListener('click' , function(event){
                     return;
                 }
 
-                // if( field.getAttribute('name') == "message" && field.value == ""){
-                //     field.classList.add('input-error');
-                //     sendRequest = false;
-                //     return;
-                // }
+
 
                 fieldsData[ field.getAttribute('name')] = field.value;
             });

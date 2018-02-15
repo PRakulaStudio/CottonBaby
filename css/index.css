@@ -1,4 +1,4 @@
- /* main-slider */
+/* main-slider */
 .main-slider .swiper-container {
     width: 100%;
     height: 100%;
@@ -64,7 +64,7 @@
 .main-slider .text {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 200px 10px; 
+    padding: 200px 10px;
 }
 
 .main-slider .text > b{
@@ -339,13 +339,13 @@
 }
 
 
- .card-favorites button.new-on{
-     background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
- }
+.card-favorites button.new-on{
+    background: #F9C33C url(/images/icons/favorite-producton.png) no-repeat center;
+}
 
- .card-favorites button.new-off{
-     background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
- }
+.card-favorites button.new-off{
+    background: #F30330 url(/images/icons/favorite-productoff.png) no-repeat center;
+}
 
 .card-text {
     position: absolute;
@@ -397,7 +397,7 @@
 .card-link a{
     display: inline-block;
     width: 200px;
-    height: 40px; 
+    height: 40px;
     border-radius: 25px;
     background: linear-gradient(to bottom, #FDC435, #F30330);
     text-align: center;
@@ -437,7 +437,7 @@
     -o-object-fit: cover;
     -moz-filter: brightness(0.3);
     -ms-filter: brightness(0.3);
-    -webkit-filter: brightness(0.3); 
+    -webkit-filter: brightness(0.3);
     -o-filter: brightness(0.3);
     filter: brightness(0.3);
 }
@@ -494,38 +494,38 @@
     color: #FFFFFF;
 }
 
- .coop-box .coop-text a{
-     text-decoration: none;
-     color: #F64733;
- }
+.coop-box .coop-text a{
+    text-decoration: none;
+    color: #F64733;
+}
 
- .coop-link a{
-     display: block;
-     width: 200px;
-     height: 50px;
-     margin: 0;
-     padding: 17px 0;
-     border-radius: 25px;
-     background: linear-gradient(to bottom, #F9C33C, #ff7b00);
-     text-decoration: none;
-     text-align: center;
-     font-size: 16px;
-     text-transform: uppercase;
-     color: #FFFFFF;
-     background-size: auto 150%;
-     background-position: 0 100%;
-     transition: background-position 1s;
- }
+.coop-link a{
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 0;
+    padding: 17px 0;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #F9C33C, #ff7b00);
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-size: auto 150%;
+    background-position: 0 100%;
+    transition: background-position 1s;
+}
 
- .coop-link a img{
-     width: 25px;
-     margin: 0 5px 0 0;
-     vertical-align: text-bottom;
- }
+.coop-link a img{
+    width: 25px;
+    margin: 0 5px 0 0;
+    vertical-align: text-bottom;
+}
 
- .coop-link a:hover{
-     background-position: 0 0;
- }
+.coop-link a:hover{
+    background-position: 0 0;
+}
 /* cooperation end */
 
 /* production */
@@ -764,6 +764,30 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+}
+
+.no-js .img-slider .swiper-slide {
+    width: 20%;
+    margin-right: 1px;
+}
+
+@media (max-width: 900px) {
+    .no-js .img-slider .swiper-slide {
+        width: 25%;
+    }
+}
+
+@media (max-width: 600px) {
+    .no-js .img-slider .swiper-slide {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .no-js .img-slider .swiper-slide {
+        width: 100%;
+        margin-right: 0;
+    }
 }
 
 .img-slider .swiper-slide img{

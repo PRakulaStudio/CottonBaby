@@ -10,8 +10,6 @@
 	requestCheckAuth("cabinet");
 
 
-
-
 	//подсказки
 
 	function getStatus(id) {

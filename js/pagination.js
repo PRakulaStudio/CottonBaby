@@ -11,7 +11,22 @@ var limitItems = 24,
     pageId = false,
     sort = "create_date",
     canChange = true,
-    blockPagination = document.querySelector('div.pagination');
+    countPages = 0,
+    blockPagination = document.querySelector('div.pagination'),
+    blockSpinner = '<div class="request-spinner ispinner ispinner--gray ispinner--animating">' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                        '<div class="ispinner__blade"></div>' +
+                    '</div>';
 
 
 function createPagination( total ,  pageName)
@@ -118,7 +133,10 @@ function indexInParent(node) {
 function setPaginationValue(button , value)
 {
     button.setAttribute('data-page' , value);
-    button.innerText = value;
+    if(button.querySelector('div.request-spinner'))
+        button.innerHTML = blockSpinner + value;
+    else
+        button.innerText = value;
 }
 
 
@@ -139,7 +157,6 @@ function changePagination(direction , activeButton , clickButton )
     switch (direction)
     {
         case "next" :
-
             if( (clickButton.getAttribute('data-page')   <= 2) || (countPages - 1) <= clickButton.getAttribute('data-page') )
             {
 
@@ -315,9 +332,15 @@ function changePagination(direction , activeButton , clickButton )
     {
         if( !arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.card-box').innerHTML;
-        //надо переделать
+        if(  blockPagination.querySelector('div.request-spinner') )
+        {
+            if( blockPagination.querySelector('button.hide-text-button') )
+                blockPagination.querySelector('button.hide-text-button').classList.remove('hide-text-button');
+            blockPagination.querySelector('div.request-spinner').remove();
+        }
         document.querySelector('div.products-box,div.card-box').innerHTML = arrayItems[activeButton.innerText];
         canChange = true;
+
         window.scrollTo( document.querySelector('div.card-box').offsetTop, document.querySelector('div.card-box').offsetTop );
 
     }
@@ -327,6 +350,7 @@ function changePagination(direction , activeButton , clickButton )
         if(!arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.card-box').innerHTML;
 
+
         sort = "create_date"; //нужно проверить
         if( document.querySelector('div.sorting'))
         {
@@ -335,9 +359,17 @@ function changePagination(direction , activeButton , clickButton )
         }
 
         offset =( ( parseInt( activeButton.innerText ) - 1) * limitItems );
+       // event.target.innerHTML = event.target.innerHTML + blockSpinner;
 
         requestGetItems( offset , limitItems,  sort , pageId )
             .then( result => {
+                if(  blockPagination.querySelector('div.request-spinner') )
+                {
+                    if( blockPagination.querySelector('button.hide-text-button') )
+                        blockPagination.querySelector('button.hide-text-button').classList.remove('hide-text-button');
+                    blockPagination.querySelector('div.request-spinner').remove();
+                }
+
                 window.scrollTo( document.querySelector('div.card-box').offsetTop, document.querySelector('div.card-box').offsetTop );
                 canChange = true;
                 if(IS_AUTH)
@@ -346,7 +378,6 @@ function changePagination(direction , activeButton , clickButton )
                 }
             });
     }
-
 
 }
 
@@ -358,6 +389,7 @@ function requestGetItems(offset , limit , sort , pageName)
 
     let data = new FormData();
     let show_favorites = true;
+    let url = "";
 
     switch(pageId)
     {
@@ -428,13 +460,14 @@ function requestGetItems(offset , limit , sort , pageName)
 function createItems(items , is_show_favorite)
 {
     var html = "",
+        item = "",
         listIdItems = [];
 
     for( var key in items)
     {
         item = items[key];
         listIdItems.push(item.id);
-        let   images_path = "/images/";
+        let  images_path = "/images/";
 
             if( item.images &&  item.images[0])
                 images_path =item.images[0];
@@ -456,23 +489,21 @@ function createItems(items , is_show_favorite)
                             '<div class="ispinner__blade"></div>' +
                         '</div>';
 
-        html += "<div class='card' data-catalog-item-id='"+item.id+"'>" +
-                     "<div class='card-img'><a href='"+item.href+"'>"+spinner+"</a></div>"; //картинка
-        if( item.price )
-             html +=  "<div class='card-price'><p><span>*****</span><span>"+item.price+"</span> руб.</p></div>"; //цена
-
+        html += "<div class='card' data-catalog-item-id='"+item.id+"'>";
         if( is_show_favorite )
-             html += "<div class='card-favorites'></div>"; // избранное
-        html += "<div class='card-text'>" +
-                     "<a href='"+item.href+"'>"+item.title+"</a>" +
-                     "<p>"+(item.description == null ? "" : item.description)+"</p>" +
-                 "</div>" +
-                 "<div class='card-link'>" +
-                    "<a href='"+item.href+"'>" +
-                            "Подробно" +
-                    "</a>" +
-                 "</div>" +
-            "</div>";
+            html += "<div class='card-favorites'></div>";
+            html +=   "<a href='"+item.href+"'>" +
+                         "<div class='card-img'>"+spinner+"</div>" +
+                         "<div class='card-info' >";
+                    if( item.price )
+                    html +=  "<div class='card-price'><p><span>"+item.price+"</span> руб.</p></div>"; //цена
+
+                    html += "<div class='card-text'>" +
+                                 "<p>"+(item.title)+"</p>" +
+                            "</div>" +
+                         "</div>" +
+                      "</a>" +
+                 "</div>";
     }
 
     document.querySelector('div.card-box, div.products-box').innerHTML = html;
@@ -486,7 +517,6 @@ function createItems(items , is_show_favorite)
     // });
 
     return  listIdItems;
-
 }
 
 document.addEventListener('click' , function (event) {
@@ -495,7 +525,12 @@ document.addEventListener('click' , function (event) {
     {
         if( !event.target.classList.contains(activePaginationButton))
         {
+
             let activeButton = event.target.parentNode.querySelector('button.'+activePaginationButton);
+            
+            event.target.innerHTML = event.target.innerHTML + blockSpinner;
+            event.target.classList.add('hide-text-button');
+
             if( event.target.innerText > activeButton.innerText )
                 changePagination("next" , activeButton, event.target);
             else
@@ -508,12 +543,20 @@ document.addEventListener('click' , function (event) {
     if(event.target.tagName == "BUTTON" && event.target.classList.contains('prev') && event.target.closest('div.pagination'))
     {
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
+
+        event.target.innerHTML = event.target.innerHTML + blockSpinner;
+        event.target.classList.add('hide-text-button');
+
         changePagination("prev" , clickButton , clickButton.previousElementSibling);
     }
 
     if( event.target.tagName == "BUTTON" && event.target.classList.contains('next') && event.target.closest('div.pagination'))
     {
         let clickButton = event.target.parentNode.querySelector('div[data-block-pages] button.'+activePaginationButton);
+
+        event.target.innerHTML = event.target.innerHTML + blockSpinner;
+        event.target.classList.add('hide-text-button');
+
         changePagination("next" , clickButton, clickButton.nextElementSibling);
     }
 

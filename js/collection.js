@@ -192,7 +192,6 @@
         }
     });
 
-
     function changeCategoryButton()
     {
         let button = document.querySelector('section.content > div.title button');

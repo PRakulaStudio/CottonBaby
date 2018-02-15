@@ -24,7 +24,6 @@ catch(error)
 }
 
 
-
 function isError(e){
 	return e && e.stack && e.message;
 }

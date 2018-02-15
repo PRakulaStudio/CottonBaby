@@ -16,7 +16,6 @@
 
             requestCheckFavoritesItems(list_id , 'card-box');
 
-           
         }
     });
 

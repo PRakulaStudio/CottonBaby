@@ -23,8 +23,8 @@ try{
 
 		function setUserData(fields){
 			var data = new FormData();
-			data.append('data' ,JSON.stringify(fields))
-
+			data.append('data' ,JSON.stringify(fields));
+			
 			return fetch( window.pms.config.cabinetAPI+'user/reg' , { method: 'POST', credentials: 'same-origin', body: data })
 				.then( response => {
 					let responseData = false;

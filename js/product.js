@@ -23,7 +23,6 @@ try {
         // var countProductSlider = 9;
         // var loadItems = true;
 
-
         Promise.all([
             requestCheckAuth("product") ,
 
@@ -74,7 +73,7 @@ try {
                 body.classList.add('disabled-overflow-x');
                 body.classList.add('disabled-overflow-y');
                 document.querySelector('.slider-fullscreen').classList.add('fullscreen');
-                console.log( galleryThumbs.activeIndex );
+
                 galleryTop.slideTo(galleryThumbs.activeIndex, 0);
             }
             catch(error)
@@ -98,7 +97,7 @@ try {
         var swiper = new Swiper('.swiper', {
             slidesPerView: 3,
             slidesPerGroup: 1,
-            spaceBetween: 30,
+            spaceBetween: 10,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -124,7 +123,6 @@ try {
                 data.append('id', currentItem.collection );
                 data.append('show_items' , true);
                 data.append('offset' , 9);
-
 
                 return fetch(window.pms.config.catalogAPI + 'collections/' , { method: 'POST', credentials: 'same-origin', body: data })
                     .then( response => {
@@ -156,17 +154,22 @@ try {
                                         path_image = "/images/";
                                     list_id.push(items[key].id);
 
+
                                     slide = "<div class='swiper-slide'>" +
-                                        "<div class='card' data-id-catalog-item='"+items[key].id+"'>" +
-                                        "<div class='card-img'><a href='"+items[key].href+"'><img src='"+path_image+"' /></a></div>" + //картинка
-                                        "<div class='card-price'><p><span>*****</span><span>"+items[key].price+"</span> руб.</p></div>" + //цена
-                                        "<div class='card-favorites'></div>" +// избранное
-                                        "<div class='card-text'><a href='"+items[key].link+"'>"+items[key].title+"</a>" +
-                                        "<p>"+(items[key].description == null ? "" : items[key].description)+"</p>" +
-                                        "</div>" +
-                                        "<div class='card-link'><a href='"+items[key].href+"'>Подробно</a></div>" +
-                                        "</div>" +
-                                        "</div>";
+                                              "<div class='card' data-catalog-item-id='"+items[key].id+"'>" +
+                                                   "<div class='card-favorites'></div>" +
+                                                   "<a href='"+items[key].href+"'>" +
+                                                        "<div class='card-img'><img src='"+path_image+"' /></div>" +
+                                                        "<div class='card-info' >" +
+                                                             "<div class='card-price'><p><span>"+items[key].price+"</span> руб.</p></div>"+ //цена
+                                                             "<div class='card-text'>" +
+                                                                    "<p>"+items[key].title+"</p>" +
+                                                             "</div>" +
+                                                         "</div>" +
+                                                   "</a>" +
+                                               "</div>" +
+                                              "</div>";
+
                                     listSliders.push(slide);
 
                                 }

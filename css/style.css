@@ -204,7 +204,6 @@ ol, ul {
 }
 
 .block-empty {
-    display: none;
     width: 98%;
     margin: auto;
     border-radius: 5px;
@@ -295,7 +294,7 @@ ol, ul {
 }
 
 .info p{
-    padding: 5px 0;
+    padding: 0;
 }
 
 .info p:nth-child(1){
@@ -330,12 +329,12 @@ ol, ul {
 /* error end*/
 
 /* showprice */
-.showprice .card-price span:nth-child(1){
+.showprice .card-price {
     display: none;
 }
 
-.showprice .card-price span:nth-child(2){
-    display: inline-block;
+.showprice .card-text p{
+    text-align: center;
 }
 /* showPrice end */
 
@@ -593,7 +592,9 @@ ol, ul {
 
 .section {
     width: 32%;
+    height: 405px;
     margin: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
