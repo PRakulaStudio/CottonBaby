@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/css/product.css"/>
     </head>
-    <body class="">
+    <body class="showprice">
     <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 
