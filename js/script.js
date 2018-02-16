@@ -478,9 +478,9 @@ function eventAuth()
 }
 
 
+
+
 document.addEventListener('click' , function (event) {
-
-
    //нажатие на кнопку "В избранное"
    if(event.target.tagName == "BUTTON" && ( event.target.classList.contains('new-on') || event.target.classList.contains('new-off')  ) )
    {
@@ -513,6 +513,7 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
+
     //скролл документа на самый верх
     if(event.target.tagName == "DIV" && event.target.classList.contains('scrollup'))
     {
@@ -543,6 +544,7 @@ document.addEventListener('click' , function (event) {
             document.querySelector('#exit').style.display = 'none';
     }
 
+
     //нажатие на крестик у окна авторизации или у кона с переходом в личный кабинет
     if( ((event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON" && event.target.parentNode.classList.contains('popup-close') ) ||
         (event.target.tagName == "BUTTON" && event.target.classList.contains('popup-close')) ) &&
@@ -568,8 +570,6 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
-
-
     //скрытие блока меню, если кликнули не на этот блок
     if(!event.target.closest('div.menu-popup') && !( event.target.tagName == "BUTTON" && event.target.classList.contains('menu-on')) )
     {
@@ -594,7 +594,6 @@ document.addEventListener('keydown' , function (event) {
 });
 
 document.addEventListener('mousedown' , function (event) {
-
 
 });
 
