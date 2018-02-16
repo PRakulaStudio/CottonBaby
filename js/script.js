@@ -170,16 +170,15 @@ else
 config = Object.freeze(config);
 
 //надо будет убрать(скрывает блок с сортировкой)
-let blockSorting = document.querySelector('div.sorting');
-if( blockSorting)
-    blockSorting.style.display = 'none';
+// let blockSorting = document.querySelector('div.sorting');
+// if( blockSorting)
+//     blockSorting.style.display = 'none';
 
 
 if (!window.pms) window.pms = {};
  window.pms['config'] = config;
 
 let menu = document.querySelectorAll('div.menu div.marker');
-
 /*
  * @param str
  * @param requareLength
