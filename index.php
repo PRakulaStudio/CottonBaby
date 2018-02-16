@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/css/zik_index.css"/>
     <link rel="manifest" href="manifest.json"/>
 </head>
-<body class="showPrice">
+<body class="showprice">
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
