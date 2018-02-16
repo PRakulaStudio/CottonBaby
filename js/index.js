@@ -15,6 +15,8 @@ try {
 	});
 
 	let countInsta = 0;
+	let canRequest = true;
+	let last_insta_id = "";
 	let swiper_main = new Swiper('.swiper-main', {
 		loop: true,
 		autoplay: window.innerWidth < 1000 ? {
@@ -100,40 +102,53 @@ try {
 	swiper_insta.on( 'slideNextTransitionEnd' , function () {
 		try {
 
-			//if(countInsta%2)//тут надло поправить
-			//{
-			//}
+			if (!canRequest)
+				return;
 
-			//countInsta++
-			// if (!loadItems)
-			// 	return true;
-            //
-			// var data = new FormData();
-			// data.append('id', currentItem.collection);
-			// data.append('limit', 9); //эти цифры нужно еще редактировать
-			// data.append('offset', 9);//эти цифры нужно еще редактировать
-			// return fetch(window.pms.config.instagrammAPI + 'feed/' , { method: 'POST', credentials: 'same-origin', body: data })  .then( response => {
-			// 	let responseData = false;
-			// 	try{
-			// 		responseData = response.json();
-			// 	}
-			// 	catch(e) {
-			// 		responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-			// 		response.text().then(console.debug);
-			// 	}
-            //
-			// 	return responseData;
-			// }).then(response => {
-			// 	if(response.status) //тут логика для добавления в слайдер инста. Нужно добавлять массив
-			// 	{
-			//    swiper_insta.appendSlide(['<div class="swiper-slide"><img src="http://bipbap.ru/wp-content/uploads/2017/04/priroda_kartinki_foto_03.jpg" /></div>']);
-			// 	}
-			// });
+			
+				return fetch(window.pms.config.instagrammAPI + 'feed/?limit=4&last_id='+last_insta_id+'', {
+					method: 'GET',
+					credentials: 'same-origin'
+				}).then(response => {
+					let responseData = false;
+					try {
+						responseData = response.json();
+					}
+					catch (e) {
+						responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+						response.text().then(console.debug);
+					}
+
+					return responseData;
+				}).then(response => {
+
+					let list_sliders = [],
+						slide = "";
+					if (response.status) //тут логика для добавления в слайдер инста. Нужно добавлять массив
+					{
+						if (response.items && response.items.length) {
+							for (let i = 0; i < response.items.length; i++) {
+								slide = '<div class="swiper-slide"><img src="' + response.items[i].src + '" /></div>';
+								list_sliders.push(slide);
+								last_insta_id = response.items[i].inst_id;
+							}
+							swiper_insta.appendSlide(list_sliders);
+						}
+						else
+							canRequest = false;
+
+					}
+				});
+
+			countInsta++
 		}
 		catch(error)
 		{
 			console.log(error)
+
 		}
+
+
 	});
 
 

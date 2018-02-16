@@ -20,7 +20,6 @@
     <div class="scrollup"></div>
     <?= getData(false, 'header', ['']) ?>
 
-
     <!-- content start -->
     <main class="content-site">
         <section class="content">

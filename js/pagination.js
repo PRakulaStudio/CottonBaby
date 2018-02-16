@@ -13,7 +13,7 @@ var limitItems = 24,
     canChange = true,
     countPages = 0,
     blockPagination = document.querySelector('div.pagination'),
-    cloneBlockPagination = "";
+    cloneBlockPagination = "",
     blockSpinner = '<div class="request-spinner ispinner ispinner--gray ispinner--animating">' +
                         '<div class="ispinner__blade"></div>' +
                         '<div class="ispinner__blade"></div>' +
