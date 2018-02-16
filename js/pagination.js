@@ -13,6 +13,7 @@ var limitItems = 24,
     canChange = true,
     countPages = 0,
     blockPagination = document.querySelector('div.pagination'),
+    cloneBlockPagination = "";
     blockSpinner = '<div class="request-spinner ispinner ispinner--gray ispinner--animating">' +
                         '<div class="ispinner__blade"></div>' +
                         '<div class="ispinner__blade"></div>' +
@@ -139,11 +140,8 @@ function setPaginationValue(button , value)
         button.innerText = value;
 }
 
-
 function changePagination(direction , activeButton , clickButton )
 {
-
-
     canChange = false;
 
     let offset = 0,
@@ -287,7 +285,6 @@ function changePagination(direction , activeButton , clickButton )
                 }
             }
 
-
             if( countPages > 4 )
             {
                 //скрываем левую кнопку
@@ -326,7 +323,6 @@ function changePagination(direction , activeButton , clickButton )
 
     history.pushState({foo: 'page'}, path, window.location.origin+window.location.pathname+path);
 
-
     if( arrayItems[activeButton.innerText])
     {
         if( !arrayItems[prevButtonActiveNumber])
@@ -348,7 +344,6 @@ function changePagination(direction , activeButton , clickButton )
 
         if(!arrayItems[prevButtonActiveNumber])
             arrayItems[prevButtonActiveNumber] = document.querySelector('div.products-box,div.card-box').innerHTML;
-
 
         sort = "create_date"; //нужно проверить
         if( document.querySelector('div.sorting'))
@@ -379,7 +374,6 @@ function changePagination(direction , activeButton , clickButton )
     }
 
 }
-
 
 function requestGetItems(offset , limit , sort , pageName)
 {
@@ -537,10 +531,12 @@ document.addEventListener('click' , function (event) {
         if( !event.target.classList.contains(activePaginationButton))
         {
 
+
             let activeButton = event.target.parentNode.querySelector('button.'+activePaginationButton);
 
             event.target.innerHTML = event.target.innerHTML + blockSpinner;
             event.target.classList.add('hide-text-button');
+
 
             if( event.target.innerText > activeButton.innerText )
                 changePagination("next" , activeButton, event.target);

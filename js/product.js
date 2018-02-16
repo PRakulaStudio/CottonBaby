@@ -114,6 +114,10 @@ try {
                 },
             }
         });
+        
+        [].forEach.call(  document.querySelectorAll('.no-js') , function (slider) {
+           slider.classList.remove('no-js');
+        });
 
         swiper.on('slideNextTransitionEnd' , function () {
             try{
@@ -536,9 +540,6 @@ try {
                 prevEl: '.slider-prev',
             },
         })
-
-
-
 
 
 

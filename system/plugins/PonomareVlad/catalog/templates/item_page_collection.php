@@ -2,7 +2,7 @@
     <h2>Товары из этой же коллекции:</h2>
 </div>
 
-<div class="slider-bottom">
+<div class="slider-bottom no-js">
     <div class="swiper-button">
         <button class="swiper-button-prev"><img src="/images/icons/back.svg"></button>
         <button class="swiper-button-next"><img src="/images/icons/next.svg"></button>

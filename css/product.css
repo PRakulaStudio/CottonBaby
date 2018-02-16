@@ -649,3 +649,25 @@
     .price-basket .btn, .price-basket .link {margin: 5px auto;}
 }
 /* media end */
+
+.no-js.slider-bottom .swiper-slide{
+    width: 33.3% !important;
+}
+
+.no-js.gallery-thumbs .swiper-wrapper{
+    display: flex !important;
+    justify-content: center  !important;
+}
+
+@media (max-width: 900px)
+{
+    .no-js.slider-bottom .swiper-slide{
+        width: 48% !important;
+    }
+}
+@media (max-width: 600px)
+{
+    .no-js.slider-bottom .swiper-slide{
+        width: 99% !important;
+    }
+}

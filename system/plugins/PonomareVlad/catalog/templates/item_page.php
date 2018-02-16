@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <div class="swiper-container gallery-thumbs slider-thumbs">
+                    <div class="swiper-container gallery-thumbs slider-thumbs no-js">
                         <div class="swiper-wrapper">
                             <?= getData('images',
                                 [
@@ -165,7 +165,6 @@
     <!-- content end -->
 
     <?= getData(false, 'footer', ['']) ?>
-
     <script>
         if (!window.pms) window.pms = {};
         if (!pms.plugins) pms.plugins = {};

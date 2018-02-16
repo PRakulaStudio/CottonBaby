@@ -1,4 +1,6 @@
 /* main-slider */
+
+
 .main-slider .swiper-container {
     width: 100%;
     height: 100%;
@@ -316,9 +318,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    -webkit-backdrop-filter: saturate(150%) blur(10px);
-    -moz-backdrop-filter: saturate(150%) blur(10px);
-    -o-backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(200%) blur(20px);
+    -moz-backdrop-filter: saturate(200%) blur(20px);
+    -o-backdrop-filter: saturate(200%) blur(20px);
     background: rgba(255, 255, 255, 0.5);
 }
 
@@ -976,3 +978,86 @@
     .prod-box .prod-title a {margin: 10px 10px 10px auto;}
 }
 /* media end */
+
+/*.no-js .swiper-slide {*/
+       /*width: 20% !important;*/
+       /*margin-right: 0px !important;*/
+/*}*/
+
+.new-slider.no-js .swiper-slide{
+    margin-right: 15px !important;
+    width: 25% !important;
+
+}
+
+.img-slider.no-js .swiper-prod .swiper-slide{
+    width: 20% !important;
+    margin-right: 1px;
+}
+
+.img-slider.no-js .swiper-insta .swiper-slide{
+    width: 25% !important;
+    margin-right: 1px !important;
+}
+
+@media (max-width: 1200px)
+{
+    .img-slider.no-js .swiper-prod .swiper-slide{
+        width: 25% !important;
+        margin-right: 1px;
+    }
+}
+
+ @media (max-width: 900px) {
+     .new-slider.no-js .swiper-slide {
+             width: 50% !important;
+         }
+
+     .img-slider.no-js .swiper-prod .swiper-slide{
+         width: 33.3% !important;
+         margin-right: 1px;
+     }
+
+     .img-slider.no-js .swiper-insta .swiper-slide{
+         width: 33.3% !important;
+         margin-right: 1px !important;
+     }
+ }
+
+
+
+@media (max-width: 800px)
+{
+    .img-slider.no-js .swiper-prod .swiper-slide{
+        width: 50% !important;
+        margin-right: 1px;
+    }
+}
+
+@media( max-width: 600px)
+{
+    .img-slider.no-js .swiper-insta .swiper-slide{
+        width: 50% !important;
+        margin-right: 1px !important;
+    }
+}
+
+ @media (max-width: 500px) {
+     .new-slider.no-js .swiper-slide {
+             width: 100% !important;
+             margin-right: 0; !important;
+         }
+     .img-slider.no-js .swiper-prod .swiper-slide{
+         width: 100% !important;
+         margin-right: 1px;
+     }
+     .img-slider.no-js .swiper-insta .swiper-slide{
+         width: 100% !important;
+         margin-right: 1px !important;
+     }
+}
+
+@media (max-width: 400px) {
+
+
+}

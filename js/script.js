@@ -16,6 +16,7 @@ let config = {
     cabinetAPI: '/system/plugins/SecArgonia/cabinet/',
     catalogAPI: '/system/plugins/PonomareVlad/catalog/',
     feedbackAPI: '/system/plugins/SecArgonia/feedback/',
+    instagrammAPI: '/system/plugins/AleksanderLar/instagram/',
 };
 
 //дизайн header
@@ -116,8 +117,6 @@ window.onscroll = function(){
 };
 
 
-
-
 function renderHeaderIsAuth(data){
     document.querySelector('body').classList.remove('showprice');
     headerBlock = document.querySelector('[class*="header-user"]');
@@ -163,7 +162,6 @@ function renderHeaderAuthFalse()
     headerBlock.querySelector('div[data-auth] span').innerHTML = "Войти";
 }
 
-
 if(localStorage.getItem('user'))
     renderHeaderIsAuth(JSON.parse(localStorage.getItem('user')));
 else
@@ -171,7 +169,7 @@ else
 
 config = Object.freeze(config);
 
-//надо будет убрать
+//надо будет убрать(скрывает блок с сортировкой)
 let blockSorting = document.querySelector('div.sorting');
 if( blockSorting)
     blockSorting.style.display = 'none';

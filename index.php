@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/css/zik_index.css"/>
     <link rel="manifest" href="manifest.json"/>
 </head>
-<body class="showPrice">
+<body class="showprice">
 <div class="scrollup"></div>
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
@@ -229,7 +229,7 @@
         <div class="new">
             <div class="title">
                 <p>Новинки</p>
-                <a href="/catalog/">в каталог<img src="images/icons/arrow-link.svg"></a>
+                <a href="/catalog/">в каталог<img src="/images/icons/arrow-link.svg"></a>
             </div>
 
             <div class="text">
@@ -237,10 +237,10 @@
             </div>
         </div>
 
-        <div class="new-slider">
+        <div class="new-slider no-js">
             <div class="swiper-button">
-                <button class="new-prev swiper-button-prev"><img src="images/icons/back.svg"></button>
-                <button class="new-next swiper-button-next"><img src="images/icons/next.svg"></button>
+                <button class="new-prev swiper-button-prev"><img src="/images/icons/back.svg"></button>
+                <button class="new-next swiper-button-next"><img src="/images/icons/next.svg"></button>
             </div>
             <div class="swiper-container swiper-new">
                 <div class="swiper-wrapper">
@@ -270,13 +270,13 @@
                     <p>• Юридическими лицами</p>
                     <p>• Физическими лицами</p>
                     <p>• Совместными покупками</p>
-                    <p>Чтобы увидеть оптовые цены - <a href="registration.html">зарегистрируйтесь</a>!</p>
+                    <p>Чтобы увидеть оптовые цены - <a href="/registration.html">зарегистрируйтесь</a>!</p>
                     <p>Если возникли вопросы -</p>
                 </div>
 
-                <div class="coop-link">
-                    <a href="cooperation.html"><img src="images/icons/send.png">Напишите нам</a>
-                </div>
+<!--                <div class="coop-link">-->
+<!--                    <a href="/cooperation.html"><img src="/images/icons/send.png">Напишите нам</a>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
@@ -289,39 +289,39 @@
                     <b>производство</b>
                 </div>
 
-                <a href="production.html">подробнее<img src="images/icons/arrow-link.svg"></a>
+                <a href="/production.html">подробнее<img src="/images/icons/arrow-link.svg"></a>
             </div>
 
             <div class="prod-icons">
                 <div class="prod-icon icon-a">
-                    <img src="images/production/a.png">
+                    <img src="/images/production/a.png">
                     <p>8 лет розничной торговли</p>
                 </div>
 
                 <div class="prod-icon icon-b">
-                    <img src="images/production/b.png">
+                    <img src="/images/production/b.png">
                     <p>Начало производства в 2015г.</p>
                 </div>
 
                 <div class="prod-icon icon-c">
-                    <img src="images/production/c.png">
+                    <img src="/images/production/c.png">
                     <p>Зарегистрированная торговая марка Cotton Baby</p>
                 </div>
 
                 <div class="prod-icon icon-d">
-                    <img src="images/production/d.png">
+                    <img src="/images/production/d.png">
                     <p>Сертификат таможенного союза №5644325</p>
                 </div>
 
                 <div class="prod-icon icon-e">
-                    <img src="images/production/e.png">
+                    <img src="/images/production/e.png">
                     <p>Лучшие мировые производители тканей и фурнитуры</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="img-slider">
+    <section class="img-slider no-js">
         <div class="swiper-container swiper-prod">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img
@@ -343,8 +343,8 @@
         </div>
 
         <div class="swiper-button">
-            <button class="prod-prev"><img src="images/icons/back.svg"></button>
-            <button class="prod-next"><img src="images/icons/next.svg"></button>
+            <button class="prod-prev"><img src="/images/icons/back.svg"></button>
+            <button class="prod-next"><img src="/images/icons/next.svg"></button>
         </div>
     </section>
 
@@ -378,11 +378,11 @@
             <div class="insta-text">
                 <p>Подпишись на наш инстаграм</p>
                 <a target="_blank" href="https://www.instagram.com/cot.ton_baby/">подпишись<img
-                            src="images/icons/arrow-link.svg"></a>
+                            src="/images/icons/arrow-link.svg"></a>
             </div>
         </div>
 
-        <div class="img-slider">
+        <div class="img-slider no-js">
             <div class="swiper-container swiper-insta">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img
