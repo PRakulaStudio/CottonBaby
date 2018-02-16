@@ -477,6 +477,11 @@ function eventAuth()
         requestAuth(data);
 }
 
+//событие на скролл документа на самый вверх
+document.querySelector('div.scrollup').addEventListener('click' , function(event){
+    animateScrollTo(0);
+    return;
+});
 
 
 
@@ -513,13 +518,6 @@ document.addEventListener('click' , function (event) {
         return;
     }
 
-
-    //скролл документа на самый верх
-    if(event.target.tagName == "DIV" && event.target.classList.contains('scrollup'))
-    {
-        animateScrollTo(0);
-        return;
-    }
 
     //показываем окно с авторизацие или переход на личный кабинет
     if( (event.target.tagName == "SPAN" &&  event.target.parentNode.parentNode.hasAttribute('data-auth') )

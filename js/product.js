@@ -10,6 +10,7 @@ try {
         let currentItem = window.pms.plugins.catalog.currentItem,
             body =  document.querySelector('body'),
             countFullSliderImages = 0,
+            canChangeSize = true,
             loadItems = true;
 
         var css = {
@@ -248,10 +249,12 @@ try {
                     .then(function (response) {
                         if(response.status)
                         {
+                            canChangeSize = false;
                             //нужно раскомментить
                             if( yaCounter47500810 )
                                 yaCounter47500810.reachGoal('add_card');
-                           
+
+
                             document.querySelector('div.product-size').style.display = "none";
                             //скрываем кнопку "В корзину"
                             document.querySelector('div.price-basket div.btn').style.display = "none";
@@ -314,6 +317,8 @@ try {
 
                             if(Object.keys(response.data.modifications).length)
                             {
+                                canChangeSize = false;
+                                document.querySelector('div.product-size').style.display = "none";
                                 document.querySelector('div.price-basket div.price span').innerText =  response.data.price_total;
                                 let size = "";
                                 for(var key in response.data.modifications)
@@ -322,6 +327,7 @@ try {
                                     {
                                         size.classList.add(css.sizeActive);
                                         size.querySelector('input[type="number"]').value = response.data.modifications[key].quantity;
+
                                     }
                                 }
 
@@ -354,10 +360,14 @@ try {
 
         }
 
+
         document.addEventListener('keyup' , function (event) {
 
-            if(event.target.tagName == "INPUT" && event.target.getAttribute('type') == "number" && event.target.closest('div.size-box'))
+            if(event.target.tagName == "INPUT" && event.target.getAttribute('type') == "number" && event.target.closest('div.size-box') )
             {
+                if (!canChangeSize)
+                    return;
+
                 try {
                     let input = event.target;
                     if( input.value.length > 3)
@@ -397,8 +407,10 @@ try {
         });
 
         document.addEventListener('change' , function (event) {
-            if(event.target.input && event.target.getAttribute('type') == "number" && event.target.closest('div.size-box'))
+            if(event.target.input && event.target.getAttribute('type') == "number" && event.target.closest('div.size-box') )
             {
+                if(!canChangeSize)
+                    return;
                 try{
                     let new_event = document.createEvent('HTMLEvents');
                     event.initEvent('keyup', true, false);
@@ -419,6 +431,8 @@ try {
                 (event.target.tagName == "IMG" && event.target.parentNode.tagName == "BUTTON" && event.target.closest('div.size-box'))
             )
             {
+                if(!canChangeSize)
+                    return;
                 try{
                     let button = event.target;
                     if( event.target.tagName == "IMG")
@@ -496,11 +510,9 @@ try {
                 {
                     requestSendBugs(error);
                 }
-
             }
 
         });
-
 
         let slidersFullscreen = "";
         if(  window.pms.plugins.catalog.currentItem.images )
