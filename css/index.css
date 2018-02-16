@@ -358,7 +358,7 @@
 /* new-slider end*/
 
 /* cooperation */
-.content-cooperation {
+
 .content-cooperation {
     width: 100%;
     /*height: 550px;*/
@@ -368,7 +368,7 @@
     overflow: hidden;
     background: url(/video/fon.png) no-repeat center;
     background-size: cover;
-
+}
 .content-cooperation video{
     position: absolute;
     top: 0;
