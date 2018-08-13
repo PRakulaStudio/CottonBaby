@@ -99,7 +99,7 @@ function lazyLoad() {
     function elementInViewport(el) {
         var rect = el.getBoundingClientRect();
 
-        return rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+        return rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 3;
     }
 
     document.querySelectorAll('div.lazy').forEach(function (node) {
@@ -110,7 +110,9 @@ function lazyLoad() {
         for (var i = 0; i < lazyBuffer.length; i++) {
             var node = lazyBuffer[i];
             if (node && elementInViewport(node)) {
-                lazyBuffer.splice(i, 1);
+                // lazyBuffer.splice(i, 1);
+                lazyBuffer[i] = null;
+                delete lazyBuffer[i];
                 var imageNode = new Image();
                 imageNode.lazyNode = node;
                 imageNode.onload = function () {
