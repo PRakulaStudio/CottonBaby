@@ -29,7 +29,7 @@ var headerBlock = "",
 
 //ленивая загрузка картинок
 function lazyLoad() {
-    var $q = function $q(q, res) {
+    /*var $q = function $q(q, res) {
 
             if (document.querySelectorAll) {
                 res = document.querySelectorAll(q);
@@ -64,16 +64,12 @@ function lazyLoad() {
             src = el.getAttribute('data-src');
         img.onload = function () {
             if (el.parentNode) el.parentNode.replaceChild(img, el);
-            // fn? fn() : null;
+            fn? fn() : null;
         };
         img.src = src;
     }
 
-    function elementInViewport(el) {
-        var rect = el.getBoundingClientRect();
 
-        return rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
-    }
 
     var images = new Array(),
         query = $q('div.lazy'),
@@ -81,22 +77,53 @@ function lazyLoad() {
 
             for (var i = 0; i < images.length; i++) {
 
-                // if (elementInViewport(images[i])) {
+                if (elementInViewport(images[i])) {
                 loadImage(images[i], function () {
-                    images.splice(i, i);
+                    images.splice(i, 1);
                 });
-                //}
+                }
             }
-            ;
         };
 
     // Array.prototype.slice.call is not callable under our lovely IE8
     for (var i = 0; i < query.length; i++) {
         images.push(query[i]);
-    };
+    }
+
 
     processScroll();
-    addEventListener('scroll', processScroll);
+    addEventListener('scroll', processScroll);*/
+
+    var lazyBuffer = [];
+
+    function elementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+
+        return rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+    }
+
+    document.querySelectorAll('div.lazy').forEach(function (node) {
+        lazyBuffer.push(node);
+    });
+
+    function lazyHandler() {
+        for (var i = 0; i < lazyBuffer.length; i++) {
+            var node = lazyBuffer[i];
+            if (node && elementInViewport(node)) {
+                lazyBuffer.splice(i, 1);
+                var imageNode = new Image();
+                imageNode.lazyNode = node;
+                imageNode.onload = function () {
+                    if (this.lazyNode.parentNode) this.lazyNode.parentNode.replaceChild(this, this.lazyNode);
+                };
+                imageNode.src = node.getAttribute('data-src');
+            }
+        }
+    }
+
+    addEventListener('scroll', lazyHandler);
+    lazyHandler();
+
 }
 
 // !function(window){
@@ -167,6 +194,7 @@ if (!window.pms) window.pms = {};
 window.pms['config'] = config;
 
 var menu = document.querySelectorAll('div.menu div.marker');
+
 /*
  * @param str
  * @param requareLength
@@ -176,6 +204,7 @@ function checkLength(str, requareLength) {
     if (str.length >= requareLength) return true;
     return false;
 }
+
 /**
  *
  * @param email
@@ -186,6 +215,7 @@ function checkEmail(email) {
     if (re.test(email)) return true;
     return false;
 }
+
 /**
  *
  * @param phone

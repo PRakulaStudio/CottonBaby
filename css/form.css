@@ -136,19 +136,19 @@
 
 .info-text {
     overflow: hidden;
-    height: 195px;
+    height: 250px;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
 }
 
-.info-text b{
+.info-text strong {
     font-family: "Fontfabric-MullerBold";
     font-size: 15px;
 }
 
-.info-text b > img{
+.info-text strong > img {
     vertical-align: middle;
     margin: 0 5px 0 0;
 }
