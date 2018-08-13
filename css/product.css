@@ -628,9 +628,16 @@
 
 /* media */
 @media (max-width: 800px) {
-    .product-box {flex-direction: column;}
+    .product-box {
+        width: 100%;
+        flex-direction: column;
+    }
     .slider {width: 100%;}
-    .information {width: 100%;}
+
+    .information {
+        width: 98%;
+        margin: 0 auto;
+    }
     .size-box {justify-content: flex-start;}
     .size-block {width: 32%;}
     .size-block:nth-child(3n+2) {margin: 5px 2%;}

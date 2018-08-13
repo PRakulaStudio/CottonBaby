@@ -1,53 +1,41 @@
+"use strict";
+
 /**
  * Created by Иван on 22.01.2018.
  */
-( function(){
+
+(function () {
 
     var limitItemsCollection = 24;
     var offset = 9;
-    let mobileWidth = 1000;
-    let collections = pms.plugins.catalog.collections;
+    var mobileWidth = 1000;
+    var collections = pms.plugins.catalog.collections;
 
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var select_sort = url.searchParams.get("sort");
 
-
-
-
-
-
-
-    let url_string = window.location.href;
-    let url = new URL(url_string);
-    let select_sort = url.searchParams.get("sort");
-
-    if(select_sort) {
-        if (select_sort == "price" && document.querySelector('div.sorting-block button.sorting-activ'))
-            document.querySelector('div.sorting-block button.sorting-activ').classList.remove('sorting-activ');
+    if (select_sort) {
+        if (select_sort == "price" && document.querySelector('div.sorting-block button.sorting-activ')) document.querySelector('div.sorting-block button.sorting-activ').classList.remove('sorting-activ');
     }
 
     //если мобилка, то показываем кнопку
-    if(  window.innerWidth <= mobileWidth )
-    {
-        let link_collections = "";
-        for(let i = 0; i < collections.length; i++)
-            link_collections += "<a href='"+collections[i].href+"'>"+collections[i].title+"<span>"+collections[i].count+"</span></a>";
-
-        document.querySelector('section.filter-box div.filter').innerHTML = link_collections;
-        if (!document.querySelector('section.content > div.title button'))
-            displayCategories('show');
-        else
-            displayCategories('hide');
-    }
-    else
-    {
-        let link_collections = "";
-        for(let i = 0; i < 8; i++) {
-            link_collections += "<a href='" + collections[i].href + "'>" + collections[i].title + "<span>" + collections[i].count + "</span></a>"
-            collections.shift();
+    if (window.innerWidth <= mobileWidth) {
+        var link_collections = "";
+        for (var i = 0; i < collections.length; i++) {
+            link_collections += "<a href='" + collections[i].href + "'>" + collections[i].title + "<span>" + collections[i].count + "</span></a>";
         }
         document.querySelector('section.filter-box div.filter').innerHTML = link_collections;
+        if (!document.querySelector('section.content > div.title button')) displayCategories('show'); else displayCategories('hide');
+    } else {
+        var _link_collections = "";
+        for (var _i = 0; _i < 8; _i++) {
+            _link_collections += "<a href='" + collections[_i].href + "'>" + collections[_i].title + "<span>" + collections[_i].count + "</span></a>";
+            collections.shift();
+        }
+        document.querySelector('section.filter-box div.filter').innerHTML = _link_collections;
         //удаляем, если меньше 8-ми в коллекции
-        if(collections.length <= 8 &&  document.querySelector('div.title-collection button') )
-            document.querySelector('div.title-collection button').remove();
+        if (collections.length <= 8 && document.querySelector('div.title-collection button')) document.querySelector('div.title-collection button').remove();
     }
 
     // if(  window.innerWidth <= 625 )
@@ -58,18 +46,16 @@
     //         displayCategories('hide');
     // }
 
-    function requestGetOtherCollections(pageName , offset)
-    {
-        let html = "";
+    function requestGetOtherCollections(pageName, offset) {
+        var html = "";
 
-        for(let key in collections)
-        {
-            html += '<a href="'+collections[key].href+'">'+collections[key].title+'<span>'+collections[key].count+'</span></a>';
+        for (var key in collections) {
+            html += '<a href="' + collections[key].href + '">' + collections[key].title + '<span>' + collections[key].count + '</span></a>';
         }
-        document.querySelector('div.filter').innerHTML =  document.querySelector('div.filter').innerHTML + html;
+        document.querySelector('div.filter').innerHTML = document.querySelector('div.filter').innerHTML + html;
 
         changeCategoryButton();
-        displayCategories( "show" );
+        displayCategories("show");
         // var data = new FormData();
         // data.append('offset' , 8);
         // data.append('show_count' , true );
@@ -109,112 +95,79 @@
     }
 
     window.onresize = function (event) {
-        let button = document.querySelector('section.content > div.title button');
+        var button = document.querySelector('section.content > div.title button');
 
-        if( button.hasAttribute('data-category-action') )
-        {
+        if (button.hasAttribute('data-category-action')) {
             displayCategories(button.getAttribute('data-category-action'));
-        }
-        else
-        {
-            if( window.innerWidth <= mobileWidth)
-                displayCategories('hide');
-            else
-                displayCategories('show');
-
+        } else {
+            if (window.innerWidth <= mobileWidth) displayCategories('hide'); else displayCategories('show');
         }
     };
 
-    function displayCategories(status_display)
-    {
+    function displayCategories(status_display) {
         //если мобилка
-        if( window.innerWidth <= mobileWidth)
-        {
-            if(status_display == "show" )
-            {
+        if (window.innerWidth <= mobileWidth) {
+            if (status_display == "show") {
                 document.querySelector('section.filter-box').style.display = "block";
-                document.querySelectorAll('section.filter-box a').forEach( function(link){
-                   link.style.display = "block";
+                document.querySelectorAll('section.filter-box a').forEach(function (link) {
+                    link.style.display = "block";
                 });
-            }
-            else
-                document.querySelector('section.filter-box').style.display = "none";
-        }
-        else
-        {
+            } else document.querySelector('section.filter-box').style.display = "none";
+        } else {
             document.querySelector('section.filter-box').style.display = "block";
-            if(status_display == "show")
-            {
-                let start = 0, end = 8,
-                    showAllLinks =  document.querySelector('div.title button').hasAttribute('data-category-action') ? true : false;
+            if (status_display == "show") {
+                var start = 0,
+                    end = 8,
+                    showAllLinks = document.querySelector('div.title button').hasAttribute('data-category-action') ? true : false;
 
-                document.querySelectorAll('div.filter a').forEach( function(link){
-                     if( !showAllLinks && start > 7 )
-                     {
-                         link.style.display ="none";
-                         return;
-                     }
-                    link.style.display ="block";
+                document.querySelectorAll('div.filter a').forEach(function (link) {
+                    if (!showAllLinks && start > 7) {
+                        link.style.display = "none";
+                        return;
+                    }
+                    link.style.display = "block";
                     start++;
                 });
-            }
-            else
-            {
-                let start = 0, end = 8;
-                document.querySelectorAll('div.filter a').forEach( function(link){
-                    if( start >= end)
-                        link.style.display ="none";
-                    start++;
+            } else {
+                var _start = 0,
+                    _end = 8;
+                document.querySelectorAll('div.filter a').forEach(function (link) {
+                    if (_start >= _end) link.style.display = "none";
+                    _start++;
                 });
             }
-
         }
-
-
     }
 
-    function requestGetCollectionItems(offset, limit, sort, pageName)
-    {
-        return requestGetItems(offset , limit, sort , pageName);
+    function requestGetCollectionItems(offset, limit, sort, pageName) {
+        return requestGetItems(offset, limit, sort, pageName);
     }
 
-    document.addEventListener('click' , function(event){
-        if( ( event.target.tagName == "IMG" || event.target.tagName == "BUTTON") &&  event.target.closest('div.title') )
-        {
-            let button = event.target;
-            if( event.target.tagName == "IMG" )
-                button = event.target.parentNode;
+    document.addEventListener('click', function (event) {
+        if ((event.target.tagName == "IMG" || event.target.tagName == "BUTTON") && event.target.closest('div.title')) {
+            var button = event.target;
+            if (event.target.tagName == "IMG") button = event.target.parentNode;
 
-            if( !button.hasAttribute('data-category-action') )
-                requestGetOtherCollections('katalog' , 8);
-            else
-                changeCategoryButton();
+            if (!button.hasAttribute('data-category-action')) requestGetOtherCollections('katalog', 8); else changeCategoryButton();
         }
     });
 
-    function changeCategoryButton()
-    {
-        let button = document.querySelector('section.content > div.title button');
+    function changeCategoryButton() {
+        var button = document.querySelector('section.content > div.title button');
 
-        if( button.hasAttribute('data-category-action') )
-        {
-            if(button.getAttribute('data-category-action') == "show")
-            {
-                button.setAttribute('data-category-action' , 'hide')
+        if (button.hasAttribute('data-category-action')) {
+            if (button.getAttribute('data-category-action') == "show") {
+                button.setAttribute('data-category-action', 'hide');
                 button.innerHTML = 'все коллекции<img src="/images/icons/down-arrow.svg">';
-            }
-            else
-            {
-                button.setAttribute('data-category-action' , 'show')
+            } else {
+                button.setAttribute('data-category-action', 'show');
                 button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
             }
 
-            displayCategories(button.getAttribute('data-category-action') );
-        }
-        else
-        {
-            button.setAttribute('data-category-action' , 'show')
-            button.innerHTML ='скрыть<img src="/images/icons/up-arrow.svg">';
+            displayCategories(button.getAttribute('data-category-action'));
+        } else {
+            button.setAttribute('data-category-action', 'show');
+            button.innerHTML = 'скрыть<img src="/images/icons/up-arrow.svg">';
         }
     }
 
@@ -259,25 +212,21 @@
     //
     // });
 
-    Promise.all([
-        requestCheckAuth('collection'),
-        createPagination(pms.plugins.catalog.currentCollection.count , 'collection'),
-      
+    Promise.all([requestCheckAuth('collection'), createPagination(pms.plugins.catalog.currentCollection.count, 'collection')]
+
         //requestGetKatalogItems(0 , limitItemsKatalog, "DESC", 'katalog'),
         // requestGetCategories('katalog'),
-    ]).then( results => {
+    ).then(function (results) {
         IS_AUTH = results[0];
-        if(results[0])
-        {
-            let list_id = [];
-            document.querySelectorAll('div[data-catalog-item-id]').forEach((currentValue, index, array) => {
-                list_id.push( currentValue.getAttribute('data-catalog-item-id') );
+        if (results[0]) {
+            var list_id = [];
+            document.querySelectorAll('div[data-catalog-item-id]').forEach(function (currentValue, index, array) {
+                list_id.push(currentValue.getAttribute('data-catalog-item-id'));
             });
-            
-            requestCheckFavoritesItems(list_id , 'card-box');
+
+            requestCheckFavoritesItems(list_id, 'card-box');
 
             //
         }
     });
-
 })();

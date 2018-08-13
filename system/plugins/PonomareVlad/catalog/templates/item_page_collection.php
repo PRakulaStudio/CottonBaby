@@ -10,7 +10,7 @@
     <div class="swiper-container swiper">
         <div class="swiper-wrapper">
             <?= getData(false, 'catalog_slider_item',
-                getCatalogItemsByParameters(['collection' => getData()], 9, false, ['img_size' => ['750x750']])); ?>
+                getCatalogItemsByParameters(['collection' => getData(), 'available' => 'yes'], 9, false, ['img_size' => ['750x750']])); ?>
         </div>
     </div>
 </div>

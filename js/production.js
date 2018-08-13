@@ -1,5 +1,7 @@
-try{
-	( function(){
+'use strict';
+
+try {
+    (function () {
 		requestCheckAuth("production");
 
 		var swiper = new Swiper('.swiper-container', {
@@ -8,23 +10,19 @@ try{
 			// loop: true,
 			pagination: {
 				el: '.swiper-pagination',
-				dynamicBullets: true,
+                dynamicBullets: true
 			},
 			navigation: {
 				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
+                prevEl: '.swiper-button-prev'
+            }
 		});
-
 	})();
-}
-catch(error)
-{
+} catch (error) {
 	requestSendBugs(error);
 }
 
-
-function isError(e){
+function isError(e) {
 	return e && e.stack && e.message;
 }
 
@@ -39,12 +37,9 @@ function requestSendBugs(error) {
 		}
 	});
 
-	xhr.open("POST", window.location.protocol+"//"+"akula.cottonbaby.ru/system/extensions/errorCatcher/");
+    xhr.open("POST", window.location.protocol + "//" + "akula.cottonbaby.ru/system/extensions/errorCatcher/");
 	xhr.setRequestHeader("Content-Type", "application/json");
 	xhr.setRequestHeader("Cache-Control", "no-cache");
 	xhr.setRequestHeader("Postman-Token", "6fc1aee4-6350-7914-1727-bb9cb2ab9235");
-	if(isError(error))
-		xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error)));
-	else
-		xhr.send(JSON.stringify(error));
+    if (isError(error)) xhr.send(JSON.stringify(error, Object.getOwnPropertyNames(error))); else xhr.send(JSON.stringify(error));
 }
