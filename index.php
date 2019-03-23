@@ -171,8 +171,8 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img
-                            src="images/pictures/index1.jpg"
-                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index1.jpg', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index1.jpg', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index1.jpg', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index1.jpg', 1920, 1920]); ?> 1920w"
+                            src="images/pictures/1.JPG"
+                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/1.JPG', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/1.JPG', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/1.JPG', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/1.JPG', 1920, 1920]); ?> 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
@@ -187,8 +187,8 @@
 
                 <div class="swiper-slide">
                     <img
-                            src="images/pictures/index2.jpg"
-                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index2.jpg', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index2.jpg', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index2.jpg', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index2.jpg', 1920, 1920]); ?> 1920w"
+                            src="images/pictures/2.JPG"
+                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/2.JPG', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/2.JPG', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/2.JPG', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/2.JPG', 1920, 1920]); ?> 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
@@ -203,8 +203,8 @@
 
                 <div class="swiper-slide">
                     <img
-                            src="images/pictures/index3.jpg"
-                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index3.jpg', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index3.jpg', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index3.jpg', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/index3.jpg', 1920, 1920]); ?> 1920w"
+                            src="images/pictures/3.JPG"
+                            srcset="<?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/3.JPG', 450, 450]); ?> 450w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/3.JPG', 800, 800]); ?> 800w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/3.JPG', 1050, 1050]); ?> 1050w, <?= execExtension('imgCache', 'getImageThumpPath', ['images/pictures/3.JPG', 1920, 1920]); ?> 1920w"
                             sizes="(min-width: 1920px) 100vw"
                     >
                     <div class="slide-text">
@@ -451,6 +451,7 @@
 
 <!-- footer end -->
 
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Promise,fetch,es6"></script>
 <script type="text/javascript" src="js/simplebar.js?ver=2" defer></script>
 <script type="text/javascript" src="js/animated-scroll-to.js?ver=2" defer></script>
 <script type="text/javascript" src="js/script.js?ver=2" defer></script>

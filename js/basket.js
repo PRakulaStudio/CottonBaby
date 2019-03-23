@@ -366,6 +366,7 @@
 
     //отправка заказа на оформление
     function requestSendOrder() {
+        if (!document.getElementById('basket-realise').value) return alert('Пожалуйста, укажите способ дальнейшей реализации!');
         document.querySelector('.content-error').classList.add('d-none');
         return fetch(window.pms.config.cabinetAPI + 'order/save', {
             method: 'POST',
@@ -385,6 +386,10 @@
             if (response.status) {
                 //нужно раскомментить
                 if (yaCounter47500810) yaCounter47500810.reachGoal('buy');
+                if (response.debug) sendBasketRealise(response.debug);
+                fetch('/system/plugins/PonomareVlad/cabinet/cart/cleanBasket.php').catch(function (e) {
+                    console.error(e);
+                });
                 document.querySelector('#popup-fon').style.display = "block";
                 document.querySelector('div.basket-order button[action="save-order"]').remove();
                 if (localStorage.getItem('user')) {
@@ -400,6 +405,24 @@
                     break;
                 }
             }
+        });
+    }
+
+    function sendBasketRealise(basketData) {
+        let realise = document.getElementById('basket-realise');
+        if (!realise || !basketData.id) return false;
+        fetch(`/system/plugins/PonomareVlad/cabinet/saveBasketRealise.php?orderId=${basketData.id}&realise=${realise.value}`).then(function (response) {
+            var responseData = false;
+            try {
+                responseData = response.json();
+            } catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        }).then(function (response) {
+            // if(response)
         });
     }
 

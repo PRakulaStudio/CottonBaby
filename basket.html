@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="utf-8" />
-	<title>Cotton Baby - Корзина</title>
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-	<meta name="format-detection" content="telephone=no">
-	<meta property="og:image" content="/images/repost.png">
-	<meta name="yandex-verification" content="f5f049cb38f1bf5c" />
-	<link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/basket.css"/>
+    <meta charset="utf-8"/>
+    <title>Cotton Baby - Корзина</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="width=device-width, height=device-height, initial-scale=1" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="/images/repost.png" property="og:image">
+    <meta content="f5f049cb38f1bf5c" name="yandex-verification"/>
+    <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/basket.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="showprice">
 <div class="scrollup"></div>
@@ -20,90 +20,90 @@
     <div class="popup-table">
         <div class="popup-cell">
             <div class="popup-score" id="score">
-				<button class="popup-close" onclick="PopUpHidePopup()"><img src="/images/icons/close.png"></button>
-				<p>Оплата по счету</p>
-				<form>
-					<div>
-						<div>
-							<label>ИНН</label>
-							<input type="number" name="inn">
-						</div>
+                <button class="popup-close" onclick="PopUpHidePopup()"><img src="/images/icons/close.png"></button>
+                <p>Оплата по счету</p>
+                <form>
+                    <div>
+                        <div>
+                            <label>ИНН</label>
+                            <input name="inn" type="number">
+                        </div>
 
-						<div>
-							<label>Название организации</label>
-							<input type="text" name="name_organization">
-						</div>
+                        <div>
+                            <label>Название организации</label>
+                            <input name="name_organization" type="text">
+                        </div>
 
-						<div>
-							<label>ОГРН</label>
-							<input type="number" name="ogrn">
-						</div>
+                        <div>
+                            <label>ОГРН</label>
+                            <input name="ogrn" type="number">
+                        </div>
 
-						<div>
-							<label>Банк</label>
-							<input type="text" name="name_bank">
-						</div>
+                        <div>
+                            <label>Банк</label>
+                            <input name="name_bank" type="text">
+                        </div>
 
-						<div>
-							<label>БИК</label>
-							<input type="number" name="bik">
-						</div>
+                        <div>
+                            <label>БИК</label>
+                            <input name="bik" type="number">
+                        </div>
 
-						<div>
-							<label>Расчетный счет</label>
-							<input type="number" name="checking_account">
-						</div>
+                        <div>
+                            <label>Расчетный счет</label>
+                            <input name="checking_account" type="number">
+                        </div>
 
-						<div>
-							<label>Корреспондентский счет</label>
-							<input type="number" name="correspondent_account">
-						</div>
-					</div>
+                        <div>
+                            <label>Корреспондентский счет</label>
+                            <input name="correspondent_account" type="number">
+                        </div>
+                    </div>
 
-					<button data-action="save-user-data" type="button" data-type-popup="payment">сохранить</button>
-				</form>
-			</div>
+                    <button data-action="save-user-data" data-type-popup="payment" type="button">сохранить</button>
+                </form>
+            </div>
 
-			<div class="popup-card" id="card">
-				<button class="popup-close" onclick="PopUpHidePopup()"><img src="/images/icons/close.png"></button>
-				<p>Адрес доставки</p>
+            <div class="popup-card" id="card">
+                <button class="popup-close" onclick="PopUpHidePopup()"><img src="/images/icons/close.png"></button>
+                <p>Адрес доставки</p>
 
-				<form>
-					<div>
-						<div>
-							<label>Город</label>
-							<input type="text" name="delivery_city" >
-						</div>
+                <form>
+                    <div>
+                        <div>
+                            <label>Город</label>
+                            <input name="delivery_city" type="text">
+                        </div>
 
-						<div>
-							<label>Адрес</label>
-							<input type="text" name="address" >
-						</div>
+                        <div>
+                            <label>Адрес</label>
+                            <input name="address" type="text">
+                        </div>
 
-						<div>
-							<label>Индекс</label>
-							<input type="number" name="index_number" >
-						</div>
+                        <div>
+                            <label>Индекс</label>
+                            <input name="index_number" type="number">
+                        </div>
 
-						<p>(дополнительную информацию ожидайте на почту)</p>
-					</div>
+                        <p>(дополнительную информацию ожидайте на почту)</p>
+                    </div>
 
-					<button data-action="save-user-data" data-type-popup="card" type="button">сохранить</button>
-				</form>
-			</div>
+                    <button data-action="save-user-data" data-type-popup="card" type="button">сохранить</button>
+                </form>
+            </div>
 
-			<div class="popup-thanks" id="thanks">
-				<button class="popup-close"><img src="/images/icons/close.png"></button>
-				
-				<div>
-					<p>Спасибо!</p>
-				</div>
+            <div class="popup-thanks" id="thanks">
+                <button class="popup-close"><img src="/images/icons/close.png"></button>
 
-				<div>
-					<p>Мы с вами свяжемся.</p>
-				</div>
+                <div>
+                    <p>Спасибо!</p>
+                </div>
 
-			</div>
+                <div>
+                    <p>Мы с вами свяжемся.</p>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -111,314 +111,336 @@
 
 <!-- menu popup start -->
 <div class="menu-popup" id="menu">
-	<div class="button-box">
-		<button class="menu-off" onclick="PopUpHideMenu()" id="menu-off"></button>
-		<div class="search-menu">
-			<input type="search" placeholder="поиск">
-			<button type="submit"><img src="/images/icons/search.png"></button>
-		</div>
-	</div>
+    <div class="button-box">
+        <button class="menu-off" id="menu-off" onclick="PopUpHideMenu()"></button>
+        <div class="search-menu">
+            <input placeholder="поиск" type="search">
+            <button type="submit"><img src="/images/icons/search.png"></button>
+        </div>
+    </div>
 
-	<div class="menu-box">
-		<div class="menu">
-			<div class="section">
-				<p>Компания</p>
-				<ul>
-					<li><a href="/">Главная</a></li>
-					<li><a href="/information.html">О нас</a></li>
-					<li><a href="/catalog/">Каталог</a></li>
-					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="/cooperation.html">Сотрудничество</a></li>
-					<li><a href="/production.html">Наше производство</a></li>
-					<li><a href="/delivery.html">Доставка и оплата</a></li>
-					<li><a href="/contacts.html">Контакты</a></li>
-				</ul>
-			</div>
+    <div class="menu-box">
+        <div class="menu">
+            <div class="section">
+                <p>Компания</p>
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/information.html">О нас</a></li>
+                    <li><a href="/catalog/">Каталог</a></li>
+                    <li><a href="/collections/">Коллекции</a></li>
+                    <li><a href="/cooperation.html">Сотрудничество</a></li>
+                    <li><a href="/production.html">Наше производство</a></li>
+                    <li><a href="/delivery.html">Доставка и оплата</a></li>
+                    <li><a href="/contacts.html">Контакты</a></li>
+                </ul>
+            </div>
 
-			<div class="section marker">
-				<p>Каталог</p>
-				<ul>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-				</ul>
-			</div>
+            <div class="section marker">
+                <p>Каталог</p>
+                <ul>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                </ul>
+            </div>
 
-			<div class="section marker">
-				<p>Коллекции</p>
-				<ul>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-					<li><a href="#">Комбинезон на манжете (6)</a></li>
-					<li><a href="#">Шапки</a></li>
-					<li><a href="#">Штаны</a></li>
-					<li><a href="#">Кофты</a></li>
-					<li><a href="#">Ползунки</a></li>
-					<li><a href="#">Песочник</a></li>
-					<li><a href="#">Нагрудник</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            <div class="section marker">
+                <p>Коллекции</p>
+                <ul>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                    <li><a href="#">Комбинезон на манжете (6)</a></li>
+                    <li><a href="#">Шапки</a></li>
+                    <li><a href="#">Штаны</a></li>
+                    <li><a href="#">Кофты</a></li>
+                    <li><a href="#">Ползунки</a></li>
+                    <li><a href="#">Песочник</a></li>
+                    <li><a href="#">Нагрудник</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- menu popup end -->
 
 <!-- header start -->
 <div class="header-box">
-	<div class="header">
-		<div class="header-menu">
-			<button class="menu-on" onclick="PopUpShowMenu()" id="menu-on"></button>
-		</div>
+    <div class="header">
+        <div class="header-menu">
+            <button class="menu-on" id="menu-on" onclick="PopUpShowMenu()"></button>
+        </div>
 
-		<div class="header-info">
-			<div>
-				<a href="/"><img src="/images/logo.svg"></a>
-			</div>
+        <div class="header-info">
+            <div>
+                <a href="/"><img src="/images/logo.svg"></a>
+            </div>
 
-			<div>
-				<p>Производство детской одежды</p>
-				<p>Оптовая продажа</p>
-				<p>г. Екатеринбург</p>
-			</div>
-		</div>
+            <div>
+                <p>Производство детской одежды</p>
+                <p>Оптовая продажа</p>
+                <p>г. Екатеринбург</p>
+            </div>
+        </div>
 
-		<div class="header-user">
-			<div data-insta>
-				<a target="_blank" href="https://www.instagram.com/cot.ton_baby/"><img src="/images/icons/insta.png"></a>
-				<div class="sub"><div><a target="_blank" href="https://www.instagram.com/cot.ton_baby/">Подпишись</a></div></div>
-			</div>
-			<div data-basket><a href="#"><img src="/images/icons/basket.png"><span>0</span></a></div>
-			<div data-favorite ><a href="#"><img src="/images/icons/favorites.png"><span>0</span></a></div>
-			<div data-auth>
+        <div class="header-user">
+            <div data-insta>
+                <a href="https://www.instagram.com/cot.ton_baby/" target="_blank"><img
+                        src="/images/icons/insta.png"></a>
+                <div class="sub">
+                    <div><a href="https://www.instagram.com/cot.ton_baby/" target="_blank">Подпишись</a></div>
+                </div>
+            </div>
+            <div data-basket><a href="#"><img src="/images/icons/basket.png"><span>0</span></a></div>
+            <div data-favorite><a href="#"><img src="/images/icons/favorites.png"><span>0</span></a></div>
+            <div data-auth>
 
-				<button><img src="images/icons/user.png"><span>Войти</span></button>
+                <button><img src="images/icons/user.png"><span>Войти</span></button>
 
-				<div class="authorization" id="authorization">
-					<button class="popup-close"><img src="/images/icons/close.png"></button>
-					<p>Авторизация</p>
-					<form>
-						<div>
-							<input type="email" name="mail" placeholder="E-mail">
+                <div class="authorization" id="authorization">
+                    <button class="popup-close"><img src="/images/icons/close.png"></button>
+                    <p>Авторизация</p>
+                    <form>
+                        <div>
+                            <input name="mail" placeholder="E-mail" type="email">
 
-							<input type="password" name="password_auth" placeholder="Пароль">
-						</div>
+                            <input name="password_auth" placeholder="Пароль" type="password">
+                        </div>
 
-						<div>
-							<button type="button">Войти</button>
-							<a href="/registration.html">Регистрация</a>
-						</div>
-					</form>
-				</div>
+                        <div>
+                            <button type="button">Войти</button>
+                            <a href="/registration.html">Регистрация</a>
+                        </div>
+                    </form>
+                </div>
 
-				<div class="exit" id="exit">
-					<button class="popup-close"><img src="/images/icons/close.png"></button>
-					<div>
-						<a href="/cabinet.html">Личный кабинет</a>
-						<button>Выйти</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="exit" id="exit">
+                    <button class="popup-close"><img src="/images/icons/close.png"></button>
+                    <div>
+                        <a href="/cabinet.html">Личный кабинет</a>
+                        <button>Выйти</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- header end -->
 
 <!-- content start -->
 <main class="content-site">
-	<section class="content">
-		<div class="breadcrumbs">
-			<p><a href="/">Главная</a> &#8594 Корзина товаров</p>
-			<div class="breadcrumbs-liner"></div>
-		</div>
+    <section class="content">
+        <div class="breadcrumbs">
+            <p><a href="/">Главная</a> &#8594 Корзина товаров</p>
+            <div class="breadcrumbs-liner"></div>
+        </div>
 
-		<div class="title">
-			<h1>Корзина</h1>
-		</div>
-	</section>
+        <div class="title">
+            <h1>Корзина</h1>
+        </div>
+    </section>
 
-	<section class="content">
-		<div class="block-empty d-none">
-			<p>Корзина пуста</p>
-		</div>
+    <section class="content">
+        <div class="block-empty d-none">
+            <p>Корзина пуста</p>
+        </div>
 
-		<div class="basket-container d-none">
-			<div class="basket-box">
+        <div class="basket-container d-none">
+            <div class="basket-box">
 
-			</div>
+            </div>
 
-			<div class="basket-total">
-				<div>
-					<p>Бонусные рубли: <span>0 руб.</span></p>
-					<p>(Вы можете потратить бонусные рубли на покупки)</p>
-				</div>
+            <div class="basket-total">
+                <div style="display: none;">
+                    <p>Бонусные рубли: <span>0 руб.</span></p>
+                    <p>(Вы можете потратить бонусные рубли на покупки)</p>
+                </div>
 
-				<div class="basket-total-off">
-					<button action="use-bonus">Использовать бонусные рубли</button>
-				</div>
+                <div class="basket-total-off">
+                    <button action="use-bonus">Использовать бонусные рубли</button>
+                </div>
 
-				<div>
-					<p>Итого: <span></span></p>
-				</div>
-			</div>
+                <div>
+                    <p>Итого: <span></span></p>
+                </div>
+            </div>
 
-			<div class="content-text info">
-				<p>Обращаем ваше внимание!</p>
-				<p>Сайт для оптовых продаж. Минимальная сумма заказа <span>10 000р.</span></p>
-				<p>Использование <span>бонусных рублей</span> доступно только при сумме заказа от <span>10 000р.</span></p>
-				<p><span>Бонусные рубли</span> начисляются в размере <span>1%</span> от суммы заказа <span>30 000р.</span> и больше!</p>
-			</div>
+            <div class="content-text info">
+                <p>Обращаем ваше внимание!</p>
+                <p>Сайт для оптовых продаж. Минимальная сумма заказа <span>10 000р.</span></p>
+                <p style="display: none;">Использование <span>бонусных рублей</span> доступно только при сумме заказа от
+                    <span>10 000р.</span></p>
+                <p style="display: none;"><span>Бонусные рубли</span> начисляются в размере <span>1%</span> от суммы
+                    заказа <span>30 000р.</span> и больше!</p>
+            </div>
 
-			<div class="payment-box">
-				<p>Выберите вариант оплаты:</p>
-				<div>
-					<div>
-						<button data-payment-method="payment"><img src="/images/icons/score.png"></button>
-						<p>Счет</p>
-					</div>
+            <div class="payment-box">
+                <p>Выберите вариант оплаты:</p>
+                <div>
+                    <div>
+                        <button data-payment-method="payment"><img src="/images/icons/score.png"></button>
+                        <p>Счет</p>
+                    </div>
 
-					<div>
-						<button data-payment-method="card"><img src="/images/icons/card.png"></button>
-						<p>Оплата на карту</p>
-					</div>
-				</div>
-			</div>
+                    <div>
+                        <button data-payment-method="card"><img src="/images/icons/card.png"></button>
+                        <p>Наличные (Банковская карта)</p>
+                    </div>
+                </div>
+            </div>
 
-			<div class="content-error d-none">
-				<p>Не выбран <span>адрес доставки</span></p>
-			</div>
+            <div class="content-error d-none">
+                <p>Не выбран <span>адрес доставки</span></p>
+            </div>
 
-			<div class="address-box">
-				<p>Текущий адрес доставки:</p>
-				<button onclick="PopUpShowCard()">Редактировать</button>
-			</div>
+            <div class="address-box">
+                <p>Текущий адрес доставки:</p>
+                <button onclick="PopUpShowCard()">Редактировать</button>
+            </div>
 
-			<div class="basket-liner"></div>
+            <div class="basket-realise" style="text-align: right;font-size: 1.4em;margin-top: 50px;">
+                Пожалуйста, укажите способ дальнейшей реализации:
+                <input id="basket-realise" placeholder="магазин, СП, соц. сети и т.п." size="25"
+                       style="margin-left: 10px;font-size: 1em;">
+            </div>
 
-			<div class="basket-order">
-				<div>
-					<a href="/catalog/"><button>&#11013 Вернуться к покупкам</button></a>
-				</div>
+            <div class="basket-liner"></div>
 
-				<div>
-					<p>Сумма вашего заказа состовляет</p>
-					<p>Минимальный заказ 10 000 руб.</p>
-					<p><a href="#">Перейти к покупкам</a></p>
-				</div>
+            <div class="basket-order">
+                <div>
+                    <a href="/catalog/">
+                        <button>&#11013 Вернуться к покупкам</button>
+                    </a>
+                </div>
 
-				<div class="basket-order-off">
-					<button action="save-order">&#10003 Оформить заказ</button>
-				</div>
-			</div>
-		</div>
-	</section>
+                <div>
+                    <p>Сумма вашего заказа состовляет</p>
+                    <p>Минимальный заказ 10 000 руб.</p>
+                    <p><a href="#">Перейти к покупкам</a></p>
+                </div>
+
+                <div class="basket-order-off">
+                    <button action="save-order">&#10003 Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 <!-- content end -->
 
 <!-- footer start -->
 <div class="footer">
-		<div class="footer-top">
-			<div class="footer-logo">
-				<a href="/"><img src="/images/logo.svg"></a>
-			</div>
+    <div class="footer-top">
+        <div class="footer-logo">
+            <a href="/"><img src="/images/logo.svg"></a>
+        </div>
 
-			<div class="footer-text">
-				<p>Производство детской одежды</p>
-				<p>Оптовая продажа</p>
-			</div>
+        <div class="footer-text">
+            <p>Производство детской одежды</p>
+            <p>Оптовая продажа</p>
+        </div>
 
-			<div class="footer-menu">
-				<ul>
-					<li><a href="/">Главная</a></li>
-					<li><a href="/registration.html">Регистрация</a></li>
-					<li><a href="/catalog/">Каталог</a></li>
-					<li><a href="/collections/">Коллекции</a></li>
-					<li><a href="/information.html">О нас</a></li>
-					<li><a href="/cooperation.html">Сотрудничество</a></li>
-				</ul>
-			</div>
+        <div class="footer-menu">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/registration.html">Регистрация</a></li>
+                <li><a href="/catalog/">Каталог</a></li>
+                <li><a href="/collections/">Коллекции</a></li>
+                <li><a href="/information.html">О нас</a></li>
+                <li><a href="/cooperation.html">Сотрудничество</a></li>
+            </ul>
+        </div>
 
-			<div class="footer-contacts">
-				<div class="footer-phone">
-					<p><b>+7 (922)</b> 13 36 726</p>
-				</div>
+        <div class="footer-contacts">
+            <div class="footer-phone">
+                <p><b>+7 (922)</b> 13 36 726</p>
+            </div>
 
-				<div class="footer-top-networks">
-					<button><a target="_blank" href="https://www.instagram.com/cot.ton_baby/"><img src="/images/icons/insta.png"></a></button>
-					<!-- <button><img src="images/icons/fb.png"></button> -->
-					<!-- <button><img src="images/icons/vk.png"></button> -->
-				</div>
-			</div>
-		</div>
+            <div class="footer-top-networks">
+                <button><a href="https://www.instagram.com/cot.ton_baby/" target="_blank"><img
+                        src="/images/icons/insta.png"></a></button>
+                <!-- <button><img src="images/icons/fb.png"></button> -->
+                <!-- <button><img src="images/icons/vk.png"></button> -->
+            </div>
+        </div>
+    </div>
 
-		<div class="footer-bot">
-			<p>© 2017 Cotton Baby</p>
-		</div>
-	</div>
+    <div class="footer-bot">
+        <p>© 2017 Cotton Baby</p>
+    </div>
+</div>
 <!-- footer end -->
 
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Promise,fetch,es6"></script>
 <script type="text/javascript" src="/js/simplebar.js" defer></script>
 <script type="text/javascript" src="/js/animated-scroll-to.js" defer></script>
 <script type="text/javascript" defer src="/js/script.js" defer></script>
 <script type="text/javascript" defer src="/js/basket.js" defer></script>
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-	(function (d, w, c) {
-		(w[c] = w[c] || []).push(function() {
-			try {
-				w.yaCounter47500810 = new Ya.Metrika2({
-					id:47500810,
-					clickmap:true,
-					trackLinks:true,
-					accurateTrackBounce:true,
-					webvisor:true
-				});
-			} catch(e) { }
-		});
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+            try {
+                w.yaCounter47500810 = new Ya.Metrika2({
+                    id: 47500810,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true
+                });
+            } catch (e) {
+            }
+        });
 
-		var n = d.getElementsByTagName("script")[0],
-				s = d.createElement("script"),
-				f = function () { n.parentNode.insertBefore(s, n); };
-		s.type = "text/javascript";
-		s.async = true;
-		s.src = "https://mc.yandex.ru/metrika/tag.js";
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () {
+                n.parentNode.insertBefore(s, n);
+            };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
 
-		if (w.opera == "[object Opera]") {
-			d.addEventListener("DOMContentLoaded", f, false);
-		} else { f(); }
-	})(document, window, "yandex_metrika_callbacks2");
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks2");
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<script src="/system/extensions/webApp/js/app.js" defer ></script>
+<noscript>
+    <div><img alt="" src="https://mc.yandex.ru/watch/47500810" style="position:absolute; left:-9999px;"/></div>
+</noscript>
+<script defer src="/system/extensions/webApp/js/app.js"></script>
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>
