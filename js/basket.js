@@ -366,7 +366,7 @@
 
     //отправка заказа на оформление
     function requestSendOrder() {
-        if (!document.getElementById('basket-realise').value) return alert('Пожалуйста, укажите способ дальнейшей реализации!');
+        if (!document.getElementById('basket-realise').value || document.getElementById('basket-realise').value.trim().length < 3) return alert('Пожалуйста, укажите способ дальнейшей реализации!');
         document.querySelector('.content-error').classList.add('d-none');
         return fetch(window.pms.config.cabinetAPI + 'order/save', {
             method: 'POST',
